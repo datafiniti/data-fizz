@@ -1,0 +1,6 @@
+[submodule "HereInMyCar/lib/php-activerecord"]
+	path = HereInMyCar/lib/php-activerecord
+	url = git://github.com/jpfuentes2/php-activerecord.git
+[submodule "HereInMyCar/lib/guzzle3"]
+	path = HereInMyCar/lib/guzzle3
+	url = git://github.com/guzzle/guzzle3
