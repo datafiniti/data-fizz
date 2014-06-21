@@ -73,7 +73,7 @@ class DatafinitiClient {
 			  $request = self::STATUS_ENDPOINT . "/$this->query";
 			break;
 			default:
-			  die("Invalid query endpoint: $endpoint\n")
+			  die("Invalid query endpoint: $endpoint\n");
 		}
 		var_dump($request);
 
@@ -84,7 +84,7 @@ class DatafinitiClient {
 		}
 		
 		$statusCode = $res->getStatusCode();
-		if($statusCode != 200 || $statusCode != 204) {
+		if($statusCode != 200 && $statusCode != 204) {
 			die("Response status not OK: $statusCode\n");
 		}
 
