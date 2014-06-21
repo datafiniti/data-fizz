@@ -1,5 +1,5 @@
 <?php
-require_once('../guzzle3/vendor/autoload.php');
+require_once(HOME_PATH . '/lib/guzzle3/vendor/autoload.php');
 
 class DatafinitiClient {
 
@@ -17,11 +17,11 @@ class DatafinitiClient {
 
 	const API_URL = 'https://api.datafiniti.net';
 	const USERS_ENDPOINT = '/v2/users';
-	const DATA_ENPOINT = '/v2/data';
+	const DATA_ENDPOINT = '/v2/data';
 	const STATUS_ENDPOINT = '/v2/status';
 
-	function __construct($apiKey = 'vd95mqywso522sdcrg4lxxosrdwtwdq6') {
-		$this->apiKey_ = $apiKey . "sdfsdf";
+	function __construct($apiKey) {
+		$this->apiKey_ = $apiKey;
 		$this->client_ = new Guzzle\Http\Client(self::API_URL); 
 		$this->client_->getConfig()->setPath('request.options/auth', array($this->apiKey_, '', 'Basic'));
 		if(!$this->validAPIUser()) {
@@ -29,7 +29,12 @@ class DatafinitiClient {
 		}
 	}
 
-	public function validateQueryParams() {
+	public function validateQueryParams($endpoint) {
+
+    if($endpoint != self::DATA_ENDPOINT) {
+			return true;
+		}
+		
 		if(!in_array($this->queryType, $this->queryTypes)) {
 			die("$queryType is not a valid query type. [" . implode('|', $this->queryTypes) . "]\n");
 		}
@@ -47,9 +52,54 @@ class DatafinitiClient {
 		return true;
 	}
 
-	public function query() {
-		$this->validateQueryParams();
-		return $this->client_->get(self::DATA_ENDPOINT . "/$this->dataType/$this->queryType?view=$this->view&q=$query")->send();
+	private function saveDownload($baseURL, $resource) {
+    $downloadClient = new Guzzle\Http\Client($baseURL);
+	}
+
+	private function query($endpoint) {
+		$this->validateQueryParams($endpoint);
+		$handleDownload = false;
+		$downloadID = false;
+		
+		switch($endpoint) {
+			case self::DATA_ENDPOINT:
+		    $request = self::DATA_ENDPOINT . "/$this->dataType/$this->queryType?view=$this->view&q=$this->query";
+				$handleDownload = (strtolower($this->queryType) == 'download');
+			break;
+			case self::USERS_ENDPOINT:
+			  $request = self::USERS_ENDPOINT . "/$this->query";
+			break;
+			case self::STATUS_ENDPOINT:
+			  $request = self::STATUS_ENDPOINT . "/$this->query";
+			break;
+			default:
+			  die("Invalid query endpoint: $endpoint\n")
+		}
+		var_dump($request);
+
+		$res = $this->client_->get($request)->send();
+
+		if($handleDownload) {
+      $downloadID = $res;
+		}
+		
+		$statusCode = $res->getStatusCode();
+		if($statusCode != 200 || $statusCode != 204) {
+			die("Response status not OK: $statusCode\n");
+		}
+
+    $data = json_decode($res->getBody());
+
+    if(isset($data->error)) {
+			die("Request failed: " . $data->error->msg);
+		}
+
+		return $data;
+	}
+
+	public function queryStatus($queryID) {
+		$this->query = $queryID;
+		$res = $this->query(self::STATUS_ENDPOINT);
 	}
 
   // Convenience function for products
@@ -59,20 +109,19 @@ class DatafinitiClient {
 		$this->view = $view;
     $this->query = $query;
 
-		$res = $this->query();
+		$res = $this->query(self::DATA_ENDPOINT);
 		return $res;
 	}
 
 	public function validAPIUser() {
-		$res = $this->client_->get(self::USERS_ENDPOINT . '/' . $this->apiKey_)->send();
-    return ($res->getStatusCode() == 200);
+		try {
+		  $res = $this->client_->get(self::USERS_ENDPOINT . '/' . $this->apiKey_)->send();
+      return ($res->getStatusCode() == 200);
+		}
+		catch(Exception $e) {
+       die("Connection error: " . $e->getMessage() . "\n");
+		}
 	}
 }
-
-$test = new DatafinitiClient();
-$res = $test->queryProducts("vin:['' TO *] AND dateUpdated:[2014-06-14 TO *]");
-echo $res->getStatusCode();           // 200
-echo $res->getHeader('Content-Type'); // 'application/json; charset=utf8'
-echo $res->getBody();                 // {"type":"User"...'
 
 
