@@ -1,0 +1,13 @@
+<project name="HereInMyCar" default="prepare">
+  <target name="prepare">
+	  <echo>Creating local directories</echo>
+		<mkdir dir="lib" />
+		<mkdir dir="downloads">
+	</target>
+
+	<target name="init-git-submodules" depends="prepare">
+	  <echo>Initializing in git submodules</echo>
+		<exec command="git submodule init" dir="../" />
+	  <exec command="git submodule update" dir="../" />
+	</target>
+</project>
