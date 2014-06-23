@@ -1,8 +1,7 @@
 <project name="HereInMyCar" default="prepare">
   <target name="prepare">
 	  <echo>Creating local directories</echo>
-		<mkdir dir="lib" />
-		<mkdir dir="downloads">
+		<mkdir dir="downloads" />
 	</target>
 
 	<target name="init-git-submodules" depends="prepare">
@@ -19,6 +18,7 @@
 				exec("mysql -u " . DB_USER . "-p" . DB_PASSWORD . " " . DB_DB . "_dev < schemata/products.sql");
 				exec("mysql -u " . DB_USER . "-p" . DB_PASSWORD . " " . DB_DB . "_dev < schemata/vehicles.sql");
 			]]>
+		</adhoc-task>
 		<adhoc-task name="load-production-db">
 		  <![CDATA[
 			  require_once('ConfigVars.php');
