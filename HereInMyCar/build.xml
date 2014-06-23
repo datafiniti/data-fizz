@@ -27,7 +27,7 @@
 	    ]]>
 		</adhoc-task>
 	</target>
-	<target name="install">
+	<target name="install" depends="load-mysql-dbs">
 	  <echo>Executing installation</echo>
 	</target>
 </project>
