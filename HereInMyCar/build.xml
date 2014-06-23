@@ -1,4 +1,4 @@
-<project name="HereInMyCar" default="prepare">
+<project name="HereInMyCar" default="install">
   <target name="prepare">
 	  <echo>Creating local directories</echo>
 		<mkdir dir="downloads" />
@@ -26,5 +26,8 @@
 				exec("mysql -u " . DB_USER . "-p" . DB_PASSWORD . " " . DB_DB . " < schemata/vehicles.sql");
 	    ]]>
 		</adhoc-task>
+	</target>
+	<target name="install">
+	  <echo>Executing installation</echo>
 	</target>
 </project>
