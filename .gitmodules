@@ -4,3 +4,6 @@
 [submodule "HereInMyCar/lib/guzzle3"]
 	path = HereInMyCar/lib/guzzle3
 	url = git://github.com/guzzle/guzzle3
+[submodule "HereInMyCar/lib/phpunit"]
+	path = HereInMyCar/lib/phpunit
+	url = git://github.com/sebastianbergmann/phpunit.git

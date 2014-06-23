@@ -1,6 +1,5 @@
 <?php
-define('HOME_PATH', dirname(__FILE__));
-require_once(HOME_PATH . '/ConfigVars.php');
+require_once('ConfigVars.php');
 require_once(HOME_PATH . '/lib/php-activerecord/ActiveRecord.php');
 require_once(HOME_PATH . '/lib/datafiniti/DatafinitiClient.php');
 
@@ -17,7 +16,7 @@ class HereInMyCar {
 						'production' => 'mysql://' . DB_USER . ':' . DB_PASSWORD . '@' . DB_HOST . '/' . DB_DB 
 					)
 				);
-		    $cfg->set_default_connection('development');
+		    $cfg->set_default_connection(DB_ENV);
     });
 
 		$this->dataClient_ = new DatafinitiClient(DATAFINITI_API_KEY);
@@ -44,10 +43,22 @@ class HereInMyCar {
 				 }
 
 			 }
+	   }
+	 }
+   
+	 public function displayAvgVehiclePriceByState() {
+     $vehicleData = Vehicle::find('all', array('select' => 'avg(price) AS avg_price, province AS state', 'group' => 'province', 'order' => 'province asc'));
+		 setlocale(LC_MONETARY, 'en_US');
+		 
+		 echo "State\tAverage Price\n";
+		 foreach($vehicleData as $record) {
+			 echo $record->state . "\t$" . money_format("%.2i", $record->avg_price) . "\n";
 		 }
-	}
 
+	 }
 }
 
 $HIMC = new HereInMyCar();
 $HIMC->populateDB();
+$HIMC->displayAvgVehiclePriceByState();
+

@@ -19,6 +19,7 @@ class DatafinitiClient {
 	const USERS_ENDPOINT = '/v2/users';
 	const DATA_ENDPOINT = '/v2/data';
 	const STATUS_ENDPOINT = '/v2/status';
+	const MAX_DOWNLOAD_ATTEMPTS = 16;
 
 	function __construct($apiKey) {
 		$this->apiKey_ = $apiKey;
@@ -56,6 +57,18 @@ class DatafinitiClient {
     $downloadClient = new Guzzle\Http\Client($baseURL);
 	}
 
+  // Using a modified exponential back-off technique, query the download status and then save the file once it's ready
+	private function retrieveDownload($downloadID) {
+		$timeoutInSeconds = 1;
+		$downloadIsReady = false;
+		$downloadAttemptCtr = 0;
+
+		while(!$downloadIsReady && $downloadAttemptCtr < self::MAX_DOWNLOAD_ATTEMPTS) {
+		  sleep($timeoutInSeconds);
+
+		}
+	}
+
 	private function query($endpoint) {
 		$this->validateQueryParams($endpoint);
 		$handleDownload = false;
@@ -81,7 +94,9 @@ class DatafinitiClient {
 
 		if($handleDownload) {
       $downloadID = $res;
+			$this->retrieveDownload($downloadID);
 		}
+		// probably else this
 		
 		$statusCode = $res->getStatusCode();
 		if($statusCode != 200 && $statusCode != 204) {
@@ -100,6 +115,8 @@ class DatafinitiClient {
 	public function queryStatus($queryID) {
 		$this->query = $queryID;
 		$res = $this->query(self::STATUS_ENDPOINT);
+
+		return $res;
 	}
 
   // Convenience function for products
