@@ -15,19 +15,29 @@
 	  <adhoc-task name="load-dev-db">
 	    <![CDATA[
 			  require_once('ConfigVars.php');
-				exec("mysql -u " . DB_USER . "-p" . DB_PASSWORD . " " . DB_DB . "_dev < schemata/products.sql");
-				exec("mysql -u " . DB_USER . "-p" . DB_PASSWORD . " " . DB_DB . "_dev < schemata/vehicles.sql");
+				class DevDBTask extends Task {
+					function main() {
+						$cmd = "cat schemata/products.sql schemata/vehicles.sql | mysql --user=" . DB_USER . " --password=" . DB_PASSWORD . " --host=" . DB_HOST . " " . DB_DB . "_dev"; 
+				    exec($cmd);
+					}
+				}
 			]]>
 		</adhoc-task>
 		<adhoc-task name="load-production-db">
 		  <![CDATA[
 			  require_once('ConfigVars.php');
-				exec("mysql -u " . DB_USER . "-p" . DB_PASSWORD . " " . DB_DB . " < schemata/products.sql");
-				exec("mysql -u " . DB_USER . "-p" . DB_PASSWORD . " " . DB_DB . " < schemata/vehicles.sql");
+				class ProdDBTask extends Task {
+					function main() {
+						$cmd = "cat schemata/products.sql schemata/vehicles.sql | mysql --user=" . DB_USER . " --password=" . DB_PASSWORD . " --host=" . DB_HOST . " " . DB_DB;
+				    exec($cmd);
+					}
+				}
 	    ]]>
 		</adhoc-task>
+		<load-dev-db />
+		<load-production-db />
 	</target>
 	<target name="install" depends="load-mysql-dbs">
-	  <echo>Executing installation</echo>
+	  <echo>Completing installation</echo>
 	</target>
 </project>
