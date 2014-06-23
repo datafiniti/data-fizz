@@ -10,4 +10,21 @@
 		<exec command="git submodule init" dir="../" />
 	  <exec command="git submodule update" dir="../" />
 	</target>
+
+	<target name="load-mysql-dbs" depends="init-git-submodules">
+	  <echo>Loading database schemata</echo>
+	  <adhoc-task name="load-dev-db">
+	    <![CDATA[
+			  require_once('ConfigVars.php');
+				exec("mysql -u " . DB_USER . "-p" . DB_PASSWORD . " " . DB_DB . "_dev < schemata/products.sql");
+				exec("mysql -u " . DB_USER . "-p" . DB_PASSWORD . " " . DB_DB . "_dev < schemata/vehicles.sql");
+			]]>
+		<adhoc-task name="load-production-db">
+		  <![CDATA[
+			  require_once('ConfigVars.php');
+				exec("mysql -u " . DB_USER . "-p" . DB_PASSWORD . " " . DB_DB . " < schemata/products.sql");
+				exec("mysql -u " . DB_USER . "-p" . DB_PASSWORD . " " . DB_DB . " < schemata/vehicles.sql");
+	    ]]>
+		</adhoc-task>
+	</target>
 </project>
