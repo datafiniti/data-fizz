@@ -1,5 +1,7 @@
 <?php
+// Application variables - change with caution
 define('HOME_PATH', dirname(__FILE__));
+define('LOG_PATH', HOME_PATH . '/logs');
 
 // User defined variables below
 define('DB_USER', 'datafiniti');

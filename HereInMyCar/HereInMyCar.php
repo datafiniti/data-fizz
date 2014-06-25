@@ -23,7 +23,7 @@ class HereInMyCar {
 	}
 
 	public function populateDB() {
-     $data = $this->dataClient_->queryProducts("vin:['' TO *] AND dateUpdated:[2014-05-10 TO *]");
+     $data = $this->dataClient_->queryProducts("vin:['' TO *] AND dateUpdated:[2014-06-21 TO *]");
 		 foreach($data->records as $record) {
 			 $productKey = trim($record->key);
 

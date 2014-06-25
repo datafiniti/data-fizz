@@ -5,13 +5,15 @@ class DatafinitiClient {
 
 	private $client_ = null;
 	private $apiKey_ = null;
+	private $lastRequestResult_ = null;
+	private $lastRequest_ = null;
 
-	public $dataType = null;
-	public $queryType = null;
-	public $view = null;
-	public $query = null;
+	protected $dataType = null;
+	protected $queryType = null;
+	protected $view = null;
+	protected $query = null;
 	
-	private $views = array('product_json', 'location_json', 'people_json', 'product_csv', 'location_csv', 'people_csv');
+	private $views = array('product_json', 'location_json', 'people_json'); // CSV not supported in this version
   private $queryTypes = array('preview', 'download');
 	private $dataTypes = array('products', 'locations', 'identities');
 
@@ -32,36 +34,46 @@ class DatafinitiClient {
 
 	public function validateQueryParams($endpoint) {
 
-    if($endpoint != self::DATA_ENDPOINT) {
-			return true;
-		}
-		
-		if(!in_array($this->queryType, $this->queryTypes)) {
-			die("$queryType is not a valid query type. [" . implode('|', $this->queryTypes) . "]\n");
-		}
+		switch($endpoint) {
+			case self::USERS_ENDPOINT:
+			  // Nothing to check	
+			break;
+			case self::DATA_ENDPOINT:
+				if(!in_array(strtolower($this->queryType), $this->queryTypes)) {
+					die("$queryType is not a valid query type. [Supported query types: " . implode(' | ', $this->queryTypes) . "]\n");
+				}
 
-		if(!in_array($this->dataType, $this->dataTypes)) {
-			die("$dataType is not a valid data type. [" . implode('|', $this->dataTypes) . "]\n");
-		}
+				if(!in_array(strtolower($this->dataType), $this->dataTypes)) {
+					die("$dataType is not a valid data type. [Supported data types: " . implode(' | ', $this->dataTypes) . "]\n");
+				}
 
-		if(!in_array($this->view, $this->views)) {
-			die("$view is not a valid view. [" . implode('|', $this->views) . "]\n");
+				if(!in_array(strtolower($this->view), $this->views)) {
+					die("$view is not a valid view. [Supported views: " . implode(' | ', $this->views) . "]\n");
+				}
+			case self::STATUS_ENDPOINT:
+				if(strlen(trim($this->query)) < 1) {
+					die("Query is empty.\n");
+				}
+			break;
+			default:
+				die("Invalid API endpoint: $endpoint\n");
 		}
 
 		// FUTURE FEATURE: Solr syntax checker for $query
-
-		return true;
 	}
 
-	private function saveDownload($baseURL, $resource) {
+	private function writeDownloadToDisk($baseURL, $resource) {
     $downloadClient = new Guzzle\Http\Client($baseURL);
 	}
 
   // Using a modified exponential back-off technique, query the download status and then save the file once it's ready
 	private function retrieveDownload($downloadID) {
-		$timeoutInSeconds = 1;
+		$timeoutInSeconds = 0;
+		$totalTimeWaited = 0;
 		$downloadIsReady = false;
 		$downloadAttemptCtr = 0;
+
+		$downloadIsReady = $this->queryStatus($downloadID);
 
 		while(!$downloadIsReady && $downloadAttemptCtr < self::MAX_DOWNLOAD_ATTEMPTS) {
 		  sleep($timeoutInSeconds);
@@ -69,30 +81,27 @@ class DatafinitiClient {
 		}
 	}
 
-	private function query($endpoint) {
+	private function query($endpoint, $requestStr) {
 		$this->validateQueryParams($endpoint);
-		$handleDownload = false;
 		$downloadID = false;
 		
-		switch($endpoint) {
-			case self::DATA_ENDPOINT:
-		    $request = self::DATA_ENDPOINT . "/$this->dataType/$this->queryType?view=$this->view&q=$this->query";
-				$handleDownload = (strtolower($this->queryType) == 'download');
-			break;
-			case self::USERS_ENDPOINT:
-			  $request = self::USERS_ENDPOINT . "/$this->query";
-			break;
-			case self::STATUS_ENDPOINT:
-			  $request = self::STATUS_ENDPOINT . "/$this->query";
-			break;
-			default:
-			  die("Invalid query endpoint: $endpoint\n");
+		if(!in_array($endpoint, array(self::DATA_ENDPOINT, self::USERS_ENDPOINT, self::STATUS_ENDPOINT))) {
+			die("Invalid query endpoint: $endpoint\n");
 		}
-		var_dump($request);
 
-		$res = $this->client_->get($request)->send();
+		$request = $endpoint . $requestStr;
 
-		if($handleDownload) {
+    var_dump($request);
+
+		try {
+			$this->lastRequest_ = $request;
+		  $res = $this->client_->get($request)->send();
+		}
+		catch (Exception $e) {
+			die("ERROR: " . $e->getMessage() . "\n");
+		}
+
+		if($this->performDownload) {
       $downloadID = $res;
 			$this->retrieveDownload($downloadID);
 		}
@@ -103,10 +112,13 @@ class DatafinitiClient {
 			die("Response status not OK: $statusCode\n");
 		}
 
+    // Save the full result for internal purposes, we will just return the decoded body for downstream use
+		$this->lastRequestResult_ = $res;
+
     $data = json_decode($res->getBody());
 
     if(isset($data->error)) {
-			die("Request failed: " . $data->error->msg);
+			die("Request failed at server: " . $data->error->msg);
 		}
 
 		return $data;
@@ -114,30 +126,59 @@ class DatafinitiClient {
 
 	public function queryStatus($queryID) {
 		$this->query = $queryID;
-		$res = $this->query(self::STATUS_ENDPOINT);
+		$this->dataType = null;
+		$this->view = null;
+		$this->dataType = null;
+		$this->performDownload = false;
+
+		$requestStr = "/$this->query";
+		$res = $this->query(self::STATUS_ENDPOINT, $requestStr);
+
+		return $res;
+	}
+
+	public function queryUser($userID) {
+		$this->query = $userID;
+		$this->dataType = null;
+		$this->view = null;
+		$this->dataType = null;
+		$this->performDownload = false;
+
+		$requestStr = "/$this->query";
+		$res = $this->query(self::USERS_ENDPOINT, $requestStr);
+
+		return $res;
+	}
+
+	private function queryData($query, $queryType = 'preview') {
+		$this->queryType = $queryType;
+		$this->query = $query;
+		$this->performDownload = (strtolower($this->queryType) == 'download');
+		
+		$requestStr = "/$this->dataType/$this->queryType?view=$this->view&q=$this->query";
+		$res = $this->query(self::DATA_ENDPOINT, $requestStr);
 
 		return $res;
 	}
 
   // Convenience function for products
-	public function queryProducts($query, $queryType = 'preview', $view = 'product_json') {
+	public function queryProducts($query, $queryType = 'preview') {
 		$this->dataType = 'products';
-		$this->queryType = $queryType;
-		$this->view = $view;
-    $this->query = $query;
+		$this->view = 'product_json';
 
-		$res = $this->query(self::DATA_ENDPOINT);
+		$res = $this->queryData($query, $queryType);
 		return $res;
 	}
 
+  // Stub for locations convenience function
+	public function queryLocations($query, $queryType = 'preview') {}
+
+  // Stub for identities convenience function
+	public function queryIdentities($query, $queryType = 'preview') {}
+
 	public function validAPIUser() {
-		try {
-		  $res = $this->client_->get(self::USERS_ENDPOINT . '/' . $this->apiKey_)->send();
-      return ($res->getStatusCode() == 200);
-		}
-		catch(Exception $e) {
-       die("Connection error: " . $e->getMessage() . "\n");
-		}
+		$res = $this->queryUser($this->apiKey_);
+    return ($this->lastRequestResult_->getStatusCode() == 200);
 	}
 }
 
