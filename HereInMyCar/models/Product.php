@@ -12,6 +12,10 @@ class Product extends ActiveRecord\Model {
 	}
 
 	public function set_date_updated($date_updated) {
+		if(is_numeric($date_updated)) {
+			// Convert timestamp to datetimes: 2014-06-25T16:18:09Z
+			$date_updated = date(DATE_RFC3339, $date_updated);
+		}
 		$this->assign_attribute('date_updated', trim($date_updated));
 	}
 
