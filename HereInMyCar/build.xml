@@ -1,24 +1,32 @@
 <project name="HereInMyCar" default="install">
-  <target name="prepare">
+  <target name="prepare-directories">
 	  <echo>Creating local directories</echo>
 		<mkdir dir="downloads" />
 	</target>
 
-	<target name="init-git-submodules" depends="prepare">
+	<target name="init-git-submodules">
 	  <echo>Initializing in git submodules</echo>
 		<exec command="git submodule init" dir="../" />
 	  <exec command="git submodule update" dir="../" />
 	</target>
 
-	<target name="load-mysql-dbs" depends="init-git-submodules">
-	  <echo>Loading database schemata</echo>
+	<target name="install-composer" depends="init-git-submodules">
+	  <echo>Installing Composer and completing Guzzle3 setup</echo>
+	  <exec command="curl -sS https://getcomposer.org/installer | php" dir="lib/guzzle3/" />
+		<exec command="php composer.phar require guzzle/guzzle:~3.9" dir="lib/guzzle3/" />
+	</target>
+
+	<target name="load-mysql-dbs">
+	  <echo>Loading database schemata for production and development</echo>
 	  <adhoc-task name="load-dev-db">
 	    <![CDATA[
 			  require_once('ConfigVars.php');
 				class DevDBTask extends Task {
 					function main() {
+						$retVal = 0;
 						$cmd = "cat schemata/products.sql schemata/vehicles.sql | mysql --user=" . DB_USER . " --password=" . DB_PASSWORD . " --host=" . DB_HOST . " " . DB_DB . "_dev"; 
-				    exec($cmd);
+				    exec($cmd, $retVal);
+						return $retVal;
 					}
 				}
 			]]>
@@ -28,8 +36,10 @@
 			  require_once('ConfigVars.php');
 				class ProdDBTask extends Task {
 					function main() {
+						$retVal = 0;
 						$cmd = "cat schemata/products.sql schemata/vehicles.sql | mysql --user=" . DB_USER . " --password=" . DB_PASSWORD . " --host=" . DB_HOST . " " . DB_DB;
-				    exec($cmd);
+				    exec($cmd, $retVal);
+						return $retVal;
 					}
 				}
 	    ]]>
@@ -37,7 +47,7 @@
 		<load-dev-db />
 		<load-production-db />
 	</target>
-	<target name="install" depends="load-mysql-dbs">
+	<target name="install" depends="prepare-directories,load-mysql-dbs,install-composer">
 	  <echo>Completing installation</echo>
 	</target>
 </project>
