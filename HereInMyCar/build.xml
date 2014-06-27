@@ -6,14 +6,14 @@
 
 	<target name="init-git-submodules">
 	  <echo>Initializing in git submodules</echo>
-		<exec command="git submodule init" dir="../" />
-	  <exec command="git submodule update" dir="../" />
+		<exec command="git submodule init" dir="../" passthru="true"/>
+	  <exec command="git submodule update" dir="../" passthru="true"/>
 	</target>
 
 	<target name="install-composer" depends="init-git-submodules">
 	  <echo>Installing Composer and completing Guzzle3 setup</echo>
-	  <exec command="curl -sS https://getcomposer.org/installer | php" dir="lib/guzzle3/" />
-		<exec command="php composer.phar require guzzle/guzzle:~3.9" dir="lib/guzzle3/" />
+	  <exec command="curl -sS https://getcomposer.org/installer | php" dir="lib/guzzle3/" passthru="true"/>
+		<exec command="php composer.phar require guzzle/guzzle:~3.8" dir="lib/guzzle3/" passthru="true"/>
 	</target>
 
 	<target name="load-mysql-dbs">
