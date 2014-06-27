@@ -24,7 +24,7 @@ class Client {
 	const USERS_ENDPOINT = '/v2/users';
 	const DATA_ENDPOINT = '/v2/data';
 	const STATUS_ENDPOINT = '/v2/status';
-	const MAX_DOWNLOAD_ATTEMPTS = 13;
+	const MAX_DOWNLOAD_ATTEMPTS = 20;
 
 	function __construct($apiKey) {
 		$this->apiKey_ = $apiKey;
@@ -73,7 +73,7 @@ class Client {
 			$URLParts = parse_url($resource);
 			
 			if(!isset($URLParts['path'])) {
-				throw new Exception("Missing path in resource [URL:$baseURL resource:$resource].");
+				throw new \Exception("Missing path in resource [URL:$baseURL resource:$resource].");
 			}
 			
 			$tmp = explode('/', $URLParts['path']);
@@ -84,7 +84,7 @@ class Client {
 			$saveFileStream->write($res->getBody());
 			$saveFileStream->close();
     }
-		catch (Exception $e) {
+		catch (\Exception $e) {
 			die("ERROR: Failed to save query file - " . $e->getMessage() . "\n");
 		}
 		
@@ -94,11 +94,11 @@ class Client {
   // Using an exponential back-off, query the download status and then save the file once it's ready
 	// The function will spend approx. a total of (1 - $timeoutMultiplier^(MAX_DOWNLOAD_ATTEMPTS)) / (1 - $timeoutMultiplier) seconds making attempts 
 	private function retrieveDownload($queryID) {
-		$timeoutInMicroSeconds = 1000;
+		$timeoutInMicroSeconds = 1000000;
 		$downloadIsReady = false;
 		$downloadHasFailed = false;
 		$downloadAttemptCtr = 0;
-		$timeoutMultiplier = 1.8;
+		$timeoutMultiplier = 2;
 		$queryResponse = null;
 
 		do {
@@ -109,7 +109,10 @@ class Client {
 			$downloadIsReady = ($queryResponse['state'] == "done");
 			$downloadHasFailed = ($queryResponse['state'] == "failed");
 		 
-			$timeoutInMicroSeconds = max(1000, $timeoutMultiplier * $timeoutInMicroSeconds); // At least wait 1 second, in case of weird overflow/underflow  
+			$timeoutInMicroSeconds = max(1000000, $timeoutMultiplier * $timeoutInMicroSeconds); // At least wait 1 second, in case of weird overflow/underflow 
+			if(!$downloadIsReady) {
+				echo "Download attempt #{$downloadAttemptCtr} - query status is $queryResponse[state] - next attempt in " . ($timeoutInMicroSeconds / 1000000) . " seconds.\n";
+			}
 		} while (!$downloadIsReady && !$downloadHasFailed && $downloadAttemptCtr < self::MAX_DOWNLOAD_ATTEMPTS);
 
 		if($downloadHasFailed || $downloadAttemptCtr == self::MAX_DOWNLOAD_ATTEMPTS) {
@@ -147,7 +150,7 @@ class Client {
 			$this->lastRequest_ = $request;
 		  $res = $this->client_->get($request)->send();
 		}
-		catch (Exception $e) {
+		catch (\Exception $e) {
 			die("Request error: " . $e->getMessage() . "\n");
 		}
 
@@ -161,15 +164,20 @@ class Client {
 
     // Throw body into data decoded from JSON as assoc array, except for data download queries - they are simple text responses
     $data = $res->getBody();
+		
+		if($data == 'This download would exceed your limit') { // Don't be a datapig
+			throw new \Exception('Client::query() - ' . $data);
+		}
+
 		if($this->queryType != 'download') {
 			$data = json_decode($data, true);
 			$jsonError = json_last_error();
 			if($jsonError != 0) {
-				throw new Exception("Client::query() JSON decoding error: $jsonError");
+				throw new \Exception("Client::query() JSON decoding error: $jsonError");
 			}
 		}
 
-    if(isset($data['error'])) {
+    if(is_array($data) && isset($data['error'])) {
 			die("Request failed at server: " . $data['error']['msg']);
 		}
 

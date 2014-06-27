@@ -113,7 +113,7 @@ class HereInMyCar {
 	public function populateDB() {
 
 		try {
-			$records = $this->dataClient_->queryProducts("vin:['' TO *] AND dateUpdated:[2014-03-01 TO *]", 'download');
+			$records = $this->dataClient_->queryProducts("vin:['' TO *] AND dateUpdated:[2014-06-01 TO *]", 'download');
 		} catch(Exception $e) {
 			die("Fatal error: $e->getMessage()\n.");
 		}
