@@ -78,8 +78,9 @@ class Client {
 			
 			$tmp = explode('/', $URLParts['path']);
 			$filename = $tmp[count($tmp)-1]; // Filename is tail end of resource; should consider prepending a timestamp/guid
+			$filename = DOWNLOAD_PATH . '/' . $filename;
 
-			$saveFileStream = \Guzzle\Http\EntityBody::factory(fopen(DOWNLOAD_PATH . '/' . $filename, 'w+'));
+			$saveFileStream = \Guzzle\Http\EntityBody::factory(fopen($filename, 'w+'));
 			$saveFileStream->write($res->getBody());
 			$saveFileStream->close();
     }
@@ -162,6 +163,10 @@ class Client {
     $data = $res->getBody();
 		if($this->queryType != 'download') {
 			$data = json_decode($data, true);
+			$jsonError = json_last_error();
+			if($jsonError != 0) {
+				throw new Exception("Client::query() JSON decoding error: $jsonError");
+			}
 		}
 
     if(isset($data['error'])) {
@@ -203,18 +208,17 @@ class Client {
 		$this->query = $query;
 		
 		$requestStr = "/$this->dataType/$this->queryType?view=$this->view&q=$this->query";
-		//$res = $this->query(self::DATA_ENDPOINT, $requestStr);
+		$res = $this->query(self::DATA_ENDPOINT, $requestStr);
 		
 		// Handle download query types; the prior result is a queryID that may be in process
 		if($this->queryType == 'download') {
-			//$res = $this->retrieveDownload($res);
-			//echo "\n\nDOWNLOAD FILE RESULTS: " . var_dump($res); // Debug
+			$res = $this->retrieveDownload($res);
 		}
 		else {
 			$res = $res['records'];
 		}
 
-		//return $res;
+		return $res;
 	}
 
   // Convenience function for products, returns a RecordSet (ArrayIterator)
@@ -224,7 +228,7 @@ class Client {
 
 		$res = $this->queryData($query, $queryType);
 		
-		return new \RecordSet(DOWNLOAD_PATH . '/vd95mqywso522sdcrg4lxxosrdwtwdq6_jb266s0b8tvh3gia.zip');
+		return new \RecordSet($res);
 	}
 
   // Stub for locations convenience function
