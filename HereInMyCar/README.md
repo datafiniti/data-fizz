@@ -1,2 +1,2 @@
  - Please view my [iPython Notebook](http://nbviewer.ipython.org/github/rallenlove/DataFizz/blob/master/HereInMyCar/DatafinitiSolution_Lovelace.ipynb) for the best view of the solution.
- - For a version that (is it my fervent hope) actually runs, albeit with sample data, check the .py file.
+ - For a version that (it is my fervent hope) actually runs, albeit with sample data, check the .py file.
