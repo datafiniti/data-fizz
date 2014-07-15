@@ -33,4 +33,11 @@ describe DF::AmazonCrawler do
   	  expect(@html_source.author).to eq("Neil Gaiman")
   	end
   end
+
+  describe 'parse_price' do 
+  	it "parses out and stores the 'new' price of the book" do
+  	  @html_source.parse_price 
+  	  expect(@html_source.price).to eq("$15.22")
+  	end
+  end
 end

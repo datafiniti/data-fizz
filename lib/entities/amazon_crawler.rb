@@ -23,6 +23,7 @@ module DF
   	end
 
   	def parse_price
+  	  @price = @page.css('table.product b').text.match(/\A[$]\d+[.]\d+/).to_s
   	end
 
   	def parse_product_info
