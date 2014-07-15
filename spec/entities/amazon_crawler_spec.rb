@@ -27,10 +27,17 @@ describe DF::AmazonCrawler do
   end
 
   describe 'parse_title' do 
-  	it "parses out the title and author of a book, storing them as instance variables" do 
+  	xit "parses out the title and author of a book, storing them as instance variables" do 
   	  @html_source.parse_title
   	  expect(@html_source.title).to eq("The Ocean at the End of the Lane: A Novel")
   	  expect(@html_source.author).to eq("Neil Gaiman")
+  	end
+
+  	it 'parses a boxed set appropriately' do 
+  	  book_4 = DF::AmazonCrawler.new('./AllMyBooksArePacked/data/book4.html')
+  	  book_4.parse_title
+  	  expect(book_4.title).to eq("Sylvia Day Crossfire Series Boxed Set: Bared to You/Reflected in You/Entwined with You")
+  	  expect(book_4.author).to eq("Sylvia Day")
   	end
   end
 
@@ -40,4 +47,15 @@ describe DF::AmazonCrawler do
   	  expect(@html_source.price).to eq("$15.22")
   	end
   end
+
+  # describe 'parse_product_info' do
+  # 	xit "parses out and stores the isbn number and weight" do
+  # 	  @html_source.parse_product_info
+  # 	  expect(@html_source.isbn).to eq(0062255657)
+  # 	  expect(@html_source.weight).to eq(4.1)
+  # 	end 
+
+  # 	xit "converts the weight to pounds if it is in ounces" do 
+  # 	end
+  # end
 end

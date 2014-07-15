@@ -27,6 +27,7 @@ module DF
   	end
 
   	def parse_product_info
+  		# lb =oz * 0.062500
   	end
   end
 end
