@@ -27,6 +27,7 @@ module DF
   	end
 
   	def parse_product_info
+  	  @isbn = @page.css('table#productDetailsTable div li[4]').text.match(/\s\d+/).to_s.delete(" ")
   		# lb =oz * 0.062500
   	end
   end
