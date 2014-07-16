@@ -12,12 +12,18 @@ module DF
   	# Note: This could also be achieved by splitting the title_header into an array at colons, deleting the last 3 elements in the array and parsing through the remaining
   	def parse_book_title
   	  matched = @page.css('title').text.match(/(.\W)\d+(: Amazon.com: Books)$/)
-  	  matched ? matched.pre_match.match(/\w+\s\w+\z/).pre_match.slice(0..-3) : nil
-  	end
+      return nil if !matched
+      matched = matched.pre_match.match(/([^:]+)$/).pre_match
+      matched.slice!(-1)
+      matched
+    end
 
-  	def parse_book_author
-  	  matched = @page.css('title').text.match(/(.\W)\d+(: Amazon.com: Books)$/)
-  	  matched ? matched.pre_match.match(/\w+\s\w+\z/).to_s : nil
+    def parse_book_author
+      matched = @page.css('title').text.match(/(.\W)\d+(: Amazon.com: Books)$/)
+      return nil if !matched
+  	  matched = matched.pre_match.match(/([^:]+)$/).to_s
+      matched.slice!(0)
+      matched
   	end
 
   	def parse_book_price
@@ -31,9 +37,10 @@ module DF
   	end
 
   	def parse_book_weight
-  	  weight = @page.css('table#productDetailsTable div li[7]').text.match(/\d+[.]\d+\s\w+/).to_s
+  	  weight = @page.css('table#productDetailsTable div li[7]').text.match(/\d+[.]\d+\s\w+/)
   	  return nil if !weight
-  	  if !weight.include?('pounds')
+      weight = weight.to_s
+  	  if !weight.to_s.include?('pounds')
   	  	num = weight.match(/\d+[.]\d+/).to_s.to_f
   		num_in_pounds = num * 0.062500
   		weight = num_in_pounds.to_s + " pounds"
