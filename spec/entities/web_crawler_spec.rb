@@ -7,6 +7,7 @@ describe DF::WebCrawler do
   let(:source_2) {'http://www.amazon.com/Inquebrantable-Historia-Espanol-Spanish-ebook/dp/B00BHHDNHW/ref=dp_kinw_strp_1'}
   let(:html_source) {DF::WebCrawler.new(source_1)}
   let(:html_source_2) {DF::WebCrawler.new(source_2)}
+  
   it 'takes a string as its source for the initialize method' do 
   	page = html_source
   	expect(page.source).to eq('./AllMyBooksArePacked/data/book1.html')
