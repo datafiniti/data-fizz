@@ -17,6 +17,10 @@ module DF
     class BookProductInformation < ActiveRecord::Base
     end
 
+    def create_book_product(attrs)
+      BookProductInformation.create(attrs)
+    end
+
     def clear_tables
       BookProductInformation.delete_all
     end
