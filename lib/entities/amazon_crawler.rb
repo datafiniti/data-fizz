@@ -20,12 +20,11 @@ module DF
       return nil if matched.length < 1
       matched.select!{|item| item.text != "Details"}
       result = matched.join(", ")
-      # binding.pry
   	end
 
   	def parse_book_price
   	  matched = @page.css('div#rbb_bb_trigger span.bb_price').text
-      return nil if !matched
+      return nil if matched.length < 1
   	  matched.to_s.slice!(0,1)
       matched.delete!(" ") + " USD"
   	end
