@@ -19,17 +19,12 @@ describe DF::AmazonCrawler do
 
   describe 'parse_book_title' do 
   	it "parses out and returns the title of a book" do 
-  	  expect(@html_source.parse_book_title).to eq("The Ocean at the End of the Lane: A Novel")
+  	  expect(@html_source.parse_book_title).to eq("The Ocean at the End of the Lane: A Novel [Deckle Edge] [Hardcover]")
   	end
-
-    it 'parses titles with multiple authors' do 
-      test = DF::AmazonCrawler.new('./AllMyBooksArePacked/data/book18.html')
-      expect(test.parse_book_title).to eq("The Cuckoo's Calling")
-    end
 
   	it 'parses a boxed set appropriately' do 
   	  book_4 = DF::AmazonCrawler.new('./AllMyBooksArePacked/data/book4.html')
-  	  expect(book_4.parse_book_title).to eq("Sylvia Day Crossfire Series Boxed Set: Bared to You/Reflected in You/Entwined with You")
+  	  expect(book_4.parse_book_title).to eq("Sylvia Day Crossfire Series Boxed Set: Bared to You/Reflected in You/Entwined with You [Paperback]")
   	end
 
     it 'returns nil if the inputted html or URL does not have the recognized title format' do 
@@ -56,9 +51,14 @@ describe DF::AmazonCrawler do
   end
 
   describe 'parse_book_price' do 
-  	it "parses out and returns the 'new' price of the book" do 
+    it "parses out and returns the 'new' price of the book" do 
   	  expect(@html_source.parse_book_price).to eq("$15.22 USD")
   	end
+
+    it 'parses large prices (with commas)' do 
+      test = DF::AmazonCrawler.new('./AllMyBooksArePacked/data/book11.html')
+      expect(test.parse_book_price).to eq("$7,450.00 USD")
+    end
     # Most, if not all, Amazon products have prices formatted in same manner, so this will always return a price
   end
 
