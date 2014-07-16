@@ -5,4 +5,7 @@
 # end
 
 require_relative './entities/web_crawler.rb'
+require_relative './entities/books_crawler.rb'
 require_relative './entities/amazon_crawler.rb'
+
+require_relative './database/ar_database.rb'
