@@ -15,7 +15,4 @@ describe DF::ActiveRecordDatabase do
     expect(book.shipping_weight).to eq("3.6 pounds")
     expect(book.isbn10).to eq("0062073168")
   end
-
-  xit "deletes a record of a book's product information" do 
-  end
 end

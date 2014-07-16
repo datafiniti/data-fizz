@@ -1,11 +1,11 @@
-# module DF
-#   def self.db
-#     @__db_instance ||= ActiveRecordDatabase.new
-#   end
-# end
+module DF
+  def self.db
+    @__db_instance ||= ActiveRecordDatabase.new
+  end
+end
 
 require_relative './entities/web_crawler.rb'
-require_relative './entities/books_crawler.rb'
 require_relative './entities/amazon_crawler.rb'
-
 require_relative './database/ar_database.rb'
+require_relative './use_cases/command_class.rb'
+require_relative './use_cases/add_book_to_db.rb'
