@@ -15,14 +15,21 @@ module DF
     end
 
     class BookProductInformation < ActiveRecord::Base
+      belongs_to :shipping_box
+    end
+
+    class ShippingBox < ActiveRecord::Base
+      has_many :book_product_information
     end
 
     def create_book_product(attrs)
       BookProductInformation.create(attrs)
     end
 
+    # Testing helper method
     def clear_tables
       BookProductInformation.delete_all
+      ShippingBox.delete_all
     end
   end
 end

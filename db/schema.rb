@@ -11,17 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140716100222) do
+ActiveRecord::Schema.define(version: 20140716134504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "book_product_information", force: true do |t|
-    t.string "title"
-    t.string "author"
-    t.string "price"
-    t.string "shipping_weight"
-    t.string "isbn10"
+    t.string  "title"
+    t.string  "author"
+    t.string  "price"
+    t.string  "shipping_weight"
+    t.string  "isbn10"
+    t.integer "shipping_boxes_id"
+  end
+
+  add_index "book_product_information", ["shipping_boxes_id"], name: "index_book_product_information_on_shipping_boxes_id", using: :btree
+
+  create_table "shipping_boxes", force: true do |t|
+    t.float "total_weight", default: 0.0
   end
 
 end
