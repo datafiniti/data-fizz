@@ -44,7 +44,7 @@ describe DF::AmazonCrawler do
   describe 'parse_price' do 
   	it "parses out and stores the 'new' price of the book" do
   	  @html_source.parse_price 
-  	  expect(@html_source.price).to eq("$15.22")
+  	  expect(@html_source.price).to eq("$15.22 USD")
   	end
   end
 
@@ -52,11 +52,13 @@ describe DF::AmazonCrawler do
   	it "parses out and stores the isbn number and weight" do
   	  @html_source.parse_product_info
   	  expect(@html_source.isbn).to eq("0062255657")
-  	  # expect(@html_source.weight).to eq(4.1)
+  	  expect(@html_source.weight).to eq("4.1 pounds")
   	end 
 
-  	# xit "converts the weight to pounds if it is in ounces" do
-  	#   test_book = DF::AmazonCrawler.new("http://www.amazon.com/The-Fault-Stars-John-Green/dp/014242417X/ref=acs_ux_rw_ts_b_books_2?ie=UTF8&s=books&pf_rd_p=1615333102&pf_rd_s=merchandised-search-5&pf_rd_t=101&pf_rd_i=283155&pf_rd_m=ATVPDKIKX0DER&pf_rd_r=0N5VGQQP1ZE463F6YJH7") 
-  	# end
+  	it "converts the weight to pounds if it is in ounces" do
+  	  test_book = DF::AmazonCrawler.new("http://www.amazon.com/The-Fault-Stars-John-Green/dp/014242417X/ref=acs_ux_rw_ts_b_books_2?ie=UTF8&s=books&pf_rd_p=1615333102&pf_rd_s=merchandised-search-5&pf_rd_t=101&pf_rd_i=283155&pf_rd_m=ATVPDKIKX0DER&pf_rd_r=0N5VGQQP1ZE463F6YJH7") 
+  	  test_book.parse_product_info
+  	  expect(test_book.weight).to eq("0.7125 pounds")
+  	end
   end
 end
