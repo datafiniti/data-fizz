@@ -24,14 +24,23 @@ describe DF::AmazonCrawler do
 
   	it 'parses a boxed set appropriately' do 
   	  book_4 = DF::AmazonCrawler.new('./AllMyBooksArePacked/data/book4.html')
-  	  book_4.parse_book_title
   	  expect(book_4.parse_book_title).to eq("Sylvia Day Crossfire Series Boxed Set: Bared to You/Reflected in You/Entwined with You")
   	end
+
+    it 'returns nil if the inputted html or URL does not have the recognized title format' do 
+      test = DF::AmazonCrawler.new('http://www.amazon.com/Runaway-Bride-Joan-Cusack/dp/B00AEBB8NS/ref=sr_1_1?s=movies-tv&ie=UTF8&qid=1405527733&sr=1-1&keywords=runaway+bride')
+      expect(test.parse_book_title).to eq(nil)
+    end
   end
 
   describe 'parse_book_author' do 
     it "parses out and returns the author of a book" do 
       expect(@html_source.parse_book_author).to eq("Neil Gaiman")
+    end
+
+    it 'returns nil if the inputted html or URL does not have the recognized title format' do 
+      test = DF::AmazonCrawler.new('http://www.amazon.com/Runaway-Bride-Joan-Cusack/dp/B00AEBB8NS/ref=sr_1_1?s=movies-tv&ie=UTF8&qid=1405527733&sr=1-1&keywords=runaway+bride')
+      expect(test.parse_book_author).to eq(nil)
     end
   end
 
