@@ -1,0 +1,18 @@
+In order to run the script simply type `ruby output.rb`. From there the output will be viewable in output.json. 
+
+
+>>>Domains beyond Amazon.com
+
+The script is able to read any HTML file as of now. I would have to change a line of code for the script to parse an actual URL instead of a file name. If 
+another type of Domain was ron through the script, at the very least a searchable abject could be returned.
+ 
+>>>Products beyond just simply books.
+
+My current script could be made to parse products other than books by simply making a different Crawler class. Given the Nokogiri gem as well as the 
+product I was parsing, the current Crawler class is only able to search for Amazon books.  
+
+>>>Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+
+In order to speed up the script I would change the load paths of the file to be more efficient, and I would also use a daemon such as statsd for instance 
+to spot any slow pain points in the script. Off hand I would target points such as how long it takes to make the web page a parsable object, and how long it 
+takes to parse the web page for each individual desired attribute.  
