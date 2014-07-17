@@ -75,7 +75,7 @@ describe DF::AmazonCrawler do
 
   describe 'parse_book_weight' do 
     it 'parses out and stores the shipping weight' do
-  	  expect(@html_source.parse_book_weight).to eq("4.1 pounds")
+  	  expect(DF::AmazonCrawler.new('./AllMyBooksArePacked/data/book5.html').parse_book_weight).to eq("3.6 pounds")
     end
 
   	it "converts the weight to pounds if it is in ounces" do
