@@ -40,14 +40,14 @@ describe DF::AddBookToDatabase do
 	end
   end
 
-  describe 'place_in_box' do 
+  describe 'get_books_shipping_box_id' do 
   	it "creates a box record if there is no box with a weight less than the inputted weight and returns that box's id" do 
-  	  expect(subject.get_shipping_box_id("5.0 pounds")).to_not be_nil
+  	  expect(subject.get_books_shipping_box_id("5.0 pounds")).to_not be_nil
   	end
 
   	it 'returns the id of the box that the item should be put in if there db query does not return nil' do 
   	  box = db.create_shipping_box(total_weight: 4.1)
-  	  expect(subject.get_shipping_box_id("5.9 pounds")).to eq(box.id)
+  	  expect(subject.get_books_shipping_box_id("5.9 pounds")).to eq(box.id)
   	end
   end
 

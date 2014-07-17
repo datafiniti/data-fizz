@@ -8,10 +8,9 @@ module DF
       b_price = book.parse_book_price
       b_weight = book.parse_book_weight
       b_isbn = book.parse_book_isbn
-      b_box = get_shipping_box_id(b_weight) if b_weight
+      b_box = get_books_shipping_box_id(b_weight) if b_weight
 
       if b_title && b_author && b_price && b_weight && b_isbn
-        binding.pry
       	return success :book => DF.db.create_book_product(title: b_title, 
       													author: b_author, 
       													price: b_price, 
@@ -23,7 +22,7 @@ module DF
       end
     end
 
-    def get_shipping_box_id(weight)
+    def get_books_shipping_box_id(weight)
       weight = weight.delete("pounds").to_f
       new_weight = 10.00 - weight
       result = DF.db.get_box_by_weight(new_weight) 
