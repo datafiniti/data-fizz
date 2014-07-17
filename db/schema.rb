@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140716134504) do
+ActiveRecord::Schema.define(version: 20140716215737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,5 +30,7 @@ ActiveRecord::Schema.define(version: 20140716134504) do
   create_table "shipping_boxes", force: true do |t|
     t.float "total_weight", default: 0.0
   end
+
+  add_index "shipping_boxes", ["total_weight"], name: "index_shipping_boxes_on_total_weight", using: :btree
 
 end

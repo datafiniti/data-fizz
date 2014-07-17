@@ -26,8 +26,18 @@ module DF
       BookProductInformation.create(attrs)
     end
 
-    def create_shipping_box
-      ShippingBox.create
+    def create_shipping_box(attrs)
+      ShippingBox.create(attrs)
+    end
+
+    def update_shipping_box_weight(id, weight)
+      ar_box = ShippingBox.find(id)
+      ar_box.update(weight)
+      ar_box
+    end
+
+    def get_box_by_weight(weight)
+      ShippingBox.where("total_weight < ?", weight).first
     end
 
     # Testing helper method

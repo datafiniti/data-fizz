@@ -19,10 +19,27 @@ describe DF::ActiveRecordDatabase do
   end
 
   describe 'shipping_boxes' do 
+    before(:each) do
+      @box = db.create_shipping_box(total_weight: 1.0)
+    end
+
     it "creates a shipping box record" do
-      box = db.create_shipping_box
-      expect(box.id).to_not eq(nil)
-      expect(box.total_weight).to eq(0.0)
+      expect(@box.id).to_not eq(nil)
+      expect(@box.total_weight).to eq(1.0)
+    end
+
+    it 'updates a shipping boxes weight' do 
+      box = db.update_shipping_box_weight(@box.id, total_weight: 5.55)
+      expect(box.id).to eq(@box.id)
+      expect(box.total_weight).to eq(5.55)
+    end
+
+    it 'returns the first shipping box with a weight less than the inputted weight' do 
+      box2 = db.create_shipping_box(total_weight: 5.55)
+      box3 = db.create_shipping_box(total_weight: 4.89)
+      box = db.get_box_by_weight(5)
+      expect(box.id).to eq(@box.id)
+      expect(box.total_weight).to eq(1.0)
     end
   end
 end
