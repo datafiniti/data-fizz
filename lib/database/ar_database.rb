@@ -10,7 +10,7 @@ module DF
     def initialize
       config_path = File.expand_path('../../../db/config.yml', __FILE__)
       config = YAML.load_file(config_path)
-      app_env = ENV['DB_ENV'] || 'test'
+      app_env = ENV['DB_ENV'] || 'development'
       ActiveRecord::Base.establish_connection(config[app_env])
     end
 
@@ -44,8 +44,8 @@ module DF
       ShippingBox.where("total_weight <= ?", weight).first
     end
 
-    def get_total_shipping_boxes
-      ShippingBox.count
+    def get_all_shipping_boxes
+      ShippingBox.all.order(:id)
     end
 
     # Testing helper method

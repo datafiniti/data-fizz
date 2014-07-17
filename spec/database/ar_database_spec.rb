@@ -56,14 +56,14 @@ describe DF::ActiveRecordDatabase do
       expect(db.get_box_by_weight(0.5)).to eq(nil)
     end
 
-    it 'returns the number of shipping boxes in the database' do
+    it 'returns all of the shipping boxes in the database' do
       db.create_shipping_box(total_weight: 5.55)
       db.create_shipping_box(total_weight: 10)
       db.create_shipping_box(total_weight: 8.1)
       db.create_shipping_box(total_weight: 3.89)
 
-      result = db.get_total_shipping_boxes
-      expect(result).to eq(5)
+      result = db.get_all_shipping_boxes
+      expect(result.length).to eq(5)
     end
   end
 end
