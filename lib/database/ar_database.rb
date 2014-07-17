@@ -37,7 +37,7 @@ module DF
     end
 
     def get_box_by_weight(weight)
-      ShippingBox.where("total_weight < ?", weight).first
+      ShippingBox.where("total_weight <= ?", weight).first
     end
 
     # Testing helper method

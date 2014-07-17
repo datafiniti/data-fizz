@@ -19,5 +19,21 @@ module DF
       	return failure("Improper information.")
       end
     end
+
+    def get_shipping_box_id(weight)
+      new_weight = 10.00 - weight
+      result = DF.db.get_box_by_weight(new_weight) 
+      if result
+      	update_box_weight(result, weight)
+      	result.id
+      else
+      	DF.db.create_shipping_box(total_weight: weight).id
+      end
+    end
+
+    def update_box_weight(box, weight)
+      old_weight = box.total_weight
+      DF.db.update_shipping_box_weight(box.id, total_weight: old_weight + weight)
+    end
   end
 end
