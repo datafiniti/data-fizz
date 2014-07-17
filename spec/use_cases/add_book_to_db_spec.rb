@@ -12,6 +12,11 @@ describe DF::AddBookToDatabase do
 	  result = subject.run(book)
 	  expect(result.success?).to eq(true)
 	  expect(result.book.title).to eq("The English Girl: A Novel (Gabriel Allon) [Hardcover]")
+	  expect(result.book.author).to eq("Daniel Silva")
+	  expect(result.book.price).to eq("$16.46 USD")
+	  expect(result.book.shipping_weight).to eq("3.6 pounds")
+	  expect(result.book.isbn10).to eq("0062073168")
+	  expect(result.book.shipping_boxes_id).to_not be_nil
 	end
 
 	it 'adds the book to a new shipping box if the weight exceeds any available boxes' do

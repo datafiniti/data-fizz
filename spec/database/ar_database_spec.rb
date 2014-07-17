@@ -48,5 +48,13 @@ describe DF::ActiveRecordDatabase do
     it 'returns nil if there is no shipping box with a weight less than the inputted weight' do 
       expect(db.get_box_by_weight(0.5)).to eq(nil)
     end
+
+    it "returns an array with all the shipping boxes" do 
+      db.create_shipping_box(total_weight: 5.55)
+      db.create_shipping_box(total_weight: 4.89)
+      result = db.get_all_boxes
+      expect(result.class).to eq(Array)
+      expect(result.length).to eq(3)
+    end
   end
 end
