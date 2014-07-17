@@ -26,6 +26,10 @@ module DF
       BookProductInformation.create(attrs)
     end
 
+    def create_shipping_box
+      ShippingBox.create
+    end
+
     # Testing helper method
     def clear_tables
       BookProductInformation.delete_all
