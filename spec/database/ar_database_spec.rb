@@ -4,7 +4,7 @@ describe DF::ActiveRecordDatabase do
   let(:db) {subject}
   before(:each) do
   	db.clear_tables
-  	@book_product = {title: "The English Girl: A Novel (Gabriel Allon)", author: "Daniel Silva", price: "$16.46", shipping_weight: "3.6 pounds", isbn10: "0062073168"}
+  	@book_product = {title: "The English Girl: A Novel (Gabriel Allon)", author: "Daniel Silva", price: "$16.46", shipping_weight: "3.6 pounds", isbn10: "0062073168", shipping_boxes_id: 1}
   end
 
   describe 'book_product_information' do
@@ -15,6 +15,13 @@ describe DF::ActiveRecordDatabase do
       expect(book.price).to eq("$16.46")
       expect(book.shipping_weight).to eq("3.6 pounds")
       expect(book.isbn10).to eq("0062073168")
+    end
+
+    it 'gets all the books in an individual box' do 
+      db.create_book_product(@book_product)
+      result = db.get_books_in_box(1)
+      expect(result.length).to eq(1)
+      expect(result[0].title).to eq("The English Girl: A Novel (Gabriel Allon)")
     end
   end
 
@@ -49,12 +56,14 @@ describe DF::ActiveRecordDatabase do
       expect(db.get_box_by_weight(0.5)).to eq(nil)
     end
 
-    it "returns an array with all the shipping boxes" do 
+    it 'returns the number of shipping boxes in the database' do
       db.create_shipping_box(total_weight: 5.55)
-      db.create_shipping_box(total_weight: 4.89)
-      result = db.get_all_boxes
-      expect(result.class).to eq(Array)
-      expect(result.length).to eq(3)
+      db.create_shipping_box(total_weight: 10)
+      db.create_shipping_box(total_weight: 8.1)
+      db.create_shipping_box(total_weight: 3.89)
+
+      result = db.get_total_shipping_boxes
+      expect(result).to eq(5)
     end
   end
 end

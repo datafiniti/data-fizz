@@ -26,6 +26,10 @@ module DF
       BookProductInformation.create(attrs)
     end
 
+    def get_books_in_box(box_id)
+      BookProductInformation.where("shipping_boxes_id = ?", box_id)
+    end
+
     def create_shipping_box(attrs)
       ShippingBox.create(attrs)
     end
@@ -38,6 +42,10 @@ module DF
 
     def get_box_by_weight(weight)
       ShippingBox.where("total_weight <= ?", weight).first
+    end
+
+    def get_total_shipping_boxes
+      ShippingBox.count
     end
 
     # Testing helper method
