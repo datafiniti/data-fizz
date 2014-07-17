@@ -4,7 +4,7 @@ ActiveRecordTasks.configure do |config|
   # These are all the default values
   config.db_dir = 'db'
   config.db_config_path = 'db/config.yml'
-  config.env = 'test'
+  config.env = 'development'
 end
 # Run this AFTER you've configured
 ActiveRecordTasks.load_tasks
