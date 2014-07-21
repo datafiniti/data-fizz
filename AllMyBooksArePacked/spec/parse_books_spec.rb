@@ -68,12 +68,9 @@ describe ParsePages do
       expect{@Ship.new(@books, 10)}.to_not raise_error
     end
 
-    it "should have an items attribute" do
+    it "should have an items and max weight attributes" do
       items = @Ship.new(@books, 10).items
       expect(items).to include(@book, @book2, @book3)
-    end
-
-    it "should have a max_weight attribute" do
       expect(@Ship.new(@books, 10).max_weight).to eq 10
     end
 
