@@ -5,7 +5,7 @@ require 'json'
 
 class Book
 
-  attr_accessor :page, :title, :author, :price, :shipping_weight, :weight, :isbn
+  attr_reader :page, :title, :author, :price, :shipping_weight, :weight, :isbn
 
   def initialize(filename)
     @page = Nokogiri::HTML(open("data/#{filename}"))
