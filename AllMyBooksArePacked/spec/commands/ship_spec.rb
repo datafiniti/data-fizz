@@ -226,7 +226,7 @@ describe ParsePages::Ship do
         {
           "box" => {
             "id"=>7,
-            "totalWeight"=>"9.5 pounds",
+            "totalWeight"=>"9.0 pounds",
             "contents"=> [
               {
                 "title"=>"Never Go Back: A Jack Reacher Novel",
@@ -236,18 +236,11 @@ describe ParsePages::Ship do
                 "isbn-10"=>385344341
               },
               {
-                "title"=>"Pacific Rim: Man, Machines, and Monsters",
-                "author"=>"David S Cohen",
-                "price"=>"$27.83 USD",
-                "shipping_weight"=>"3.2 pounds",
-                "isbn-10"=>1608871827
-              },
-              {
-                "title"=>"The Cuckoo's Calling",
-                "author"=>"Robert Galbraith",
-                "price"=>"$17.47 USD",
-                "shipping_weight"=>"1.4 pounds",
-                "isbn-10"=>316206849
+                "title" => "The Ocean at the End of the Lane: A Novel [Deckle Edge]",
+                "author" => "Neil Gaiman",
+                "price" => "$15.22 USD",
+                "shipping_weight" => "4.1 pounds",
+                "isbn-10" => 62255657
               }
             ]
           }
@@ -255,27 +248,28 @@ describe ParsePages::Ship do
         {
           "box" => {
             "id"=>8,
-            "totalWeight"=>"9.5 pounds",
+            "totalWeight"=>"9.6 pounds",
             "contents"=> [
               {
-                "title"=>"The Ocean at the End of the Lane: A Novel [Deckle Edge]",
-                "author"=>"Neil Gaiman", "price"=>"$15.22 USD",
-                "shipping_weight"=>"4.1 pounds",
-                "isbn-10"=>62255657
+                "title" => "The English Girl: A Novel (Gabriel Allon)",
+                "author" => "Daniel Silva",
+                "price" => "$16.46 USD",
+                "shipping_weight" => "3.6 pounds",
+                "isbn-10" => 62073168
               },
               {
-                "title"=>"Man of Steel: Inside the Legendary World of Superman",
-                "author"=>"Daniel Wallace",
-                "price"=>"$31.07 USD",
-                "shipping_weight"=>"2.8 pounds",
-                "isbn-10"=>1608871819
+                "title" => "Pacific Rim: Man, Machines, and Monsters",
+                "author" => "David S Cohen",
+                "price" => "$27.83 USD",
+                "shipping_weight" => "3.2 pounds",
+                "isbn-10" => 1608871827
               },
               {
-                "title"=>"No god but God: The Origins and Evolution of Islam",
-                "author"=>"Reza Aslan",
-                "price"=>"$8.99 USD",
-                "shipping_weight"=>"2.6 pounds",
-                "isbn-10"=>385739761
+                "title" => "Man of Steel: Inside the Legendary World of Superman",
+                "author" => "Daniel Wallace",
+                "price" => "$31.07 USD",
+                "shipping_weight" => "2.8 pounds",
+                "isbn-10" => 1608871819
               }
             ]
           }
@@ -283,28 +277,35 @@ describe ParsePages::Ship do
         {
           "box" => {
             "id"=>9,
-            "totalWeight"=>"6.4 pounds",
+            "totalWeight"=>"6.8 pounds",
             "contents"=> [
               {
-                "title"=>"The English Girl: A Novel (Gabriel Allon)",
-                "author"=>"Daniel Silva",
-                "price"=>"$16.46 USD",
-                "shipping_weight"=>"3.6 pounds",
-                "isbn-10"=>62073168
+                "title" => "No god but God: The Origins and Evolution of Islam",
+                "author" => "Reza Aslan",
+                "price" => "$8.99 USD",
+                "shipping_weight" => "2.6 pounds",
+                "isbn-10" => 385739761
               },
               {
-                "title"=>"The Pioneer Woman Cooks: A Year of Holidays: 135 Step-by-Step Recipes for Simple, Scrumptious Celebrations",
-                "author"=>"Ree Drummond",
-                "price"=>"$20.29 USD",
-                "shipping_weight"=>"1.4 pounds",
-                "isbn-10"=>62225227
+                "title" => "The Cuckoo's Calling",
+                "author" => "Robert Galbraith",
+                "price" => "$17.47 USD",
+                "shipping_weight" => "1.4 pounds",
+                "isbn-10" => 316206849
               },
               {
-                "title"=>"This Town: Two Parties and a Funeral-Plus, Plenty of Valet Parking!-in America's Gilded Capital",
-                "author"=>"Mark Leibovich",
-                "price"=>"$15.37 USD",
-                "shipping_weight"=>"1.4 pounds",
-                "isbn-10"=>399161309
+                "title" => "The Pioneer Woman Cooks: A Year of Holidays: 135 Step-by-Step Recipes for Simple, Scrumptious Celebrations",
+                "author" => "Ree Drummond",
+                "price" => "$20.29 USD",
+                "shipping_weight" => "1.4 pounds",
+                "isbn-10" => 62225227
+              },
+              {
+                "title" => "This Town: Two Parties and a Funeral-Plus, Plenty of Valet Parking!-in America's Gilded Capital",
+                "author" => "Mark Leibovich",
+                "price" => "$15.37 USD",
+                "shipping_weight" => "1.4 pounds",
+                "isbn-10" => 399161309
               }
             ]
           }
@@ -312,26 +313,6 @@ describe ParsePages::Ship do
       ]
     }
     expect(result).to eq answer
-  end
-
-  it "should organize the 20 test data books into 9 boxes correctly" do
-    all_books = []
-    10.times do |j|
-      20.times do |i|
-        all_books << ParsePages::Book.new("book#{i+1}.html")
-      end
-    end
-    result = @Ship.run(all_books, 10)
-  end
-
-  it "should organize the 20 test data books into 9 boxes correctly" do
-    all_books = []
-    20.times do |j|
-      20.times do |i|
-        all_books << ParsePages::Book.new("book#{i+1}.html")
-      end
-    end
-    result = @Ship.run(all_books, 10)
   end
 
 end
