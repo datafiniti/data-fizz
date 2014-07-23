@@ -1,0 +1,27 @@
+1. Domains beyond Amazon.com
+- If I wanted to extend my solution to other websites I would be able to do so fairly easy. I would rename my ParsePages::Book class to ParsePages::AmazonBooks, for example, and another as ParsePages::EbayBooks, etc. I used the Nokogiri ruby gem, because it was very popular on RubyGems.org (over 25 million downloads). I would need to have different classes for each website, because I would need to parse the pages differently. However, parsing the pages was the easiest part of the project.
+
+2. Products beyond just simply books.
+- This process would be pretty similar to the first question. I would make more classes called ParsePages::AmazonMovies, ParsePages::AmazonClothes, etc.
+
+3. Parse and ship 2,000,000 books.
+- It put some time stamps in my application and ran the tests to see how long they would take. Here is what I got:
+
+Books | time(s) |
+------|---------|
+3     | 0.0710  |
+20    | 0.5519  |
+200   | 13.836  |
+400   | 44.514  |
+
+My guess is that my algorithm is around O(n^2), based on the time table and my code. Although my algorithm is not very fast when given large numbers, it seems to be very efficient. For the 20 data books, it put them into 9 different boxes, which is the best I could get doing them by hand. For 200 books (I used the 20 data books 10 times) it put them into 87 boxes, only one of the boxes was less than 9 pounds, which was the last box at 2.8 pounds.
+
+Ways I made my algorithm faster:
+- Implementing mergesort to sort the items in the array.
+- Creating bins only when needed, instead of creating the minimum number of bins necessary initially. For example, the 20 books' weights added up to 84.6 lbs. I would then make 9 bins, because it would be impossible for them to fit in 8 or less bins. This was fine for 20, but at a larger scale, it wouldn't work. Creating them only when needed is not only faster, but the boxes themselves seemed to be organized more efficiently.
+- Inserting breaks while looping through the bins so that it only loops through all the bins if it doesn't fit in any of them.
+- Building the item hash while looping through the items to place them in the bins so that I would not have to loop through them twice.
+
+Some ways to make the algorithm faster would be:
+- have the books ordered by weight when given to the method. I used mergesort to order the books, which is O(nlogn).
+- delete a bin from the bins array if it weight the max amount. In the case of the 200 books I tested, this could eliminate almost 50% of the bins I would have to have each item loop through.

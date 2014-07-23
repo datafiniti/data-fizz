@@ -314,4 +314,24 @@ describe ParsePages::Ship do
     expect(result).to eq answer
   end
 
+  it "should organize the 20 test data books into 9 boxes correctly" do
+    all_books = []
+    10.times do |j|
+      20.times do |i|
+        all_books << ParsePages::Book.new("book#{i+1}.html")
+      end
+    end
+    result = @Ship.run(all_books, 10)
+  end
+
+  it "should organize the 20 test data books into 9 boxes correctly" do
+    all_books = []
+    20.times do |j|
+      20.times do |i|
+        all_books << ParsePages::Book.new("book#{i+1}.html")
+      end
+    end
+    result = @Ship.run(all_books, 10)
+  end
+
 end

@@ -1,25 +1,13 @@
+require 'time'
 class ParsePages::Ship
 
   def run(items, max_weight)
-    total_weight = 0
     bins = []
-    items.each do |item|
-      total_weight += item.weight
-    end
-
-    num_bins = (total_weight/max_weight).ceil
-    num_bins.times do |i|
-      bins << ParsePages::Bin.new
-    end
+    bins << ParsePages::Bin.new
 
     # Sorts array from highest to lowest by weight
     items = mergesort(items)
 
-    # Loop through all bins for each item
-    # If item + total_weight = max_weight, put in bin
-    # If bin empty -> insert item
-    # If item fits, but doesn't = max_weight, fit_bin = first bin item can fit in
-    # If it's the last bin, it doesn't fit in a bin, and it hasn't been added -> make a new bin
     items.each do |item|
       fit_bin = nil
       added = false
@@ -30,12 +18,9 @@ class ParsePages::Ship
           bin.add_content(item_hash, item.weight)
           added = true
           break
-        elsif bin.contents == [] && !added
-          bin.add_content(item_hash, item.weight)
-          added = true
-          break
         elsif bin.total_weight + item.weight < max_weight && !added
-          fit_bin = bin if !fit_bin
+          bin.add_content(item_hash, item.weight)
+          break
         elsif bin == bins.last && bin.total_weight + item.weight > max_weight && !fit_bin && !added
           new_bin = ParsePages::Bin.new
           new_bin.add_content(item_hash, item.weight)
@@ -44,11 +29,6 @@ class ParsePages::Ship
           break
         end
       end
-
-      if !added
-        fit_bin.add_content(item_hash, item.weight)
-      end
-
     end
 
     json = { "boxes" => [] }
