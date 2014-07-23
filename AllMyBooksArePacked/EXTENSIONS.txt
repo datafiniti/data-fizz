@@ -22,6 +22,6 @@ Ways I made my algorithm faster:
 - Inserting breaks while looping through the bins so that it only loops through all the bins if it doesn't fit in any of them.
 - Building the item hash while looping through the items to place them in the bins so that I would not have to loop through them twice.
 
-Some ways to make the algorithm faster would be:
+Some ways to make the algorithm even faster:
 - have the books ordered by weight when given to the method. I used mergesort to order the books, which is O(nlogn).
 - delete a bin from the bins array if it weight the max amount. In the case of the 200 books I tested, this could eliminate almost 50% of the bins I would have to have each item loop through.
