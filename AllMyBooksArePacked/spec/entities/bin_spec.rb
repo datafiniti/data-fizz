@@ -23,16 +23,16 @@ describe ParsePages::Bin do
   end
 
   it "should be able to add a new item" do
-    @Bin.add_content(@book)
+    @Bin.add_content(@book, @book.weight)
     expect(@Bin.contents.length).to eq 1
     expect(@Bin.contents).to include(@book)
     expect(@Bin.total_weight).to eq @book.weight
   end
 
   it "should be able to add multiple items and update the total weight" do
-    @Bin.add_content(@book)
-    @Bin.add_content(@book2)
-    @Bin.add_content(@book3)
+    @Bin.add_content(@book, @book.weight)
+    @Bin.add_content(@book2, @book2.weight)
+    @Bin.add_content(@book3, @book3.weight)
     expect(@Bin.contents.length).to eq 3
     expect(@Bin.contents).to include(@book, @book2, @book3)
     weight = @book.weight + @book2.weight + @book3.weight

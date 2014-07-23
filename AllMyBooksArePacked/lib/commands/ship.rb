@@ -23,21 +23,22 @@ class ParsePages::Ship
     items.each do |item|
       fit_bin = nil
       added = false
+      item_hash = build_item(item)
 
       bins.each do |bin|
         if bin.total_weight + item.weight == max_weight && !added
-          bin.add_content(item)
+          bin.add_content(item_hash, item.weight)
           added = true
           break
         elsif bin.contents == [] && !added
-          bin.add_content(item)
+          bin.add_content(item_hash, item.weight)
           added = true
           break
         elsif bin.total_weight + item.weight < max_weight && !added
           fit_bin = bin if !fit_bin
         elsif bin == bins.last && bin.total_weight + item.weight > max_weight && !fit_bin && !added
           new_bin = ParsePages::Bin.new
-          new_bin.add_content(item)
+          new_bin.add_content(item_hash, item.weight)
           added = true
           bins << new_bin
           break
@@ -45,7 +46,7 @@ class ParsePages::Ship
       end
 
       if !added
-        fit_bin.add_content(item)
+        fit_bin.add_content(item_hash, item.weight)
       end
 
     end
@@ -53,17 +54,6 @@ class ParsePages::Ship
     json = { "boxes" => [] }
 
     bins.length.times do |i|
-      bins[i].contents.each do |content|
-        index = bins[i].contents.index(content)
-        bins[i].contents[index] = {
-          "title" => content.title,
-          "author" => content.author,
-          "price" => content.price,
-          "shipping_weight" => content.shipping_weight,
-          "isbn-10" => content.isbn
-        }
-      end
-
       json["boxes"] << { "box" =>
         {
           "id" => i+1,
@@ -74,6 +64,16 @@ class ParsePages::Ship
     end
 
     return { success?: true, "boxes" => json["boxes"] }
+  end
+
+  def build_item(item)
+    return {
+      "title" => item.title,
+      "author" => item.author,
+      "price" => item.price,
+      "shipping_weight" => item.shipping_weight,
+      "isbn-10" => item.isbn
+    }
   end
 
   def mergesort(items_array)

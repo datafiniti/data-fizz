@@ -9,10 +9,10 @@ class ParsePages::Bin
     @contents = []
   end
 
-  def add_content(content)
+  def add_content(content, weight)
     # When adding numbers like 4.3 and 1.4, would get: 5.699999999999999
     # Use BigDecimal to make sure it adds up to 5.7
-    @total_weight+=(BigDecimal(content.weight.to_s))
+    @total_weight+=(BigDecimal(weight.to_s))
     @contents << content
   end
 
