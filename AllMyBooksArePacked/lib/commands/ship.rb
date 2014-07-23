@@ -7,50 +7,42 @@ class ParsePages::Ship
       total_weight += item.weight
     end
 
-    if total_weight < max_weight
-      bin = ParsePages::Bin.new
-      items.each do |item|
-        bin.add_content(item)
-      end
-      bins << bin
-    else
-      num_bins = (total_weight/max_weight).ceil
-      num_bins.times do |i|
-        bins << ParsePages::Bin.new
-      end
+    num_bins = (total_weight/max_weight).ceil
+    num_bins.times do |i|
+      bins << ParsePages::Bin.new
+    end
 
-      # Sorts array from highest to lowest by weight
-      items = mergesort(items)
+    # Sorts array from highest to lowest by weight
+    items = mergesort(items)
 
-      # Loop through all bins for each item
-      # If item + total_weight = max_weight, put in bin
-      # If bin empty -> insert item
-      # If item fits, but doesn't = max_weight, fit_bin = first bin item can fit in
-      # If it's the last bin, it doesn't fit in a bin, and it hasn't been added -> make a new bin
-      items.each do |item|
-        fit_bin = nil
-        added = false
+    # Loop through all bins for each item
+    # If item + total_weight = max_weight, put in bin
+    # If bin empty -> insert item
+    # If item fits, but doesn't = max_weight, fit_bin = first bin item can fit in
+    # If it's the last bin, it doesn't fit in a bin, and it hasn't been added -> make a new bin
+    items.each do |item|
+      fit_bin = nil
+      added = false
 
-        bins.each do |bin|
-          if bin.total_weight + item.weight == max_weight && !added
-            bin.add_content(item)
-            added = true
-          elsif bin.contents == [] && !added
-            bin.add_content(item)
-            added = true
-          elsif bin.total_weight + item.weight < max_weight && !added
-            fit_bin = bin if !fit_bin
-          elsif bin == bins.last && bin.total_weight + item.weight > max_weight && !fit_bin && !added
-            new_bin = ParsePages::Bin.new
-            new_bin.add_content(item)
-            added = true
-            bins << new_bin
-          end
+      bins.each do |bin|
+        if bin.total_weight + item.weight == max_weight && !added
+          bin.add_content(item)
+          added = true
+        elsif bin.contents == [] && !added
+          bin.add_content(item)
+          added = true
+        elsif bin.total_weight + item.weight < max_weight && !added
+          fit_bin = bin if !fit_bin
+        elsif bin == bins.last && bin.total_weight + item.weight > max_weight && !fit_bin && !added
+          new_bin = ParsePages::Bin.new
+          new_bin.add_content(item)
+          added = true
+          bins << new_bin
         end
+      end
 
-        if !added
-          fit_bin.add_content(item)
-        end
+      if !added
+        fit_bin.add_content(item)
       end
     end
 
@@ -73,7 +65,7 @@ class ParsePages::Ship
 
       json["box"] = {
         "id" => i+1,
-        "totalWeight" => bins[i].total_weight,
+        "totalWeight" => "#{bins[i].total_weight} pounds",
         "contents" => bins[i].contents
       }
     end

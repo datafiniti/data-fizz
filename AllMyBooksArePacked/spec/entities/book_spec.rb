@@ -7,6 +7,9 @@ describe ParsePages::Book do
     @book = ParsePages::Book.new("book1.html")
     @book2 = ParsePages::Book.new("book9.html")
     @book3 = ParsePages::Book.new("book11.html")
+    @book4 = ParsePages::Book.new("book7.html")
+    @book5 = ParsePages::Book.new("book8.html")
+    @book6 = ParsePages::Book.new("book18.html")
   end
 
   it "should be able to create a new book" do
