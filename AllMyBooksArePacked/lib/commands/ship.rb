@@ -28,9 +28,11 @@ class ParsePages::Ship
         if bin.total_weight + item.weight == max_weight && !added
           bin.add_content(item)
           added = true
+          break
         elsif bin.contents == [] && !added
           bin.add_content(item)
           added = true
+          break
         elsif bin.total_weight + item.weight < max_weight && !added
           fit_bin = bin if !fit_bin
         elsif bin == bins.last && bin.total_weight + item.weight > max_weight && !fit_bin && !added
@@ -38,20 +40,19 @@ class ParsePages::Ship
           new_bin.add_content(item)
           added = true
           bins << new_bin
+          break
         end
       end
 
       if !added
         fit_bin.add_content(item)
       end
+
     end
 
-    json = {}
-    # Allows duplicate keys (not symbols) in a hash
-    json.compare_by_identity
+    json = { "boxes" => [] }
 
     bins.length.times do |i|
-      # Convert the books in each bin into a hash
       bins[i].contents.each do |content|
         index = bins[i].contents.index(content)
         bins[i].contents[index] = {
@@ -63,14 +64,16 @@ class ParsePages::Ship
         }
       end
 
-      json["box"] = {
-        "id" => i+1,
-        "totalWeight" => "#{bins[i].total_weight} pounds",
-        "contents" => bins[i].contents
+      json["boxes"] << { "box" =>
+        {
+          "id" => i+1,
+          "totalWeight" => "#{bins[i].total_weight} pounds",
+          "contents" => bins[i].contents
+        }
       }
     end
 
-    return json
+    return { success?: true, "boxes" => json["boxes"] }
   end
 
   def mergesort(items_array)

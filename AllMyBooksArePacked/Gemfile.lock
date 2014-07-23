@@ -14,6 +14,7 @@ GEM
     columnize (0.8.9)
     debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
+    hashie (3.2.0)
     i18n (0.6.11)
     json (1.8.1)
     method_source (0.8.2)
@@ -61,6 +62,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  hashie
   nikkou
   nokogiri (~> 1.6.2.1)
   pry-byebug
