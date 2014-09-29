@@ -1,3 +1,9 @@
+clone
+bundle install
+bundle exec ruby pack_books.rb
+answer prints out to console
+
+
 # Book Packer
 
 ## Purpose
