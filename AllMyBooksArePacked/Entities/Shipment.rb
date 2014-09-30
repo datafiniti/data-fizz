@@ -38,7 +38,6 @@ class Shipment
   end
 
   def add_book(book)
-    @boxes[0].update_box_weight
     lightest_box_index = 0
     lightest_box_weight = @boxes[0].totalWeight
 
