@@ -39,11 +39,11 @@ class Shipment
 
   def add_book(book)
     @boxes[0].update_box_weight
-    lightest_box_weight = @boxes[0].totalWeight
     lightest_box_index = 0
+    lightest_box_weight = @boxes[0].totalWeight
 
     @boxes.each_with_index do |box, index|
-      box.update_box_weight
+      next if index === 0
       if box.totalWeight < lightest_box_weight 
         lightest_box_index = index
         lightest_box_weight = box.totalWeight
@@ -51,6 +51,7 @@ class Shipment
     end
 
     @boxes[lightest_box_index].contents.push(book)
+    @boxes[lightest_box_index].update_box_weight
 
   end
 

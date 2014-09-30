@@ -1,3 +1,4 @@
+require 'json'
 require_relative "./entities/Crawler.rb"
 require_relative "./entities/Book.rb"
 require_relative "./entities/Box.rb"
@@ -27,6 +28,8 @@ end
 
 shipment = Shipment.new(books, 10)
 
-p shipment.to_hash
+File.open("./shipment.json", "w") do |f|
+  f.write(JSON.pretty_generate(shipment.to_hash))
+end
 
 
