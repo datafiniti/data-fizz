@@ -2,10 +2,10 @@ class Shipment
   attr_accessor :boxes
   def initialize (books, weight_split)
     @boxes = []
+    @id = 0
     @weight_split = weight_split
     @books = books
-    create_boxes
-    pack_boxes    
+    first_fit_decreasing
   end
 
   def to_hash
@@ -15,43 +15,21 @@ class Shipment
 
   private
 
-  def create_boxes
-    sum = 0
-    
-    @books.each do |book|
-      sum += book.shipping_weight
-    end
-
-    number_of_boxes = (sum/@weight_split).ceil  
-  
-    number_of_boxes.times do |id|
-      @boxes << Box.new(id+1)
-    end
-  end
-
-  def pack_boxes
-    @books.sort_by! {|book| book.shipping_weight}
-    while (@books.length != 0)
+  def first_fit_decreasing
+    books = @books.sort_by! {|book| book.shipping_weight}
+    @boxes.push(Box.new(@id+=1))
+    while (books.length != 0)
       book = @books.pop
-      add_book(book)
-    end
-  end
-
-  def add_book(book)a
-    lightest_box_index = 0
-    lightest_box_weight = @boxes[0].totalWeight
-
-    @boxes.each_with_index do |box, index|
-      next if index === 0
-      if box.totalWeight < lightest_box_weight 
-        lightest_box_index = index
-        lightest_box_weight = box.totalWeight
+      index = @boxes.find_index {|box| box.totalWeight + book.shipping_weight <= @weight_split}
+      if index
+        @boxes[index].contents.push(book)
+        @boxes[index].totalWeight += book.shipping_weight
+      else 
+        @boxes.push(Box.new(@id+=1))
+        @boxes[-1].contents.push(book)
+        @boxes[-1].totalWeight += book.shipping_weight        
       end
     end
-
-    @boxes[lightest_box_index].contents.push(book)
-    @boxes[lightest_box_index].update_box_weight
-
   end
 
 end
