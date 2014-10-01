@@ -1,5 +1,6 @@
 ```
-clone
+git clone https://github.com/sachinahj/DataFizz.git
+cd DataFizz/AllMyBooksArePacked
 bundle install
 bundle exec ruby pack_books.rb
 ```
