@@ -1,11 +1,9 @@
+```
 clone
-
 bundle install
-
 bundle exec ruby pack_books.rb
-
-answer prints out to console
-
+answer prints to shipment.json file
+```
 
 # Book Packer
 

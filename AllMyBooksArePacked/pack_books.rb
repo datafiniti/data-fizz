@@ -32,4 +32,3 @@ File.open("./shipment.json", "w") do |f|
   f.write(JSON.pretty_generate(shipment.to_hash))
 end
 
-
