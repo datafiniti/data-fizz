@@ -2,4 +2,4 @@
 
 2. For products, you will have to create grab method for each type of product. I looked through other Amazon products and even though they are close to having the same css selctors, it's not quite the same. Plus you might want to have different properties based on product. As with the domain, you would expand the Crawler.grab_page function to return the Nokogiri HTML Object, domain, and the product. And then expand the helper function to call the proper grab_<blank>_from_<blank> function on your Nokogiri HTML Object.
 
-3. I used the first fit decreasing algorithm to sort the books into boxes O(n^2). I assume your weight split is greater than the largest book shipping weight. 
+3. This problem will become harder if you try to minimize boxes along with time. I used the first fit decreasing algorithm to sort the books into boxes which is in polynomial time. This doesn't minimize the boxes but it is a close approximation. I assume your weight split is greater than the largest book shipping weight. You can use the first fit method without sorting and your answer will be faster but less acurate. 
