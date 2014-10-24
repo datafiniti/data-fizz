@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Index</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+     <div class="row">
+       <div class="col-md-8">
+         <table class="table">
+           <thead>
+             <tr>
+              <th>data_bank_id</th>
+              <th>title</th>
+              <th>author</th>
+              <th>price</th>
+              <th>shipping_weight</th>
+              <th>isbn-10</th>
+             </tr>
+           </thead>
+           <tbody>
+            <tr>
+              <td><%=   %></td>
+              <td><%= @data.css("a strong")[0].children.text.strip %></td>
+              <td><%= @data.css("meta[name='description']")[0].attributes["content"].value[/(?<=\[)[^\]]+(?=\])/] %></td>
+              <td><%= @data.css('.bb_price').text.strip %></td>
+              <td><%= @data.css('.content ul li[7]').text.strip.split(": ")[1][/\d.\d/] %></td>
+              <td><%= @data.css("link[rel='canonical']")[0].attributes['href'].value.split("/").last %></td>
+             </tr>
+           </tbody>
+         </table>
+       </div>
+   </div>
+  </body>
+</html>
+
+
+
