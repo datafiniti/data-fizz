@@ -25,7 +25,7 @@
            </thead>
            <tbody>
             <tr>
-              <td><%=   %></td>
+              <td><%= @data.url[/\d/] %></td>
               <td><%= @data.css("a strong")[0].children.text.strip %></td>
               <td><%= @data.css("meta[name='description']")[0].attributes["content"].value[/(?<=\[)[^\]]+(?=\])/] %></td>
               <td><%= @data.css('.bb_price').text.strip %></td>
