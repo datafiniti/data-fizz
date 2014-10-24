@@ -2,6 +2,10 @@ require 'sinatra'
 require 'nokogiri'
 require 'open-uri'
 
+@files = Dir.glob("./data_bank/*")
+
+
+
 get '/' do
   url = "./data_bank/book1.html"
 
