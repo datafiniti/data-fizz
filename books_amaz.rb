@@ -13,7 +13,7 @@ get '/' do
       :title => data.css('#btAsinTitle').text.strip, # => .gsub(/\[.*\]/,''),
       :author => data.css("meta[name='description']")[0].attributes["content"].value[/(?<=\[)[^\]]+(?=\])/],
       :price => data.css('.bb_price').text.strip,
-      :shipping_weight => data.css('.content ul li[7]').text.strip.split(": ")[1][/\d.\d/],
+      :shipping_weight => data.css('.content ul li:contains("Shipping Weight")').text.strip.split(": ")[1][/\d.\d/],
       :isbn_10 => data.css("link[rel='canonical']")[0].attributes['href'].value.split("/").last
     }
   end
