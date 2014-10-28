@@ -2,40 +2,26 @@ require 'sinatra'
 require 'nokogiri'
 require 'open-uri'
 
-
-
-
 get '/' do
+  @library = {}
   @files = Dir.glob("./data_bank/*")
-  @dir_url = {}
 
   @files.each do |file|
-    fork do
-      # @dir_curl[file] = File.open(file).read
-      puts file
-    end
+    data = Nokogiri::HTML(open(file))
+    @library[file] = {
+      :data_bank_id => data.url[/\d+/].rjust(2,"0"),
+      :title => data.css('#btAsinTitle').text.strip, # => .gsub(/\[.*\]/,''),
+      :author => data.css("meta[name='description']")[0].attributes["content"].value[/(?<=\[)[^\]]+(?=\])/],
+      :price => data.css('.bb_price').text.strip,
+      :shipping_weight => data.css('.content ul li[7]').text.strip.split(": ")[1][/\d.\d/],
+      :isbn_10 => data.css("link[rel='canonical']")[0].attributes['href'].value.split("/").last
+    }
   end
 
+  puts @library
 
-
-
-  url = "./data_bank/book1.html"
-  @data = Nokogiri::HTML(open(url))
   erb :index
 end
-
-
-
-dir_url = {}
-files = Dir.glob("./data_bank/*")
-
-files.each do |file|
-  data = Nokogiri::HTML(open(file))
-  library[file] = {
-    "data_bank_id": data.url[/\d/],
-    "title": data.css("a strong")[0].children.text.strip,
-    "author": data.css("meta[name='description']")[0].attributes["content"].value[/(?<=\[)[^\]]+(?=\])/]
-    "price": data.css('.bb_price').text.strip
 
 
   
@@ -46,9 +32,9 @@ files.each do |file|
   # @book['author'] = data.css("meta[name='description']")[0].attributes["content"].value[/(?<=\[)[^\]]+(?=\])/]
   # @book['price'] = data.css('.bb_price').text.strip
   # @book['shipping_weight'] = data.css('.content ul li[7]').text.strip.split(": ")[1][/\d.\d/]
-  # @books['isbn-10'] = data.css("link[rel='canonical']")[0].attributes['href'].value.split("/").last
+  # @books['isbn_10'] = data.css("link[rel='canonical']")[0].attributes['href'].value.split("/").last
 
-
+# <% @library.each do |book, content| %>
 
 
   # get '/' do
