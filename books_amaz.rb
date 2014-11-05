@@ -3,7 +3,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'json'
 require 'pry-byebug'
-require_relative 'lib/packing.rb'
+require_relative 'lib/package.rb'
 
 get '/' do
   @library = {}
@@ -29,15 +29,17 @@ get '/' do
     end
   end
 
-  puts @library
-  puts "-----------"
-  puts "JSON: "
-  puts @library.to_json
+  # puts @library
+  # puts "-----------"
+  # puts "JSON: "
+  # puts @library.to_json
 
   erb :index
 end
 
 get '/packaging' do
+
+  puts @library
 
   erb :packaging
 end

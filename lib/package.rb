@@ -27,7 +27,7 @@ end
 class Box
   attr_reader :items
 
-  MAX_SIZE = 10 # weight limit in lb
+  MAX_WEIGHT = 10.0 # weight limit in lb
 
   def initialize
     @items = []
@@ -38,7 +38,7 @@ class Box
   end
 
   def can_hold?(item)
-    weight + item.weight <= MAX_SIZE
+    weight + item.weight <= MAX_WEIGHT
   end
 
   def weight
