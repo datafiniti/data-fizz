@@ -7,7 +7,7 @@ require_relative 'lib/package.rb'
 
 get '/' do
   @library = {}
-  @files = Dir.glob("./data_bank/*")
+  @files = Dir.glob("./data/*")
 
   @files.each do |file|
     data = Nokogiri::HTML(open(file))
