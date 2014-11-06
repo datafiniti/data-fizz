@@ -47,7 +47,3 @@ class Box
 end
 
 Package = Struct.new(:weight)
-
-
-
-

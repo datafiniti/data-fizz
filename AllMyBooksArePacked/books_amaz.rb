@@ -3,9 +3,10 @@ require 'nokogiri'
 require 'open-uri'
 require 'json'
 require 'pry-byebug'
-require_relative 'lib/package.rb'
+require_relative './lib/package.rb'
 
-get '/' do
+
+before do
   @library = {}
   @files = Dir.glob("./data/*")
 
@@ -14,13 +15,10 @@ get '/' do
     @library[file] = {
       :data_bank_id => data.url[/\d+/].rjust(2,"0"),
       :title => data.css('#btAsinTitle').text.strip.gsub(/\[.*\]/,''),
-      :author => data.css("meta[name='description']")[0]
-        .attributes["content"].value[/(?<=\[)[^\]]+(?=\])/],
+      :author => data.css("meta[name='description']")[0].attributes["content"].value[/(?<=\[)[^\]]+(?=\])/],
       :price => data.css('.bb_price').text.strip,
-      :shipping_weight => data.css('.content ul li:contains("Shipping Weight")')
-        .text.strip.split(": ")[1][/\d.\d/],
-      :'isbn-10' => data.css("link[rel='canonical']")[0].attributes['href']
-        .value.split("/").last
+      :shipping_weight => data.css('.content ul li:contains("Shipping Weight")').text.strip.split(": ")[1][/\d.\d/],
+      :'isbn-10' => data.css("link[rel='canonical']")[0].attributes['href'].value.split("/").last
     }
     
     # Set price to the Buy New price only if Buy Used or Rent prices are shown
@@ -28,24 +26,42 @@ get '/' do
       @library[file][:price] = data.css('.bb_price').text.strip.split(" ").last
     end
   end
+end
 
-  # puts @library
-  # puts "-----------"
-  # puts "JSON: "
-  # puts @library.to_json
+get '/' do
+
+  puts @library
+  puts @library.to_json
+
+
+# Attempt at packaging into a 'to_json' parsing method
+  # @boxes = {}
+  # @library.each do |book, content|
+  #   @boxes[book] = [
+  #     :id => content[:data_bank_id],
+  #     :total_weight => "xxxxxxx",
+  #     :contents => {
+  #       :title => content[:title],
+  #       :author => content[:author],
+  #       :price => content[:price],
+  #       :shipping_weight => content[:shipping_weight],
+  #       :'isbn-10' => content[:'isbn-10']
+  #     }
+  #   ]
+  # end
 
   erb :index
 end
 
 get '/packaging' do
-
-  puts @library
-
+  # Decrease sort for First-Fit Decreasing algorithm for bin packing
+  # Need to put into boxes to show the box contents
+  @library = @library.sort_by{ |book, content| content[:shipping_weight]}.reverse
   erb :packaging
 end
 
 # get '/' do
-#   url = "./data_bank/book1.html"
+#   url = "./data/book1.html"
 #   @data = Nokogiri::HTML(open(url))
 #   erb :index
 # end
