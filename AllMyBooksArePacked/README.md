@@ -1,3 +1,13 @@
+From Joseph:
+
+To run the code (Sinatra ruby app):
+
+1. Clone this repo and move into the 'AllMyBooksArePacked' directory
+2. Type `bundle install`
+3. Type `ruby books_amaz.rb`
+4. Go to `localhost:4567` to see the first page of results parsed
+5. File `packages_boxed.json` contains result (already in folder)
+
 # Book Packer
 
 ## Purpose
