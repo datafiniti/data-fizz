@@ -2,7 +2,7 @@ require '../lib/package.rb'
 require 'minitest/autorun'
 
 class Tests < Minitest::Unit::TestCase
-  def number_of_packages list
+  def number_of_packages(list)
     BoxContainer.new(list).boxes.size
   end
  
