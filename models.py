@@ -4,7 +4,7 @@ class Shipment:
 
 
     def sort_books_by_weight(books):
-        pass
+        return sorted(books, key=lambda book: book.weight, reverse=True)
 
 
     def create_shipment(books):
