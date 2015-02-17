@@ -1,3 +1,22 @@
+class Shipment:
+    def __init__(self):
+        pass
+
+
+    def sort_books_by_weight(books):
+        pass
+
+
+    def create_shipment(books):
+        pass
+
+
+
+class Box:
+    def __init__(self, *books):
+        pass
+
+
 class Book:
     def __init__(self, title, author, price, ISBN, weight):
         self.title = title
