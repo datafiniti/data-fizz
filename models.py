@@ -13,8 +13,9 @@ class Shipment:
 
 
 class Box:
-    def __init__(self, *books):
-        pass
+    def __init__(self, books):
+        self.contents = [book for book in books]
+        self.total_weight = sum(book.weight for book in books)
 
 
 class Book:
