@@ -1,15 +1,4 @@
-class Shipment:
-    def __init__(self):
-        pass
-
-
-    def sort_books_by_weight(books):
-        return sorted(books, key=lambda book: book.weight, reverse=True)
-
-
-    def create_shipment(books):
-        pass
-
+import json
 
 
 class Box:
@@ -29,3 +18,25 @@ class Book:
 
     def __repr__(self):
         return "{0} by {1}".format(self.title, self.author)
+
+
+class Shipment:
+    def __init__(self):
+        self.boxes = []
+        pass
+
+
+    def add_box(self, box):
+        self.boxes.append(box)
+
+
+    def sort_books_by_weight(books):
+        return sorted(books, key=lambda book: book.weight, reverse=True)
+
+
+    def create_shipment(books):
+        pass
+
+
+    def __repr__(self):
+        return json.dumps(self.__dict__)
