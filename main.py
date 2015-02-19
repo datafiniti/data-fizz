@@ -1,54 +1,72 @@
-from bs4 import BeautifulSoup
+from html.parser import HTMLParser
 from models import Book
 import os
 import glob
 import time
 
-
+results = []
 start = time.time()
 os.chdir("data")
 
 
-def extract_content(tag):
-    start = tag.find(">") + 1
-    end = tag.find("<", start)
-    return tag[start:end].strip()
+class BookParser(HTMLParser):
+    data_inbound = None
+    author = None
+    title = None
+    price = None
+    ISBN_10 = None
+    weight = None
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "meta":
+            if attrs[0][1] == "keywords" and attrs[1][0] == "content":
+                data = attrs[1][1]
+                self.author = data[:data.find(",")]
+
+        if tag == "span":
+            for attr in attrs:
+                if "btAsinTitle" in attr:  # handles book title
+                    self.data_inbound = "title"
+
+        if tag == "b" and attrs and "priceLarge" in attrs[0]:
+            self.data_inbound = "price"
+
+    def handle_data(self, data):
+        if self.data_inbound == "title":
+            self.title = data.strip()
+
+        elif self.data_inbound == "price":
+            self.price = data.strip()
+
+        elif self.data_inbound == "ISBN":
+            self.ISBN_10 = data.strip()
+
+        elif self.data_inbound == "weight":
+            self.weight = data.replace(" (", "").strip()
+
+        self.data_inbound = None
+
+        if "ISBN-10" in data:
+            self.data_inbound = "ISBN"
+
+        elif "Shipping Weight:" in data:
+            self.data_inbound = "weight"
+
+
+    def finalize(self, result_list):
+        book = Book(self.title, self.author, self.price, self.ISBN_10, self.weight)
+        result_list.append(book)
 
 
 def parse_files(directory):
-    results = []
     for file in directory:
         working_file = open(file, "r", encoding="ISO-8859-1")
-        soup = BeautifulSoup(working_file.read())
-
-        title = extract_content(str(soup.find(id="btAsinTitle")))
-
-        author_data = str(soup.findAll("meta", {"name": "keywords"})[0])
-        author = author_data[author_data.find('"') + 1:author_data.find(",")]
-
-        price_data = soup.findAll("span", {"class": "bb_price"})[0]
-        price = extract_content(str(price_data))
-
-        remaining_data = str(soup.findAll("td", {"class": "bucket"})[0])
-        soup = BeautifulSoup(remaining_data)
-        remaining_data = soup.findAll("li")
-
-        for data in remaining_data:
-            if "ISBN-10" in str(data):
-                ISBN = str(data)
-            elif "Weight" in str(data):
-                weight = str(data)
-
-        ISBN = ISBN[ISBN.find("</b> ") + 5:ISBN.find("</li>")]
-        weight = weight[weight.find("</b> ") + 5:weight.find(" (")]
-
-        new_book = Book(title, author, price, ISBN, weight)
-        results.append(new_book)
-
-    return results
+        parser = BookParser()
+        parser.feed(working_file.read())
+        parser.finalize(results)
 
 
 directory = glob.glob("*.html")
-results = parse_files(directory)
+parse_files(directory)
 print(results)
 print(time.time() - start)
