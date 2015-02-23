@@ -1,0 +1,5 @@
+1) Domains beyond Amazon.com
+
+2) Products beyond just simply books.
+
+3) Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
