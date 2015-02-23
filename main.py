@@ -1,4 +1,4 @@
-from models import BookParser, Book, Box, Shipment
+from models import BookParser, Shipment, Encoder
 import os, glob, time
 
 results = []
@@ -17,6 +17,5 @@ def parse_files(directory):
 directory = glob.glob("*.html")
 parse_files(directory)
 ship = Shipment()
-results = ship.greedy_shipment(results)
-for box in ship.boxes:
-    print(box.contents)
+results = ship.create_from(results)
+print(Encoder().encode(ship))
