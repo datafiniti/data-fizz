@@ -2,8 +2,7 @@ module BoxPacker
   
   class Box
     attr_reader :id
-    attr_accessor :totalWeight
-    attr_accessor :contents
+    attr_accessor :totalWeight, :contents
 
     @@weight_limit = 10
 
@@ -21,22 +20,18 @@ module BoxPacker
       @@weight_limit
     end
 
-    def try_adding_book(book)
-      if can_this_book_go_in_this_box?(book)
+    def add_book(book)
+      if fits?(book)
         @totalWeight += book["shipping_weight"].split[0].to_f
         @contents.push(book)
-        return true
+        true
       else
-        return false
+        false
       end
     end
 
-    def can_this_book_go_in_this_box?(book)
-      if (book["shipping_weight"].split[0].to_f + @totalWeight) <= @@weight_limit
-        return true
-      else
-        return false
-      end
+    def fits?(book)
+      (book["shipping_weight"].split[0].to_f + @totalWeight) <= @@weight_limit
     end
 
   end

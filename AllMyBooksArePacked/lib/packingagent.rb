@@ -5,41 +5,36 @@ require 'json'
 module BoxPacker
   class PackingAgent
 
+    attr_reader :boxes, :sorted_library
+
     #############################
     # Basic Creation Functions
     #############################
 
-    def initialize(origin, order)
+    def initialize(from, folder_name)
       @boxes = []
-      @sorted_library = self.order_books_by_weight(self.get_order(origin, order))      
+      order = self.get_order(from, folder_name)      
+      @sorted_library = self.sort_by_weight(order)
     end
 
-    def get_order(origin, order)
-      case origin
-      when :folder
-        return BoxPacker::Interface.read_html_files_from(order)
+    def get_order(from, folder_name)
+      case from
+      when :file
+        BoxPacker::Interface.read_html_files_from(folder_name)
       when :web
-        return BoxPacker::Interface.read_pages_from(order)
+        BoxPacker::Interface.read_pages_from(folder_name)
       end
     end
 
-    def order_books_by_weight(library)
-      library.sort_by {|book| book["shipping_weight"].split[0].to_f }
+    def sort_by_weight(order)
+      order.sort_by {|book| book["shipping_weight"].split[0].to_f }
     end
 
     #############################
     # Accessor and Formatting
     #############################
 
-    def boxes
-      @boxes
-    end
-
-    def sorted_library
-      @sorted_library
-    end
-
-    def print(option)
+    def print(option=:json)
       prepped = @boxes.inject({}) do |order, box|
         order.merge(
           box.id => 
@@ -53,18 +48,10 @@ module BoxPacker
 
       case option
       when :json
-        print_order_to_json(prepped)
+        prepped.to_json
       when :pretty
-        pretty_print_order(prepped)
+        jj prepped
       end
-    end
-
-    def print_order_to_json(prepped)
-      prepped.to_json
-    end
-
-    def pretty_print_order(prepped)
-      jj prepped
     end
 
     #############################
@@ -80,7 +67,7 @@ module BoxPacker
 
     def find_box_for(book)
       @boxes.each do |box|
-        if box.try_adding_book(book)
+        if box.add_book(book)
           return
         end
       end
@@ -90,7 +77,7 @@ module BoxPacker
     def create_box(book)
       id_for_new_box = @boxes.empty? ? 1 : @boxes.last.id + 1
       new_box = BoxPacker::Box.new(id_for_new_box)
-      new_box.try_adding_book(book)
+      new_box.add_book(book)
       @boxes.push(new_box)
     end
 

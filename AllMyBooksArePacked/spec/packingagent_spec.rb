@@ -1,8 +1,8 @@
-require '../lib/boxpacker.rb'
+require '../lib/packingagent.rb'
 
 RSpec.describe BoxPacker::PackingAgent do
   before(:context) do
-    @packer = BoxPacker::PackingAgent.new(:folder, "data")
+    @packer = BoxPacker::PackingAgent.new(:file, "data")
   end
 
   describe "#initialize" do
@@ -53,7 +53,7 @@ RSpec.describe BoxPacker::PackingAgent do
 
   describe "#ship_order" do
     it "ships order by arranging boxes using simple first-fit algorithm" do
-      @packer = BoxPacker::PackingAgent.new(:folder, "data")
+      @packer = BoxPacker::PackingAgent.new(:file, "data")
       @packer.ship_order
       expect(@packer.boxes.length).to be <= 10
       expect(@packer.sorted_library). to eq([])

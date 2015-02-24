@@ -9,19 +9,19 @@ module BoxPacker
       library = []
       Dir.foreach("../#{folder}") do |file|
         if file.end_with?(".html")
-          library.push(BoxPacker::Amazon::Processor.get_book_info(:file, Nokogiri::HTML(open("../#{folder}/#{file}"))))
+          library.push(AmazonProcessor.get_book_info(:file, Nokogiri::HTML(open("../#{folder}/#{file}"))))
         end
       end
-      return library
+      library
     end
 
-    def self.read_pages_from(*websites)
+    def self.read_pages_from(*urls)
       library = []
-      websites.each do |page|
+      urls.each do |page|
         page_open = open(page)
-        library.push(BoxPacker::Amazon::Processor.get_book_info(:web, Nokogiri::HTML(page_open)))
+        library.push(AmazonProcessor.get_book_info(:web, Nokogiri::HTML(page_open)))
       end
-      return library
+      library
     end
 
   end

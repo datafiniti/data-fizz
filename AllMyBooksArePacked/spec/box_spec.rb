@@ -36,34 +36,34 @@ RSpec.describe BoxPacker::Box do
     end
   end
 
-  describe "#can_this_book_go_in_this_box?" do
+  describe "#fits?" do
     it "returns true or false if book weight fits under box weight limit" do
       box = BoxPacker::Box.new(1)
       book = {"shipping_weight" => "1.1 pounds"}
-      expect(box.can_this_book_go_in_this_box?(book)).to be(true)
+      expect(box.fits?(book)).to be(true)
       book = {"shipping_weight" => "11.1 pounds"}
-      expect(box.can_this_book_go_in_this_box?(book)).to be(false)
+      expect(box.fits?(book)).to be(false)
       book = {"shipping_weight" => "5 pounds"}
       box.totalWeight = 5.5
-      expect(box.can_this_book_go_in_this_box?(book)).to be(false)
+      expect(box.fits?(book)).to be(false)
     end
   end
 
-  describe "#try_adding_book" do
+  describe "#add_book" do
     it "adds the book if the weight limit allows" do
       box = BoxPacker::Box.new(1)
       book = {"shipping_weight" => "1.5 pounds", "title" => "The Pledge"}
-      expect(box.try_adding_book(book)).to be(true)
+      expect(box.add_book(book)).to be(true)
       expect(box.contents.length).to eq(1)
       expect(box.contents[0]["title"]).to eq("The Pledge")
 
       book = {"shipping_weight" => "9 pounds", "title" => "Mason & Dixon"}
-      expect(box.try_adding_book(book)).to be(false)
+      expect(box.add_book(book)).to be(false)
       expect(box.contents.length).to eq(1)
       expect(box.contents[0]["title"]).to eq("The Pledge")
       
       book = {"shipping_weight" => "5 pounds", "title" => "Steve Jobs"}
-      expect(box.try_adding_book(book)).to be(true)
+      expect(box.add_book(book)).to be(true)
       expect(box.contents.length).to eq(2)
       expect(box.contents[0]["title"]).to eq("The Pledge")
       expect(box.contents[1]["title"]).to eq("Steve Jobs")
