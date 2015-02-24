@@ -1,4 +1,3 @@
-require 'nokogiri'
 require 'json'
 require_relative './book.rb'
 require_relative './box.rb'

@@ -12,4 +12,5 @@ module Items
   end
 end  
 
-# p Items::box_object_to_hash(boxes)
+p Items::structured_data
+
