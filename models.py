@@ -72,6 +72,7 @@ class Box:
 class Shipment:
     def __init__(self):
         self.boxes = []
+        self.box_id = 0
 
     def add_box_to_shipment(self, box):
         self.boxes.append(box)
@@ -94,12 +95,18 @@ class Shipment:
                     box.append(book)
                     books.remove(book)
                 else:
-                    final_box = Box(box_id, box)
+                    final_box = Box(self.box_id, box)
                     self.add_box_to_shipment(final_box)
                     box = []
-                    box_id += 1
+                    self.box_id += 1
 
+        # n = 20
         if n and n > len(self.boxes):
-            for box in self.boxes:
-                if len(box) > 1:
-                    print(box)
+            while n > len(self.boxes):
+                for box in self.boxes:
+                    if len(box.contents) > 1:
+                        new_box = Box(self.box_id, [box.contents.pop()])
+                        self.add_box_to_shipment(new_box)
+                        self.box_id += 1
+
+        del self.box_id
