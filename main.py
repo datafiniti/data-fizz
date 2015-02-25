@@ -1,12 +1,10 @@
-from models import BookParser, Shipment, Encoder
-import os, glob, time
-
-results = []
-start = time.time()
-os.chdir("data")
+from models import BookParser, Shipment
+import os
+import glob
+import json
 
 
-def parse_files(directory):
+def parse_files(directory, results):
     for file in directory:
         working_file = open(file, "r", encoding="ISO-8859-1")
         parser = BookParser()
@@ -14,8 +12,14 @@ def parse_files(directory):
         parser.finalize(results)
 
 
-directory = glob.glob("*.html")
-parse_files(directory)
-ship = Shipment()
-results = ship.create_from(results)
-print(Encoder().encode(ship))
+def main():
+    results = []
+    os.chdir("data")
+    directory = glob.glob("*.html")
+    parse_files(directory, results)
+    ship = Shipment()
+    ship.create_from(results)
+    print(json.dumps(ship, default=lambda o: o.__dict__, indent=4))
+
+if __name__ == "__main__":
+    main()
