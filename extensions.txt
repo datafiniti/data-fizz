@@ -1,0 +1,30 @@
+How could your application be extended to handle the following:
+
+1. Domains beyond Amazon.com
+
+  Since we've already created a model for what a book entails, you could simply
+  create another object that extends the built-in HTMLParser object, as the
+  current AmazonParser object does. The Box, Shipment, and Book objects, and
+  their associated methods, remain the same, but the scraping procedure changes.
+
+2. Products beyond just simply books.
+
+  In a similar light, the box object could be modified to be more analogous to a
+  real-world box, which can hold any number of things. You could change the
+  psuedo-constructor init() function to take the obligatory self parameter, as
+  well as a **kwargs parameter, which would give the object more flexibility.
+  Alternatively, you can simply strip it down further and create subsequent
+  objects like BookBox or MovieBox, what have you, that extend the original Box
+  object and its methods.
+
+3. Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+
+  Currently the box packing algorithm is a greedy algorithm. It sorts the parcels
+  in reverse order, and packs boxes with books as they fit in by weight. This box
+  packing problem is reminiscent of a classic change making problem, in which you
+  are tasked with creating an algorithm to give the appropriate amount of change
+  in the least number of coins. The algorithm I've implemented for packing boxes
+  works analogously with the coin problem when using standard American currency.
+  But if you were to have an odd currency with particular units, this algorithm
+  would not work out. Similarly, there are almost certainly configurations of
+  items where this algorithm is not optimal.
