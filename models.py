@@ -80,7 +80,7 @@ class Shipment:
         del self.box_id
 
 
-class BookParser(HTMLParser):
+class AmazonParser(HTMLParser):
     data_inbound = None
     author = None
     title = None
