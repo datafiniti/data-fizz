@@ -23,3 +23,19 @@ How could your application be extended to handle the following:
   and ship two million books quickly, you could split those two million books into
   smaller chunks, and run multiple parsers at once on every chunk. Additionally,
   you could use concurrency to split the parsing and shipping processes.
+
+NOTES:
+
+1. The files provided were formatted to ISO-8859-1, or ISO Latin 1. As Python 3
+   works entirely in utf-8, line 9 includes an encoding parameter to allow the
+   script to read the files.
+
+2. Originally I built the script using BeautifulSoup4, a popular web scraping
+   module for Python. I found it to be difficult to install properly, clumsy
+   to actually use, and sluggish in practice. It has been replaced with the
+   built-in module HTMLParser, which I found is much more performant, and
+   obviously comes with Python3.
+
+3. There is a module called JSONPickle that is popular for JSONifying objects in
+   Python. I focused on instead using the built-in JSON module to minimize
+   3rd-party module use, and therefore maintain ease-of-installation and use.
