@@ -4,7 +4,6 @@ ruby '2.0.0'
 gem 'rspec', '~> 2.14.1'
 gem 'nokogiri'
 gem 'bundler', '~> 1.7'
-gem 'jsonify', '~> 0.4.1'
 
 # Testing
 gem 'pry-byebug'
