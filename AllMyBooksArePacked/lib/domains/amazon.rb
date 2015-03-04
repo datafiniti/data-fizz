@@ -12,12 +12,6 @@ class Amazon < Domain
 
     @doc = Nokogiri::HTML(File.open(abs_path_to_html_file))
 
-    # Title, Author (Failed for 1 case - html14)
-    # cover_details = @doc.xpath('//title').text.split(':')
-    # cover_details.slice!(-3..-1)
-    # author = cover_details.pop.strip        # Assumes authors not split by ':'
-    # title = cover_details.join(':').strip   # Insert previously removed ':'
-
     # Title, Author
     @doc.css('div.buying').each do |div|
       if div.at_css('h1 > span#btAsinTitle')
