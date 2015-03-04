@@ -12,11 +12,21 @@ class Amazon < Domain
 
     @doc = Nokogiri::HTML(File.open(abs_path_to_html_file))
 
+    # Title, Author (Failed for 1 case - html14)
+    # cover_details = @doc.xpath('//title').text.split(':')
+    # cover_details.slice!(-3..-1)
+    # author = cover_details.pop.strip        # Assumes authors not split by ':'
+    # title = cover_details.join(':').strip   # Insert previously removed ':'
+
     # Title, Author
-    cover_details = @doc.xpath('//title').text.split(':')
-    cover_details.slice!(-3..-1)
-    author = cover_details.pop.strip        # Assumes authors not split by ':'
-    title = cover_details.join(':').strip   # Insert previously removed ':'
+    @doc.css('div.buying').each do |div|
+      if div.at_css('h1 > span#btAsinTitle')
+        # This div class contains title and author
+        title  = div.at_css('h1 > span#btAsinTitle').text
+        author = div.at_css('span > a').text
+        break
+      end
+    end
 
     # Price
     if str = @doc.css('td#actualPriceContent').text.match(/\$(\S+)\s+/) || 
