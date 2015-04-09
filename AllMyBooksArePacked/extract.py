@@ -1,7 +1,5 @@
 from bs4 import BeautifulSoup
 
-parsed_html = BeautifulSoup(open('data/book16.html'), 'html.parser')
-
 def find_title_author(parsed_html):
     """Find title_author element"""
     return parsed_html.find('span', attrs={'id':'btAsinTitle'}).parent.parent
@@ -26,6 +24,26 @@ def find_isbn(parsed_html):
     """Returns a string to preserve leading zeros"""
     return str(product_details.contents[7].contents[1]).strip()
 
+class Book:
+    """A simple book class. Contains title, author, price, weight, and ISBN-10"""
+    def __init__(self, title, author, price, shipping_weight, isbn_10):
+        self.title = title
+        self.author = author
+        self.price = price
+        self.shipping_weight = shipping_weight
+        self.isbn_10 = isbn_10
+    
+    def print_details(self):
+        print "Title:", title
+        print "Author:", author
+        print "Price:", price
+        print "Shipping Weight:", shipping_weight
+        print "ISBN-10:", isbn_10
+        
+# Parse HTML file
+parsed_html = BeautifulSoup(open('data/book16.html'), 'html.parser')
+
+# Extract important objects
 title_author = find_title_author(parsed_html)
 product_details = find_product_details(parsed_html)
 
@@ -36,8 +54,5 @@ price = find_price(parsed_html)
 shipping_weight = find_weight(product_details)
 isbn_10 = find_isbn(product_details)
 
-print 'Title:', title
-print 'Author:', author
-print 'Price:', price
-print 'Weight:', shipping_weight
-print 'ISBN:', isbn_10
+book = Book(title, author, price, shipping_weight, isbn_10)
+book.print_details()
