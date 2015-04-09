@@ -7,5 +7,5 @@ def find_title_author(parsed_html):
 
 title_author = find_title_author(parsed_html)
 
-title = title_author.h1.span
-print title.text
+title = str(title_author.h1.span.contents[0])
+print title
