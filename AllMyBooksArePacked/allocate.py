@@ -8,17 +8,15 @@ capacity = 10.0
 total_weight = 0.0
 book_weights = [book['shipping_weight'] for book in books]
 
-#Let's make a box
-box = {'id':1, 'totalWeight':0, 'contents':[]}
-#
 #For every book there are two options:
 #1. It goes in the box
 #2. It doesn't
 #
-#Let total_weight be the maximum possible weight that can be achieved for a box with given capacity, and a list of book_weights.
+#Let total_weight be the maximum possible weight that can be achieved for a box with any given capacity, and a list of book_weights.
 #
 # total_weight(capacity, book_weights[:]) = 
-#   max(book_weights[0] + total_weight(capacity-book_weights[0], book_weights[1:]), total_weight(capacity, book_weights[1:]))
+#     max(book_weights[0] + total_weight(capacity-book_weights[0], book_weights[1:]), 
+#         total_weight(capacity, book_weights[1:]))
 #
 #Base Cases: if (book_weight[-1]>capacity), total_weight = 0
 #
@@ -31,7 +29,8 @@ scale_weight = [int(x*10) for x in book_weights]
 
 max_row = scale_cap + 1
 max_col = len(scale_weight)+1
-DP = [[-1 for i in range(max_col)] for j in range(max_row)]
+
+DP = [[-1 for j in range(max_col)] for i in range(max_row)]
 
 #Total weight is zero for capacity of zero.
 for j in range(max_col):
@@ -43,7 +42,7 @@ for i in range(max_row):
 
 #Populate table
 #i represents current capacity of the box
-#j represents book index
+#j represents book_index+1
 for j in range(1, max_col):
     this_weight = scale_weight[j-1]
     for w in range(1, max_row):
@@ -61,15 +60,31 @@ def print_table(table):
         print row_index, row
         row_index+=1
 
-print_table(DP)
-print scale_weight
+#print_table(DP)
+#print scale_weight
 
 #box['totalWeight'] = DP[max_row][max_col]
 
-print len(DP)
-
-def find_box_books(DP, books):
-    DP_book_index = len(books) + 1
+def collect_books_to_box(DP, books, box_id):
+    """Collect books from inventory to box
     
-    pass
-box['contents'] = find_box_books(DP, books)
+    Returns (box, books) with books not filled in the box
+    """
+    contents = []
+    totalWeight = 0.0
+    
+    book_index = len(books)
+    weight_index = len(DP) - 1
+    while weight_index:
+        while DP[weight_index][book_index] == DP[weight_index][book_index-1]:
+            book_index -= 1
+        contents.append(books[book_index-1])
+        totalWeight += books[book_index-1]['shipping_weight']
+        del(books[book_index-1])
+        weight_index -= scale_weight[book_index-1]
+    box = dict(zip(box_keys, (box_id, totalWeight, contents)))
+    return (box, books)
+    
+(box, books) = collect_books_to_box(DP, books, 1)
+print box
+print len(books)
