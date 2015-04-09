@@ -1,6 +1,6 @@
 class Book:
     """A simple book class. Contains title, author, price, weight, and ISBN-10"""
-    def __init__(self, title, author, price, shipping_weight, isbn_10):
+    def __init__(self, (title, author, price, shipping_weight, isbn_10)):
         self.title = title
         self.author = author
         self.price = price
