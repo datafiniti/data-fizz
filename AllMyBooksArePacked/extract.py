@@ -7,5 +7,8 @@ def find_title_author(parsed_html):
 
 title_author = find_title_author(parsed_html)
 
+# title = title_author.h1.span.text #if you also want [Hardcover] at the end
 title = str(title_author.h1.span.contents[0])
-print title
+author = str(title_author.contents[3].a.text)
+
+print 'Title:', title,'\nAuthor:', author
