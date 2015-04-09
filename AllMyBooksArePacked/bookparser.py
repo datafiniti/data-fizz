@@ -40,8 +40,11 @@ def find_isbn(product_details):
     for listItem in product_details:
         if listItem.b.text == 'ISBN-10:':
             return str(listItem.contents[1]).strip()
+
+book_keys = ['title', 'author', 'price', 'shipping_weight', 'isbn-10']
             
 def set_details_from(parsed_html):
+    """Returns a dictionary of key, value pairs of book details"""
     # Extract important objects
     title_author = find_title_author(parsed_html)
     product_details = find_product_details(parsed_html)
@@ -52,5 +55,6 @@ def set_details_from(parsed_html):
     price = find_price(parsed_html)
     shipping_weight = find_weight(product_details)
     isbn_10 = find_isbn(product_details)
+    book_details = (title, author, price, shipping_weight, isbn_10)
     
-    return (title, author, price, shipping_weight, isbn_10)
+    return dict(zip(book_keys, book_details))

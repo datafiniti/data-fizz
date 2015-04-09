@@ -1,10 +1,12 @@
 from bs4 import BeautifulSoup
-from book import *
-from bookparser import *
+from bookparser import set_details_from
 
-book = []
-for i in range(1,21):        
-    # Parse HTML file
-    parsed_html = BeautifulSoup(open('data/book%d.html' % i), 'html.parser')
-    book_details = set_details_from(parsed_html)    
-    book.append(Book(book_details))
+def extract(n):
+    """Extract books from n HTML files. Returns list of books."""
+    books = []
+    for i in range(1, n+1):
+        # Parse HTML file
+        parsed_html = BeautifulSoup(open('data/book%d.html' % i), 'html.parser')
+        book = set_details_from(parsed_html)    # Dictionary with key, value pairs of book details
+        books.append(book)                      # List of dictionaries. List of books
+    return books
