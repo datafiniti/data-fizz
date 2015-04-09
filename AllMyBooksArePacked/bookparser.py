@@ -1,11 +1,15 @@
 from bs4 import BeautifulSoup
 
 def find_title_author(parsed_html):
-    """Find title_author_element"""
+    """Find title_author_element.
+    Contains title and author.
+    """
     return parsed_html.find('span', attrs={'id':'btAsinTitle'}).parent.parent
 
 def find_product_details(parsed_html):
-    """Find product_details_element"""
+    """Find product_details_element.
+    Contains weight and ISBN.
+    """
     return [x for x in parsed_html.find('table', attrs={'id':'productDetailsTable'}).tr.td.div.ul.contents if x != u'\n']
 
 def find_title(title_author_element):
@@ -15,11 +19,11 @@ def find_author(title_author_element):
     return str(title_author_element.contents[3].a.text)
 
 def find_price(parsed_html):
+    """Returns price in USD as float"""
     return float(str(parsed_html.find('span', attrs={'class':'bb_price'}).text).strip()[1:].replace(',',''))
    
 def find_weight(product_details):
-    """
-    Returns weight in pounds
+    """Returns weight in pounds as float
     
     We might be reiterating through product_details,
     but this will help in case we need to find weights
@@ -32,7 +36,7 @@ def find_weight(product_details):
             return float(listItem.contents[1][1:-9])
 
 def find_isbn(product_details):
-    """Returns a string to preserve leading zeros"""    
+    """Returns string to preserve leading zeros"""    
     for listItem in product_details:
         if listItem.b.text == 'ISBN-10:':
             return str(listItem.contents[1]).strip()

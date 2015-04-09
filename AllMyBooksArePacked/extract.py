@@ -6,8 +6,5 @@ book = []
 for i in range(1,21):        
     # Parse HTML file
     parsed_html = BeautifulSoup(open('data/book%d.html' % i), 'html.parser')
-    book_details = set_details_from(parsed_html)
-    
+    book_details = set_details_from(parsed_html)    
     book.append(Book(book_details))
-    book[-1].print_details()
-    print '\n'
