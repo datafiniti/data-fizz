@@ -13,4 +13,5 @@ while(len(scaled_weights)):
     boxes.append(box)
     i+=1
 
-print json.dumps({'boxes': boxes}, sort_keys=True, indent=4, separators=(',', ': '))
+with open('../../../books.json', 'w') as outfile:
+    json.dump({'boxes': boxes}, outfile, sort_keys=True, indent=4, separators=(',', ': '))
