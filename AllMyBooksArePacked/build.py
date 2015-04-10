@@ -8,3 +8,5 @@ default_task = "publish"
 @init
 def initialize(project):
 	project.build_depends_on('BeautifulSoup')
+	project.build_depends_on('beautifulsoup4')
+	project.build_depends_on('numpy')

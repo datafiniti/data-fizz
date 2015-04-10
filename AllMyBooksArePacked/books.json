@@ -1,0 +1,198 @@
+{
+    "boxes": [
+        {
+            "contents": [
+                {
+                    "author": "Daniel Silva",
+                    "isbn-10": "0062073168",
+                    "price": 16.46,
+                    "shipping_weight": 3.6,
+                    "title": "The English Girl: A Novel (Gabriel Allon) "
+                },
+                {
+                    "author": "Jenni Rivera",
+                    "isbn-10": "1476745420",
+                    "price": 10.18,
+                    "shipping_weight": 6.4,
+                    "title": "Inquebrantable: Mi Historia, A Mi Manera (Atria Espanol) (Spanish Edition) "
+                }
+            ],
+            "id": 1,
+            "totalWeight": 10.0
+        },
+        {
+            "contents": [
+                {
+                    "author": "Stephen Wolfram",
+                    "isbn-10": "1579550088",
+                    "price": 20.73,
+                    "shipping_weight": 5.6,
+                    "title": "A New Kind of Science "
+                },
+                {
+                    "author": "David S Cohen",
+                    "isbn-10": "1608871827",
+                    "price": 27.83,
+                    "shipping_weight": 3.2,
+                    "title": "Pacific Rim: Man, Machines, and Monsters "
+                },
+                {
+                    "author": "Reza Aslan",
+                    "isbn-10": "140006922X",
+                    "price": 16.89,
+                    "shipping_weight": 1.2,
+                    "title": "Zealot: The Life and Times of Jesus of Nazareth "
+                }
+            ],
+            "id": 2,
+            "totalWeight": 10.0
+        },
+        {
+            "contents": [
+                {
+                    "author": "Europa Publications",
+                    "isbn-10": "1857435885",
+                    "price": 7450.0,
+                    "shipping_weight": 7.8,
+                    "title": "The Europa Regional Surveys of the World Set 2011: 9-Volume Set "
+                },
+                {
+                    "author": "Sylvia Day",
+                    "isbn-10": "0425266060",
+                    "price": 26.32,
+                    "shipping_weight": 2.2,
+                    "title": "Sylvia Day Crossfire Series Boxed Set: Bared to You/Reflected in You/Entwined with You "
+                }
+            ],
+            "id": 3,
+            "totalWeight": 10.0
+        },
+        {
+            "contents": [
+                {
+                    "author": "Daniel Wallace",
+                    "isbn-10": "1608871819",
+                    "price": 31.07,
+                    "shipping_weight": 2.8,
+                    "title": "Man of Steel: Inside the Legendary World of Superman "
+                },
+                {
+                    "author": "Ree Drummond",
+                    "isbn-10": "0062225227",
+                    "price": 20.29,
+                    "shipping_weight": 1.4,
+                    "title": "The Pioneer Woman Cooks: A Year of Holidays: 135 Step-by-Step Recipes for Simple, Scrumptious Celebrations "
+                },
+                {
+                    "author": "Mark Leibovich",
+                    "isbn-10": "0399161309",
+                    "price": 15.37,
+                    "shipping_weight": 1.4,
+                    "title": "This Town: Two Parties and a Funeral-Plus, Plenty of Valet Parking!-in America's Gilded Capital "
+                },
+                {
+                    "author": "Rick Riordan",
+                    "isbn-10": "1423146727",
+                    "price": 10.19,
+                    "shipping_weight": 4.4,
+                    "title": "The House of Hades (Heroes of Olympus, Book 4) "
+                }
+            ],
+            "id": 4,
+            "totalWeight": 10.0
+        },
+        {
+            "contents": [
+                {
+                    "author": "Daniel Silva",
+                    "isbn-10": "0062073168",
+                    "price": 16.46,
+                    "shipping_weight": 3.6,
+                    "title": "The English Girl: A Novel (Gabriel Allon) "
+                },
+                {
+                    "author": "Chuck Klosterman",
+                    "isbn-10": "1439184496",
+                    "price": 15.49,
+                    "shipping_weight": 2.2,
+                    "title": "I Wear the Black Hat: Grappling with Villains (Real and Imagined) "
+                },
+                {
+                    "author": "Neil Gaiman",
+                    "isbn-10": "0062255657",
+                    "price": 15.22,
+                    "shipping_weight": 4.1,
+                    "title": "The Ocean at the End of the Lane: A Novel"
+                }
+            ],
+            "id": 5,
+            "totalWeight": 9.9
+        },
+        {
+            "contents": [
+                {
+                    "author": "Neil Gaiman",
+                    "isbn-10": "0062255657",
+                    "price": 15.22,
+                    "shipping_weight": 9.4,
+                    "title": "The Ocean at the End of the Lane: A Novel"
+                }
+            ],
+            "id": 6,
+            "totalWeight": 9.4
+        },
+        {
+            "contents": [
+                {
+                    "author": "Robert Galbraith",
+                    "isbn-10": "0316206849",
+                    "price": 17.47,
+                    "shipping_weight": 1.4,
+                    "title": "The Cuckoo's Calling "
+                },
+                {
+                    "author": "Titan Books",
+                    "isbn-10": "1781168857",
+                    "price": 15.83,
+                    "shipping_weight": 7.6,
+                    "title": "World War Z: The Art of the Film "
+                }
+            ],
+            "id": 7,
+            "totalWeight": 9.0
+        },
+        {
+            "contents": [
+                {
+                    "author": "Alan LeMay",
+                    "isbn-10": "147780630X",
+                    "price": 8.97,
+                    "shipping_weight": 8.8,
+                    "title": "The Unforgiven "
+                }
+            ],
+            "id": 8,
+            "totalWeight": 8.8
+        },
+        {
+            "contents": [
+                {
+                    "author": "Lee Child",
+                    "isbn-10": "0385344341",
+                    "price": 17.52,
+                    "shipping_weight": 4.9,
+                    "title": "Never Go Back: A Jack Reacher Novel "
+                },
+                {
+                    "author": "Reza Aslan",
+                    "isbn-10": "0385739761",
+                    "price": 8.99,
+                    "shipping_weight": 2.6,
+                    "title": "No god but God: The Origins and Evolution of Islam "
+                }
+            ],
+            "id": 9,
+            "totalWeight": 7.5
+        }
+    ]
+}
