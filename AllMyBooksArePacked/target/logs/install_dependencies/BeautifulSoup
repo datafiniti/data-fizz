@@ -1,0 +1,9 @@
+Downloading/unpacking BeautifulSoup
+  Downloading BeautifulSoup-3.2.1.tar.gz
+  Running setup.py (path:/home/sanket/workspace/DataFizz/AllMyBooksArePacked/venv/build/BeautifulSoup/setup.py) egg_info for package BeautifulSoup
+    
+Installing collected packages: BeautifulSoup
+  Running setup.py install for BeautifulSoup
+    
+Successfully installed BeautifulSoup
+Cleaning up...
