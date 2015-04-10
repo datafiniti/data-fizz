@@ -81,6 +81,6 @@ def collect_to(box_id, books, scaled_weights):
         del(books[book_index-1])
         del(scaled_weights[book_index-1])
         book_index -= 1
-    
+    totalWeight = str(totalWeight) + " pounds"
     box = dict(zip(box_keys, (box_id, totalWeight, contents)))
     return (box, books, scaled_weights)
