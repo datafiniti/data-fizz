@@ -9,7 +9,7 @@ boxes = []
 
 i=1
 while(len(scaled_weights)):
-    (box, books, scaled_weights) = collect_to(i, books, scaled_weights)    
+    (box, books, scaled_weights) = collect_to(i, books, scaled_weights)
     boxes.append(box)
     i+=1
 
