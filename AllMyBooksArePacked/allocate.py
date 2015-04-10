@@ -1,14 +1,16 @@
 from extract import extract
-from collect import *
+from collect import collect_to
+import json
 
 books = extract(20)
-book_weights = [book['shipping_weight'] for book in books]
+scaled_weights = [int(book['shipping_weight']*10) for book in books]
 
 boxes = []
 
-box_keys = ['id', 'totalWeight', 'contents']
-capacity = 10.0
-    
-(box, books) = collect_books_to_box(DP, books, 1)
-print box
-print len(books)
+i=1
+while(len(scaled_weights)):
+    (box, books, scaled_weights) = collect_to(i, books, scaled_weights)    
+    boxes.append(box)
+    i+=1
+
+print json.dumps(boxes, sort_keys=True, indent=4, separators=(',', ': '))

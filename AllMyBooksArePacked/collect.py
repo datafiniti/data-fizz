@@ -14,57 +14,70 @@
 #
 #DP table[101][n+1], for a book_list of length n.
 
-scale_cap = int(capacity*10)
-scale_weight = [int(x*10) for x in book_weights]
-max_row = scale_cap + 1
-max_col = len(scale_weight)+1
+import numpy as np
 
-DP = [[-1 for j in range(max_col)] for i in range(max_row)]
-
-#Total weight is zero for capacity of zero.
-for j in range(max_col):
-    DP[0][j] = 0
-
-#Total weight is zero for no books
-for i in range(max_row):
-    DP[i][0] = 0
-
-#Populate table
-#i represents current capacity of the box
-#j represents book_index+1
-for j in range(1, max_col):
-    this_weight = scale_weight[j-1]
-    for w in range(1, max_row):
-        if ((w >= this_weight) and
-            (w >= this_weight + DP[w-this_weight][j-1]) and
-            (this_weight + DP[w-this_weight][j-1] > DP[w][j-1])):                
-                DP[w][j] = this_weight + DP[w-this_weight][j-1]
-        else:
-            DP[w][j] = DP[w][j-1]
+box_keys = ['id', 'totalWeight', 'contents']
+capacity = 10.0
+scaled_cap = int(capacity*10)
+    
+def populate_table(scaled_cap, scaled_weights):
+    """Populate DP table
+    Return the book index and table after populating values till necessary
+    """
+    max_row = scaled_cap + 1
+    max_col = len(scaled_weights)+1
+    DP = np.zeros((max_row, max_col), int)
+    
+    for j in range(1, max_col):
+        this_weight = scaled_weights[j-1]
+                
+        for w in range(1, max_row):
+            if ((w >= this_weight) and
+                (w >= this_weight + DP[w-this_weight][j-1]) and
+                (this_weight + DP[w-this_weight][j-1] > DP[w][j-1])):                
+                    DP[w][j] = this_weight + DP[w-this_weight][j-1]                
+            else:
+                DP[w][j] = DP[w][j-1]
+                
+        if DP[w][j] == scaled_cap:
+            return (j, DP)
+    return (max_col-1, DP)
 
 def print_table(table):
     """Prints table with row indexes at the left"""
     row_index = 0
     for row in table:
-        print row_index, row
+        print row, row_index
         row_index+=1
 
-def collect_books_to_box(DP, books, box_id):
+def collect_to(box_id, books, scaled_weights):
     """Collect books from inventory to box
     
     Returns (box, books) with books not filled in the box
     """
+    #print "\n\n****Collecting on box", box_id, ":: Books in inventory = ", len(books), "****\n"
     contents = []
     totalWeight = 0.0
     
-    book_index = len(books)
-    weight_index = len(DP) - 1
-    while weight_index:
+    (book_index, DP) = populate_table(scaled_cap, scaled_weights)
+
+    #print_table(DP)
+    #print scaled_weights
+
+    weight_index = scaled_cap
+    
+    while weight_index>0 and book_index>0:        
+        if (DP[weight_index][book_index]==0):
+            break        
         while DP[weight_index][book_index] == DP[weight_index][book_index-1]:
-            book_index -= 1
+            book_index -= 1        
         contents.append(books[book_index-1])
         totalWeight += books[book_index-1]['shipping_weight']
+        weight_index -= scaled_weights[book_index-1]        
+        #print "book_index", book_index, ": Weight", books[book_index-1]['shipping_weight'], ":weight_index", weight_index, ":: TotalWeight", totalWeight
         del(books[book_index-1])
-        weight_index -= scale_weight[book_index-1]
+        del(scaled_weights[book_index-1])
+        book_index -= 1
+    
     box = dict(zip(box_keys, (box_id, totalWeight, contents)))
-    return (box, books)
+    return (box, books, scaled_weights)
