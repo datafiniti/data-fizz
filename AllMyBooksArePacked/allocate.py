@@ -13,4 +13,4 @@ while(len(scaled_weights)):
     boxes.append(box)
     i+=1
 
-print json.dumps(boxes, sort_keys=True, indent=4, separators=(',', ': '))
+print json.dumps({'boxes': boxes}, sort_keys=True, indent=4, separators=(',', ': '))
