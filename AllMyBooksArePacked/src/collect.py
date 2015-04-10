@@ -1,6 +1,6 @@
 #For every book there are two options:
-#1. It goes in the box
-#2. It doesn't
+# 1. It goes in the box
+# 2. It doesn't
 #
 #Let total_weight be the maximum possible weight that can be achieved for a box with any given capacity, and a list of book_weights.
 #
@@ -8,7 +8,7 @@
 #     max(book_weights[0] + total_weight(capacity-book_weights[0], book_weights[1:]), 
 #         total_weight(capacity, book_weights[1:]))
 #
-#Base Cases: if (book_weight[-1]>capacity), total_weight = 0
+#Base Case: if (len(book_weights)==0), total_weight = 0
 #
 #Memoize the results? You will need to scale the weights and capacities so they are all integers. Then apply Dynamic Programming.
 #
