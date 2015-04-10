@@ -8,7 +8,7 @@ The source files can be found inside 'src/main/python/' folder.
 * bookparser.py
     Contains methods to make a book object (dictionary) from parsed HTML.
 * extract.py
-    Parses each HTML file. Makes a list of books.
+    Parses each HTML file. Makes a list of books by using bookparser.
 * collect.py
     Given a list of books, collects some of them to put in a box.
     Modifies the original list to contain only the remaining books.
