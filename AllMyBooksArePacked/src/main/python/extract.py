@@ -6,7 +6,7 @@ def extract(n):
     books = []
     for i in range(1, n+1):
         # Parse HTML file
-        parsed_html = BeautifulSoup(open('data/book%d.html' % i), 'html.parser')
+        parsed_html = BeautifulSoup(open('../../../data/book%d.html' % i), 'html.parser')
         book = set_details_from(parsed_html)    # Dictionary with key, value pairs of book details
         books.append(book)                      # List of dictionaries. List of books
     return books

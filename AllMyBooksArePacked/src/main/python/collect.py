@@ -71,9 +71,12 @@ def collect_to(box_id, books, scaled_weights):
             break        
         while DP[weight_index][book_index] == DP[weight_index][book_index-1]:
             book_index -= 1        
-        contents.append(books[book_index-1])
+        
         totalWeight += books[book_index-1]['shipping_weight']
-        weight_index -= scaled_weights[book_index-1]        
+        weight_index -= scaled_weights[book_index-1]
+        books[book_index-1]['shipping_weight'] = str(books[book_index-1]['shipping_weight']) + " pounds"
+        books[book_index-1]['price'] = str(books[book_index-1]['price']) + " USD"
+        contents.append(books[book_index-1])
         #print "book_index", book_index, ": Weight", books[book_index-1]['shipping_weight'], ":weight_index", weight_index, ":: TotalWeight", totalWeight
         del(books[book_index-1])
         del(scaled_weights[book_index-1])
