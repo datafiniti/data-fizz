@@ -173,7 +173,7 @@ class BookHTMLParser {
 		//to obtain the title
 		int titlePiece = 0;
 		while(title == ""){ //considers if the author is in the first part of title
-			if(titlePiece > 0){title = title + titleSplit[titlePiece];}
+			if(titlePiece > 0){title = title + titleSplit[titlePiece - 1];}
 			while(!(titleSplit[titlePiece].contains(author)) && titlePiece < titleSplit.length - 1){
 				title = title + titleSplit[titlePiece];
 				titlePiece++;
