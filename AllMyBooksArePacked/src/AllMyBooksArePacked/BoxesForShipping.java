@@ -34,12 +34,12 @@ public class BoxesForShipping {
 		System.setOut(ps);
 		
 		System.out.println("{");
-		for(boxId = 1; boxId <= boxList.size() - 1; boxId++){
+		for(boxId = 0; boxId <= boxList.size() - 1; boxId++){
 			
 			
 		
 			System.out.println("\t\"box\": {");
-			System.out.println("\t\t\"id\": " + boxId);
+			System.out.println("\t\t\"id\": " + (boxId + 1));
 			System.out.printf("\t\t\"totalWeight\": %.2f\n", boxList.get(boxId).getActualBoxWeight());
 			
 			int bookInBox;
