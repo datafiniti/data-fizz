@@ -1,0 +1,29 @@
+1. Domains Beyond Amazon.com
+   
+   Most all the code should be reusable, the only thing that will need to be changed is the HTML parser to be specifically coded for a different sites HTML format.
+   Then the file path will need to be changed to the directory containing those new files.
+   Should the other classes be passed the proper variables and their methods called correctly, where the same constraints are used, then they are reusable in this scenario.
+   I tried to set it up so constraints could be managed (outside the parser) with ease.
+   
+2. Products beyond simply just books.
+
+   As in #1, I see the code as reusable if the HTML parser is redone to account for a new sites HTML format. Then the other classes, with heavy name refactoring to 
+   reflect the new kind of product, are still in tact. 
+   The classes, after being renamed, can also be easily amended to add new constraints or attributes.
+   I went "book" heavy in the variable naming due to the problem presented.
+   
+3. Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20
+   
+   I actually read this before completing my solution so I coded my program to handle sorting by QuickSort with an average time of O(n log n), while upon completion of 
+   sorting, I tackle the knapsack problem part by sacrificing maximum value from box to box for runtime. I did this by filling all the boxes in one iteration of the book collection which was
+   achieved after sorting all the weights in ascending order as mentioned with quick sort, then matching the largest weight available with the lowest weights available until they were close enough to 
+   the max box weight parameter without the next value putting it over. 
+   
+I realize there is much room for improvement and modularity, but I feel like this is a good representation of a solid foundation. Combined with a strong desire to learn and improve, my skills
+will grow rapidly and exponentially. Thank you for the time and opportunity.
+
+Brandon Irizarry
+brandon@irizarry.biz
+   
+   
+   
