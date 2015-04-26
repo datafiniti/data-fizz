@@ -1,0 +1,13 @@
+EXTENSIONS - How to handle additional 
+
+
+1. Domains beyond Amazon.com
+ - SiteParser class needs to be modified to check any domain and then traverse 
+
+2. Products beyond just simply books.
+ - SiteParser class needs to be modified to accommodate different types of objects
+ - add additional object classes for other products
+
+3. Parse and ship 2,000,000 books instead of 20 (in a reasonable time frame; e.g. polynomial time).
+ - Binary search tree, which is implemented - run time is O(n log(n)) although would potential sacrifice some optimization of bags however dynamic programming would not be ideal for handling such a large quantity
+ - implement database instead of using python dictionary

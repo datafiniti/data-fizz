@@ -1,0 +1,76 @@
+{
+    "box": [
+        {
+            "contents": [
+                {
+                    "author": "",
+                    "isbn-10": "XXXXXXXXXX",
+                    "price": " USD",
+                    "shipping_weight": "4.0 pounds",
+                    "title": "eight"
+                }
+            ],
+            "id": 2,
+            "totalWeight": "4.0 pounds"
+        },
+        {
+            "contents": [
+                {
+                    "author": "",
+                    "isbn-10": "XXXXXXXXXX",
+                    "price": " USD",
+                    "shipping_weight": "2.0 pounds",
+                    "title": "seven"
+                }
+            ],
+            "id": 3,
+            "totalWeight": "2.0 pounds"
+        },
+        {
+            "contents": [
+                {
+                    "author": "",
+                    "isbn-10": "XXXXXXXXXX",
+                    "price": " USD",
+                    "shipping_weight": "5.0 pounds",
+                    "title": "six"
+                }
+            ],
+            "id": 4,
+            "totalWeight": "5.0 pounds"
+        },
+        {
+            "contents": [
+                {
+                    "author": "",
+                    "isbn-10": "XXXXXXXXXX",
+                    "price": " USD",
+                    "shipping_weight": "3.0 pounds",
+                    "title": "five"
+                },
+                {
+                    "author": "",
+                    "isbn-10": "XXXXXXXXXX",
+                    "price": " USD",
+                    "shipping_weight": "2.0 pounds",
+                    "title": "four"
+                }
+            ],
+            "id": 5,
+            "totalWeight": "5.0 pounds"
+        },
+        {
+            "contents": [
+                {
+                    "author": "",
+                    "isbn-10": "XXXXXXXXXX",
+                    "price": " USD",
+                    "shipping_weight": "4.0 pounds",
+                    "title": "three"
+                }
+            ],
+            "id": 6,
+            "totalWeight": "4.0 pounds"
+        }
+    ]
+}
