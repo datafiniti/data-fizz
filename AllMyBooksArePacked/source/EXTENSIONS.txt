@@ -1,13 +1,20 @@
-EXTENSIONS - How to handle additional 
+EXTENSIONS - How to handle additional…
 
 
 1. Domains beyond Amazon.com
- - SiteParser class needs to be modified to check any domain and then traverse 
+ - If similar data is available (title, author, weight) then biggest change would be 
+   updating html parser module to accommodate the various site structures
 
 2. Products beyond just simply books.
- - SiteParser class needs to be modified to accommodate different types of objects
- - add additional object classes for other products
+ - Again a big change would be updating the parser module to accomadate
+ - item module would need additional classes for new items
+ - Small additional changes to other modules
 
 3. Parse and ship 2,000,000 books instead of 20 (in a reasonable time frame; e.g. polynomial time).
- - Binary search tree, which is implemented - run time is O(n log(n)) although would potential sacrifice some optimization of bags however dynamic programming would not be ideal for handling such a large quantity
- - implement database instead of using python dictionary
+ - The current implemented linear sort algorithm would be most ideal for such a large 
+   dataset and possibly modified to be more efficient in the use of space.  The 
+   current implementation of the dynamic programming decision tree would not be ideal 
+   due to the space consumption and size of recursive calls.  The linear sort algorithm
+   would also allow for books to be continuously added in real time.
+ - implement back-end database for storage rather than utilize computer memory for each
+   product extracted

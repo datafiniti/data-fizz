@@ -35,6 +35,7 @@ class SiteParser(object):
                 print "Bad file:", html_file
             html_data = html_fhandler.read()
             item_list.append(self.extract_book(html_data))
+            html_fhandler.close()
 
         print "Parse complete."
         return item_list

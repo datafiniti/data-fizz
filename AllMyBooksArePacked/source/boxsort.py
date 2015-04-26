@@ -7,7 +7,7 @@ import item
 
 
 class BoxSortLogic(object):
-    """Main sort alogrithm for box sorting - O(n), optimal speed"""
+    """Main sort alogrithm for box sorting - optimal speed"""
 
     def __init__(self, books, max_weight):
         if not isinstance(books, list):
