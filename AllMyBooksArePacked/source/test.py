@@ -20,7 +20,7 @@ BOX_ONE = container.Box(10.0)
 def test_parser():
     # data = os.getcwd() + "/da"
     # clean_data = parser.SiteParser(data)
-    data = os.getcwd() + "/data/"
+    data = os.path.dirname(os.getcwd()) + "/data/"
     clean_data = parser.SiteParser(data)
     print type(clean_data)
     print clean_data.get_data_list()
@@ -69,8 +69,8 @@ def test_boxsort():
     return
 
 if __name__ == '__main__':
-    # test_book()
-    # test_box()
-    # test_parser()
-    # test_export()
+    test_book()
+    test_box()
+    test_parser()
+    test_export()
     test_boxsort()

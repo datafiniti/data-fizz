@@ -17,7 +17,7 @@ import boxsort
 import export
 
 # GLOBALS
-LOCAL_DATA = os.getcwd() + "/data/"
+LOCAL_DATA = os.path.dirname(os.getcwd()) + "/data/"
 MAX_WEIGHT = 10.0
 
 
@@ -41,14 +41,14 @@ def main_program(data_loc, sort_logic, max_weight):
     container_list = boxes.sort_books()
 
     # export in JSON txt file
-    export.export_json(container_list)
+    #export.export_json(container_list)
     print "AllMyBooksArePacked program complete."
 
 
 # program initializer
 if __name__ == '__main__':
-    main_program(LOCAL_DATA, 'linear', MAX_WEIGHT)
-    #main_program(LOCAL_DATA, 'dynamic', MAX_WEIGHT)
+    # main_program(LOCAL_DATA, 'linear', MAX_WEIGHT)
+    main_program(LOCAL_DATA, 'dynamic', MAX_WEIGHT)
 
 # HISTORY
 # Initial Concept
@@ -75,3 +75,6 @@ if __name__ == '__main__':
 #
 # Revision 4
 # completed dynamic programming module
+#
+# Revision 5
+# minor updates and tweaks

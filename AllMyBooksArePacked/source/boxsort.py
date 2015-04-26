@@ -47,9 +47,9 @@ class DynamicBoxSort(BoxSortLogic):
 
     def __init__(self, books, max_weight):
         BoxSortLogic.__init__(self, books, max_weight)
-        self.memo = {}
+        #self.memo = {}
 
-    def best_val(self, item_list, avail):
+    def best_val(self, item_list, avail, memo={}):
         """Recursive algorithm for building decision tree to determine
         best value amont weights of remaining books.
 
@@ -61,22 +61,23 @@ class DynamicBoxSort(BoxSortLogic):
         else:
             next_item = self.books[item_list[0]]
             next_weight = int(next_item.get_weight() * 100)  # scaled like max
+            memo_key = (tuple(item_list), avail)
 
         # determine if already ran computation
-        if tuple(item_list) in self.memo:
-            result = self.memo[tuple(item_list)]
+        if memo_key in memo:
+            result = memo[memo_key]
         # explore right branch of tree only
         elif next_weight > avail:
-            result = self.best_val(item_list[1:], avail)
+            result = self.best_val(item_list[1:], avail, memo)
         # choose which branch is better
         else:
             # explores left branch
             with_weight, with_weight_list =\
-                self.best_val(item_list[1:], avail - next_weight)
+                self.best_val(item_list[1:], avail - next_weight, memo)
             with_weight += next_weight
             # explores right branch
             without_weight, without_weight_list =\
-                self.best_val(item_list[1:], avail)
+                self.best_val(item_list[1:], avail, memo)
             # compares both branches
             if with_weight > without_weight:
                 result = (with_weight, with_weight_list + (item_list[0],))
@@ -84,7 +85,7 @@ class DynamicBoxSort(BoxSortLogic):
                 result = (without_weight, without_weight_list)
 
         # add new calculation to memo
-        # self.memo[tuple(item_list)] = result
+        memo[memo_key] = result
         return result
 
     def sort_books(self):
@@ -108,6 +109,6 @@ class DynamicBoxSort(BoxSortLogic):
             else:
                 break
             boxes.append(box)
-
+        print boxes
         #return list of boxes with books sorted
         return boxes

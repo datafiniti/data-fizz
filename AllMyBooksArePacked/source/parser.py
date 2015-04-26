@@ -16,8 +16,6 @@ class SiteParser(object):
         # test if local directory
         if os.access(location, os.F_OK):
             self.data_list = os.listdir(location)
-            if location[-1] != "/" and os.name == "posix":
-                self.location += "/"
         else:
             raise IOError("Not a viable location")
 
