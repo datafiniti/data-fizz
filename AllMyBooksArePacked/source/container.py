@@ -31,3 +31,4 @@ class Box(object):
             self.weight += book.get_weight()
         else:
             print "Not enough space in box: ", book.get_title()
+            print "Box: "+str(self.weight)+" Book: "+str(book.get_weight())

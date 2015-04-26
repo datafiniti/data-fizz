@@ -30,7 +30,8 @@ class BoxSortLogic(object):
         print "Data sort beginning..."
         while current_len > 0:
             item = self.books[current_len - 1]
-            if int((box.get_weight()+item.get_weight())*100) > self.scaled_max:
+            poss_weight = int(round((box.get_weight()+item.get_weight())*100))
+            if poss_weight > self.scaled_max:
                 boxes.append(box)
                 box = container.Box(self.max_weight)
             else:
@@ -47,9 +48,9 @@ class DynamicBoxSort(BoxSortLogic):
 
     def __init__(self, books, max_weight):
         BoxSortLogic.__init__(self, books, max_weight)
-        #self.memo = {}
+        self.memo = {}
 
-    def best_val(self, item_list, avail, memo={}):
+    def best_val(self, item_list, avail):
         """Recursive algorithm for building decision tree to determine
         best value amont weights of remaining books.
 
@@ -60,24 +61,25 @@ class DynamicBoxSort(BoxSortLogic):
             return (0, ())
         else:
             next_item = self.books[item_list[0]]
-            next_weight = int(next_item.get_weight() * 100)  # scaled like max
-            memo_key = (tuple(item_list), avail)
+            next_weight = int(round(next_item.get_weight() * 100))
+            num_index = "".join(str(num) for num in item_list)
+            memo_key = (num_index, avail)
 
         # determine if already ran computation
-        if memo_key in memo:
-            result = memo[memo_key]
+        if memo_key in self.memo:
+            result = self.memo[memo_key]
         # explore right branch of tree only
         elif next_weight > avail:
-            result = self.best_val(item_list[1:], avail, memo)
+            result = self.best_val(item_list[1:], avail)
         # choose which branch is better
         else:
             # explores left branch
             with_weight, with_weight_list =\
-                self.best_val(item_list[1:], avail - next_weight, memo)
+                self.best_val(item_list[1:], avail - next_weight)
             with_weight += next_weight
             # explores right branch
             without_weight, without_weight_list =\
-                self.best_val(item_list[1:], avail, memo)
+                self.best_val(item_list[1:], avail)
             # compares both branches
             if with_weight > without_weight:
                 result = (with_weight, with_weight_list + (item_list[0],))
@@ -85,7 +87,7 @@ class DynamicBoxSort(BoxSortLogic):
                 result = (without_weight, without_weight_list)
 
         # add new calculation to memo
-        memo[memo_key] = result
+        self.memo[memo_key] = result
         return result
 
     def sort_books(self):
@@ -109,6 +111,6 @@ class DynamicBoxSort(BoxSortLogic):
             else:
                 break
             boxes.append(box)
-        print boxes
+
         #return list of boxes with books sorted
         return boxes

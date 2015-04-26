@@ -10,7 +10,7 @@ import container
 import item
 
 
-def export_json(container_list):
+def export_json(container_list, fname):
     """Takes in list of containers and iterates through to create
     structured json
     """
@@ -34,7 +34,6 @@ def export_json(container_list):
             "contents": contents
         })
 
-    fname = "packedbooks.txt"
     print "Writing JSON file to: " + os.getcwd()
     with open(fname, 'w') as json_file:
         json.dump(json_doc, json_file, sort_keys=True,
