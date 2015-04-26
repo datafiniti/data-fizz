@@ -47,12 +47,12 @@ class SiteParser(object):
 
         ## regex to extract Title
         title = re.findall('btAsinTitle.+?>(.+?)<', html_data)
-        title = title[0]
+        title = title[0].strip()
         # print "Title:", title, type(title)
 
         ## regex to extract Author
-        author = re.findall('>(.+)</a.+byLinePipe', html_data)
-        author = author[0]
+        author = re.findall('>(.+?)</a.*byLinePipe', html_data)
+        author = author[0].strip()
         # print "Author:", author, type(author)
 
         ## regex to extract Weight, convert to float
@@ -62,12 +62,12 @@ class SiteParser(object):
 
         ## regex to extract price
         price = re.findall('"bb_price">\n(.+?)\s', html_data)
-        price = price[0]
+        price = price[0].strip()
         # print "Price:", price, type(price)
 
         ## regex to extract ISBN-10
         isbn = re.findall('ISBN-10:</b>\s([A-Z0-9.]+?)<', html_data)
-        isbn = isbn[0]
+        isbn = isbn[0].strip()
         # print "ISBN-10:", isbn, type(isbn)
 
         ## build book object with extracted data

@@ -47,8 +47,8 @@ def main_program(data_loc, sort_logic, max_weight):
 
 # program initializer
 if __name__ == '__main__':
-    # main_program(LOCAL_DATA, 'linear', MAX_WEIGHT)
-    main_program(LOCAL_DATA, 'dynamic', MAX_WEIGHT)
+    main_program(LOCAL_DATA, 'linear', MAX_WEIGHT)
+    #main_program(LOCAL_DATA, 'dynamic', MAX_WEIGHT)
 
 # HISTORY
 # Initial Concept
