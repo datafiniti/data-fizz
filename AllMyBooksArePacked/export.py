@@ -14,7 +14,7 @@ def export_json(container_list):
     """Takes in list of containers and iterates through to create
     structured json
     """
-    json_doc = {"box": []}
+    json_doc = {"boxes": []}
 
     print "Building JSON file..."
     for container in container_list:

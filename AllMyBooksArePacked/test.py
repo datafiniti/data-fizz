@@ -14,7 +14,7 @@ import boxsort
 # test globals
 BOOK_ONE = item.Book("Turing's Cathedral", "George Dyson",
                      '$13.66', 7.9, "1400075998")
-BOX_ONE = container.Box()
+BOX_ONE = container.Box(10.0)
 
 
 def test_parser():
@@ -61,11 +61,11 @@ def test_boxsort():
     BOOK_8 = item.Book("eight", "", "", 4.0, "XXXXXXXXXX")
     test_books = [BOOK_1, BOOK_2, BOOK_3, BOOK_4,
                   BOOK_5, BOOK_6, BOOK_7, BOOK_8]
-    boxes = boxsort.BoxSortLogic(test_books, 5.0)
+    # boxes = boxsort.BoxSortLogic(test_books, 5.0)
+    boxes = boxsort.DynamicBoxSort(test_books, 5.0)
     container_list = boxes.sort_books()
     print container_list
-    # boxes = boxsort.DynamicBoxSort(test_books, 5.0)
-    #export.export_json(container_list)
+    export.export_json(container_list)
     return
 
 if __name__ == '__main__':
