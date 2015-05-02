@@ -56,12 +56,18 @@ module Parser
 
 end
 
-html = Scrape::AmazonBook.new("./../data/book1.html").nokogiri_scrape
+#User/Console Testing
 
-book = Parser::AmazonBookParser.new(html)
+# counter = 1
+# while counter <= 20
+# html = Scrape::AmazonBook.new("./../data/book#{counter}.html").nokogiri_scrape
 
-puts book.title
-puts book.author
-puts book.price
-puts book.shipping_weight
-puts book.isbn10
+# book = Parser::AmazonBookParser.new(html)
+
+# puts book.title
+# puts book.author
+# puts book.price
+# puts book.shipping_weight
+# puts book.isbn10
+#   counter += 1
+# end
