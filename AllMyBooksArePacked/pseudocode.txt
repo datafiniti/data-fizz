@@ -14,9 +14,15 @@
   [Y]-rspec for rails
 
 -Setup indexes for both objects (json API)
-  -book
+  [Y]-book
   -boxes
   -Return them in json
+    [Y]-books
+    -box
+
+-Set up routs
+  [Y]-index for books
+  -index for boxes ~ Root
 
 
 ***Testing***
@@ -50,8 +56,11 @@
   [Y]-create
   [Y]-migrate
   [Y]-seed
-    -loop through book class and create 'em
+    [Y]-loop through book class and create 'em
     -books
     -put books in boxes?
+  -Associations
+    -A box has many books
+    -A book belongs to a box
 
 

@@ -1,4 +1,7 @@
 class Box < ActiveRecord::Base
+
+  require_dependency "book"
+
   serialize :contents, Array
   has_many :books
 
