@@ -12,7 +12,8 @@ files_to_scrape.each do |file|
   book_info = Parser::AmazonBookParser.new(scraped_file)
 
   Create::AmazonBook.new(book_info).create_object
-
 end
+
+
 
 
