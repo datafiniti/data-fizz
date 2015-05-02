@@ -1,6 +1,4 @@
 require 'spec_helper.rb'
-require 'open-uri'
-require 'nokogiri'
 require_relative '../../app/class_helpers/web_scrapinizor'
 
 
