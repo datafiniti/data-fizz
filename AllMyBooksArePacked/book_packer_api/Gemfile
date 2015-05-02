@@ -10,6 +10,12 @@ gem 'spring', :group => :development
 
 gem 'sqlite3'
 
+gem 'nokogiri'
+
+group :development, :test do
+  gem 'rspec-rails'
+end
+
 
 
 # To use ActiveModel has_secure_password
