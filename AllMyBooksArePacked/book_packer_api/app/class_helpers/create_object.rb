@@ -27,5 +27,9 @@ require_relative "book_parser"
       $box.save
     end
 
+    def begin_boxing
+      Box.create
+    end
+
   end
 end
