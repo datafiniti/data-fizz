@@ -1,16 +1,22 @@
 ***SETUP***
 
--Generate rails api
+[Y]-Generate rails api
 
--Make models, schemas, and controllers for Database.
-  -Two main objects:
-    -Book
-    -Box
+[Y]-Make models, schemas, and controllers for Database.
+  [Y]-Two main objects:
+    [Y]-Book
+      [Y]-#EDIT# change ISBN to string in case it includes letter
+    [Y]-Box
 
--Additional Gems I could use?
-  -Nokogiri
-  -open-uri
-  -rspec for rails
+[Y]-Additional Gems I could use?
+  [Y]-Nokogiri
+  [Y]-open-uri ~ Standard in ruby
+  [Y]-rspec for rails
+
+-Setup indexes for both objects (json API)
+  -book
+  -boxes
+  -Return them in json
 
 
 ***Testing***
@@ -18,25 +24,34 @@
 - Create rspec tests for:
   -Box Model
   -Book Model
-  -Box index (make sure they print to the screen in json)
-  -Book index (make sure they print to the screen in json)
+  [Y]-Box index (make sure they print to the screen in json)
+  [Y]-Book index (make sure they print to the screen in json)
+  -Class Helpers
 
 
 ***OO Scraping***
 
 -Classes?
-  -Web scraper
-  -Parse the html (SINGLE RESPONSIBLITY)
+  [Y]-Web scraper
+  [Y]-Parse the html (SINGLE RESPONSIBLITY)
+    [Y]-You need:
+      [Y]-title
+      [Y]-author
+      [Y]-price
+      [Y]-shipping weight
+      [Y]-ISBN-10
   -Push the book to the database?
   -make a box?
+    -made a Packer class that creates boxes and stuffs them with books
   -optimize box space?
 
 ***Database***
 
-  -create
-  -migrate
-  -seed
+  [Y]-create
+  [Y]-migrate
+  [Y]-seed
     -loop through book class and create 'em
+    -books
     -put books in boxes?
 
 
