@@ -30,7 +30,7 @@ def box_packing
       $box_total_weight = $box.totalWeight.match((/\d+[,.]\d+/)).to_s.to_f
       p "Box #{$box.id} total weight right now: #{$box_total_weight}"
 
-      if ($box_total_weight + $book_weight) <= 10
+      if (@warehouse_guy.weigh_box_with_book) <= 10
         @warehouse_guy.add_item_to_box(@book)
         p "Putting book #{@book.id} into  box #{$box.id}"
         break
