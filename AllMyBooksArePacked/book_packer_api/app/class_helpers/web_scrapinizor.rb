@@ -15,4 +15,6 @@ module Scrape
   end
 end
 
+
+#User/Console Testing
 # puts Scrape::AmazonBook.new("./../data/book1.html").nokogiri_scrape
