@@ -1,7 +1,12 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+require_relative '../app/class_helpers/web_scrapinizor'
+require_relative '../app/class_helpers/book_parser'
+# require_relative '../app/class_helpers/create_record'
+
+
+files_to_scrape = Dir.entries('./../data').select{|file| file.include?("html")}
+
+files_to_scrape.each do |file|
+
+  puts file
+
+end
