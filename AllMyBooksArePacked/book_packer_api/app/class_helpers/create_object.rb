@@ -21,14 +21,29 @@ require_relative "book_parser"
     attr_reader :max_cap
     attr_accessor :current_weight
 
-    def add_content_to_box(item)
+    def begin_boxing
+      Box.create
+    end
+
+    def add_item_to_box(item)
       $box.contents << item
       $box.update_attribute(:totalWeight, "#{$book_weight + $box_total_weight} pounds")
       $box.save
     end
 
-    def begin_boxing
-      Box.create
+
+    #For some reason my seed file DID NOT like this method.....
+    # def create_new_box
+    #   new_box = Box.create(totalWeight: "#{$book_weight} pounds", contents: [@book])
+    #   p "now the box weight it #{new_box.totalWeight}"
+    # end
+
+    # def add_weight_to_box
+    #   $box.
+    # end
+
+    def weigh_box
+      $box_total_weight + $book_weight
     end
 
   end
