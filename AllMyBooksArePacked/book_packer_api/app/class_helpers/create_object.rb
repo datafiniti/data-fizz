@@ -14,4 +14,18 @@ require_relative "book_parser"
     end
 
   end
+
+
+
+  class BookPackagePacker
+    attr_reader :max_cap
+    attr_accessor :current_weight
+
+    def add_content_to_box(item)
+      $box.contents << item
+      $box.update_attribute(:totalWeight, "#{$book_weight + $box_total_weight} pounds")
+      $box.save
+    end
+
+  end
 end

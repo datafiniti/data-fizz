@@ -1,6 +1,7 @@
 class BoxesController < ApplicationController
   def index
     @boxes = Box.all
+
     render json: Box.all.as_json(
       :root => true,
       :except => [:created_at, :updated_at]),
