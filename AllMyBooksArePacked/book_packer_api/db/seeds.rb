@@ -14,6 +14,23 @@ files_to_scrape.each do |file|
   Create::AmazonBook.new(book_info).create_object
 end
 
+def box_packing
+
+  @warehouse_guy = Create::BookPackagePacker.new
+  @warehouse_guy.begin_boxing
+
+  Book.order(shipping_weight: :desc).each do |book|
+
+
+    Box.all.each do |box|
+
+
+    end
+  end
+end
+
+box_packing
+
 
 
 

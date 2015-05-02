@@ -120,3 +120,775 @@ Started GET "/" for ::1 at 2015-05-02 14:03:51 -0700
 Processing by BoxesController#index as HTML
   [1m[36mBox Load (0.5ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
 Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2015-05-02 14:13:23 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BoxesController#index as HTML
+  [1m[35mBox Load (0.6ms)[0m  SELECT "boxes".* FROM "boxes"
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/books" for ::1 at 2015-05-02 14:13:27 -0700
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.7ms)[0m  [1mSELECT "books".* FROM "books"[0m
+Completed 200 OK in 21ms (Views: 15.4ms | ActiveRecord: 1.2ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  begin transaction
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Zealot: The Life and Times of Jesus of Nazareth [Hardcover]"], ["author", "Reza Aslan"], ["price", "$16.89 USD"], ["shipping_weight", "1.2 pounds"], ["isbn_10", "140006922X"], ["created_at", "2015-05-02 21:19:14.337446"], ["updated_at", "2015-05-02 21:19:14.337446"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The Ocean at the End of the Lane: A Novel [Deckle Edge] [Hardcover]"], ["author", "Neil Gaiman"], ["price", "$15.22 USD"], ["shipping_weight", "4.1 pounds"], ["isbn_10", "0062255657"], ["created_at", "2015-05-02 21:19:14.402473"], ["updated_at", "2015-05-02 21:19:14.402473"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The Europa Regional Surveys of the World Set 2011: 9-Volume Set [Hardcover]"], ["author", "Europa Publications"], ["price", "$7,450.00 USD"], ["shipping_weight", "7.8 pounds"], ["isbn_10", "1857435885"], ["created_at", "2015-05-02 21:19:14.451703"], ["updated_at", "2015-05-02 21:19:14.451703"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "No god but God: The Origins and Evolution of Islam [Paperback]"], ["author", "Reza Aslan"], ["price", "$8.99 USD"], ["shipping_weight", "2.6 pounds"], ["isbn_10", "0385739761"], ["created_at", "2015-05-02 21:19:14.508732"], ["updated_at", "2015-05-02 21:19:14.508732"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Man of Steel: Inside the Legendary World of Superman [Hardcover]"], ["author", "Daniel Wallace"], ["price", "$31.07 USD"], ["shipping_weight", "2.8 pounds"], ["isbn_10", "1608871819"], ["created_at", "2015-05-02 21:19:14.595001"], ["updated_at", "2015-05-02 21:19:14.595001"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "World War Z: The Art of the Film [Paperback]"], ["author", "Titan Books"], ["price", "$15.83 USD"], ["shipping_weight", "7.6 pounds"], ["isbn_10", "1781168857"], ["created_at", "2015-05-02 21:19:14.655251"], ["updated_at", "2015-05-02 21:19:14.655251"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "I Wear the Black Hat: Grappling with Villains (Real and Imagined) [Hardcover]"], ["author", "Chuck Klosterman"], ["price", "$15.49 USD"], ["shipping_weight", "2.2 pounds"], ["isbn_10", "1439184496"], ["created_at", "2015-05-02 21:19:14.714935"], ["updated_at", "2015-05-02 21:19:14.714935"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The Ocean at the End of the Lane: A Novel [Deckle Edge] [Hardcover]"], ["author", "Neil Gaiman"], ["price", "$15.22 USD"], ["shipping_weight", "9.4 pounds"], ["isbn_10", "0062255657"], ["created_at", "2015-05-02 21:19:14.803922"], ["updated_at", "2015-05-02 21:19:14.803922"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The Unforgiven [Paperback]"], ["author", "Alan LeMay"], ["price", "$8.97 USD"], ["shipping_weight", "8.8 pounds"], ["isbn_10", "147780630X"], ["created_at", "2015-05-02 21:19:14.865742"], ["updated_at", "2015-05-02 21:19:14.865742"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The Cuckoo's Calling [Hardcover]"], ["author", "Robert Galbraith"], ["price", "$17.47 USD"], ["shipping_weight", "1.4 pounds"], ["isbn_10", "0316206849"], ["created_at", "2015-05-02 21:19:14.925170"], ["updated_at", "2015-05-02 21:19:14.925170"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The English Girl: A Novel (Gabriel Allon) [Hardcover]"], ["author", "Daniel Silva"], ["price", "$16.46 USD"], ["shipping_weight", "3.6 pounds"], ["isbn_10", "0062073168"], ["created_at", "2015-05-02 21:19:15.016815"], ["updated_at", "2015-05-02 21:19:15.016815"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "Pacific Rim: Man, Machines, and Monsters [Hardcover]"], ["author", "David S Cohen"], ["price", "$27.83 USD"], ["shipping_weight", "3.2 pounds"], ["isbn_10", "1608871827"], ["created_at", "2015-05-02 21:19:15.078723"], ["updated_at", "2015-05-02 21:19:15.078723"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Never Go Back: A Jack Reacher Novel [Hardcover]"], ["author", "Lee Child"], ["price", "$17.52 USD"], ["shipping_weight", "4.9 pounds"], ["isbn_10", "0385344341"], ["created_at", "2015-05-02 21:19:15.134558"], ["updated_at", "2015-05-02 21:19:15.134558"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "Inquebrantable: Mi Historia, A Mi Manera (Atria Espanol) (Spanish Edition) [Paperback]"], ["author", "Jenni Rivera"], ["price", "$10.18 USD"], ["shipping_weight", "6.4 pounds"], ["isbn_10", "1476745420"], ["created_at", "2015-05-02 21:19:15.225569"], ["updated_at", "2015-05-02 21:19:15.225569"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Sylvia Day Crossfire Series Boxed Set: Bared to You/Reflected in You/Entwined with You [Paperback]"], ["author", "Sylvia Day"], ["price", "$26.32 USD"], ["shipping_weight", "2.2 pounds"], ["isbn_10", "0425266060"], ["created_at", "2015-05-02 21:19:15.282053"], ["updated_at", "2015-05-02 21:19:15.282053"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The English Girl: A Novel (Gabriel Allon) [Hardcover]"], ["author", "Daniel Silva"], ["price", "$16.46 USD"], ["shipping_weight", "3.6 pounds"], ["isbn_10", "0062073168"], ["created_at", "2015-05-02 21:19:15.343156"], ["updated_at", "2015-05-02 21:19:15.343156"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The House of Hades (Heroes of Olympus, Book 4) [Hardcover]"], ["author", "Rick Riordan"], ["price", "$10.19 USD"], ["shipping_weight", "4.4 pounds"], ["isbn_10", "1423146727"], ["created_at", "2015-05-02 21:19:15.397039"], ["updated_at", "2015-05-02 21:19:15.397039"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "This Town: Two Parties and a Funeral-Plus, Plenty of Valet Parking!-in America's Gilded Capital [Hardcover]"], ["author", "Mark Leibovich"], ["price", "$15.37 USD"], ["shipping_weight", "1.4 pounds"], ["isbn_10", "0399161309"], ["created_at", "2015-05-02 21:19:15.489742"], ["updated_at", "2015-05-02 21:19:15.489742"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The Pioneer Woman Cooks: A Year of Holidays: 135 Step-by-Step Recipes for Simple, Scrumptious Celebrations [Hardcover]"], ["author", "Ree Drummond"], ["price", "$20.29 USD"], ["shipping_weight", "1.4 pounds"], ["isbn_10", "0062225227"], ["created_at", "2015-05-02 21:19:15.548723"], ["updated_at", "2015-05-02 21:19:15.548723"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "A New Kind of Science [Hardcover]"], ["author", "Stephen Wolfram"], ["price", " USD"], ["shipping_weight", "5.6 pounds"], ["isbn_10", "1579550088"], ["created_at", "2015-05-02 21:19:15.604038"], ["updated_at", "2015-05-02 21:19:15.604038"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.7ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Zealot: The Life and Times of Jesus of Nazareth [Hardcover]"], ["author", "Reza Aslan"], ["price", "$16.89 USD"], ["shipping_weight", "1.2 pounds"], ["isbn_10", "140006922X"], ["created_at", "2015-05-02 21:19:43.332868"], ["updated_at", "2015-05-02 21:19:43.332868"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The Ocean at the End of the Lane: A Novel [Deckle Edge] [Hardcover]"], ["author", "Neil Gaiman"], ["price", "$15.22 USD"], ["shipping_weight", "4.1 pounds"], ["isbn_10", "0062255657"], ["created_at", "2015-05-02 21:19:43.396328"], ["updated_at", "2015-05-02 21:19:43.396328"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The Europa Regional Surveys of the World Set 2011: 9-Volume Set [Hardcover]"], ["author", "Europa Publications"], ["price", "$7,450.00 USD"], ["shipping_weight", "7.8 pounds"], ["isbn_10", "1857435885"], ["created_at", "2015-05-02 21:19:43.446240"], ["updated_at", "2015-05-02 21:19:43.446240"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "No god but God: The Origins and Evolution of Islam [Paperback]"], ["author", "Reza Aslan"], ["price", "$8.99 USD"], ["shipping_weight", "2.6 pounds"], ["isbn_10", "0385739761"], ["created_at", "2015-05-02 21:19:43.503757"], ["updated_at", "2015-05-02 21:19:43.503757"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Man of Steel: Inside the Legendary World of Superman [Hardcover]"], ["author", "Daniel Wallace"], ["price", "$31.07 USD"], ["shipping_weight", "2.8 pounds"], ["isbn_10", "1608871819"], ["created_at", "2015-05-02 21:19:43.587595"], ["updated_at", "2015-05-02 21:19:43.587595"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "World War Z: The Art of the Film [Paperback]"], ["author", "Titan Books"], ["price", "$15.83 USD"], ["shipping_weight", "7.6 pounds"], ["isbn_10", "1781168857"], ["created_at", "2015-05-02 21:19:43.642784"], ["updated_at", "2015-05-02 21:19:43.642784"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "I Wear the Black Hat: Grappling with Villains (Real and Imagined) [Hardcover]"], ["author", "Chuck Klosterman"], ["price", "$15.49 USD"], ["shipping_weight", "2.2 pounds"], ["isbn_10", "1439184496"], ["created_at", "2015-05-02 21:19:43.702095"], ["updated_at", "2015-05-02 21:19:43.702095"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The Ocean at the End of the Lane: A Novel [Deckle Edge] [Hardcover]"], ["author", "Neil Gaiman"], ["price", "$15.22 USD"], ["shipping_weight", "9.4 pounds"], ["isbn_10", "0062255657"], ["created_at", "2015-05-02 21:19:43.787554"], ["updated_at", "2015-05-02 21:19:43.787554"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The Unforgiven [Paperback]"], ["author", "Alan LeMay"], ["price", "$8.97 USD"], ["shipping_weight", "8.8 pounds"], ["isbn_10", "147780630X"], ["created_at", "2015-05-02 21:19:43.842998"], ["updated_at", "2015-05-02 21:19:43.842998"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The Cuckoo's Calling [Hardcover]"], ["author", "Robert Galbraith"], ["price", "$17.47 USD"], ["shipping_weight", "1.4 pounds"], ["isbn_10", "0316206849"], ["created_at", "2015-05-02 21:19:43.901560"], ["updated_at", "2015-05-02 21:19:43.901560"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The English Girl: A Novel (Gabriel Allon) [Hardcover]"], ["author", "Daniel Silva"], ["price", "$16.46 USD"], ["shipping_weight", "3.6 pounds"], ["isbn_10", "0062073168"], ["created_at", "2015-05-02 21:19:43.988279"], ["updated_at", "2015-05-02 21:19:43.988279"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "Pacific Rim: Man, Machines, and Monsters [Hardcover]"], ["author", "David S Cohen"], ["price", "$27.83 USD"], ["shipping_weight", "3.2 pounds"], ["isbn_10", "1608871827"], ["created_at", "2015-05-02 21:19:44.043925"], ["updated_at", "2015-05-02 21:19:44.043925"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Never Go Back: A Jack Reacher Novel [Hardcover]"], ["author", "Lee Child"], ["price", "$17.52 USD"], ["shipping_weight", "4.9 pounds"], ["isbn_10", "0385344341"], ["created_at", "2015-05-02 21:19:44.099347"], ["updated_at", "2015-05-02 21:19:44.099347"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "Inquebrantable: Mi Historia, A Mi Manera (Atria Espanol) (Spanish Edition) [Paperback]"], ["author", "Jenni Rivera"], ["price", "$10.18 USD"], ["shipping_weight", "6.4 pounds"], ["isbn_10", "1476745420"], ["created_at", "2015-05-02 21:19:44.184421"], ["updated_at", "2015-05-02 21:19:44.184421"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Sylvia Day Crossfire Series Boxed Set: Bared to You/Reflected in You/Entwined with You [Paperback]"], ["author", "Sylvia Day"], ["price", "$26.32 USD"], ["shipping_weight", "2.2 pounds"], ["isbn_10", "0425266060"], ["created_at", "2015-05-02 21:19:44.241130"], ["updated_at", "2015-05-02 21:19:44.241130"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The English Girl: A Novel (Gabriel Allon) [Hardcover]"], ["author", "Daniel Silva"], ["price", "$16.46 USD"], ["shipping_weight", "3.6 pounds"], ["isbn_10", "0062073168"], ["created_at", "2015-05-02 21:19:44.297650"], ["updated_at", "2015-05-02 21:19:44.297650"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The House of Hades (Heroes of Olympus, Book 4) [Hardcover]"], ["author", "Rick Riordan"], ["price", "$10.19 USD"], ["shipping_weight", "4.4 pounds"], ["isbn_10", "1423146727"], ["created_at", "2015-05-02 21:19:44.353039"], ["updated_at", "2015-05-02 21:19:44.353039"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "This Town: Two Parties and a Funeral-Plus, Plenty of Valet Parking!-in America's Gilded Capital [Hardcover]"], ["author", "Mark Leibovich"], ["price", "$15.37 USD"], ["shipping_weight", "1.4 pounds"], ["isbn_10", "0399161309"], ["created_at", "2015-05-02 21:19:44.438035"], ["updated_at", "2015-05-02 21:19:44.438035"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The Pioneer Woman Cooks: A Year of Holidays: 135 Step-by-Step Recipes for Simple, Scrumptious Celebrations [Hardcover]"], ["author", "Ree Drummond"], ["price", "$20.29 USD"], ["shipping_weight", "1.4 pounds"], ["isbn_10", "0062225227"], ["created_at", "2015-05-02 21:19:44.490916"], ["updated_at", "2015-05-02 21:19:44.490916"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "A New Kind of Science [Hardcover]"], ["author", "Stephen Wolfram"], ["price", " USD"], ["shipping_weight", "5.6 pounds"], ["isbn_10", "1579550088"], ["created_at", "2015-05-02 21:19:44.547245"], ["updated_at", "2015-05-02 21:19:44.547245"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Zealot: The Life and Times of Jesus of Nazareth [Hardcover]"], ["author", "Reza Aslan"], ["price", "$16.89 USD"], ["shipping_weight", "1.2 pounds"], ["isbn_10", "140006922X"], ["created_at", "2015-05-02 21:20:32.239421"], ["updated_at", "2015-05-02 21:20:32.239421"]]
+  [1m[35m (9.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The Ocean at the End of the Lane: A Novel [Deckle Edge] [Hardcover]"], ["author", "Neil Gaiman"], ["price", "$15.22 USD"], ["shipping_weight", "4.1 pounds"], ["isbn_10", "0062255657"], ["created_at", "2015-05-02 21:20:32.308465"], ["updated_at", "2015-05-02 21:20:32.308465"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The Europa Regional Surveys of the World Set 2011: 9-Volume Set [Hardcover]"], ["author", "Europa Publications"], ["price", "$7,450.00 USD"], ["shipping_weight", "7.8 pounds"], ["isbn_10", "1857435885"], ["created_at", "2015-05-02 21:20:32.355255"], ["updated_at", "2015-05-02 21:20:32.355255"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "No god but God: The Origins and Evolution of Islam [Paperback]"], ["author", "Reza Aslan"], ["price", "$8.99 USD"], ["shipping_weight", "2.6 pounds"], ["isbn_10", "0385739761"], ["created_at", "2015-05-02 21:20:32.412961"], ["updated_at", "2015-05-02 21:20:32.412961"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Man of Steel: Inside the Legendary World of Superman [Hardcover]"], ["author", "Daniel Wallace"], ["price", "$31.07 USD"], ["shipping_weight", "2.8 pounds"], ["isbn_10", "1608871819"], ["created_at", "2015-05-02 21:20:32.495633"], ["updated_at", "2015-05-02 21:20:32.495633"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "World War Z: The Art of the Film [Paperback]"], ["author", "Titan Books"], ["price", "$15.83 USD"], ["shipping_weight", "7.6 pounds"], ["isbn_10", "1781168857"], ["created_at", "2015-05-02 21:20:32.547721"], ["updated_at", "2015-05-02 21:20:32.547721"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "I Wear the Black Hat: Grappling with Villains (Real and Imagined) [Hardcover]"], ["author", "Chuck Klosterman"], ["price", "$15.49 USD"], ["shipping_weight", "2.2 pounds"], ["isbn_10", "1439184496"], ["created_at", "2015-05-02 21:20:32.599987"], ["updated_at", "2015-05-02 21:20:32.599987"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The Ocean at the End of the Lane: A Novel [Deckle Edge] [Hardcover]"], ["author", "Neil Gaiman"], ["price", "$15.22 USD"], ["shipping_weight", "9.4 pounds"], ["isbn_10", "0062255657"], ["created_at", "2015-05-02 21:20:32.688111"], ["updated_at", "2015-05-02 21:20:32.688111"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The Unforgiven [Paperback]"], ["author", "Alan LeMay"], ["price", "$8.97 USD"], ["shipping_weight", "8.8 pounds"], ["isbn_10", "147780630X"], ["created_at", "2015-05-02 21:20:32.741280"], ["updated_at", "2015-05-02 21:20:32.741280"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The Cuckoo's Calling [Hardcover]"], ["author", "Robert Galbraith"], ["price", "$17.47 USD"], ["shipping_weight", "1.4 pounds"], ["isbn_10", "0316206849"], ["created_at", "2015-05-02 21:20:32.794595"], ["updated_at", "2015-05-02 21:20:32.794595"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The English Girl: A Novel (Gabriel Allon) [Hardcover]"], ["author", "Daniel Silva"], ["price", "$16.46 USD"], ["shipping_weight", "3.6 pounds"], ["isbn_10", "0062073168"], ["created_at", "2015-05-02 21:20:32.873975"], ["updated_at", "2015-05-02 21:20:32.873975"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "Pacific Rim: Man, Machines, and Monsters [Hardcover]"], ["author", "David S Cohen"], ["price", "$27.83 USD"], ["shipping_weight", "3.2 pounds"], ["isbn_10", "1608871827"], ["created_at", "2015-05-02 21:20:32.933700"], ["updated_at", "2015-05-02 21:20:32.933700"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Never Go Back: A Jack Reacher Novel [Hardcover]"], ["author", "Lee Child"], ["price", "$17.52 USD"], ["shipping_weight", "4.9 pounds"], ["isbn_10", "0385344341"], ["created_at", "2015-05-02 21:20:32.984046"], ["updated_at", "2015-05-02 21:20:32.984046"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "Inquebrantable: Mi Historia, A Mi Manera (Atria Espanol) (Spanish Edition) [Paperback]"], ["author", "Jenni Rivera"], ["price", "$10.18 USD"], ["shipping_weight", "6.4 pounds"], ["isbn_10", "1476745420"], ["created_at", "2015-05-02 21:20:33.067029"], ["updated_at", "2015-05-02 21:20:33.067029"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Sylvia Day Crossfire Series Boxed Set: Bared to You/Reflected in You/Entwined with You [Paperback]"], ["author", "Sylvia Day"], ["price", "$26.32 USD"], ["shipping_weight", "2.2 pounds"], ["isbn_10", "0425266060"], ["created_at", "2015-05-02 21:20:33.124839"], ["updated_at", "2015-05-02 21:20:33.124839"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The English Girl: A Novel (Gabriel Allon) [Hardcover]"], ["author", "Daniel Silva"], ["price", "$16.46 USD"], ["shipping_weight", "3.6 pounds"], ["isbn_10", "0062073168"], ["created_at", "2015-05-02 21:20:33.184342"], ["updated_at", "2015-05-02 21:20:33.184342"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The House of Hades (Heroes of Olympus, Book 4) [Hardcover]"], ["author", "Rick Riordan"], ["price", "$10.19 USD"], ["shipping_weight", "4.4 pounds"], ["isbn_10", "1423146727"], ["created_at", "2015-05-02 21:20:33.235636"], ["updated_at", "2015-05-02 21:20:33.235636"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "This Town: Two Parties and a Funeral-Plus, Plenty of Valet Parking!-in America's Gilded Capital [Hardcover]"], ["author", "Mark Leibovich"], ["price", "$15.37 USD"], ["shipping_weight", "1.4 pounds"], ["isbn_10", "0399161309"], ["created_at", "2015-05-02 21:20:33.315934"], ["updated_at", "2015-05-02 21:20:33.315934"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The Pioneer Woman Cooks: A Year of Holidays: 135 Step-by-Step Recipes for Simple, Scrumptious Celebrations [Hardcover]"], ["author", "Ree Drummond"], ["price", "$20.29 USD"], ["shipping_weight", "1.4 pounds"], ["isbn_10", "0062225227"], ["created_at", "2015-05-02 21:20:33.368877"], ["updated_at", "2015-05-02 21:20:33.368877"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "A New Kind of Science [Hardcover]"], ["author", "Stephen Wolfram"], ["price", " USD"], ["shipping_weight", "5.6 pounds"], ["isbn_10", "1579550088"], ["created_at", "2015-05-02 21:20:33.421323"], ["updated_at", "2015-05-02 21:20:33.421323"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Zealot: The Life and Times of Jesus of Nazareth [Hardcover]"], ["author", "Reza Aslan"], ["price", "$16.89 USD"], ["shipping_weight", "1.2 pounds"], ["isbn_10", "140006922X"], ["created_at", "2015-05-02 21:21:09.177874"], ["updated_at", "2015-05-02 21:21:09.177874"]]
+  [1m[35m (8.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The Ocean at the End of the Lane: A Novel [Deckle Edge] [Hardcover]"], ["author", "Neil Gaiman"], ["price", "$15.22 USD"], ["shipping_weight", "4.1 pounds"], ["isbn_10", "0062255657"], ["created_at", "2015-05-02 21:21:09.268500"], ["updated_at", "2015-05-02 21:21:09.268500"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The Europa Regional Surveys of the World Set 2011: 9-Volume Set [Hardcover]"], ["author", "Europa Publications"], ["price", "$7,450.00 USD"], ["shipping_weight", "7.8 pounds"], ["isbn_10", "1857435885"], ["created_at", "2015-05-02 21:21:09.316002"], ["updated_at", "2015-05-02 21:21:09.316002"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "No god but God: The Origins and Evolution of Islam [Paperback]"], ["author", "Reza Aslan"], ["price", "$8.99 USD"], ["shipping_weight", "2.6 pounds"], ["isbn_10", "0385739761"], ["created_at", "2015-05-02 21:21:09.374461"], ["updated_at", "2015-05-02 21:21:09.374461"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Man of Steel: Inside the Legendary World of Superman [Hardcover]"], ["author", "Daniel Wallace"], ["price", "$31.07 USD"], ["shipping_weight", "2.8 pounds"], ["isbn_10", "1608871819"], ["created_at", "2015-05-02 21:21:09.426853"], ["updated_at", "2015-05-02 21:21:09.426853"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "World War Z: The Art of the Film [Paperback]"], ["author", "Titan Books"], ["price", "$15.83 USD"], ["shipping_weight", "7.6 pounds"], ["isbn_10", "1781168857"], ["created_at", "2015-05-02 21:21:09.477055"], ["updated_at", "2015-05-02 21:21:09.477055"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "I Wear the Black Hat: Grappling with Villains (Real and Imagined) [Hardcover]"], ["author", "Chuck Klosterman"], ["price", "$15.49 USD"], ["shipping_weight", "2.2 pounds"], ["isbn_10", "1439184496"], ["created_at", "2015-05-02 21:21:09.559116"], ["updated_at", "2015-05-02 21:21:09.559116"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The Ocean at the End of the Lane: A Novel [Deckle Edge] [Hardcover]"], ["author", "Neil Gaiman"], ["price", "$15.22 USD"], ["shipping_weight", "9.4 pounds"], ["isbn_10", "0062255657"], ["created_at", "2015-05-02 21:21:09.615710"], ["updated_at", "2015-05-02 21:21:09.615710"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The Unforgiven [Paperback]"], ["author", "Alan LeMay"], ["price", "$8.97 USD"], ["shipping_weight", "8.8 pounds"], ["isbn_10", "147780630X"], ["created_at", "2015-05-02 21:21:09.698237"], ["updated_at", "2015-05-02 21:21:09.698237"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The Cuckoo's Calling [Hardcover]"], ["author", "Robert Galbraith"], ["price", "$17.47 USD"], ["shipping_weight", "1.4 pounds"], ["isbn_10", "0316206849"], ["created_at", "2015-05-02 21:21:09.753377"], ["updated_at", "2015-05-02 21:21:09.753377"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The English Girl: A Novel (Gabriel Allon) [Hardcover]"], ["author", "Daniel Silva"], ["price", "$16.46 USD"], ["shipping_weight", "3.6 pounds"], ["isbn_10", "0062073168"], ["created_at", "2015-05-02 21:21:09.809947"], ["updated_at", "2015-05-02 21:21:09.809947"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "Pacific Rim: Man, Machines, and Monsters [Hardcover]"], ["author", "David S Cohen"], ["price", "$27.83 USD"], ["shipping_weight", "3.2 pounds"], ["isbn_10", "1608871827"], ["created_at", "2015-05-02 21:21:09.890124"], ["updated_at", "2015-05-02 21:21:09.890124"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Never Go Back: A Jack Reacher Novel [Hardcover]"], ["author", "Lee Child"], ["price", "$17.52 USD"], ["shipping_weight", "4.9 pounds"], ["isbn_10", "0385344341"], ["created_at", "2015-05-02 21:21:09.943362"], ["updated_at", "2015-05-02 21:21:09.943362"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "Inquebrantable: Mi Historia, A Mi Manera (Atria Espanol) (Spanish Edition) [Paperback]"], ["author", "Jenni Rivera"], ["price", "$10.18 USD"], ["shipping_weight", "6.4 pounds"], ["isbn_10", "1476745420"], ["created_at", "2015-05-02 21:21:09.998387"], ["updated_at", "2015-05-02 21:21:09.998387"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Sylvia Day Crossfire Series Boxed Set: Bared to You/Reflected in You/Entwined with You [Paperback]"], ["author", "Sylvia Day"], ["price", "$26.32 USD"], ["shipping_weight", "2.2 pounds"], ["isbn_10", "0425266060"], ["created_at", "2015-05-02 21:21:10.081578"], ["updated_at", "2015-05-02 21:21:10.081578"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The English Girl: A Novel (Gabriel Allon) [Hardcover]"], ["author", "Daniel Silva"], ["price", "$16.46 USD"], ["shipping_weight", "3.6 pounds"], ["isbn_10", "0062073168"], ["created_at", "2015-05-02 21:21:10.139982"], ["updated_at", "2015-05-02 21:21:10.139982"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The House of Hades (Heroes of Olympus, Book 4) [Hardcover]"], ["author", "Rick Riordan"], ["price", "$10.19 USD"], ["shipping_weight", "4.4 pounds"], ["isbn_10", "1423146727"], ["created_at", "2015-05-02 21:21:10.193840"], ["updated_at", "2015-05-02 21:21:10.193840"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "This Town: Two Parties and a Funeral-Plus, Plenty of Valet Parking!-in America's Gilded Capital [Hardcover]"], ["author", "Mark Leibovich"], ["price", "$15.37 USD"], ["shipping_weight", "1.4 pounds"], ["isbn_10", "0399161309"], ["created_at", "2015-05-02 21:21:10.275183"], ["updated_at", "2015-05-02 21:21:10.275183"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The Pioneer Woman Cooks: A Year of Holidays: 135 Step-by-Step Recipes for Simple, Scrumptious Celebrations [Hardcover]"], ["author", "Ree Drummond"], ["price", "$20.29 USD"], ["shipping_weight", "1.4 pounds"], ["isbn_10", "0062225227"], ["created_at", "2015-05-02 21:21:10.328746"], ["updated_at", "2015-05-02 21:21:10.328746"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "A New Kind of Science [Hardcover]"], ["author", "Stephen Wolfram"], ["price", " USD"], ["shipping_weight", "5.6 pounds"], ["isbn_10", "1579550088"], ["created_at", "2015-05-02 21:21:10.382743"], ["updated_at", "2015-05-02 21:21:10.382743"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "boxes" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2015-05-02 21:21:10.392023"], ["updated_at", "2015-05-02 21:21:10.392023"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36mBook Load (0.7ms)[0m  [1mSELECT "books".* FROM "books"  ORDER BY "books"."shipping_weight" DESC[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.5ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Zealot: The Life and Times of Jesus of Nazareth [Hardcover]"], ["author", "Reza Aslan"], ["price", "$16.89 USD"], ["shipping_weight", "1.2 pounds"], ["isbn_10", "140006922X"], ["created_at", "2015-05-02 21:23:24.980535"], ["updated_at", "2015-05-02 21:23:24.980535"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The Ocean at the End of the Lane: A Novel [Deckle Edge] [Hardcover]"], ["author", "Neil Gaiman"], ["price", "$15.22 USD"], ["shipping_weight", "4.1 pounds"], ["isbn_10", "0062255657"], ["created_at", "2015-05-02 21:23:25.072026"], ["updated_at", "2015-05-02 21:23:25.072026"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The Europa Regional Surveys of the World Set 2011: 9-Volume Set [Hardcover]"], ["author", "Europa Publications"], ["price", "$7,450.00 USD"], ["shipping_weight", "7.8 pounds"], ["isbn_10", "1857435885"], ["created_at", "2015-05-02 21:23:25.122639"], ["updated_at", "2015-05-02 21:23:25.122639"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "No god but God: The Origins and Evolution of Islam [Paperback]"], ["author", "Reza Aslan"], ["price", "$8.99 USD"], ["shipping_weight", "2.6 pounds"], ["isbn_10", "0385739761"], ["created_at", "2015-05-02 21:23:25.176508"], ["updated_at", "2015-05-02 21:23:25.176508"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Man of Steel: Inside the Legendary World of Superman [Hardcover]"], ["author", "Daniel Wallace"], ["price", "$31.07 USD"], ["shipping_weight", "2.8 pounds"], ["isbn_10", "1608871819"], ["created_at", "2015-05-02 21:23:25.239554"], ["updated_at", "2015-05-02 21:23:25.239554"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "World War Z: The Art of the Film [Paperback]"], ["author", "Titan Books"], ["price", "$15.83 USD"], ["shipping_weight", "7.6 pounds"], ["isbn_10", "1781168857"], ["created_at", "2015-05-02 21:23:25.298490"], ["updated_at", "2015-05-02 21:23:25.298490"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "I Wear the Black Hat: Grappling with Villains (Real and Imagined) [Hardcover]"], ["author", "Chuck Klosterman"], ["price", "$15.49 USD"], ["shipping_weight", "2.2 pounds"], ["isbn_10", "1439184496"], ["created_at", "2015-05-02 21:23:25.389267"], ["updated_at", "2015-05-02 21:23:25.389267"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The Ocean at the End of the Lane: A Novel [Deckle Edge] [Hardcover]"], ["author", "Neil Gaiman"], ["price", "$15.22 USD"], ["shipping_weight", "9.4 pounds"], ["isbn_10", "0062255657"], ["created_at", "2015-05-02 21:23:25.445675"], ["updated_at", "2015-05-02 21:23:25.445675"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The Unforgiven [Paperback]"], ["author", "Alan LeMay"], ["price", "$8.97 USD"], ["shipping_weight", "8.8 pounds"], ["isbn_10", "147780630X"], ["created_at", "2015-05-02 21:23:25.530776"], ["updated_at", "2015-05-02 21:23:25.530776"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The Cuckoo's Calling [Hardcover]"], ["author", "Robert Galbraith"], ["price", "$17.47 USD"], ["shipping_weight", "1.4 pounds"], ["isbn_10", "0316206849"], ["created_at", "2015-05-02 21:23:25.589156"], ["updated_at", "2015-05-02 21:23:25.589156"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The English Girl: A Novel (Gabriel Allon) [Hardcover]"], ["author", "Daniel Silva"], ["price", "$16.46 USD"], ["shipping_weight", "3.6 pounds"], ["isbn_10", "0062073168"], ["created_at", "2015-05-02 21:23:25.648768"], ["updated_at", "2015-05-02 21:23:25.648768"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "Pacific Rim: Man, Machines, and Monsters [Hardcover]"], ["author", "David S Cohen"], ["price", "$27.83 USD"], ["shipping_weight", "3.2 pounds"], ["isbn_10", "1608871827"], ["created_at", "2015-05-02 21:23:25.736007"], ["updated_at", "2015-05-02 21:23:25.736007"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Never Go Back: A Jack Reacher Novel [Hardcover]"], ["author", "Lee Child"], ["price", "$17.52 USD"], ["shipping_weight", "4.9 pounds"], ["isbn_10", "0385344341"], ["created_at", "2015-05-02 21:23:25.792888"], ["updated_at", "2015-05-02 21:23:25.792888"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "Inquebrantable: Mi Historia, A Mi Manera (Atria Espanol) (Spanish Edition) [Paperback]"], ["author", "Jenni Rivera"], ["price", "$10.18 USD"], ["shipping_weight", "6.4 pounds"], ["isbn_10", "1476745420"], ["created_at", "2015-05-02 21:23:25.853079"], ["updated_at", "2015-05-02 21:23:25.853079"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Sylvia Day Crossfire Series Boxed Set: Bared to You/Reflected in You/Entwined with You [Paperback]"], ["author", "Sylvia Day"], ["price", "$26.32 USD"], ["shipping_weight", "2.2 pounds"], ["isbn_10", "0425266060"], ["created_at", "2015-05-02 21:23:25.935054"], ["updated_at", "2015-05-02 21:23:25.935054"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The English Girl: A Novel (Gabriel Allon) [Hardcover]"], ["author", "Daniel Silva"], ["price", "$16.46 USD"], ["shipping_weight", "3.6 pounds"], ["isbn_10", "0062073168"], ["created_at", "2015-05-02 21:23:25.991695"], ["updated_at", "2015-05-02 21:23:25.991695"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The House of Hades (Heroes of Olympus, Book 4) [Hardcover]"], ["author", "Rick Riordan"], ["price", "$10.19 USD"], ["shipping_weight", "4.4 pounds"], ["isbn_10", "1423146727"], ["created_at", "2015-05-02 21:23:26.044167"], ["updated_at", "2015-05-02 21:23:26.044167"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "This Town: Two Parties and a Funeral-Plus, Plenty of Valet Parking!-in America's Gilded Capital [Hardcover]"], ["author", "Mark Leibovich"], ["price", "$15.37 USD"], ["shipping_weight", "1.4 pounds"], ["isbn_10", "0399161309"], ["created_at", "2015-05-02 21:23:26.131104"], ["updated_at", "2015-05-02 21:23:26.131104"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The Pioneer Woman Cooks: A Year of Holidays: 135 Step-by-Step Recipes for Simple, Scrumptious Celebrations [Hardcover]"], ["author", "Ree Drummond"], ["price", "$20.29 USD"], ["shipping_weight", "1.4 pounds"], ["isbn_10", "0062225227"], ["created_at", "2015-05-02 21:23:26.182773"], ["updated_at", "2015-05-02 21:23:26.182773"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "A New Kind of Science [Hardcover]"], ["author", "Stephen Wolfram"], ["price", " USD"], ["shipping_weight", "5.6 pounds"], ["isbn_10", "1579550088"], ["created_at", "2015-05-02 21:23:26.239757"], ["updated_at", "2015-05-02 21:23:26.239757"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "boxes" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2015-05-02 21:23:26.248046"], ["updated_at", "2015-05-02 21:23:26.248046"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(*) FROM "books"[0m
+  [1m[35mBook Load (0.7ms)[0m  SELECT "books".* FROM "books"  ORDER BY "books"."shipping_weight" DESC
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.2ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.2ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateBooks (20150502180814)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "books" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "author" varchar, "price" varchar, "shipping_weight" varchar, "isbn_10" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150502180814"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateBoxes (20150502180906)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "boxes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "totalWeight" varchar DEFAULT '0.0 pounds', "contents" varchar DEFAULT '--- []
+', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150502180906"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to ChangeIsbnTypeToBooks (20150502190525)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  CREATE TEMPORARY TABLE "abooks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "author" varchar, "price" varchar, "shipping_weight" varchar, "isbn_10" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mSELECT * FROM "books"[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "books"
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "books" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "author" varchar, "price" varchar, "shipping_weight" varchar, "isbn_10" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  SELECT * FROM "abooks"
+  [1m[36m (0.3ms)[0m  [1mDROP TABLE "abooks"[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150502190525"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Zealot: The Life and Times of Jesus of Nazareth [Hardcover]"], ["author", "Reza Aslan"], ["price", "$16.89 USD"], ["shipping_weight", "1.2 pounds"], ["isbn_10", "140006922X"], ["created_at", "2015-05-02 21:23:51.278405"], ["updated_at", "2015-05-02 21:23:51.278405"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The Ocean at the End of the Lane: A Novel [Deckle Edge] [Hardcover]"], ["author", "Neil Gaiman"], ["price", "$15.22 USD"], ["shipping_weight", "4.1 pounds"], ["isbn_10", "0062255657"], ["created_at", "2015-05-02 21:23:51.343348"], ["updated_at", "2015-05-02 21:23:51.343348"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The Europa Regional Surveys of the World Set 2011: 9-Volume Set [Hardcover]"], ["author", "Europa Publications"], ["price", "$7,450.00 USD"], ["shipping_weight", "7.8 pounds"], ["isbn_10", "1857435885"], ["created_at", "2015-05-02 21:23:51.394609"], ["updated_at", "2015-05-02 21:23:51.394609"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "No god but God: The Origins and Evolution of Islam [Paperback]"], ["author", "Reza Aslan"], ["price", "$8.99 USD"], ["shipping_weight", "2.6 pounds"], ["isbn_10", "0385739761"], ["created_at", "2015-05-02 21:23:51.449085"], ["updated_at", "2015-05-02 21:23:51.449085"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Man of Steel: Inside the Legendary World of Superman [Hardcover]"], ["author", "Daniel Wallace"], ["price", "$31.07 USD"], ["shipping_weight", "2.8 pounds"], ["isbn_10", "1608871819"], ["created_at", "2015-05-02 21:23:51.534150"], ["updated_at", "2015-05-02 21:23:51.534150"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "World War Z: The Art of the Film [Paperback]"], ["author", "Titan Books"], ["price", "$15.83 USD"], ["shipping_weight", "7.6 pounds"], ["isbn_10", "1781168857"], ["created_at", "2015-05-02 21:23:51.592088"], ["updated_at", "2015-05-02 21:23:51.592088"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "I Wear the Black Hat: Grappling with Villains (Real and Imagined) [Hardcover]"], ["author", "Chuck Klosterman"], ["price", "$15.49 USD"], ["shipping_weight", "2.2 pounds"], ["isbn_10", "1439184496"], ["created_at", "2015-05-02 21:23:51.651665"], ["updated_at", "2015-05-02 21:23:51.651665"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The Ocean at the End of the Lane: A Novel [Deckle Edge] [Hardcover]"], ["author", "Neil Gaiman"], ["price", "$15.22 USD"], ["shipping_weight", "9.4 pounds"], ["isbn_10", "0062255657"], ["created_at", "2015-05-02 21:23:51.741938"], ["updated_at", "2015-05-02 21:23:51.741938"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The Unforgiven [Paperback]"], ["author", "Alan LeMay"], ["price", "$8.97 USD"], ["shipping_weight", "8.8 pounds"], ["isbn_10", "147780630X"], ["created_at", "2015-05-02 21:23:51.799699"], ["updated_at", "2015-05-02 21:23:51.799699"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The Cuckoo's Calling [Hardcover]"], ["author", "Robert Galbraith"], ["price", "$17.47 USD"], ["shipping_weight", "1.4 pounds"], ["isbn_10", "0316206849"], ["created_at", "2015-05-02 21:23:51.885157"], ["updated_at", "2015-05-02 21:23:51.885157"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The English Girl: A Novel (Gabriel Allon) [Hardcover]"], ["author", "Daniel Silva"], ["price", "$16.46 USD"], ["shipping_weight", "3.6 pounds"], ["isbn_10", "0062073168"], ["created_at", "2015-05-02 21:23:51.945584"], ["updated_at", "2015-05-02 21:23:51.945584"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "Pacific Rim: Man, Machines, and Monsters [Hardcover]"], ["author", "David S Cohen"], ["price", "$27.83 USD"], ["shipping_weight", "3.2 pounds"], ["isbn_10", "1608871827"], ["created_at", "2015-05-02 21:23:52.028034"], ["updated_at", "2015-05-02 21:23:52.028034"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Never Go Back: A Jack Reacher Novel [Hardcover]"], ["author", "Lee Child"], ["price", "$17.52 USD"], ["shipping_weight", "4.9 pounds"], ["isbn_10", "0385344341"], ["created_at", "2015-05-02 21:23:52.084306"], ["updated_at", "2015-05-02 21:23:52.084306"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "Inquebrantable: Mi Historia, A Mi Manera (Atria Espanol) (Spanish Edition) [Paperback]"], ["author", "Jenni Rivera"], ["price", "$10.18 USD"], ["shipping_weight", "6.4 pounds"], ["isbn_10", "1476745420"], ["created_at", "2015-05-02 21:23:52.144102"], ["updated_at", "2015-05-02 21:23:52.144102"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Sylvia Day Crossfire Series Boxed Set: Bared to You/Reflected in You/Entwined with You [Paperback]"], ["author", "Sylvia Day"], ["price", "$26.32 USD"], ["shipping_weight", "2.2 pounds"], ["isbn_10", "0425266060"], ["created_at", "2015-05-02 21:23:52.229005"], ["updated_at", "2015-05-02 21:23:52.229005"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The English Girl: A Novel (Gabriel Allon) [Hardcover]"], ["author", "Daniel Silva"], ["price", "$16.46 USD"], ["shipping_weight", "3.6 pounds"], ["isbn_10", "0062073168"], ["created_at", "2015-05-02 21:23:52.290193"], ["updated_at", "2015-05-02 21:23:52.290193"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The House of Hades (Heroes of Olympus, Book 4) [Hardcover]"], ["author", "Rick Riordan"], ["price", "$10.19 USD"], ["shipping_weight", "4.4 pounds"], ["isbn_10", "1423146727"], ["created_at", "2015-05-02 21:23:52.346061"], ["updated_at", "2015-05-02 21:23:52.346061"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "This Town: Two Parties and a Funeral-Plus, Plenty of Valet Parking!-in America's Gilded Capital [Hardcover]"], ["author", "Mark Leibovich"], ["price", "$15.37 USD"], ["shipping_weight", "1.4 pounds"], ["isbn_10", "0399161309"], ["created_at", "2015-05-02 21:23:52.431563"], ["updated_at", "2015-05-02 21:23:52.431563"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The Pioneer Woman Cooks: A Year of Holidays: 135 Step-by-Step Recipes for Simple, Scrumptious Celebrations [Hardcover]"], ["author", "Ree Drummond"], ["price", "$20.29 USD"], ["shipping_weight", "1.4 pounds"], ["isbn_10", "0062225227"], ["created_at", "2015-05-02 21:23:52.489257"], ["updated_at", "2015-05-02 21:23:52.489257"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "A New Kind of Science [Hardcover]"], ["author", "Stephen Wolfram"], ["price", " USD"], ["shipping_weight", "5.6 pounds"], ["isbn_10", "1579550088"], ["created_at", "2015-05-02 21:23:52.545620"], ["updated_at", "2015-05-02 21:23:52.545620"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "boxes" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2015-05-02 21:23:52.554720"], ["updated_at", "2015-05-02 21:23:52.554720"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "books"[0m
+  [1m[35mBook Load (0.3ms)[0m  SELECT "books".* FROM "books"  ORDER BY "books"."shipping_weight" DESC
+  [1m[36mBox Load (0.2ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36m (9.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateBooks (20150502180814)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "books" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "author" varchar, "price" varchar, "shipping_weight" varchar, "isbn_10" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150502180814"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateBoxes (20150502180906)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "boxes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "totalWeight" varchar DEFAULT '0.0 pounds', "contents" varchar DEFAULT '--- []
+', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150502180906"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to ChangeIsbnTypeToBooks (20150502190525)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  CREATE TEMPORARY TABLE "abooks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "author" varchar, "price" varchar, "shipping_weight" varchar, "isbn_10" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "books"[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "books"
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "books" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "author" varchar, "price" varchar, "shipping_weight" varchar, "isbn_10" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  SELECT * FROM "abooks"
+  [1m[36m (0.2ms)[0m  [1mDROP TABLE "abooks"[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150502190525"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Zealot: The Life and Times of Jesus of Nazareth [Hardcover]"], ["author", "Reza Aslan"], ["price", "$16.89 USD"], ["shipping_weight", "1.2 pounds"], ["isbn_10", "140006922X"], ["created_at", "2015-05-02 21:24:07.862191"], ["updated_at", "2015-05-02 21:24:07.862191"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The Ocean at the End of the Lane: A Novel [Deckle Edge] [Hardcover]"], ["author", "Neil Gaiman"], ["price", "$15.22 USD"], ["shipping_weight", "4.1 pounds"], ["isbn_10", "0062255657"], ["created_at", "2015-05-02 21:24:07.925608"], ["updated_at", "2015-05-02 21:24:07.925608"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The Europa Regional Surveys of the World Set 2011: 9-Volume Set [Hardcover]"], ["author", "Europa Publications"], ["price", "$7,450.00 USD"], ["shipping_weight", "7.8 pounds"], ["isbn_10", "1857435885"], ["created_at", "2015-05-02 21:24:07.977555"], ["updated_at", "2015-05-02 21:24:07.977555"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "No god but God: The Origins and Evolution of Islam [Paperback]"], ["author", "Reza Aslan"], ["price", "$8.99 USD"], ["shipping_weight", "2.6 pounds"], ["isbn_10", "0385739761"], ["created_at", "2015-05-02 21:24:08.031142"], ["updated_at", "2015-05-02 21:24:08.031142"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Man of Steel: Inside the Legendary World of Superman [Hardcover]"], ["author", "Daniel Wallace"], ["price", "$31.07 USD"], ["shipping_weight", "2.8 pounds"], ["isbn_10", "1608871819"], ["created_at", "2015-05-02 21:24:08.112955"], ["updated_at", "2015-05-02 21:24:08.112955"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "World War Z: The Art of the Film [Paperback]"], ["author", "Titan Books"], ["price", "$15.83 USD"], ["shipping_weight", "7.6 pounds"], ["isbn_10", "1781168857"], ["created_at", "2015-05-02 21:24:08.168288"], ["updated_at", "2015-05-02 21:24:08.168288"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "I Wear the Black Hat: Grappling with Villains (Real and Imagined) [Hardcover]"], ["author", "Chuck Klosterman"], ["price", "$15.49 USD"], ["shipping_weight", "2.2 pounds"], ["isbn_10", "1439184496"], ["created_at", "2015-05-02 21:24:08.226147"], ["updated_at", "2015-05-02 21:24:08.226147"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The Ocean at the End of the Lane: A Novel [Deckle Edge] [Hardcover]"], ["author", "Neil Gaiman"], ["price", "$15.22 USD"], ["shipping_weight", "9.4 pounds"], ["isbn_10", "0062255657"], ["created_at", "2015-05-02 21:24:08.312478"], ["updated_at", "2015-05-02 21:24:08.312478"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The Unforgiven [Paperback]"], ["author", "Alan LeMay"], ["price", "$8.97 USD"], ["shipping_weight", "8.8 pounds"], ["isbn_10", "147780630X"], ["created_at", "2015-05-02 21:24:08.366704"], ["updated_at", "2015-05-02 21:24:08.366704"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The Cuckoo's Calling [Hardcover]"], ["author", "Robert Galbraith"], ["price", "$17.47 USD"], ["shipping_weight", "1.4 pounds"], ["isbn_10", "0316206849"], ["created_at", "2015-05-02 21:24:08.448904"], ["updated_at", "2015-05-02 21:24:08.448904"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The English Girl: A Novel (Gabriel Allon) [Hardcover]"], ["author", "Daniel Silva"], ["price", "$16.46 USD"], ["shipping_weight", "3.6 pounds"], ["isbn_10", "0062073168"], ["created_at", "2015-05-02 21:24:08.508766"], ["updated_at", "2015-05-02 21:24:08.508766"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "Pacific Rim: Man, Machines, and Monsters [Hardcover]"], ["author", "David S Cohen"], ["price", "$27.83 USD"], ["shipping_weight", "3.2 pounds"], ["isbn_10", "1608871827"], ["created_at", "2015-05-02 21:24:08.598742"], ["updated_at", "2015-05-02 21:24:08.598742"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Never Go Back: A Jack Reacher Novel [Hardcover]"], ["author", "Lee Child"], ["price", "$17.52 USD"], ["shipping_weight", "4.9 pounds"], ["isbn_10", "0385344341"], ["created_at", "2015-05-02 21:24:08.653432"], ["updated_at", "2015-05-02 21:24:08.653432"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "Inquebrantable: Mi Historia, A Mi Manera (Atria Espanol) (Spanish Edition) [Paperback]"], ["author", "Jenni Rivera"], ["price", "$10.18 USD"], ["shipping_weight", "6.4 pounds"], ["isbn_10", "1476745420"], ["created_at", "2015-05-02 21:24:08.710713"], ["updated_at", "2015-05-02 21:24:08.710713"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Sylvia Day Crossfire Series Boxed Set: Bared to You/Reflected in You/Entwined with You [Paperback]"], ["author", "Sylvia Day"], ["price", "$26.32 USD"], ["shipping_weight", "2.2 pounds"], ["isbn_10", "0425266060"], ["created_at", "2015-05-02 21:24:08.804875"], ["updated_at", "2015-05-02 21:24:08.804875"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "The English Girl: A Novel (Gabriel Allon) [Hardcover]"], ["author", "Daniel Silva"], ["price", "$16.46 USD"], ["shipping_weight", "3.6 pounds"], ["isbn_10", "0062073168"], ["created_at", "2015-05-02 21:24:08.864007"], ["updated_at", "2015-05-02 21:24:08.864007"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The House of Hades (Heroes of Olympus, Book 4) [Hardcover]"], ["author", "Rick Riordan"], ["price", "$10.19 USD"], ["shipping_weight", "4.4 pounds"], ["isbn_10", "1423146727"], ["created_at", "2015-05-02 21:24:08.920355"], ["updated_at", "2015-05-02 21:24:08.920355"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "This Town: Two Parties and a Funeral-Plus, Plenty of Valet Parking!-in America's Gilded Capital [Hardcover]"], ["author", "Mark Leibovich"], ["price", "$15.37 USD"], ["shipping_weight", "1.4 pounds"], ["isbn_10", "0399161309"], ["created_at", "2015-05-02 21:24:09.003650"], ["updated_at", "2015-05-02 21:24:09.003650"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The Pioneer Woman Cooks: A Year of Holidays: 135 Step-by-Step Recipes for Simple, Scrumptious Celebrations [Hardcover]"], ["author", "Ree Drummond"], ["price", "$20.29 USD"], ["shipping_weight", "1.4 pounds"], ["isbn_10", "0062225227"], ["created_at", "2015-05-02 21:24:09.059089"], ["updated_at", "2015-05-02 21:24:09.059089"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "price", "shipping_weight", "isbn_10", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["title", "A New Kind of Science [Hardcover]"], ["author", "Stephen Wolfram"], ["price", " USD"], ["shipping_weight", "5.6 pounds"], ["isbn_10", "1579550088"], ["created_at", "2015-05-02 21:24:09.123160"], ["updated_at", "2015-05-02 21:24:09.123160"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "boxes" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2015-05-02 21:24:09.131001"], ["updated_at", "2015-05-02 21:24:09.131001"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "books"[0m
+  [1m[35mBook Load (0.3ms)[0m  SELECT "books".* FROM "books"  ORDER BY "books"."shipping_weight" DESC
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
+  [1m[36mBox Load (0.1ms)[0m  [1mSELECT "boxes".* FROM "boxes"[0m
+  [1m[35mBox Load (0.1ms)[0m  SELECT "boxes".* FROM "boxes"
