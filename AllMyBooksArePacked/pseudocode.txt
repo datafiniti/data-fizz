@@ -1,0 +1,42 @@
+***SETUP***
+
+-Generate rails api
+
+-Make models, schemas, and controllers for Database.
+  -Two main objects:
+    -Book
+    -Box
+
+-Additional Gems I could use?
+  -Nokogiri
+  -open-uri
+  -rspec for rails
+
+
+***Testing***
+
+- Create rspec tests for:
+  -Box Model
+  -Book Model
+  -Box index (make sure they print to the screen in json)
+  -Book index (make sure they print to the screen in json)
+
+
+***OO Scraping***
+
+-Classes?
+  -Web scraper
+  -Parse the html (SINGLE RESPONSIBLITY)
+  -Push the book to the database?
+  -make a box?
+  -optimize box space?
+
+***Database***
+
+  -create
+  -migrate
+  -seed
+    -loop through book class and create 'em
+    -put books in boxes?
+
+
