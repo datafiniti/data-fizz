@@ -15,12 +15,12 @@ Challenge Questions:
 
 Notes:
 
-- I wrote a couple of tests, you can test them by running:
+- I wrote a couple of tests, you can test them by navigating to the "BookPackerAPI" and running:
 
-    rspec AllMyBooksArePacked/spec/class_helpers/*spec.rb
-    rspec AllMyBooksArePacked/spec/controllers/*spec.rb
+    rspec spec/class_helpers/*spec.rb
+    rspec spec/controllers/*spec.rb
 
-- To view my results, navigate to book_packer_api and run (you may need to run 'bundle install'):
+- To view my results (I also put them below), navigate to book_packer_api and run (you may need to run 'bundle install'):
 
   rake db:create db:migrate db:seed
   rails s
@@ -39,3 +39,221 @@ Notes:
 -Schemas and database configs can be found in my 'db' folder.
 
 -I know it's kind of bad practice, but in my seed file, there are some global variables. I had some scoping issues that I'm looking into.
+
+
+End results:
+
+[
+  {
+    box: {
+      id: 1,
+      totalWeight: "9.4 pounds",
+      contents: [
+          {
+          shipping_weight: "9.4 pounds",
+          title: "The Ocean at the End of the Lane: A Novel [Deckle Edge] [Hardcover]",
+          author: "Neil Gaiman",
+          price: "$15.22 USD",
+          isbn_10: "0062255657"
+          }
+      ]
+    }
+  },
+  {
+    box: {
+      id: 2,
+      totalWeight: "10.0 pounds",
+      contents: [
+        {
+          shipping_weight: "8.8 pounds",
+          title: "The Unforgiven [Paperback]",
+          author: "Alan LeMay",
+          price: "$8.97 USD",
+          isbn_10: "147780630X"
+        },
+        {
+          shipping_weight: "1.2 pounds",
+          title: "Zealot: The Life and Times of Jesus of Nazareth [Hardcover]",
+          author: "Reza Aslan",
+          price: "$16.89 USD",
+          isbn_10: "140006922X"
+        }
+      ]
+    }
+  },
+  {
+    box: {
+      id: 3,
+      totalWeight: "10.0 pounds",
+      contents: [
+        {
+          shipping_weight: "7.8 pounds",
+          title: "The Europa Regional Surveys of the World Set 2011: 9-Volume Set [Hardcover]",
+          author: "Europa Publications",
+          price: "$7,450.00 USD",
+          isbn_10: "1857435885"
+        },
+        {
+          shipping_weight: "2.2 pounds",
+          title: "I Wear the Black Hat: Grappling with Villains (Real and Imagined) [Hardcover]",
+          author: "Chuck Klosterman",
+          price: "$15.49 USD",
+          isbn_10: "1439184496"
+        }
+      ]
+    }
+  },
+  {
+    box: {
+      id: 4,
+      totalWeight: "9.8 pounds",
+      contents: [
+        {
+          shipping_weight: "7.6 pounds",
+          title: "World War Z: The Art of the Film [Paperback]",
+          author: "Titan Books",
+          price: "$15.83 USD",
+          isbn_10: "1781168857"
+        },
+        {
+          shipping_weight: "2.2 pounds",
+          title: "Sylvia Day Crossfire Series Boxed Set: Bared to You/Reflected in You/Entwined with You [Paperback]",
+          author: "Sylvia Day",
+          price: "$26.32 USD",
+          isbn_10: "0425266060"
+        }
+      ]
+    }
+  },
+  {
+    box: {
+      id: 5,
+      totalWeight: "10.0 pounds",
+      contents: [
+        {
+          shipping_weight: "6.4 pounds",
+          title: "Inquebrantable: Mi Historia, A Mi Manera (Atria Espanol) (Spanish Edition) [Paperback]",
+          author: "Jenni Rivera",
+          price: "$10.18 USD",
+          isbn_10: "1476745420"
+        },
+        {
+          shipping_weight: "3.6 pounds",
+          title: "The English Girl: A Novel (Gabriel Allon) [Hardcover]",
+          author: "Daniel Silva",
+          price: "$16.46 USD",
+          isbn_10: "0062073168"
+        }
+      ]
+    }
+  },
+  {
+    box: {
+      id: 6,
+      totalWeight: "10.0 pounds",
+      contents: [
+        {
+          shipping_weight: "5.6 pounds",
+          title: "A New Kind of Science [Hardcover]",
+          author: "Stephen Wolfram",
+          price: " USD",
+          isbn_10: "1579550088"
+        },
+        {
+          shipping_weight: "4.4 pounds",
+          title: "The House of Hades (Heroes of Olympus, Book 4) [Hardcover]",
+          author: "Rick Riordan",
+          price: "$10.19 USD",
+          isbn_10: "1423146727"
+        }
+      ]
+    }
+  },
+  {
+    box: {
+    id: 7,
+    totalWeight: "9.0 pounds",
+    contents: [
+        {
+          shipping_weight: "4.9 pounds",
+          title: "Never Go Back: A Jack Reacher Novel [Hardcover]",
+          author: "Lee Child",
+          price: "$17.52 USD",
+          isbn_10: "0385344341"
+        },
+        {
+          shipping_weight: "4.1 pounds",
+          title: "The Ocean at the End of the Lane: A Novel [Deckle Edge] [Hardcover]",
+          author: "Neil Gaiman",
+          price: "$15.22 USD",
+          isbn_10: "0062255657"
+        }
+      ]
+    }
+  },
+  {
+    box: {
+      id: 8,
+      totalWeight: "9.600000000000001 pounds",
+      contents: [
+        {
+          shipping_weight: "3.6 pounds",
+          title: "The English Girl: A Novel (Gabriel Allon) [Hardcover]",
+          author: "Daniel Silva",
+          price: "$16.46 USD",
+          isbn_10: "0062073168"
+        },
+        {
+          shipping_weight: "3.2 pounds",
+          title: "Pacific Rim: Man, Machines, and Monsters [Hardcover]",
+          author: "David S Cohen",
+          price: "$27.83 USD",
+          isbn_10: "1608871827"
+        },
+        {
+          shipping_weight: "2.8 pounds",
+          title: "Man of Steel: Inside the Legendary World of Superman [Hardcover]",
+          author: "Daniel Wallace",
+          price: "$31.07 USD",
+          isbn_10: "1608871819"
+        }
+      ]
+    }
+  },
+  {
+    box: {
+      id: 9,
+      totalWeight: "6.800000000000001 pounds",
+      contents: [
+        {
+          shipping_weight: "2.6 pounds",
+          title: "No god but God: The Origins and Evolution of Islam [Paperback]",
+          author: "Reza Aslan",
+          price: "$8.99 USD",
+          isbn_10: "0385739761"
+        },
+        {
+          shipping_weight: "1.4 pounds",
+          title: "The Cuckoo's Calling [Hardcover]",
+          author: "Robert Galbraith",
+          price: "$17.47 USD",
+          isbn_10: "0316206849"
+        },
+        {
+          shipping_weight: "1.4 pounds",
+          title: "This Town: Two Parties and a Funeral-Plus, Plenty of Valet Parking!-in America's Gilded Capital [Hardcover]",
+          author: "Mark Leibovich",
+          price: "$15.37 USD",
+          isbn_10: "0399161309"
+        },
+        {
+          shipping_weight: "1.4 pounds",
+          title: "The Pioneer Woman Cooks: A Year of Holidays: 135 Step-by-Step Recipes for Simple, Scrumptious Celebrations [Hardcover]",
+          author: "Ree Drummond",
+          price: "$20.29 USD",
+          isbn_10: "0062225227"
+        }
+      ]
+    }
+  }
+]
