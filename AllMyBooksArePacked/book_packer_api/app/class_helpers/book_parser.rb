@@ -2,8 +2,10 @@ require 'nokogiri'
 require 'open-uri'
 require_relative 'web_scrapinizor'
 
+#module for parsing items
 module Parser
 
+  #customized to parse Amazon book html page
   class AmazonBookParser
 
     attr_reader :title, :author, :price, :shipping_weight, :isbn10

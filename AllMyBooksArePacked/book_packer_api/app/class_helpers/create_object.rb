@@ -38,10 +38,6 @@ require_relative "book_parser"
     #   p "now the box weight it #{new_box.totalWeight}"
     # end
 
-    # def add_weight_to_box
-    #   $box.
-    # end
-
     def weigh_box_with_book
       $box_total_weight + $book_weight
     end

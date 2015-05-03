@@ -1,0 +1,41 @@
+(Notes are at the bottom)
+Challenge Questions:
+
+~ Domains beyond Amazon.com
+    - With the Nokogiri gem, anyone is able to scrape just about any site they desire, as long as you feed my Web Scraper class a url, it has the ability to do that exact thing. And my Book parser has the capability to parse through that result and spit out the information we need. But if I wanted to scrape other site, I would need to create another parser class to help me parse through that html because that html may have a different layout. For example, I could create a TwitterScraper class that will scrape and parse web contents from Twitter.
+
+~ Products beyond just simply books
+    - I semi-answered this question in the response above. As I said before and to keep the process object oriented. You could always create new modules, new classes to help you parse for the kind of information you are looking for. I would create a module for Amazon and have classes labeled for the type of product.
+    -For example, AmazonParser::Books, Amazon Parser::Movies, AmazonParser::Furniture, and so forth. This is assuming that product types have the same DOM elements. If not, then I would have to come up with something more customized.
+
+~Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20
+    -My seeding algorithm optimizes box space, only packing that book if the box has enough room, if not, it'll go to the next one
+    -Well... One way is to not sort the weight of the book and pack the box until the weight of the next book will not be able to fit, in which case it'll get rid of the box and create a new one and repeat the process.
+
+
+Notes:
+
+- I wrote a couple of tests, you can test them by running:
+
+    rspec AllMyBooksArePacked/spec/class_helpers/*spec.rb
+    rspec AllMyBooksArePacked/spec/controllers/*spec.rb
+
+- To view my results, navigate to book_packer_api and run (you may need to run 'bundle install'):
+
+  rake db:create db:migrate db:seed
+  rails s
+  ~And navigate to "http://localhost:3000/" in your browser~
+
+-You can go to "http://localhost:3000/" to view the boxes and their contents, or "http://localhost:3000/books" to view all the book individually
+
+- I took the liberty of pseudo coding to help my tasks be clear and keep everything objective, you can find it in the pseudocode.txt file.
+
+-I included commented note that explains what I am doing in most of my files.
+
+-Most of my object-oriented logic can be found in my 'app/class_helpers' folder.
+
+-My object customization and associations (there isn't much) can be found in my 'app/models' folder
+
+-Schemas and database configs can be found in my 'db' folder.
+
+-I know it's kind of bad practice, but in my seed file, there are some global variables. I had some scoping issues that I'm looking into.

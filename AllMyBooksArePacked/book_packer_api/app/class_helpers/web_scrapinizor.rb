@@ -1,6 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 
+#The HTML file initial scrape
 module Scrape
 
   class AmazonBook
@@ -17,4 +18,5 @@ end
 
 
 #User/Console Testing
+
 # puts Scrape::AmazonBook.new("./../data/book1.html").nokogiri_scrape

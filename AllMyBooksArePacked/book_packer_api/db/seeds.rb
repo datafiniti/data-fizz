@@ -2,6 +2,9 @@ require_relative '../app/class_helpers/web_scrapinizor'
 require_relative '../app/class_helpers/book_parser'
 require_relative '../app/class_helpers/create_object'
 
+#created methods to easier pinpoint errors
+
+#calls on all my helper classes to scrape books from the html
 def scrape_and_seed_books
   files_to_scrape = Dir.entries("./../data").select{|file| file.include?("html")}.map{|file| "./../data/#{file}"}
 
@@ -15,8 +18,9 @@ def scrape_and_seed_books
   end
 end
 
+#A method to put the warehouse guy to work and pack those boxes as best as he can
+#
 def box_packing
-
   @warehouse_guy = Create::BookPackagePacker.new
   @warehouse_guy.begin_boxing
 
@@ -40,6 +44,7 @@ def box_packing
   end
 end
 
+#calls those methods
 scrape_and_seed_books
 box_packing
 
