@@ -1,0 +1,232 @@
+{
+    "boxes": [
+        {
+            "box": {
+                "contents": [
+                    {
+                        "author": "Reza Aslan",
+                        "isbn10": "140006922X",
+                        "price": "$16.89",
+                        "shipping_weight": "1.2 pounds (",
+                        "title": "Zealot: The Life and Times of Jesus of Nazareth"
+                    },
+                    {
+                        "author": "Neil Gaiman",
+                        "isbn10": "0062255657",
+                        "price": "$15.22",
+                        "shipping_weight": "4.1 pounds (",
+                        "title": "The Ocean at the End of the Lane: A Novel"
+                    }
+                ],
+                "id": 0,
+                "totalWeight": 5.3
+            }
+        },
+        {
+            "box": {
+                "contents": [
+                    {
+                        "author": "Europa Publications",
+                        "isbn10": "1857435885",
+                        "price": "$7,450.00",
+                        "shipping_weight": "7.8 pounds (",
+                        "title": "The Europa Regional Surveys of the World Set 2011: 9-Volume Set"
+                    }
+                ],
+                "id": 0,
+                "totalWeight": 7.8
+            }
+        },
+        {
+            "box": {
+                "contents": [
+                    {
+                        "author": "Reza Aslan",
+                        "isbn10": "0385739761",
+                        "price": "$8.99",
+                        "shipping_weight": "2.6 pounds (",
+                        "title": "No god but God: The Origins and Evolution of Islam"
+                    },
+                    {
+                        "author": "Daniel Wallace",
+                        "isbn10": "1608871819",
+                        "price": "$31.07",
+                        "shipping_weight": "2.8 pounds (",
+                        "title": "Man of Steel: Inside the Legendary World of Superman"
+                    }
+                ],
+                "id": 0,
+                "totalWeight": 5.4
+            }
+        },
+        {
+            "box": {
+                "contents": [
+                    {
+                        "author": "Titan Books",
+                        "isbn10": "1781168857",
+                        "price": "$15.83",
+                        "shipping_weight": "7.6 pounds (",
+                        "title": "World War Z: The Art of the Film"
+                    },
+                    {
+                        "author": "Chuck Klosterman",
+                        "isbn10": "1439184496",
+                        "price": "$15.49",
+                        "shipping_weight": "2.2 pounds (",
+                        "title": "I Wear the Black Hat: Grappling with Villains (Real and Imagined)"
+                    }
+                ],
+                "id": 0,
+                "totalWeight": 9.8
+            }
+        },
+        {
+            "box": {
+                "contents": [
+                    {
+                        "author": "Neil Gaiman",
+                        "isbn10": "0062255657",
+                        "price": "$15.22",
+                        "shipping_weight": "9.4 pounds (",
+                        "title": "The Ocean at the End of the Lane: A Novel"
+                    }
+                ],
+                "id": 0,
+                "totalWeight": 9.4
+            }
+        },
+        {
+            "box": {
+                "contents": [
+                    {
+                        "author": "Alan LeMay",
+                        "isbn10": "147780630X",
+                        "price": "$8.97",
+                        "shipping_weight": "8.8 pounds (",
+                        "title": "The Unforgiven"
+                    }
+                ],
+                "id": 0,
+                "totalWeight": 8.8
+            }
+        },
+        {
+            "box": {
+                "contents": [
+                    {
+                        "author": "Robert Galbraith",
+                        "isbn10": "0316206849",
+                        "price": "$17.47",
+                        "shipping_weight": "1.4 pounds (",
+                        "title": "The Cuckoo's Calling"
+                    },
+                    {
+                        "author": "Daniel Silva",
+                        "isbn10": "0062073168",
+                        "price": "$16.46",
+                        "shipping_weight": "3.6 pounds (",
+                        "title": "The English Girl: A Novel (Gabriel Allon)"
+                    },
+                    {
+                        "author": "David S Cohen",
+                        "isbn10": "1608871827",
+                        "price": "$27.83",
+                        "shipping_weight": "3.2 pounds (",
+                        "title": "Pacific Rim: Man, Machines, and Monsters"
+                    }
+                ],
+                "id": 0,
+                "totalWeight": 8.2
+            }
+        },
+        {
+            "box": {
+                "contents": [
+                    {
+                        "author": "Lee Child",
+                        "isbn10": "0385344341",
+                        "price": "$17.52",
+                        "shipping_weight": "4.9 pounds (",
+                        "title": "Never Go Back: A Jack Reacher Novel"
+                    }
+                ],
+                "id": 0,
+                "totalWeight": 4.9
+            }
+        },
+        {
+            "box": {
+                "contents": [
+                    {
+                        "author": "Jenni Rivera",
+                        "isbn10": "1476745420",
+                        "price": "$10.18",
+                        "shipping_weight": "6.4 pounds (",
+                        "title": "Inquebrantable: Mi Historia, A Mi Manera (Atria Espanol) (Spanish Edition)"
+                    },
+                    {
+                        "author": "Sylvia Day",
+                        "isbn10": "0425266060",
+                        "price": "$26.32",
+                        "shipping_weight": "2.2 pounds (",
+                        "title": "Sylvia Day Crossfire Series Boxed Set: Bared to You/Reflected in You/Entwined with You"
+                    }
+                ],
+                "id": 0,
+                "totalWeight": 8.600000000000001
+            }
+        },
+        {
+            "box": {
+                "contents": [
+                    {
+                        "author": "Daniel Silva",
+                        "isbn10": "0062073168",
+                        "price": "$16.46",
+                        "shipping_weight": "3.6 pounds (",
+                        "title": "The English Girl: A Novel (Gabriel Allon)"
+                    },
+                    {
+                        "author": "Rick Riordan",
+                        "isbn10": "1423146727",
+                        "price": "$10.19",
+                        "shipping_weight": "4.4 pounds (",
+                        "title": "The House of Hades (Heroes of Olympus, Book 4)"
+                    },
+                    {
+                        "author": "Mark Leibovich",
+                        "isbn10": "0399161309",
+                        "price": "$15.37",
+                        "shipping_weight": "1.4 pounds (",
+                        "title": "This Town: Two Parties and a Funeral-Plus, Plenty of Valet Parking!-in America's Gilded Capital"
+                    }
+                ],
+                "id": 0,
+                "totalWeight": 9.4
+            }
+        },
+        {
+            "box": {
+                "contents": [
+                    {
+                        "author": "Ree Drummond",
+                        "isbn10": "0062225227",
+                        "price": "$20.29",
+                        "shipping_weight": "1.4 pounds (",
+                        "title": "The Pioneer Woman Cooks: A Year of Holidays: 135 Step-by-Step Recipes for Simple, Scrumptious Celebrations"
+                    },
+                    {
+                        "author": "Stephen Wolfram",
+                        "isbn10": "1579550088",
+                        "price": "NOT_FOUND",
+                        "shipping_weight": "5.6 pounds (",
+                        "title": "A New Kind of Science"
+                    }
+                ],
+                "id": 0,
+                "totalWeight": 7.0
+            }
+        }
+    ]
+}
