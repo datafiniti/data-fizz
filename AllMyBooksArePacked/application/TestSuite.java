@@ -8,11 +8,52 @@ public class TestSuite {
         //Testing Book Functionality
         debugPrint("TEST SECTION: Book function\n");
         testBookDefaultConstructor();
+        testBookCompleteConstructor();
+        testBookAccessorsAndMutators();
+        testBookEquals();
         //Testing Box Functionality
+        debugPrint("\nTEST SECTION: Box function\n");
+        testBoxConstructor();
+        testBoxBookAdding();
     }
     
-    /* --- Testing Sections --- */
-    //Book Function
+    /* --- TESTING SECTIONS --- */
+    /* --- BOX FUNCTION --- */
+    private static void testBoxConstructor(){
+        debugPrint("Constructor test... ");
+        Box testBox = new Box(1);
+        assertEquals(testBox.getID(), 1);
+        assertEquals(testBox.getTotalWeight(), 0.0);
+        assertEquals(testBox.getContents().length, 0);
+        
+        debugPrint("complete\n");
+    }//testBoxConstructor
+    
+    private static void testBoxBookAdding(){
+        debugPrint("Book Adding test... ");
+        Box testBox = new Box(1);
+        Book book1 = new Book("Hamlet", "William Shakespeare", "$19.99 USD", "3 pounds", 123456789);
+        boolean firstAddSuccess = testBox.addBook(book1);
+        assertEquals(firstAddSuccess, true);
+        assertEquals(testBox.getTotalWeight(), 3.0);
+        assertEquals(testBox.getContents().length, 1);
+        
+        Book book2 = new Book("Macbeth", "William Shakespeare", "$10.00 USD", "4.2 pounds", 123456789);
+        boolean secondAddSuccess = testBox.addBook(book2);
+        assertEquals(secondAddSuccess, true);
+        assertEquals(testBox.getTotalWeight(), 7.2);
+        assertEquals(testBox.getContents().length, 2);
+        
+        Book book3 = new Book("Beowulf", "Author Unknown", "$23.54 USD", "2.9 pounds", 1357902468);
+        boolean overloadAddSuccess = testBox.addBook(book3);
+        assertEquals(overloadAddSuccess, false);
+        assertEquals(testBox.getTotalWeight(), 7.2);
+        assertEquals(testBox.getContents().length, 2);
+        
+        debugPrint("complete\n");
+    }//testBoxConstructor
+    
+    /* --- BOOK FUNCTION --- */
     private static void testBookDefaultConstructor(){
         debugPrint("Default constructor test... ");
         Book test = new Book();
@@ -20,10 +61,54 @@ public class TestSuite {
         assertEquals(test.getAuthor(), "No Author");
         assertEquals(test.getPrice(), "No Price");
         assertEquals(test.getShippingWeight(), "No Shipping Weight");
-        assertEquals(test.getISBN10(), -1);
+        assertEquals(test.getISBN10(), -1L);
         
         debugPrint("complete\n");
     }//testBookDefaultConstructor
+    
+    private static void testBookCompleteConstructor(){
+        debugPrint("Complete constructor test... ");
+        Book test = new Book("Hamlet", "William Shakespeare", "$19.99 USD", "3 pounds", 123456789);
+        assertEquals(test.getTitle(), "Hamlet");
+        assertEquals(test.getAuthor(), "William Shakespeare");
+        assertEquals(test.getPrice(), "$19.99 USD");
+        assertEquals(test.getShippingWeight(), "3 pounds");
+        assertEquals(test.getISBN10(), 123456789L);
+        
+        debugPrint("complete\n");
+    }//testBookCompleteConstructor
+    
+    private static void testBookAccessorsAndMutators(){
+        debugPrint("Accessors and Mutators test... ");
+        Book test = new Book();
+        test.setTitle("Hamlet");
+        assertEquals(test.getTitle(), "Hamlet");
+        test.setAuthor("William Shakespeare");
+        assertEquals(test.getAuthor(), "William Shakespeare");
+        test.setPrice("$19.99 USD");
+        assertEquals(test.getPrice(), "$19.99 USD");
+        test.setShippingWeight("3 pounds");
+        assertEquals(test.getShippingWeight(), "3 pounds");
+        test.setISBN10(123456789);
+        assertEquals(test.getISBN10(), 123456789L);
+        
+        debugPrint("complete\n");
+    }//testBookCompleteConstructor
+    
+    private static void testBookEquals(){
+        debugPrint("Equals test... ");
+        Book testEquals0 = new Book("Hamlet", "William Shakespeare", "$19.99 USD", "3 pounds", 123456789);
+        Book testEquals1 = new Book("Hamlet", "William Shakespeare", "$19.99 USD", "3 pounds", 123456789);
+        Book testNotEqual = new Book("Hamlet and Black-eyed Peas", "Will.i.Am Shakespeare", "$20.00 USD", "4 pounds", 987654321);
+        
+        assertEquals(testEquals0.equals(testEquals1), true);
+        assertEquals(testEquals1.equals(testEquals0), true);
+        assertEquals(testEquals1.equals(testEquals1), true);
+        assertEquals(testNotEqual.equals(testEquals0), false);
+        assertEquals(testEquals0.equals(testNotEqual), false);
+        
+        debugPrint("complete\n");
+    }//testBookCompleteConstructor
     
     /*------- Test Helper Methods -------*/
     private static void assertEquals(Object arg0, Object arg1){
@@ -31,8 +116,8 @@ public class TestSuite {
             assert arg0.equals(arg1);
         }
         catch(AssertionError ae){
-            System.out.println();
-            System.out.println("!!! FAILED TO ASSERT: " + arg0.toString() + " EQUAL TO " + arg1.toString());
+            System.out.print("\n!!! FAILED TO ASSERT: " + arg0.toString() 
+                             + " EQUAL TO " + arg1.toString() + "\n");
         }
     }//assert equals
     

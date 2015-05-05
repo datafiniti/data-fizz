@@ -1,60 +1,91 @@
 package application;
 
 public class Box {
+    
+    public static final int MAX_BOX_WEIGHT = 10;
+    
     private int id; //INTEGER PRIMARY KEY?
     private double totalWeight;
     private Book[] contents;
     
-    public Box(){
-        this(-1);
-    }//default constructor
-    
     public Box(int id){
         setID(id);
-        totalWeight = -1;
-        contents = new Book[20];
+        totalWeight = 0;
+        contents = new Book[0];
     }//complete constructor
     
     /* ------- Adding Books to Boxes -------*/
     public boolean addBook(Book book){
         //Calculate if box becomes full after new book
-        //Behave accordingly, return boolean indicates success
-        totalWeight = calculateTotalWeight(); //update total weight if success
-        return true;
-    }
+        double newBookWeight = getBookWeight(book);
+        if(totalWeight + newBookWeight <= MAX_BOX_WEIGHT){
+            insertBookIntoContents(book);
+            totalWeight = calculateBoxWeight(); //update total weight if success
+            return true;
+        }//
+        else{
+            return false;
+        }//else book exceeds weight limit
+    }//addBook
     
-    private double calculateTotalWeight(){
+    /* ------- HELPER METHODS ------- */
+    
+    /** Mimics ArrayList adding behavior.
+     * 
+     * @param book The Book object to insert into contents
+     */
+    private void insertBookIntoContents(Book book){
+        //Make the contents array one bigger
+        Book[] updatedContents = new Book[contents.length + 1];
+        //Insert all previous books into new array
+        for(int i = 0; i < contents.length; i++){
+            updatedContents[i] = contents[i];
+        }//for every old book
+        //Makes the final element of contents the new book
+        updatedContents[updatedContents.length - 1] = book;
+        contents = updatedContents;
+    }//insertBookIntoContents
+    
+    private double calculateBoxWeight(){
         double weight = 0;
         for(int i = 0; i < contents.length; i++){
             if(contents[i] != null){
-                String currentItemWeightAsString = contents[i].getShippingWeight();
-                double currentItemWeight = parseWeight(currentItemWeightAsString);
+                //Gets the book weight in pounds* (maybe not always pounds?)
+                double currentItemWeight = getBookWeight(contents[i]);
+                //add weight to current count
                 weight += currentItemWeight;
             }//if the current item isn't null
         }//for every book in contents
+        
         return weight;
     }//calculateTotalWeight
     
-    private double parseWeight(String weightString){
-        double weightNumber = -1;
+    //Considering making this a static method in the Book class.
+    private double getBookWeight(Book book){
+        //Get shipping weight, contained in string
+        String weightString = book.getShippingWeight();
+        
+        double weightNumber = 0;
         try{
+            //Gets rid of "pounds" at end of weight string
             int endOfWeightIndex = weightString.indexOf(' ');
             String weightNumberString = weightString.substring(0, endOfWeightIndex);
+            //Parse out the weight, then return it
             weightNumber = Double.parseDouble(weightNumberString);
             return weightNumber;
         }//try parse operation
         catch(Exception e){
-            return -1;
+            return 0;
         }//catch exceptions, doesn't handle them yet
     }//parseWeight
     
-    /* ------- Mutators ------- */
+    /* ------- MUTATORS ------- */
     public boolean setID(int id){
         this.id = id;
         return true;
     }//setID
     
-    /* ------- Accessors ------- */
+    /* ------- ACCESSORS ------- */
     public int getID(){
         return id;
     }//getID
