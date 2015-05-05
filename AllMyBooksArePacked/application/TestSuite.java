@@ -1,5 +1,8 @@
 package application;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 public class TestSuite {
     
     private static final boolean DEBUG = true;
@@ -15,9 +18,29 @@ public class TestSuite {
         debugPrint("\nTEST SECTION: Box function\n");
         testBoxConstructor();
         testBoxBookAdding();
-    }
+        //Testing Object to JSON Conversion
+        debugPrint("\nTEST SECTION: JSON Conversion\n");
+        testBoxToJSONConversion();
+    }//main
     
     /* --- TESTING SECTIONS --- */
+    /* --- JSON CONVERSION --- */
+    private static void testBoxToJSONConversion(){
+        debugPrint("Sample Conversion test... ");
+        Box box = new Box(1);
+        Book book = new Book("The Great Big Beautiful Tomorrow", "Cory Doctorow", "$9.82 USD", "1.1 pounds", 1604864044L);
+        box.addBook(book);
+        
+        Gson gson = new Gson(); //without pretty printing
+        //Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        
+        // convert java object to JSON format,
+        // and returned as JSON formatted string
+        String json = gson.toJson(box);
+        debugPrint("\n" + json + "\n");
+        debugPrint("complete\n");
+    }//testBoxToJSONConversion
+    
     /* --- BOX FUNCTION --- */
     private static void testBoxConstructor(){
         debugPrint("Constructor test... ");
