@@ -2,6 +2,8 @@ package application;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 public class TestSuite {
     
@@ -21,9 +23,45 @@ public class TestSuite {
         //Testing Object to JSON Conversion
         debugPrint("\nTEST SECTION: JSON Conversion\n");
         testBoxToJSONConversion();
+        //Testing HTMLReader Function
+        debugPrint("\nTEST SECTION: HTML Reading with Jsoup\n");
+        testGetDocument();
+        testDataExtraction();
     }//main
     
     /* --- TESTING SECTIONS --- */
+    /* --- HTMLReader / Jsoup --- */
+    private static void testGetDocument(){
+        debugPrint("Get Document test... ");
+        HTMLReader htmlReader = new HTMLReader();
+        
+        //String validFilepath = "C:\\Users\\GregMcD\\workspace\\DataFizz\\AllMyBooksArePacked\\data\\book1.html";
+        String validFilepath = "AllMyBooksArePacked\\data\\book1.html";
+        String invalidFilepath = "/notdata/encyclopedia1.html";
+        Document validDoc = htmlReader.getDocument(validFilepath);
+        Document invalidDoc = htmlReader.getDocument(invalidFilepath);
+        
+        assertEquals(validDoc != null, true);
+        assertEquals(invalidDoc == null, true);
+        
+        debugPrint("complete\n");
+    }//testGetDocument
+    
+    private static void testDataExtraction(){
+        debugPrint("Data Extraction test... ");
+        HTMLReader htmlReader = new HTMLReader();
+        
+        //String validFilepath = "C:\\Users\\GregMcD\\workspace\\DataFizz\\AllMyBooksArePacked\\data\\book1.html";
+        String book1Filepath = "AllMyBooksArePacked\\data\\book1.html";
+        Document book1Doc = htmlReader.getDocument(book1Filepath);
+        assertEquals(book1Filepath != null, true);
+        
+        String pageTitle = htmlReader.extractTitle(book1Doc);
+        System.out.println(pageTitle);
+        
+        debugPrint("complete\n");
+    }//testDataExtraction
+    
     /* --- JSON CONVERSION --- */
     private static void testBoxToJSONConversion(){
         debugPrint("Sample Conversion test... ");
