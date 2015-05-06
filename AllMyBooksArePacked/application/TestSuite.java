@@ -33,13 +33,14 @@ public class TestSuite {
     /* --- HTMLReader / Jsoup --- */
     private static void testGetDocument(){
         debugPrint("Get Document test... ");
-        HTMLReader htmlReader = new HTMLReader();
         
         //String validFilepath = "C:\\Users\\GregMcD\\workspace\\DataFizz\\AllMyBooksArePacked\\data\\book1.html";
         String validFilepath = "AllMyBooksArePacked\\data\\book1.html";
         String invalidFilepath = "/notdata/encyclopedia1.html";
-        Document validDoc = htmlReader.getDocument(validFilepath);
-        Document invalidDoc = htmlReader.getDocument(invalidFilepath);
+        HTMLReader validReader = new HTMLReader(validFilepath);
+        HTMLReader invalidReader = new HTMLReader(invalidFilepath);
+        Document validDoc = validReader.getDocument();
+        Document invalidDoc = invalidReader.getDocument();
         
         assertEquals(validDoc != null, true);
         assertEquals(invalidDoc == null, true);
@@ -49,14 +50,14 @@ public class TestSuite {
     
     private static void testDataExtraction(){
         debugPrint("Data Extraction test... ");
-        HTMLReader htmlReader = new HTMLReader();
         
         //String validFilepath = "C:\\Users\\GregMcD\\workspace\\DataFizz\\AllMyBooksArePacked\\data\\book1.html";
         String book1Filepath = "AllMyBooksArePacked\\data\\book1.html";
-        Document book1Doc = htmlReader.getDocument(book1Filepath);
+        HTMLReader book1Reader = new HTMLReader(book1Filepath);
+        Document book1Doc = book1Reader.getDocument();
         assertEquals(book1Filepath != null, true);
         
-        String pageTitle = htmlReader.extractTitle(book1Doc);
+        String pageTitle = book1Reader.extractPageTitle();
         System.out.println(pageTitle);
         
         debugPrint("complete\n");
