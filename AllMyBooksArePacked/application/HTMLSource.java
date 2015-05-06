@@ -1,5 +1,5 @@
 package application;
 
 public enum HTMLSource {
-    AMAZON, EBAY
+    AMAZON, EBAY, SWAPPA, CRAIGSLIST
 }

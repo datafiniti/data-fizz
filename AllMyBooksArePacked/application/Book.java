@@ -5,6 +5,9 @@ public class Book {
     private String author;
     private String price;
     private String shipping_weight;
+    /* Storing ISBN-10 as non-string is a bad idea, 
+     * as it "forgets" 0's or X's at the start/end of the number.
+     * However, this is how the spec requires it be implemented. */
     private long isbn10;
     
     public Book(){
@@ -38,6 +41,12 @@ public class Book {
             return false;
         }//object is of non-Book type
     }//equals
+    
+    @Override
+    public String toString(){
+        return getTitle() + ": " + getAuthor() + ": " + getPrice() + ": "
+               + getShippingWeight() + ": " + getISBN10(); 
+    }//toString
     
     /* ------- MUTATORS ------- */
     public boolean setTitle(String title){

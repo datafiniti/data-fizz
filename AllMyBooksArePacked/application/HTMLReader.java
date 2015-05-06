@@ -9,6 +9,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import java.util.List;
+import java.util.ArrayList;
 
 public class HTMLReader {
     
@@ -41,7 +43,7 @@ public class HTMLReader {
         return titles.first().text();
     }//extractTitle
     
-    public String extractElementText(String elementID){
+    public String extractElementTextByID(String elementID){
         Element content = document.getElementById(elementID);
         if(content != null){
             return content.text();
@@ -51,15 +53,35 @@ public class HTMLReader {
         }//otherwise return empty string
     }//extractElementText
     
-    public String extractElementByClassText(String className){
+    public String extractElementTextByClass(String className, int elementIndex){
         Elements content = document.getElementsByClass(className);
-        if(content != null){
-            return content.first().text();
+        if(content != null && content.size() != 0){
+            Element element = content.get(elementIndex);
+            if(element != null){
+                return element.text();
+            }//element was found
+            else{
+                return "";
+            }//element not found
         }//if content was found
         else{
             return "";
         }//otherwise return empty string
-    }//extractElementText
+    }//extractElementTextByClass
+    
+    public List<String> extractElementsTextByTag(String tag){
+        Elements content = document.getElementsByTag(tag);
+        if(content != null){
+            ArrayList<String> elementTexts = new ArrayList<String>();
+            for(int i = 0; i < content.size(); i++){
+                elementTexts.add(content.get(i).text());
+            }//for all content elements
+            return elementTexts;
+        }//if content was found
+        else{
+            return new ArrayList<String>(0);
+        }//otherwise return empty string
+    }//extractElementTextByTag
     
     /* ------- ACCESSORS ------- */
     public Document getDocument(){
