@@ -3,19 +3,103 @@ package application;
 import java.util.List;
 import java.util.ArrayList;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 public class BookPacker {
+    
+    public static final int MAX_BOX_WEIGHT = 10;
     
     private static HTMLSource htmlSource = HTMLSource.AMAZON;
     
     public static void main(String[] args){
         Book[] books = new Book[20];
+        
+        //Load books
         String baseFileName = "book";
         String fileExtension = ".html";
         for(int i = 1; i <= books.length; i++){
             books[i-1] = loadBook(baseFileName + i + fileExtension);
-            System.out.println(i + ". " + books[i-1]);
-        }//for each book of 20, load from the html
+            //DEBUG: System.out.println(i + ". " + books[i-1]);
+        }//for each book of 20, load from html file
+        
+        Box[] packedBooks = packBooks(books);
+        /* DEBUG: for(Box box : packedBooks){
+            System.out.println(box);
+        } */
+        //This representation does not follow the specification, but is valid
+        String jsonRepresentation = convertToJSON(packedBooks, true);
+         System.out.println(jsonRepresentation);
+        
+        //BoxWrapper[] boxWrappers = fitToSpecifiedJSON(packedBooks);
+        //String jsonRepresentation = convertToJSON(boxWrappers, true);
+        //System.out.println(jsonRepresentation);
+        
     }//main
+    
+    /* ------- JSON CONVERSION ------- */
+    private static String convertToJSON(Object obj, boolean prettyPrinting){
+        Gson gson = new Gson();
+        if(prettyPrinting){
+            gson = new GsonBuilder().setPrettyPrinting().create();
+        }//pretty printing enabled
+        return gson.toJson(obj);
+    }//convertToJSON
+    
+    private static BoxWrapper[] fitToSpecifiedJSON(Box[] boxes){
+        BoxWrapper[] boxWrappers = new BoxWrapper[boxes.length];
+        for(int i = 0; i < boxes.length; i++){
+            boxWrappers[i] = new BoxWrapper(boxes[i]);
+        }//for every box
+        return boxWrappers;
+    }//fitToSpecifiedJSON
+    
+    /* ------- BOX PACKING ------- */
+    
+    /** The method I implemented to pack boxes is a
+     *  solution to the bin packing problem using the
+     *  next-fit heuristic. I chose this method because it
+     *  has worst case O(n) runtime. 
+     *  
+     *  Other potential options are the best-fit heuristic or
+     *  first-fit heuristic, however their performance worst-case is O(n^2).
+     *  But solutions produced are more likely to be closer to
+     *  optimal. This tradeoff is necessary to ensure that large
+     *  numbers of books can be packed in reasonable time.
+     *  
+     *  A third option, is to exhaustively calculate the optimal solution
+     *  by running all possible orderings of the books through the next-fit
+     *  heuristic solution, guaranteed to produce the most dense output.
+     *  This has O(n!) runtime and is impractical.
+     * 
+     * @param books An array of Book objects to pack into boxes
+     * @return An array of Box objects containing packed books
+     */
+    private static Box[] packBooks(Book[] books){
+        ArrayList<Box> boxes = new ArrayList<Box>();
+        int boxID = 1;
+        Box currentBox = new Box(boxID++); //start with an empty box
+        
+        for(int i = 0; i < books.length; i++){
+            double bookWeight = Book.parseBookWeight(books[i]);
+            if(bookWeight > MAX_BOX_WEIGHT){
+                continue;
+            }//unpackable book found, skip it
+            
+            double currentBoxWeight = currentBox.getTotalWeight();
+            if((bookWeight + currentBoxWeight) > MAX_BOX_WEIGHT){
+                boxes.add(currentBox);
+                currentBox = new Box(boxID++);
+            }//if box overloads with new book, commit box then make a new one
+            currentBox.addBook(books[i]);
+        }//for every book
+        boxes.add(currentBox);//add the final box
+        
+        Box[] boxesArray = new Box[boxes.size()]; //Converting to array for returning
+        return boxes.toArray(boxesArray);
+    }//packBooks
+    
+    /* --- HELPER METHODS FOR BOX PACKING --- */
     
     /* ------- LOADING BOOKS ------ */
     public static Book loadBook(String bookFileName){
@@ -124,10 +208,4 @@ public class BookPacker {
         long isbn10 = Long.parseLong(isbn10Text);
         return isbn10;
     }//extractISBN10fromAmazon
-    
-    /* ------- BOX PACKING ------- */
-    //this is gonna be a hard one
-    private static Box[] packBooks(Book[] books, int numberOfBooks){
-        return new Box[0];
-    }//packBooks
 }//end of class: Book Packer

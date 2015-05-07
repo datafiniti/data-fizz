@@ -1,9 +1,6 @@
 package application;
 
 public class Box {
-    
-    public static final int MAX_BOX_WEIGHT = 10;
-    
     private int id; //INTEGER PRIMARY KEY?
     private double totalWeight;
     private Book[] contents;
@@ -16,22 +13,18 @@ public class Box {
     
     /* ------- Adding Books to Boxes -------*/
     public boolean addBook(Book book){
-        //Calculate if box becomes full after new book
-        double newBookWeight = getBookWeight(book);
-        if(totalWeight + newBookWeight <= MAX_BOX_WEIGHT){
+        if(book != null){
             insertBookIntoContents(book);
-            totalWeight = calculateBoxWeight(); //update total weight if success
+            totalWeight = calculateBoxWeight();
             return true;
-        }//
+        }//book exists, can be added
         else{
             return false;
-        }//else book exceeds weight limit
+        }//book is invalid
     }//addBook
     
     /* ------- HELPER METHODS ------- */
-    
     /** Mimics ArrayList adding behavior.
-     * 
      * @param book The Book object to insert into contents
      */
     private void insertBookIntoContents(Book book){
@@ -51,33 +44,25 @@ public class Box {
         for(int i = 0; i < contents.length; i++){
             if(contents[i] != null){
                 //Gets the book weight in pounds* (maybe not always pounds?)
-                double currentItemWeight = getBookWeight(contents[i]);
+                double currentItemWeight = Book.parseBookWeight(contents[i]);
                 //add weight to current count
                 weight += currentItemWeight;
             }//if the current item isn't null
         }//for every book in contents
         
         return weight;
-    }//calculateTotalWeight
+    }//calculateBoxWeight
     
-    //Considering making this a static method in the Book class.
-    private double getBookWeight(Book book){
-        //Get shipping weight, contained in string
-        String weightString = book.getShippingWeight();
+    /* ------- GENERAL METHODS ------- */
+    @Override
+    public String toString(){
+        String stringRepresentation = "ID: " + id + " Total Weight: " + totalWeight + "\n";
+        for(int i = 0; i < contents.length; i++){
+            stringRepresentation += contents[i].toString() + "\n";
+        }//for all books this box contains
         
-        double weightNumber = 0;
-        try{
-            //Gets rid of "pounds" at end of weight string
-            int endOfWeightIndex = weightString.indexOf(' ');
-            String weightNumberString = weightString.substring(0, endOfWeightIndex);
-            //Parse out the weight, then return it
-            weightNumber = Double.parseDouble(weightNumberString);
-            return weightNumber;
-        }//try parse operation
-        catch(Exception e){
-            return 0;
-        }//catch exceptions, doesn't handle them yet
-    }//parseWeight
+        return stringRepresentation;
+    }//toString
     
     /* ------- MUTATORS ------- */
     public boolean setID(int id){

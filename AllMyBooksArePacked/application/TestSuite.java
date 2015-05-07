@@ -10,6 +10,8 @@ public class TestSuite {
     private static final boolean DEBUG = true;
     
     public static void main(String[] args){
+        System.out.println("TESTS BEGIN");
+        
         //Testing Book Functionality
         debugPrint("TEST SECTION: Book function\n");
         testBookDefaultConstructor();
@@ -27,6 +29,8 @@ public class TestSuite {
         debugPrint("\nTEST SECTION: HTML Reading with Jsoup\n");
         testGetDocument();
         testDataExtraction();
+        
+        System.out.println("TESTS END");
     }//main
     
     /* --- TESTING SECTIONS --- */
@@ -58,7 +62,7 @@ public class TestSuite {
         assertEquals(book1Filepath != null, true);
         
         String pageTitle = book1Reader.extractPageTitle();
-        System.out.println(pageTitle);
+        assertEquals(pageTitle, "Zealot: The Life and Times of Jesus of Nazareth: Reza Aslan: 9781400069224: Amazon.com: Books");
         
         debugPrint("complete\n");
     }//testDataExtraction
@@ -108,9 +112,9 @@ public class TestSuite {
         
         Book book3 = new Book("Beowulf", "Author Unknown", "$23.54 USD", "2.9 pounds", 1357902468);
         boolean overloadAddSuccess = testBox.addBook(book3);
-        assertEquals(overloadAddSuccess, false);
-        assertEquals(testBox.getTotalWeight(), 7.2);
-        assertEquals(testBox.getContents().length, 2);
+        assertEquals(overloadAddSuccess, true);
+        assertEquals(testBox.getTotalWeight(), 10.1);
+        assertEquals(testBox.getContents().length, 3);
         
         debugPrint("complete\n");
     }//testBoxConstructor

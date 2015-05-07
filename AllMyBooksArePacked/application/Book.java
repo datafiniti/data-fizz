@@ -22,6 +22,25 @@ public class Book {
         setISBN10(isbn10);
     }//complete constructor
     
+    /* ------- STATIC METHODS ------- */
+    public static double parseBookWeight(Book book){
+        //Get shipping weight, contained in string
+        String weightString = book.getShippingWeight();
+        
+        double weightNumber = 0;
+        try{
+            //Gets rid of "pounds" at end of weight string
+            int endOfWeightIndex = weightString.indexOf(' ');
+            String weightNumberString = weightString.substring(0, endOfWeightIndex);
+            //Parse out the weight, then return it
+            weightNumber = Double.parseDouble(weightNumberString);
+            return weightNumber;
+        }//try parse operation
+        catch(Exception e){
+            return 0;
+        }//catch exceptions, doesn't handle them
+    }//parseBookWeight
+    
     /* ------- General Methods? ------- */
     @Override
     public boolean equals(Object arg){
