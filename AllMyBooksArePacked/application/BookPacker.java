@@ -10,12 +10,23 @@ import java.util.ArrayList;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+/**The class containing my AllMyBooksArePacked solution, run
+ * main to execute. The resulting file will be called
+ * "AllMyBooksArePacked_GregMcDonald_Results.json" and will
+ * be saved in the DataFizz directory.
+ * @author Greg McDonald
+ */
 public class BookPacker {
     
     public static final int MAX_BOX_WEIGHT = 10;
     
     private static HTMLSource htmlSource = HTMLSource.AMAZON;
     
+    /**Run this method to execute my solution!
+     * @param args an array of strings containing information relevant
+     * to the execution of main. Not used in this solution, could potentially
+     * be used to input book html file names.
+     */
     public static void main(String[] args){
         Book[] books = new Book[20];
         
@@ -24,17 +35,11 @@ public class BookPacker {
         String fileExtension = ".html";
         for(int i = 1; i <= books.length; i++){
             books[i-1] = loadBook(baseFileName + i + fileExtension);
-            //DEBUG: System.out.println(i + ". " + books[i-1]);
         }//for each book of 20, load from html file
         
         Box[] packedBooks = packBooks(books);
-        /* DEBUG: for(Box box : packedBooks){
-            System.out.println(box);
-        } */
         //This representation does not follow the specification, but is valid
         String jsonRepresentation = convertToJSON(packedBooks, true);
-        System.out.println(jsonRepresentation);
-        
         File file = new File("AllMyBooksArePacked_GregMcDonald_Results.json");
         writeToFile(file,jsonRepresentation);
     }//main
@@ -110,12 +115,19 @@ public class BookPacker {
     /* --- HELPER METHODS FOR BOX PACKING --- */
     
     /* ------- LOADING BOOKS ------ */
-    public static Book loadBook(String bookFileName){
+    /** Loads a book from a HTML file. The interpretation of the HTML
+     * is based off the htmlSource field.
+     * 
+     * @param bookFileName A String containing the file path to the book.
+     * @return A Book loaded from the given file path
+     */
+    private static Book loadBook(String bookFileName){
         HTMLReader bookReader = new HTMLReader("AllMyBooksArePacked\\data\\" + bookFileName);
         switch(htmlSource){
         case AMAZON:
             return loadBookFromAmazon(bookReader);
             
+        //Potential to add more cases, for pages other than Amazon
         default:
             //Do nothing
             break;
@@ -123,7 +135,14 @@ public class BookPacker {
         return new Book();
     }//loadBook
     
-    public static Book loadBookFromAmazon(HTMLReader reader){
+    /**Loads a book from the given HTML as if it was an Amazon webpage
+     * as of 5/7/2015. Future website changes or improperly specified results
+     * will cause incorrect results.
+     * 
+     * @param reader An HTMLReader from which the book will attempt to be loaded
+     * @return
+     */
+    private static Book loadBookFromAmazon(HTMLReader reader){
         Book book = new Book();
         
         book.setAuthor(extractAuthorFromAmazon(reader));
@@ -136,6 +155,7 @@ public class BookPacker {
     }//loadBookFromAmazon
     
     /* --- HELPER METHODS FOR AMAZON BOOK LOADING --- */
+    //These methods are undocumented, I feel their purpose is self-evident
     private static String extractTitleFromAmazon(HTMLReader reader){
         String pageTitle = reader.extractPageTitle();
         //Clip title string by colons, looks weird but works
@@ -165,7 +185,7 @@ public class BookPacker {
         //If actualPriceValue is not included, pull the first price found from the html
         if(elementText.equals("")){
             //DEBUG: System.out.println("ACTUAL PRICE VALUE NOT FOUND");
-            elementText = reader.extractElementTextByClass("bb_price", 0);
+            elementText = reader.extractElementsTextByClass("bb_price").get(0);
         }//if actual price not found, get first of price class
         String price = elementText + " USD";
         return price;
