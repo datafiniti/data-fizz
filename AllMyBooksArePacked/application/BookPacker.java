@@ -1,5 +1,9 @@
 package application;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -29,15 +33,13 @@ public class BookPacker {
         } */
         //This representation does not follow the specification, but is valid
         String jsonRepresentation = convertToJSON(packedBooks, true);
-         System.out.println(jsonRepresentation);
+        System.out.println(jsonRepresentation);
         
-        //BoxWrapper[] boxWrappers = fitToSpecifiedJSON(packedBooks);
-        //String jsonRepresentation = convertToJSON(boxWrappers, true);
-        //System.out.println(jsonRepresentation);
-        
+        File file = new File("AllMyBooksArePacked_GregMcDonald_Results.json");
+        writeToFile(file,jsonRepresentation);
     }//main
     
-    /* ------- JSON CONVERSION ------- */
+    /* ------- OBJECT TO JSON FILE CONVERSION ------- */
     private static String convertToJSON(Object obj, boolean prettyPrinting){
         Gson gson = new Gson();
         if(prettyPrinting){
@@ -46,13 +48,19 @@ public class BookPacker {
         return gson.toJson(obj);
     }//convertToJSON
     
-    private static BoxWrapper[] fitToSpecifiedJSON(Box[] boxes){
-        BoxWrapper[] boxWrappers = new BoxWrapper[boxes.length];
-        for(int i = 0; i < boxes.length; i++){
-            boxWrappers[i] = new BoxWrapper(boxes[i]);
-        }//for every box
-        return boxWrappers;
-    }//fitToSpecifiedJSON
+    private static boolean writeToFile(File file, String text){
+        try {
+            //write converted json data to the specified file
+            FileWriter writer = new FileWriter(file);
+            writer.write(text);
+            writer.close();
+            return true;
+        }//attempt to write to file 
+        catch (IOException e) {
+            return false;
+            //e.printStackTrace();
+        }//file failed in writing/creation
+    }//writeToFile
     
     /* ------- BOX PACKING ------- */
     
