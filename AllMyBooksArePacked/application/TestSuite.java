@@ -1,7 +1,10 @@
 package application;
 
+import java.util.List;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -10,7 +13,7 @@ public class TestSuite {
     private static final boolean DEBUG = true;
     
     public static void main(String[] args){
-        System.out.println("TESTS BEGIN");
+        System.out.println("TESTS BEGIN\n");
         
         //Testing Book Functionality
         debugPrint("TEST SECTION: Book function\n");
@@ -30,7 +33,8 @@ public class TestSuite {
         testGetDocument();
         testDataExtraction();
         
-        System.out.println("TESTS END");
+        //Tests done
+        System.out.println("\nTESTS END");
     }//main
     
     /* --- TESTING SECTIONS --- */
@@ -52,6 +56,9 @@ public class TestSuite {
         debugPrint("complete\n");
     }//testGetDocument
     
+    /**
+     * Depends on book1.html being constant, otherwise will fail
+     */
     private static void testDataExtraction(){
         debugPrint("Data Extraction test... ");
         
@@ -61,8 +68,21 @@ public class TestSuite {
         Document book1Doc = book1Reader.getDocument();
         assertEquals(book1Filepath != null, true);
         
+        //Extract page title test
         String pageTitle = book1Reader.extractPageTitle();
         assertEquals(pageTitle, "Zealot: The Life and Times of Jesus of Nazareth: Reza Aslan: 9781400069224: Amazon.com: Books");
+        
+        //Extract element text by id test
+        String elementText = book1Reader.extractElementTextByID("actualPriceValue");
+        assertEquals(elementText,  "$16.89");
+        
+        //Extract element text by tag
+        List<String> elementTextsByTag = book1Reader.extractElementsTextByTag("li");
+        assertEquals(elementTextsByTag.size() > 0,  true);
+        
+        //Extract element text by class
+        List<String> elementTextsByClass = book1Reader.extractElementsTextByClass("bb_price");
+        assertEquals(elementTextsByClass.size() > 0,  true);
         
         debugPrint("complete\n");
     }//testDataExtraction

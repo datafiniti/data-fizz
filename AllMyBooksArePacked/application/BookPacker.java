@@ -76,7 +76,7 @@ public class BookPacker {
      *  
      *  Other potential options are the best-fit heuristic or
      *  first-fit heuristic, however their performance worst-case is O(n^2).
-     *  But solutions produced are more likely to be closer to
+     *  But the solutions they produce are more likely to be closer to
      *  optimal. This tradeoff is necessary to ensure that large
      *  numbers of books can be packed in reasonable time.
      *  
@@ -126,6 +126,12 @@ public class BookPacker {
         switch(htmlSource){
         case AMAZON:
             return loadBookFromAmazon(bookReader);
+        case EBAY:
+            //return loadBookFromEbay(bookReader);
+        case SWAPPA:
+            //return loadBookFromSwappa(bookReader);
+        case CRAIGSLIST:
+            //return loadBookFromCraiglist(bookReader);
             
         //Potential to add more cases, for pages other than Amazon
         default:
