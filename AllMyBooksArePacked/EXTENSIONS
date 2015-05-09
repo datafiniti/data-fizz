@@ -1,6 +1,7 @@
 EXTENSIONS - AllMyBooksArePacked - Greg McDonald
 
-*** Commentary on design decisions is included in each class's documentation ***
+* Execute my solution by running the main method of the BookPacker class *
+** Commentary on design decisions is included in each class's documentation **
 
 1. How could my application be extended to handle domains beyond Amazon books?
     My application is straightforward to extend to other domains. The only class
