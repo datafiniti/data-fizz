@@ -1,0 +1,7 @@
+## How might this program handle:
+
+### 1. Domains beyond Amazon.com
+
+### 2. Products beyond books
+
+### 3. Parsing and shipping 2,000,000 books instead of merely 20
