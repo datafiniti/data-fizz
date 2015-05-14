@@ -1,21 +1,23 @@
 require 'rubygems'
 require 'nokogiri'         
 
-book_numbers = Array(1..20)
+# def scrape
+product_count = Array(1..20)
 
-book_numbers.each do |n|
-  unless n == 6 || n == 12 || n == 20
+product_data = [] #Array of arrays
+
+product_count.each do |n|
+  unless n == 6 || n == 12 || n == 20 #TODO figure out while scraping breaks for these entries; look into issues with scaling.
     path = "../data/book" + n.to_s + ".html"
   
     page = Nokogiri::HTML(open(path))
     
-    rawTitle = page.css("span[id=btAsinTitle]").text
-    title = rawTitle.slice(0...(rawTitle.index('[')))
+    rawTitle = page.css("span[id=btAsinTitle]").text #TODO agnosticize 
+    title = rawTitle.slice(0...(rawTitle.index(' [')))
     
     author = page.css("div[class=buying] a")[2].text
     
     price = page.css("span[id=actualPriceValue]").text
-    
     
     rawWeight = page.css("div[id=detail-bullets]").css('li')[6].text
     weight = rawWeight.slice((rawWeight.index(":")+2)...(rawWeight.index(" pounds"))).to_f
@@ -23,12 +25,54 @@ book_numbers.each do |n|
     rawIsbn = page.css("div[id=detail-bullets]").css('li')[3].text
     isbn = rawIsbn.split(": ")[1]
   
-    puts title
-    puts author
-    puts weight
-    puts isbn 
-    puts " "
+    # puts title
+    # puts author
+    # puts price
+    # puts weight
+    # puts isbn
+    # puts " "
+    
+    info = [{weight: weight}, 
+            { "title": title, 
+            "author": author, 
+            "price": price + " USD", 
+            "shipping_weight": weight.to_s + " pounds", 
+            "isbn-10": isbn
+            }]
+                
+    product_data << info
   end
 end
+
+# puts product_data[0]
+# end
+
+
+# def box
+
+json = { 
+        "box": {
+          "id": 1, 
+          "totalWeight": 0, 
+          "contents": Array.new
+          }
+        }
+
+i = 0
+loop do
+  product = product_data[i]
+  if product[0][:weight] + json[:box][:totalWeight] <= 10
+    json[:box][:totalWeight] += product[0][:weight]
+    json[:box][:contents] << product[1]
+    i += 1
+  else
+    json[:box][:totalWeight] = json[:box][:totalWeight].to_s + " pounds"
+    break
+  end
+end
+
+puts json
+
+# end
 
 
