@@ -57,19 +57,21 @@ json = {
           "contents": Array.new
           }
         }
-
-i = 0
-loop do
+        
+l = product_data.length - 1
+puts l 
+for i in 0..l
   product = product_data[i]
   if product[0][:weight] + json[:box][:totalWeight] <= 10
     json[:box][:totalWeight] += product[0][:weight]
     json[:box][:contents] << product[1]
     i += 1
   else
-    json[:box][:totalWeight] = json[:box][:totalWeight].to_s + " pounds"
-    break
+    i += 1
   end
 end
+
+json[:box][:totalWeight] = json[:box][:totalWeight].to_s + " pounds"
 
 puts json
 
