@@ -22,30 +22,29 @@ class Scrape
     path = "./data/book" + file_number.to_s + ".html"
 
     page = Nokogiri::HTML(open(path)) #Nokogiri Object
-  
-    rawTitle = page.css("span[id=btAsinTitle]").text #TODO agnosticize
-    @title = rawTitle.slice(0...(rawTitle.index(' [')))
-  
-    @author = page.css("div[class=buying] a")[2].text #consider changing this as well
-  
-    @price = page.css("span[id=actualPriceValue]").text
     
-    #### factor into method ####
+    # Lines 28-46 can/should be refactored and written more agnostically. Eventually could become methods that take the CSS arguments specific to different sites.
   
-    rawWeight = ""
-    rawIsbn = ""
-    page.css("div[id=detail-bullets]").css('li').each do |list_item|
-      if list_item.text.include?("Shipping Weight")
-        rawWeight = list_item.text
-      elsif list_item.text.include?("ISBN-10")
-        rawIsbn = list_item.text
-      end # conditionals
-    end # .each do loop
-    
-    #############################
+      rawTitle = page.css("span[id=btAsinTitle]").text 
+      @title = rawTitle.slice(0...(rawTitle.index(' [')))
   
-    @weight = rawWeight.slice((rawWeight.index(":")+2)...(rawWeight.index(" pounds"))).to_f
-    @isbn = rawIsbn.split(": ")[1]
+      @author = page.css("div[class=buying] a")[2].text # Consider rewriting if possible
+  
+      @price = page.css("span[id=actualPriceValue]").text
+      
+      rawWeight = ""
+      rawIsbn = ""
+      page.css("div[id=detail-bullets]").css('li').each do |list_item|
+        if list_item.text.include?("Shipping Weight")
+          rawWeight = list_item.text
+        elsif list_item.text.include?("ISBN-10")
+          rawIsbn = list_item.text
+        end # conditionals
+      end # .each do loop
+      
+      @weight = rawWeight.slice((rawWeight.index(":")+2)...(rawWeight.index(" pounds"))).to_f
+      @isbn = rawIsbn.split(": ")[1]
+  
   end # method
   
   # Public: #build_product
