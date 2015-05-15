@@ -46,8 +46,11 @@ loop do
   end
 end
 
-boxes.to_json
+boxes_json = JSON.pretty_generate(boxes)
 
+json_doc = File.new("boxed_products.json", "w")
+json_doc.puts(boxes_json)
+json_doc.close
 
 
 #################################       
