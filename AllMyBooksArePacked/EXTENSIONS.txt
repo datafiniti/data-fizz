@@ -30,6 +30,6 @@ If the program was changed to collect info for a mixed group of multiple types o
 
 As it's written, the program could theoretically handle a much-larger data set (ie nowhere is a count of 20 hard-coded into the logic). 
 
-That being said, I'd be interested in learning from you which processes make the program sluggish at that scale. I have a suspicion that there is repetition here that could eventually factor out, optimizing the program. 
+That being said, I'd be interested in learning from you which processes make the program sluggish at that scale. I have a suspicion that there is repetition here (for instance, in the efficiency of the BoxHelper) that could eventually be re-written, optimizing the program.
 
 Also with that many data points, there are bound to be some edge cases that will break the program as it's written now. I encountered that scenario in this small set of 20 books! Files with more information in their "Product Details" section threw my first-draft Nokogiri calls; at one point, a duplicate entry stuck me in an infinite loop through the Products. The great thing about edge cases -- and there's always edge cases -- is that encountering them forces us to write dryer code!

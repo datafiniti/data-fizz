@@ -27,12 +27,13 @@ module BoxHelper
     
     boxes = [] # Array of hashes { {box: {box_info}}, {box: {box_info}}, ...}
 
-    box_no = 1 #iterator
+    box_no = 1 # Iterator
 
     loop do
       box = Box.new(box_no)
       box_info = box.format_info
-
+      
+      # This loop works but should be revised.
       product_data.each do |product|
         if product[0][:weight] + box_info[:totalWeight] <= 10
           box_info[:totalWeight] += product[0][:weight]
