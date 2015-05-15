@@ -45,7 +45,7 @@ end
 
 # def box
 
-json = [] # Array of hashes { box: {box_info} }
+json = [] # Array of hashes { {box: {box_info}}, {box: {box_info}}, ...}
 
 box_no = 1 #iterator
 
@@ -75,7 +75,6 @@ loop do
   end
 end
 
-puts json
 
 # end
 
