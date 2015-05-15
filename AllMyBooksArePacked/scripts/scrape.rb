@@ -2,24 +2,28 @@ require 'pry'
 require_relative 'product'
 require_relative 'box'
 
-# Class: Name
+# Class: Scrape
 #
-# Description.
+# Creates scrape Object with attributes from a respective HTML file.
 #
 # Attributes:
-# + @name    - Class: description.
+# + @title     - String: Title info from file.
+# + @author    - String: Author info from file.
+# + @price     - String: Price info from file.
+# + @weight    - Float: Weight info from file; converted to Float for later mathematical comparisons.
+# + @isbn      - String: ISBN-10 info from file.
 #
 # Public Methods:
-# + method_name
+# + build_product
 
 class Scrape
   
   def initialize(file_number)
     path = "./data/book" + file_number.to_s + ".html"
 
-    page = Nokogiri::HTML(open(path))
+    page = Nokogiri::HTML(open(path)) #Nokogiri Object
   
-    rawTitle = page.css("span[id=btAsinTitle]").text #TODO agnosticize #OK
+    rawTitle = page.css("span[id=btAsinTitle]").text #TODO agnosticize
     @title = rawTitle.slice(0...(rawTitle.index(' [')))
   
     @author = page.css("div[class=buying] a")[2].text #consider changing this as well
@@ -35,14 +39,26 @@ class Scrape
         rawWeight = list_item.text
       elsif list_item.text.include?("ISBN-10")
         rawIsbn = list_item.text
-      end
-    end
+      end # conditionals
+    end # .each do loop
     
     #############################
   
     @weight = rawWeight.slice((rawWeight.index(":")+2)...(rawWeight.index(" pounds"))).to_f
     @isbn = rawIsbn.split(": ")[1]
-  end
+  end # method
+  
+  # Public: #build_product
+  # Creates Product object with information scraped from respective file, returns formatted representation of the Product.
+  #
+  # Parameters:
+  # None.
+  #
+  # Returns:
+  # Array: Array containing two Hashes, one with weight and one with formatted product info.
+  #
+  # State Changes:
+  # Creates new Product instance.
     
   def build_product
     product = Product.new({weight: @weight,
@@ -53,6 +69,6 @@ class Scrape
               })
               
     product.format_info
-  end
+  end # method
 
-end
+end # class

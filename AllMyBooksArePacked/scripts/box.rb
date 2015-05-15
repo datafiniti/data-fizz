@@ -1,17 +1,30 @@
-# Class: Name
+# Class: Box
 #
-# Description.
+# Builds Box container to store representations of Product objects.
 #
 # Attributes:
-# + @name    - Class: description.
+# + @id_number    - Integer: Binning iterator used in BoxHelper.
 #
 # Public Methods:
-# + method_name
+# + format_info
 
 class Box
+  
   def initialize(box_no)
     @id_number = box_no
-  end
+  end # method
+  
+  # Public: #format_info
+  # Returns representation of the Object's instance, formatted properly for eventual conversion to JSON.
+  #
+  # Parameters:
+  # None.
+  #
+  # Returns:
+  # Hash.
+  #
+  # State Changes:
+  # None.
   
   def format_info
     box_info = {"id": @id_number,
@@ -20,6 +33,6 @@ class Box
                 }
                 
     return box_info
-  end
+  end # method
   
-end
+end # class

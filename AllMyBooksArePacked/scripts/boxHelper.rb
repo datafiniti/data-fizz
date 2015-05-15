@@ -1,7 +1,27 @@
 require 'pry'
 require_relative 'box'
 
+# Module: BoxHelper
+#
+# Toolbox for sorting product data.
+#
+# Public Methods:
+# + box_products
+
 module BoxHelper
+  
+  # Public: .box_products
+  # Loops through all "Products" and assigns them to a Box object, with no Box exceeding 10 pounds. Collects those Boxes in a format to be parsed as JSON.
+  #
+  # Parameters:
+  # + data_array  : Array of Arrays
+  #
+  # Returns:
+  # Array: Array containing multiple Hashes, each representing a Box object containing representations of Product objects.
+  #
+  # State Changes:
+  # Creates new Box instances.
+  
   def self.box_products(data_array)
     product_data = data_array
     
@@ -10,7 +30,6 @@ module BoxHelper
     box_no = 1 #iterator
 
     loop do
-
       box = Box.new(box_no)
       box_info = box.format_info
 
