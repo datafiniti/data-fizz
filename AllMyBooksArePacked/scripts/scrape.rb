@@ -21,14 +21,14 @@ class Scrape
   def initialize(file_number)
     path = "./data/book" + file_number.to_s + ".html"
 
-    page = Nokogiri::HTML(open(path)) #Nokogiri Object
+    page = Nokogiri::HTML(open(path))
     
     # Lines 28-46 can/should be refactored and written more agnostically. Eventually could become methods that take the CSS arguments specific to different sites.
   
       rawTitle = page.css("span[id=btAsinTitle]").text 
       @title = rawTitle.slice(0...(rawTitle.index(' [')))
   
-      @author = page.css("div[class=buying] a")[2].text # Consider rewriting if possible
+      @author = page.css("div[class=buying] a")[2].text # Consider rewriting
   
       @price = page.css("span[id=actualPriceValue]").text
       

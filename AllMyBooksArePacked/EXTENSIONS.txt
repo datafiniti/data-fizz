@@ -1,7 +1,35 @@
-## How might this program handle:
+How might this program handle:
 
-### 1. Domains beyond Amazon.com
+1. Domains beyond Amazon.com
 
-### 2. Products beyond books
+Right now, the arguments passed to Nokogiri methods in scrape.rb to grab data from the .html files are hardcoded and specific to Amazon. With some refactoring, those calls could each become their own methods, perhaps with conditionals that account for site-specific calls.
 
-### 3. Parsing and shipping 2,000,000 books instead of merely 20
+Pseudo-code: 
+
+```
+def get_title(page)
+  if page.css("title").include?("Amazon.com")
+   title = page.css(<AMAZON-SPECIFIC STRING>).text
+  if page.css("title").include?("Barnes & Noble")
+    title = page.css(<BN-SPECIFIC STRING>).text
+  end
+  return title
+end
+```
+
+2. Products beyond books
+
+Currently, the code is written to assume all products are books.
+
+If the program was changed to collect information for a homogenous group of some other product, the change in Scrape#initialize would be straight-forward enough; set the relevant attributes equal to the Nokogiri calls needed to scrape the info. What's less straightforward are the multiple other places those attribute names might change -- Scrape#build_product, Product#initialize, and Product#format_info. Those methods should be written more agnostically to account for changes in the attributes the program searches for.
+
+If the program was changed to collect info for a mixed group of multiple types of products, I might write product-specific modules for Nokogiri calls. Ideally those diverse sets of attributes could be passed to the same, more agnostically-written Product class.
+
+
+3. Parsing and shipping 2,000,000 books instead of merely 20
+
+As it's written, the program could theoretically handle a much-larger data set (ie nowhere is a count of 20 hard-coded into the logic). 
+
+That being said, I'd be interested in learning from you which processes make the program sluggish at that scale. I have a suspicion that there is repetition here that could eventually factor out, optimizing the program. 
+
+Also with that many data points, there are bound to be some edge cases that will break the program as it's written now. I encountered that scenario in this small set of 20 books! Files with more information in their "Product Details" section threw my first-draft Nokogiri calls; at one point, a duplicate entry stuck me in an infinite loop through the Products. The great thing about edge cases -- and there's always edge cases -- is that encountering them forces us to write dryer code!

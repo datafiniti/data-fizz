@@ -18,7 +18,7 @@ product_data = []
 
 # For each product file in subdirectory 'data', scrapes and collects desired information.
 product_count.each do |n|
-  scraped_info = Scrape.new(n) # Object with attributes for pertinent info (ie @title, @weight, etc)
+  scraped_info = Scrape.new(n) # Object with attributes for pertinent info (eg @title, @weight, etc)
   product_data << scraped_info.build_product # Array << Array
 end
 
