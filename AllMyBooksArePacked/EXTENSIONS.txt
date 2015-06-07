@@ -1,0 +1,12 @@
+1. Create scrapers that can do more than instock books at Amazon.
+2. Create a scraper factory to allow initializing and automating using the 
+correct scraper depending on the domain or other property.
+3. Create scrapers or add more generalization to current scrapers to allow other
+product types.
+4. Efficiency was of lesser concern. Test and optimize parsing and boxing.
+5. Boxing can be generalized to handle more than books.
+6. Setting up a framework to automate scraping and handle failures or threading.
+Something possibly like a queue or jobs system. See Scrapy as an example or 
+possible solution to use.
+7. Some domains or pages may require or load it's content with JavaScript. For
+this situation look into intrgrating a headless browser such as PhantomJS.
