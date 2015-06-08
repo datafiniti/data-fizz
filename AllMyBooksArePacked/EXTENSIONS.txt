@@ -1,0 +1,34 @@
+In order to extend the current code to handle domains beyond Amazon.com, I would need
+to modify the strings needed to identify the ID's or classes being used. This could be
+done by creating a list of strings that can be used to help identify these blocks of 
+HTML. Another similar possibility would be to parse through and replace these ID's or
+classes with a singular string (essentially a helper method) in order to make the 
+parsing later more uniform. 
+
+To extend this application to things that are not just books, we can essentially have 
+a "checklist" of sorts, and if the block is present, extract the information and place
+it in the JSON document. If the block is not present, depending on what the consumer 
+needs, either place an empty field for the JSON document (e.g. ISBN-10: n/a) or don't 
+even display the field. This checklist could be essentially extended to whatever length
+it need be, and could also "branch" in order to ensure that the entire list doesn't
+need to checked. For example, if we find an ISBN block, then we can almost be sure that
+there will also be a title/author as well, or vice versa, depending on which field 
+is more likely to show up w/o the other. We could check for a few things, which 
+could lead to sub-lists that we would check. 
+
+In order to parse and ship 2,000,000 books, this code would need to be changed in the
+following ways:
+	1. Divide the 2,000,000 books into smaller chunks. This will allow for us to
+	make sure we don't need to allocate too much room for this processing. Perhaps
+	process a couple thousand books at a time. 
+	2. Currently there are 3 for loops, one of which is nested within the other.
+	This is not very concerning seeing that this inner loop is only run every time
+	the box has reached the critical weight, and the inner loop is only iterating
+	for the number of books inside of it. If the boxes are limited to still 10lbs,
+	this iteration number should not exceed single digits. I believe the Big O time
+	for this nested loop will be 2n, since the outer loops for n iterations and the
+	inner loops for n iterations on the condition the box is filled; so each book
+	is only looped once for each for loop. 
+	The other loop, which parses the document, contains a considerable amount of
+	parsing (for each field type), and splitting the string in order to obtain
+	the necessary information. This could be 
