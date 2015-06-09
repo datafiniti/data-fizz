@@ -1,4 +1,4 @@
-class BinPacker
+class BoxPacker
   def initialize(items = [], max_capacity = 10)
     @max_capacity = max_capacity
     @items = items

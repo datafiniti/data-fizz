@@ -1,9 +1,9 @@
-require 'bin_pack.rb'
+require 'box_packer.rb'
 
-describe BinPacker do
+describe BoxPacker do
   describe 'first_fit' do
     it 'handles empty input' do
-      bin_packer = BinPacker.new
+      bin_packer = BoxPacker.new
       expect(bin_packer.first_fit).to eq([])
     end
 
@@ -14,7 +14,7 @@ describe BinPacker do
                 {'title' => 'D', 'shipping_weight' => 3},
                 {'title' => 'E', 'shipping_weight' => 4},
                 {'title' => 'F', 'shipping_weight' => 6}]
-      bin_packer = BinPacker.new(items)
+      bin_packer = BoxPacker.new(items)
       results = bin_packer.first_fit
       expect(results[0][0]).to eq({'title' => 'A', 'shipping_weight' => 3})
       expect(results[0][1]).to eq({'title' => 'B', 'shipping_weight' => 6})
@@ -31,7 +31,7 @@ describe BinPacker do
                 {'title' => 'B', 'shipping_weight' => 6},
                 {'title' => 'C', 'shipping_weight' => 4},
                 {'title' => 'D', 'shipping_weight' => 5}]
-      bin_packer = BinPacker.new(items)
+      bin_packer = BoxPacker.new(items)
       results = bin_packer.best_fit_with_sorting
       expect(results[0][0]).to eq({'title' => 'B', 'shipping_weight' => 6})
       expect(results[0][1]).to eq({'title' => 'C', 'shipping_weight' => 4})
