@@ -5,6 +5,10 @@ public class Book{
   public String weight;
   public String isbn; 
   
+  /**
+   * Constructor
+   * Every book element needs to contain these five fields
+   */
   public Book(String title, String author, String price, String weight, String isbn){
     this.title = title;
     this.author = author;

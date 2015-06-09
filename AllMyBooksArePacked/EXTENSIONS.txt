@@ -20,15 +20,15 @@ In order to parse and ship 2,000,000 books, this code would need to be changed i
 following ways:
 	1. Divide the 2,000,000 books into smaller chunks. This will allow for us to
 	make sure we don't need to allocate too much room for this processing. Perhaps
-	process a couple thousand books at a time. 
-	2. Currently there are 3 for loops, one of which is nested within the other.
+	process a couple thousand books at a time. This should be ok within the confines
+	of the problem, considering that with a thousand books, if the algorithm for
+	packing the boxes is changed, it shouldn't matter since a thousand should be
+	enough different types of books to pack. 
+	2. Currently there are 4 for loops, one of which is nested within the other.
 	This is not very concerning seeing that this inner loop is only run every time
 	the box has reached the critical weight, and the inner loop is only iterating
 	for the number of books inside of it. If the boxes are limited to still 10lbs,
 	this iteration number should not exceed single digits. I believe the Big O time
 	for this nested loop will be 2n, since the outer loops for n iterations and the
 	inner loops for n iterations on the condition the box is filled; so each book
-	is only looped once for each for loop. 
-	The other loop, which parses the document, contains a considerable amount of
-	parsing (for each field type), and splitting the string in order to obtain
-	the necessary information. This could be 
+	is only looped once for each for loop. The other two loops are negligible.  
