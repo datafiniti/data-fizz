@@ -9,7 +9,7 @@ import org.apache.commons.io.*;
 public class BookPacker{
  
   /**
-   * Creates book elements to be inserted in bookArray, each one corresponding to a HTML file
+   * Creates bookArray which contains book elements, each one corresponding to a HTML file
    */
   public static Book[] buildBookArray(String path) throws IOException{
     Book[] bookArray = new Book[20];
