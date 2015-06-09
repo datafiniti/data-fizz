@@ -1,5 +1,3 @@
-require 'json'
-
 class BinPacker
   def initialize(items = [], max_capacity = 10)
     @max_capacity = max_capacity
