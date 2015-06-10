@@ -1,8 +1,10 @@
+require 'json'
+
 class BoxPacker
   def initialize(items = [], max_capacity = 10)
     @max_capacity = max_capacity
     @items = items
-    @bins = []
+    @boxes = []
   end
 
   def add(item)
@@ -10,29 +12,12 @@ class BoxPacker
     @items << item
   end
 
-  def first_fit
-    @items.each do |item|
-      added = false
-      @bins.each_with_index do |bin, index|
-        if bin.add(item)
-          added = true
-          break
-        end
-      end
-
-      add_to_new_bin(item) unless added
-    end
-
-    @bins.map{ |bin| bin.contents }
-  end
-
-  def best_fit_with_sorting
-    @items.sort! { |a, b| b['shipping_weight'] <=> a['shipping_weight'] }
+  def best_fit
     @items.each do |item|
       best_fit_index = nil
       best_remaining_capacity = @max_capacity
-      @bins.each_with_index do |bin, index|
-        potential_remaining_capacity = check_remaining_capacity(bin, item)
+      @boxes.each_with_index do |box, index|
+        potential_remaining_capacity = check_remaining_capacity(box, item)
         if potential_remaining_capacity < best_remaining_capacity
           best_fit_index = index
           best_remaining_capacity = potential_remaining_capacity
@@ -40,33 +25,38 @@ class BoxPacker
       end
 
       if best_remaining_capacity == @max_capacity
-        add_to_new_bin(item)
+        add_to_new_box(item)
       else
-        @bins[best_fit_index].add(item)
+        @boxes[best_fit_index].add(item)
       end
     end
 
-    @bins.map{ |bin| bin.contents }
+    @boxes.map do |box|
+      o = {}
+      o[:totalWeight] = @max_capacity - box.capacity
+      o[:contents] = box.contents
+      o.to_json
+    end
   end
 
   private
 
-  def add_to_new_bin(item)
-    new_bin = Bin.new
-    new_bin.add(item)
-    @bins << new_bin
+  def add_to_new_box(item)
+    new_box = Box.new
+    new_box.add(item)
+    @boxes << new_box
   end
 
 
-  def check_remaining_capacity(bin, item)
-    #returning max capacity will not allow placing item in bin
-    remaining_capacity = bin.capacity - item['shipping_weight']
+  def check_remaining_capacity(box, item)
+    #returning max capacity will not allow placing item in box
+    remaining_capacity = box.capacity - item['shipping_weight']
     remaining_capacity >= 0 ? remaining_capacity : @max_capacity
   end
 
 end
 
-class Bin
+class Box
   attr_reader :contents, :capacity
 
   def initialize(capacity = 10)
@@ -85,9 +75,3 @@ class Bin
   end
 end
 
-class OrderItem
-  def initialize(item, weight)
-    @shipping_weight =
-    @item
-  end
-end

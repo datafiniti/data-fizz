@@ -10,7 +10,7 @@ class AmazonParser < Parser
         [:title, :author, :price, :shipping_weight, :isbn_10].each do |attr|
           parsed_data[attr] = send("parse_#{attr}", doc)
         end
-        Book.find_or_create_by(parsed_data)
+        Book.find_or_create_by(parsed_data).touch
     end
   end
 
