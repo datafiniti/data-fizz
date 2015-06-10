@@ -7,11 +7,6 @@ class BoxPacker
     @boxes = []
   end
 
-  def add(item)
-    # option to add items after initialization
-    @items << item
-  end
-
   def best_fit
     @items.each do |item|
       best_fit_index = nil
@@ -31,47 +26,42 @@ class BoxPacker
       end
     end
 
-    @boxes.map do |box|
-      o = {}
-      o[:totalWeight] = @max_capacity - box.capacity
-      o[:contents] = box.contents
-      o.to_json
-    end
+    @boxes
   end
 
   private
 
   def add_to_new_box(item)
-    new_box = Box.new
-    new_box.add(item)
+    new_box = Box.create(capacity: @max_capacity - item.shipping_weight)
+    new_box.books << item
     @boxes << new_box
   end
 
 
   def check_remaining_capacity(box, item)
     #returning max capacity will not allow placing item in box
-    remaining_capacity = box.capacity - item['shipping_weight']
+    remaining_capacity = box.capacity - item.shipping_weight
     remaining_capacity >= 0 ? remaining_capacity : @max_capacity
   end
 
 end
 
-class Box
-  attr_reader :contents, :capacity
+# class Box
+#   attr_reader :contents, :capacity
 
-  def initialize(capacity = 10)
-    @capacity = capacity
-    @contents = []
-  end
+#   def initialize(capacity = 10)
+#     @capacity = capacity
+#     @contents = []
+#   end
 
-  def add(item)
-    if @capacity >= item['shipping_weight']
-      @contents << item
-      @capacity -= item['shipping_weight']
-      return true
-    end
+#   def add(item)
+#     if @capacity >= item['shipping_weight']
+#       @contents << item
+#       @capacity -= item['shipping_weight']
+#       return true
+#     end
 
-    false
-  end
-end
+#     false
+#   end
+# end
 
