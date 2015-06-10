@@ -1,4 +1,5 @@
-**Domains beyond Amazon.com**
+1. Domains beyond Amazon.com
+
 In order for this application to be able to handle scraping pages from domains
 other than Amazon, we would have to write a new DomainParser class that
 inherits from Parser and implements the scraping/parsing of the necessary
@@ -7,17 +8,22 @@ implement tests that ensure that each domain's HTML/CSS structure has not change
 We could do this by scraping a particular (live) page from each domain and
 ensuring that fields are populated correctly. If the tests fail, we would know
 to update our parsing techniques. If you have any ideas/techniques regarding
-how to automatically scrape for information--indpenedent of knowing the HTML/CSS
-structure I am very curious to discuss them. As far as I can tell, we need to
-have a reference page from a domain to tell our parser how to scrape the info.
+how to automatically scrape for information--independent of knowing the HTML/CSS
+structure I am very curious to discuss them with you. As far as I can tell, we need
+to have a reference page from a domain in order to program our parser to scrape the info, but I am sure there are ways to generalize portions of the process.
 
-**Products beyond just simply books.**
-In my application I implemented only books. With a larger project scope that would
-require boxing several different types of items, we could potentially go the
-Single Table Inheritance route--setting up an items table, with each type of
-object inheriting from the items table. The items table woud have a "type" column.However, this would result in many empty fields--an inefficient use of space. A better approach would be to use a NoSQL db which would allow the inheritance, but not result in all the empty columns.
+2. Products beyond just simply books.
 
-**Parse and ship 2,000,000 books (in a reasonable time frame; e.g., polynomial time) instead of merely 20.**
+In my application I implemented only books. With a larger project scope requiring
+boxing several different types of items, we could potentially go the Single Table
+Inheritance route. We first create an items table. The items table woud have a "type" column. Each type of object would inherit from Item. However, this would
+result in many empty fields in the items table--an inefficient use of space. A
+better approach would be to use a NoSQL db which would allow the inheritance, but
+not result in all the empty columns.
+
+3. Parse and ship 2,000,000 books (in a reasonable time frame; e.g., polynomial
+time) instead of merely 20.
+
 In my implementation of box-packing I decided to sort the books by shipping_weight
 using the database. I also indexed the books table on shipping_weight. While
 this index is not used by Postgres on smaller inputs, for larger inputs it would
@@ -26,10 +32,14 @@ having to maintain the index on every insert operation on the books table. If
 we only access the table one time for box-packing it would make sense not to
 implement the index and sort the one time on access. In order to sort such a
 large number of books we would potentially need to implement an external-sort,
-for example using a merge-sort with a output buffer: sorting chunks of the large
+for example using a merge-sort with an output buffer: sorting chunks of the large
 list of books and then merging them using the buffer. This implementation would
-run in O(nlogn * b) where n is the number of books, and b is the total number
+run in O(nlogn + n * b) where n is the number of books, and b is the total number
 of bins the solution yields. We could also forego sorting entirely, depending
 on our performance requirements. There are faster algorithms than best-fit-with-
 sorting, however they yield a less-optimal solution. That might be preferable,
-depending on the application/use-case.
+depending on the application/use-case. With these 20 books, the best-fit-with-
+sorting solution yields the same (and optimal) solution of 9 boxes as does the
+best-fit-without-sorting solution. We could investigate the different with
+different inputs and choose an algorithm based on our findings, depending on
+priorities--minimizing the number of boxes, memory, or speed.

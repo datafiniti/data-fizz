@@ -14,10 +14,6 @@ class AmazonParser < Parser
     end
   end
 
-  def run
-    open_html_files &@parse_document
-  end
-
   def parse_title(doc)
     # use defensive parsing in each method to prevent errors
     # run test suite to ensure parsing is still working correctly

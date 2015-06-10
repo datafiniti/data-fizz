@@ -15,7 +15,7 @@ namespace :scrape_and_box do
     # and when we serve the JSON specify which boxes belong to a shipment;
     # all of this would depend on the purpose of this app
     Box.destroy_all
-    #BoxPacker takes  max box capacity as optional second argument
+    #BoxPacker takes max box capacity as optional second argument
     BoxPacker.new(books).best_fit
   end
 end

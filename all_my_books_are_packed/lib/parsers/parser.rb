@@ -4,6 +4,11 @@ class Parser
     @parse_document = block if block_given?
   end
 
+  def run
+    open_html_files &@parse_document
+    # implement the @parse_document block in child class
+  end
+
   def open_html_files
     Dir.glob("#{@directory}*.html") do |file_str|
       yield(File.open(file_str)) if block_given?
