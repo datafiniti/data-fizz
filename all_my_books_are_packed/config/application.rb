@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'database_cleaner'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -8,6 +9,7 @@ Bundler.require(*Rails.groups)
 
 module AllMyBooksArePacked
   class Application < Rails::Application
+    DatabaseCleaner.strategy = :truncation
     config.autoload_paths += Dir["#{Rails.root}/app/models/**/"]
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

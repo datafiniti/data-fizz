@@ -13,6 +13,8 @@ class Box < ActiveRecord::Base
   has_many :books, through: :box_items, source: :book
 
   def add(item)
+    return false if self.capacity - item.shipping_weight < 0
+
     self.capacity = self.capacity - item.shipping_weight
     books << item
     save
