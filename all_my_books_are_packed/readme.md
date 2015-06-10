@@ -3,7 +3,7 @@
 ## Directions
 
 1. Clone this repo
-2. Navigate to application `/all_my_books_are_packed/`
+2. Navigate to application `/all_my_books_are_packed`
 2. Install dependencies `bundle install`
 3. Create the database `rake db:create`
 4. Run pending migrations `rake db:migrate`
