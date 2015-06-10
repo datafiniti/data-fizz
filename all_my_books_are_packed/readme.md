@@ -1,4 +1,4 @@
-# Amazon Book Scraper and Book Packer
+# Amazon BookScraper and BoxPacker
 
 ## Directions
 
