@@ -18,9 +18,9 @@ class Extractor {
 
 	/**
 	 * Constructor for Exractor class
-     *
+	 *
 	 * @param String $dir the directory containing the files to extract data from
-    */
+    	*/
 	public function __construct($dir) {
 		// Get directory listing
 		$this->dir = $dir;
@@ -32,10 +32,10 @@ class Extractor {
 	}
 
 	/**
-     * Extracts book information and returns an array of books
-     *
-     * @return Book[] An array containing information about each book
-    */
+     	 * Extracts book information and returns an array of books
+     	 *
+     	 * @return Book[] An array containing information about each book
+    	 */
 	public function extractBookInfo() {
 		$book = Array(); // Array to hold all books
 		
@@ -100,7 +100,7 @@ class Extractor {
 
 	/**
 	 * Extracts the title of a book from a string of text obtained via a regular expression.
-     *
+     	 *
 	 * @param String $capturedString String captured using a regular expression
 	 * @return String The title of the book
 	*/
@@ -121,7 +121,7 @@ class Extractor {
 	/**
 	 * Extracts the authors of a book from strings of text obtained via a regular expression.
 	 * In cases where there is no author, only an editor, returns an error code for further processing.
-     *
+	 *
 	 * @param String[] $capturedString Array of all matches to the author capturing regular expression
 	 * @return mixed Returns 0 if there are no authors, returns a single string listing all authors otherwise
 	*/ 
@@ -153,7 +153,7 @@ class Extractor {
 	 * In cases where there are multiple prices, such as rent price vs buy price, it selects
 	 *	the highest price, because that price is the buy price. In all cases, selects
 	 * 	the price next to the "Buy Now" button.
-     *
+     	 *
 	 * @param String[] $capturedString Array of all matches to the price capturing regular expression
 	 * @return Double The appropriate price for the book
 	*/ 
@@ -168,7 +168,7 @@ class Extractor {
 
 	/**
 	 * Extracts the shipping weight of a book from a string of text obtained via a regular expression.
-     *
+     	 *
 	 * @param String $capturedString String captured using a regular expression
 	 * @return Double The shipping weight of the book
 	*/
@@ -182,7 +182,7 @@ class Extractor {
 
 	/** 
 	 * Extracts the ISBN-10 number of a book from a string of text obtained via a regular expression.
-     *
+     	 *
 	 * @param String $capturedString String captured using a regular expression
 	 * @return String The book's ISBN-10 number
 	*/
