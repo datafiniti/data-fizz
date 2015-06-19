@@ -1,0 +1,12 @@
+
+1) Domains beyond Amazon.com
+
+  Add a new concern that maps the new site to the books model
+
+2) Products beyond just simply books.
+
+  Simply create a new model that belongs to boxes, create a function to pack that object in a box, then create a concern that populates the fields of the new model
+
+3) Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+
+  Create multiple treads that all parse books at the same time.  (A lock would need to be created for packing boxes to make it thread safe.)
