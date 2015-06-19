@@ -21,6 +21,36 @@ class BooksController < ApplicationController
   def edit
   end
 
+  def upload_form
+  end
+
+  def upload
+    @files = params[:book].try(:[], :file)
+    respond_to do |format|
+      if @files
+        success = true
+        @files.each do |file|
+          amazon_book = AmazonBook.new(file)
+          @book = amazon_book.to_book
+          unless @book.save && Box.add_book(@book)
+            success = false
+          end
+        end
+        if success
+          format.html { redirect_to books_path, notice: 'Books were successfully created.' }
+          format.json { render :show, status: :created, location: @book }
+        else
+          format.html {  redirect_to books_path, notice: 'Some Books were not successfully created.' }
+          format.json { render json: { notice: 'failed to upload' }, status: :unprocessable_entity }
+        end
+      else
+        format.html { render :upload_form, notice: 'No File' }
+        format.json { render json: {notice: 'no  file'}, status: :unprocessable_entity }
+      end
+    end
+
+  end
+
   # POST /books
   # POST /books.json
   def create
@@ -62,13 +92,13 @@ class BooksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_book
-      @book = Book.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_book
+    @book = Book.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def book_params
-      params.require(:book).permit(:title, :author, :price, :shipping_weight, :isbn_10)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def book_params
+    params.require(:book).permit(:title, :author, :price, :shipping_weight, :isbn_10, :box, :box_id)
+  end
 end

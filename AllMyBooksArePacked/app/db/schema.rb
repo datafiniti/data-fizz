@@ -14,11 +14,11 @@
 ActiveRecord::Schema.define(version: 20150618153045) do
 
   create_table "books", force: :cascade do |t|
-    t.string   "title"
-    t.string   "author"
-    t.decimal  "price"
-    t.decimal  "shipping_weight"
-    t.integer  "isbn_10"
+    t.string   "title",           null: false
+    t.string   "author",          null: false
+    t.decimal  "price",           null: false
+    t.decimal  "shipping_weight", null: false
+    t.string   "isbn_10",         null: false
     t.integer  "box_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
@@ -27,9 +27,9 @@ ActiveRecord::Schema.define(version: 20150618153045) do
   add_index "books", ["box_id"], name: "index_books_on_box_id"
 
   create_table "boxes", force: :cascade do |t|
-    t.decimal  "total_weight"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.decimal  "total_weight", default: 0.0, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
 end

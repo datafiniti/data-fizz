@@ -1,6 +1,11 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  if ENV['TRUSTED_IP']
+    BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP']
+    config.web_console.whitelisted_ips = ENV['TRUSTED_IP']
+  end
+ 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
