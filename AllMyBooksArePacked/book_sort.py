@@ -1,5 +1,4 @@
 
-import pdb
 import json
 import re
 from bs4 import BeautifulSoup
@@ -28,7 +27,7 @@ class warehouse:
 		#	4) location is a file path to the book html file in the 'data' folder that is a sibling of this source code in the directory tree.
 		
 		
-		for book in range(2,num_items + 1):
+		for book in range(1,num_items + 1):
 			location = 'data/book' + str(book) + '.html'
 
 			doc_reader = open(location,'r')
@@ -56,7 +55,7 @@ class warehouse:
 			weight = float(match.group())
 
 			#Create a new book with attributes as calculated above and add to unsorted list.
-			new_book = Book(title,author,price,isbn,weight)
+			new_book = Book(title,author,price+' USD',isbn[1:],weight)
 			self.books.append(new_book)
 
 	def package_books(self):
@@ -128,7 +127,7 @@ class Crate:
 		for book in self.books:
 			packaged_books.append(book.package())
 
-		return {"id":self.id,"totalWeight":self.totalWeight,"contents":packaged_books}
+		return {"id":self.id,"totalWeight":str(self.totalWeight)+' pounds',"contents":packaged_books}
 
 
 	def total_weight(self):
@@ -153,7 +152,7 @@ class Book:
 		return self.price	
 
 	def package(self):
-		return {"title":self.title,"author":self.author,"price":self.price,"shipping_weight":self.weight,"isbn-10":self.isbn}
+		return {"title":self.title,"author":self.author,"price":self.price,"shipping_weight":str(self.weight)+' pounds',"isbn-10":self.isbn}
 
 
 #Main Method ----------------------------------------------------------------------------------------
