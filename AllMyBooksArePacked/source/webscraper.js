@@ -3,7 +3,13 @@ function Webscraper(url){
 }
 
 Webscraper.prototype.scrape = function(){
-  console.log("hello")
+  $.ajax({
+      url: this.url,
+      type: 'get',
+      dataType: 'html'
+    }).done(function(response){
+     console.log(response);
+    })
 }
 
 
