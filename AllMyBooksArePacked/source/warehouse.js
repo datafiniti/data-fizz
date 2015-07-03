@@ -1,0 +1,3 @@
+function Warehouse(){
+  this.contents = [];
+}
