@@ -22,10 +22,13 @@ Webscraper.prototype.scrapeAndCreateBook = function(warehouse){
         }
       }
       title = title.slice(0, endOfSlice).trim();
-      
-      console.log(title);
+
       var author = $(response).find(".byLinePipe").prev("a").text();
+
       var shippingWeight = $(response).find("li").filter(":contains(Shipping Weight)").text();
+      shippingWeight = Number(shippingWeight.slice(17, -42));
+      console.log(shippingWeight);
+
       var isbn10 = $(response).find("li").filter(":contains(ISBN-10)").text();
       warehouse.contents.push(new Book(title, author, price, shippingWeight, isbn10));
     })
