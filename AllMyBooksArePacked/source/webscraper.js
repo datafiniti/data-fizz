@@ -2,7 +2,7 @@ function Webscraper(url){
   this.url = url;
 }
 
-Webscraper.prototype.scrape = function(){
+Webscraper.prototype.scrapeAndCreateBook = function(warehouse){
   $.ajax({
       url: this.url,
       type: 'get',
@@ -13,6 +13,7 @@ Webscraper.prototype.scrape = function(){
       var author = $(response).find(".byLinePipe").prev("a").text();
       var shippingWeight = $(response).find("li").filter(":contains(Shipping Weight)").text();
       var isbn10 = $(response).find("li").filter(":contains(ISBN-10)").text();
+      warehouse.contents.push(new Book(price, title, author, shippingWeight, isbn10));
     })
 }
 
