@@ -10,7 +10,7 @@ Webscraper.prototype.scrape = function(){
     }).done(function(response){
       var price = $(response).find(".bb_price").text();
       var title = $(response).find("#btAsinTitle").text();
-      console.log(title);
+      var author = $(response).find(".byLinePipe").prev("a").text();
     })
 }
 
