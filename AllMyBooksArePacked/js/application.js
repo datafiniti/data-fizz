@@ -5,7 +5,9 @@ $(document).ready(function(){
     webscraper = new Webscraper(fileName);
     webscraper.scrapeAndCreateBook(warehouse);
   }
-  console.log(warehouse);
+  $(document).ajaxStop(function(){
+    warehouse.test();
+  })
 })
 
 // create a new webscraper object for each file inside of data
