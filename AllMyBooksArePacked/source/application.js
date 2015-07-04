@@ -1,7 +1,10 @@
 $(document).ready(function(){
-  webscraper = new Webscraper("../data/book1.html");
   var warehouse = new Warehouse();
-  webscraper.scrapeAndCreateBook(warehouse);
+  for (var i = 1; i < 21; i++){
+    var fileName = "../data/book" + i + ".html";
+    webscraper = new Webscraper(fileName);
+    webscraper.scrapeAndCreateBook(warehouse);
+  }
   console.log(warehouse);
 })
 
