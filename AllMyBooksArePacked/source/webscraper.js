@@ -8,7 +8,7 @@ Webscraper.prototype.scrape = function(){
       type: 'get',
       dataType: 'html'
     }).done(function(response){
-     console.log(response);
+      var price = $(response).find(".bb_price").text();
     })
 }
 
