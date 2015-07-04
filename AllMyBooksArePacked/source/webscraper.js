@@ -9,6 +9,8 @@ Webscraper.prototype.scrape = function(){
       dataType: 'html'
     }).done(function(response){
       var price = $(response).find(".bb_price").text();
+      var title = $(response).find("#btAsinTitle").text();
+      console.log(title);
     })
 }
 
