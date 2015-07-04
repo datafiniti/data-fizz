@@ -27,9 +27,11 @@ Webscraper.prototype.scrapeAndCreateBook = function(warehouse){
 
       var shippingWeight = $(response).find("li").filter(":contains(Shipping Weight)").text();
       shippingWeight = Number(shippingWeight.slice(17, -42));
-      console.log(shippingWeight);
 
       var isbn10 = $(response).find("li").filter(":contains(ISBN-10)").text();
+      isbn10 = isbn10.slice(9);
+      console.log(isbn10);
+
       warehouse.contents.push(new Book(title, author, price, shippingWeight, isbn10));
     })
 }
