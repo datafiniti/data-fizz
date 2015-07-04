@@ -6,7 +6,7 @@ $(document).ready(function(){
     webscraper.scrapeAndCreateBook(warehouse);
   }
   $(document).ajaxStop(function(){
-    warehouse.test();
+    warehouse.packBoxes();
   })
 })
 
