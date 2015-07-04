@@ -8,11 +8,16 @@ Warehouse.prototype.packBoxes = function(){
 }
 
 Warehouse.prototype.sortContentsByShippingWeight = function(){
-  for (var i = 0; i < this.contents.length - 1; i++){
-    if (this.contents[i].shippingWeight > this.contents[i+1].shippingWeight){
-      var temp = this.contents[i];
-      this.contents[i] = this.contents[i+1];
-      this.contents[i+1] = temp;
+  var sorted = false;
+  while (!sorted){
+    sorted = true;
+    for (var i = 0; i < this.contents.length - 1; i++){
+      if (this.contents[i].shippingWeight > this.contents[i+1].shippingWeight){
+        var temp = this.contents[i];
+        this.contents[i] = this.contents[i+1];
+        this.contents[i+1] = temp;
+        sorted = false;
+      }
     }
   }
 }
