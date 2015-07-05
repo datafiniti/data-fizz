@@ -36,6 +36,10 @@ Warehouse.prototype.packBoxes = function(){
     }
     box = new Box()
   }
+  if (this.contents.length === 1) {
+    box.contents.push(this.contents[0])
+    this.contents.splice(0, 1);
+  }
   console.log(this.contents);
   console.log(this.packedBoxes);
 }
