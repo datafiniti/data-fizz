@@ -60,6 +60,12 @@ Webscraper.prototype.cleanShippingWeight = function(shippingWeightString){
   return Number(shippingWeightString.slice(17, -42));
 }
 
+Webscraper.prototype.prepareIsbn10 = function(data){
+  var isbn10 = this.scrapeIsbn10(data);
+  var formattedIsbn10 = this.cleanIsbn10(isbn10);
+  return formattedIsbn10;
+}
+
 Webscraper.prototype.scrapeIsbn10 = function(data){
   return $(data).find("li").filter(":contains(ISBN-10)").text();
 }

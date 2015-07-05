@@ -17,9 +17,7 @@ $(document).ready(function(){
 
       var shippingWeight = webscraper.prepareShippingWeight(response);
 
-      var isbn10 = webscraper.scrapeIsbn10(response);
-      isbn10 = webscraper.cleanIsbn10(isbn10);
-
+      var isbn10 = webscraper.prepareIsbn10(response);
 
       warehouse.contents.push(new Book(title, author, price, shippingWeight, isbn10));
     })
