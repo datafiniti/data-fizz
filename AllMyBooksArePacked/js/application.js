@@ -9,7 +9,7 @@ $(document).ready(function(){
       dataType: 'html'
     }).done(function(response){
 
-      var price = webscraper.scrapePrice();
+      var price = webscraper.scrapePrice(response);
       var price = webscraper.cleanPrice(price);
 
       var title = $(response).find("#btAsinTitle").text();
