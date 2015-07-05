@@ -12,7 +12,7 @@ $(document).ready(function(){
       var price = webscraper.scrapePrice(response);
       var price = webscraper.cleanPrice(price);
 
-      var title = $(response).find("#btAsinTitle").text();
+      var title = webscraper.scrapeTitle(response);
       var endOfSlice;
       for (var i = 0; i < title.length; i++){
         if (title[i]==="["){
