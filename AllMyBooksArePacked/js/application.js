@@ -11,8 +11,7 @@ $(document).ready(function(){
 
       var price = webscraper.preparePrice(response);
 
-      var title = webscraper.scrapeTitle(response);
-      title = webscraper.cleanTitle(title);
+      var title = webscraper.prepareTitle(response);
 
       var author = webscraper.scrapeAuthor(response);
 
