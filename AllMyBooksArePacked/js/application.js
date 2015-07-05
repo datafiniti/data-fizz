@@ -9,8 +9,7 @@ $(document).ready(function(){
       dataType: 'html'
     }).done(function(response){
 
-      var price = webscraper.scrapePrice(response);
-      price = webscraper.cleanPrice(price);
+      var price = webscraper.preparePrice(response);
 
       var title = webscraper.scrapeTitle(response);
       title = webscraper.cleanTitle(title);
@@ -22,6 +21,8 @@ $(document).ready(function(){
 
       var isbn10 = webscraper.scrapeIsbn10(response);
       isbn10 = webscraper.cleanIsbn10(isbn10);
+
+
       warehouse.contents.push(new Book(title, author, price, shippingWeight, isbn10));
     })
   }

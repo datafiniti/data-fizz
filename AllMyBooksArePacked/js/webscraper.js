@@ -1,6 +1,12 @@
 function Webscraper(){
 }
 
+Webscraper.prototype.preparePrice = function(data){
+  var price = this.scrapePrice(data);
+  var formattedPrice = this.cleanPrice(price);
+  return formattedPrice;
+}
+
 Webscraper.prototype.scrapePrice = function(data){
   return $(data).find(".bb_price").text();
 }
