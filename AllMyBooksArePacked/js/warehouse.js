@@ -25,6 +25,7 @@ Warehouse.prototype.packBoxes = function(){
           possibleBoxWeight += this.contents[0].shippingWeight
         }
       }
+      box.updateTotalWeight();
     }
     box = new Box()
   }
