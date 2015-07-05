@@ -45,6 +45,12 @@ Webscraper.prototype.scrapeAuthor = function(data){
   return $(data).find(".byLinePipe").prev("a").text();
 }
 
+Webscraper.prototype.prepareShippingWeight = function(data){
+  var shippingWeight = this.scrapeShippingWeight(data);
+  var formattedShippingWeight = this.cleanShippingWeight(shippingWeight);
+  return formattedShippingWeight;
+}
+
 Webscraper.prototype.scrapeShippingWeight = function(data){
   return $(data).find("li").filter(":contains(Shipping Weight)").text();
 

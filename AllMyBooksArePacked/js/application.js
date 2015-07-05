@@ -15,8 +15,7 @@ $(document).ready(function(){
 
       var author = webscraper.prepareAuthor(response);
 
-      var shippingWeight = webscraper.scrapeShippingWeight(response);
-      shippingWeight = webscraper.cleanShippingWeight(shippingWeight);
+      var shippingWeight = webscraper.prepareShippingWeight(response);
 
       var isbn10 = webscraper.scrapeIsbn10(response);
       isbn10 = webscraper.cleanIsbn10(isbn10);
