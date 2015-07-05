@@ -24,8 +24,8 @@ $(document).ready(function(){
   }
   $(document).ajaxStop(function(){
     warehouse.packBoxes();
-    var obj = JSON.stringify(warehouse.packedBoxes);
-    $("body").append(obj);
+    var packedBoxesJSON = JSON.stringify(warehouse.packedBoxes);
+    $("body").append(packedBoxesJSON);
   })
 })
 
