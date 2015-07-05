@@ -13,13 +13,7 @@ $(document).ready(function(){
       var price = webscraper.cleanPrice(price);
 
       var title = webscraper.scrapeTitle(response);
-      var endOfSlice;
-      for (var i = 0; i < title.length; i++){
-        if (title[i]==="["){
-          endOfSlice = i;
-        }
-      }
-      title = title.slice(0, endOfSlice).trim();
+      var title = webscraper.cleanTitle(title);
 
       var author = $(response).find(".byLinePipe").prev("a").text();
 

@@ -12,3 +12,13 @@ Webscraper.prototype.cleanPrice = function(priceString){
 Webscraper.prototype.scrapeTitle = function(data){
   return $(data).find("#btAsinTitle").text();
 }
+
+Webscraper.prototype.cleanTitle = function(titleString){
+  var endOfSlice;
+      for (var i = 0; i < titleString.length; i++){
+        if (titleString[i]==="["){
+          endOfSlice = i;
+        }
+      }
+  return titleString.slice(0, endOfSlice).trim();
+}
