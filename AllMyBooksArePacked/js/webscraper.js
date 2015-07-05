@@ -34,8 +34,3 @@ Webscraper.prototype.scrapeAndCreateBook = function(warehouse){
       warehouse.contents.push(new Book(title, author, price, shippingWeight, isbn10));
     })
 }
-
-
-
-// needs to scrape certain attributes
-// controllers job to create the book objects with the information webscraper returns

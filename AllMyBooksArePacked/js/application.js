@@ -9,8 +9,6 @@ $(document).ready(function(){
     warehouse.packBoxes();
     var obj = JSON.stringify(warehouse.packedBoxes);
     $("body").append(obj);
-    console.log(obj);
   })
 })
 
-// create a new webscraper object for each file inside of data
