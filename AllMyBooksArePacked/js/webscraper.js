@@ -35,3 +35,11 @@ Webscraper.prototype.scrapeShippingWeight = function(data){
 Webscraper.prototype.cleanShippingWeight = function(shippingWeightString){
   return Number(shippingWeightString.slice(17, -42));
 }
+
+Webscraper.prototype.scrapeIsbn10 = function(data){
+  return $(data).find("li").filter(":contains(ISBN-10)").text();
+}
+
+Webscraper.prototype.cleanIsbn10 = function(isbn10String){
+  return isbn10String.slice(9);
+}

@@ -16,12 +16,11 @@ $(document).ready(function(){
       title = webscraper.cleanTitle(title);
 
       var author = webscraper.scrapeAuthor(response);
-      
+
       var shippingWeight = webscraper.scrapeShippingWeight(response);
       shippingWeight = webscraper.cleanShippingWeight(shippingWeight);
 
-      var isbn10 = $(response).find("li").filter(":contains(ISBN-10)").text();
-      isbn10 = isbn10.slice(9);
+      var isbn10 = webscraper.scrapeIsbn10(response);
 
       warehouse.contents.push(new Book(title, author, price, shippingWeight, isbn10));
     })
