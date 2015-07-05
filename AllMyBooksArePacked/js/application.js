@@ -7,6 +7,9 @@ $(document).ready(function(){
   }
   $(document).ajaxStop(function(){
     warehouse.packBoxes();
+    var obj = JSON.stringify(warehouse.packedBoxes);
+    $("body").append(obj);
+    console.log(obj);
   })
 })
 
