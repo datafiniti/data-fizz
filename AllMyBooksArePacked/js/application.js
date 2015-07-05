@@ -21,7 +21,7 @@ $(document).ready(function(){
       shippingWeight = webscraper.cleanShippingWeight(shippingWeight);
 
       var isbn10 = webscraper.scrapeIsbn10(response);
-
+      isbn10 = webscraper.cleanIsbn10(isbn10);
       warehouse.contents.push(new Book(title, author, price, shippingWeight, isbn10));
     })
   }
