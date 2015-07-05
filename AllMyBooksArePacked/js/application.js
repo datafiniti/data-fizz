@@ -9,8 +9,8 @@ $(document).ready(function(){
       dataType: 'html'
     }).done(function(response){
 
-      var price = $(response).find(".bb_price").text();
-      price = Number(price.slice(2).trim());
+      var price = webscraper.scrapePrice();
+      var price = webscraper.cleanPrice(price);
 
       var title = $(response).find("#btAsinTitle").text();
       var endOfSlice;
