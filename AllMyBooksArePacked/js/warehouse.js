@@ -14,21 +14,17 @@ Warehouse.prototype.packBoxes = function(){
     box.contents.push(this.contents[indexOfLastBook]);
     this.contents.splice(-1, 1);
 
-
-    if (possibleBoxWeight < 10){
+    if (possibleBoxWeight <= 10){
       box.contents.push(this.contents[0])
       this.contents.splice(0, 1);
-
-      possibleBoxWeight += this.contents[0].shippingWeight;
-      while (possibleBoxWeight < 10 && this.contents > 0) {
-        console.log("possible weight = " + possibleBoxWeight);
-        box.contents.push(this.contents[0]);
-        this.contents.splice(0, 1);
-        possibleBoxWeight += this.contents[0].shippingWeight
+      if (possibleBoxWeight < 10 ) {
+        possibleBoxWeight += this.contents[0].shippingWeight;
+        while (possibleBoxWeight < 10 && this.contents > 0) {
+          box.contents.push(this.contents[0]);
+          this.contents.splice(0, 1);
+          possibleBoxWeight += this.contents[0].shippingWeight
+        }
       }
-    } else if (possibleBoxWeight === 10) {
-      box.contents.push(this.contents[0])
-      this.contents.splice(0, 1);
     }
     box = new Box()
   }
@@ -36,8 +32,6 @@ Warehouse.prototype.packBoxes = function(){
     box.contents.push(this.contents[0])
     this.contents.splice(0, 1);
   }
-  console.log(this.contents);
-  console.log(this.packedBoxes);
 }
 
 Warehouse.prototype.sortContentsByShippingWeight = function(){
