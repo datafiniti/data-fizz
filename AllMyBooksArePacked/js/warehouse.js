@@ -6,7 +6,7 @@ function Warehouse(){
 Warehouse.prototype.packBoxes = function(){
   this.sortContentsByShippingWeight();
   var box = new Box();
-  for (var j = 0; j < 10; j++) {
+  while (this.contents.length > 1) {
     this.packedBoxes.push(box);
     var indexOfLastBook = this.contents.length - 1;
     var possibleBoxWeight = this.contents[0].shippingWeight + this.contents[indexOfLastBook].shippingWeight;
