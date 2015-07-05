@@ -22,3 +22,16 @@ Webscraper.prototype.cleanTitle = function(titleString){
       }
   return titleString.slice(0, endOfSlice).trim();
 }
+
+Webscraper.prototype.scrapeAuthor = function(data){
+  return $(data).find(".byLinePipe").prev("a").text();
+}
+
+Webscraper.prototype.scrapeShippingWeight = function(data){
+  return $(data).find("li").filter(":contains(Shipping Weight)").text();
+
+}
+
+Webscraper.prototype.cleanShippingWeight = function(shippingWeightString){
+  return Number(shippingWeightString.slice(17, -42));
+}

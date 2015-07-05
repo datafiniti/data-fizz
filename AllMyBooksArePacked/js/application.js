@@ -10,15 +10,15 @@ $(document).ready(function(){
     }).done(function(response){
 
       var price = webscraper.scrapePrice(response);
-      var price = webscraper.cleanPrice(price);
+      price = webscraper.cleanPrice(price);
 
       var title = webscraper.scrapeTitle(response);
-      var title = webscraper.cleanTitle(title);
+      title = webscraper.cleanTitle(title);
 
-      var author = $(response).find(".byLinePipe").prev("a").text();
-
-      var shippingWeight = $(response).find("li").filter(":contains(Shipping Weight)").text();
-      shippingWeight = Number(shippingWeight.slice(17, -42));
+      var author = webscraper.scrapeAuthor(response);
+      
+      var shippingWeight = webscraper.scrapeShippingWeight(response);
+      shippingWeight = webscraper.cleanShippingWeight(shippingWeight);
 
       var isbn10 = $(response).find("li").filter(":contains(ISBN-10)").text();
       isbn10 = isbn10.slice(9);
