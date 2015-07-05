@@ -36,6 +36,11 @@ Webscraper.prototype.cleanTitle = function(titleString){
   return titleString.slice(0, endOfSlice).trim();
 }
 
+Webscraper.prototype.prepareAuthor = function(data){
+  var author = this.scrapeAuthor(data);
+  return author;
+}
+
 Webscraper.prototype.scrapeAuthor = function(data){
   return $(data).find(".byLinePipe").prev("a").text();
 }

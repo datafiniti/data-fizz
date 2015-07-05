@@ -13,7 +13,7 @@ $(document).ready(function(){
 
       var title = webscraper.prepareTitle(response);
 
-      var author = webscraper.scrapeAuthor(response);
+      var author = webscraper.prepareAuthor(response);
 
       var shippingWeight = webscraper.scrapeShippingWeight(response);
       shippingWeight = webscraper.cleanShippingWeight(shippingWeight);
