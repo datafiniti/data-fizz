@@ -34,6 +34,8 @@ Warehouse.prototype.packBoxes = function(){
   if (this.contents.length === 1) {
     box.contents.push(this.contents[0])
     this.contents.splice(0, 1);
+    this.packedBoxes.push(box);
+    box.updateTotalWeight();
   }
 }
 
