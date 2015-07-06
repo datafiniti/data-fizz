@@ -17,8 +17,10 @@ Warehouse.prototype.packBoxes = function(){
     if (possibleBoxWeight <= 10){
       box.contents.push(this.contents[0])
       this.contents.splice(0, 1);
-      if (possibleBoxWeight < 10 ) {
+      
+      if (possibleBoxWeight < 10) {
         possibleBoxWeight += this.contents[0].shippingWeight;
+
         while (possibleBoxWeight < 10 && this.contents > 0) {
           box.contents.push(this.contents[0]);
           this.contents.splice(0, 1);
