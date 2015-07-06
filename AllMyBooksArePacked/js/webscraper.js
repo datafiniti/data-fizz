@@ -13,13 +13,13 @@ Webscraper.prototype.scrapePrice = function(data){
 
 Webscraper.prototype.cleanPrice = function(priceString){
   var beginningOfSlice;
+  priceString = priceString.replace(/\,/g, '');
   for (var i = 0; i < priceString.length; i++){
     if (priceString[i] === "$"){
       beginningOfSlice = i + 1;
     }
   }
   return Number(priceString.slice(beginningOfSlice).trim());
-
 }
 
 
