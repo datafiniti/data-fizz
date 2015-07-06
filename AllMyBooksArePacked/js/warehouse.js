@@ -14,7 +14,7 @@ Warehouse.prototype.packBoxes = function(){
     this.contents.splice(-1, 1);
 
     if (possibleBoxWeight <= 10){
-      box.contents.push(this.contents[0])
+      box.contents.push(this.contents[0]);
       this.contents.splice(0, 1);
       
       if (possibleBoxWeight < 10) {
@@ -23,16 +23,16 @@ Warehouse.prototype.packBoxes = function(){
         while (possibleBoxWeight < 10 && this.contents > 0) {
           box.contents.push(this.contents[0]);
           this.contents.splice(0, 1);
-          possibleBoxWeight += this.contents[0].shippingWeight
+          possibleBoxWeight += this.contents[0].shippingWeight;
         }
       }
     }
     this.packedBoxes.push(box);
     box.updateTotalWeight();
-    box = new Box()
+    box = new Box();
   }
   if (this.contents.length === 1) {
-    box.contents.push(this.contents[0])
+    box.contents.push(this.contents[0]);
     this.contents.splice(0, 1);
     this.packedBoxes.push(box);
     box.updateTotalWeight();
