@@ -7,9 +7,8 @@ Warehouse.prototype.packBoxes = function(){
   this.sortContentsByShippingWeight();
   var box = new Box();
   while (this.contents.length > 1) {
-    this.packedBoxes.push(box);
     var indexOfLastBook = this.contents.length - 1;
-    var possibleBoxWeight = this.contents[0].shippingWeight + this.contents[indexOfLastBook].shippingWeight;
+    var possibleBoxWeight = (this.contents[0].shippingWeight + this.contents[indexOfLastBook].shippingWeight);
 
     box.contents.push(this.contents[indexOfLastBook]);
     this.contents.splice(-1, 1);
@@ -27,8 +26,9 @@ Warehouse.prototype.packBoxes = function(){
           possibleBoxWeight += this.contents[0].shippingWeight
         }
       }
-      box.updateTotalWeight();
     }
+    this.packedBoxes.push(box);
+    box.updateTotalWeight();
     box = new Box()
   }
   if (this.contents.length === 1) {

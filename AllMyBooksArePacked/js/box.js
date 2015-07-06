@@ -8,5 +8,5 @@ Box.prototype.updateTotalWeight = function(){
   for (var i = 0; i < this.contents.length; i++){
     combinedWeight += this.contents[i].shippingWeight;
   }
-  this.totalWeight = combinedWeight;
+  this.totalWeight = combinedWeight.toFixed(2);
 }
