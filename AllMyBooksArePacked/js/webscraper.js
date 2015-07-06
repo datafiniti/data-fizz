@@ -12,7 +12,14 @@ Webscraper.prototype.scrapePrice = function(data){
 }
 
 Webscraper.prototype.cleanPrice = function(priceString){
-  return Number(priceString.slice(2).trim());
+  var beginningOfSlice;
+  for (var i = 0; i < priceString.length; i++){
+    if (priceString[i] === "$"){
+      beginningOfSlice = i + 1;
+    }
+  }
+  return Number(priceString.slice(beginningOfSlice).trim());
+
 }
 
 
