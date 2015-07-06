@@ -26,6 +26,7 @@ $(document).ready(function(){
     warehouse.packBoxes();
     var packedBoxesJSON = JSON.stringify(warehouse.packedBoxes);
     $("body").append(packedBoxesJSON);
+    return packedBoxesJSON;
   })
 })
 
