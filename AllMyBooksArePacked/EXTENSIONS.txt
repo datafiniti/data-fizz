@@ -1,7 +1,7 @@
 This is how my application could be extended to handle:
 
 1. Domains beyond Amazon.com
--I would make all of the current Webscraper instance methods just pertain to Amazon and create separate methods for the other sites. And then I would create a helper method that would check the origin site and send the data to the create group of scraping and cleaning methods.
+-I would make all of the current Webscraper instance methods just pertain to Amazon and create separate methods for the other sites. And then I would create a helper method that would check the origin site and send the data to the create group of scraping and cleaning methods for the specific site.
 
 2. Products beyond just simply books.
 -I would create new classes for the different kinds of products. Then I would create a helper method that checks the kind of product being scraped and have a helper method direct the Webscraper to the correct scraping and cleaning methods that apply to the different possible products.
@@ -9,4 +9,4 @@ This is how my application could be extended to handle:
 3. Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
 -I would implement a database to hold the attribute information for the different books
 -I would use database queries to push to the array, warehouse.contents only certain books at a time based off of shipping weight (i.e. query only the books with shipping weights under 1 pound and over 9 pounds)
--I would have the warehouse instance method, sortContentsByShippingWeight, sort the array using a sorting algorithm with a smaller O(n), such as quicksort.
+-I would have the warehouse instance method, sortContentsByShippingWeight, sort the array using a sorting algorithm with a smaller big O, such as quicksort.
