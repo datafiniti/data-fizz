@@ -15,6 +15,7 @@ RSpec.describe RuleSet do
       author: 'Reza Aslan',
       price: '$16.89',
       weight: '1.2 pounds',
+      numerical_weight: 1.2,
       'isbn-10': '140006922X'
     }
   end

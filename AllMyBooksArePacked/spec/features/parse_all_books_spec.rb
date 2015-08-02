@@ -23,6 +23,7 @@ RSpec.describe BookParser do
         author: 'Reza Aslan',
         price: '$16.89',
         weight: '1.2 pounds',
+        numerical_weight: 1.2,
         'isbn-10': '140006922X'
       },
       {
@@ -30,6 +31,7 @@ RSpec.describe BookParser do
         author: 'David S Cohen, Guillermo del Toro',
         price: '$27.83',
         weight: '3.2 pounds',
+        numerical_weight: 3.2,
         'isbn-10': '1608871827'
       },
       {
@@ -37,6 +39,7 @@ RSpec.describe BookParser do
         author: "Jenni Rivera",
         price: "$10.18",
         weight: "6.4 pounds",
+        numerical_weight: 6.4,
         'isbn-10': "1476745420"
       },
       {
@@ -44,6 +47,7 @@ RSpec.describe BookParser do
         author: "Sylvia Day",
         price: "$26.32",
         weight: "2.2 pounds",
+        numerical_weight: 2.2,
         'isbn-10': "0425266060"
       },
       {
@@ -51,6 +55,7 @@ RSpec.describe BookParser do
         author: "Daniel Silva",
         price: "$16.46",
         weight: "3.6 pounds",
+        numerical_weight: 3.6,
         'isbn-10': "0062073168"
       },
       {
@@ -58,6 +63,7 @@ RSpec.describe BookParser do
         author: "Rick Riordan",
         price: "$10.19",
         weight: "4.4 pounds",
+        numerical_weight: 4.4,
         'isbn-10': "1423146727"
       },
       {
@@ -65,6 +71,7 @@ RSpec.describe BookParser do
         author: "Mark Leibovich",
         price: "$15.37",
         weight: "1.4 pounds",
+        numerical_weight: 1.4,
         'isbn-10': "0399161309"
       },
       {
@@ -72,6 +79,7 @@ RSpec.describe BookParser do
         author: "Ree Drummond",
         price: "$20.29",
         weight: "1.4 pounds",
+        numerical_weight: 1.4,
         'isbn-10': "0062225227"
       },
       {
@@ -79,6 +87,7 @@ RSpec.describe BookParser do
         author: "Stephen Wolfram",
         price: "$35.25",
         weight: "5.6 pounds",
+        numerical_weight: 5.6,
         'isbn-10': "1579550088"
       },
       {
@@ -86,6 +95,7 @@ RSpec.describe BookParser do
         author: "Neil Gaiman",
         price: "$15.22",
         weight: "4.1 pounds",
+        numerical_weight: 4.1,
         'isbn-10': "0062255657"
       },
       {
@@ -93,6 +103,7 @@ RSpec.describe BookParser do
         author: "Europa Publications",
         price: "$7,450.00",
         weight: "7.8 pounds",
+        numerical_weight: 7.8,
         'isbn-10': "1857435885"
       },
       {
@@ -100,6 +111,7 @@ RSpec.describe BookParser do
         author: "Reza Aslan",
         price: "$8.99",
         weight: "2.6 pounds",
+        numerical_weight: 2.6,
         'isbn-10': "0385739761"
       },
       {
@@ -107,6 +119,7 @@ RSpec.describe BookParser do
         author: "Daniel Wallace, Zack Snyder",
         price: "$31.07",
         weight: "2.8 pounds",
+        numerical_weight: 2.8,
         'isbn-10': "1608871819"
       },
       {
@@ -114,6 +127,7 @@ RSpec.describe BookParser do
         author: "Titan Books",
         price: "$15.83",
         weight: "7.6 pounds",
+        numerical_weight: 7.6,
         'isbn-10': "1781168857"
       },
       {
@@ -121,6 +135,7 @@ RSpec.describe BookParser do
         author: "Chuck Klosterman",
         price: "$15.49",
         weight: "2.2 pounds",
+        numerical_weight: 2.2,
         'isbn-10': "1439184496"
       },
       {
@@ -128,6 +143,7 @@ RSpec.describe BookParser do
         author: "Neil Gaiman",
         price: "$15.22",
         weight: "9.4 pounds",
+        numerical_weight: 9.4,
         'isbn-10': "0062255657"
       },
       {
@@ -135,6 +151,7 @@ RSpec.describe BookParser do
         author: "Alan LeMay",
         price: "$8.97",
         weight: "8.8 pounds",
+        numerical_weight: 8.8,
         'isbn-10': "147780630X"
       },
       {
@@ -142,6 +159,7 @@ RSpec.describe BookParser do
         author: "Robert Galbraith, J.K. Rowling",
         price: "$17.47",
         weight: "1.4 pounds",
+        numerical_weight: 1.4,
         'isbn-10': "0316206849"
       },
       {
@@ -149,6 +167,7 @@ RSpec.describe BookParser do
         author: "Daniel Silva",
         price: "$16.46",
         weight: "3.6 pounds",
+        numerical_weight: 3.6,
         'isbn-10': "0062073168"
       },
       {
@@ -156,6 +175,7 @@ RSpec.describe BookParser do
         author: "Lee Child",
         price: "$17.52",
         weight: "4.9 pounds",
+        numerical_weight: 4.9,
         'isbn-10': "0385344341"
       }
     ]

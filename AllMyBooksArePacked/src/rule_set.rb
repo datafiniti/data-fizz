@@ -9,6 +9,7 @@ class RuleSet
       author: author,
       price: price,
       weight: weight,
+      numerical_weight: weight[0...7].to_f,
       'isbn-10': isbn_10
     }
   end
