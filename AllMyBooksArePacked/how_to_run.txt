@@ -2,3 +2,5 @@ Here I have layed out the steps to run this project:
 install bundler(if you haven't already).
 bundle
 ruby src/main.rb
+
+In addition to this there are some tests. Feel free to run rspec in order to run the tests!
