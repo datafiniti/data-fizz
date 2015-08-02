@@ -16,6 +16,7 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require_relative '../spec/support/test_data'
 require_relative '../src/book_parser'
 require_relative '../src/rule_set'
 RSpec.configure do |config|
