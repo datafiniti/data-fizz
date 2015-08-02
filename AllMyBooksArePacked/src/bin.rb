@@ -24,10 +24,10 @@ class Bin
   end
 
   def print
-    {
+    {box: {
       id: @id,
       contents: @contents,
       total_weight: @total_weight
-    }
+    }}
   end
 end
