@@ -25,6 +25,6 @@ class BookParser
   end
 
   def apply_rules(document)
-    RuleSet.new(document).get_ruleset
+    RuleSet.new(document).apply_rule_set
   end
 end
