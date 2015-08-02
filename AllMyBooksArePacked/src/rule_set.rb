@@ -3,17 +3,40 @@ class RuleSet
     @document = document
   end
 
+  def apply_rule_set
+    {
+      title: title,
+      author: author,
+      price: price,
+      weight: weight,
+      'isbn-10': isbn_10
+    }
+  end
+
+  private
+
   def title
     @document.css('#btAsinTitle').children[0].to_s.strip
   end
 
   def author
-    result = @document.xpath "//a[contains(@href, 'field-author')]"
-    result.children.to_s
+    result = @document.xpath "//span[span[contains(text(), '(Author)') or contains(text(), '(Editor)')]]/a"
+    create_author_list(result.children)
+  end
+
+  def create_author_list(authors)
+    if authors.count > 1
+      authors.reduce do |accumulator, author|
+        accumulator.to_s + ', ' + author.to_s
+      end
+    else
+      authors[0].to_s
+    end
   end
 
   def price
-    @document.css('.bb_price').children.to_s.strip
+    result = @document.xpath "//a[span[text()[contains(., 'Buy New')]]]/span[contains(@class, 'bb_price')]/text()"
+    result.to_s.strip
   end
 
   def weight
@@ -26,13 +49,5 @@ class RuleSet
     result.children[1].to_s.strip
   end
 
-  def apply_rule_set
-    {
-      title: title,
-      author: author,
-      price: price,
-      weight: weight,
-      isbn_10: isbn_10
-    }
-  end
+
 end
