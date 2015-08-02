@@ -1,4 +1,5 @@
 require 'nokogiri'
+require_relative 'rule_set'
 class BookParser
   def initialize(files)
     @files = files
