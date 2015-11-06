@@ -50,7 +50,7 @@ function Handler() {
 			self._sort(first, last);
 		});
 	};
-	
+
 	this._sort = function (first, last) {
 		var lastWeight = parseFloat(last.shipping_weight);
 		var firstWeight = parseFloat(first.shipping_weight);
@@ -62,10 +62,10 @@ function Handler() {
 				this.addProductToBox(last, this.currentBoxes);
 				this.boxes.push(this._newBox());
 				this.addProductToBox(first, this.currentBoxes);
-			}else if (firstWeight + currW <= maxW) { //first one fits
+			} else if (firstWeight + currW <= maxW) { //first one fits
 				this.addProductToBox(first, this.currentBoxes);
 				this.boxes.push(this._newBox());
-			    this.addProductToBox(first, this.currentBoxes);
+				this.addProductToBox(first, this.currentBoxes);
 			} else { //neither fits, making a new box
 				this.boxes.push(this._newBox());
 				this._sort(first, last);
@@ -84,7 +84,7 @@ function Handler() {
 		});
 		return ordered;
 	};
-	
+
 	this.addProductToBox = function (product, boxId) {
 		return this.boxes[boxId - 1].addProduct(product); //arr idx 0, box 1, assuming boxId = currentBox
 	};
