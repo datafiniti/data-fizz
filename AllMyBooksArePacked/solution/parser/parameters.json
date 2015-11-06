@@ -1,0 +1,17 @@
+{
+	"AmazonPage": {
+		"prod_price":{"type":"selector", "path":"#actualPriceValue,.rentalPriceLabel:contains('Buy New')~.rentPrice"},
+		"prod_shipping_weight":{"type":"selector", "path":"li:contains('shipping')", "searchon":"prod_content_table"},
+		"prod_dimensions":{},
+		"prod_name":{"type":"selector", "path":"#btAsinTitle"},
+		"prod_content_table":{"type":"selector", "path":"#productDetailsTable .bucket > div > ul"},
+		"ProductBook":{
+			"author":{"type":"selector", "path":".byLinePipe"},
+			"pages":{"type":"selector", "path":"li:contains('pages')", "searchon":"prod_content_table"},
+			"publisher":{"type":"selector", "path":"li:contains('Publisher')", "searchon":"prod_content_table"},
+			"language":{"type":"selector", "path":"li:contains('Language')", "searchon":"prod_content_table"},
+			"isbn10":{"type":"selector", "path":"li:contains('ISBN-10')", "searchon":"prod_content_table"},
+			"isbn13":{"type":"selector", "path":"li:contains('ISBN-13')", "searchon":"prod_content_table"}
+		}
+	}
+}

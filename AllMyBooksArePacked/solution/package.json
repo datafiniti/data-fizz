@@ -1,0 +1,10 @@
+{
+	"name": "AllMyBooksSolution1",
+	"version": "0.0.1",
+	"description": "A propsed solution for the datafizz 'AllMyBooksAreParsed' challenge",
+	"main": "main.js",
+	"dependencies": {
+		"cheerio": "latest",
+		"yargs": "latest"
+	}
+}

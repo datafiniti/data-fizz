@@ -1,0 +1,13 @@
+1. Domains beyond Amazon.com
+
+The attached solution contains a configuration file (solution/parser/parameters.json) for the parser. The file can be extended to support other domains. The Parser object included is generic enough that any object inheriting it can provide their own parsing parameters. See Architecture > Parser in the included readme file. 
+
+
+2. Products beyond just simply books.
+
+Likewise, the configuration file (parameters.json) includes a section to define the product type we are looking for. Since different kinds of products have different fields, we can specifiy which fields we want to look for. The logic can then be configured within the Parser object by following the paramenters from this file.
+
+
+3. Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+
+Most of the time is spent on the logic to order and add books. I am currently focusing on being as space efficient as possible (that is, each box is packed as much as it can). However I do believe this a “bin packing problem”, and as NP-hard problem there are algorithms that are far better at handling this. With that in mind, there are no constraints in changing the sorting/adding algorithm within the “handler” class in this project.  
