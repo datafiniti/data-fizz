@@ -1,0 +1,21 @@
+{
+  "name": "webscraping",
+  "version": "1.0.0",
+  "description": "## Purpose",
+  "main": "server/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "asyncawait": "^1.0.1",
+    "auto-sanitize": "^0.1.3",
+    "bluebird": "^3.0.5",
+    "cheerio": "^0.19.0",
+    "lodash": "^3.10.1"
+  },
+  "engines": {
+    "node": ">=4.2.1"
+  }
+}
