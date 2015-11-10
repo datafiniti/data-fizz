@@ -3,7 +3,7 @@
 var _ = require('lodash');
 var sanitizer = require('auto-sanitize').sanitizeObject;
 
-var properties = [ 'title', 'author', 'price', 'shipping_weight', 'isbn-10'];
+var properties = [ 'title', 'author', 'price', 'shipping_weight', 'isbn_10'];
 
 var Create = args => {
     args = args || {};
