@@ -1,0 +1,13 @@
+1. Domains beyond Amazon.com
+	Ans: To webscrape domains beyond Amazon.com, you will need to:
+	1. Identify the general page structure of the domain. Different pages have differently positioned html elements. Usually the web pages of a particular domain, ex: Amazon, have a similar structure for their web pages which needs to be identified before building webscraping tools.
+	2. Abide by the rules that domain has on webscraping. Check restrictions on data refreshes, storing data in databases etc. Using a man in the middle software or proxy for additional protection.
+
+2. Products beyond just simply books.
+	Ans: Extending the application requires that you find tags on the page containing the information. In the case of cars, you might want to find the tags containing VIN's and extract information. Often you will want to devise a method suitable for extracting information for many similar pages on the same topic. Hence, the webscraping function must be flexible in extracting information from a number of pages that are very alike apart from differences.
+
+3. Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+ 	Ans: The first fit heuristic algorithm used in the programming exercise would parse and ship 2 million books in polynomial time(O(n^2)). It's efficiency increases when the input array is nonincreasing. However, the algorithm can be further improved to run in O(nlogn) time. The improved algorithm is very desirable because improvements in time are amplified with large inputs. The better first fit algorithm can be created using a more efficient data structures called a Max Winner Tree.
+  
+	
+ 
