@@ -8,11 +8,11 @@ This application uses webscraping to parse information from amazon's webpages on
 	
 ### There are three main steps
 ### Getting the html
-	The application uses two modules, **fs** and **request** to get html from web pages. The **fs** module is used to get html from files on the  
+The application uses the **fs** and **request** modules to get html from web pages. The **fs** module is used to get html from files in a local folder while the **request** module used for urls.
 ### Getting the data 
- 	Getting the data involves actually extracting the data. The **cheerio** module, an implementation of JQuery specifically designed for the server, helps in getting information from the html tags.
+To get data from html, we need to access data within tags in the html. The **cheerio** module, an implementation of JQuery specifically designed for the server, helps to do so.
 ### Making the JSON
- 	Once steps 1 and 2 are completed, the information needs to be placed in json documents. This involves creating constructors to hold the data(book data in this case).
+Once steps 1 and 2 are completed, the data from the html needs to be converted to JSON. This makes the data convenient and accessible. We must first place the data into objects which we do with the help of object constructors. Then we can convert the objects to JSON forma
 	
 ## Sample code
 
@@ -38,4 +38,5 @@ This application uses webscraping to parse information from amazon's webpages on
 ## Libraries 
 * Cheerio: https://github.com/cheeriojs/cheerio
 * Request: https://github.com/request/request
+* Express: http://expressjs.com
 
