@@ -1,19 +1,22 @@
 # Datafiniti Programming Challenge
 
 ## Description
-
-This application uses webscraping to parse information from amazon's webpages on books to make a json document with book data(title,author,ISBN,etc). 
+This application uses webscraping to get data from books on amazon's webpage. Currently, it parses through the html files in the data directory. It also arranges the book based on weights into the least number of boxes with 10lb max capacity. The application returns the array of boxes in json format.
 
 ## How it works
 	
 ### There are three main steps
+
 ### Getting the html
-The application uses the **fs** and **request** modules to get html from web pages. The **fs** module is used to get html from files in a local folder while the **request** module used for urls.
+The application uses the **fs** module to get html from web pages. The **fs** module is used to get html from files in a local folder and can be augmented with the **request** module to get html from url's.
 ### Getting the data 
-To get data from html, we need to access data within tags in the html. The **cheerio** module, an implementation of JQuery specifically designed for the server, helps to do so.
+To get data from html, we need to extract data within tags in the html. The **cheerio** module, an implementation of JQuery specifically designed for the server, is used in this application.
 ### Making the JSON
-Once steps 1 and 2 are completed, the data from the html needs to be converted to JSON. This makes the data convenient and accessible. We must first place the data into objects which we do with the help of object constructors. Then we can convert the objects to JSON forma
-	
+Once we get the data, it needs to be converted to JSON. The application uses object constructors to build the objects with book data fields(title,author,etc). Then we can convert these objects to JSON format.
+
+### Additional Step
+This application also places the books into the least number of boxes. It does so using a technique called next fit decreasing. The algorithm works by arranging the books by weight nonincreasingly and then placing books into new boxes when the boxes before it are completely filled. Because the algorithm has to look back every time it adds a new box the worst time is O(n^2). There is a method using binary trees that hasn't been implemented yet that can bring the worst time to O(nlogn).
+
 ## Sample code
 
 ```json
@@ -38,5 +41,4 @@ Once steps 1 and 2 are completed, the data from the html needs to be converted t
 ## Libraries 
 * Cheerio: https://github.com/cheeriojs/cheerio
 * Request: https://github.com/request/request
-* Express: http://expressjs.com
-
+* Express: http://expressjs.com/
