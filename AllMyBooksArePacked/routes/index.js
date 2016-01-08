@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
 					
 					// ouput json
 					res.setHeader('Content-Type', 'application/json');
-    			res.send(JSON.stringify(jsonarranged));
+    				res.send(jsonarranged);
 					
 				});
 			});

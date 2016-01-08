@@ -29,6 +29,7 @@ This application uses webscraping to parse information from amazon's webpages on
 			}
 		]
 	}, 
+
 	[...]
 ]
 ```
