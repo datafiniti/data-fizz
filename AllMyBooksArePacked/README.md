@@ -8,14 +8,14 @@ This application uses webscraping to get data from books on amazon's webpage. Cu
 ### There are three main steps
 
 #### Getting the html
-The application uses the **fs** module to get html from web pages. The **fs** module is used to get html from files in a local folder and can be augmented with the **request** module to get html from url's.
-#### Getting the data 
-To get data from html, we need to extract data within tags in the html. The **cheerio** module, an implementation of JQuery specifically designed for the server, is used in this application.
+The application uses the **fs** module to get html from web pages. The **fs** module used to get html from files in a local folder can be augmented with the **request** module to get html from url's.
+#### Extracting the data 
+To extract data from html, we need to pull out information from between tags in the html. The **cheerio** module, an implementation of JQuery specifically designed for the server, is used for this purpose.
 #### Making the JSON
-Once we get the data, it needs to be converted to JSON. The application uses object constructors to build the objects with book data fields(title,author,etc). Then we can convert these objects to JSON format.
+Once we get the data, it needs to be converted to JSON. The application uses object constructors to build objects that store book data and then converts the objects to JSON.
 
 #### Additional Step
-This application also places the books into the least number of boxes. It does so using a technique called next fit decreasing. The algorithm works by arranging the books by weight nonincreasingly and then placing books into new boxes when the boxes before it are completely filled. Because the algorithm has to look back every time it adds a new box the worst time is O(n^2). There is a method using binary trees that hasn't been implemented yet that can bring the worst time to O(nlogn).
+This application also places the books into the least number of boxes. It does so using a technique called next fit decreasing. The algorithm works by arranging the books by first arranging books nonincreasingly and then placing books into new boxes when the book can't fit into any of the existing boxes. Because the algorithm has to look back every time a book doesn't fit in a box the worst time is O(n^2). There is a method using binary trees that can bring down the worst time to O(nlogn).
 
 ## Sample code
 
