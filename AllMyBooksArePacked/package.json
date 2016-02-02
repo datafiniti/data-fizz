@@ -1,5 +1,5 @@
 {
-  "name": "AllMyBooksArePacked",
+  "name": "allmybooksarepacked",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -13,5 +13,18 @@
     "express": "~4.13.1",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0"
-  }
+  },
+  "description": "## Description This application uses webscraping to get data from books on amazon's webpage. Currently, it parses through the html files in the data directory. It also arranges books based on weights into the least number of boxes with 10lb max capacity. The application returns the array of boxes in json format.",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shakira4242/DataFizz.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shakira4242/DataFizz/issues"
+  },
+  "homepage": "https://github.com/Shakira4242/DataFizz#readme"
 }
