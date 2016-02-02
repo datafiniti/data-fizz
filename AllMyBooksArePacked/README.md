@@ -1,5 +1,13 @@
 # Datafiniti Programming Challenge
 
+## Usage
+* Change directory to AllMyBooksArePacked
+```cd AllMyBooksArePacked```
+* Install all the dependencies
+```npm install```
+* Run the application using
+```npm start```
+
 ## Description
 This application uses webscraping to get data from books on amazon's webpage. Currently, it parses through the html files in the data directory. It also arranges books based on weights into the least number of boxes with 10lb max capacity. The application returns the array of boxes in json format.
 
