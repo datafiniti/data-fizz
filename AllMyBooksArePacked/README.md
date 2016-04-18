@@ -1,18 +1,24 @@
 # Book Packer
 
+## Run Challenge
+
+To run the challenge use first install dependencies :  npm install
+Then run the server: npm start
+Open a Brower Tab and use this url : http://localhost:3000/crawler
+
 ## Purpose
 
-This exercise is designed to test your ability to use object-oriented design principles, data structures and standard algorithms to craft a small application.  We will not only be looking at the correctness of your solution but at the style of your code, its modularity, its extensibility, and ease at which the whole package can be built and tested.  As a small team we believe these principles are a key element of our continued success. 
+This exercise is designed to test your ability to use object-oriented design principles, data structures and standard algorithms to craft a small application.  We will not only be looking at the correctness of your solution but at the style of your code, its modularity, its extensibility, and ease at which the whole package can be built and tested.  As a small team we believe these principles are a key element of our continued success.
 
 The problem itself is not arbritary but meant to simulate the type of work you would be doing here at Datafiniti. The transformation of unstructured data into structured data involves parsing, computationaly intensive algorithmic techniques and ultimately some method of presenting that data in a human and machine digestable format to our customers.
 
-Have fun, be creative and ask questions! 
+Have fun, be creative and ask questions!
 
 ## Problem Description
 
-In this repository you have been provided with the HTML source for twenty randonly chosen Amazon book pages.  
+In this repository you have been provided with the HTML source for twenty randonly chosen Amazon book pages.
 
-You will need to design and implement a fully functioning application that can take these pages and extract meaningful information from the raw source. 
+You will need to design and implement a fully functioning application that can take these pages and extract meaningful information from the raw source.
 
 The extracted data must contain at least the following fields:
 
@@ -46,7 +52,7 @@ Your application should ouput its results in a valid and well structured JSON do
 
     . . .
 }
-``` 
+```
 Once your solution is completed please add an EXTENSIONS.txt file to your solution that notes how your application could be extended to handle the following:
 
 1. Domains beyond Amazon.com

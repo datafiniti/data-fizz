@@ -8,9 +8,10 @@ var HashMap = require('hashmap');
 
 exports.generate_url_list = function () {
     var url_list = []
-    for (var x = 1; x <= 1; x++) {
+    for (var x = 1; x <= 20; x++) {
         url_list.push("http://localhost:3000/books/" + x);
     }
+
     return url_list;
 }
 
@@ -42,11 +43,12 @@ function getTitle(pageToVisit) {
             var booktitlevalues = $('title').text();
             var values_arrays = booktitlevalues.split(":");
             var book = {};
+            book.id = pageToVisit.split("/");
+            book.id = book.id[book.id.length - 1];
             if (values_arrays.length == 6) {
                 book.title = values_arrays[0] + values_arrays[1];
                 book.author = values_arrays[2].trim();
-            };
-            if (values_arrays.length == 5) {
+            }else{
                 book.title = values_arrays[0];
                 book.author = values_arrays[1].trim();
             }
@@ -56,8 +58,7 @@ function getTitle(pageToVisit) {
                 currentelement[0] = currentelement[0].replace("<b>", "").trim();
                 currentelement[1] = currentelement[1].trim();
                 productdetail.set(currentelement[0],currentelement[1]);
-            });;
-            console.log("detail: " + productdetail.get("ISBN-10:"));
+            });
             book.isbn10 = productdetail.get("ISBN-10:");
             book.shipping_weight = productdetail.get("Shipping Weight:").split("(")[0].trim();
             book.price = $("#actualPriceValue > b").text();
