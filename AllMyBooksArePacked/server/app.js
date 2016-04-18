@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var books = require('./routes/books');
+var crawler = require('./routes/crawler');
 
 var app = express();
 app.disable("x-powered-by");
@@ -20,6 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.use('/books', books);
+app.use('/crawler', crawler);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
