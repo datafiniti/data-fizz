@@ -33,6 +33,7 @@ public class Box {
     
     public void addBook(Book b) {
         this.books.add(b);
+        this.currentWeight += b.getShippingWeight();
     }
 
     public Long getId() {

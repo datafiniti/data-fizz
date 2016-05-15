@@ -91,7 +91,6 @@ public class BookPackager {
                     box = new Box(boxMaxWeight, boxId); //get a new box
                 }
                 box.addBook(b);
-                box.setCurrentWeight(box.getCurrentWeight()+b.getShippingWeight());
                 b.setIsPacked(Boolean.TRUE);
             }                
         }
