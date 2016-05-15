@@ -73,7 +73,11 @@ public class BookParser {
     private String findPublisher() {
         Elements publisher = doc.select(PathMapping.PUBLISHER);
         publisher.select("b").remove();
-        return publisher.html().substring(0, publisher.html().indexOf("(")).trim();
+        String str = publisher.html().substring(0, publisher.html().indexOf("(")).trim();
+        if(str.lastIndexOf(";") != -1) {
+            str = str.substring(0, str.lastIndexOf(";"));
+        }
+        return str;
     }
     
     private String findIsbn10() {
