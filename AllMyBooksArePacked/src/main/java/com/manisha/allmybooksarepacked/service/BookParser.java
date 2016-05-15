@@ -40,7 +40,7 @@ public class BookParser {
     
     public BookParser(String filePath) throws IOException {  
         URL url = BookParser.class.getClassLoader().getResource(filePath);
-        System.out.println(url.getPath());
+        //System.out.println(url.getPath());
         htmlContent = IOUtils.toString(url);
         doc = Jsoup.parse(htmlContent);
         book = parseBookValues();
@@ -57,6 +57,13 @@ public class BookParser {
         returnVal.setShippingWeight(findShippingWeight());
         returnVal.setTitle(findTitle());
         return returnVal;
+    }
+    
+    private String getCleanStr(String txt, String defaultVal) {
+        if(StringUtils.isNotBlank(txt)) {
+            return txt.trim();
+        }
+        return defaultVal;
     }
     
     private String findTitle() {
