@@ -71,3 +71,9 @@ To begin fork this repository to your personal Github account. We ask that you s
 ## Obtaining Help
 
 If you have any questions regarding this exercise please feel free to open a Github issue within this repository and someone from our team will be sure to answer any questions or concerns you have.
+
+## Usage
+
+Main method in BookPackager.java will print out the JSON formatting for the packed books into N boxes.
+BookPackager.java also has a method to pack books in least number of books.
+
