@@ -5,22 +5,34 @@
  */
 package com.manisha.allmybooksarepacked.db.entity;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author ManishaYeramareddy
  */
+@JsonTypeInfo(include=As.WRAPPER_OBJECT, use=Id.NAME)
+@JsonRootName(value = "Box")
 public class Box {
     
     //uuid might be better?
     private Long id;
     private Double maxWeight;
-    private Double totalWeight;
-    private List<Book> books;
+    private Double currentWeight = 0.0;
+    private List<Book> books = new ArrayList<>();
     
-    public Box(Double max) {
+    public Box(Double max, Long id) {
+        this.id = id;
         this.maxWeight = max;
+    }
+    
+    public void addBook(Book b) {
+        this.books.add(b);
     }
 
     public Long getId() {
@@ -31,12 +43,12 @@ public class Box {
         this.id = id;
     }
 
-    public Double getTotalWeight() {
-        return totalWeight;
+    public Double getCurrentWeight() {
+        return currentWeight;
     }
 
-    public void setTotalWeight(Double totalWeight) {
-        this.totalWeight = totalWeight;
+    public void setCurrentWeight(Double currentWeight) {
+        this.currentWeight = currentWeight;
     }
 
     public Double getMaxWeight() {
@@ -50,13 +62,9 @@ public class Box {
     public void setBooks(List<Book> books) {
         this.books = books;
     }
-    
-    public Boolean isFull() {
-        return totalWeight >= maxWeight;
-    }
-    
+ 
     public Boolean canFit(Double weight) {
-        return maxWeight >= (totalWeight+weight);
+        return maxWeight >= (currentWeight+weight);
     }
  
 }

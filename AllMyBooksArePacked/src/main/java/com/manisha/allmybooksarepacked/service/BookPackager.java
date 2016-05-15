@@ -9,13 +9,11 @@ import com.manisha.allmybooksarepacked.db.entity.Book;
 import com.manisha.allmybooksarepacked.db.entity.Box;
 import com.manisha.allmybooksarepacked.exception.PackingException;
 import com.manisha.allmybooksarepacked.utility.JSONUtils;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import org.apache.commons.io.FileUtils;
 
 /**
  *
@@ -62,7 +60,7 @@ public class BookPackager {
             }
         }
         
-        booksToPack = sortBooksByWeight(true);
+        booksToPack = sortBooksByWeight(false);
     }
     
     private Book getBookFromFile(String file) throws IOException {
@@ -79,21 +77,41 @@ public class BookPackager {
         });
         return sortedBooks;
     }
-  
-    public List<Box> packBooksInNBoxes(Integer numOfBoxes) throws PackingException {
+      
+    public List<Box> packInLeastNumberOfBoxes() {
+        List<Box> boxes = new ArrayList<>();
+        Long boxId = 1L;
+        
+        Box box = new Box(boxMaxWeight, boxId);
+        for(Book b : booksToPack) { //go through unpacked books
+            if(!b.isPacked()) {                     
+                if(!box.canFit(b.getShippingWeight())) { //too much 
+                    boxes.add(box); //put current box aside
+                    boxId = boxId + 1;
+                    box = new Box(boxMaxWeight, boxId); //get a new box
+                }
+                box.addBook(b);
+                box.setCurrentWeight(box.getCurrentWeight()+b.getShippingWeight());
+                b.setIsPacked(Boolean.TRUE);
+            }                
+        }
+        return boxes;
+    }
+    
+    public List<Box> packInNBoxes(Integer numOfBoxes) throws PackingException {
         if( numOfBoxes*boxMaxWeight < totalBooksWeight) {
             throw new PackingException("Not enough boxes given the weight constraint of each box");
         }
         
         List<Box> boxes = new ArrayList<>();
+        
         return boxes;
     }
     
     public static void main(String[] args) throws PackingException, IOException  {
         BookPackager packager = new BookPackager();
-        //List<Box> boxes = packager.packBooksInNBoxes(10);
-        
-        System.out.println("JSON\n"+JSONUtils.objectToJSON(packager.getBooksToPack()));
+        List<Box> boxes = packager.packInLeastNumberOfBoxes();
+        System.out.println("JSON\n"+JSONUtils.objectToJSON(boxes));
         
     }
     

@@ -5,15 +5,17 @@
  */
 package com.manisha.allmybooksarepacked.db.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Objects;
 
 /**
  *
  * @author ManishaYeramareddy
  */
+@JsonIgnoreProperties({"isPacked","packed"})
 public class Book {
     
-    private String title; //btAsinTitle
+    private String title;
     private String author;
     private Double price;
     private Double shippingWeight;
@@ -22,6 +24,8 @@ public class Book {
     private String publisher;
     private Integer pages;
     private String language;
+    
+    private boolean isPacked = false;
     
     public String getTitle() {
         return title;
@@ -87,6 +91,14 @@ public class Book {
         this.language = language;
     }
 
+    public boolean isPacked() {
+        return isPacked;
+    }
+
+    public void setIsPacked(boolean isPacked) {
+        this.isPacked = isPacked;
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
@@ -113,7 +125,5 @@ public class Book {
     public String toString() {
         return "Book{" + "title=" + title + ", author=" + author + ", price=" + price + ", shippingWeight=" + shippingWeight + ", isbn10=" + isbn10 + ", publisher=" + publisher + ", pages=" + pages + ", language=" + language + '}';
     }
-    
-    
-    
+ 
 }

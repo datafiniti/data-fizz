@@ -7,12 +7,9 @@ package com.manisha.allmybooksarepacked.service;
 
 import com.manisha.allmybooksarepacked.constants.PathMapping;
 import com.manisha.allmybooksarepacked.db.entity.Book;
-import java.io.File;
+import com.manisha.allmybooksarepacked.utility.JSONUtils;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
@@ -37,11 +34,11 @@ public class BookParser {
         return htmlContent;
     }
     
-    protected Book getBook() {
+    public Book getBook() {
         return book;
     }
     
-    public BookParser(String filePath) throws IOException {
+    public BookParser(String filePath) throws IOException {  
         URL url = BookParser.class.getClassLoader().getResource(filePath);
         System.out.println(url.getPath());
         htmlContent = IOUtils.toString(url);
@@ -49,7 +46,7 @@ public class BookParser {
         book = parseBookValues();
     }
     
-    private Book parseBookValues() {
+    private Book parseBookValues() {        
         Book returnVal = new Book();
         returnVal.setAuthor(findAuthor());
         returnVal.setIsbn10(findIsbn10());
@@ -65,30 +62,30 @@ public class BookParser {
     private String findTitle() {
         Elements title = doc.select(PathMapping.TITLE);
         title.select("span").remove();
-        return title.html();
+        return title.html().trim();
     }
     
     private String findAuthor() {
         Elements author = doc.select(PathMapping.AUTHOR);
-        return author.first().text();
+        return author.first().text().trim();
     }
     
     private String findPublisher() {
         Elements publisher = doc.select(PathMapping.PUBLISHER);
         publisher.select("b").remove();
-        return publisher.html().substring(0, publisher.html().indexOf("("));
+        return publisher.html().substring(0, publisher.html().indexOf("(")).trim();
     }
     
     private String findIsbn10() {
         Elements isbn10 = doc.select(PathMapping.ISBN_10);
         isbn10.select("b").remove();
-        return isbn10.html();
+        return isbn10.html().trim();
     }
     
     private String findLanguage() {
         Elements language = doc.select(PathMapping.LANGUAGE);
         language.select("b").remove();
-        return language.html();
+        return language.html().trim();
     }
     
     private Double findShippingWeight() {
@@ -118,7 +115,6 @@ public class BookParser {
     private Integer findPages() {
         Elements pages = doc.select(PathMapping.PAGES_HARDCOVER);
         pages.select("b").remove();
-        Integer ret = null;
         if(StringUtils.isNotBlank(pages.html())) {
             try {
                 return Integer.valueOf(pages.html().split(" ")[0].replaceAll(",", ""));
@@ -130,19 +126,17 @@ public class BookParser {
                 return Integer.valueOf(pages.html().split(" ")[0].replaceAll(",", ""));
             } catch(Exception ex) {}
         }
-        return ret;
+        return null;
     }
     
-    public static void main(String[] args) {
-        
+    public static void main(String[] args) {        
         //List<File> list = new ArrayList<>(FileUtils.listFiles(new File(mainFilePath), new String[]{"html"}, false));
-        //for (final File file : list) {
-        
-        
-        
+        //for (final File file : list) {}
+
         try {
             BookParser parser = new BookParser("com/manisha/allmybooksarepacked/data/book1.html");
-            System.out.println("BOOK : "+parser.getBook().toString());
+            System.out.println("JSON : "+JSONUtils.objectToJSON(parser.getBook()));
+            //System.out.println("BOOK : "+parser.getBook().toString());
         } catch(Exception ex) {
             ex.printStackTrace();
             System.out.println("ERROR: "+ex.getLocalizedMessage());
