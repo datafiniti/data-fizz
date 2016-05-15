@@ -30,7 +30,7 @@ public class JSONUtils {
     }
 
     public static String objectToJSON(Object object) throws IOException {
-        return mapper.writeValueAsString(object);
+        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(object);
     }
 
     @SuppressWarnings("unchecked")
