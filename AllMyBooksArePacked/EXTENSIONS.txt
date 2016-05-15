@@ -1,0 +1,13 @@
+
+To extent this to new domains - 
+It seems like we must know the structure of the HTML pretty well before we can start extracting such specific information.
+There's tools like Knwl.js that extracts certain types of information, but when a page has multiple records of such types, and we are after one particular record, then it seems we need to know the exact HTML path to it. 
+These HTML paths should be stored for each domain that we want to parse and they must be configurable,so they can be changed on the fly without code changes or deployments.
+
+To process products beyond books -
+Have a high level table structure with a list of common attributes for most all products.
+Then have an one-to-many associated table 'extraAttributes' which can contain very generic String key/Object value pairsfor a product that contains info that doesn't fit into the main table.
+
+To parse and ship 2,000,000 books -
+The issue of parsing can be delegated to a multithreaded process which saves to a database,  having the number of threads based on the unprocessed batch size.
+As the parsing continues, there can a polling process that picks up a subset of unpacked books to sort decrementally and pack them in the first box that is not full.
