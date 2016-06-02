@@ -2,24 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e3a723f-5493-42a2-b6bb-ecce70b4714d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_guava_guava_19_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/BookPacker/AmazonParser.java" />
-      <change type="NEW" beforePath="" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/.idea/libraries/Gradle__com_google_guava_guava_19_0.xml" />
-      <change type="NEW" beforePath="" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/AmazonParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/BookPacker/BookPacker.class" afterPath="$PROJECT_DIR$/build/classes/main/BookPacker/BookPacker.class" />
-      <change type="MODIFICATION" beforePath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/build/classes/main/BookPacker/BookPacker.class" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/build/classes/main/BookPacker/BookPacker.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/684400601/BookPacker_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/684400601/BookPacker_main.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/684400601/BookPacker_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/684400601/BookPacker_test.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/BookPacker/AmazonParser.class" afterPath="$PROJECT_DIR$/build/classes/main/BookPacker/AmazonParser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/BookPacker/HTMLParser.class" afterPath="$PROJECT_DIR$/build/classes/main/BookPacker/HTMLParser.class" />
+      <change type="MODIFICATION" beforePath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/build/classes/main/BookPacker/AmazonParser.class" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/build/classes/main/BookPacker/AmazonParser.class" />
+      <change type="MODIFICATION" beforePath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/build/classes/main/BookPacker/HTMLParser.class" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/build/classes/main/BookPacker/HTMLParser.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/BookPacker/BookPacker.java" afterPath="$PROJECT_DIR$/src/main/java/BookPacker/BookPacker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/BookPacker/HTMLParser.java" afterPath="$PROJECT_DIR$/src/main/java/BookPacker/HTMLParser.java" />
-      <change type="MODIFICATION" beforePath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/.idea/modules/684400601/BookPacker_main.iml" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/.idea/modules/684400601/BookPacker_main.iml" />
-      <change type="MODIFICATION" beforePath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/.idea/modules/684400601/BookPacker_test.iml" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/.idea/modules/684400601/BookPacker_test.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/BookPacker/AmazonParser.java" afterPath="$PROJECT_DIR$/src/main/java/BookPacker/AmazonParser.java" />
       <change type="MODIFICATION" beforePath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/.idea/workspace.xml" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/build.gradle" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/build.gradle" />
-      <change type="MODIFICATION" beforePath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/BookPacker.java" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/BookPacker.java" />
-      <change type="MODIFICATION" beforePath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/HTMLParser.java" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/HTMLParser.java" />
+      <change type="MODIFICATION" beforePath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/AmazonParser.java" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/AmazonParser.java" />
     </list>
     <ignored path="BookPacker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -96,10 +86,12 @@
           <file leaf-file-name="AmazonParser.java" pinned="false" current-in-tab="true">
             <entry file="file:///Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/AmazonParser.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
-                  <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
+                <state relative-caret-position="-56">
+                  <caret line="46" column="36" selection-start-line="46" selection-start-column="36" selection-end-line="46" selection-end-column="36" />
                   <folding>
                     <element signature="imports" expanded="true" />
+                    <element signature="e#1521#1522#0" expanded="true" />
+                    <element signature="e#1584#1585#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -337,8 +329,8 @@
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/BookPacker.java" />
         <option value="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/AmazonParse.java" />
-        <option value="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/AmazonParser.java" />
         <option value="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/HTMLParser.java" />
+        <option value="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/AmazonParser.java" />
       </list>
     </option>
   </component>
@@ -1019,12 +1011,12 @@
       <option name="presentableId" value="Default" />
       <updated>1464803075665</updated>
       <workItem from="1464803079754" duration="9893000" />
-      <workItem from="1464880208594" duration="8358000" />
+      <workItem from="1464880208594" duration="14765000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18251000" />
+    <option name="totallyTimeSpent" value="24658000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1032,13 +1024,13 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942554" sideWeight="0.28611112" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942554" sideWeight="0.27291667" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32942554" sideWeight="0.7138889" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32942554" sideWeight="0.5638889" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942554" sideWeight="0.4611111" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32942554" sideWeight="0.43611112" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1186,10 +1178,12 @@
     </entry>
     <entry file="file:///Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/AmazonParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
+        <state relative-caret-position="-56">
+          <caret line="46" column="36" selection-start-line="46" selection-start-column="36" selection-end-line="46" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1521#1522#0" expanded="true" />
+            <element signature="e#1584#1585#0" expanded="true" />
           </folding>
         </state>
       </provider>
