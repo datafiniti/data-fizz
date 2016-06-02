@@ -3,44 +3,36 @@ package BookPacker;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
-import java.nio.file.Path;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import com.diffplug.common.base.Errors;
 
 class HTMLParser {
     private String path;
 
     HTMLParser() {
-        this.path = System.getProperty("user.dir") + "../data/";
+        this.path = System.getProperty("user.dir") + "/../data/";
     }
 
-    HTMLParser(String path, boolean isURL) {
+    HTMLParser(String path) {
         //modify BookPacker.validateArgs and BookPacker.main to allow for custom path input
         this.path = path;
     }
 
     ArrayList<HashMap<String, Object>> getInfo() throws IOException {
-        ArrayList<HashMap<String, Object>> data = new ArrayList<HashMap<String, Object>>();
         List<File> pages = getPages(path);
-        for (File file : pages) {
-            data.add(parseData(file));
-        }
-        return data;
+        if (pages.size() <= 0) throw new AssertionError();
+        AmazonParser ap = new AmazonParser(pages);
+        return ap.basicInfo();
     }
 
     //retrieve HTML files from directory
     private List<File> getPages(String path) throws IOException {
-        List<File> filesInFolder = Files.walk(Paths.get(path))
-                .filter(Files::isRegularFile)
-                .filter(Errors.suppress().wrapWithDefault(Files::isHidden, false))
-                .map(Path::toFile)
-                .collect(Collectors.toList());
+        List<File> filesInFolder = new ArrayList<>();
+        Files.walk(Paths.get(path)).forEach(filePath -> {
+            if (Files.isRegularFile(filePath)) {
+                filesInFolder.add(new File(filePath.toString()));
+            }
+        });
         return filesInFolder;
     }
-
-    private HashMap<String, Object> parseData(File file) {
-
-    }
 }
-

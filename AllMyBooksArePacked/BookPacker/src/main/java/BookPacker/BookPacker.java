@@ -20,6 +20,6 @@ public class BookPacker {
 
     private static void validateArgs(String[] args) {
         //can be expanded and modified if extensibility is needed
-        assert args.length == 0;
+        if (args.length != 0) throw new AssertionError();
     }
 }

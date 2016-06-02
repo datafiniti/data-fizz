@@ -14,4 +14,5 @@ dependencies {
     compile 'org.jsoup:jsoup:1.9.2'
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.diffplug.durian:durian:3.4.0'
+    compile group: 'com.google.guava', name: 'guava', version: '19.0'
 }
