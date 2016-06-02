@@ -3,7 +3,7 @@ version '1.0'
 
 apply plugin: 'java'
 
-sourceCompatibility = 1.5
+sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -11,4 +11,7 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile 'org.jsoup:jsoup:1.9.2'
+    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'com.diffplug.durian:durian:3.4.0'
 }
