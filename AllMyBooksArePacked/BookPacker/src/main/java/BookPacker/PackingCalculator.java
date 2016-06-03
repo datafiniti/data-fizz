@@ -66,7 +66,7 @@ class PackingCalculator {
             contents.add(book);
         }
 
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
         String jsonStr = gson.toJson(json);
 
         return jsonStr;

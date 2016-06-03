@@ -31,7 +31,7 @@ public class BookPacker {
     private static void writeJSONToFile(String json) {
         File file = new File("output.json");
         try {
-            FileUtils.writeStringToFile(file, json, "UTF-8");
+            FileUtils.writeStringToFile(file, json, "UTF-16");
         } catch (IOException e) {
             e.printStackTrace();
         }
