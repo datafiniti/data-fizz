@@ -3,6 +3,8 @@ package BookPacker;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.*;
 
 class PackingCalculator {
@@ -50,9 +52,12 @@ class PackingCalculator {
         for (int i = 0; i < numBoxes; i++) {
             HashMap<String, Object> box = new HashMap<>();
             double remainingWeight = boxes.get(i);
+            String weight = formatWeight(maxWeight - remainingWeight);
+
             box.put("id", i+1);
-            box.put("totalWeight", maxWeight - remainingWeight);
+            box.put("totalWeight", weight);
             box.put("contents", new ArrayList<HashMap<String, Object>>());
+
             json.add(box);
         }
 
@@ -70,5 +75,11 @@ class PackingCalculator {
         String jsonStr = gson.toJson(json);
 
         return jsonStr;
+    }
+
+    private String formatWeight(double val) {
+        DecimalFormat df = new DecimalFormat("#.#");
+        String roundedWeight = df.format(val);
+        return roundedWeight + " pounds";
     }
 }
