@@ -7,7 +7,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-class AmazonParser {
+class AmazonParser extends Parser{
     private ArrayList<Document> docs;
 
     private final int preWeightStrLen = 17;
@@ -21,12 +21,6 @@ class AmazonParser {
         }
     }
 
-    // Returns the following information:
-    //        * Title
-    //        * Author
-    //        * Price
-    //        * Shipping Weight
-    //        * ISBN-10
     ArrayList<HashMap<String, Object>> basicInfo() {
         ArrayList<HashMap<String, Object>> parsedInfo = new ArrayList<>();
         for (Document doc : docs) {
