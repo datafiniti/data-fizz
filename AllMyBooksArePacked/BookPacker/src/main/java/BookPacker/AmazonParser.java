@@ -38,8 +38,6 @@ class AmazonParser {
             double weight = getWeight(doc);
             String isbn = getISBN(doc);
 
-            System.out.println(author);
-
             docInfo.put("title", title);
             docInfo.put("author", author);
             docInfo.put("price", price);

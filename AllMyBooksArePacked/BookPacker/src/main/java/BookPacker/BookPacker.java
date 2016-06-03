@@ -7,14 +7,16 @@ public class BookPacker {
     public static void main(String[] args) throws IOException {
         validateArgs(args);
         HTMLParser parser = new HTMLParser();
+        ArrayList<HashMap<String, Object>> data = new ArrayList<>();
         try {
-            ArrayList<HashMap<String, Object>> data = parser.getInfo();
+            data = parser.getInfo();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        //Get data from HTML documents
-        //Calculate optimal box packing
+        PackingCalculator pc = new PackingCalculator(data);
+        pc.addBoxCount();
+
         //Make and output JSON
     }
 
