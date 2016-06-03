@@ -6,7 +6,7 @@ import java.util.Map;
 public class BookSort implements Comparator<Map<String, Object>> {
     private final String key;
 
-    public BookSort(String key) {
+    BookSort(String key) {
         this.key = key;
     }
 

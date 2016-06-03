@@ -1,8 +1,11 @@
 package BookPacker;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.util.*;
 
-public class PackingCalculator {
+class PackingCalculator {
     private final double maxWeight = 10.0;
     private ArrayList<HashMap<String, Object>> data;
 
@@ -10,33 +13,62 @@ public class PackingCalculator {
         this.data = data;
     }
 
-    ArrayList<HashMap<String, Object>> addBoxCount() {
-        int numBooks = data.size();
-        double max = maxWeight;
-        ArrayList<Double> boxes = new ArrayList<>();
-
+    String boxSort() {
         Collections.sort(data, new BookSort("shipping_weight"));
 
+        ArrayList<Double> boxes = new ArrayList<>();
         for (HashMap<String, Object> book : data) {
             double weight = (double) book.get("shipping_weight");
             if (boxes.isEmpty()) {
                 boxes.add(maxWeight - weight);
                 book.put("box", 1);
-            } else {
-                for (int i = 0; i < boxes.size(); i++) {
-                    double remainingWeight = boxes.get(i);
-                    if (weight < remainingWeight) {
-                        remainingWeight -= weight;
-                        book.put("box", i+1);
-                        boxes.set(i, remainingWeight);
-                        break;
-                    } else {
+                continue;
+            }
+            for (int i = 0; i < boxes.size(); i++) {
+                double remainingWeight = boxes.get(i);
+                if (weight < remainingWeight) {
+                    remainingWeight -= weight;
+                    book.put("box", i + 1);
+                    boxes.set(i, remainingWeight);
+                    break;
+                } else {
+                    if (i == boxes.size() - 1) {
                         boxes.add(maxWeight);
                     }
                 }
             }
         }
 
-        return data;
+        return formatForJSON(boxes);
+    }
+
+    private String formatForJSON(ArrayList<Double> boxes) {
+        int numBoxes = boxes.size();
+
+        ArrayList<HashMap<String, Object>> json = new ArrayList<>(numBoxes);
+
+        for (int i = 0; i < numBoxes; i++) {
+            HashMap<String, Object> box = new HashMap<>();
+            double remainingWeight = boxes.get(i);
+            box.put("id", i+1);
+            box.put("totalWeight", maxWeight - remainingWeight);
+            box.put("contents", new ArrayList<HashMap<String, Object>>());
+            json.add(box);
+        }
+
+        for (HashMap<String, Object> book : data) {
+            int boxNum = (int) book.get("box");
+            book.remove("box");
+            HashMap<String, Object> box = json.get(boxNum - 1); //box 1 is at idx 0, etc.
+            String weight = book.get("shipping_weight").toString() + " pounds";
+            book.put("shipping_weight", weight);
+            ArrayList<HashMap<String, Object>> contents = (ArrayList<HashMap<String, Object>>) box.get("contents");
+            contents.add(book);
+        }
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String jsonStr = gson.toJson(json);
+
+        return jsonStr;
     }
 }

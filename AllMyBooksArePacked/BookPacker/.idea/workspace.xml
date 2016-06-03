@@ -2,30 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e3a723f-5493-42a2-b6bb-ecce70b4714d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/BookPacker/BookSort.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/BookPacker/PackingCalculator.java" />
-      <change type="NEW" beforePath="" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/BookSort.java" />
-      <change type="NEW" beforePath="" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/PackingCalculator.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_diffplug_durian_durian_3_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_guava_guava_19_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/.idea/libraries/Gradle__com_diffplug_durian_durian_3_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/.idea/libraries/Gradle__com_google_guava_guava_19_0.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/BookPacker/AmazonParser.class" afterPath="$PROJECT_DIR$/build/classes/main/BookPacker/AmazonParser.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__commons_io_commons_io_1_3_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_commons_commons_io_1_3_2.xml" />
+      <change type="NEW" beforePath="" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/.idea/libraries/Gradle__commons_io_commons_io_1_3_2.xml" />
+      <change type="NEW" beforePath="" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/.idea/libraries/Gradle__org_apache_commons_commons_io_1_3_2.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/BookPacker/BookPacker.class" afterPath="$PROJECT_DIR$/build/classes/main/BookPacker/BookPacker.class" />
-      <change type="MODIFICATION" beforePath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/build/classes/main/BookPacker/AmazonParser.class" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/build/classes/main/BookPacker/AmazonParser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/BookPacker/BookSort.class" afterPath="$PROJECT_DIR$/build/classes/main/BookPacker/BookSort.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/BookPacker/PackingCalculator.class" afterPath="$PROJECT_DIR$/build/classes/main/BookPacker/PackingCalculator.class" />
       <change type="MODIFICATION" beforePath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/build/classes/main/BookPacker/BookPacker.class" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/build/classes/main/BookPacker/BookPacker.class" />
+      <change type="MODIFICATION" beforePath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/build/classes/main/BookPacker/BookSort.class" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/build/classes/main/BookPacker/BookSort.class" />
+      <change type="MODIFICATION" beforePath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/build/classes/main/BookPacker/PackingCalculator.class" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/build/classes/main/BookPacker/PackingCalculator.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/684400601/BookPacker_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/684400601/BookPacker_main.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/684400601/BookPacker_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/684400601/BookPacker_test.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/BookPacker/AmazonParser.java" afterPath="$PROJECT_DIR$/src/main/java/BookPacker/AmazonParser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/BookPacker/BookPacker.java" afterPath="$PROJECT_DIR$/src/main/java/BookPacker/BookPacker.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/BookPacker/BookSort.java" afterPath="$PROJECT_DIR$/src/main/java/BookPacker/BookSort.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/BookPacker/PackingCalculator.java" afterPath="$PROJECT_DIR$/src/main/java/BookPacker/PackingCalculator.java" />
       <change type="MODIFICATION" beforePath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/.idea/modules/684400601/BookPacker_main.iml" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/.idea/modules/684400601/BookPacker_main.iml" />
       <change type="MODIFICATION" beforePath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/.idea/modules/684400601/BookPacker_test.iml" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/.idea/modules/684400601/BookPacker_test.iml" />
       <change type="MODIFICATION" beforePath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/.idea/workspace.xml" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/build.gradle" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/build.gradle" />
-      <change type="MODIFICATION" beforePath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/AmazonParser.java" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/AmazonParser.java" />
       <change type="MODIFICATION" beforePath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/BookPacker.java" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/BookPacker.java" />
+      <change type="MODIFICATION" beforePath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/BookSort.java" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/BookSort.java" />
+      <change type="MODIFICATION" beforePath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/PackingCalculator.java" afterPath="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/PackingCalculator.java" />
     </list>
     <ignored path="BookPacker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,24 +64,24 @@
     <favorites_list name="BookPacker" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4080537">
+    <splitter split-orientation="horizontal" split-proportion="0.48859936">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/build.gradle">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
-                  <caret line="14" column="45" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
+                <state relative-caret-position="225">
+                  <caret line="15" column="77" selection-start-line="15" selection-start-column="77" selection-end-line="15" selection-end-column="77" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="BookPacker.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="BookPacker.java" pinned="false" current-in-tab="false">
             <entry file="file:///Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/BookPacker.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
-                  <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+                <state relative-caret-position="529">
+                  <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -89,10 +89,20 @@
               </provider>
             </entry>
           </file>
+          <file leaf-file-name="output.json" pinned="false" current-in-tab="true">
+            <entry file="file:///Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/output.json">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="0">
+                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file leaf-file-name="AmazonParser.java" pinned="false" current-in-tab="false">
             <entry file="file:///Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/AmazonParser.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="240">
+                <state relative-caret-position="-26">
                   <caret line="43" column="25" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="40" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -104,11 +114,11 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="HTMLParser.java" pinned="false" current-in-tab="false">
             <entry file="file:///Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/HTMLParser.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="525">
+                <state relative-caret-position="514">
                   <caret line="37" column="1" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -120,11 +130,12 @@
           <file leaf-file-name="PackingCalculator.java" pinned="false" current-in-tab="true">
             <entry file="file:///Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/PackingCalculator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="450">
-                  <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
+                <state relative-caret-position="394">
+                  <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
                   <folding>
-                    <element signature="e#235#236#0" expanded="true" />
-                    <element signature="e#267#268#0" expanded="true" />
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#294#295#0" expanded="true" />
+                    <element signature="e#326#327#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -133,12 +144,10 @@
           <file leaf-file-name="BookSort.java" pinned="false" current-in-tab="false">
             <entry file="file:///Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/BookSort.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
-                  <caret line="12" column="59" selection-start-line="12" selection-start-column="59" selection-end-line="12" selection-end-column="59" />
+                <state relative-caret-position="75">
+                  <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#203#204#0" expanded="true" />
-                    <element signature="e#233#234#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -316,7 +325,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="2929711735000" />
+        <entry key="$PROJECT_DIR$" value="2929769510000" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -358,10 +367,11 @@
         <option value="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/AmazonParse.java" />
         <option value="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/HTMLParser.java" />
         <option value="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/AmazonParser.java" />
-        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/CreateJSON.java" />
         <option value="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/BookSort.java" />
-        <option value="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/BookPacker.java" />
         <option value="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/PackingCalculator.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="/Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/BookPacker.java" />
       </list>
     </option>
   </component>
@@ -408,7 +418,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -488,6 +497,7 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1023,7 +1033,7 @@
     </recent_temporary>
   </component>
   <component name="SbtLocalSettings">
-    <option name="lastUpdateTimestamp" value="1464909115710" />
+    <option name="lastUpdateTimestamp" value="1464966445351" />
     <option name="externalProjectsViewState">
       <projects_view />
     </option>
@@ -1042,12 +1052,13 @@
       <option name="presentableId" value="Default" />
       <updated>1464803075665</updated>
       <workItem from="1464803079754" duration="9893000" />
-      <workItem from="1464880208594" duration="22514000" />
+      <workItem from="1464880208594" duration="25039000" />
+      <workItem from="1464920818814" duration="4245000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32407000" />
+    <option name="totallyTimeSpent" value="39177000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1055,17 +1066,17 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942554" sideWeight="0.26875" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942554" sideWeight="0.51810586" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32942554" sideWeight="0.57222223" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32942554" sideWeight="0.5854167" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32942554" sideWeight="0.42777777" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32942554" sideWeight="0.41458333" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14791666" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14722222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1108,6 +1119,24 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/BookPacker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/settings.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1141,7 +1170,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
           <caret line="48" column="9" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1161,36 +1189,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/AmazonParse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/HTMLParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="37" column="1" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/AmazonParse.java" />
     <entry file="file://$PROJECT_DIR$/settings.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="45" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
           <folding />
         </state>
       </provider>
@@ -1203,10 +1206,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/AmazonParser.java">
+    <entry file="file:///Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/HTMLParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="43" column="25" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="40" />
+        <state relative-caret-position="514">
+          <caret line="37" column="1" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1215,34 +1218,75 @@
     </entry>
     <entry file="file:///Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/BookSort.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="59" selection-start-line="12" selection-start-column="59" selection-end-line="12" selection-end-column="59" />
+        <state relative-caret-position="75">
+          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#203#204#0" expanded="true" />
-            <element signature="e#233#234#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file:///Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/BookPacker.java">
+    <entry file="file:///Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/CreateJSON.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="60">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file:///Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/PackingCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
+        <state relative-caret-position="394">
+          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
           <folding>
-            <element signature="e#235#236#0" expanded="true" />
-            <element signature="e#267#268#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#294#295#0" expanded="true" />
+            <element signature="e#326#327#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/AmazonParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-26">
+          <caret line="43" column="25" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="77" selection-start-line="15" selection-start-column="77" selection-end-line="15" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/src/main/java/BookPacker/BookPacker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Volumes/Data Storage/Desktop/DataFizz/AllMyBooksArePacked/BookPacker/output.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
