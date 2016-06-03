@@ -2,8 +2,6 @@ package BookPacker;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.*;
 
@@ -18,6 +16,7 @@ class PackingCalculator {
     String boxSort() {
         Collections.sort(data, new BookSort("shipping_weight"));
 
+        //algorithm should have average time complexity of O(n*log(n))
         ArrayList<Double> boxes = new ArrayList<>();
         for (HashMap<String, Object> book : data) {
             double weight = (double) book.get("shipping_weight");
@@ -49,6 +48,7 @@ class PackingCalculator {
 
         ArrayList<HashMap<String, Object>> json = new ArrayList<>(numBoxes);
 
+        //create hashmap for boxes with all fields
         for (int i = 0; i < numBoxes; i++) {
             HashMap<String, Object> box = new HashMap<>();
             double remainingWeight = boxes.get(i);
@@ -61,22 +61,27 @@ class PackingCalculator {
             json.add(box);
         }
 
+        //load "contents" field data
         for (HashMap<String, Object> book : data) {
+            String weight = book.get("shipping_weight").toString() + " pounds";
+            book.put("shipping_weight", weight);
+
             int boxNum = (int) book.get("box");
             book.remove("box");
             HashMap<String, Object> box = json.get(boxNum - 1); //box 1 is at idx 0, etc.
-            String weight = book.get("shipping_weight").toString() + " pounds";
-            book.put("shipping_weight", weight);
+
             ArrayList<HashMap<String, Object>> contents = (ArrayList<HashMap<String, Object>>) box.get("contents");
             contents.add(book);
         }
 
+        //convert data structures to JSON
         Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
         String jsonStr = gson.toJson(json);
 
         return jsonStr;
     }
 
+    //prevent trailing digits
     private String formatWeight(double val) {
         DecimalFormat df = new DecimalFormat("#.#");
         String roundedWeight = df.format(val);

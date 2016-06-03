@@ -10,6 +10,7 @@ import org.jsoup.nodes.Element;
 class AmazonParser extends Parser{
     private ArrayList<Document> docs;
 
+    //static character lengths that will be parsed
     private final int preWeightStrLen = 17;
     private final int postWeightStrLen = 42;
     private final int preIsbnStrLen = 9;
