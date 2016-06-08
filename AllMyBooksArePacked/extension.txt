@@ -1,0 +1,22 @@
+Getting Data From different Domains:
+
+We need to have all URL's for specific Websites. We should Store them in the database from that URL's we can navigate to different pages and fetch the data. 
+We can also store the information about specific webpages address in the database.
+We have many libraries which does this task.
+
+To Support different type of products
+-> For each product we need to have attributes which describe the product. 
+We need to get the path of the Particular product in the html file and store it's address or it's relative class neme in table so that fetching becomes easier.
+
+
+Reducing the time Complexity.
+
+Reducing Complexity of Bin Packing Algorithm:
+We can use self balacing trees instead of a list data structures which reduces more time.
+We can create a binary search tree or AVL trees to check or fit the item. When it doesn't have any new space we will add a new node into tree with capacity
+Else we will rebalance tree with available spaces. This will reduce the time complexity.
+
+Using Mutlithreading:
+
+We can use multithreading or Processing Parallel Collection will reduce the time. Each thread can fetch a specific page and updates the list.
+and packs the item. 
