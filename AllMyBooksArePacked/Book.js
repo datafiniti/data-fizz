@@ -1,31 +1,32 @@
 'use strict';
-const fs      = require('fs');
-const bookReg = require('./amzn_regex').books;
-/*
- * Minimum Data Per Book:
- * Title
- * Author
- * Price
- * Shipping Weight
- * ISBN-10
- */
+const fs = require('fs');
 
+module.exports = class Book{
 
-class Book{
-  constructor(page){
-    this.scrape('title',  page, bookReg.title);
-    this.scrape('author', page, bookReg.author);
-    this.scrape('price',  page, bookReg.price);
-    this.scrape('weight', page, bookReg.weight);
-    this.scrape('ISBN10', page, bookReg.ISBN10);
+  constructor(title, author, price, weight, ISBN10){
+
+    this.title  = title;
+    this.author = author;
+    this.price  = "$" + Number(price).toFixed(2) + " USD";
+    this.weight = weight;
+    this.ISBN10 = ISBN10;
+
   }
 
-  scrape(property, file, regex){
-    const book = this;
-    fs.readFile(file, 'utf8', function(err, data){
-      const result = data.match(regex) ? data.match(regex)[1] || data.match(regex)[2] : "None";
-      book[property] = result;
-      console.log(book);
+  static parse(file, regexObj){
+    const promisedParams = Object.keys(regexObj).map(function(regexKey){
+      const regex = regexObj[regexKey];
+      return new Promise(function(resolve, reject){
+        fs.readFile(file, 'utf8', function(err, data){
+          const result = data.match(regex) ? data.match(regex)[1] || data.match(regex)[2] : "None";
+          resolve(result);
+        });
+      });
+    });
+
+    return Promise.all(promisedParams).then(function(params){
+      return new Book(...params);
     });
   }
+
 }
