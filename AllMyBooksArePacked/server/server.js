@@ -1,8 +1,11 @@
 var express = require('express');
+var Path = require('path');
 var cheerio = require('cheerio'), $;
 var fs = require('fs');
 var bookScraper = require('./scrapeBook.js');
 var books = [];
+
+var routes = express.Router()
 
 //If we were scraping outside webpages, an npm module called 'axios'
 //could be used to fetch the webpage's html. It is a promise based http tool for node
@@ -44,4 +47,46 @@ readBook(1);
 
 function loadPage (webpage) {
   return cheerio.load(webpage);
+}
+
+
+
+var assetFolder = Path.resolve(__dirname, '../client')
+routes.use(express.static(assetFolder))
+
+
+if (process.env.NODE_ENV !== 'test') {
+
+  routes.get('/', function(req, res){
+    res.sendFile(assetFolder + '/index.html')
+  })
+
+  routes.get('/getBooks', function(req, res){
+    console.log('getting here');
+    res.status(200).send(books);
+  })
+
+  //The catch all route to serve files like bootstrap
+  routes.get('/*', function(req, res){
+    req.url = '..' + req.url;
+    res.sendFile(Path.resolve(__dirname, req.url ));
+  })
+
+  // We're in development or production mode;
+  // create and run a real server.
+  var app = express()
+
+  // Parse incoming request bodies as JSON
+  app.use( require('body-parser').json() )
+
+  // Mount our main router
+  app.use('/', routes)
+
+  var port = process.env.PORT || 4400
+  app.listen(port)
+  console.log("Listening on port", port)
+}
+else {
+  // We're in test mode; make this file importable instead.
+  module.exports = routes
 }
