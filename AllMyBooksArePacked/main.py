@@ -2,6 +2,7 @@ from lxml import html
 from bs4 import BeautifulSoup
 from pprint import pprint
 from operator import itemgetter
+import json
 import requests
 
 bookList = ["data/book1.html", "data/book2.html",
@@ -122,7 +123,6 @@ def main(bookPages=bookList):
 	#until package cannot add more books due to weight
 	while sortedBooks:
 		currBox = Box([], 0.0, boxid)
-		print len(sortedBooks)
 		if len(sortedBooks) == 1:
 			currBox.addBook(sortedBooks[0])
 			sortedBooks.remove(sortedBooks[0])
@@ -133,8 +133,10 @@ def main(bookPages=bookList):
 		sortedBooks.remove(sortedBooks[len(sortedBooks) - 1])
 		allBoxes.append(currBox.__dict__)
 		boxid += 1
-	pprint(allBoxes)
+	return json.dumps(allBoxes, sort_keys=True, indent=4, separators=(',', ': '))
 
-main()
+output = main()
+target = open('result.txt', 'w+')
+target.write(output)
 
 
