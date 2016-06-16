@@ -6,7 +6,7 @@ let bookList = createList();
 
 extractData(bookList);
 
-function createList(){
+function createList() {
   var list = [];
   for (var i = 1; i <= 20; i++){
     list.push(`book${i}.html`);
@@ -14,7 +14,7 @@ function createList(){
   return list;
 }
 
-function extractData(list){
+function extractData(list) {
   list.forEach(function(book){
     fs.readFile(`../data/${book}`, 'utf8', (err, html) => {
       if (err) { console.error(err); }
@@ -28,8 +28,8 @@ function extractData(list){
       let title, author, price, shipping_weight, isbn10;
       let json = {"title": "", "author": "", "price": "", "shipping_weight": "", "isbn-10": ""};
 
-      // parse title, author
-      $('#btAsinTitle').filter(function(){
+      // extract title and author
+      $('#btAsinTitle').filter(function() {
         let data = $(this);
         title = data.ignore('span').text().trim();
         author = "";
@@ -44,35 +44,79 @@ function extractData(list){
         json.author = author;
       });
 
-      $('#actualPriceValue').filter(function(){
+      // extract price
+      $('#actualPriceValue').filter(function() {
         let data = $(this);
 
         price = data.text() + ' USD';
         json.price = price;
       });
 
-      $('#productDetailsTable').find('.content').find('li').filter(function(){
+      $('#productDetailsTable').find('.content').find('li').filter(function() {
         let data = $(this);
 
-        // find shipping weight
+        // extract shipping weight
         if (data.find('b').text().trim() === 'Shipping Weight:'){
           shipping_weight = data.ignore('b').ignore('a').text().trim().slice(0,-3);
           json.shipping_weight = shipping_weight;
         }
 
-        // find isbn-10
+        // extract isbn-10
         if (data.find('b').text().trim() === 'ISBN-10:'){
           isbn10 = data.ignore('b').text().trim();
           json["isbn-10"] = isbn10;
         }
       });
+      
       bookData.push(json);
 
+      // when all data is extracted, create shipment.
       if (bookData.length === bookList.length){
-        // continue to sorting
-        console.log(bookData);
+        createShipment(bookData);
       }
     });
   });
 }
 
+function createShipment(items) {
+  let shipment = [];
+  let boxID = 1;
+  items = sortItemsByWeight(items);
+
+  while (items.length){
+    createBox(10);
+  }
+
+  storeJSON(shipment, 'shipment.json');
+
+  function createBox(maxWeight){
+    let boxWeight = 0;
+    let box = {"id": boxID++, "totalWeight": "", "contents": []};
+
+    findItem();
+
+    box.totalWeight = boxWeight.toFixed(1) + ' pounds';
+    shipment.push({"box": box}); 
+
+    function findItem(){
+      for (var i = 0; i < items.length; i++){
+        let weight = parseFloat(items[i].shipping_weight);
+        if (boxWeight + weight <= maxWeight){
+          boxWeight += weight;
+          box.contents.push( items.splice(i, 1));
+          findItem();
+          break;
+        }
+      }
+    }
+  }
+}
+
+function sortItemsByWeight(items) {
+  return items.sort( (a, b) => parseFloat(b.shipping_weight) - parseFloat(a.shipping_weight) );
+}
+
+function storeJSON(json, filename) {
+  let file = JSON.stringify(json, null, 2);
+  fs.writeFile(filename, file);
+}
