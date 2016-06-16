@@ -1,26 +1,28 @@
-var express = require('express');
-var cheerio = require('cheerio'), $;
-var fs = require('fs');
-var books = [], i = 1;
-var title, author, authorSection, price, numPrices, shipping_weight, isbn, doneSearchingList, listItem;
+//I made a module containing the scraping methods with a public API, in case we
+//had sensitive information we wanted to hid inside of this function. It also
+//abstracts away the implementation details.
+//It is an immediately invoked function so that we can have the api
 
-//If we were scraping outside webpages, an npm module called 'axios'
-//could be used to fetch the webpage's html. It is a promise based http tool for node
+//bookScraper is like a class, in that it gives us encapsulation and the possiblity
+//of private variables/functions
 
-//I made a function readBook, which is called recursively, because I am using 'fs' to read the html files
-//and the fs.readFile function is asynchronous. An alternative would be using the synchronous version
-//inside of a simple for loop or while loop. This would be less 'expensive', in terms of not building
-//up the call stack, but would hold up the rest of the program
-function readBook(bookNum){
+var bookScraper = (function bookScraper () {
 
-  fs.readFile('./data/book' + bookNum + '.html', 'utf8', function(err, data){
+  var publicAPI = {
+    getTitle: getTitle,
+    getAuthor: getAuthor,
+    getPrice: getPrice,
+    getISBNandShipping: getISBNandShipping
+  };
 
-    if(err) throw err;
+  return publicAPI;
 
-    $ = cheerio.load(data);
+  function getTitle($){
+    return $('#btAsinTitle').text();
+  }
 
-    title = $('#btAsinTitle').text();
-
+  function getAuthor($){
+    var author, authorSection;
     authorSection = $('span','.buying').find('a');
     //had to 'slice' the first or first and second (in the case of more than one author)
     //element(s) out because there was an irrelevant piece of information at the end of
@@ -30,7 +32,11 @@ function readBook(bookNum){
     } else {
       author = authorSection.slice(0, 1).text();
     }
+    return author
+  }
 
+  function getPrice($) {
+    var price, numPrices;
 
     numPrices = $('.bb_price').length;
     //there is a case, for book #9 for example, where there are several prices,
@@ -43,6 +49,11 @@ function readBook(bookNum){
 
     price = price.replace(/\s/g, ''); //selection came with a lot of whitespace - this cleans it up
     price = price + ' USD';
+    return price;
+  }
+
+  function getISBNandShipping($){
+    var doneSearchingList, listItem, isbn, shipping_weight;
 
     //The isbn and shipping details are part of a table/list of 'Product Details', and I could not
     //target them individually, so I had to iterate through every list item and check each string
@@ -70,15 +81,9 @@ function readBook(bookNum){
       }
 
     });
+    return {isbn: isbn, shipping_weight: shipping_weight};
+  }
 
-    books.push({'title': title, 'author': author, 'price': price, 'shipping_weight': shipping_weight, 'isbn-10': isbn});
+})();
 
-    if(bookNum < 20){
-      bookNum++;
-      readBook(bookNum);
-    }
-
-  });
-}
-
-readBook(1);
+module.exports = bookScraper;
