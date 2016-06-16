@@ -33,7 +33,14 @@ bookList.forEach(function(book){
       json.author = author;
     });
 
+    $('#actualPriceValue').filter(function(){
+      let data = $(this);
 
+      price = data.text() + ' USD';
+      json.price = price;
+    });
+
+    // json.shipping_weight = $('.content').find('ul').find('li:nth-child(7)').text();
 
     console.log('json:', json);
     bookData.push(json);
