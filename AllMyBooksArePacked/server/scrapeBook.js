@@ -1,5 +1,5 @@
 //I made a module containing the scraping methods with a public API, in case we
-//had sensitive information we wanted to hid inside of this function. It also
+//had sensitive information we wanted to hide inside of this function. It
 //abstracts away the implementation details.
 //It is an immediately invoked function so that we can have the api
 
