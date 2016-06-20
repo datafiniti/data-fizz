@@ -42,6 +42,7 @@ var App = (function App(){
 
   function packBoxes(e){
     e.preventDefault();
+    $boxesDiv.empty();
 
     var packingBoxes = {},
         numBoxes = $('#numBoxes').val(),
