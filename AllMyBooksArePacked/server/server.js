@@ -1,10 +1,10 @@
-var express = require('express'),
-    Path = require('path'),
-    cheerio = require('cheerio'),
-    $,
-    fs = require('fs'),
-    bookScraper = require('./scrapeBook.js'), //module, like a class
-    books = [];
+var express = require('express');
+var Path = require('path');
+var cheerio = require('cheerio');
+var fs = require('fs');
+var bookScraper = require('./scrapeBook.js'); //module, like a class
+var books = [];
+var $;
 
 var routes = express.Router();
 
@@ -33,6 +33,9 @@ function readBook(bookNum){
     bookDeets["shipping_weight"] = isbn_shipping.shipping_weight;
     bookDeets["isbn-10"] = isbn_shipping.isbn;
 
+    //All of the title, author, price, isbn, and shipping methods could easily be made into one function.
+    //I thought that having them seperated would be more extensible, in case the 'customer' wanted to
+    //select which information they wanted out of the books
 
     books.push(bookDeets);
 

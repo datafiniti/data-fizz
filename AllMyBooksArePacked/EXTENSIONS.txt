@@ -3,17 +3,15 @@
 
 2. Products beyond just simply books:
   For amazon in particular, we could target the <span> tag with #productTitle ID, and this applies for many products.
-  There's also a 'Product Details' section for every product
+  There's also a 'Product Details' section for every product. So essentially, we would look for commonalities between all of the product pages, so that there is a universal scraping algorithm.
 
 3. Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20:
 
-  Well, I implemented an algorithm that definitely isn't the fastest. One way to speed it up would be not sort
-  the books by weight, and just pack them in the order they come. Also, I've employed the 'Best Fit Heuristic', which
-  searches every single box for the 'best fit' (box that will have the least room leftover), which is polynomial (nested loops). Instead, to add speed, a 'First Fit' heuristic could be used. This would place each book in the first box that it will fit in that is not also full.
+  One way to speed it up would be not sort the books by weight, and just pack them in the order they come.
+  Also, I've employed a 'Best Fit' method, which searches every single box for the 'best fit' (box that will have the least room leftover after adding the current book), which is polynomial time complexity (nested loops). Instead, to add speed, a 'First Fit' strategy could be used. This would place each book in the first box that it will fit in. Additionally, the boxes should be marked as 'full', which would remove them from the loop that searches for appropriate box placement.
 
-  Algorithm aside, we could deploy the sorting microservice onto remote virtual machines. Essentially,
+  If all the books were sorted by weight, and assuming they were all less than 10 lbs while still using 10lb max boxes, we could start packing from the middle of the list and put two 5 lb books together, and then move outwards until we are combining 3 and 7 lb books, 2.5 and 7.5, 9 and 1 pounders, so on and so forth. It would be easiest to look for two books, which when added together equal exactly 10 lbs. Once the exact matches were out we could add more than two books together (ex. 7lb and two 1.5lb books).
+  I believe a data structure could help, such as a hash table to group books into buckets with similar weights (ex. group all books together from 5 to 5.1 lbs). Or, one big object with keys '5 - 5.1': with the value as all the associated books in that weight range as an array of values.
+
+  Algorithm aside, we could deploy the sorting application onto remote virtual machines. Essentially,
   spread the work load out onto machines other than our own.
-
-  If all the books were sorted, and assuming they were all less than 10 lbs while still using 10lb max boxes, we could start in the middle and put two 5 lb books together, and then move outwards until we are combining 3 and 7 lb books, 2.5 and 7.5, 9 and 1 pounders, so on and so forth. It would be easiest to look for two books, which when added together equal exactly 10 lbs. Once the exact matches are out we could add multiple books together.
-  I believe some sort of data structure, such as a binary search tree, could help with the idea above.
-

@@ -1,9 +1,9 @@
 var App = (function App(){
-  var publicAPI,
-    $booksDisplay,
-    $bookButton,
-    $numBoxes
-    books;
+  var publicAPI;
+  var $booksDisplay;
+  var $bookButton;
+  var $numBoxes;
+  var books;
 
   publicAPI = {
     init: init
@@ -44,9 +44,9 @@ var App = (function App(){
     e.preventDefault();
     $boxesDiv.empty();
 
-    var packingBoxes = {},
-        numBoxes = $('#numBoxes').val(),
-        notEnoughBoxes = false;
+    var packingBoxes = {};
+    var numBoxes = $('#numBoxes').val();
+    var notEnoughBoxes = false;
 
     //setup the box objects
     for(var i = 1; i <= numBoxes; i++){
