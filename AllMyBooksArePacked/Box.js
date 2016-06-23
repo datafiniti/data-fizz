@@ -4,14 +4,14 @@ module.exports = class Box {
 
   constructor(contents){
     this.contents = contents || [];
-    this.weight = this.contents.reduce(function(weight, product){
-      return weight + parseFloat(product.weight);
-    }, 0);    
+    this.totalWeight = this.contents.reduce(function(weight, product){
+      return (weight + parseFloat(product.weight)).toPrecision(2);
+    }, 0) + " pounds";   
   }
 
   load(product){
     this.contents = this.contents.concat(product);
-    this.weight += parseFloat(product.weight);
+    this.totalWeight = (parseFloat(this.totalWeight) + parseFloat(product.weight)).toPrecision(2) + " pounds";
   }
 
 }

@@ -17,4 +17,4 @@ module.exports = {
     ISBN10 : /<b>ISBN-10:<\/b>\s*([a-zA-Z0-9]+)/,
   }
 
-}
+};

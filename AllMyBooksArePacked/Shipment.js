@@ -3,6 +3,6 @@
 class Shipment {
 
   constructor(contents){
-
+    this.contents = contents || [];
   }
 }
