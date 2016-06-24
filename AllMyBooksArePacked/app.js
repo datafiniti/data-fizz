@@ -35,15 +35,15 @@ const groupByWeight = function(inBooks){
         if ((parseFloat(books[j].weight) > leftoverWeight)){
           nextBox.load(books[j+1]);
           books.splice(j+1, 1);
-          leftoverWeight = (10 - parseFloat(nextBox.totalWeight)).toPrecision(2);
-          lightest = parseFloat(books[books.length-1].weight);
+          leftoverWeight = (10 - nextBox.weigh()).toPrecision(2);
+          lightest = books[books.length-1].weigh();
           j = -2;//terminate the for loop early
         }
 
         else if (j === 0 && parseFloat(books[books.length-1].weight) < leftoverWeight){
           nextBox.load(books[0]);
           books.splice(0, 1);
-          leftoverWeight = (10 - parseFloat(nextBox.totalWeight)).toPrecision(2);
+          leftoverWeight = (10 - nextBox.weigh()).toPrecision(2);
           lightest = parseFloat(books[books.length-1].weight);
         }
         else {
@@ -57,10 +57,14 @@ const groupByWeight = function(inBooks){
         lightest = parseFloat(books[books.length-1].weight);
       }
     }
+    if (books.length === 1 && (books[0].weigh() < 10 - nextBox.weigh())){
+      nextBox.load(books[0]);
+      books.splice(0, 1);
+      leftoverWeight = (10 - nextBox.weigh());
+      lightest = null;
+    }
     Boxes.push(nextBox);
   }
-
-  console.log('all done', JSON.stringify(Boxes,null ,1));
 
   return Boxes;
 
