@@ -74,7 +74,7 @@ const groupByWeight = function(order, boxCapacity){
 }
 
 const writeShipment = function (name) {
-  const fileName = name || 'shipment' + Date.now() + '.txt';
+  const fileName = name || 'shipment' + Date.now() + '.json';
   fs.readdir('./data', function(err, files){
     const promisedBooks = files.map(function(filename){
       return Book.parse('./data/' + filename, Regex);
