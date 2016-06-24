@@ -9,6 +9,10 @@ module.exports = class Box {
     }, 0) + " pounds";   
   }
 
+  weigh(){
+    return parseFloat(this.totalWeight);
+  }
+
   load(product){
     this.contents = this.contents.concat(product);
     this.totalWeight = (parseFloat(this.totalWeight) + parseFloat(product.weight)).toPrecision(2) + " pounds";

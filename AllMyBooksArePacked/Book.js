@@ -13,6 +13,10 @@ module.exports = class Book{
 
   }
 
+  weigh() {
+    return parseFloat(this.weight);
+  }
+
   static parse(file, regexObj){
     const promisedParams = Object.keys(regexObj).map(function(regexKey){
       const regex = regexObj[regexKey];
