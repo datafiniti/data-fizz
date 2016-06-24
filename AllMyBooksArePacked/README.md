@@ -1,7 +1,9 @@
 # Book Packer
 
 ## Instructions for use:
+In the command line:
 ```
 node --harmony index.js
 ```
-You may specify the name of the JSON file output. Currently the input (the data directory) is hardcoded.
+Be sure to install node beforehand.
+You may specify the name of the JSON file output.
