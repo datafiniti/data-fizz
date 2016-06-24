@@ -2,8 +2,9 @@
 
 module.exports = class Box {
 
-  constructor(contents){
+  constructor(contents, capacity){
     this.contents = contents || [];
+    this.capacity = capacity || 10; //arbitrary default capacity
     this.totalWeight = this.contents.reduce(function(weight, product){
       return (weight + parseFloat(product.weight)).toPrecision(2);
     }, 0) + " pounds";   
@@ -11,6 +12,10 @@ module.exports = class Box {
 
   weigh(){
     return parseFloat(this.totalWeight);
+  }
+
+  roomLeft(){
+    return (this.capacity - this.weigh());
   }
 
   load(product){
