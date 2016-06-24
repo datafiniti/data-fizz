@@ -1,10 +1,25 @@
+//To run: node --harmony index.js
+//Ouputs a file beginning with 'shipment', followed by Date.now().
+//Parses every file in the ./data directory.
+
 'use strict';
 
 const fs = require('fs');
+const readline = require('readline');
 
 const Box      = require('./Box.js');
 const Book     = require('./Book.js');
 const Regex    = require('./amzn_regex.js').books;
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.question('Save as: ', function(fileName){
+  writeShipment(fileName);
+  rl.close();
+});
 
 //Takes an array of books, returns an array of 10lb. arrays of books
 const groupByWeight = function(order, boxCapacity){
@@ -58,7 +73,8 @@ const groupByWeight = function(order, boxCapacity){
 
 }
 
-const writeShipment = function (fileName) {
+const writeShipment = function (name) {
+  const fileName = name || 'shipment' + Date.now() + '.txt';
   fs.readdir('./data', function(err, files){
     const promisedBooks = files.map(function(filename){
       return Book.parse('./data/' + filename, Regex);
@@ -74,5 +90,3 @@ const writeShipment = function (fileName) {
     });
   });
 }
-
-writeShipment('shipment.txt');
