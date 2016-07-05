@@ -1,4 +1,5 @@
-DataFizz
-========
+# Installation
 
-A collection of challenges
+`pip install -r requirements.txt`
+
+# Extensions
