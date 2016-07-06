@@ -7,6 +7,9 @@
 2. BeautifulSoup is a library available for python which parses HTML and builds a DOM tree. It can even handle partially broken HTML which a lot of pages may have on the web. This is the only thirdparty library used.
 3. To produce JSON, standard JSON library that comes with python is used.
 4. In python, modules are used as a part of Object Oriented Programming when storing a collection of methods; in this case, the extractors are collection of methods rather than an object with data stored in it. Therefore a module was used instead of a class in `extractors.py`. Using classes for this would be an overkill. However, when the scope of the program increases, it may be rethought in terms of classes.
+ 
+
+
 # Extensions
 
 ### Domains beyond Amazon.com
