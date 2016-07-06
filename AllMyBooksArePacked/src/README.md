@@ -3,6 +3,9 @@
 `pip install -r requirements.txt`
 
 # Design Choices
+1. Python was used as the language
+2. BeautifulSoup is a library available for python which parses HTML and builds a DOM tree. It can even handle partially broken HTML which a lot of pages may have on the web. This is the only thirdparty library used.
+3. To produce JSON, standard JSON library that comes with python is used.
 
 # Extensions
 
@@ -21,3 +24,4 @@
 1. The current program processes page by page, but still keeps the extracted fields in memory. That'd be unacceptable if there are too many books. So, the first change would be to write every field extracted to the output as and when available.
 2. The extraction process can be parallelized and distributed, where a cluster of computers can read from a queue and process the pages one by one. The size of the cluster can be chosen depending on the number of pages to be processed vs. the throughput of each machine.
 3. The extraction process from a single page is polynomial (since reading/parsing HTML, search etc. are all polynomial). 
+4. To ship the books, the most complex step is the sorting part. This can be done distributed as well, using map-reduce.
