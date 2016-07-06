@@ -14,4 +14,10 @@
 
 
 ### Products beyond just simply books.
+1. The fields for other products may change (for instance, non-books do not have an Author field). This may warrant a modification in the database design to have `PageId, Domain, Field, Value` kind of table structure, where we can extract whatever fields need to be extracted and store them.
+2. The table that stored the identifiers for extracting information (which could be XPATH or the params like discussed above) needs to change as well to `Domain, Field, Identifiers` where identifers were `tag, params` in the section above. The `Field` values in the case of books are Author, Price, etc. However, for other products they'd be different.
+
 ### Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+1. The current program processes page by page, but still keeps the extracted fields in memory. That'd be unacceptable if there are too many books. So, the first change would be to write every field extracted to the output as and when available.
+2. The extraction process can be parallelized and distributed, where a cluster of computers can read from a queue and process the pages one by one. The size of the cluster can be chosen depending on the number of pages to be processed vs. the throughput of each machine.
+3. The extraction process from a single page is polynomial (since reading/parsing HTML, search etc. are all polynomial). 
