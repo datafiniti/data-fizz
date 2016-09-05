@@ -1,0 +1,19 @@
+{
+  "name": "datafizz",
+  "version": "1.0.0",
+  "description": "Authentication challenge for Datafiniti",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frankievx/DataFizz.git"
+  },
+  "author": "Frankie Vithayathil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frankievx/DataFizz/issues"
+  },
+  "homepage": "https://github.com/frankievx/DataFizz#readme"
+}
