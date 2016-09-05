@@ -23,6 +23,7 @@
     "jsonwebtoken": "^7.1.9",
     "mongoose": "^4.6.0",
     "react": "^15.3.1",
+    "react-dom": "^15.3.1",
     "react-router": "^2.7.0"
   },
   "devDependencies": {
