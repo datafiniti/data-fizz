@@ -4,6 +4,7 @@ import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
 import App from 'app.js';
 import Login from './login';
 
+// Router
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/" component={App}>
