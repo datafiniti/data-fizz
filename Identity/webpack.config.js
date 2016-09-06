@@ -17,7 +17,11 @@ module.exports = {
     loaders: [
       { test: /.js?$/, loader: 'babel-loader', exclude: /node_modules/, query: { presets: ['es2015', 'react'] }},
       { test: /\.json$/, loader: 'json-loader' },
-      { test: /\.css$/, loaders: ['style-loader','css-loader?sourceMap']}
+      { test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=2' },
+      {
+  test: /\.(jpeg|png)$/,
+  loader: 'url-loader'
+}
     ]
   },
   resolve: {

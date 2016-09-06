@@ -1,0 +1,32 @@
+.login {
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+	background-image: url('https://static.pexels.com/photos/14676/pexels-photo-14676.png');
+	background-size: cover;
+	background-position: center;
+}
+
+.loginContainer {
+	height: 60%;
+	width: 30%;
+	position: absolute;
+  top: 40%;
+  left: 35%;
+}
+
+.tabs {
+	background-color: white;
+	opacity: 50%;
+}
+
+.form {
+	position: relative;
+	margin: 0 auto;
+}
+
+.textField {
+	position: relative;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}

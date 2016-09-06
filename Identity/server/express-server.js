@@ -22,6 +22,9 @@ app.use(webpackDevMiddleware(compiler, {
 	publicPath: '/dist'
 }));
 app.use(webpackHotMiddleware(compiler));
+app.use(express.static(path.join(__dirname, '..', 'dist')));
+
+
 
 //Index Route
 app.get('/', function(req, res) {

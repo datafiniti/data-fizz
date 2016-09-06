@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
 import App from 'app.js';
-import Login from './login';
+import Login from './Login/login';
 
 // Router
 ReactDOM.render((
@@ -11,4 +11,4 @@ ReactDOM.render((
       <IndexRoute component={Login} />
     </Route>
   </Router>
-), document.body);
+),  document.getElementById('root'));

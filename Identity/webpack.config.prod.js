@@ -13,7 +13,8 @@ module.exports = {
     loaders: [
       { test: /.js?$/, loader: 'babel-loader', exclude: /node_modules/, query: { presets: ['es2015', 'react'] }},
       { test: /\.json$/, loader: 'json-loader' },
-      { test: /\.css$/, loaders: ['style-loader','css-loader?sourceMap']}
+      { test: /\.css$/, loaders: ['style-loader','css-loader?sourceMap']},
+      { test: /\.(jpg|png)$/, loader: 'url?limit=25000' }
     ]
   },
   resolve: {
