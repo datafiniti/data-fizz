@@ -12,8 +12,9 @@ var serverConfig = require('./server-config.js');
 var webpackConfig = require('../webpack.config.js');
 var compiler = webpack(webpackConfig);
 
-// Signup function
+//Routes and Models
 var signup = require('./models/signupModel.js');
+var authRoutes = require('./routes/authRoutes.js');
 
 // Start DB connection
 mongoose.connect(serverConfig.database);
@@ -34,8 +35,8 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '../index.html'));
 });
 
-
 app.post('/signup', signup.create);
+app.use('/auth', authRoutes);
 
 //Set Express to start listening to requests
 app.listen(3000, () => console.log('listening on 3000'));

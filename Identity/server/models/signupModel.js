@@ -4,47 +4,59 @@ var Promise = require('bluebird');
 var User = require('../schemas/User.js');
 
 
+
 function hashPassword(user) {
+  var saltRounds = 4;
 	return new Promise(function(resolve, reject){
-    bcrypt.hash(user.password, saltRounds, function(err, hash) {
+    return bcrypt.hash(user.password, saltRounds, function(err, hash) {
       if (err) reject(err)
       else resolve(hash)
     });
   });
 }
 
-function checkEmail(email) {
-	User.findOne({ email: email }, function(err, user) {
-		if (err) throw err;
-		if(user) {
-			return true;
-		}
-	})
+function checkEmail(email) { 
+  return new Promise(function(resolve, reject){
+    return User.find({ email: email }, function(err, user) {
+      if (err) reject (err);
+      if (user.length > 0 ) resolve(true);
+      else resolve(false);
+    });
+  });
 }
 
 function create(req, res) {
+  var emailFound;
   var user = new User({ 
     email: req.body.email, 
     password: req.body.password
   });
-
-  if(checkEmail(req.body.email)) {
-  	return res.json({ success: false, message: "This email is already associated with a user."})
-  }
-
-  hashPassword(req.body)
-  	.then(function(hash) {
-      user.password = hash;
-    })
-    .catch(function(err) {
-    	throw err;
-    });
-
-
-  user.save(function(err) {
-    if (err) throw err;
-    res.json({ success: true });
-  });
+  // Check for identical emails to prevent duplicates.
+  checkEmail(req.body.email)
+  //Set emailFound
+  .then(function(bool) {
+    emailFound = bool;
+  })
+  // If found then send appropriate response.
+  // Otherwise hash the password and save to the database.
+  .then(function(){
+    if(emailFound) res.json({ success: false, message: "This email is associated with another user"});
+    else {
+      hashPassword(req.body)
+    	.then(function(hash) {
+        user.password = hash;
+      })
+      .then(function(err) {
+        user.save(function(err) {
+          if (err) throw err;
+          res.json({ success: true });
+        });
+      })
+      .catch(function(err) {
+        throw err;
+      })
+    }
+  })
 };
 
 module.exports = {
