@@ -1,15 +1,18 @@
 var express = require('express');
 var jwt = require('jsonwebtoken');
-var User = require('../models/User.js');
+var User = require('../schemas/User.js');
 var serverConfig = require('../server-config.js')
 
 
 var app = express();
 var authRoutes = express.Router();
 
-app.set('secret', serverConfig.secret);
 
-var authenticate = function(req, res) {
+
+authRoutes.post('/authenticate', authenticate);
+
+
+function authenticate(req, res) {
   User.findOne({
     email: req.body.email
   }, function(err, user) {
@@ -29,5 +32,3 @@ var authenticate = function(req, res) {
     }
   });
 }
-
-authRoutes.post('/authenticate', authenticate);
