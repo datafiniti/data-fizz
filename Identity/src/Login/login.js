@@ -45,21 +45,18 @@ export default class Login extends Component {
 	      					className={styles.textField}
 	      					defaultValue='example@gmail.com'
 	      					floatingLabelText="Email"
-	      					errorText="This field is required"
 	  						/>
 						    <TextField
 						    	className={styles.textField}
 						    	defaultValue='Password'
 						      floatingLabelText="Password"
 						      type="password"
-						      errorText="This field is required"
 						    />
 						    <TextField
 						    	className={styles.textField}
 						    	defaultValue='Password'
 						      floatingLabelText="Re-Enter Password"
 						      type="password"
-						      errorText="This field is required"
 						    />
 						    <RaisedButton label='Sign Up' primary={true}/>
 					    </div>
