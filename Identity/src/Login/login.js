@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SignIn from './signin';
 import styles from './login.css';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import {Tabs, Tab} from 'material-ui/Tabs';
@@ -11,10 +12,6 @@ injectTapEventPlugin();
 export default class Login extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			email: '',
-			password: ''
-		}
 	};
 
   render() {
@@ -23,22 +20,8 @@ export default class Login extends Component {
     		<div id='loginContainer' className={styles.loginContainer}>
       		<Tabs className={styles.tabs}>
       			<Tab label='Sign In'>
-      				<div className={styles.form}>
-	      				<TextField
-	      					className={styles.textField}
-	      					value={this.state.email}
-	      					floatingLabelText="Email"
-	      					type='email'
-	    						/>
-						    <TextField
-						    	className={styles.textField}
-						    	value={this.state.password}
-						      floatingLabelText="Password"
-						      type="password"
-						    />
-						    <RaisedButton label='Sign In' primary={true}/>
-					    </div>
-      			</Tab>
+   						<SignIn />
+ 						</Tab>
       			<Tab label='Sign Up'>
       				<div className={styles.form}>
 	      				<TextField

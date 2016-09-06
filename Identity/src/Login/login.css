@@ -13,20 +13,6 @@
 	position: absolute;
   top: 40%;
   left: 35%;
-}
-
-.tabs {
-	background-color: white;
-	opacity: 50%;
-}
-
-.form {
-	position: relative;
-	margin: 0 auto;
-}
-
-.textField {
-	position: relative;
-	margin: 0 auto;
-	margin-bottom: 20px;
+  opacity: 0.8;
+  border-radius: 10px;
 }

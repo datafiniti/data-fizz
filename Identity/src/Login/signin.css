@@ -1,0 +1,13 @@
+
+.form {
+	position: relative;
+	margin: 0 auto;
+	background-color: white;
+}
+
+.textField {
+	position: relative;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	opacity: 1;
+}
