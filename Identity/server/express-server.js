@@ -12,6 +12,9 @@ var serverConfig = require('./server-config.js');
 var webpackConfig = require('../webpack.config.js');
 var compiler = webpack(webpackConfig);
 
+// Signup function
+var signup = require('./models/signupModel.js');
+
 // Start DB connection
 mongoose.connect(serverConfig.database);
 
@@ -30,6 +33,9 @@ app.use(express.static(path.join(__dirname, '..', 'dist')));
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '../index.html'));
 });
+
+
+app.post('/signup', signup.create);
 
 //Set Express to start listening to requests
 app.listen(3000, () => console.log('listening on 3000'));

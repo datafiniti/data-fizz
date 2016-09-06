@@ -1,16 +1,8 @@
-var express = require('express');
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcrypt');
 var Promise = require('bluebird');
 var User = require('../schemas/User.js');
-var serverConfig = require('../server-config.js')
 
-
-var app = express();
-var signupRoutes = express.Router();
-var saltRounds = 10;
-
-app.set('secret', serverConfig.secret);
 
 function hashPassword(user) {
 	return new Promise(function(resolve, reject){
@@ -30,7 +22,7 @@ function checkEmail(email) {
 	})
 }
 
-function signup(req, res) {
+function create(req, res) {
   var user = new User({ 
     email: req.body.email, 
     password: req.body.password
@@ -53,4 +45,8 @@ function signup(req, res) {
     if (err) throw err;
     res.json({ success: true });
   });
-});
+};
+
+module.exports = {
+  create: create
+}
