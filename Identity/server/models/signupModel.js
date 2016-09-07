@@ -49,7 +49,7 @@ function create(req, res) {
       .then(function(err) {
         user.save(function(err) {
           if (err) throw err;
-          res.json({ success: true });
+          res.json({ success: true, message: "You have successfuly signed up! Now you can go ahead and sign in." });
         });
       })
       .catch(function(err) {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import SignIn from './signin';
 import styles from './login.css';
+import SignIn from './signin';
+import SignUp from './signup';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import TextField from 'material-ui/TextField';
@@ -23,26 +24,7 @@ export default class Login extends Component {
    						<SignIn />
  						</Tab>
       			<Tab label='Sign Up'>
-      				<div className={styles.form}>
-	      				<TextField
-	      					className={styles.textField}
-	      					defaultValue='example@gmail.com'
-	      					floatingLabelText="Email"
-	  						/>
-						    <TextField
-						    	className={styles.textField}
-						    	defaultValue='Password'
-						      floatingLabelText="Password"
-						      type="password"
-						    />
-						    <TextField
-						    	className={styles.textField}
-						    	defaultValue='Password'
-						      floatingLabelText="Re-Enter Password"
-						      type="password"
-						    />
-						    <RaisedButton label='Sign Up' primary={true}/>
-					    </div>
+      				<SignUp />
       			</Tab>
     			</Tabs>
     		</div>
