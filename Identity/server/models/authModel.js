@@ -32,7 +32,7 @@ function login(req, res) {
         } 
         else {
           var token = jwt.sign(user, serverConfig.secret, { expiresIn: '1 day' });
-          res.json({ success: true, token: token });
+          res.json({ success: true, token: token, message: "You are now logged in."});
         }   
       });
     }

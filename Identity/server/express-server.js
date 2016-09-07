@@ -14,6 +14,7 @@ var compiler = webpack(webpackConfig);
 
 //Routes and Models
 var signup = require('./models/signupModel.js');
+var authenticate = require('./models/authModel.js');
 var authRoutes = require('./routes/authRoutes.js');
 
 // Start DB connection
@@ -34,7 +35,7 @@ app.use(express.static(path.join(__dirname, '..', 'dist')));
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '../index.html'));
 });
-
+app.post('/signin', authenticate.login);
 app.post('/signup', signup.create);
 app.use('/auth', authRoutes);
 

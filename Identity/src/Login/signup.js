@@ -22,6 +22,11 @@ export default class SignUp extends Component {
 		}
 	}
 
+	validateEmail(email) {
+    const regex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+    return regex.test(email);
+	}
+
 	emailChange(e) {
 		const { email, emailValid, emailError } = this.state;
 		
@@ -83,11 +88,6 @@ export default class SignUp extends Component {
 		}
 	}
 
-	validateEmail(email) {
-    const regex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
-    return regex.test(email);
-	}
-
 	signup() {
 		console.log('signing up');
 		const { email, password, emailValid, passwordValid } = this.state;
@@ -104,6 +104,12 @@ export default class SignUp extends Component {
 					message: res.data.message,
 					open: true
 				});
+			});
+		}
+		else {
+			this.setState({
+				message: "Please enter a valid email address and password before attempting to sign up.",
+				open: true
 			});
 		}
 	}
