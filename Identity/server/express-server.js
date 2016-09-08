@@ -34,11 +34,11 @@ if(process.env.NODE_ENV != "production") {
 }
 
 //Static Route
-app.use(express.static(path.join(__dirname, '../dist')));
+app.use('/dist', express.static('dist'));
 
 //Index Route
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '../index.html'));
+  res.sendFile(path.join(__dirname, '../index.html'))
 });
 app.post('/signin', authenticate.login);
 app.post('/signup', signup.create);
@@ -52,4 +52,4 @@ app.get('*', function(req, res) {
 })
 
 //Set Express to start listening to requests
-app.listen(3000, () => console.log('listening on 3000'));
+app.listen(8080, () => console.log('listening on 8080'));

@@ -36,10 +36,6 @@ function removeInvalidSessions(email) {
 }
 
 function createAPISession(user, res) {
-  //Create jwt token
-  var token = jwt.sign(user, serverConfig.apiSecret, { expiresIn: '1 day' }).catch(function(err) {
-    res.json({ success: false, message: "There has been an error in the process of creating a session token."})
-  });
   //Initialize nodemailer object and mailOptions
   var smtpConfig = {
     host: 'smtp.gmail.com',
@@ -58,22 +54,40 @@ function createAPISession(user, res) {
   };
   var transport = nodemailer.createTransport(smtpConfig);
 
-  //Add new session.
-  user.sessions.push(token);
+  //Create jwt token
+  jwt.sign(user, serverConfig.apiSecret, { expiresIn: '1 day' }, function(err, token) {
+    if(err) {
+      console.log(err);
+      res.json({ success: false, message: "There has been an error in the process of creating a session token."})
+    }
+    else {
+      user.sessions.push(token);
 
-  // If there is more than one session then send an email
-  if(user.sessions.length > 1) {
-    transport.sendMail(mailOptions, function(err, info) {
-      if (err) console.log(error);
-      console.log('Message sent: ' + info.response);
-    })
-  }
+      // If there is more than one session then send an email
+      if(user.sessions.length > 1) {
+        transport.sendMail(mailOptions, function(err, info) {
+          if (err) console.log(error);
+          console.log('Message sent: ' + info.response);
+        })
+      }
+      //Add new session.
+      user.sessions.push(token);
 
-  //Save user and send success response to the client
-  user.save(function(err) {
-    if (err) console.log(err);
-    res.json({ success: true, email: user.email, token: token, message: "You are now logged in." });
-  });
+      // If there is more than one session then send an email
+      if(user.sessions.length > 1) {
+        transport.sendMail(mailOptions, function(err, info) {
+          if (err) console.log(error);
+          console.log('Message sent: ' + info.response);
+        })
+      }
+
+      //Save user and send success response to the client
+      user.save(function(err) {
+        if (err) console.log(err);
+        res.json({ success: true, email: user.email, token: token, message: "You are now logged in." });
+      });
+    }
+  })
 }
 
 function removeSessions(email, token) {

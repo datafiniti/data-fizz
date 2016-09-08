@@ -1,8 +1,10 @@
 var path = require('path');
 var webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
  
 module.exports = {
+  devtool: 'cheap-module-source-map',
   entry: './src/routes.js',
   output: { 
     path: './dist',
@@ -13,8 +15,8 @@ module.exports = {
     loaders: [
       { test: /.js?$/, loader: 'babel-loader', exclude: /node_modules/, query: { presets: ['es2015', 'stage-0', 'react'] }},
       { test: /\.json$/, loader: 'json-loader' },
-      { test: /\.css$/, loaders: ['style-loader','css-loader?sourceMap']},
-      { test: /\.(jpg|png)$/, loader: 'url?limit=25000' }
+      { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader','css?modules&importLoaders=2&sourceMap!autoprefixer') },
+      { test: /\.(jpg|png)$/, loader: 'url?limit=2500000' }
     ]
   },
   resolve: {
@@ -25,6 +27,12 @@ module.exports = {
     extensions: ['', '.json', '.js', '.jsx']
   },
   plugins: [
+    new ExtractTextPlugin('style.css'),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
     new webpack.NoErrorsPlugin(),
 
     // optimizations
