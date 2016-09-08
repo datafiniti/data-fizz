@@ -6,6 +6,7 @@ import TextField from 'material-ui/TextField';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
+import Snackbar from 'material-ui/Snackbar';
 import {
   Step,
   Stepper,
@@ -17,6 +18,7 @@ export default class ChangePasswordForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			message: '',
 			finished: false,
     	stepIndex: 0,
     	email: '',
@@ -34,23 +36,26 @@ export default class ChangePasswordForm extends Component {
 	}
 
 	static propTypes = {
-		open: PropTypes.bool.isRequired
+		open: PropTypes.bool.isRequired,
+		handleClose: PropTypes.func.isRequired,
+		handleNotification: PropTypes.func.isRequired
 	};
 
-	handleOpen() {
-		this.setState({ passwordForm: true});
-	}
-	handleClose() {
-		this.setState({ passwordForm: false});
-	}
+	componentWillUpdate(nextProps, nextState) {
+    if(nextState.finished) {
+    	this.handleSubmit();
+    	nextProps.handleClose();
+    	this.setState({ finished: false });
+    }
+  }
 
 	handleNext() {
     const { stepIndex } = this.state;
-    this.setState({
-      stepIndex: stepIndex + 1,
-      finished: stepIndex >= 3,
-      nextDisabled: true
-    });
+	    this.setState({
+	      stepIndex: stepIndex + 1,
+	      finished: stepIndex >= 3,
+	      nextDisabled: true
+	    });
   }
 
   handlePrev() {
@@ -62,7 +67,10 @@ export default class ChangePasswordForm extends Component {
   };
 
   handleSubmit() {
+  	const { handleNotification } = this.props;
   	const { email, password, newPassword, confirmPassword } = this.state;
+  	const that = this;
+
   	axios.post('/auth/changepassword', {
   		email: email,
   		password: password,
@@ -71,6 +79,7 @@ export default class ChangePasswordForm extends Component {
   	})
   	.then(function(res){
   		console.log('submit response', res);
+  		handleNotification(res.data.message);
   	})
   }
 
@@ -160,7 +169,7 @@ export default class ChangePasswordForm extends Component {
 		const { newPassword } = this.state;
 
 		e.preventDefault();
-		if(newPassword !== e.target.value) {
+		if(newPassword != e.target.value) {
 			this.setState({
 				confirmPassword: e.target.value,
 				passwordError: 'Passwords do not match.',
@@ -187,7 +196,7 @@ export default class ChangePasswordForm extends Component {
         		className={styles.textField}
 						onChange={this.emailChange.bind(this)}
 						value={email}
-						floatingLabelText="Email"
+						floatingLabelText='Email'
 						errorText={emailError}
 					/>
       	)
@@ -197,7 +206,8 @@ export default class ChangePasswordForm extends Component {
 						className={styles.textField}
 			    	onChange={this.passwordChange.bind(this)}
 			    	value={password}
-			      floatingLabelText="Password"
+			    	type='password'
+			      floatingLabelText='Password'
 			      errorText={passwordError}
 			    />
 		    )
@@ -207,7 +217,8 @@ export default class ChangePasswordForm extends Component {
         		className={styles.textField}
 						onChange={this.newPasswordChange.bind(this)}
 						value={newPassword}
-						floatingLabelText="New Password"
+						type='password'
+						floatingLabelText='New Password'
 						errorText={passwordError}
 					/>
       	)
@@ -217,7 +228,8 @@ export default class ChangePasswordForm extends Component {
         		className={styles.textField}
 						onChange={this.confirmPasswordChange.bind(this)}
 						value={confirmPassword}
-						floatingLabelText="Confirm New Password"
+						type='password'
+						floatingLabelText='Confirm New Password'
 						errorText={passwordError}
 					/>
       	)
@@ -226,13 +238,14 @@ export default class ChangePasswordForm extends Component {
     }
   }
 
+
   render() {
-  	const { open } = this.props;
-  	const { stepIndex, nextDisabled } = this.state;
+  	const { open, handleClose} = this.props;
+  	const { stepIndex, nextDisabled, finished, notify, message } = this.state;
   	const contentStyle = { width: '80%', maxWidth: 'none' };
   	const actions = [
       <FlatButton
-        label="Back"
+        label='Back'
         disabled={stepIndex === 0}
         primary={true}
         onTouchTap={this.handlePrev.bind(this)}
@@ -248,11 +261,11 @@ export default class ChangePasswordForm extends Component {
 
     return (
     	<Dialog
-    		title="Change Password Form"
+    		title='Change Password Form'
     		contentStyle={contentStyle}
     		actions={actions}
     		open={open}
-    		onRequestClose={this.handleClose.bind(this)}>
+    		onRequestClose={handleClose}>
     		<Stepper activeStep={stepIndex}>
           <Step>
             <StepLabel>Enter Current Email</StepLabel>
@@ -267,7 +280,7 @@ export default class ChangePasswordForm extends Component {
             <StepLabel>Confirm New Password</StepLabel>
           </Step>
         </Stepper>
-        <div className={styles.formField}> { this.getStepContent(stepIndex) } </div>
+      	<div className={styles.formField}> { this.getStepContent(stepIndex) } </div>
   		</Dialog>
     );
   }

@@ -8,7 +8,7 @@ var serverConfig = require('../server-config.js')
 function comparePassword(attemptedPassword, hashedPassword) {
   return new Promise(function(resolve, reject){
     bcrypt.compare(attemptedPassword, hashedPassword, function(err, res) {
-      if(err) reject(err)
+      if(err) throw err
       else resolve(res)
     });
   });
@@ -39,7 +39,7 @@ function removeInvalidSessions(email) {
     //Save the new user object
     user.save(function(err) {
       if (err) throw err;
-    });
+    })
   })
 }
 
@@ -77,7 +77,7 @@ function createSession(user, res) {
 
   //Save user and send success response to the client
   user.save(function(err) {
-    if (err) throw err;
+    if (err) console.log(err);
     res.json({ success: true, email: user.email, token: token, message: "You are now logged in." });
   });
 }
@@ -90,7 +90,7 @@ function removeSessions(email, token) {
     })
     user.invalidSessions.push(token);
     user.save(function(err) {
-      if (err) throw err;
+      if (err) console.log(err);
     });
   })
 }
@@ -110,7 +110,10 @@ function login(req, res) {
         else {
           createSession(user, res);
         }   
-      });
+      })
+      .catch(function(err) {
+        console.log(err);
+      })
     }
   });
 }

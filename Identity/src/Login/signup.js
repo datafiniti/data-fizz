@@ -27,6 +27,11 @@ export default class SignUp extends Component {
     return regex.test(email);
 	}
 
+	validatePassword(password) {
+		if (password.length > 7 ) return true;
+		else return false;
+	}
+
 	emailChange(e) {
 		const { email, emailValid, emailError } = this.state;
 		
@@ -48,10 +53,8 @@ export default class SignUp extends Component {
 	}
 
 	passwordChange(e) {
-		const { confirmedPassword } = this.state;
-
 		e.preventDefault();
-		if( confirmedPassword !== e.target.value) {
+		if(!this.validatePassword(e.target.value) ) {
 			this.setState({
 				password: e.target.value,
 				passwordError: 'Passwords do not match',
@@ -72,10 +75,10 @@ export default class SignUp extends Component {
 		const { password } = this.state;
 
 		e.preventDefault();
-		if(password !== e.target.value) {
+		if(password != e.target.value) {
 			this.setState({
 				confirmedPassword: e.target.value,
-				passwordError: 'Passwords do not match',
+				passwordError: 'Passwords do not match.',
 				passwordValid: false
 			});
 		}

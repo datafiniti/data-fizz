@@ -9,7 +9,7 @@ function hashPassword(user) {
   var saltRounds = 4;
 	return new Promise(function(resolve, reject){
     return bcrypt.hash(user.password, saltRounds, function(err, hash) {
-      if (err) reject(err)
+      if (err) throw (err)
       else resolve(hash)
     });
   });
@@ -18,7 +18,7 @@ function hashPassword(user) {
 function checkEmail(email) { 
   return new Promise(function(resolve, reject){
     return User.find({ email: email }, function(err, user) {
-      if (err) reject (err);
+      if (err) throw (err);
       if (user.length > 0 ) resolve(true);
       else resolve(false);
     });
@@ -37,6 +37,9 @@ function create(req, res) {
   .then(function(bool) {
     emailFound = bool;
   })
+  .catch(function(err) {
+    console.log(err);
+  })
   // If found then send appropriate response.
   // Otherwise hash the password and save to the database.
   .then(function(){
@@ -53,7 +56,8 @@ function create(req, res) {
         });
       })
       .catch(function(err) {
-        throw err;
+        console.log(err);
+        res.json({ success: false, message: "An error has occurred in the process of signing up." });
       })
     }
   })
