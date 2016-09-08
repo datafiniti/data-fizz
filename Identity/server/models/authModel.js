@@ -66,7 +66,7 @@ function createSession(user, res) {
     from:'"Frankie Vithayathil" <frankievx@gmail.com>',
     to: user.email,
     subject: 'DataFizz Sign In Notification',
-    text: 'We would like to inform you that you have just been signed into more than one location. If you have not signed into this app from more than location then you may have unauthorized use of your account and we recommend that you change you password.'
+    text: 'We would like to inform you that you have just been signed into more than one location. If you have not signed into this app from more than one location then you may have unauthorized use of your account and we recommend that you change you password.'
   };
   var transport = nodemailer.createTransport(smtpConfig);
 
@@ -92,7 +92,8 @@ function createSession(user, res) {
 function removeSessions(email, token) {
   console.log('removing sessions', token)
   User.findOne({ email: email }, function(err, user) {
-    user.sessions.filter(function(session, index) {
+    user.sessions = user.sessions.filter(function(session, index) {
+      console.log(session)
       return session !== token;
     })
     user.invalidSessions.push(token);
