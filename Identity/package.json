@@ -4,7 +4,7 @@
   "description": "Authentication challenge for Datafiniti",
   "main": "./server/express-server.js",
   "scripts": {
-    "start": "node ./server/express-server.js",
+    "start": "NODE_ENV=development node ./server/express-server.js",
     "build": "webpack --verbose --colors --display-error-details --config webpack.config.prod.js",
     "prod": "NODE_ENV=production forever start . ",
     "prod-node": "NODE_ENV=production node . ",
@@ -23,6 +23,7 @@
   "dependencies": {
     "axios": "^0.14.0",
     "bcrypt": "^0.8.7",
+    "bcryptjs": "^2.3.0",
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
@@ -32,7 +33,6 @@
     "mongoose": "^4.6.0",
     "nodemailer": "^2.6.0",
     "react": "^15.3.1",
-    "react-bootstrap": "^0.30.3",
     "react-dom": "^15.3.1",
     "react-hot-loader": "^3.0.0-beta.3",
     "react-router": "^2.7.0",
