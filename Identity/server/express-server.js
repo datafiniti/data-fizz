@@ -38,6 +38,9 @@ app.get('/', function(req, res) {
 app.post('/signin', authenticate.login);
 app.post('/signup', signup.create);
 app.use('/auth', authRoutes);
+app.get('*', function(req, res) {
+	res.redirect('/');
+})
 
 //Set Express to start listening to requests
 app.listen(3000, () => console.log('listening on 3000'));

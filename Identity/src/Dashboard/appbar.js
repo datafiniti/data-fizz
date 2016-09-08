@@ -20,9 +20,9 @@ export default class Dashboard extends Component {
 		.then(function(res) {
 			window.sessionStorage.removeItem('token');
 			window.sessionStorage.removeItem('email');
-			axios.defaults.headers.common['x-access-email'] = '';
-			axios.defaults.headers.common['x-access-token'] = '';
-			browserHistory.push('/');
+			axios.defaults.headers.common['x-access-email'] = null;
+			axios.defaults.headers.common['x-access-token'] = null;
+			browserHistory.push('/login');
 		})
 	}
 

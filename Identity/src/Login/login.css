@@ -1,7 +1,7 @@
 .login {
 	position: absolute;
-	height: 100vh;
-	width: 100vw;
+	height: 100%;
+	width: 100%;
 	background-image: url('https://static.pexels.com/photos/14676/pexels-photo-14676.png');
 	background-size: cover;
 	background-position: center;

@@ -1,3 +1,9 @@
 .dashboard {
-	
+	position: relative;
+}
+
+.dashboardbody {
+	position: absolute;
+	height: 100%;
+	width: 100%;
 }
