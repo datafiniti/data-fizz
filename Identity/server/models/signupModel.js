@@ -1,19 +1,9 @@
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcrypt');
 var Promise = require('bluebird');
+var Util = require('../util.js');
 var User = require('../schemas/User.js');
 
-
-
-function hashPassword(user) {
-  var saltRounds = 4;
-	return new Promise(function(resolve, reject){
-    return bcrypt.hash(user.password, saltRounds, function(err, hash) {
-      if (err) throw (err)
-      else resolve(hash)
-    });
-  });
-}
 
 function checkEmail(email) { 
   return new Promise(function(resolve, reject){
@@ -45,7 +35,7 @@ function create(req, res) {
   .then(function(){
     if(emailFound) res.json({ success: false, message: "This email is associated with another user"});
     else {
-      hashPassword(req.body)
+      Util.hashPassword(req.body)
     	.then(function(hash) {
         user.password = hash;
       })

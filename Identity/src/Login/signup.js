@@ -17,6 +17,7 @@ export default class SignUp extends Component {
 			passwordValid: false,
 			emailError: '',
 			passwordError: '',
+			confirmedPasswordError: '',
 			open: false,
 			message: 'Please correctly fill in fields.'
 		}
@@ -34,8 +35,8 @@ export default class SignUp extends Component {
 
 	emailChange(e) {
 		const { email, emailValid, emailError } = this.state;
-		
 		e.preventDefault();
+		
 		if(!this.validateEmail(email)) {
 			this.setState({
 				email: e.target.value,
@@ -73,36 +74,34 @@ export default class SignUp extends Component {
 
 	confirmedPasswordChange(e) {
 		const { password } = this.state;
-
 		e.preventDefault();
+
 		if(password != e.target.value) {
 			this.setState({
 				confirmedPassword: e.target.value,
-				passwordError: 'Passwords do not match.',
+				confirmedPasswordError: 'Passwords should be at least 8 characters long.',
 				passwordValid: false
 			});
 		}
 		else {
 			this.setState({
 				confirmedPassword: e.target.value,
-				passwordError: '',
+				confirmedPasswordError: '',
 				passwordValid: true
 			});
 		}
 	}
 
 	signup() {
-		console.log('signing up');
 		const { email, password, emailValid, passwordValid } = this.state;
 		const that = this;
+
 		if(emailValid && passwordValid) {
-			console.log('valid');
 			axios.post('/signup', {
 				email: email,
 				password: password
 			})
 			.then(function(res) {
-				console.log('response', res);
 				that.setState({
 					message: res.data.message,
 					open: true
@@ -146,7 +145,8 @@ export default class SignUp extends Component {
 		      type="password"
 		      errorText={passwordError}
 		    />
-		    <RaisedButton label='Sign Up' primary={true} onClick={this.signup.bind(this)}/>
+		    <br/>
+		    <RaisedButton className={styles.signupbutton}label='Sign Up' primary={true} onClick={this.signup.bind(this)}/>
 		    <Snackbar
 		    	open={open}
 		    	message={message}

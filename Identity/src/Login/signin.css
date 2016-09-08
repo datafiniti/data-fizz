@@ -3,6 +3,7 @@
 	position: relative;
 	margin: 0 auto;
 	background-color: white;
+	text-align: center;
 }
 
 .textField {
@@ -11,3 +12,45 @@
 	margin-bottom: 20px;
 	opacity: 1;
 }
+
+.signinbutton {
+	width: 200px;
+	margin-bottom: 20px;
+}
+
+.forgotbutton {
+	width: 200px;
+	margin-bottom: 20px;
+}
+
+.change_password {
+	background-image: url('https://static.pexels.com/photos/7044/pexels-photo.jpeg');
+	background-size: cover;
+	background-position: center;
+	flex: 1 100%;
+	order: 2;
+}
+.change_password:hover {
+  -webkit-transform:scale(1.25); /* Safari and Chrome */
+  -moz-transform:scale(1.25); /* Firefox */
+  -ms-transform:scale(1.25); /* IE 9 */
+  -o-transform:scale(1.25); /* Opera */
+   transform:scale(1.25);
+}
+
+.header {
+	position: relative;
+	top: 150px;
+	text-align: center;
+}
+
+.formField {
+	margin: 0 auto;
+	width: 50%;
+	text-align: center;
+	padding-bottom: 50px;
+}
+
+.textField {
+	text-align: center;
+};

@@ -15,7 +15,9 @@ var compiler = webpack(webpackConfig);
 //Routes and Models
 var signup = require('./models/signupModel.js');
 var authenticate = require('./models/authModel.js');
-var authRoutes = require('./routes/authRoutes.js');
+var apiRoutes = require('./routes/apiRoutes.js');
+var resetRoutes = require('./routes/resetRoutes.js');
+
 
 // Start DB connection
 mongoose.connect(serverConfig.database);
@@ -23,13 +25,16 @@ mongoose.connect(serverConfig.database);
 //Body Parser and Webpack Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(webpackDevMiddleware(compiler, {
-	publicPath: '/dist'
-}));
-app.use(webpackHotMiddleware(compiler));
-app.use(express.static(path.join(__dirname, '..', 'dist')));
 
+if(process.env.NODE_ENV != "production") {
+	app.use(webpackDevMiddleware(compiler, {
+		publicPath: '/dist'
+	}));
+	app.use(webpackHotMiddleware(compiler));
+}
 
+//Static Route
+app.use(express.static(path.join(__dirname, '../dist')));
 
 //Index Route
 app.get('/', function(req, res) {
@@ -37,7 +42,11 @@ app.get('/', function(req, res) {
 });
 app.post('/signin', authenticate.login);
 app.post('/signup', signup.create);
-app.use('/auth', authRoutes);
+app.use('/reset', resetRoutes);
+app.use('/api', apiRoutes);
+
+
+
 app.get('*', function(req, res) {
 	res.redirect('/');
 })

@@ -1,18 +1,10 @@
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcrypt');
 var nodemailer = require('nodemailer');
+var Util = require('../util.js');
 var User = require('../schemas/User.js');
-var serverConfig = require('../server-config.js')
+var serverConfig = require('../server-config.js');
 
-
-function comparePassword(attemptedPassword, hashedPassword) {
-  return new Promise(function(resolve, reject){
-    bcrypt.compare(attemptedPassword, hashedPassword, function(err, res) {
-      if(err) throw err
-      else resolve(res)
-    });
-  });
-}
 
 function checkInvalidSessions(email, token) {
   var found = false;
@@ -30,7 +22,7 @@ function removeInvalidSessions(email) {
   User.findOne({ email: email }, function(err, user) {
     //Remove any sessions that have now expired from the blacklist
     user.invalidSessions.map(function(session, index) {
-      jwt.verify(session, serverConfig.secret, function(err, decoded) {
+      jwt.verify(session, serverConfig.apiSecret, function(err, decoded) {
         if(err) {
           user.invalidSessions.splice(index, 1);
         }
@@ -43,9 +35,11 @@ function removeInvalidSessions(email) {
   })
 }
 
-function createSession(user, res) {
+function createAPISession(user, res) {
   //Create jwt token
-  var token = jwt.sign(user, serverConfig.secret, { expiresIn: '1 day' });
+  var token = jwt.sign(user, serverConfig.apiSecret, { expiresIn: '1 day' }).catch(function(err) {
+    res.json({ success: false, message: "There has been an error in the process of creating a session token."})
+  });
   //Initialize nodemailer object and mailOptions
   var smtpConfig = {
     host: 'smtp.gmail.com',
@@ -102,13 +96,14 @@ function login(req, res) {
       res.json({ success: false, message: 'No User with that email' });
     } 
     else if (user) {
-      comparePassword(req.body.password, user.password)
+      Util.comparePassword(req.body.password, user.password)
       .then(function(bool){
         if (!bool) {
           res.json({ success: false, message: 'Incorrect Password.' });
         } 
         else {
-          createSession(user, res);
+          console.log('createAPISession');
+          createAPISession(user, res);
         }   
       })
       .catch(function(err) {
@@ -121,9 +116,9 @@ function login(req, res) {
 function verify(req, res, next) {
   var email = req.headers['x-access-email'];
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
-  console.log('email', email, 'token', token);
+  console.log('verify');
   if (email && token) {
-    jwt.verify(token, serverConfig.secret, function(err, decoded) {      
+    jwt.verify(token, serverConfig.apiSecret, function(err, decoded) {      
       if (err || checkInvalidSessions(email, token)) {
         return res.json({ success: false, message: 'Failed to authenticate token.' });    
       } 

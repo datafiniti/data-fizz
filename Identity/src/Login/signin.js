@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import axios from 'axios';
-import styles from './signup.css';
+import styles from './signin.css';
 import TextField from 'material-ui/TextField';
+import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import Snackbar from 'material-ui/Snackbar';
+import Dialog from 'material-ui/Dialog';
+import ResetPasswordForm from './reset-password-form.js';
 
 export default class SignIn extends Component {
 	constructor(props) {
@@ -14,9 +17,26 @@ export default class SignIn extends Component {
 			password: '',
 			emailValid: false,
 			emailError: '',
+			notify: false,
 			open: false,
 			message: ''
 		}
+	}
+
+	handleOpen() {
+		this.setState({ open: true});
+	}
+	handleClose() {
+		this.setState({ open: false});
+	}
+
+	handleNotification(message) {
+		this.setState({ notify: true, message: message });
+	}
+	closeNotification() {
+		this.setState({
+			notify: false
+		});
 	}
 
 	validateEmail(email) {
@@ -50,41 +70,38 @@ export default class SignIn extends Component {
 		});
 	}
 
-	closeNotification() {
-		this.setState({
-			open: false
-		});
-	}
 
 	signin() {
-		console.log('signing in');
 		const { email, password, emailValid } = this.state;
 		const that = this;
 		if(emailValid) {
-			console.log('valid');
 			axios.post('/signin', {
 				email: email,
 				password: password
 			})
 			.then(function(res) {
-				console.log('request response', res);
-				window.sessionStorage.setItem('email', email);
-				window.sessionStorage.setItem('token', res.data.token);
-				axios.defaults.headers.common['x-access-email'] = email;
-				axios.defaults.headers.common['x-access-token'] = res.data.token;
-				browserHistory.push('/dashboard');
+				if(res.data.success) {
+					window.sessionStorage.setItem('email', res.data.email);
+					window.sessionStorage.setItem('token', res.data.token);
+					axios.defaults.headers.common['x-access-email'] = res.data.email;
+					axios.defaults.headers.common['x-access-token'] = res.data.token;
+					browserHistory.push('/dashboard');
+				}
+				that.setState({ notify: true, message: res.data.message })
+
 			});
 		}
 		else {
 			this.setState({
 				message: "Please enter a valid email address before attempting to sign in.",
-				open: true
+				notify: true
 			});
 		}
 	}
 
 	render() {
-		const { emailError, open, message } = this.state; 
+		const { emailError, open, message, notify } = this.state; 
+
 		return (
 			<div className={styles.form}>
 				<TextField
@@ -99,9 +116,26 @@ export default class SignIn extends Component {
 		      floatingLabelText="Password"
 		      type="password"
 		    />
-		    <RaisedButton label='Sign In' primary={true} onClick={this.signin.bind(this)}/>
+		    <br/>
+		    <RaisedButton 
+		    	className={styles.signinbutton} 
+		    	label='Sign In' primary={true} 
+		    	onClick={this.signin.bind(this)}
+	    	/>
+		    <br/>
+		    <RaisedButton 
+		    	className={styles.forgotbutton} 
+		    	label='Forgot Password?' 
+		    	secondary={true} 
+		    	onClick={this.handleOpen.bind(this)}
+	    	/>
+		   	<ResetPasswordForm 
+    			open={open}
+    			handleClose={this.handleClose.bind(this)}
+    			handleNotification={this.handleNotification.bind(this)}
+  			/>
 		    <Snackbar
-		    	open={open}
+		    	open={notify}
 		    	message={message}
 		    	autoHideDuration={4000}
 		    	onRequestClose={this.closeNotification.bind(this)}

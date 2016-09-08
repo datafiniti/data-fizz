@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import axios from 'axios';
-import styles from './dashboard.css';
+import styles from './signin.css';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import Dialog from 'material-ui/Dialog';
@@ -14,7 +14,7 @@ import {
 } from 'material-ui/Stepper';
 
 
-export default class ChangeEmailForm extends Component {
+export default class ResetPasswordForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -24,13 +24,11 @@ export default class ChangeEmailForm extends Component {
     	email: '',
 			emailError: '',
 			emailValid: false,
-			password: '',
-			passwordError: '',
-			passwordValid: false,
-			newEmail: '',
-			newEmailValid: false,
-			confirmEmail: '',
-			confirmEmailValid: false,
+			token: '',
+			newPassword: '',
+			newPasswordValid: false,
+			confirmPassword: '',
+			confirmPasswordValid: false,
 			nextDisabled: true
 		}
 	}
@@ -66,24 +64,33 @@ export default class ChangeEmailForm extends Component {
     this.enableNext();
   };
 
-  handleSubmit() {
-  	const { handleNotification } = this.props;
-  	const { email, password, newEmail, confirmEmail } = this.state;
+  handleSend() {
+  	const { email } = this.state;
 
-  	axios.post('/api/changeEmail', {
-  		email: email,
-  		password: password,
-  		newEmail: newEmail,
-  		confirmEmail: confirmEmail
-  	})
-  	.then(function(res){
-  		if(res.data.success) {
-  			window.sessionStorage.setItem('email', res.data.email);
-  			axios.defaults.headers.common['x-access-email'] = res.data.email;
-  		}
+  	axios.post('/reset/forgot', {
+  		email: email 
+  	}).then(function(res) {
+  		console.log('submit response', res);
   		handleNotification(res.data.message);
   	})
   }
+
+  handleSubmit() {
+  	const { handleNotification } = this.props;
+  	const { email, token, newPassword, confirmPassword } = this.state;
+
+  	axios.post('/reset/password', {
+  		email: email,
+  		token: token,
+  		newPassword: newPassword,
+  		confirmPassword: confirmPassword
+  	})
+  	.then(function(res){
+  		console.log('submit response', res);
+  		handleNotification(res.data.message);
+  	})
+  }
+
 
   validateEmail(email) {
     const regex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
@@ -127,70 +134,58 @@ export default class ChangeEmailForm extends Component {
 		}
 	}
 
-	passwordChange(e) {
+	tokenChange(e) {
+		e.preventDefault();
+		this.setState({
+			token: e.target.value,
+		});
+		this.enableNext();
+	}
+
+	newPasswordChange(e) {
 		e.preventDefault();
 		if(!this.validatePassword(e.target.value)) {
 			this.setState({
-				password: e.target.value,
+				newPassword: e.target.value,
 				passwordError: 'Password must be at least 8 characters long.',
-				passwordValid: false
+				newPasswordValid: false
 			});
 			this.disableNext()
 		}
 		else{
 			this.setState({
-				password: e.target.value,
+				newPassword: e.target.value,
 				passwordError: '',
-				passwordValid: true
+				newPasswordValid: true
 			});
 			this.enableNext();
 		}
 	}
 
-	newEmailChange(e) {
-		e.preventDefault();
-		if(!this.validateEmail(e.target.value)) {
-			this.setState({
-				newEmail: e.target.value,
-				emailError: 'Please enter a valid email.',
-				newEmailValid: false
-			});
-			this.disableNext()
-		}
-		else{
-			this.setState({
-				newEmail: e.target.value,
-				emailError: '',
-				newEmailValid: true
-			});
-			this.enableNext();
-		}
-	}
-
-	confirmEmailChange(e) {
-		const { newEmail } = this.state;
+	confirmPasswordChange(e) {
+		const { newPassword } = this.state;
 
 		e.preventDefault();
-		if(newEmail != e.target.value) {
+		if(newPassword != e.target.value) {
 			this.setState({
-				confirmEmail: e.target.value,
-				emailError: 'Emails do not match.',
-				confirmEmailValid: false
+				confirmPassword: e.target.value,
+				passwordError: 'Passwords do not match.',
+				confirmPasswordValid: false
 			});
 			this.disableNext();
 		}
 		else{
 			this.setState({
-				confirmEmail: e.target.value,
-				emailError: '',
-				confirmEmailValid: true
+				confirmPassword: e.target.value,
+				passwordError: '',
+				confirmPasswordValid: true
 			});
 		}
 		this.enableNext();
 	}
 
 	getStepContent(stepIndex) {
-		const { email, password, newEmail, confirmEmail, emailError, passwordError } = this.state;
+		const { email, token, newPassword, confirmPassword, emailError, passwordError } = this.state;
     switch (stepIndex) {
       case 0:
         return (
@@ -204,33 +199,42 @@ export default class ChangeEmailForm extends Component {
       	)
       case 1:
 	      return (
-					<TextField
-						className={styles.textField}
-			    	onChange={this.passwordChange.bind(this)}
-			    	value={password}
-			    	type='password'
-			      floatingLabelText='Password'
-			      errorText={passwordError}
-			    />
+	      	<div>
+	        	<h5> Click the 'Send Token' button to send a token that expires in 5 minutes.
+	        	 Then copy and paste the token received in your email into the text field below.</h5>
+	        	<RaisedButton
+							label='Send Token'
+							onClick={this.handleSend.bind(this)}
+						/>
+						<br/>
+						<TextField
+							className={styles.textField}
+				    	onChange={this.tokenChange.bind(this)}
+				    	value={token}
+				      floatingLabelText='Enter the token sent to your email.'
+				    />
+			    </div>
 		    )
       case 2:
         return (
         	<TextField
         		className={styles.textField}
-						onChange={this.newEmailChange.bind(this)}
-						value={newEmail}
-						floatingLabelText='New Email'
-						errorText={emailError}
+						onChange={this.newPasswordChange.bind(this)}
+						value={newPassword}
+						type='password'
+						floatingLabelText='New Password'
+						errorText={passwordError}
 					/>
       	)
       case 3:
         return (
         	<TextField
         		className={styles.textField}
-						onChange={this.confirmEmailChange.bind(this)}
-						value={confirmEmail}
-						floatingLabelText='Confirm New Email'
-						errorText={emailError}
+						onChange={this.confirmPasswordChange.bind(this)}
+						value={confirmPassword}
+						type='password'
+						floatingLabelText='Confirm New Password'
+						errorText={passwordError}
 					/>
       	)
     	default:
@@ -261,7 +265,7 @@ export default class ChangeEmailForm extends Component {
 
     return (
     	<Dialog
-    		title='Change Email Form'
+    		title='Forgot Password Form'
     		contentStyle={contentStyle}
     		actions={actions}
     		open={open}
@@ -271,13 +275,13 @@ export default class ChangeEmailForm extends Component {
             <StepLabel>Enter Current Email</StepLabel>
           </Step>
           <Step>
-            <StepLabel>Enter Current Password</StepLabel>
+            <StepLabel>Enter Reset Token</StepLabel>
           </Step>
           <Step>
-            <StepLabel>Enter New Email</StepLabel>
+            <StepLabel>Enter New Password</StepLabel>
           </Step>
           <Step>
-            <StepLabel>Confirm New Email</StepLabel>
+            <StepLabel>Confirm New Password</StepLabel>
           </Step>
         </Stepper>
       	<div className={styles.formField}> { this.getStepContent(stepIndex) } </div>

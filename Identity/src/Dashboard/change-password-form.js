@@ -71,7 +71,7 @@ export default class ChangePasswordForm extends Component {
   	const { email, password, newPassword, confirmPassword } = this.state;
   	const that = this;
 
-  	axios.post('/auth/changepassword', {
+  	axios.post('/api/changePassword', {
   		email: email,
   		password: password,
   		newPassword: newPassword,

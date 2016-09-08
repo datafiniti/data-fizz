@@ -19,7 +19,7 @@ export default class Login extends Component {
     	<div id='login' className={styles.login}>
     		<div id='loginContainer' className={styles.loginContainer}>
           <Paper zDepth={2} rounded={true}>
-        		<Tabs className={styles.tabs}>
+        		<Tabs className={styles.tabs} style={{"border-radius": "10px"}}>
         			<Tab label='Sign In'>
      						<SignIn />
    						</Tab>

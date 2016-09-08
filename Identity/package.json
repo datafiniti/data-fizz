@@ -2,9 +2,11 @@
   "name": "datafizz",
   "version": "1.0.0",
   "description": "Authentication challenge for Datafiniti",
-  "main": "index.js",
+  "main": "./server/express-server.js",
   "scripts": {
     "start": "node ./server/express-server.js",
+    "build": "webpack --verbose --colors --display-error-details --config webpack.config.prod.js",
+    "prod": "NODE_ENV=production forever start . ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

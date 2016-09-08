@@ -10,7 +10,7 @@ import Dashboard from './Dashboard/dashboard';
 function authenticate() {
 	axios.defaults.headers.common['x-access-email'] = window.sessionStorage.getItem('email');
 	axios.defaults.headers.common['x-access-token'] = window.sessionStorage.getItem('token');
-	axios.get('/auth')
+	axios.get('/api')
 	.then(function(res) {
 		if(!res.data.success) {
 			browserHistory.push('/login');

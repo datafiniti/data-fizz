@@ -16,7 +16,7 @@ export default class Dashboard extends Component {
 
 	logout() {
 		console.log('starting logout');
-		axios.post('/auth/signout')
+		axios.post('/api/signout')
 		.then(function(res) {
 			window.sessionStorage.removeItem('token');
 			window.sessionStorage.removeItem('email');
