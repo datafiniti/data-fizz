@@ -1,5 +1,5 @@
 var jwt = require('jsonwebtoken');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 var Promise = require('bluebird');
 
 function comparePassword(attemptedPassword, hashedPassword) {

@@ -1,5 +1,5 @@
 var jwt = require('jsonwebtoken');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 var nodemailer = require('nodemailer');
 var Util = require('../util.js');
 var User = require('../schemas/User.js');
