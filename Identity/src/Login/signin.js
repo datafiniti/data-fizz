@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 import axios from 'axios';
 import styles from './signup.css';
 import TextField from 'material-ui/TextField';
@@ -57,7 +58,7 @@ export default class SignIn extends Component {
 	}
 
 	signin() {
-		console.log('signing up');
+		console.log('signing in');
 		const { email, password, emailValid } = this.state;
 		const that = this;
 		if(emailValid) {
@@ -67,12 +68,12 @@ export default class SignIn extends Component {
 				password: password
 			})
 			.then(function(res) {
-				console.log('response', res);
-				axios.defaults.headers.common['x-access-token'] = res.data.token
-				that.setState({
-					message: res.data.message,
-					open: true
-				});
+				console.log('request response', res);
+				window.sessionStorage.setItem('email', email);
+				window.sessionStorage.setItem('token', res.data.token);
+				axios.defaults.headers.common['x-access-email'] = email;
+				axios.defaults.headers.common['x-access-token'] = res.data.token;
+				browserHistory.push('/dashboard');
 			});
 		}
 		else {
