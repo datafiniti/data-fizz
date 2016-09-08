@@ -25,10 +25,9 @@ export default class SignIn extends Component {
 	}
 
 	emailChange(e) {
-		const { email, emailValid, emailError } = this.state;
 		
 		e.preventDefault();
-		if(!this.validateEmail(email)) {
+		if(!this.validateEmail(e.target.value)) {
 			this.setState({
 				email: e.target.value,
 				emailError: 'Please enter a valid email.',

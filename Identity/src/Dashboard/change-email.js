@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import styles from './dashboard.css';
-import Paper from 'material-ui/Paper'
+import Paper from 'material-ui/Paper';
+import TextField from 'material-ui/TextField';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
+import {
+  Step,
+  Stepper,
+  StepLabel,
+} from 'material-ui/Stepper';
 
 
 //Dashboard Component
@@ -24,7 +30,7 @@ export default class ChangeEmail extends Component {
 
   render() {
   	const { emailForm } = this.state;
-  	
+
     return (
     	<Paper zDepth={2} rounded={true} className={styles.change_email} onClick={this.handleOpen.bind(this)}>
 	    	<div id='change email' >

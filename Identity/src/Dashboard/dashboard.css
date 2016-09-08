@@ -33,3 +33,14 @@
 	top: 150px;
 	text-align: center;
 }
+
+.formField {
+	margin: 0 auto;
+	width: 50%;
+	text-align: center;
+	padding-bottom: 50px;
+}
+
+.textField {
+	text-align: center;
+}

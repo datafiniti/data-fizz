@@ -15,7 +15,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /.js?$/, loader: 'babel-loader', exclude: /node_modules/, query: { presets: ['es2015', 'react'] }},
+      { test: /.js?$/, loader: 'babel-loader', exclude: /node_modules/, query: { presets: [ 'es2015','stage-0','react'] }},
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=2' },
       {
