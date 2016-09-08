@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './login.css';
 import SignIn from './signin';
 import SignUp from './signup';
+import Paper from 'material-ui/Paper';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -17,14 +18,16 @@ export default class Login extends Component {
     return (
     	<div id='login' className={styles.login}>
     		<div id='loginContainer' className={styles.loginContainer}>
-      		<Tabs className={styles.tabs}>
-      			<Tab label='Sign In'>
-   						<SignIn />
- 						</Tab>
-      			<Tab label='Sign Up'>
-      				<SignUp />
-      			</Tab>
-    			</Tabs>
+          <Paper zDepth={2} rounded={true}>
+        		<Tabs className={styles.tabs}>
+        			<Tab label='Sign In'>
+     						<SignIn />
+   						</Tab>
+        			<Tab label='Sign Up'>
+        				<SignUp />
+        			</Tab>
+      			</Tabs>
+          </Paper>
     		</div>
     	</div>
     );

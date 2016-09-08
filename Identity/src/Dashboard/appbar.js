@@ -30,6 +30,7 @@ export default class Dashboard extends Component {
     return (
     	<AppBar
 		    title={<span>DataFizz</span>}
+		    className={styles.appbar}
 		    iconElementLeft={<IconButton><NavigationClose /></IconButton>}
 		    iconElementRight={<FlatButton label="Logout" onTouchTap={this.logout}/>}
   		/>

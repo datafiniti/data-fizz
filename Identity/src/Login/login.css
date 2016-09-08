@@ -2,17 +2,19 @@
 	position: absolute;
 	height: 100%;
 	width: 100%;
-	background-image: url('https://static.pexels.com/photos/14676/pexels-photo-14676.png');
+	background-image: url('https://static.pexels.com/photos/46082/pexels-photo-46082.jpeg');
 	background-size: cover;
 	background-position: center;
 }
 
+.loginoverlay {
+	
+}
+
 .loginContainer {
-	height: 60%;
 	width: 30%;
 	position: absolute;
-  top: 40%;
+  top: 15%;
   left: 35%;
-  opacity: 0.8;
   border-radius: 10px;
 }

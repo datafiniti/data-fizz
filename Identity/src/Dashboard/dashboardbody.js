@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import styles from './dashboard.css';
+import ChangeEmail from './change-email';
+import ChangePassword from './change-password';
 
 //Dashboard Component
 export default class DashboardBody extends Component {
@@ -10,6 +12,8 @@ export default class DashboardBody extends Component {
   render() {
     return (
     	<div id='dashboardbody' className={styles.dashboardbody}>
+        <ChangeEmail />
+        <ChangePassword />
     	</div>
     );
   }

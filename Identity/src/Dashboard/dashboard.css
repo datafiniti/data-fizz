@@ -1,9 +1,35 @@
 .dashboard {
 	position: relative;
+	height: 100%;
+	width: 100%;
 }
 
 .dashboardbody {
-	position: absolute;
+	position: relative;
+	display: flex;
 	height: 100%;
 	width: 100%;
+	top: -64px;
+}
+
+.change_email {
+	background-image: url('https://static.pexels.com/photos/27802/pexels-photo-27802.jpg');
+	background-size: cover;
+	background-position: center;
+	flex: 1 100%;
+	order: 1;
+}
+
+.change_password {
+	background-image: url('https://static.pexels.com/photos/7044/pexels-photo.jpeg');
+	background-size: cover;
+	background-position: center;
+	flex: 1 100%;
+	order: 2;
+}
+
+.header {
+	position: relative;
+	top: 150px;
+	text-align: center;
 }
