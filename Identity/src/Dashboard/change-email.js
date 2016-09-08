@@ -24,6 +24,7 @@ export default class ChangeEmail extends Component {
 
   render() {
   	const { emailForm } = this.state;
+  	
     return (
     	<Paper zDepth={2} rounded={true} className={styles.change_email} onClick={this.handleOpen.bind(this)}>
 	    	<div id='change email' >
