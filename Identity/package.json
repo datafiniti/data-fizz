@@ -8,6 +8,7 @@
     "build": "webpack --verbose --colors --display-error-details --config webpack.config.prod.js",
     "prod": "NODE_ENV=production forever start . ",
     "prod-node": "NODE_ENV=production node . ",
+    "postinstall": "npm run build && npm run prod-node",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
