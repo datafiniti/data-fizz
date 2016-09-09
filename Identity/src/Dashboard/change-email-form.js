@@ -69,7 +69,7 @@ export default class ChangeEmailForm extends Component {
   handleSubmit() {
   	const { handleNotification } = this.props;
   	const { email, password, newEmail, confirmEmail } = this.state;
-
+  	const that = this;
   	axios.post('/api/changeEmail', {
   		email: email,
   		password: password,
