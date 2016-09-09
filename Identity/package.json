@@ -22,7 +22,6 @@
   "homepage": "https://github.com/frankievx/DataFizz#readme",
   "dependencies": {
     "axios": "^0.14.0",
-    "bcrypt": "^0.8.7",
     "bcryptjs": "^2.3.0",
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
