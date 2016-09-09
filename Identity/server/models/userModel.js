@@ -23,8 +23,7 @@ function changePassword(req, res) {
     .then(function(bool) { 
       if(bool) {
         //If successful, it will take the modified user object and hash the  new password then proceed to save to the db
-        user.password = newPassword;
-        Util.hashPassword(user)
+        Util.hashPassword(newPassword)
         .then(function(hash) {
           user.password = hash;
       		user.save(function(err) {

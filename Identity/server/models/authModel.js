@@ -61,15 +61,6 @@ function createAPISession(user, res) {
       res.json({ success: false, message: "There has been an error in the process of creating a session token."})
     }
     else {
-      user.sessions.push(token);
-
-      // If there is more than one session then send an email
-      if(user.sessions.length > 1) {
-        transport.sendMail(mailOptions, function(err, info) {
-          if (err) console.log(error);
-          console.log('Message sent: ' + info.response);
-        })
-      }
       //Add new session.
       user.sessions.push(token);
 
@@ -93,9 +84,9 @@ function createAPISession(user, res) {
 function removeSessions(email, token) {
   User.findOne({ email: email }, function(err, user) {
     user.sessions = user.sessions.filter(function(session, index) {
-      console.log(session)
       return session !== token;
     })
+    
     user.invalidSessions.push(token);
     user.save(function(err) {
       if (err) console.log(err);
@@ -103,34 +94,11 @@ function removeSessions(email, token) {
   })
 }
 
-function login(req, res) {
-  User.findOne({ email: req.body.email }, function(err, user) {
-    if (err) throw err;
-    if (!user) {
-      res.json({ success: false, message: 'No User with that email' });
-    } 
-    else if (user) {
-      Util.comparePassword(req.body.password, user.password)
-      .then(function(bool){
-        if (!bool) {
-          res.json({ success: false, message: 'Incorrect Password.' });
-        } 
-        else {
-          console.log('createAPISession');
-          createAPISession(user, res);
-        }   
-      })
-      .catch(function(err) {
-        console.log(err);
-      })
-    }
-  });
-}
 
 function verify(req, res, next) {
   var email = req.headers['x-access-email'];
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
-  console.log('verify');
+
   if (email && token) {
     jwt.verify(token, serverConfig.apiSecret, function(err, decoded) {      
       if (err || checkInvalidSessions(email, token)) {
@@ -149,6 +117,29 @@ function verify(req, res, next) {
     });
   }
 };
+
+function login(req, res) {
+  User.findOne({ email: req.body.email }, function(err, user) {
+    if (err) throw err;
+    if (!user) {
+      res.json({ success: false, message: 'No User with that email' });
+    } 
+    else if (user) {
+      Util.comparePassword(req.body.password, user.password)
+      .then(function(bool){
+        if (!bool) {
+          res.json({ success: false, message: 'Incorrect Password.' });
+        } 
+        else {
+          createAPISession(user, res);
+        }   
+      })
+      .catch(function(err) {
+        console.log(err);
+      })
+    }
+  });
+}
 
 function logout(req, res) {
   var email = req.headers['x-access-email'];

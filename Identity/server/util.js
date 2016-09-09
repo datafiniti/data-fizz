@@ -4,6 +4,7 @@ var Promise = require('bluebird');
 
 function comparePassword(attemptedPassword, hashedPassword) {
   return new Promise(function(resolve, reject){
+    console.log('attemptedPassword', hashedPassword);
     bcrypt.compare(attemptedPassword, hashedPassword, function(err, res) {
       if(err) throw err
       else resolve(res)
@@ -11,10 +12,10 @@ function comparePassword(attemptedPassword, hashedPassword) {
   });
 }
 
-function hashPassword(user) {
+function hashPassword(password) {
   var saltRounds = 4;
 	return new Promise(function(resolve, reject){
-    return bcrypt.hash(user.password, saltRounds, function(err, hash) {
+    return bcrypt.hash(password, saltRounds, function(err, hash) {
       if (err) throw (err)
       else resolve(hash)
     });

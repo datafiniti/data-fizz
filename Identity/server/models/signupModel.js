@@ -35,7 +35,7 @@ function create(req, res) {
   .then(function(){
     if(emailFound) res.json({ success: false, message: "This email is associated with another user"});
     else {
-      Util.hashPassword(req.body)
+      Util.hashPassword(req.body.password)
     	.then(function(hash) {
         user.password = hash;
       })

@@ -26,8 +26,9 @@ function createResetSession(req, res) {
         from:'"DataFizz" <datafizznotifications@gmail.com>',
         to: user.email,
         subject: 'DataFizz Sign In Notification',
-        text: 'You have requested for a reset token to be sent to you. I apologize for it being exruciatingly long. Your token is: ' + token +' . Please copy and paste into the field reset token field. This token expires in 5 minutes.'
+        text: 'You have requested for a reset token to be sent to you. Your token is: ' + token +' . Please copy and paste the token into the reset token field. This token expires in 5 minutes.'
       };
+
       var transport = nodemailer.createTransport(smtpConfig);
       transport.sendMail(mailOptions, function(err, info) {
         if (err) console.log(error);
@@ -55,7 +56,7 @@ function resetPassword(req, res) {
       } 
       else {
         User.findOne({ email: email }, function(err, user) {
-          Util.hashPassword(user)
+          Util.hashPassword(newPassword)
           .then(function(hashedPassword) {
             user.password = hashedPassword;
             user.save(function(err) {
