@@ -19,31 +19,34 @@ function changePassword(req, res) {
   		res.json({ success: false, message: 'Your new password and confirmed password do not match.' });
   	}
     //Compare the current password sent with the password stored in the database
-    Util.comparePassword(password, user.password)
-    .then(function(bool) { 
-      if(bool) {
-        //If successful, it will take the modified user object and hash the  new password then proceed to save to the db
-        Util.hashPassword(newPassword)
-        .then(function(hash) {
-          user.password = hash;
-      		user.save(function(err) {
-      			if (err) {
-              res.json({ success: false, message: 'There has been an error during the process of changing your password.' });
-      				throw err;
-      			}
-      			else {
-      				res.json({ success: true, message: 'You have successfully changed your password!' });
-      			}
-      		})
-        })
-      }
-      else {
-        res.json({ success: false, message: 'You have submitted the incorrect password for this user.' });
-      }
-    })
-    .catch(function(err) {
-      console.log(err);
-    })
+    else {
+      Util.comparePassword(password, user.password)
+      .then(function(bool) { 
+        if(bool) {
+          //If successful, it will take the modified user object and hash the  new password then proceed to save to the db
+          console.log()
+          Util.hashPassword(newPassword)
+          .then(function(hash) {
+            user.password = hash;
+        		user.save(function(err) {
+        			if (err) {
+                res.json({ success: false, message: 'There has been an error during the process of changing your password.' });
+        				throw err;
+        			}
+        			else {
+        				res.json({ success: true, message: 'You have successfully changed your password!' });
+        			}
+        		})
+          })
+        }
+        else {
+          res.json({ success: false, message: 'You have submitted the incorrect password for this user.' });
+        }
+      })
+      .catch(function(err) {
+        console.log(err);
+      })
+    }
   })
 }
 
