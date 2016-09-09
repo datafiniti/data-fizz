@@ -6,17 +6,17 @@ var User = require('../schemas/User.js');
 var serverConfig = require('../server-config.js');
 
 
-function checkInvalidSessions(email, token) {
-  var found = false;
-  User.findOne({ email: email }, function(err, user) {
-    if(err) console.log(err)
-    // Set found to be returned either true or false
-    else {
-      if (user.invalidSessions.includes(token)) found = true;
-    }
-  })
-  return found;
-}
+// function checkInvalidSessions(email, token) {
+//   var found = false;
+//   User.findOne({ email: email }, function(err, user) {
+//     if(err) console.log(err)
+//     // Set found to be returned either true or false
+//     else {
+//       if (user.invalidSessions.includes(token)) found = true;
+//     }
+//   })
+//   return found;
+// }
 
 function removeInvalidSessions(email) {
   User.findOne({ email: email }, function(err, user) {
@@ -86,7 +86,7 @@ function removeSessions(email, token) {
     user.sessions = user.sessions.filter(function(session, index) {
       return session !== token;
     })
-    
+
     user.invalidSessions.push(token);
     user.save(function(err) {
       if (err) console.log(err);
@@ -101,7 +101,7 @@ function verify(req, res, next) {
 
   if (email && token) {
     jwt.verify(token, serverConfig.apiSecret, function(err, decoded) {      
-      if (err || checkInvalidSessions(email, token)) {
+      if (err) {
         return res.json({ success: false, message: 'Failed to authenticate token.' });    
       } 
       else {
