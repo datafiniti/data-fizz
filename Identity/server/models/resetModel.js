@@ -11,9 +11,7 @@ function createResetSession(req, res) {
     if(err) throw err;
     else {
       //Create jwt token
-    var token = jwt.sign(user, serverConfig.resetSecret, { expiresIn: '5m' }).catch(function(err) {
-    res.json({ success: false, message: "There has been an error in the process of creating a reset token."})
-    });
+    var token = jwt.sign({ email: user.email }, serverConfig.resetSecret, { expiresIn: '5m' })
       //Initialize nodemailer object and mailOptions
       var smtpConfig = {
         host: 'smtp.gmail.com',
