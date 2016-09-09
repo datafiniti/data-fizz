@@ -82,6 +82,13 @@ export default class ChangeEmailForm extends Component {
   			axios.defaults.headers.common['x-access-email'] = res.data.email;
   		}
   		handleNotification(res.data.message);
+  		that.setState({
+  			stepIndex: 0,
+  			email: '',
+  			password: '',
+  			newEmail: '',
+  			confirmEmail: ''
+  		});
   	})
   }
 

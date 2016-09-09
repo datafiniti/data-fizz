@@ -80,6 +80,13 @@ export default class ChangePasswordForm extends Component {
   	.then(function(res){
   		console.log('submit response', res);
   		handleNotification(res.data.message);
+  		that.setState({
+  			stepIndex: 0,
+  			email: '',
+  			password: '',
+  			newPassword: '',
+  			confirmPassword: ''
+  		})
   	})
   }
 
