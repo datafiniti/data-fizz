@@ -20,6 +20,13 @@
 	order: 1;
 }
 
+.change_password_overlay {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: #b69f91;
+	opacity: 0.5;
+}
 .change_password {
 	background-image: url('https://static.pexels.com/photos/7044/pexels-photo.jpeg');
 	background-size: cover;

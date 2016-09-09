@@ -44,20 +44,22 @@ export default class ChangePassword extends Component {
 
     return (
     	<Paper zDepth={2} rounded={true} className={styles.change_password} onClick={this.handleOpen.bind(this)}>
-	    	<div id='change password'>
+  			<div id='change password'>
 	    		<h1 className={styles.header}> Change Your Password </h1>
 	    	</div>
-    		<ChangePasswordForm 
-    			open={open}
-    			handleClose={this.handleClose.bind(this)}
-    			handleNotification={this.handleNotification.bind(this)}
-  			/>
-  			<Snackbar
-		    	open={notify}
-		    	message={message}
-		    	autoHideDuration={4000}
-		    	onRequestClose={this.closeNotification.bind(this)}
-	    	/>
+	    	<div className={styles.change_password_overlay}>
+	    		<ChangePasswordForm 
+	    			open={open}
+	    			handleClose={this.handleClose.bind(this)}
+	    			handleNotification={this.handleNotification.bind(this)}
+	  			/>
+	  			<Snackbar
+			    	open={notify}
+			    	message={message}
+			    	autoHideDuration={4000}
+			    	onRequestClose={this.closeNotification.bind(this)}
+		    	/>
+	    	</div>
     	</Paper>
     );
   }
