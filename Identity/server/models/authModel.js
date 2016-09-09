@@ -55,7 +55,7 @@ function createAPISession(user, res) {
   var transport = nodemailer.createTransport(smtpConfig);
 
   //Create jwt token
-  jwt.sign(user, serverConfig.apiSecret, { expiresIn: '1 day' }, function(err, token) {
+  jwt.sign(user, serverConfig.apiSecret, { expiresIn: '10m' }, function(err, token) {
     if(err) {
       console.log(err);
       res.json({ success: false, message: "There has been an error in the process of creating a session token."})
