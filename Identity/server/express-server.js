@@ -13,7 +13,7 @@ var webpackConfig = require('../webpack.config.js');
 var compiler = webpack(webpackConfig);
 
 //Routes and Models
-var signup = require('./models/signupModel.js');
+var signup = require('./models/userModel.js');
 var authenticate = require('./models/authModel.js');
 var apiRoutes = require('./routes/apiRoutes.js');
 var resetRoutes = require('./routes/resetRoutes.js');
@@ -41,7 +41,7 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '../index.html'))
 });
 app.post('/signin', authenticate.login);
-app.post('/signup', signup.create);
+app.post('/signup', signup.createUser);
 app.use('/reset', resetRoutes);
 app.use('/api', apiRoutes);
 
