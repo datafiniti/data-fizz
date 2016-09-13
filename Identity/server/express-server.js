@@ -14,7 +14,7 @@ var compiler = webpack(webpackConfig);
 
 //Routes and Models
 var signup = require('./models/userModel.js');
-var authenticate = require('./models/authModel.js');
+var session = require('./models/sessionModel.js');
 var apiRoutes = require('./routes/apiRoutes.js');
 var resetRoutes = require('./routes/resetRoutes.js');
 
@@ -40,7 +40,7 @@ app.use('/dist', express.static('dist'));
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '../index.html'))
 });
-app.post('/signin', authenticate.login);
+app.post('/signin', session.login);
 app.post('/signup', signup.createUser);
 app.use('/reset', resetRoutes);
 app.use('/api', apiRoutes);

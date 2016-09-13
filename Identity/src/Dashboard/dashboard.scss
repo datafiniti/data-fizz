@@ -2,6 +2,7 @@
 	position: relative;
 	height: 100%;
 	width: 100%;
+	overflow: hidden;
 }
 
 .dashboardbody {
@@ -17,7 +18,13 @@
 	background-size: cover;
 	background-position: center;
 	flex: 1 100%;
-	order: 1;
+	 &:before {
+    content: '';
+   	height: 100%;
+   	width: 100%;
+    background-image: linear-gradient(to bottom right,#002f4b,#dc4225);
+		opacity: .6; 
+  }
 }
 
 .change_password_overlay {
@@ -31,13 +38,14 @@
 	background-size: cover;
 	background-position: center;
 	flex: 1 100%;
-	order: 2;
 }
 
 .header {
 	position: relative;
 	top: 150px;
 	text-align: center;
+	font-family: 'Bungee', cursive;
+	font-size: 40px;
 }
 
 .formField {

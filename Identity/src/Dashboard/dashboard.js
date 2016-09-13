@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './dashboard.css';
+import styles from './dashboard.scss';
 import AppBar from './appbar';
 import DashboardBody from './dashboardbody';
 

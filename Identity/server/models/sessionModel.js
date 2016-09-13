@@ -5,18 +5,51 @@ var Util = require('./helpers/util.js');
 var User = require('../schemas/User.js');
 var serverConfig = require('../server-config.js');
 
+var smtpConfig = {
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true, // use SSL
+  auth: {
+      user: 'datafizznotifications@gmail.com',
+      pass: 'identity'
+  }
+};
+
+
+/************************ Helpers *******************************/
+
+function removeSession(email, token) {
+  User.findOne({ email: email }, function(err, user) {
+    if(err) throw err;
+    else {
+      console.log('user', user);
+      user.sessions.splice(user.sessions.indexOf(token), 1);
+      user.save(function(err) {
+        if(err) console.log(err);
+      });
+    }
+  })
+}
+
+
+function removeExpiredSessions(email) {
+  User.findOne({ email: email }, function(err, user) {
+    user.sessions = user.sessions.filter(function(session, index) {
+      jwt.verify(session, serverConfig.apiSecret, function(err, decoded) {
+        if(err) return false;
+        else return true;
+      })
+    });
+
+    user.save(function(err) {
+      if (err) console.log(err);
+    });
+  });
+}
+
 
 function createAPISession(user, res) {
   //Initialize nodemailer object and mailOptions
-  var smtpConfig = {
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true, // use SSL
-    auth: {
-        user: 'datafizznotifications@gmail.com',
-        pass: 'identity'
-    }
-  };
   var mailOptions = {
     from:'"Frankie Vithayathil" <frankievx@gmail.com>',
     to: user.email,
@@ -32,7 +65,8 @@ function createAPISession(user, res) {
       res.json({ success: false, message: "There has been an error in the process of creating a session token."})
     }
     else {
-      //Add new session.
+      //On login check for any expired sessions and then remove them, then add a new session
+      removeExpiredSessions(user.email);
       user.sessions.push(token);
 
       // If there is more than one session then send an email
@@ -49,11 +83,14 @@ function createAPISession(user, res) {
         res.json({ success: true, email: user.email, token: token, message: "You are now logged in." });
       });
     }
-  })
+  });
 }
 
 
-function verify(req, res, next) {
+
+/************************ API *******************************/
+
+function verifySession(req, res, next) {
   var email = req.headers['x-access-email'];
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
@@ -63,6 +100,7 @@ function verify(req, res, next) {
         return res.json({ success: false, message: 'Failed to authenticate token.' });    
       } 
       else {
+        console.log('move to dashboard');
         req.decoded = decoded;
         next();
       }
@@ -94,22 +132,22 @@ function login(req, res) {
       })
       .catch(function(err) {
         console.log(err);
+        res.json({ success: false, message: 'There has been an error in the process of logging in.'});
       })
     }
   });
-}
+};
 
 function logout(req, res) {
   var email = req.headers['x-access-email'];
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
-  Util.removeSessions(email, token);
-  Util.removeInvalidSessions(email);
+  removeSession(email, token);
   res.json({ success: true, message: "You have been signed out." });
-}
+};
 
 
 module.exports = {
   login: login,
-  verify: verify,
+  verify: verifySession,
   logout: logout
 }

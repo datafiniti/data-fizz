@@ -4,6 +4,10 @@ var Promise = require('bluebird');
 var Util = require('./helpers/util.js');
 var User = require('../schemas/User.js');
 
+
+/************************ Helpers *******************************/
+
+
 function checkDuplicateEmail(email) { 
   return new Promise(function(resolve, reject){
     return User.find({ email: email }, function(err, user) {
@@ -13,6 +17,10 @@ function checkDuplicateEmail(email) {
     });
   });
 }
+
+
+/************************ API *******************************/
+
 
 function createUser(req, res) {
   var user = new User({ 
@@ -25,7 +33,7 @@ function createUser(req, res) {
 
   // If found then handle the response
   .then(function(found){
-    if(found) res.json({ success: false, message: "This email is associated with another user"});
+    if(found) return res.json({ success: false, message: "This email is associated with another user"});
 
     // Else hash the password
     else {
@@ -36,14 +44,14 @@ function createUser(req, res) {
         user.password = hashedPassword;
         user.save(function(err) {
           if (err) throw err;
-          res.json({ success: true, message: "You have successfuly signed up! Now you can go ahead and sign in." });
+          return res.json({ success: true, message: "You have successfuly signed up! Now you can go ahead and sign in." });
         });
       })
     }
   })
   .catch(function(err) {
     console.log(err);
-    res.json({ success: false, message: "An error has occurred in the process of signing up." });
+    return res.json({ success: false, message: "An error has occurred in the process of signing up." });
   })
 };
 
@@ -53,8 +61,6 @@ function changeEmail(req, res) {
   var password = req.body.password;
   var newEmail = req.body.newEmail;
   var confirmEmail = req.body.confirmEmail;
-
-
 
   // Handles input check for email.
   if( newEmail != confirmEmail ) {

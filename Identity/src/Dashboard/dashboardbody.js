@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './dashboard.css';
+import styles from './dashboard.scss';
 import ChangeEmail from './change-email';
 import ChangePassword from './change-password';
 

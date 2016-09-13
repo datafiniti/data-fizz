@@ -18,10 +18,8 @@ module.exports = {
       { test: /.js?$/, loader: 'babel-loader', exclude: /node_modules/, query: { presets: [ 'es2015','stage-0','react'] }},
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=2' },
-      {
-  test: /\.(jpeg|png)$/,
-  loader: 'url-loader'
-}
+      { test: /\.scss$/, loader: 'style!css?modules&importLoaders=2!sass' },
+      { test: /\.(jpeg|png)$/, loader: 'url-loader' }
     ]
   },
   resolve: {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './dashboard.css';
+import styles from './dashboard.scss';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import Dialog from 'material-ui/Dialog';
