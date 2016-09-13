@@ -1,39 +1,10 @@
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var nodemailer = require('nodemailer');
-var Util = require('../util.js');
+var Util = require('./helpers/util.js');
 var User = require('../schemas/User.js');
 var serverConfig = require('../server-config.js');
 
-
-// function checkInvalidSessions(email, token) {
-//   var found = false;
-//   User.findOne({ email: email }, function(err, user) {
-//     if(err) console.log(err)
-//     // Set found to be returned either true or false
-//     else {
-//       if (user.invalidSessions.includes(token)) found = true;
-//     }
-//   })
-//   return found;
-// }
-
-function removeInvalidSessions(email) {
-  User.findOne({ email: email }, function(err, user) {
-    //Remove any sessions that have now expired from the blacklist
-    user.invalidSessions.map(function(session, index) {
-      jwt.verify(session, serverConfig.apiSecret, function(err, decoded) {
-        if(err) {
-          user.invalidSessions.splice(index, 1);
-        }
-      });
-    });
-    //Save the new user object
-    user.save(function(err) {
-      if (err) throw err;
-    })
-  })
-}
 
 function createAPISession(user, res) {
   //Initialize nodemailer object and mailOptions
@@ -78,19 +49,6 @@ function createAPISession(user, res) {
         res.json({ success: true, email: user.email, token: token, message: "You are now logged in." });
       });
     }
-  })
-}
-
-function removeSessions(email, token) {
-  User.findOne({ email: email }, function(err, user) {
-    user.sessions = user.sessions.filter(function(session, index) {
-      return session !== token;
-    })
-
-    user.invalidSessions.push(token);
-    user.save(function(err) {
-      if (err) console.log(err);
-    });
   })
 }
 
@@ -144,8 +102,8 @@ function login(req, res) {
 function logout(req, res) {
   var email = req.headers['x-access-email'];
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
-  removeSessions(email, token);
-  removeInvalidSessions(email);
+  Util.removeSessions(email, token);
+  Util.removeInvalidSessions(email);
   res.json({ success: true, message: "You have been signed out." });
 }
 

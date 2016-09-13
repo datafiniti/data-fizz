@@ -1,39 +1,40 @@
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var nodemailer = require('nodemailer');
-var Util = require('../util.js');
+var Util = require('./helpers/util.js');
 var User = require('../schemas/User.js');
 var serverConfig = require('../server-config.js');
 
+var smtpConfig = {
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true, // use SSL
+  auth: {
+      user: 'datafizznotifications@gmail.com',
+      pass: 'identity'
+  }
+};
 
 function createResetSession(req, res) {
   User.findOne({ email: req.body.email }, function(err, user) {
     if(err) throw err;
     else {
-      //Create jwt token
+
+    //Create jwt token
     var token = jwt.sign({ email: user.email }, serverConfig.resetSecret, { expiresIn: '5m' })
-      //Initialize nodemailer object and mailOptions
-      var smtpConfig = {
-        host: 'smtp.gmail.com',
-        port: 465,
-        secure: true, // use SSL
-        auth: {
-            user: 'datafizznotifications@gmail.com',
-            pass: 'identity'
-        }
-      };
+
+      // Set Up Nodemailer then send email
       var mailOptions = {
         from:'"DataFizz" <datafizznotifications@gmail.com>',
         to: user.email,
         subject: 'DataFizz Sign In Notification',
         text: 'You have requested for a reset token to be sent to you. Your token is: ' + token +' . Please copy and paste the token into the reset token field. This token expires in 5 minutes.'
       };
-
       var transport = nodemailer.createTransport(smtpConfig);
       transport.sendMail(mailOptions, function(err, info) {
         if (err) console.log(error);
         console.log('Message sent: ' + info.response);
-        res.json({ success: true, message: 'Email has been successfuly sent.'});
+        res.json({ success: true, message: 'Email has been successfuly sent. The token will expire in 5 minutes.'});
       });
     }
   })
@@ -49,11 +50,16 @@ function resetPassword(req, res) {
   var newPassword = req.body.newPassword;
   var confirmPassword = req.body.confirmPassword;
 
-  if (email && token && newPassword === confirmPassword) {
-    jwt.verify(token, serverConfig.resetSecret, function(err, decoded) {      
+  // Check if passwords match and then verify the reset session token
+  if (newPassword === confirmPassword) {
+    jwt.verify(token, serverConfig.resetSecret, function(err, decoded) {   
+
+      //Handle verification error   
       if (err) {
         return res.json({ success: false, message: 'Failed to authenticate token.' });    
       } 
+
+      //Else lookup user, hash the password, then save the new user object.
       else {
         User.findOne({ email: email }, function(err, user) {
           Util.hashPassword(newPassword)

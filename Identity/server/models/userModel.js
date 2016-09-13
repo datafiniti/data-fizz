@@ -1,7 +1,7 @@
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var Promise = require('bluebird');
-var Util = require('../util.js');
+var Util = require('./helpers/util.js');
 var User = require('../schemas/User.js');
 
 function checkDuplicateEmail(email) { 
@@ -15,7 +15,6 @@ function checkDuplicateEmail(email) {
 }
 
 function createUser(req, res) {
-  var emailFound;
   var user = new User({ 
     email: req.body.email, 
     password: req.body.password
@@ -23,34 +22,28 @@ function createUser(req, res) {
 
   // Check for identical emails to prevent duplicates.
   checkDuplicateEmail(req.body.email)
-  //Set emailFound
-  .then(function(bool) {
-    emailFound = bool;
-  })
-  .catch(function(err) {
-    console.log(err);
-  })
 
-  // If found then send appropriate response.
-  // Otherwise hash the password and save to the database.
-  .then(function(){
-    if(emailFound) res.json({ success: false, message: "This email is associated with another user"});
+  // If found then handle the response
+  .then(function(found){
+    if(found) res.json({ success: false, message: "This email is associated with another user"});
+
+    // Else hash the password
     else {
       Util.hashPassword(req.body.password)
-      .then(function(hash) {
-        user.password = hash;
-      })
-      .then(function(err) {
+
+      // Set user password to the hashedPassword and then save the user to the database
+      .then(function(hashedPassword) {
+        user.password = hashedPassword;
         user.save(function(err) {
           if (err) throw err;
           res.json({ success: true, message: "You have successfuly signed up! Now you can go ahead and sign in." });
         });
       })
-      .catch(function(err) {
-        console.log(err);
-        res.json({ success: false, message: "An error has occurred in the process of signing up." });
-      })
     }
+  })
+  .catch(function(err) {
+    console.log(err);
+    res.json({ success: false, message: "An error has occurred in the process of signing up." });
   })
 };
 
@@ -61,50 +54,64 @@ function changeEmail(req, res) {
   var newEmail = req.body.newEmail;
   var confirmEmail = req.body.confirmEmail;
 
+
+
   // Handles input check for email.
   if( newEmail != confirmEmail ) {
     res.json({ success: false, message: 'Your new email and confirmed email do not match.' });
   }
 
-  //Handles user lookup for current email
+  //Handles check for any duplicate emails compared to the newEmail input in the system 
   else {
-    User.findOne({ email: email }, function(err, user) {
+    checkDuplicateEmail(newEmail)
+    .then(function(found) { 
 
-      // Handles email lookup error
-      if(err) {
-        res.json({ success: false, message: 'There are no users associated with the email submitted.'});
+      // Sends appropriate response if the new email is found
+      if(found) {
+        res.json({ success: false, message: 'This email is already associated with another user.'});
       }
 
-      // Compare the current password sent with the password stored in the database
+      // Finds the user with the current email
       else {
-        Util.comparePassword(password, user.password)
-        .then(function(bool) {
+        User.findOne({ email: email }, function(err, user) {
 
-          //If successful, it will take the modified user object and save the new email
-          if(bool) {
-            user.email = newEmail;
-            user.save(function(err) {
+          // Handles email lookup error
+          if(err) {
+            res.json({ success: false, message: 'There are no users associated with the email submitted.'});
+          }
 
-              //Throws an error if an error occurs during the save
-              if (err) {
-                throw err;
+          // Compare the current password sent with the password stored in the database
+          else {
+            Util.comparePassword(password, user.password)
+            .then(function(bool) {
+
+              //If successful, it will take the modified user object and save the new email
+              if(bool) {
+                user.email = newEmail;
+                user.save(function(err) {
+
+                  //Throws an error if an error occurs during the save
+                  if (err) {
+                    throw err;
+                  }
+
+                  //Handles password save success
+                  else {
+                    res.json({ success: true, email: newEmail, message: 'You have successfully changed your email!' });
+                  }
+                })
               }
 
-              //Handles password save success
+              //Handles password input error
               else {
-                res.json({ success: true, email: newEmail, message: 'You have successfully changed your email!' });
+                res.json({ success: false, message: 'You have submitted the incorrect password for this user.' });
               }
             })
+            .catch(function(err) {
+              console.log(err);
+              res.json({ success: false, message: 'There has been an error during the process of changing your email.' });
+            });
           }
-
-          //Handles password input error
-          else {
-            res.json({ success: false, message: 'You have submitted the incorrect password for this user.' });
-          }
-        })
-        .catch(function(err) {
-          console.log(err);
-          res.json({ success: false, message: 'There has been an error during the process of changing your email.' });
         });
       }
     });
