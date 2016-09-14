@@ -22,7 +22,6 @@ function removeSession(email, token) {
   User.findOne({ email: email }, function(err, user) {
     if(err) throw err;
     else {
-      console.log('user', user);
       user.sessions.splice(user.sessions.indexOf(token), 1);
       user.save(function(err) {
         if(err) console.log(err);
@@ -100,7 +99,6 @@ function verifySession(req, res, next) {
         return res.json({ success: false, message: 'Failed to authenticate token.' });    
       } 
       else {
-        console.log('move to dashboard');
         req.decoded = decoded;
         next();
       }
