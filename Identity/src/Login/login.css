@@ -1,0 +1,19 @@
+.login {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-image: url('https://static.pexels.com/photos/46082/pexels-photo-46082.jpeg');
+	background-size: cover;
+	background-position: center;
+}
+
+.loginoverlay {
+	
+}
+
+.loginContainer {
+	width: 30%;
+	position: absolute;
+  top: 13%;
+  left: 35%;
+}

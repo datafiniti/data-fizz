@@ -1,0 +1,19 @@
+
+.form {
+	position: relative;
+	margin: 0 auto;
+	text-align: center;
+	background-color: white;
+}
+
+.textField {
+	position: relative;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	opacity: 1;
+}
+
+.signupbutton {
+	width: 200px;
+	margin-bottom: 20px
+}
