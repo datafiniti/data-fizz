@@ -1,0 +1,48 @@
+$pointer: pointer;
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding-top: 100px;
+  font-family: $base-font-family;
+  background-color: $secondary-orange;
+}
+
+.btn.btn-primary {
+  background-color: $primary-brown;
+  border-color: $primary-brown;
+
+  &:hover {
+    //color: lighten($primary-brown, 15%);
+    background-color: lighten($primary-brown, 15%);
+  }
+}
+
+a:focus, a:active:focus, a.active:focus{
+    outline:none;
+    box-shadow:none;
+}
+
+a {
+  color: $primary-orange;
+  text-decoration: none;
+
+  &:hover {
+    color: $secondary-orange;
+  }
+}
+
+p {
+  margin: 0 0 20px;
+}
+
+
+.alert {
+  color: $primary-orange;
+  margin-bottom: 0;
+  padding: 0 5px 10px;
+}
