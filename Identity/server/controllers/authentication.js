@@ -5,23 +5,21 @@ const config = require('../config');
 
 function tokenForUser(user){
   const timestamp = new Date().getTime();
-  return jwt.encode({ sub: user.id, iat: timestamp }, config.secret)
+  return jwt.encode({ sub: user._id, iat: timestamp }, config.secret)
 }
 
-exports.signin = function (req,res,next){
+exports.login = function (req,res,next){
   //User has already had their email and pwd auth'd
   //We just need to give them a token
   //req.user comes from passport in localSrtategy when return done(null,user) in success
-  User.findOne({email:email},function(err,user) {
+  User.findOne({email:req.body.email},function(err,user) {
     if(err) { return next(err); }
     if(!user) { return res.status(422).send({error:'wrong email or password'}); }
-
     //compare passwords - is 'password' equal to user.password ?
-    user.comparePassword(password, function(err, isMatch) {
+    user.comparePassword(req.body.password, function(err, isMatch) {
       if (err) { return next(err); }
       if(!isMatch) { return res.status(422).send({error:'wrong email or password'}); }
-
-      return res.send({ token : tokenForUser(req.user) })
+      return res.send({ token : tokenForUser(user) })
     })
   })
 
@@ -29,7 +27,9 @@ exports.signin = function (req,res,next){
 
 
 exports.signup = function (req,res,next) {
+  console.log("Received POST at /signup");
   //pull data out of the req
+  const name = req.body.name
   const email = req.body.email;
   const password = req.body.password;
 
@@ -52,8 +52,9 @@ exports.signup = function (req,res,next) {
 
     //If a user with email does NOT exist, create and save user record
     const user = new User ({
+      name: name,
       email: email,
-      password:password
+      password: password
     });
 
     //to save the user to the db
@@ -67,6 +68,20 @@ exports.signup = function (req,res,next) {
   })
 
 };
+
+exports.reset = function (req,res,next) {
+  console.log("Received POST at /resetPwd");
+  const  email = req.body.email
+    User.findOne({email:email},function(err,existingUser) {
+    if(err) { return next(err); }
+    if(!existingUser){
+      return res.status(422).send({error:'Email does not exist, please try with another email '})
+    }
+
+
+    console.log(existingUser,"USERRRRRRR")
+  })
+}
 
 
   

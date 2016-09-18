@@ -9,6 +9,9 @@ module.exports = function (app){
 		res.send({ hi:'there' })
 	})
 
+  app.post('/login', Authentication.login);
+  app.post('/signup', Authentication.signup);
+   app.post('/resetPwd', Authentication.reset)
 
 
 }

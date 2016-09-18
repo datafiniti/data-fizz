@@ -1,5 +1,4 @@
 import { Link } from 'react-router';
-import { connect } from  'react-redux';
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import * as actions from '../actions/index';
@@ -100,6 +99,9 @@ onSubmit(props) {
                         <p>Already have an account?<Link to={'/'}><strong>Sign In</strong></Link></p>
                         {this.renderAlert()}
                         <button className="btn btn-submit"  type="submit">Sign up</button>
+                        <Link to={'/'}>
+                          <button className="btn btn-submit"  type="submit">Cancel</button>
+                        </Link>
                       </div>
                     </div>
                 </fieldset>

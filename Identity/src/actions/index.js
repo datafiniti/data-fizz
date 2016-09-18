@@ -17,9 +17,8 @@ export function login({ email, password }) {
             dispatch({ type: AUTH_USER })
             // - Save the JWT token
             localStorage.setItem('token',response.data.token)
-            localStorage.setItem('userId',response.data.user.id)
             // - redirect to the route '/'
-            browserHistory.push('/');
+            browserHistory.push('/dashboard');
         })
         .catch(() => {
             //if request is bad...
@@ -39,7 +38,7 @@ export function signupUser({name,password,email}) {
             .then( response => {
                 dispatch({ type: AUTH_USER})
                 localStorage.setItem('token',response.data.token)
-                browserHistory.push('/');
+                browserHistory.push('/dashboard');
             })
             .catch(() => {
                 dispatch(authError(response.data.error))
@@ -56,3 +55,15 @@ export function signoutUser(){
     localStorage.removeItem('token');
     return { type: UNAUTH_USER }
 }
+
+export function resetPwd(email){
+  axios.post(`${ROOT_URL}/resetPwd`,{ email })
+}
+
+export function changePwd({password}){
+  axios.post(`${ROOT_URL}/resetPwd`,{ password })
+}
+
+
+
+

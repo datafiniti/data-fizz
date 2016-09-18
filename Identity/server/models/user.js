@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt-nodejs')
 
 //Define our model
 const userSchema = new Schema({
+  name : String,
   email: { type: String, unique:true } ,
   password: String
 });
@@ -36,6 +37,11 @@ userSchema.methods.comparePassword = function(candidatePassword, callback) {
     callback(null, isMatch);
   })
 }
+
+//Update pwd
+// userSchema.methods.updatePassword = function(newPassword, callback) {
+
+// }
 
 
 //Create the model class (All users)

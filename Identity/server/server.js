@@ -5,14 +5,17 @@ const bodyParser = require('body-parser');
 const app = express() 
 const router = require('./router');
 const mongoose = require('mongoose');
+const cors = require('cors')
 
 //DB Setup
-mongoose.connect('mongodb://localhost:auth/auth')// create a file called auth in our db
+mongoose.connect('mongodb://dataChallenge:datapwd@ds033056.mlab.com:33056/datafiniti')// create a file called auth in our db
 
 // App Setup
 app.use(morgan('combined'));
+app.use(cors());
 app.use(bodyParser.json({type:'*/*'}));
 router(app);
+
 
 
 

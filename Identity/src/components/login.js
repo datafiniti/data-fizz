@@ -71,6 +71,7 @@ renderAlert(){
                     <div className="control-group">
                       <div className="controls">
                         <p onClick={() => {this.props.authError('')}}>Don't have an account?<Link to={'sign_up'}><strong>Sign Up</strong></Link></p>
+                        <p onClick={() => {this.props.authError('')}}>Lost your password?<Link to={'resetpwd'}><strong>reset</strong></Link></p>
                         {this.renderAlert()}
                         <button className="btn btn-submit"  type="submit">Login</button>
                       </div>
