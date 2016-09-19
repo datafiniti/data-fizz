@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
+import { browserHistory } from 'react-router';
 import * as actions from '../actions/index';
 
 class ChangePwd extends Component {
 
 
-  onSubmit(props) {
-    this.props.changePwd(props)
+  onSubmit({ password }) {
+    this.props.changePwd({ password })
+    browserHistory.push('/dashboard');
   }
 
   render(){

@@ -19,7 +19,10 @@ exports.login = function (req,res,next){
     user.comparePassword(req.body.password, function(err, isMatch) {
       if (err) { return next(err); }
       if(!isMatch) { return res.status(422).send({error:'wrong email or password'}); }
-      return res.send({ token : tokenForUser(user) })
+      return res.send({ 
+        token : tokenForUser(user),
+        id : user._id 
+      })
     })
   })
 
@@ -62,14 +65,17 @@ exports.signup = function (req,res,next) {
       if (err) { return next(err); }
 
       // Respond to request indicating the user was created
-      res.json({token: tokenForUser(user)});
+      res.json({
+        token: tokenForUser(user),
+        id : user._id
+      });
 
     });
   })
 
 };
 
-exports.reset = function (req,res,next) {
+exports.resetPwd = function (req,res,next) {
   console.log("Received POST at /resetPwd");
   const  email = req.body.email
     User.findOne({email:email},function(err,existingUser) {
@@ -78,8 +84,32 @@ exports.reset = function (req,res,next) {
       return res.status(422).send({error:'Email does not exist, please try with another email '})
     }
 
-
     console.log(existingUser,"USERRRRRRR")
+  })
+}
+
+exports.changePwd = function (req,res,next) {
+  console.log("Received PUT at /changePwd");
+  console.log(req.body,'BOOOOODY')
+  const id = req.body.id;
+  const newPassword = req.body.password; 
+
+    User.findOne({ _id: id },function(err,user) {
+    if(err) { return next(err); }
+    if(!user){
+      return res.status(422).send({error:'No user for this id'})
+    }
+
+    user.updatePassword(newPassword, function(err,hashedPwd){
+      if (err) { return next(err); }
+      User.findOneAndUpdate({ _id : id }, { $set: {password : hashedPwd}},function(err, newUserPwd){
+        if(err) { return next(err); }
+        console.log(hashedPwd,'hashed')
+        return res.status(204)        
+      } )
+
+    })
+
   })
 }
 

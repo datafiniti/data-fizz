@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 
+
 class ResetPwd extends Component {
 
   constructor(props) {

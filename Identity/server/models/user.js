@@ -39,9 +39,20 @@ userSchema.methods.comparePassword = function(candidatePassword, callback) {
 }
 
 //Update pwd
-// userSchema.methods.updatePassword = function(newPassword, callback) {
+userSchema.methods.updatePassword = function(newPassword, callback) {
+    bcrypt.genSalt(10,function(err,salt){
+    if (err) { return next(err); }
 
-// }
+    // hash (encrypt) our password using salt
+    bcrypt.hash(newPassword, salt, null, function(err, hash){
+      if(err) { return next(err); }
+
+      // overwrite plain text password with encrypted password
+      newPassword = hash;
+      callback(null, newPassword);
+    })
+  })
+}
 
 
 //Create the model class (All users)
