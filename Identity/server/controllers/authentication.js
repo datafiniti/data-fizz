@@ -1,7 +1,7 @@
 const jwt = require('jwt-simple');
 const User = require('../models/user'); //grab all users
 const config = require('../config');
-
+const nodemailer = require('nodemailer');
 
 function tokenForUser(user){
   const timestamp = new Date().getTime();
@@ -76,7 +76,7 @@ exports.signup = function (req,res,next) {
 };
 
 exports.resetPwd = function (req,res,next) {
-  console.log("Received POST at /resetPwd");
+  console.log("Received PUT at /resetPwd");
   const  email = req.body.email
     User.findOne({email:email},function(err,existingUser) {
     if(err) { return next(err); }
@@ -84,7 +84,50 @@ exports.resetPwd = function (req,res,next) {
       return res.status(422).send({error:'Email does not exist, please try with another email '})
     }
 
-    console.log(existingUser,"USERRRRRRR")
+    //generate a random password of 
+    const newPassword = Math.random().toString(36).slice(2);
+
+    //send new password to the user
+    const transporter = nodemailer.createTransport({
+      service: 'Gmail',
+      auth : {
+        user: 'datafinititest@gmail.com',
+        pass: 'datafinitipwd'
+      }
+    });
+
+    const mailOptions = {
+    from: `"Datafiniti Challenge 👥" <datafinititest@gmail.com>`, // sender address
+    to: `datafinititest@gmail.com`, // list of receivers
+    subject: `Reset Password from Datafiniti Challenge`, // Subject line
+    text: `Hi`, // plaintext body
+    html: `<h1> Hello ${existingUser.name},  </h1>
+    <p>Please find below your new password : <ul><li><strong>${newPassword}</strong></li></ul></p>
+    <p> Regards,</p>
+    <p>Team Datafiniti Challenge 🐴</p>` // html body
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, function(error, info){
+    if(error){
+        return console.log(error);
+    }
+    console.log('Message sent: ' + info.response);
+});
+
+
+    existingUser.updatePassword(newPassword, function(err,hashedPwd){
+      if (err) { return next(err); }
+      User.findOneAndUpdate({ _id : existingUser.id }, { $set: {password : hashedPwd}},function(err, newUserPwd){
+        if(err) { return next(err); }
+        console.log(hashedPwd,'hashed on reset')
+        return res.status(204)        
+      } )
+
+    })
+
+
+
   })
 }
 
