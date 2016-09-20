@@ -126,8 +126,6 @@ exports.resetPwd = function (req,res,next) {
 
     })
 
-
-
   })
 }
 

@@ -3,85 +3,64 @@ import { Link } from 'react-router';
 import { connect } from  'react-redux';
 import { reduxForm } from 'redux-form';
 import * as actions from '../actions/index';
-
+import SignUp from './sign_up';
+import ResetPwd from './reset_pwd';
+import $ from 'jquery';
 
 class Login extends Component {
 
-onSubmit({ email, password}) {
-
+  onSubmit({ email, password}) {
     this.props.login({ email, password})
-
   }
 
-renderAlert(){
-  if(this.props.errorMessage){
-    return (
-      <div className='alert alert-danger'>
-        <strong>Oops!</strong>{this.props.errorMessage}
-      </div>
-      );
-  }
-}
-
-
-
-    render() {
-      const { fields:{email, password}, handleSubmit } = this.props
-
-
+  renderAlert(){
+    if(this.props.errorMessage){
       return (
-      <div className="top-margin">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-6 col-md-offset-3 col-lg-8 col-lg-offset-2">
-                <form onSubmit={ handleSubmit(this.onSubmit.bind(this)) }   className="form-horizontal panel-form">
-                  <fieldset>
-                    <div id="legend">
-                      <legend className="">Sign In</legend>
-                    </div>
-
-                    <div className="control-group">
-                      <label className="control-label">Email</label>
-                      <div className="controls">
-                        <input {...email}
-                          className="form-control input-lg"
-                    type='text'
-                    placeholder="type your email"
-                    />
-                    <div className='text-help' style={{color:'red'}}>
-                  {email.touched && email.error ? email.error : ''}
-                </div>
-                      </div>
-                    </div>
-
-                    <div className="control-group">
-                      <label className="control-label">Password</label>
-                      <div className="controls">
-                        <input {...password}
-                          className="form-control input-lg"
-                    type="password"
-                    placeholder="type your password"
-                  />
-                  <div className='text-help' style={{color:'red'}}>
-                  {password.touched && password.error ? password.error : ''}
-                 </div>
-                      </div>
-                    </div>
-
-                    <div className="control-group">
-                      <div className="controls">
-                        <p onClick={() => {this.props.authError('')}}>Don't have an account?<Link to={'sign_up'}><strong>Sign Up</strong></Link></p>
-                        <p onClick={() => {this.props.authError('')}}>Lost your password?<Link to={'resetpwd'}><strong>reset</strong></Link></p>
-                        {this.renderAlert()}
-                        <button className="btn btn-submit"  type="submit">Login</button>
-                      </div>
-                    </div>
-                </fieldset>
-              </form>
-          </div>
+        <div className='alert alert-danger'>
+          <strong>Oops!</strong>{this.props.errorMessage}
         </div>
+      );
+    }
+  }
+
+  render() {
+    const { fields:{email, password}, handleSubmit } = this.props
+    return (
+      <div className="container">  
+       
+        <div className="card"></div>
+
+        <div className="card">
+          <h1 className="title">Login</h1>
+          <form onSubmit={ handleSubmit(this.onSubmit.bind(this)) }>
+            <div className="input-container">
+              <input {...email} type="text" id="Username" required="required"/>
+              <label htmlFor="Username">Email</label>
+              <div className="bar"></div>
+              <div className='text-help' style={{color:'red'}}>
+                {email.touched && email.error ? email.error : ''}
+              </div>
+            </div>
+      
+            <div className="input-container">
+              <input {...password} type="password" id="Password" required="required"/>
+              <label htmlFor="Password">Password</label>
+              <div className="bar"></div>
+            </div>
+            
+            <div className="button-container">
+              <button><span>Go</span></button>
+            </div>
+            <div onClick={() => {this.props.authError('')}}className="footer"><p>Forgot your password?</p>
+            {this.renderAlert()}
+            </div>
+          </form>
+        </div>
+
+        <SignUp/>
+        <ResetPwd/>
+
       </div>
-    </div>
       );
     };
 };
@@ -91,12 +70,11 @@ renderAlert(){
 function validate(values){
   const errors = {};
 
-  if(!values.email){
-    errors.email = 'Please enter an email';
-  }
-
-  if(!values.password){
-    errors.password = 'Please enter a password';
+  if (values.email) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!re.test(values.email)) {
+      errors.email = 'Please enter valid email';
+    }
   }
 
   return errors;

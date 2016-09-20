@@ -1,7 +1,15 @@
+@import "bourbon/_bourbon";
+
+@import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css);
+
 // base and variables
 @import "base/colors";
-@import "base/typography";
 @import "base/default";
 
 // mixins
+$level: 1;
 @import "utils/mixins";
+
+//components
+@import "components/login";
+@import "components/dashboard";

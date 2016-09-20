@@ -1,13 +1,15 @@
 
-$primary-white : #F7F4EF;
-$primary-brown : #371C11;
-$primary-yellow : #FF9900;
-$primary-light-blue : #D3E9EA;
-$primary-orange : #FF4F04;
+// Main Colors
+$accent: null;
+$white: #ffffff;
+$black: #000000;
+$dark-gray: lighten($black, 20%);
+$gray: lighten($black, 40%);
+$light-gray: lighten($black, 60%);
+$lighter-gray: lighten($black, 80%);
 
-$secondary-orange : #F60;
-$hover-color : #A59F9F;
-
-$chat-white : #F5F5F5;
-$bright-white : #FFFFFF;
+// Pen Settings
+$primary: #363636;
+$accent: #ed2553;
+$max-width: 460px;
 

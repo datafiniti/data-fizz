@@ -57,8 +57,15 @@ export function signoutUser(){
     return { type: UNAUTH_USER }
 }
 
-export function resetPwd(email){
-  axios.put(`${ROOT_URL}/resetPwd`,{ email })
+export function resetPwd({email}){
+  return function(dispatch){
+    axios.put(`${ROOT_URL}/resetPwd`,{ email })
+        .then( () => {})
+        .catch(() => {
+          dispatch(authError('Bad Email Info'))
+        })
+    }
+
 }
 
 export function changePwd({password}){
