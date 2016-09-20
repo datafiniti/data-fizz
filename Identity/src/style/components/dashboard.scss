@@ -1,9 +1,15 @@
 @import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css);
 @import url(http://fonts.googleapis.com/css?family=Roboto:300);
-body {background:#34495e; font-family:'Roboto', sans-serif;}
+body {
+  background:#34495e; 
+  font-family:'Roboto', 
+  sans-serif;
+}
+
 #menu-nav {
   float:left;
-  width:100%; height:auto;
+  width:100%; 
+  height:auto;
   margin:30px 0;
   background-color:#ecf0f1;
   border-radius:4px;
@@ -12,20 +18,41 @@ body {background:#34495e; font-family:'Roboto', sans-serif;}
 }
 
 /* navigation bar */
-#navigation-bar {width:100%;}
-#navigation-bar ul {margin:0; padding:0; list-style:none; width:100%; border-radius:4px; overflow:hidden;}
-#navigation-bar li {float:left; padding:0; margin:0; list-style:none; width:20%;}
-#navigation-bar a {
-  color:#848484; font-size:20px; text-decoration:none; text-align:center;
+#navigation-bar {
+  width:100%;
+}
+#navigation-bar ul {
+  margin-left:20px; 
+  padding:0; 
+  list-style:none; 
+  width:100%; 
+  border-radius:4px; 
+  overflow:hidden;
+}
+
+#navigation-bar li {
+  float:left; 
+  padding:0; 
+  margin-right:20px; 
+  list-style:none; 
+  width:20%;
+}
+
+#navigation-bar p {
+  color:#848484; 
+  font-size:20px; 
+  text-decoration:none; 
+  text-align:center;
+  cursor:pointer;
   width:100%;
   padding:20px 0;
   display:block; position:relative;
   transition: all 0.3s ease;
 }
-#navigation-bar a:hover {color:#e74c3c;}
+#navigation-bar p:hover {color:#e74c3c;}
 /*  #navigation-bar li:first-child a {border-radius:4px 0 0 4px;}
 #navigation-bar li:last-child a {border-radius:0 4px 4px 0;}  */
-#navigation-bar a:before {
+#navigation-bar p:before {
   content:'';
   transition:all .4s ease-in-out;
   position:absolute; right:50%; left:50%; bottom:0;
@@ -33,5 +60,5 @@ body {background:#34495e; font-family:'Roboto', sans-serif;}
   height:2px;
   background-color:#e74c3c;
 } 
-#navigation-bar li:hover a:before, #navigation-bar a:hover:before {right:0; left:0;}
+#navigation-bar li:hover p:before, #navigation-bar p:hover:before {right:0; left:0;}
 #navigation-bar span {display:block;}

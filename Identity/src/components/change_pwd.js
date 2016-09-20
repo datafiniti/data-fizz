@@ -15,6 +15,7 @@ class ChangePwd extends Component {
   render(){
     const { fields:{password, passwordConfirm}, handleSubmit } = this.props
     return (
+      <div className='modal'>
       <div className="container">
         <div className="card"></div>  
         <div className="card">
@@ -40,9 +41,11 @@ class ChangePwd extends Component {
 
             <div className="button-container">
               <button><span>Change</span></button>
+              <button onClick={() => this.props.closeModal()}><span>Cancel</span></button>
             </div>
             <br/>
           </form>
+        </div>
         </div>
       </div>
     )

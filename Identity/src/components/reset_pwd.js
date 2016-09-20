@@ -8,6 +8,7 @@ class ResetPwd extends Component {
 
   onSubmit({email}){
     this.props.resetPwd({email})
+    this.props.closeModal()
   }
 
   renderAlert(){
@@ -25,27 +26,32 @@ class ResetPwd extends Component {
     const { fields:{email}, handleSubmit } = this.props
 
     return (
-      <div className="card malt">
-        <h1 className="title">Reset Password
-          <div className="close" onClick={ () => { $('.container').stop().removeClass('active') }}></div>
-        </h1>
-        
-        <form onSubmit={ handleSubmit(this.onSubmit.bind(this)) }>
-          <div className="input-container">
-            <input {...email} type="text" id="Username" required="required"/>
-            <label htmlFor="Username">Email</label>
-            <div className="bar"></div>
-            <div className='text-help' style={{color:'red'}}>
-              {email.touched && email.error ? email.error : ''}
+      <div className='modal'>
+        <div className="container">
+          <div className="card"></div>
+          <div className="card">
+          <h1 className="title">Reset Password
+          </h1>
+          
+          <form onSubmit={ handleSubmit(this.onSubmit.bind(this)) }>
+            <div className="input-container">
+              <input {...email} type="text" id="Username" required="required"/>
+              <label htmlFor="Username">Email</label>
+              <div className="bar"></div>
+              <div className='text-help' style={{color:'red'}}>
+                {email.touched && email.error ? email.error : ''}
+              </div>
             </div>
+          
+            <div className="button-container">
+              <button><span>Reset</span></button>
+              <button onClick={() => this.props.closeModal()}><span>Cancel</span></button>
+            </div>
+            <br/>
+            {this.renderAlert()}
+          </form>
           </div>
-        
-          <div className="button-container">
-            <button><span>Reset</span></button>
-          </div>
-          <br/>
-          {this.renderAlert()}
-        </form>
+        </div>
       </div>
     )
   }

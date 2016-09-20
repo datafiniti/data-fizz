@@ -9,6 +9,32 @@ import $ from 'jquery';
 
 class Login extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showModal: false,
+    }; 
+  }
+
+  HandleOnClick(){
+    this.setState({
+      showModal: true
+    },() => console.log(this.state.showModal))
+  }
+
+  CloseModal(){
+    this.setState({
+      showModal : false
+    })
+  }
+
+  Modal (){
+    if (this.state.showModal){
+      return <ResetPwd closeModal={this.CloseModal.bind(this)} />
+    }
+  }
+
   onSubmit({ email, password}) {
     this.props.login({ email, password})
   }
@@ -26,8 +52,9 @@ class Login extends Component {
   render() {
     const { fields:{email, password}, handleSubmit } = this.props
     return (
+      <div>
+      {this.Modal()}
       <div className="container">  
-       
         <div className="card"></div>
 
         <div className="card">
@@ -51,15 +78,14 @@ class Login extends Component {
             <div className="button-container">
               <button><span>Go</span></button>
             </div>
-            <div onClick={() => {this.props.authError('')}}className="footer"><p>Forgot your password?</p>
+            <div onClick={() => {this.props.authError('')}}className="footer"><p onClick={() => {this.HandleOnClick()}}>Forgot your password?</p>
             {this.renderAlert()}
             </div>
           </form>
         </div>
 
         <SignUp/>
-        <ResetPwd/>
-
+      </div>
       </div>
       );
     };
