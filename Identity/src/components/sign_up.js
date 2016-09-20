@@ -34,7 +34,7 @@ class SignUp extends Component {
             <input {...email} type="text" id="Username" required="required"/>
             <label htmlFor="Username">Email</label>
             <div className="bar"></div>
-            <div className='text-help' style={{color:'red'}}>
+            <div className='text-help' style={{color:'black'}}>
               {email.touched && email.error ? email.error : ''}
             </div>
           </div>
@@ -43,7 +43,7 @@ class SignUp extends Component {
             <input {...password} type="password" id="Password" required="required"/>
             <label htmlFor="Password">Password</label>
             <div className="bar"></div>
-            <div className='text-help' style={{color:'red'}}>
+            <div className='text-help' style={{color:'black'}}>
               {password.touched && password.error ? password.error : ''}
             </div>
           </div>
@@ -52,9 +52,6 @@ class SignUp extends Component {
             <input {...passwordConfirm} type="password" id="Repeat Password" required="required"/>
             <label htmlFor="Repeat Password">Repeat Password</label>
             <div className="bar"></div>
-            <div className='text-help' style={{color:'red'}}>
-              {passwordConfirm.touched && passwordConfirm.error ? passwordConfirm.error : ''}
-            </div>
           </div>
         
           <div className="button-container">
