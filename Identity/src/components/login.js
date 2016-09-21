@@ -20,7 +20,7 @@ class Login extends Component {
   HandleOnClick(){
     this.setState({
       showModal: true
-    },() => console.log(this.state.showModal))
+    })
   }
 
   CloseModal(){
@@ -110,7 +110,7 @@ function validate(values){
 
 function mapStateToProps(state){
   return {
-    errorMessage: state.auth.error, //from rootReducer (index.js in reducers)
+    errorMessage: state.auth.error,
   }
 }
 

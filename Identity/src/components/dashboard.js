@@ -17,7 +17,7 @@ class Dashboard extends Component {
   HandleOnClick(){
     this.setState({
       showModal: true
-    },() => console.log(this.state.showModal))
+    })
   }
 
   CloseModal(){

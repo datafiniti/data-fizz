@@ -6,7 +6,8 @@ const bcrypt = require('bcrypt-nodejs')
 const userSchema = new Schema({
   name : String,
   email: { type: String, unique:true } ,
-  password: String
+  password: String,
+  sessions : []
 });
 
 //On Save Hook, encrypt password
@@ -33,7 +34,6 @@ userSchema.pre('save',function(next){
 userSchema.methods.comparePassword = function(candidatePassword, callback) {
   bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
     if (err) { return callback(err); }
-
     callback(null, isMatch);
   })
 }

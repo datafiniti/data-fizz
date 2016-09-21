@@ -12,18 +12,12 @@ export function login({ email, password }) {
     // Submit email/password to the server
     axios.post(`${ROOT_URL}/login`,{ email, password }) //should see the Token in Network => Preview
         .then( response => {
-            //If request is good...
-            // - update state to indicate user is authenticated
             dispatch({ type: AUTH_USER })
-            // - Save the JWT token
             localStorage.setItem('token',response.data.token)
             localStorage.setItem('id',response.data.id)
-            // - redirect to the route '/'
             browserHistory.push('/dashboard');
         })
         .catch(() => {
-            //if request is bad...
-            // - Show an error to the server
             dispatch(authError('Bad Login Info'))
         })
     }
@@ -53,9 +47,20 @@ export function authError(error){
     }
 }
 export function signoutUser(){
+    const id = localStorage.getItem('id')
+    const token = localStorage.getItem('token')
     localStorage.removeItem('token');
-    return { type: UNAUTH_USER }
+    return function (dispatch){
+        axios.post(`${ROOT_URL}/logout`,{ id, token })
+        .then( (response) => {
+            dispatch({type: UNAUTH_USER})
+        })
+        .catch(() => {
+          dispatch(authError('Bad Email Info'))
+        })
+    }
 }
+
 
 export function resetPwd({email}){
   return function(dispatch){

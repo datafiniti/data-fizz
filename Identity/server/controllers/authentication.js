@@ -1,30 +1,89 @@
-const jwt = require('jwt-simple');
+const jwt = require('jsonwebtoken');
 const User = require('../models/user'); //grab all users
 const config = require('../config');
 const nodemailer = require('nodemailer');
 
 function tokenForUser(user){
   const timestamp = new Date().getTime();
-  return jwt.encode({ sub: user._id, iat: timestamp }, config.secret)
+  return jwt.sign({ id: user._id}, config.secret)
 }
 
 exports.login = function (req,res,next){
-  //User has already had their email and pwd auth'd
-  //We just need to give them a token
-  //req.user comes from passport in localSrtategy when return done(null,user) in success
-  User.findOne({email:req.body.email},function(err,user) {
-    if(err) { return next(err); }
-    if(!user) { return res.status(422).send({error:'wrong email or password'}); }
-    //compare passwords - is 'password' equal to user.password ?
-    user.comparePassword(req.body.password, function(err, isMatch) {
-      if (err) { return next(err); }
-      if(!isMatch) { return res.status(422).send({error:'wrong email or password'}); }
-      return res.send({ 
-        token : tokenForUser(user),
+  return new Promise (function(resolve, reject){
+    User.findOne({email:req.body.email},function(err,user) {
+      if(err) { return next(err); }
+      if(!user) { return res.status(422).send({error:'wrong email or password'}); }  
+      resolve(user)
+    })
+  }).then(function(user){
+      user.comparePassword(req.body.password, function(err, isMatch) {
+        if (err) { return next(err); }
+        if(!isMatch) { return res.status(422).send({error:'wrong email or password'}); }
+      })
+      return user;
+
+  }).then(function(user){
+    jwt.sign({ id: user._id}, config.secret, { expiresIn: 60*60*60 }, function(err, token) {
+      //filter user sessions
+      user.sessions = user.sessions.filter(function(session) {
+        return jwt.verify(session, config.secret) !== undefined
+      });
+
+      User.findOneAndUpdate({email:req.body.email}, { $set: {sessions : user.sessions}},function(err, newUser){
+        if(err) { return next(err); }
+        newUser.sessions.push(token) 
+        User.findOneAndUpdate({email:req.body.email}, { $set: {sessions : newUser.sessions}},function(err, sess){
+        if(err) { return next(err); }       
+        })
+
+    })
+
+    })
+
+  }).then(function(){
+    User.findOne({email:req.body.email},function(err,user) {
+      if(err) { return next(err); }
+
+      if(user.sessions.length > 1) {
+      const transporter = nodemailer.createTransport({
+      service: 'Gmail',
+      auth : {
+        user: 'datafinititest@gmail.com',
+        pass: 'datafinitipwd'
+      }
+    });
+
+    const mailOptions = {
+    from: `"Datafiniti Challenge 👥" <datafinititest@gmail.com>`, // sender address
+    to: `${user.email}`, // list of receivers
+    subject: `Notification from Datafiniti Challenge`, // Subject line
+    text: `Hi`,
+    html: `<h1> Hello ${user.name},  </h1>
+    <p>We inform you that you logged in at another location. If not, we may have a security issue in your account, please reset your <strong> password </strong></li></ul></p>
+    <p> Regards,</p>
+    <p>Team Datafiniti Challenge 🐴</p>` // html body
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, function(error, info){
+      if(error){
+        return console.log(error);
+      }
+      console.log('Message sent: ' + info.response);
+    });
+    }
+
+    res.send({ 
+        token : user.sessions.slice(-1),
         id : user._id 
       })
+
     })
   })
+  .catch(function(err) {
+     console.log(err);
+         res.send({message: 'error'});
+      })
 
 }
 
@@ -98,7 +157,7 @@ exports.resetPwd = function (req,res,next) {
 
     const mailOptions = {
     from: `"Datafiniti Challenge 👥" <datafinititest@gmail.com>`, // sender address
-    to: `datafinititest@gmail.com`, // list of receivers
+    to: `${existingUser.email}`, // list of receivers
     subject: `Reset Password from Datafiniti Challenge`, // Subject line
     text: `Hi`, // plaintext body
     html: `<h1> Hello ${existingUser.name},  </h1>
@@ -120,7 +179,6 @@ exports.resetPwd = function (req,res,next) {
       if (err) { return next(err); }
       User.findOneAndUpdate({ _id : existingUser.id }, { $set: {password : hashedPwd}},function(err, newUserPwd){
         if(err) { return next(err); }
-        console.log(hashedPwd,'hashed on reset')
         return res.status(204)        
       } )
 
@@ -131,7 +189,6 @@ exports.resetPwd = function (req,res,next) {
 
 exports.changePwd = function (req,res,next) {
   console.log("Received PUT at /changePwd");
-  console.log(req.body,'BOOOOODY')
   const id = req.body.id;
   const newPassword = req.body.password; 
 
@@ -151,6 +208,24 @@ exports.changePwd = function (req,res,next) {
 
     })
 
+  })
+}
+
+exports.logout = function (req,res,next){
+    const id = req.body.id;
+    const token = req.body.token;
+    User.findOne({ _id: id },function(err,user) {
+    if(err) { return next(err); }
+    if(!user){
+      return res.status(422).send({error:'No user for this id'})
+    }
+    
+    user.sessions.splice(user.sessions.indexOf(token), 1);
+
+    User.findOneAndUpdate({ _id : id }, { $set: {sessions : user.sessions}},function(err, sess){
+        if(err) { return next(err); }
+        return res.status(204).send({message: "Logged out." });       
+      } )
   })
 }
 
