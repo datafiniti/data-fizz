@@ -33,6 +33,7 @@ export function signupUser({name,password,email}) {
             .then( response => {
                 dispatch({ type: AUTH_USER})
                 localStorage.setItem('token',response.data.token)
+                localStorage.setItem('id',response.data.id)
                 browserHistory.push('/dashboard');
             })
             .catch(() => {
@@ -50,6 +51,7 @@ export function signoutUser(){
     const id = localStorage.getItem('id')
     const token = localStorage.getItem('token')
     localStorage.removeItem('token');
+    localStorage.removeItem('id');
     return function (dispatch){
         axios.post(`${ROOT_URL}/logout`,{ id, token })
         .then( (response) => {

@@ -219,7 +219,6 @@ exports.logout = function (req,res,next){
     if(!user){
       return res.status(422).send({error:'No user for this id'})
     }
-    
     user.sessions.splice(user.sessions.indexOf(token), 1);
 
     User.findOneAndUpdate({ _id : id }, { $set: {sessions : user.sessions}},function(err, sess){

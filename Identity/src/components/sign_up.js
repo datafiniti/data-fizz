@@ -55,7 +55,7 @@ class SignUp extends Component {
           </div>
         
           <div className="button-container">
-            <button><span>Next</span></button>
+            <button onClick={ () => { $('.container').stop().removeClass('active') }}><span>Next</span></button>
           </div>
         </form>
       </div>
