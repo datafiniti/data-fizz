@@ -1,0 +1,31 @@
+{
+  "name": "shortly-express",
+  "version": "0.0.1",
+  "description": "shortly using express",
+  "main": "shortly.js",
+  "repository": "",
+  "license": "Proprietary",
+  "private": true,
+  "scripts": {
+    "start": "./node_modules/.bin/nodemon --ignore node_modules shortly.js",
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha --bail --reporter nyan test/ServerSpec.js"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "1.0.8",
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.14.0",
+    "express-partials": "^0.3.0",
+    "knex": "^0.10.0",
+    "nodemon": "^1.2.1",
+    "request": "^2.34.0",
+    "sqlite3": "~3.1.1"
+  },
+  "devDependencies": {
+    "mocha": "^1.17.1",
+    "chai": "^1.9.0",
+    "supertest": "^1.2.0",
+    "supertest-as-promised": "^3.0.0"
+  }
+}
