@@ -9,7 +9,7 @@
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch"
   },
-  "author": "",
+  "author": "Sonam D. Kindy",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.2.1",
@@ -26,13 +26,21 @@
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
+    "axios": "^0.15.1",
     "babel-preset-stage-1": "^6.1.18",
+    "bluebird": "^3.4.6",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
     "lodash": "^3.10.1",
-    "react": "^0.14.3",
+    "mongoose": "^4.6.4",
+    "morgan": "^1.7.0",
+    "react": "^0.14.8",
     "react-dom": "^0.14.3",
     "react-redux": "^4.0.0",
     "react-router": "^2.0.1",
     "redux": "^3.0.4",
+    "redux-form": "^6.1.1",
+    "redux-thunk": "^2.1.0",
     "uuid": "^2.0.3"
   }
 }
