@@ -2,7 +2,7 @@ import {
   AUTH_USER,
   DEAUTH_USER,
   AUTH_ERROR,
-  CHANGE_AUTH,
+  CLEAR_AUTH_ERROR,
 } from '../actions/types';
 
 export default function(state = {}, action) {
@@ -13,8 +13,8 @@ export default function(state = {}, action) {
       return { ...state, authenticated: false};
     case AUTH_ERROR:
       return { ...state, error: action.payload };
-    case CHANGE_AUTH:
-      return action.payload;
+    case CLEAR_AUTH_ERROR:
+      return { ...state, error: false };
   }
   return state;
 }

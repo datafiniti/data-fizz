@@ -9,6 +9,6 @@
   min-width: 300px;
 }
 
-.error {
-  color: red;
+.error-snackbar>div>div>span {
+  color: #ff6961;
 }

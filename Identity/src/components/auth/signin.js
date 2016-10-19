@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { signinUser } from '../../actions';
 import { connect } from 'react-redux';
-import RaisedButton from 'material-ui/RaisedButton';
-import ActionInput from 'material-ui/svg-icons/action/input';
-import TextInput from '../text_input';
+import TextInput from '../common/text_input';
+import SubmitButton from '../common/submit_button';
+import ErrorDialog from '../common/error_dialog';
 
 const form = reduxForm({
   form: 'signin',
@@ -13,30 +13,29 @@ const form = reduxForm({
 
 class Signin extends Component {
   handleFormSubmit({ email, password }) {
+    // Call action creator to sign in user
     this.props.signinUser({ email, password });
   }
   renderAlert() {
-    if (this.props.errorMessage) {
+    const { errorMessage } = this.props;
+    if (errorMessage) {
       return (
-        <div className="alert alert-danger">
-          <strong>Oops!</strong> {this.props.errorMessage}
-        </div>
-      )
+        <ErrorDialog />
+      );
     }
   }
   render() {
     const { handleSubmit } = this.props;
-    console.log(this.props);
     return (
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
         <fieldset className="form-group">
-          <Field name="email" component={TextInput} type="email" placeholder="Email" />
+          <Field name="email" component={TextInput} type="email" label="Email" />
         </fieldset>
         <fieldset className="form-group">
-          <Field name="password" component={TextInput} type="password" placeholder="Password" />
+          <Field name="password" component={TextInput} type="password" label="Password" />
         </fieldset>
         {this.renderAlert()}
-        <button action="submit" className="btn btn-primary">Sign in</button>
+        <SubmitButton label="Sign In" />
       </form>
     );
   }

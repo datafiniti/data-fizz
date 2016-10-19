@@ -1,13 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 
 export default function(ComposedComponent) {
   class Authentication extends Component {
-    // add contextTypes on a class level property in order to have access to router
-    static contextTypes = { router: PropTypes.object };
     redirectNotAuthenticated() {
-      // replace with toastr then redirect
-      this.context.router.push('/');
+      // replace with snackbar/dialog then redirect
+      browserHistory.push('/');
     }
     componentWillMount() {
       if (!this.props.authenticated) {
@@ -24,7 +23,7 @@ export default function(ComposedComponent) {
     }
   }
   function mapStateToProps(state) {
-    return { authenticated: state.authenticated };
+    return { authenticated: state.auth.authenticated, };
   }
   return connect(mapStateToProps)(Authentication);
 }
