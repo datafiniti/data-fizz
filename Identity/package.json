@@ -32,6 +32,7 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "lodash": "^3.10.1",
+    "material-ui": "^0.16.0",
     "mongoose": "^4.6.4",
     "morgan": "^1.7.0",
     "react": "^0.14.8",
@@ -40,6 +41,7 @@
     "react-router": "^2.0.1",
     "redux": "^3.0.4",
     "redux-form": "^6.1.1",
+    "redux-logger": "^2.7.0",
     "redux-thunk": "^2.1.0",
     "uuid": "^2.0.3"
   }

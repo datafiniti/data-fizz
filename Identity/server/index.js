@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const app = express();
 const router = require('./router');
 const mongoose = require('mongoose');
+const cors = require('cors');
 mongoose.Promise = require('bluebird');
 
 // MongoDB setup
@@ -16,6 +17,7 @@ mongoose.connect(mongoUrl, err => {
 
 // App setup
 app.use(morgan('dev'));
+app.use(cors()); // allow cors (requests from different domains)
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 router(app);

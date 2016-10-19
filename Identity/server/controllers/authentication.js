@@ -38,7 +38,7 @@ exports.signup = (req, res, next) => {
   });
 }
 
-exports.login = (req, res, next) => {
+exports.signin = (req, res, next) => {
 	// try to find user document by email
 	// check if email and password match
 	// set login state
@@ -49,7 +49,7 @@ exports.login = (req, res, next) => {
 			if (err) return next(err);
 
 			if (!user) {
-				return cb({ error: 'Invalid email or password.' });
+				return res.status(401).send({ error: 'Invalid email or password.' });
 			}
 			// ( password attempt, db hash )
 			bcrypt.compare(password, user.password, (err, isCorrect) => {

@@ -5,10 +5,10 @@ import usersReducer from './users';
 import { reducer as formReducer } from 'redux-form';
 
 const rootReducer = combineReducers({
-  comments: commentsReducer,
-  authenticated: authenticationReducer,
-  users: usersReducer,
+  auth: authenticationReducer,
   form: formReducer,
+  comments: commentsReducer,
+  users: usersReducer,
 });
 
 export default rootReducer;

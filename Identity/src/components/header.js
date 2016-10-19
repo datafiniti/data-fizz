@@ -1,31 +1,32 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
 
 class Header extends Component {
-  authButton() {
-    const { authenticate, authenticated } = this.props;
-    return (
-      <button onClick={() => authenticate(!authenticated)}>
-        { authenticated ? 'Sign Out' : 'Sign In'}
-      </button>
-    );
+  renderLinks() {
+    if (this.props.authenticated) {
+      return (
+        <li className="nav-item">
+          <Link className="nav-link" to="/signout">Sign Out</Link>
+        </li>
+      );
+    } else {
+      return [
+        <li className="nav-item" key={1}>
+          <Link className="nav-link" to="/signin">Sign In</Link>
+        </li>,
+        <li className="nav-item" key={2}>
+          <Link className="nav-link" to="/signup">Sign Up</Link>
+        </li>,
+      ];
+    }
   }
-
   render() {
     return (
-      <nav className='header navbar navbar-light'>
-        <ul className='nav navbar-nav'>
-          <li className='nav-item'>
-            <Link to='/'>Home</Link>
-          </li>
-          <li className='nav-item'>
-            <Link to='/resources'>Resources</Link>
-          </li>
-          <li className='nav-item'>
-            {this.authButton()}
-          </li>
+      <nav className="header navbar navbar-light">
+        <Link to="/" className="navbar-brand">Home</Link>
+        <ul className="nav navbar-nav">
+          {this.renderLinks()}
         </ul>
       </nav>
     );
@@ -34,8 +35,8 @@ class Header extends Component {
 
 function mapStateToProps(state) {
   return {
-    authenticated: state.authenticated,
+    authenticated: state.auth.authenticated,
   }
 }
 
-export default connect(mapStateToProps, actions)(Header);
+export default connect(mapStateToProps)(Header);
