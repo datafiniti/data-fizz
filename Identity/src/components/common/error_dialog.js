@@ -18,7 +18,7 @@ class ErrorDialog extends Component {
 
     return (
         <Dialog
-          title="Oh no!"
+          title="NOTICE:"
           actions={actions}
           modal={false}
           open={this.props.errorMessage.length > 0}
