@@ -5,6 +5,8 @@ const bcrypt = require('bcryptjs');
 // Define model
 const userSchema = new mongoose.Schema({
 	email: { type: String, unique: true, lowercase: true },
+	name: String,
+	phoneNumber: String,
 	password: String,
 	activeSessions: [ { type: String, expires: '1d' } ],
 });

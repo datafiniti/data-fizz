@@ -14,6 +14,8 @@ function tokenForUser(user) {
 exports.signup = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
+  const name = req.body.name;
+  const phoneNumber = req.body.phoneNumber;
 	const origin = req.headers.origin;
   // See if email and password were passed in the req.body
   if (!email | !password) {
@@ -32,6 +34,8 @@ exports.signup = (req, res, next) => {
       email: email,
       password: password,
 			activeSessions: activeSessions,
+			name: name,
+			phoneNumber: phoneNumber,
     });
     user.save((err, savedUser) => {
       if (err) return next(err);
