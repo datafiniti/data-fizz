@@ -7,5 +7,6 @@ module.exports = app => {
   });
   app.post('/signup', Authentication.signup);
   app.post('/signin', Authentication.signin);
+  app.post('/signout', Authentication.signout);
   app.post('/feature', Authentication.authorize);
 }

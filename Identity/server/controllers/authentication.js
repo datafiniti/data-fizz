@@ -14,6 +14,7 @@ function tokenForUser(user) {
 exports.signup = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
+	const origin = req.headers.origin;
   // See if email and password were passed in the req.body
   if (!email | !password) {
     return res.status(422).send({ error: 'You must provide your email and password' });
@@ -26,9 +27,11 @@ exports.signup = (req, res, next) => {
       return res.status(422).send({ error: 'Email is already in use' });
     }
     // If a user with email does NOT exist, create and save user record
+		const activeSessions = [ origin ];
     const user = new User({
       email: email,
       password: password,
+			activeSessions: activeSessions,
     });
     user.save((err, savedUser) => {
       if (err) return next(err);
@@ -44,20 +47,38 @@ exports.signin = (req, res, next) => {
 	// set login state
 	const email = req.body.email;
 	const password = req.body.password;
+	const origin = req.headers.origin;
 	User.findOne({ email: email })
 		.exec((err, user) => {
 			if (err) return next(err);
-
 			if (!user) {
 				return res.status(401).send({ error: 'Invalid email or password.' });
 			}
 			// ( password attempt, db hash )
 			bcrypt.compare(password, user.password, (err, isCorrect) => {
 				if (err || !isCorrect) return res.status(401).send(err || { error: 'Invalid email or password.' });
-				res.json({ token: tokenForUser(user) });
+				user.activeSessions.push(origin);
+				user.save((err, savedUser) => {
+					if (err) return next(err);
+					res.json({ token: tokenForUser(savedUser) });
+				})
 			});
 		});
-};
+}
+
+exports.signout = (req, res, next) => {
+	const userId = req.body.userId;
+	const origin = req.headers.origin;
+	User.findOne({ _id: userId }, (err, existingUser) => {
+		if (err) return next(err);
+		const index = existingUser.activeSessions.indexOf(origin);
+		existingUser.activeSessions.splice(index, 1);
+		existingUser.save((err, savedUser) => {
+			if (err) return next(err);
+			res.json({ message: `Success - user with ID ${savedUser._id} signed out.` });
+		});
+	});
+}
 
 exports.authorize = (req, res, next) => {
 	const token = req.headers.authorization;
