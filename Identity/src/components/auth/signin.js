@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import TextInput from '../common/text_input';
 import SubmitButton from '../common/submit_button';
 import ErrorDialog from '../common/error_dialog';
+import ActionInput from 'material-ui/svg-icons/action/input';
 
 const form = reduxForm({
   form: 'signin',
@@ -17,8 +18,7 @@ class Signin extends Component {
     this.props.signinUser({ email, password });
   }
   renderAlert() {
-    const { errorMessage } = this.props;
-    if (errorMessage) {
+    if (this.props.errorMessage) {
       return (
         <ErrorDialog />
       );
@@ -35,7 +35,7 @@ class Signin extends Component {
           <Field name="password" component={TextInput} type="password" label="Password" />
         </fieldset>
         {this.renderAlert()}
-        <SubmitButton label="Sign In" />
+        <SubmitButton label="Sign In" icon={<ActionInput />} />
       </form>
     );
   }
