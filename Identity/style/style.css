@@ -9,6 +9,10 @@ nav.header.navbar.navbar-light {
 }
 
 .card {
-  width: 30%;
-  min-width: 21.5rem;
+  text-align: center;
+  width: 21.5rem;
+}
+
+div.card.card-block>p.card-text {
+  margin-bottom: 0rem;
 }
