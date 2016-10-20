@@ -17,7 +17,6 @@ import Signout from './components/auth/signout';
 import Feature from './components/content/feature';
 import reducers from './reducers';
 import { authUser } from './actions';
-import { AUTH_USER } from './actions/types';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 const store = createStoreWithMiddleware(reducers);
