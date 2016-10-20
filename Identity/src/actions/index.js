@@ -6,20 +6,18 @@ import {
   DEAUTH_USER,
   AUTH_ERROR,
   CLEAR_AUTH_ERROR,
-  SAVE_COMMENT,
-  FETCH_DATA,
-  RECEIVE_DATA,
+  FETCH_USER,
 } from './types';
 import { browserHistory } from 'react-router';
 
 const ROOT_URL = 'http://localhost:3080';
 
-export function signupUser({ email, password }) {
+export function signupUser(user) {
   return function (dispatch) {
     // Making use of redux thunk to return a function (allowing access to dispatch)
     // i.e., allowing for asynchronous decision making/requests and then dispatching an action
     // Submit email/password to server
-    return axios.post(`${ROOT_URL}/signup`, { email, password })
+    return axios.post(`${ROOT_URL}/signup`, user)
       .then(response => {
         // If request is good...
         // - Save the JWT to local storage
@@ -107,7 +105,6 @@ export function authError(error) {
   };
 }
 
-
 export function clearAuthError() {
   return {
     type: CLEAR_AUTH_ERROR,
@@ -115,24 +112,26 @@ export function clearAuthError() {
   };
 }
 
-
-export function saveComment(comment) {
-  return {
-    type: SAVE_COMMENT,
-    payload: comment,
-  };
-}
-
-export function fetchData() {
+export function fetchUser() {
   return function(dispatch) {
-    axios.get(ROOT_URL, {
+    axios.get(`${ROOT_URL}/profile`, {
       headers: { authorization: localStorage.getItem('token') }
     })
       .then(response => {
+        const user = response.data;
+        const numOfActiveSessions = user.activeSessions.length;
         dispatch({
-          type: FETCH_DATA,
-          payload: response.data.message,
+          type: FETCH_USER,
+          payload: user,
         });
+        if (numOfActiveSessions > 1) {
+          dispatch(
+            authError(
+            `You're signed in on ${numOfActiveSessions - 1} other device(s).
+            Change your password if you believe someone else may have signed in to your account.`
+            )
+          );
+        }
       })
       .catch(({response}) => {
         // If authorization header not included for some weird reason...
