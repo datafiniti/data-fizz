@@ -12,7 +12,7 @@ class ErrorDialog extends Component {
         label="Got it"
         primary={true}
         keyboardFocused={true}
-        onClick={this.props.clearAuthError}
+        onTouchTap={this.props.clearAuthError}
       />,
     ];
 
@@ -21,7 +21,7 @@ class ErrorDialog extends Component {
           title="Oh no!"
           actions={actions}
           modal={false}
-          open={this.props.errorMessage.length}
+          open={this.props.errorMessage.length > 0}
           onRequestClose={this.props.clearAuthError}
         >
           { this.props.errorMessage }

@@ -5,7 +5,6 @@ const App = ({children}) => {
   return (
     <div>
       <Header />
-      <h1>Welcome!</h1>
       {children}
     </div>
   );

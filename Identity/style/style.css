@@ -1,3 +1,7 @@
+nav.header.navbar.navbar-light {
+  padding: 0.5rem 0rem;
+}
+
 .user-list {
   display: flex;
   justify-content: space-around;
@@ -6,9 +10,5 @@
 
 .card {
   width: 30%;
-  min-width: 300px;
-}
-
-.error-snackbar>div>div>span {
-  color: #ff6961;
+  min-width: 21.5rem;
 }
