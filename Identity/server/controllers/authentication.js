@@ -60,11 +60,10 @@ exports.signin = (req, res, next) => {
 };
 
 exports.authorize = (req, res, next) => {
-	const tokenHeader = req.headers.authorization;
-	if (!tokenHeader) {
+	const token = req.headers.authorization;
+	if (!token) {
 		return res.status(401).send({ error: 'Missing authorization header.' });
 	}
-	const token = tokenHeader.split(' ')[1];
 	jwt.verify(token, config.JWT_SECRET, (err, payload) => {
 		if (err) return res.status(401).send(err);
 		User.findById(payload._id, (err, user) => {
