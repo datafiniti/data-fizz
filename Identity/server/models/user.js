@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
 	name: String,
 	phoneNumber: String,
 	password: String,
+	passwordResetToken: { type: String, expires: '1d' },
 	activeSessions: [ { type: String, expires: '1d' } ],
 });
 

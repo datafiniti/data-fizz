@@ -143,13 +143,16 @@ export function fetchUser() {
 
 export function updateUser(user) {
   return function(dispatch) {
-    const params = { user };
+    const params = user;
     const config = {
         headers: {
           authorization: localStorage.getItem('token')
         }
     };
-    const url = user.password ? `${ROOT_URL}/account/edit/password` : `${ROOT_URL}/account/edit`;
+    let url = `${ROOT_URL}/account/edit`;
+    if (user.password || user.newPassword) {
+      url += '/password';
+    }
     axios.put(url, params, config)
       .then(response => {
         dispatch({
@@ -159,6 +162,24 @@ export function updateUser(user) {
       })
       .catch(({response}) => {
         // If authorization header not included for some weird reason...
+        dispatch(authError(response.data.error));
+      });
+  }
+}
+
+export function requestPasswordReset(user) {
+  return function(dispatch) {
+    const params = { user };
+    const url = `${ROOT_URL}/account/request/password/reset`;
+    axios.post(url, params)
+      .then(response => {
+        dispatch({
+          type: REQUEST_PASSWORD_RESET,
+          payload: response.data,
+        });
+      })
+      .catch(({response}) => {
+        // if there's an error with the backend -- db or nodemailer
         dispatch(authError(response.data.error));
       });
   }

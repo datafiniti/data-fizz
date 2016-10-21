@@ -26,7 +26,7 @@ class Header extends Component {
           <Link className="nav-link" to="/signup">Sign Up</Link>
         </li>,
         <li className="nav-item" key={uuid()}>
-          <Link className="nav-link" to="/reset-password">Help! I forgot my password</Link>
+          <Link className="nav-link" to="/reset-password">Forgot Your Password?</Link>
         </li>,
       ];
     }

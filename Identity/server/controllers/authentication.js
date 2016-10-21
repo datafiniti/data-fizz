@@ -1,8 +1,24 @@
 'use strict';
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const nodemailer = require('nodemailer');
 const config = require('../config');
 const User = require('../models/user');
+const uuid = require('uuid');
+const PORT = process.env.PORT || 8080;
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: config.NODE_MAILER_FROM.from,
+      pass: config.JWT_SECRET
+    }
+});
+
+const emailOptions = {
+	from: '"Datafiniti" <noreply@datafiniti.com>', // sender address
+	subject: 'Your Password Reset Is Here ✔', // Subject line
+}
 
 function tokenForUser(user) {
 	const payload = { _id: user._id };
@@ -74,23 +90,65 @@ exports.editPassword = (req, res, next) => {
 	// try to find user document by email
 	// check if email and password match
 	// set login state
+	const password = req.body.password;
+	const newPassword = req.body.newPassword;
+	const passwordResetToken = req.body.passwordResetToken;
+  const query = passwordResetToken ? { _id: req.body.userId } : { email: req.body.email };
+	User.findOne(query)
+		.exec((err, user) => {
+			if (err) return next(err);
+			if (!user) {
+				return res.status(401).send({ error: 'Invalid email or password.' });
+			}
+      if (passwordResetToken) {
+        if (user.passwordResetToken === passwordResetToken) {
+          user.password = newPassword;
+          user.passwordResetToken = null;
+          user.save((err, savedUser) => {
+  					if (err) return next(err);
+  					return res.json({ token: tokenForUser(savedUser) });
+  				});
+        } else {
+          return res.status(401).send({ error: 'Password reset token is invalid.' });
+        }
+      } else {
+        // ( password attempt, db hash )
+        bcrypt.compare(password, user.password, (err, isCorrect) => {
+          if (err || !isCorrect) return res.status(401).send(err || { error: 'Invalid password.' });
+          user.password = newPassword;
+          user.save((err, savedUser) => {
+            if (err) return next(err);
+            return res.json({ token: tokenForUser(savedUser) });
+          });
+        });
+      }
+		});
+}
+
+exports.requestPasswordReset = (req, res, next) => {
+	// try to find user document by email
+	// check if email and password match
+	// set login state
 	const email = req.body.user.email;
-	const password = req.body.user.password;
-	const newPassword = req.body.user.newPassword;
 	User.findOne({ email: email })
 		.exec((err, user) => {
 			if (err) return next(err);
 			if (!user) {
 				return res.status(401).send({ error: 'Invalid email or password.' });
 			}
-			// ( password attempt, db hash )
-			bcrypt.compare(password, user.password, (err, isCorrect) => {
-				if (err || !isCorrect) return res.status(401).send(err || { error: 'Invalid password.' });
-				user.password = newPassword;
-				user.save((err, savedUser) => {
-					if (err) return next(err);
-					res.json({ token: tokenForUser(savedUser) });
-				})
+      user.passwordResetToken = uuid();
+      const url = `http://localhost:${PORT}/reset-password/${user._id}/${user.passwordResetToken}`;
+      emailOptions.to = user.email;
+      emailOptions.text = `Visit this link: ${url} to reset your password.`;
+      emailOptions.html = `Visit this link: <a href=${url}>${url}</a> to reset your password.`;
+			transporter.sendMail(emailOptions, (error, info) => {
+        if (error) {
+          return res.status(400).send(error);
+        }
+        user.save((err, savedUser) => {
+    			if (err) return next(err);
+          res.json({ passwordResetToken: savedUser.passwordResetToken });
+    		});
 			});
 		});
 }

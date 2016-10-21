@@ -19,6 +19,8 @@
     "express": "^4.14.0",
     "jsonwebtoken": "^7.1.9",
     "mongoose": "^4.6.4",
-    "morgan": "^1.7.0"
+    "morgan": "^1.7.0",
+    "nodemailer": "^2.6.4",
+    "uuid": "^2.0.3"
   }
 }

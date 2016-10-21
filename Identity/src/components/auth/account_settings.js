@@ -18,7 +18,7 @@ class AccountSettings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      editingPassword: false,
+      editingKnownPassword: false,
     };
   }
   componentWillMount() {
@@ -42,7 +42,7 @@ class AccountSettings extends Component {
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
         <h1>My Account Settings</h1>
         {
-          this.state.editingPassword ?
+          this.state.editingKnownPassword ?
           [
             <fieldset className="form-group" key={uuid()}>
               <Field name="password" component={TextInput} type="password" label="Current Password" />
@@ -71,8 +71,8 @@ class AccountSettings extends Component {
         <SubmitButton disabled={pristine || submitting} label="Save" />
         <SubmitButton
           type="button"
-          onClick={() => this.setState({editingPassword: !this.state.editingPassword})}
-          label={this.state.editingPassword ? 'Cancel' : 'Change Password'}/>
+          onClick={() => this.setState({editingKnownPassword: !this.state.editingKnownPassword})}
+          label={this.state.editingKnownPassword ? 'Cancel' : 'Change Password'}/>
       </form>
     );
   }

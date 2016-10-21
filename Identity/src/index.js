@@ -41,6 +41,7 @@ ReactDOM.render(
           <Route path='feature' component={RequireAuth(Feature)} />
           <Route path='account-settings/:userId' component={RequireAuth(AccountSettings)} />
           <Route path='reset-password' component={ResetPassword} />
+          <Route path='reset-password/:userId/:passwordResetToken' component={ResetPassword} />
         </Route>
       </Router>
     </MuiThemeProvider>

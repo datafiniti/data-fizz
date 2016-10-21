@@ -6,6 +6,7 @@ import SubmitButton from '../common/submit_button';
 import ErrorDialog from '../common/error_dialog';
 import ActionInput from 'material-ui/svg-icons/action/input';
 import * as actions from '../../actions';
+import uuid from 'uuid';
 
 const form = reduxForm({
   form: 'reset-password',
@@ -13,9 +14,41 @@ const form = reduxForm({
 });
 
 class ResetPassword extends Component {
-  handleFormSubmit({ email, password }) {
+  constructor(props) {
+    super(props);
+    this.state = {
+      haveResetPasswordToken: false,
+    }
+  }
+  componentWillMount() {
+    if (this.props.params.passwordResetToken) {
+      this.setState({ haveResetPasswordToken: true });
+    } else {
+      this.setState({ haveResetPasswordToken: false });
+    }
+  }
+  handleFormSubmit({ email, newPassword }) {
+    const { passwordResetToken, userId } = this.props.params;
     // Call action creator to sign in user
-    // this.props.signinUser({ email, password });
+    if (this.props.params.passwordResetToken) {
+      this.props.updateUser({ newPassword, userId, passwordResetToken });
+    } else {
+      this.props.requestPasswordReset({ email });
+    }
+  }
+  renderFields() {
+    const { haveResetPasswordToken } = this.state;
+    const names = haveResetPasswordToken ? ["newPassword", "newPasswordConfirm"] : ["email", "emailConfirm"];
+    const labels = haveResetPasswordToken ? ["New Password", "Confirm New Password"] : ["Email", "Confirm Email"];
+    const type = haveResetPasswordToken ? "password" : "email";
+    return [
+      <fieldset className="form-group" key={uuid()}>
+        <Field name={names[0]} component={TextInput} type={type} label={labels[0]} />
+      </fieldset>,
+      <fieldset className="form-group" key={uuid()}>
+        <Field name={names[1]} component={TextInput} type={type} label={labels[1]} />
+      </fieldset>,
+    ];
   }
   renderAlert() {
     if (this.props.errorMessage) {
@@ -33,12 +66,7 @@ class ResetPassword extends Component {
           Enter your email and one more time to confirm it
           and we'll send you an email with a link to reset your password.
         </em>
-        <fieldset className="form-group">
-          <Field name="email" component={TextInput} type="email" label="Email" />
-        </fieldset>
-        <fieldset className="form-group">
-          <Field name="emailConfirm" component={TextInput} type="email" label="Confirm Email" />
-        </fieldset>
+        {this.renderFields()}
         {this.renderAlert()}
         <SubmitButton label="Submit" />
       </form>
@@ -48,7 +76,7 @@ class ResetPassword extends Component {
 
 function validate(values) {
   const errors = {};
-  const requiredFields = [ 'email' ];
+  const requiredFields = [ 'email', 'emailConfirm', 'newPassword', 'newPasswordConfirm' ];
   requiredFields.forEach(field => {
     if(!values[field]) {
       errors[field] = 'Required';
@@ -64,6 +92,11 @@ function validate(values) {
     const emailMatchError = 'Emails must match';
     errors.email = emailMatchError;
     errors.emailConfirm = emailMatchError;
+  }
+  if (values.newPassword !== values.newPasswordConfirm && !errors.newPassword && !errors.newPasswordConfirm) {
+    const passwordMatchError = 'Passwords must match';
+    errors.newPassword = passwordMatchError;
+    errors.newPasswordConfirm = passwordMatchError;
   }
   return errors;
 }

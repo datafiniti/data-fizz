@@ -28,9 +28,8 @@ export default function(state = initState, action) {
         authenticated: false,
       };
     case AUTH_ERROR:
-      return { ...state, error: action.payload };
     case CLEAR_AUTH_ERROR:
-      return { ...state, error: null };
+      return { ...state, error: action.payload };
     case FETCH_USER:
     case UPDATE_USER:
       return { ...state, user: action.payload };
