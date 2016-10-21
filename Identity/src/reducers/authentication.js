@@ -4,6 +4,7 @@ import {
   AUTH_ERROR,
   CLEAR_AUTH_ERROR,
   FETCH_USER,
+  UPDATE_USER,
 } from '../actions/types';
 
 const initState = {
@@ -31,6 +32,7 @@ export default function(state = initState, action) {
     case CLEAR_AUTH_ERROR:
       return { ...state, error: null };
     case FETCH_USER:
+    case UPDATE_USER:
       return { ...state, user: action.payload };
   }
   return state;
