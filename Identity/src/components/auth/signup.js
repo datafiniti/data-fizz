@@ -14,7 +14,6 @@ const form = reduxForm({
 
 class Signup extends Component {
   handleFormSubmit({ email, password, name, phoneNumber }) {
-    console.log(name, phoneNumber);
     // Call action creator to sign up user
     this.props.signupUser({ email, password, name, phoneNumber });
   }
@@ -63,7 +62,7 @@ function validate(values) {
   if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = 'Invalid. Correct format: user@example.com';
   }
-  if (values.phoneNumber && !/\d{3}-\d{3}-\d{4}/.test(values.phoneNumber)) {
+  if (values.phoneNumber && !/\d{3}-\d{3}-\d{4}$/.test(values.phoneNumber)) {
     errors.phoneNumber = 'Invalid. Correct format: 123-456-7890';
   }
   if (values.password !== values.passwordConfirm) {
