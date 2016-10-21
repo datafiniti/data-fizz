@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
@@ -8,28 +8,32 @@ class Header extends Component {
     if (this.props.authenticated) {
       return [
         <li className="nav-item" key={uuid()}>
-          <Link className="nav-link" to={`/feature`}>Profile</Link>
+          <Link className="nav-link" to={'/feature'}>Profile</Link>
         </li>,
         <li className="nav-item" key={uuid()}>
-          <Link className="nav-link" to={`/account-settings/${this.props.userId}`}>Account Settings</Link>
+          <Link
+            className="nav-link"
+            to={`/account-settings/${this.props.userId}`}
+          >
+            Account Settings
+          </Link>
         </li>,
         <li className="nav-item" key={uuid()}>
           <Link className="nav-link" to="/signout">Sign Out</Link>
         </li>,
       ];
-    } else {
-      return [
-        <li className="nav-item" key={uuid()}>
-          <Link className="nav-link" to="/signin">Sign In</Link>
-        </li>,
-        <li className="nav-item" key={uuid()}>
-          <Link className="nav-link" to="/signup">Sign Up</Link>
-        </li>,
-        <li className="nav-item" key={uuid()}>
-          <Link className="nav-link" to="/reset-password">Forgot Your Password?</Link>
-        </li>,
-      ];
     }
+    return [
+      <li className="nav-item" key={uuid()}>
+        <Link className="nav-link" to="/signin">Sign In</Link>
+      </li>,
+      <li className="nav-item" key={uuid()}>
+        <Link className="nav-link" to="/signup">Sign Up</Link>
+      </li>,
+      <li className="nav-item" key={uuid()}>
+        <Link className="nav-link" to="/reset-password">Forgot Your Password?</Link>
+      </li>,
+    ];
   }
   render() {
     return (
@@ -49,7 +53,12 @@ function mapStateToProps(state) {
   return {
     authenticated: state.auth.authenticated,
     userId: state.auth.userId,
-  }
+  };
 }
+
+/* eslint react/prop-types: 0 */
+Header.propTypes = {
+  userId: PropTypes.string,
+};
 
 export default connect(mapStateToProps)(Header);

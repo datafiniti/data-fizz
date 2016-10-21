@@ -1,37 +1,33 @@
-import React, { Component } from 'react';
+import React, { PropTypes } from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import { connect } from 'react-redux';
-import * as actions from '../../actions/';
 
-class ErrorDialog extends Component {
+/* eslint react/jsx-boolean-value: 0 */
+const ErrorDialog = ({ errorMessage, clearAuthError }) => {
+  const buttons = [
+    <FlatButton
+      label="Got it"
+      primary={true}
+      keyboardFocused={true}
+      onTouchTap={clearAuthError}
+    />,
+  ];
+  return (
+    <Dialog
+      title="NOTICE:"
+      actions={buttons}
+      modal={false}
+      open={errorMessage.length > 0}
+      onRequestClose={clearAuthError}
+    >
+      {errorMessage}
+    </Dialog>
+  );
+};
 
-  render() {
-    const actions = [
-      <FlatButton
-        label="Got it"
-        primary={true}
-        keyboardFocused={true}
-        onTouchTap={this.props.clearAuthError}
-      />,
-    ];
+ErrorDialog.propTypes = {
+  errorMessage: PropTypes.string.isRequired,
+  clearAuthError: PropTypes.func.isRequired,
+};
 
-    return (
-        <Dialog
-          title="NOTICE:"
-          actions={actions}
-          modal={false}
-          open={this.props.errorMessage.length > 0}
-          onRequestClose={this.props.clearAuthError}
-        >
-          { this.props.errorMessage }
-        </Dialog>
-    );
-  }
-}
-
-function mapStateToProps(state) {
-  return { errorMessage: state.auth.error };
-}
-
-export default connect(mapStateToProps, actions)(ErrorDialog);
+export default ErrorDialog;

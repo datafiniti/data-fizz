@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import TextField from 'material-ui/TextField';
 
-export default ({ input, type, label, meta: { touched, error }, ...custom }) => (
+const TextInput = ({ input, type, label, meta: { touched, error } }) => (
   <TextField
     type={type}
     hintText={label}
@@ -9,6 +9,16 @@ export default ({ input, type, label, meta: { touched, error }, ...custom }) => 
     errorText={touched && error}
     {...input}
     value={input.value || ''}
-    {...custom}
   />
 );
+
+TextInput.propTypes = {
+  type: PropTypes.string,
+  input: PropTypes.object,
+  label: PropTypes.string,
+  meta: PropTypes.object,
+  onClick: PropTypes.func,
+  value: PropTypes.string,
+};
+
+export default TextInput;
