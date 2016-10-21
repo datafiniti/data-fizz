@@ -14,6 +14,8 @@ import Welcome from './components/content/welcome';
 import Signup from './components/auth/signup';
 import Signin from './components/auth/signin';
 import Signout from './components/auth/signout';
+import AccountSettings from './components/auth/account_settings';
+import ResetPassword from './components/auth/reset_password';
 import Feature from './components/content/feature';
 import reducers from './reducers';
 import { authUser } from './actions';
@@ -37,6 +39,8 @@ ReactDOM.render(
           <Route path='signin' component={Signin} />
           <Route path='signout' component={Signout} />
           <Route path='feature' component={RequireAuth(Feature)} />
+          <Route path='account-settings/:userId' component={RequireAuth(AccountSettings)} />
+          <Route path='reset-password' component={ResetPassword} />
         </Route>
       </Router>
     </MuiThemeProvider>
