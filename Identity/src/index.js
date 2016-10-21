@@ -8,7 +8,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
-import RequireAuth from './components/hoc/require_authentication';
+import requireAuth from './components/hoc/require_authentication';
 import App from './components/app';
 import Welcome from './components/content/welcome';
 import Signup from './components/auth/signup';
@@ -33,15 +33,15 @@ ReactDOM.render(
   <Provider store={store}>
     <MuiThemeProvider>
       <Router history={browserHistory}>
-        <Route path='/' component={App}>
+        <Route path="/" component={App}>
           <IndexRoute component={Welcome} />
-          <Route path='signup' component={Signup} />
-          <Route path='signin' component={Signin} />
-          <Route path='signout' component={Signout} />
-          <Route path='feature' component={RequireAuth(Feature)} />
-          <Route path='account-settings/:userId' component={RequireAuth(AccountSettings)} />
-          <Route path='reset-password' component={ResetPassword} />
-          <Route path='reset-password/:userId/:passwordResetToken' component={ResetPassword} />
+          <Route path="signup" component={Signup} />
+          <Route path="signin" component={Signin} />
+          <Route path="signout" component={Signout} />
+          <Route path="feature" component={requireAuth(Feature)} />
+          <Route path="account-settings/:userId" component={requireAuth(AccountSettings)} />
+          <Route path="reset-password" component={ResetPassword} />
+          <Route path="reset-password/:userId/:passwordResetToken" component={ResetPassword} />
         </Route>
       </Router>
     </MuiThemeProvider>
