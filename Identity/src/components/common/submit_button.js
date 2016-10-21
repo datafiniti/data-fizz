@@ -1,12 +1,14 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
-export default ({ label, icon, ...custom }) => (
+export default ({ type, disabled, label, icon, onClick, ...custom }) => (
   <RaisedButton
-    type="submit"
+    type={type || "submit"}
     label={label}
-    labelPosition="before"
     primary={true}
+    labelPosition="before"
     icon={icon}
+    disabled={disabled}
+    onClick={onClick}
   />
 );

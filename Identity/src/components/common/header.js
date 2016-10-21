@@ -1,22 +1,32 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import uuid from 'uuid';
 
 class Header extends Component {
   renderLinks() {
     if (this.props.authenticated) {
-      return (
-        <li className="nav-item">
+      return [
+        <li className="nav-item" key={uuid()}>
+          <Link className="nav-link" to={`/feature`}>Profile</Link>
+        </li>,
+        <li className="nav-item" key={uuid()}>
+          <Link className="nav-link" to={`/account-settings/${this.props.userId}`}>Account Settings</Link>
+        </li>,
+        <li className="nav-item" key={uuid()}>
           <Link className="nav-link" to="/signout">Sign Out</Link>
-        </li>
-      );
+        </li>,
+      ];
     } else {
       return [
-        <li className="nav-item" key={1}>
+        <li className="nav-item" key={uuid()}>
           <Link className="nav-link" to="/signin">Sign In</Link>
         </li>,
-        <li className="nav-item" key={2}>
+        <li className="nav-item" key={uuid()}>
           <Link className="nav-link" to="/signup">Sign Up</Link>
+        </li>,
+        <li className="nav-item" key={uuid()}>
+          <Link className="nav-link" to="/reset-password">Help! I forgot my password</Link>
         </li>,
       ];
     }
@@ -38,6 +48,7 @@ class Header extends Component {
 function mapStateToProps(state) {
   return {
     authenticated: state.auth.authenticated,
+    userId: state.auth.userId,
   }
 }
 
