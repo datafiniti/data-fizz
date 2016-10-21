@@ -13,8 +13,6 @@ nav.header.navbar.navbar-light {
   width: 21.5rem;
 }
 
-div.card.card-block {
-  p.card-text {
-    margin-bottom: 0rem;
-  }
+div.card.card-block>p.card-text {
+  margin-bottom: 0rem;
 }
