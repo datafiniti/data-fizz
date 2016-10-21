@@ -7,6 +7,7 @@ import {
   AUTH_ERROR,
   CLEAR_AUTH_ERROR,
   FETCH_USER,
+  UPDATE_USER,
 } from './types';
 import { browserHistory } from 'react-router';
 
@@ -114,7 +115,7 @@ export function clearAuthError() {
 
 export function fetchUser() {
   return function(dispatch) {
-    axios.get(`${ROOT_URL}/profile`, {
+    axios.get(`${ROOT_URL}/account`, {
       headers: { authorization: localStorage.getItem('token') }
     })
       .then(response => {
@@ -132,6 +133,29 @@ export function fetchUser() {
             )
           );
         }
+      })
+      .catch(({response}) => {
+        // If authorization header not included for some weird reason...
+        dispatch(authError(response.data.error));
+      });
+  }
+}
+
+export function updateUser(user) {
+  return function(dispatch) {
+    const params = { user };
+    const config = {
+        headers: {
+          authorization: localStorage.getItem('token')
+        }
+    };
+    const url = user.password ? `${ROOT_URL}/account/edit/password` : `${ROOT_URL}/account/edit`;
+    axios.put(url, params, config)
+      .then(response => {
+        dispatch({
+          type: UPDATE_USER,
+          payload: response.data,
+        });
       })
       .catch(({response}) => {
         // If authorization header not included for some weird reason...

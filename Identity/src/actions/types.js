@@ -5,3 +5,4 @@ export const AUTH_SUCCESS = 'auth_success';
 export const AUTH_ERROR = 'auth_error';
 export const CLEAR_AUTH_ERROR = 'clear_auth_error';
 export const FETCH_USER = 'fetch_user';
+export const UPDATE_USER = 'update_user';
