@@ -5,14 +5,15 @@ import {
   CLEAR_AUTH_ERROR,
   FETCH_USER,
   UPDATE_USER,
+  REQUEST_PASSWORD_RESET,
 } from '../actions/types';
 
 const initState = {
   userId: null,
   user: {},
-}
+};
 
-export default function(state = initState, action) {
+export default function (state = initState, action) {
   switch (action.type) {
     case AUTH_USER:
       return {
@@ -33,6 +34,12 @@ export default function(state = initState, action) {
     case FETCH_USER:
     case UPDATE_USER:
       return { ...state, user: action.payload };
+    case REQUEST_PASSWORD_RESET:
+      return {
+        ...state,
+        passwordResetToken: action.payload.passwordResetToken,
+      };
+    default:
+      return state;
   }
-  return state;
 }
