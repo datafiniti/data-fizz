@@ -109,7 +109,7 @@ exports.editPassword = (req, res, next) => {
   					return res.json({ token: tokenForUser(savedUser) });
   				});
         } else {
-          return res.status(401).send({ error: 'Password reset token is invalid.' });
+          return res.status(401).send({ error: 'Password reset token is invalid or has expired.' });
         }
       } else {
         // ( password attempt, db hash )
