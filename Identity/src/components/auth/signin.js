@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { reduxForm, Field } from 'redux-form';
-import { signinUser } from '../../actions';
+import * as actions from '../../actions';
 import { connect } from 'react-redux';
 import TextInput from '../common/text_input';
 import SubmitButton from '../common/submit_button';
@@ -13,21 +13,25 @@ const form = reduxForm({
 });
 
 class Signin extends Component {
+  constructor(props) {
+    super(props);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+  }
   handleFormSubmit({ email, password }) {
     // Call action creator to sign in user
     this.props.signinUser({ email, password });
   }
   renderAlert() {
-    if (this.props.errorMessage) {
-      return (
-        <ErrorDialog />
-      );
+    const { errorMessage, clearAuthError } = this.props;
+    if (errorMessage) {
+      return <ErrorDialog errorMessage={errorMessage} clearAuthError={clearAuthError} />;
     }
+    return '';
   }
   render() {
     const { handleSubmit } = this.props;
     return (
-      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+      <form onSubmit={handleSubmit(this.handleFormSubmit)}>
         <fieldset className="form-group">
           <Field name="email" component={TextInput} type="email" label="Email" />
         </fieldset>
@@ -43,12 +47,12 @@ class Signin extends Component {
 
 function validate(values) {
   const errors = {};
-  const requiredFields = [ 'email', 'password' ];
+  const requiredFields = ['email', 'password'];
   requiredFields.forEach(field => {
-    if(!values[field]) {
+    if (!values[field]) {
       errors[field] = 'Required';
     }
-  })
+  });
   if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = 'Invalid email address';
   }
@@ -59,4 +63,11 @@ function mapStateToProps(state) {
   return { errorMessage: state.auth.error };
 }
 
-export default connect(mapStateToProps, { signinUser })(form(Signin));
+Signin.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  signinUser: PropTypes.func.isRequired,
+  clearAuthError: PropTypes.func.isRequired,
+  errorMessage: PropTypes.string,
+};
+
+export default connect(mapStateToProps, actions)(form(Signin));

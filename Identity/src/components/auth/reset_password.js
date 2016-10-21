@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import TextInput from '../common/text_input';
 import SubmitButton from '../common/submit_button';
 import ErrorDialog from '../common/error_dialog';
-import ActionInput from 'material-ui/svg-icons/action/input';
 import * as actions from '../../actions';
 import uuid from 'uuid';
 
@@ -18,7 +17,8 @@ class ResetPassword extends Component {
     super(props);
     this.state = {
       haveResetPasswordToken: false,
-    }
+    };
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
   componentWillMount() {
     if (this.props.params.passwordResetToken) {
@@ -36,11 +36,36 @@ class ResetPassword extends Component {
       this.props.requestPasswordReset({ email });
     }
   }
+  renderMessage() {
+    const { haveResetPasswordToken } = this.state;
+    if (haveResetPasswordToken) {
+      return (
+        <div>
+          <h1>Password Reset</h1>
+          <em>
+            Enter your new password and one more time to confirm it
+            and sign in after you're done.
+          </em>
+        </div>
+      );
+    }
+    return (
+      <div>
+        <h1>No worries!</h1>
+        <em>
+          Enter your email and one more time to confirm it
+          and we'll send you an email with a link to reset your password.
+        </em>
+      </div>
+    );
+  }
   renderFields() {
     const { haveResetPasswordToken } = this.state;
-    const names = haveResetPasswordToken ? ["newPassword", "newPasswordConfirm"] : ["email", "emailConfirm"];
-    const labels = haveResetPasswordToken ? ["New Password", "Confirm New Password"] : ["Email", "Confirm Email"];
-    const type = haveResetPasswordToken ? "password" : "email";
+    const names = haveResetPasswordToken ?
+      ['newPassword', 'newPasswordConfirm'] : ['email', 'emailConfirm'];
+    const labels = haveResetPasswordToken ?
+      ['New Password', 'Confirm New Password'] : ['Email', 'Confirm Email'];
+    const type = haveResetPasswordToken ? 'password' : 'email';
     return [
       <fieldset className="form-group" key={uuid()}>
         <Field name={names[0]} component={TextInput} type={type} label={labels[0]} />
@@ -51,21 +76,17 @@ class ResetPassword extends Component {
     ];
   }
   renderAlert() {
-    if (this.props.errorMessage) {
-      return (
-        <ErrorDialog />
-      );
+    const { errorMessage, clearAuthError } = this.props;
+    if (errorMessage) {
+      return <ErrorDialog errorMessage={errorMessage} clearAuthError={clearAuthError} />;
     }
+    return '';
   }
   render() {
     const { handleSubmit } = this.props;
     return (
-      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-        <h1>No worries!</h1>
-        <em>
-          Enter your email and one more time to confirm it
-          and we'll send you an email with a link to reset your password.
-        </em>
+      <form onSubmit={handleSubmit(this.handleFormSubmit)}>
+        {this.renderMessage()}
         {this.renderFields()}
         {this.renderAlert()}
         <SubmitButton label="Submit" />
@@ -76,16 +97,17 @@ class ResetPassword extends Component {
 
 function validate(values) {
   const errors = {};
-  const requiredFields = [ 'email', 'emailConfirm', 'newPassword', 'newPasswordConfirm' ];
+  const requiredFields = ['email', 'emailConfirm', 'newPassword', 'newPasswordConfirm'];
   requiredFields.forEach(field => {
-    if(!values[field]) {
+    if (!values[field]) {
       errors[field] = 'Required';
     }
-  })
+  });
   if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = 'Invalid email address';
   }
-  if (values.emailConfirm && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.emailConfirm)) {
+  if (values.emailConfirm
+    && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.emailConfirm)) {
     errors.emailConfirm = 'Invalid email address';
   }
   if (values.email !== values.emailConfirm && !errors.emailConfirm && !errors.email) {
@@ -93,7 +115,8 @@ function validate(values) {
     errors.email = emailMatchError;
     errors.emailConfirm = emailMatchError;
   }
-  if (values.newPassword !== values.newPasswordConfirm && !errors.newPassword && !errors.newPasswordConfirm) {
+  if (values.newPassword !== values.newPasswordConfirm
+    && !errors.newPassword && !errors.newPasswordConfirm) {
     const passwordMatchError = 'Passwords must match';
     errors.newPassword = passwordMatchError;
     errors.newPasswordConfirm = passwordMatchError;
@@ -106,5 +129,15 @@ function mapStateToProps(state) {
     errorMessage: state.auth.error,
   };
 }
+
+ResetPassword.propTypes = {
+  params: PropTypes.object.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  updateUser: PropTypes.func.isRequired,
+  requestPasswordReset: PropTypes.func.isRequired,
+  clearAuthError: PropTypes.func.isRequired,
+  errorMessage: PropTypes.string,
+  passwordResetToken: PropTypes.string,
+};
 
 export default connect(mapStateToProps, actions)(form(ResetPassword));

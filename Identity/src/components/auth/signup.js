@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import * as actions from '../../actions';
 import { connect } from 'react-redux';
@@ -13,22 +13,25 @@ const form = reduxForm({
 });
 
 class Signup extends Component {
+  constructor(props) {
+    super(props);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+  }
   handleFormSubmit({ email, password, name, phoneNumber }) {
     // Call action creator to sign up user
     this.props.signupUser({ email, password, name, phoneNumber });
   }
   renderAlert() {
-    const { errorMessage } = this.props;
+    const { errorMessage, clearAuthError } = this.props;
     if (errorMessage) {
-      return (
-        <ErrorDialog />
-      );
+      return <ErrorDialog errorMessage={errorMessage} clearAuthError={clearAuthError} />;
     }
+    return '';
   }
   render() {
     const { handleSubmit } = this.props;
     return (
-      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+      <form onSubmit={handleSubmit(this.handleFormSubmit)}>
         <fieldset className="form-group">
           <Field name="name" component={TextInput} type="text" label="Name" />
         </fieldset>
@@ -42,7 +45,12 @@ class Signup extends Component {
           <Field name="password" component={TextInput} type="password" label="Password" />
         </fieldset>
         <fieldset className="form-group">
-          <Field name="passwordConfirm" component={TextInput} type="password" label="Confirm Password"/>
+          <Field
+            name="passwordConfirm"
+            component={TextInput}
+            type="password"
+            label="Confirm Password"
+          />
         </fieldset>
         {this.renderAlert()}
         <SubmitButton label="Sign Up" icon={<ActionInput />} />
@@ -53,12 +61,12 @@ class Signup extends Component {
 
 function validate(values) {
   const errors = {};
-  const requiredFields = [ 'email', 'password', 'passwordConfirm', 'name', 'phoneNumber' ];
+  const requiredFields = ['email', 'password', 'passwordConfirm', 'name', 'phoneNumber'];
   requiredFields.forEach(field => {
-    if(!values[field]) {
+    if (!values[field]) {
       errors[field] = 'Required';
     }
-  })
+  });
   if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = 'Invalid. Correct format: user@example.com';
   }
@@ -76,5 +84,12 @@ function validate(values) {
 function mapStateToProps(state) {
   return { errorMessage: state.auth.error };
 }
+
+Signup.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  signupUser: PropTypes.func.isRequired,
+  clearAuthError: PropTypes.func.isRequired,
+  errorMessage: PropTypes.string,
+};
 
 export default connect(mapStateToProps, actions)(form(Signup));

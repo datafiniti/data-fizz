@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import * as actions from '../../actions';
@@ -20,5 +20,10 @@ class Signout extends Component {
 function mapStateToProps(state) {
   return { auth: state.auth };
 }
+
+Signout.propTypes = {
+  signoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object,
+};
 
 export default connect(mapStateToProps, actions)(Signout);
