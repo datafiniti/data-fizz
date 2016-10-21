@@ -70,6 +70,31 @@ exports.signin = (req, res, next) => {
 		});
 }
 
+exports.editPassword = (req, res, next) => {
+	// try to find user document by email
+	// check if email and password match
+	// set login state
+	const email = req.body.user.email;
+	const password = req.body.user.password;
+	const newPassword = req.body.user.newPassword;
+	User.findOne({ email: email })
+		.exec((err, user) => {
+			if (err) return next(err);
+			if (!user) {
+				return res.status(401).send({ error: 'Invalid email or password.' });
+			}
+			// ( password attempt, db hash )
+			bcrypt.compare(password, user.password, (err, isCorrect) => {
+				if (err || !isCorrect) return res.status(401).send(err || { error: 'Invalid password.' });
+				user.password = newPassword;
+				user.save((err, savedUser) => {
+					if (err) return next(err);
+					res.json({ token: tokenForUser(savedUser) });
+				})
+			});
+		});
+}
+
 exports.signout = (req, res, next) => {
 	const userId = req.body.userId;
 	const origin = req.headers.origin;
