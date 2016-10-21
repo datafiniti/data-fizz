@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import ErrorDialog from '../common/error_dialog';
@@ -11,17 +11,15 @@ class Feature extends Component {
   renderUserShow() {
     const { user } = this.props;
     if (user.email) {
-      return (
-        <UserShow user={user} />
-      );
+      return <UserShow user={user} />;
     }
+    return '';
   }
   renderAlert() {
     if (this.props.errorMessage) {
-      return (
-        <ErrorDialog />
-      );
+      return <ErrorDialog />;
     }
+    return '';
   }
   render() {
     return (
@@ -41,5 +39,11 @@ function mapStateToProps(state) {
     errorMessage: state.auth.error,
   };
 }
+
+Feature.propTypes = {
+  fetchUser: PropTypes.func.isRequired,
+  user: PropTypes.object,
+  errorMessage: PropTypes.string,
+};
 
 export default connect(mapStateToProps, actions)(Feature);
