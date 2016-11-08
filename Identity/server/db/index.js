@@ -52,7 +52,7 @@ var users = function(db){
                         salt: salt,
                         encryptedPassword: encrypt
                     }).then(function() {
-                        console.log('hook updated user is done');
+                        console.log('password updated')
                     });     
                 }                                               
             }
