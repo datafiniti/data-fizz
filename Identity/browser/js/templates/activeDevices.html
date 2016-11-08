@@ -1,22 +1,22 @@
 <div>
   <h3>Currently Active Devices</h3>
+  <br>
   <h5 ng-show="!sessionlist.length">There are currently no other active sessions.</h5>
   <table style='width: 75%' class="table table-sm">
 	  <thead>
-	  		<tr>
-		  		<th>Current Application?</th>
-		  		<th>Device Type</th>
-		  		<th>Created At</th>
-
-		  	</tr>
+  		<tr>
+	  		<th>Device Type</th>
+	  		<th>Created At</th>
+	  	</tr>
 	  </thead>
 	   <tbody ng-repeat='session in sessionlist'>
-		  	<tr>
-		  		<td><span ng-show="session.id==activeUser.id" class="badge">Current Device</span></td>
-		  		<td>{{session.deviceType}}</td>
-		  		<td>{{session.createdAt.slice(0,10)}}</td>
-
-		  	</tr>
+	  	<tr>
+	  		<td>
+	  			{{session.deviceType}} 
+	  			<span ng-show="session.id==activeUser.id" class="badge">This Session</span>
+	  			</td>
+	  		<td>{{session.createdAt.slice(0,10)}}</td>
+	  	</tr>
 	  	</tbody>
   </table>
 </div>

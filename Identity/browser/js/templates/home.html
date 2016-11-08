@@ -1,4 +1,8 @@
-<div class="page-header">
-  <h1>Welcome</h1>
-  <h3 ng-show="sessionlist.length">There are currently {{sessionlist.length}} active sessions.  Please see the Active Devices tab for details.</h3>
+<div class="jumbotron">
+  <div class="container">
+	  <h1>Welcome!</h1>
+	  <p ng-hide="sessionlist.length">Please sign up or sign in using the icon to the right.</p>
+	  <p ng-show="sessionlist.length>1">There are currently {{sessionlist.length}} active sessions.  Please see the Active Devices tab for details.</p>
+	  <p ng-show="sessionlist.length==1">There is currently {{sessionlist.length}} active session.  Please see the Active Devices tab for details.</p>
+  </div>
 </div>
