@@ -1,0 +1,39 @@
+{
+  "name": "datafiniti_identity",
+  "version": "1.0.0",
+  "description": "Coding challenge for datafiniti product developer",
+  "main": "server/start.js",
+  "scripts": {
+    "start": "nodemon server/start.js"
+  },
+  "dependencies": {
+    "angular": "^1.5.0-beta.0",
+    "angular-animate": "^1.4.7",
+    "angular-mocks": "^1.4.0",
+    "angular-ui-bootstrap": "^0.14.3",
+    "angular-ui-router": "^0.2.15",
+    "bluebird": "^3.3.3",
+    "body-parser": "^1.12.0",
+    "bootstrap": "^3.3.4",
+    "chai": "^2.1.0",
+    "chalk": "^1.0.0",
+    "connect-session-sequelize": "^3.0.0",
+    "cookie-parser": "^1.3.4",
+    "express": "^4.12.0",
+    "express-session": "^1.10.3",
+    "karma": "^0.13.14",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "0.2.3",
+    "karma-coverage": "^0.2.7",
+    "karma-mocha": "^0.1.10",
+    "karma-mocha-reporter": "^1.0.2",
+    "lodash": "^3.9.3",
+    "nodemailer": "^2.6.4",
+    "nodemon": "^1.3.7",
+    "pg": "^4.5.5",
+    "pg-hstore": "^2.3.2",
+    "run-sequence": "^1.0.2",
+    "sequelize": "^3.23.3",
+    "serve-favicon": "^2.2.0"
+  }
+}
