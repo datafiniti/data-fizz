@@ -1,0 +1,31 @@
+<form name="userLogInForm" ng-submit="userLogIn(user)" novalidate>
+  <h3>Sign into Account</h3>
+  <br>
+  <div class="form-group row" ng-class="{ 'has-error' : userLogInForm.email.$invalid && !userLogInForm.email.$pristine }">
+    <label for="exUserEmail" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-xs-4">
+      <input type="email" class="form-control" id="exUserEmail" name='email' ng-model="user.email" placeholder="Email" required>
+      <p ng-show="userLogInForm.email.$invalid && !userLogInForm.email.$pristine" class="help-block">
+      Email is required.</p>
+    </div>
+  </div>
+  <div class="form-group row" ng-class="{ 'has-error' : userLogInForm.password.$invalid && !userLogInForm.password.$pristine }">
+    <label for="exUserPassword" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-xs-4">
+      <input type="password" class="form-control" id="exUserPassword" name='password' ng-model="user.password" placeholder="Password" required>
+      <p ng-show="userLogInForm.password.$invalid && !userLogInForm.password.$pristine" class="help-block">Password is required.</p>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="offset-sm-2 col-sm-10">
+      <button type="submit" class="btn btn-primary" ng-disabled="userLogInForm.$invalid">Sign In</button>
+      <button type="submit" class="btn btn-primary" ui-sref='pwRetrieve'>Forgot Password?</button>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="offset-sm-2 col-sm-10">
+      <h5>New User?</h5>
+      <button type="submit" class="btn btn-primary" ui-sref='signUp'>Sign Up</button>  
+    </div>
+  </div>
+</form>
