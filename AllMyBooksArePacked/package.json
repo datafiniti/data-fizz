@@ -1,0 +1,15 @@
+{
+  "name": "all_my_books_are_packed",
+  "version": "1.0.0",
+  "description": "An application which takes unstructured data and structures it into a human and machine digestible format",
+  "main": "index.js",
+  "repository": "git@github.com:Unobtainiumrock/DataFizz.git",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nicholas Fleischhauer",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^0.22.0"
+  }
+}
