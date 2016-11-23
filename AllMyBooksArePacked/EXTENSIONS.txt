@@ -1,3 +1,5 @@
+Directions to run this application reside within src/app.js
+
 1) This application can have its uses extended beyond Amazon to gather a plethora of useful data. You can use node and express to directly communicate to webpages that exist on the internet.. not just files existing in a directory. It is accomplished with the following code...
 
 var express = require('express');
