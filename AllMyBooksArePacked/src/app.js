@@ -4,9 +4,6 @@
 // appended to wherever you've cloned this to your desktop: DataFizz/AllMyBooksArePacked/src 
 // This also assumes that you have a working version of node.js installed on your computer.
 
-
-//This is the main app page. All of the other files have the functionality separated out for ease of reading.
-
 // Config
 const fs = require('fs');
 const cheerio = require('cheerio');
