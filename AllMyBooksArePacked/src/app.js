@@ -1,8 +1,16 @@
-// Instructions: To run test if this properly works, run the terminal ' command node app.js ' 
-
-// Note: This assumes that you are far enough in the directory, so that pwd will show the following
-// appended to wherever you've cloned this to your desktop: DataFizz/AllMyBooksArePacked/src 
-// This also assumes that you have a working version of node.js installed on your computer.
+// Instructions: 
+// 1) open an instance of your terminal
+// 2) Follow the instructions at https://nodejs.org/en/download/package-manager/ for your respective OS. note: it will
+//    ask you to type some stuff in the terminal..hence step 1.
+// 3) Navigate to the following path ' DataFizz/AllMyBooksArePacked ' using cd. note: this will be prepended by your relevant desktop paths.
+// 4) Type  ' npm install '. This is critical, because it contains files relevant to running this application. It will install the various
+//    dependencies that exist in package.json
+// 5) cd into the following path ' DataFizz/AllMyBooksArePacked/src '
+// 6) Assuming you've properly installed node.js and successfully ran npm install for dependencies, type the following:
+//    ' node app.js '. note: this will run the application you see below. If this worked properly, you should see a new file appear in the src
+//    directory called results.json. 
+// 7) Incase you didn't check if the file already preexisted there, delete it and simply run the command in step 6 again.
+// 9) Bonus: If you'd like to see the action happening in a more step-by-step fashion, uncomment the console.log one line 36.     
 
 // Config
 const fs = require('fs');
@@ -25,6 +33,7 @@ var relevantData = allFiles.map((a) => {
   ShippingWeight: parseFloat(ship.replace(/,/g,'').replace(/^[^-0-9]*/,'')),
   ISBN: $('li').filter((i, el) => $(el).html().includes('ISBN-10')).text()
   };
+  // console.log(test);
  return test;
 });
 
