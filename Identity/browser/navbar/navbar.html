@@ -1,0 +1,5 @@
+<div class="collapse navbar-collapse">
+    <button ng-hide="currentUser" ng-click="goToSignup()" class="navbar-btn btn btn-default">Signup</button>
+    <button ng-hide="currentUser" ng-click="goToLogin()" class="navbar-btn btn btn-default">Login</button>
+    <button ng-show="currentUser" ng-click="submitLogout()" class="navbar-btn btn btn-default">logout</button>
+</div>

@@ -1,0 +1,50 @@
+input[type="text"] {
+  background-color: #f5f5e0;
+  color: #30302a
+}
+input[type="password"]{
+  background-color: #f5f5e0;
+  color: #30302a;
+}
+.alert-danger{
+  background-color:rgba(37, 15, 5, 0.75);
+  text-align: center;
+  color: #b20000;
+  border-color: #b20000;
+  border-width: 3px;
+  font-size: 30px;
+
+} 
+
+.col-centered {
+  font-size: 20px;
+  width: 33%;
+  padding: 25px;
+  margin-top: 10%;
+  margin-left: 30%;
+  outline: solid;
+}
+
+.btn-loginPage, .btn-loginPage:focus {
+  margin: 20px 0px;
+  color: black;
+  font-size: 25px;
+  background: none;
+  border: 0 solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+  outline: 1px solid;
+  outline-color: rgba(255, 255, 255, .5);
+  outline-offset: 0px;
+  text-shadow: none;
+  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+} 
+
+.btn-loginPage:hover {
+  margin: 20px 0px;
+  color: blue;
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 15px;
+  text-shadow: 1px 1px 2px #427388; 
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Identity</title>
+  <base href="/">
+    <!--CSS dependencies-->
+  <link rel="stylesheet" href="/browser/login/login.css" />
+    <!--external JS dependencies-->
+  <script src="/jquery/dist/jquery.min.js"></script>
+  <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/angular/angular.min.js"></script>
+  <script src="/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <!--local JS dependencies-->
+  <script src="/browser/app.js"></script>
+  <script src="/browser/login/login.js"></script>
+  <script src="/browser/signup/signup.js"></script>
+  <script src="/browser/home/home.js"></script>
+  <script src="/browser/navbar/navbar.directive.js"></script>
+</head>
+<body ng-app="identity">
+  <navbar></navbar>
+  <ui-view></ui-view>
+</body>
+</html>
