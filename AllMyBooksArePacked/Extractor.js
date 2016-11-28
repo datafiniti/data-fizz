@@ -16,10 +16,12 @@ class Extractor {
 
 	}
 
+	// optimize first fit by preseving descending order
 	addItem(item) {
 
 	}
 
+	// packs books asynchronously
 	getPacker() {
 		return this.packer;
 	}
