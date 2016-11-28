@@ -5,8 +5,10 @@
   "main": "main.js",
   "dependencies": {
     "bluebird": "^3.4.6",
+    "chai": "^3.5.0",
     "cheerio": "^0.22.0",
     "fs": "0.0.1-security",
+    "mocha": "^3.2.0",
     "underscore": "^1.8.3"
   },
   "devDependencies": {},
