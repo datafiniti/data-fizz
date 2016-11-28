@@ -1,0 +1,22 @@
+{
+  "name": "bookpacking",
+  "version": "1.0.0",
+  "description": "Simple web scraper.",
+  "main": "main.js",
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "cheerio": "^0.22.0",
+    "fs": "0.0.1-security",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "www.github.com/lthai423/datafizz.git"
+  },
+  "author": "Lawrence Thai",
+  "license": "ISC"
+}
