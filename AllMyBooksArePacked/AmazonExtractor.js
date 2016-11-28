@@ -12,18 +12,42 @@ class AmazonExtractor extends Extractor {
 
 	constructor() {
 		super(Extractor);
+		_.extend(this, {
+			'title': () => this.$('#btAsinTitle', '.parseasinTitle').text(),
+			'author': () => this.$('.parseasinTitle').next().children().first().text(),
+			'price': () => this.$('.bb_price', '.buyingDetailsGrid').text().trim().split(' ')[0],
+			'weight': () => this.$('li:contains("Shipping Weight:")', '.content').children()['0'].next.data.trim().split(' (')[0],
+			'isbn': () => this.$('li:contains("ISBN-10")', '.content').children()['0'].next.data.trim()
+		});
 	}
 
 	getBooks(dir) {
+		var callback = (html) => {			
+			var book = this.dataMine(html);
+			this.packer.packOne(book);
+		};
 
+		return this.getHtmlFiles(dir, callback);
 	}
 
 	getBooksSync(dir) {
+		var callback = (html) => {
+			var book = this.dataMine(html);
+			this.addItem(book);
+		};
 
+		return this.getHtmlFilesSync(dir, callback);
 	}
 
 	dataMine(html) {
-
+		this.$ = cheerio.load(html);
+		return new Book({
+			'title': this.title.call(this),
+			'author': this.author.call(this),
+			'price': this.price.call(this),
+			'weight': this.weight.call(this),
+			'isbn': this.isbn.call(this)
+		});
 	}
 };
 
