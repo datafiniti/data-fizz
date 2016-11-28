@@ -5,23 +5,51 @@ const fs = Promise.promisifyAll(require('fs'));
 
 class Extractor {
 	constructor() {
-
+		this.extracted = [];
+		this.packer = new Packer(10);
 	}
 
 	getHtmlFiles(dir, callback) {
-
+		const filenames = fs.readdirSync(dir);
+		const promises = _.map(filenames, (filename) => {
+			return fs.readFileAsync(`${dir}/${filename}`, 'utf8')
+				.then(callback);
+		});
+		return Promise.all(promises);
 	}
 
 	getHtmlFilesSync(dir, callback) {
+		const filenames = fs.readdirSync(dir);
+		_.each(filenames, (filename) => {
+			const html = fs.readFileSync(`${dir}/${filename}`, 'utf8');
+			callback(html);
+		});
 
 	}
 
-	// optimize first fit by preseving descending order
 	addItem(item) {
-
+		if (!this.extracted.length){
+			this.extracted.push(item);
+		} else {
+			var index = this.insertAt(parseFloat(item.shipping_weight));
+			this.extracted.splice(index, 0, item);
+		}
 	}
 
-	// packs books asynchronously
+	insertAt(target, start, end){
+		// used binary search descending to maintain order during insert
+		start = start || 0;
+		end = end || this.extracted.length - 1;
+		var mid = (start + end)/2 | 0;
+		var mid_weight = parseFloat(this.extracted[mid].shipping_weight);
+		if (end - start <= 1 || mid_weight === target)
+			return mid_weight > target ? mid + 1 : mid;
+		else if (mid_weight > target)
+			return this.insertAt(target, mid, end);
+		else if (mid_weight < target)
+			return this.insertAt(target, start, mid);
+	}
+
 	getPacker() {
 		return this.packer;
 	}
