@@ -1,10 +1,15 @@
+const _ = require('underscore');
+
 class Book {
 	constructor(book) {
-		this['title'] = book.title;
-		this['isbn-10'] = book.isbn;
-		this['price'] = book.price;
-		this['shipping_weight'] = book.weight;
-		this['author'] = book.author;
+		_.extend(this, {
+			'title': book.title,
+			'isbn-10': book.isbn,
+			'price': book.price,
+			'shipping_weight': book.weight,
+			'author': book.author,
+			'_weight': parseFloat(book.weight)
+		});
 	}
 };
 

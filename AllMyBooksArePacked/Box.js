@@ -8,13 +8,12 @@ class Box {
 	}
 
 	addWeight(weight){
-		console.log(weight)
 		this.totalWeight += weight;
 	}
 
 	addItem(item) {
 		this._contents.push(item);
-		this.addWeight(parseFloat(item.shipping_weight));
+		this.addWeight(item._weight);
 	}
 };
 

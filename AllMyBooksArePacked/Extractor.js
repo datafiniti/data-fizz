@@ -25,13 +25,14 @@ class Extractor {
 			callback(html);
 		});
 
+		return this.extracted;
 	}
 
 	addItem(item) {
 		if (!this.extracted.length){
 			this.extracted.push(item);
 		} else {
-			var index = this.insertAt(parseFloat(item.shipping_weight));
+			const index = this.insertAt(item._weight);
 			this.extracted.splice(index, 0, item);
 		}
 	}
@@ -40,18 +41,14 @@ class Extractor {
 		// used binary search descending to maintain order during insert
 		start = start || 0;
 		end = end || this.extracted.length - 1;
-		var mid = (start + end)/2 | 0;
-		var mid_weight = parseFloat(this.extracted[mid].shipping_weight);
+		const mid = (start + end)/2 | 0;
+		const mid_weight = this.extracted[mid]._weight;
 		if (end - start <= 1 || mid_weight === target)
 			return mid_weight > target ? mid + 1 : mid;
 		else if (mid_weight > target)
 			return this.insertAt(target, mid, end);
 		else if (mid_weight < target)
 			return this.insertAt(target, start, mid);
-	}
-
-	getPacker() {
-		return this.packer;
 	}
 };
 

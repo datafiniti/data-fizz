@@ -23,7 +23,7 @@ class AmazonExtractor extends Extractor {
 
 	getBooks(dir) {
 		var callback = (html) => {			
-			var book = this.dataMine(html);
+			var book = this.scrape(html);
 			this.packer.packOne(book);
 		};
 
@@ -32,21 +32,21 @@ class AmazonExtractor extends Extractor {
 
 	getBooksSync(dir) {
 		var callback = (html) => {
-			var book = this.dataMine(html);
+			var book = this.scrape(html);
 			this.addItem(book);
 		};
 
 		return this.getHtmlFilesSync(dir, callback);
 	}
 
-	dataMine(html) {
+	scrape(html) {
 		this.$ = cheerio.load(html);
 		return new Book({
 			'title': this.title.call(this),
 			'author': this.author.call(this),
 			'price': this.price.call(this),
 			'weight': this.weight.call(this),
-			'isbn': this.isbn.call(this)
+			'isbn': this.isbn.call(this),
 		});
 	}
 };
