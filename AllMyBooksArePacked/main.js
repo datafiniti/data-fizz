@@ -11,18 +11,16 @@ const packer = new Packer();
 //		- Extractor has a Packer instance
 amazonExtractor.getBooks('./data')
 	.then((allBooks) => {
-		console.log(amazonExtractor.packer.results);
+		console.log(amazonExtractor.packer.results)
 	});
 
 // II.) Use Extractor and Packer as modular services
 // 	a.) Extract
 // 	b.) Pack Extracted
 var books = amazonExtractor.getBooksSync('./data');
-var boxed = packer.binPacker(books);
-console.log(boxed)
+var boxed = packer.binPack(books);
+console.log(boxed);
 
-
-// Pack all the books away
 
 
 

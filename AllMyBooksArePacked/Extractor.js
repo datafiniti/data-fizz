@@ -2,6 +2,7 @@ const _ = require('underscore');
 const Packer = require('./Packer.js');
 const Promise = require('bluebird');
 const fs = Promise.promisifyAll(require('fs'));
+const path = require('path')
 
 class Extractor {
 	constructor() {
@@ -38,7 +39,7 @@ class Extractor {
 	}
 
 	insertAt(target, start, end){
-		// used binary search descending to maintain order during insert
+		// used binary descending to maintain order during insert
 		start = start || 0;
 		end = end || this.extracted.length - 1;
 		const mid = (start + end)/2 | 0;

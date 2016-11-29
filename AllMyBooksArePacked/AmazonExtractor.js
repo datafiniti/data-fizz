@@ -13,7 +13,7 @@ class AmazonExtractor extends Extractor {
 	constructor() {
 		super(Extractor);
 		_.extend(this, {
-			'title': () => this.$('#btAsinTitle', '.parseasinTitle').text(),
+			'title': () => this.$('#btAsinTitle', '.parseasinTitle').text().split(' [')[0],
 			'author': () => this.$('.parseasinTitle').next().children().first().text(),
 			'price': () => this.$('.bb_price', '.buyingDetailsGrid').text().trim().split(' ')[0],
 			'weight': () => this.$('li:contains("Shipping Weight:")', '.content').children()['0'].next.data.trim().split(' (')[0],
@@ -22,7 +22,7 @@ class AmazonExtractor extends Extractor {
 	}
 
 	getBooks(dir) {
-		var callback = (html) => {			
+		var callback = (html) => {				
 			var book = this.scrape(html);
 			this.packer.packOne(book);
 		};

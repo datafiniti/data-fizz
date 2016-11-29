@@ -25,7 +25,7 @@ class Packer {
 	}
 
 	// Pack array of books (offline)
-	binPacker(books, max_weight) {
+	binPack(books, max_weight) {
 		max_weight = max_weight || this.max_weight;
 	  this.results = [new Box(1)];
 
