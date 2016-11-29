@@ -14,19 +14,14 @@ class Extractor {
 		const filenames = fs.readdirSync(dir);
 		const promises = _.map(filenames, (filename) => {
 			return fs.readFileAsync(`${dir}/${filename}`, 'utf8')
-				.then(callback);
+				.then((html) => {
+					var item = this.scrape(html);
+					this.addItem(item);
+					if (callback)
+						callback(item);
+				});
 		});
 		return Promise.all(promises);
-	}
-
-	getHtmlFilesSync(dir, callback) {
-		const filenames = fs.readdirSync(dir);
-		_.each(filenames, (filename) => {
-			const html = fs.readFileSync(`${dir}/${filename}`, 'utf8');
-			callback(html);
-		});
-
-		return this.extracted;
 	}
 
 	addItem(item) {

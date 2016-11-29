@@ -58,138 +58,110 @@ describe('Product detail extraction', () => {
 	  });
 	});
   describe('Extraction', () => {
-  	var book;
   	describe('extraction accuracy', () => {
-		  before(() => {
+	  	var book;
+
+		  before((done) => {
 		  	var extractor = new AmazonExtractor();
-		  	book = extractor.getBooksSync('./tests/testHtml')[0];
+		  	extractor.getBooks('./data')
+		  		.then(() => {
+		  			book = extractor.extracted[0];
+		  			done();
+		  		});
+		  });
 
 		  	// expected output
 		  	// {
-		  	//   title: 'Zealot: The Life and Times of Jesus of Nazareth',
-		  	//   'isbn-10': '140006922X',
-		  	//   price: '$16.89',
-		  	//   shipping_weight: '1.2 pounds',
-		  	//   author: 'Reza Aslan',
-		  	//   _weight: 1.2 
-		  	// }
-		  });
+			    // title: 'The Ocean at the End of the Lane: A Novel',
+			    // 'isbn-10': '0062255657',
+			    // price: '$15.22',
+			    // shipping_weight: '9.4 pounds',
+			    // author: 'Neil Gaiman',
+			    // _weight: 9.4 }
+			  // }
 
 	    it('should extract the title', () => {
-	    	book['title'].should.equal('Zealot: The Life and Times of Jesus of Nazareth');
+	    	book['title'].should.equal('The Ocean at the End of the Lane: A Novel');
 	    });
 	    it('should extract the author', () => {
-	    	book['author'].should.equal('Reza Aslan');
+	    	book['author'].should.equal('Neil Gaiman');
 	    });
 	    it('should extract the price', () => {
-	    	book['price'].should.equal('$16.89');
+	    	book['price'].should.equal('$15.22');
 	    });
 	    it('should extract the shipping weight', () => {
-	    	book['shipping_weight'].should.equal('1.2 pounds');
+	    	book['shipping_weight'].should.equal('9.4 pounds');
 	    });
 	    it('should extract the isbn-10', () => {
-	    	book['isbn-10'].should.equal('140006922X');
+	    	book['isbn-10'].should.equal('0062255657');
 	    });
 	    it('should extract and parse the shipping_weight', () => {
-	      book['_weight'].should.equal(1.2);
+	      book['_weight'].should.equal(9.4);
 	    });
 	  });
 		describe('synchronous extraction', () => {
-			var extractor;
 			var books;
 			var book;
 
-			before(() => {
-				extractor = new AmazonExtractor();
+			before((done) => {
+				var extractor = new AmazonExtractor();
+				extractor.getBooks('./data')
+					.then(() => {
+						books = extractor.extracted;
+						book = books[0];
+						done();
+					});
 			});
 
 	    it('should extract synchronously', () => {
-				books = extractor.getBooksSync('./tests/testHtml');
-				console.log(books);
-				book = books[0];
 				book.should.be.instanceof(Book);
 	    });
 	    it('should return extracted books', () => {
 	    	book.should.deep.equal(new Book({
-		  	  'title': 'Zealot: The Life and Times of Jesus of Nazareth',
-		  	  'isbn': '140006922X',
-		  	  'price': '$16.89',
-		  	  'weight': '1.2 pounds',
-		  	  'author': 'Reza Aslan',
-		  	  '_weight': 1.2 
+		  	  'title': 'The Ocean at the End of the Lane: A Novel',
+			    'isbn': '0062255657',
+			    'price': '$15.22',
+			    'weight': '9.4 pounds',
+			    'author': 'Neil Gaiman',
+			    '_weight': 9.4 
 		  	}));
 	    });
 	    it('should maintain descending order of extracted books', () => {
 	    	var isDescending = (books) => {
-	    		var prev = books[0]._weight;
-
 	    		return _.reduce(books, (memo, book, i) => {
-	    			if (books[i - 1])
-	    				prev = books[i - 1];
+	    			var prev = books[i - 1] ?
+	    				books[i - 1]._weight :
+	    				book._weight;
 	    			return prev >= book._weight;
 	    		}, true);
 	    	};
 
 	    	isDescending(books).should.be.true
 	    });
-    });
-    describe('asynchronous extraction', () => {   
-	    var extractor = new AmazonExtractor();
-	    var promise;
-
-	    before(() => {
-	    	promise = extractor.getBooks('./tests/testHtml');
-
-	    });
-
-	    it('should extract asynchronously', () => {
-	    	promise.then(() => {
-	    		var book  = extractor.packer.results[0]._contents[0];
-	    		book.should.be.instanceof(Book);
-	    	})
-	    });
 	  });
   });
   describe('Packing', () => {
-    describe('packing features', () => {
-    	var extractor;
-    	var promise;
+  	var box;
+  	var extracted;
+  	var packer = new Packer();
 
-    	before(() => {
-    		extractor = new AmazonExtractor();
-    		promise = extractor.getBooks('./tests/testHtml');
-    	});
-	    it('should return packaged boxes', () => {
-	    	promise.then(() => {
-	    		extractor.packer.results[0].should.contain.instanceof(Box)
-	    	});
+  	before((done) => {
+  		var extractor = new AmazonExtractor();
+  		extractor.extractAndPack('./data')
+  			.then(() => {
+  				books = extractor.extracted;
+  				box = extractor.packer.results[0];
+  				done();
+  			});
+  	});
+
+    describe('packing features', () => {
+	    it('pack async and should return packaged boxes', () => {
+    		box.should.contain.instanceof(Box)
 	    });
     });
-    describe('asynchronous packing', () => {
-    	var extractor;
-
-    	before(() => {
-    		extractor = new AmazonExtractor();
-    	});
-
-	    it('should pack asynchronously', () => {
-	    	extractor.getBooks('./tests/testHtml')
-	    		.then(() => {
-	    			extractor.packer.results[0].should.be.instanceof(Box);
-	    		});
-	    });
-	  });
 	  describe('synchronous packing', () => {
-	  	var packer;
-	  	var extractor;
-
-	  	before(() => {
-	  		extractor = new AmazonExtractor();
-	  		packer = new Packer();
-	  	});
-
     	it('should pack synchronously', () => {
-        	var books = extractor.getBooksSync('./tests/testHtml');
         	packer.binPack(books)[0].should.be.instanceof(Box);
       });
 	  });

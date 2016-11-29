@@ -21,22 +21,16 @@ class AmazonExtractor extends Extractor {
 		});
 	}
 
-	getBooks(dir) {
-		var callback = (html) => {				
-			var book = this.scrape(html);
+	extractAndPack(dir) {
+		var callback = (book) => {	
 			this.packer.packOne(book);
 		};
 
-		return this.getHtmlFiles(dir, callback);
+		return this.getBooks(dir, callback);
 	}
 
-	getBooksSync(dir) {
-		var callback = (html) => {
-			var book = this.scrape(html);
-			this.addItem(book);
-		};
-
-		return this.getHtmlFilesSync(dir, callback);
+	getBooks(dir, callback) {
+		return this.getHtmlFiles(dir, callback);
 	}
 
 	scrape(html) {
