@@ -1,0 +1,20 @@
+1. Domains beyond Amazon.com
+	To scrape a domain beyond Amazon.com with my implementation you would need to extend the Extractor object and override the Extractor's scrape method.  The new implementation would use Cheerio to extract the data.  However, since you would need to analyze the HTML template for each domain's product page to see exactly where the information sits in the DOM, it is an area that requires an engineer to review and could be automated.
+
+	Possibilities to automate the scraping of any Book on any website:
+
+	1.  Use a combination of regex expressions to isolate specific details. Eg. title, author, price, origin, etc.  However, it is completely possible to generate regex expressions with exponential run time and would require parsing of the entire HTML document.  This makes it an unwise engineering choice and can lead to a computationally expensive solution.
+
+	2.	Another possibility is to implement a learning alogorithm that parses through the HTML (as training data with corresponding 'correct' answers) in search for keywords that matches the 'correct answer'.  The learning implementation will cache all the locations in the DOM where the data is present in terms of frequency of occurence.  Given a generous amount of training data certain elements in the DOM that continually provide direct access to specific data will rank high on our list of occurences and can be further isolated using clustering techniques.  Application of Q-Learning to the frequency of occurence will give you an optimized list of selectors that contain the information that we are scraping for.  Given a list of possible locations, it would access each location in the DOM until the information is found and validated.
+
+
+2. Products beyond just simply books.
+	
+	To scrape for all products using my current implementation, you would need to extend the Extractor class to look for specific details to the product and also create the object for the product (ProductObject) that you want to scrape for.  However, as long as the shipping weight is present in the ProductObject, my Packer implementation would not have to be changed and can be used for all future products given the same constraints (id, totalWeight, contents).
+
+
+3. Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+	
+	I designed my implementation to be modular, loosely coupled, and either used together or as seperate services.  Since parsing is the most computationally expensive portion of this problem, I would seperate the extraction of details as its own service that is horizontally scaled with the use of multiple servers and a load balancer.  Docker containers would be used to easily maintain, clone, and deploy new images of the service when needed.  
+
+	Extracted ProductObjects would then be streamed in batches, in descending order, based on weight to an isolated Packing service.  Since the order of the incoming books is in descending order, you can use a hash map to reduce the amount of iterations you would need to find a box that would fit.  This optimization along with the descending order produces a solution with tightly packed boxes.

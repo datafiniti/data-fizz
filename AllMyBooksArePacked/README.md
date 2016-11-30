@@ -3,26 +3,14 @@
 Book packer 
 ## Installation
 
-To install clone and extract the repository to a local directory.
+To install the Book Packer application, clone and extract the repository to a local directory.
 Run command "npm install" in extracted directory.
 
 ## Usage
 
-### To run sync:
+### To run tests:
+Run ```npm test```
 
-### To run async:
+### To run main:
+Run ```npm start```
 
-## History
-
-TODO: Write history
-
-## Credits
-
-TODO: Write credits
-
-## Questions
-
-
-## License
-
-TODO: Write license

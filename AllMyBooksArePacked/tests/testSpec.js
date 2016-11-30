@@ -3,7 +3,7 @@ const should = require('chai').should();
 
 // classes
 const Packer = require('../Packer.js');
-const AmazonExtractor = require('../AmazonExtractor.js');
+const AmazonExtractor = require('../AmazonBookExtractor.js');
 const Box = require('../Box.js');
 const Book = require('../Book.js');
 
@@ -99,7 +99,7 @@ describe('Product detail extraction', () => {
 	      book['_weight'].should.equal(9.4);
 	    });
 	  });
-		describe('synchronous extraction', () => {
+		describe('book extraction', () => {
 			var books;
 			var book;
 
@@ -113,7 +113,7 @@ describe('Product detail extraction', () => {
 					});
 			});
 
-	    it('should extract synchronously', () => {
+	    it('should extract into Book instance', () => {
 				book.should.be.instanceof(Book);
 	    });
 	    it('should return extracted books', () => {
@@ -147,10 +147,10 @@ describe('Product detail extraction', () => {
 
   	before((done) => {
   		var extractor = new AmazonExtractor();
-  		extractor.extractAndPack('./data')
+  		extractor.getBooks('./data')
   			.then(() => {
   				books = extractor.extracted;
-  				box = extractor.packer.results[0];
+  				box = packer.binPack(books)[0];
   				done();
   			});
   	});
@@ -160,10 +160,5 @@ describe('Product detail extraction', () => {
     		box.should.contain.instanceof(Box)
 	    });
     });
-	  describe('synchronous packing', () => {
-    	it('should pack synchronously', () => {
-        	packer.binPack(books)[0].should.be.instanceof(Box);
-      });
-	  });
   });
 });

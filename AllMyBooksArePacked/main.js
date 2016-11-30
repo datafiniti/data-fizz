@@ -1,4 +1,4 @@
-const AmazonExtractor = require('./AmazonExtractor.js');
+const AmazonBookExtractor = require('./AmazonBookExtractor.js');
 const Packer = require('./Packer.js');
 
 const packer = new Packer();
@@ -6,22 +6,17 @@ const packer = new Packer();
 // Implementation allows for two methods.
 
 // I.) Extract and pack asynchronously as a single service
-// 	a.) Extract and Pack individually.
-//		- Extractor has a Packer instance
-const amazonExtractor = new AmazonExtractor();
-amazonExtractor.extractAndPack('./data')
+// 	a.) Pack extracted in promise
+// II.) Use Extractor and Packer as modular services
+// 	a.) Extract and send to Packing service
+// 	b.) Isolated packing service handles all box generations
+const amazonExtractor = new AmazonBookExtractor();
+amazonExtractor.getBooks('./data')
 	.then(() => {
-		console.log(amazonExtractor.packer.results)
+		console.log(packer.binPack(amazonExtractor.extracted));
+		// console.log(packer.getJSON());
 	});
 
-// II.) Use Extractor and Packer as modular services
-// 	a.) Extract
-// 	b.) Pack Extracted
-const amazonExtractor2 = new AmazonExtractor();
-amazonExtractor2.getBooks('./data')
-	.then(() => {
-		console.log(packer.binPack(amazonExtractor2.extracted));
-	});
 
 
 

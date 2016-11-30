@@ -8,7 +8,7 @@ const cheerio = require('cheerio');
 const Promise = require('bluebird');
 const fs = Promise.promisifyAll(require('fs'));
 
-class AmazonExtractor extends Extractor {
+class AmazonBookExtractor extends Extractor {
 
 	constructor() {
 		super(Extractor);
@@ -21,13 +21,6 @@ class AmazonExtractor extends Extractor {
 		});
 	}
 
-	extractAndPack(dir) {
-		var callback = (book) => {	
-			this.packer.packOne(book);
-		};
-
-		return this.getBooks(dir, callback);
-	}
 
 	getBooks(dir, callback) {
 		return this.getHtmlFiles(dir, callback);
@@ -45,4 +38,4 @@ class AmazonExtractor extends Extractor {
 	}
 };
 
-module.exports = AmazonExtractor;
+module.exports = AmazonBookExtractor;

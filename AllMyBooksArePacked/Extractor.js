@@ -1,13 +1,10 @@
 const _ = require('underscore');
-const Packer = require('./Packer.js');
 const Promise = require('bluebird');
 const fs = Promise.promisifyAll(require('fs'));
-const path = require('path')
 
 class Extractor {
 	constructor() {
 		this.extracted = [];
-		this.packer = new Packer(10);
 	}
 
 	getHtmlFiles(dir, callback) {
