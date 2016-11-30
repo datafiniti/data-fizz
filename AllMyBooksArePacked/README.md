@@ -1,5 +1,22 @@
 # Book Packer
 
+For my book packing implementation, I used four different self-created ADT's: Extractor, Packer, Box, and Book.  I extended the Extractor base class by adding an AmazonBookExtractor subclass that holds the HTML parsers.  The AmazonBookExtractor parses the HTML for relavant information and then stores a created Book object.  The Extractor reads all files in the data directory and extracts asynchronously.  
+
+Once the promise is returned, then you can pack the extracted books using the Packer object. The Packer object uses a best fit algorithm with a dataset descending by weight and a hashmap to improve lookup time.
+
+## Installation
+
+To install the Book Packer application, clone and extract the repository to a local directory.
+Run command "npm install" in extracted directory.
+
+## Usage
+
+### To run tests:
+Run ```npm test```
+
+### To run main:
+Run ```npm start```
+
 ## Purpose
 
 This exercise is designed to test your ability to use object-oriented design principles, data structures and standard algorithms to craft a small application.  We will not only be looking at the correctness of your solution but at the style of your code, its modularity, its extensibility, and ease at which the whole package can be built and tested.  As a small team we believe these principles are a key element of our continued success. 
