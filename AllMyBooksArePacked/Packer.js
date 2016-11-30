@@ -16,27 +16,21 @@ class Packer {
 	}
 
 	checkLookupTable(weight) {
-		for (var i = weight; i < this.max_weight; i += .1){
+		for (var i = weight; i < this.max_weight; i = Math.round((i + .1) * 10) / 10) 
 			if(this.lookupTable[i] && this.lookupTable[i].length)
-				return this.lookupTable[i].slice();
-		}
-		return this.results.length - 1;
+				return this.lookupTable[i].shift();
+		
+		return undefined;
 	}
 
 	firstFitPack(item, max_weight) {
 		max_weight = max_weight || this.max_weight;
 		var index = this.checkLookupTable(item._weight);
-		var results = this.results.slice(index);
-    var isTooBig = _.reduce(results, (memo, box, index) => {
-      if (item._weight + box.totalWeight <= max_weight && memo){
-        memo = box.addItem(item);
-        this.updateLookupTable(item._weight, index);
-      }
 
-      return !!memo;
-    }, true);
-
-    if (isTooBig) {
+		if (index){
+			this.results[index].addItem(item);
+			this.updateLookupTable(item._weight, index);
+		} else {
       this.results.push(new Box(this.results.length + 1, item));
       this.updateLookupTable(item._weight, this.results.length - 1);
     }
@@ -45,7 +39,6 @@ class Packer {
 	// Pack array of items (offline)
 	binPack(items, max_weight) {
 		max_weight = max_weight || this.max_weight;
-	  this.results = [new Box(1)];
 
 	  _.each(items, (item) => {
 	    this.firstFitPack(item, max_weight);
