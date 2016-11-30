@@ -23,7 +23,7 @@ class Packer {
 		return undefined;
 	}
 
-	firstFitPack(item, max_weight) {
+	bestFitPack(item, max_weight) {
 		max_weight = max_weight || this.max_weight;
 		var index = this.checkLookupTable(item._weight);
 
@@ -41,7 +41,7 @@ class Packer {
 		max_weight = max_weight || this.max_weight;
 
 	  _.each(items, (item) => {
-	    this.firstFitPack(item, max_weight);
+	    this.bestFitPack(item, max_weight);
 	  });
 
 	  return this.results;

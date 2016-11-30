@@ -1,5 +1,5 @@
-const AmazonBookExtractor = require('./AmazonBookExtractor.js');
-const Packer = require('./Packer.js');
+const AmazonBookExtractor = require('.class_utils/AmazonBookExtractor.js');
+const Packer = require('.class_utils/Packer.js');
 
 const packer = new Packer();
 

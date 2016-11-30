@@ -2,10 +2,10 @@
 const should = require('chai').should();
 
 // classes
-const Packer = require('../Packer.js');
-const AmazonExtractor = require('../AmazonBookExtractor.js');
-const Box = require('../Box.js');
-const Book = require('../Book.js');
+const Packer = require('../class_utils/Packer.js');
+const AmazonExtractor = require('../class_utils/AmazonBookExtractor.js');
+const Box = require('../class_utils/Box.js');
+const Book = require('../class_utils/Book.js');
 
 // utils
 const _ = require('underscore');
