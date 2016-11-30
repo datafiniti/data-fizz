@@ -28,15 +28,7 @@ print(authorContainer.find('a').text)
 
 
 #*********************************************************************
-# isbn enclosed : <li><b></b>isbn here</li>
+# ISBN location : id="ASIN" value="..isbn.."
 #*********************************************************************
-for node in soup.findAll("li"):
-        for node2 in node.find_all('b', string='ISBN-10:'):
-                isbn = node2.parent.text
-                isbn = isbn[9:19]
-
-#*********************************************************************
-# print statements to test outputs
-#*********************************************************************
-print(isbn)
-
+isbn = soup.find(id="ASIN")
+print(isbn['value'])
