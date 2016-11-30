@@ -1,37 +1,30 @@
 #Robbie Zuazua
-#Last Modified: 11/27/16
+#Last Modified: 11/29/16
 
 #**********************************************************
 # We will use 
 # 1) BeautifulSoup Python Library
-# 2)regex library 
 #**********************************************************
 
-import re
 from bs4 import BeautifulSoup
 
 
 #*********************************************************************
 # Testing: open single document 
 #*********************************************************************
-
 soup = BeautifulSoup(open("data/book1.html"), "html.parser")
 
 #*********************************************************************
-# Observation: title and Author always contained in meta:description
+# Title location: id="btAsinTitle"<..title..>
 #*********************************************************************
-titleAndAuthor = soup.find("meta", {"name":"description"}).get('content')
+title = soup.find(id="btAsinTitle")
+print(title.contents[0]);
 
 #*********************************************************************
-# This regex assumes no bracket in title - problem??
+# Author location: inside div that contains title and author
 #*********************************************************************
-title = re.search('.+?(?=\[)', titleAndAuthor, flags=0) 
-
-#*********************************************************************
-# This regex assumes no bracket in title - problem??
-#*********************************************************************
-author = re.search('(?<=\[).+?(?=\])', titleAndAuthor, flags=0) 
-
+authorContainer = title.parent.parent
+print(authorContainer.find('a').text)
 
 
 #*********************************************************************
@@ -46,6 +39,4 @@ for node in soup.findAll("li"):
 # print statements to test outputs
 #*********************************************************************
 print(isbn)
-print(title.group().encode('utf-8'))
-print(author.group().encode('utf-8'))
 
