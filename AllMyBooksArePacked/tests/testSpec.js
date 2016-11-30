@@ -17,7 +17,11 @@ describe('Product detail extraction', () => {
 
     before(() => {
     	book = new Book({
-    		title: 'hi'
+    		title: 'Book Title',
+    		isbn: '1234567890',
+    		weight: '10 pounds',
+    		price: '12.00$',
+    		author: 'Author McGriffin'
     	});
     });
 
