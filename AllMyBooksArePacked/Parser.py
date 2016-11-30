@@ -12,23 +12,40 @@ from bs4 import BeautifulSoup
 #*********************************************************************
 # Testing: open single document 
 #*********************************************************************
-soup = BeautifulSoup(open("data/book1.html"), "html.parser")
+soup = BeautifulSoup(open("data/book19.html"), "html.parser")
 
 #*********************************************************************
 # Title location: id="btAsinTitle"<..title..>
 #*********************************************************************
-title = soup.find(id="btAsinTitle")
-print(title.contents[0]);
+titleContainer = soup.find(id="btAsinTitle")
+title = titleContainer.contents[0]
+print(title);
 
 #*********************************************************************
 # Author location: inside div that contains title and author
 #*********************************************************************
-authorContainer = title.parent.parent
-print(authorContainer.find('a').text)
+authorContainer = titleContainer.parent.parent
+author = authorContainer.find('a').text
+print(author)
 
 
 #*********************************************************************
 # ISBN location : id="ASIN" value="..isbn.."
 #*********************************************************************
-isbn = soup.find(id="ASIN")
-print(isbn['value'])
+isbnContainer = soup.find(id="ASIN")
+isbn = isbnContainer['value']
+print(isbn)
+
+
+#*********************************************************************
+# Shipping weight location : li><b>Shipping Weight:</b> ..weight..
+#*********************************************************************
+weightSibling = soup.find('b', string='Shipping Weight:')
+weightContainer = weightSibling.parent
+weight = weightContainer.contents[1]
+
+#weight always has form " x.x pounds (" we need to clean it up
+weight = weight[1:-2]									
+print (weight)
+
+
