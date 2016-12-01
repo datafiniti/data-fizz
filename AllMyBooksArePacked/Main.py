@@ -1,6 +1,13 @@
 import bookParser 
+import fileFinder
 
 class Main(object):
 	Parser = bookParser.Parser()
-	Parser.parseAll('data/book1.html')
+
+	files = fileFinder.ReadFiles().read()
+	for file in files:
+		print(file)
+  		Parser.parseAll('data/' + file)
+	
+
 

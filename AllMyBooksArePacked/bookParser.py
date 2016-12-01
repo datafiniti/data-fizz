@@ -36,9 +36,9 @@ class Parser(object):
 		print (weight)
 
 		#price
-		priceContainer = soup.find(id="actualPriceContent")
-		price = priceContainer.contents[0].text
-		print(price)
+		#priceContainer = soup.find(id="actualPriceContent")
+		#price = priceContainer.contents[0].text
+		#print(price)
 
 	def parseTitle(self, bookName):
 		soup = BeautifulSoup(open(bookName), "html.parser")
