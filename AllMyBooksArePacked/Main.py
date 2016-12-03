@@ -8,6 +8,5 @@ class Main(object):
 	for file in files:
 		print(file)
   		Parser.parseAll('data/' + file)
-	
 
 

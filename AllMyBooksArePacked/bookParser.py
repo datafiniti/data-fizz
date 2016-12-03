@@ -14,65 +14,128 @@ class Parser(object):
 		#title
 		soup = BeautifulSoup(open(bookName), "html.parser")
 		titleContainer = soup.find(id="btAsinTitle")
-		title = titleContainer.contents[0]
-		print(title);
+		if(titleContainer is not None):
+			title = titleContainer.contents[0]
+			print(title);
+		else:
+			print("Error: Could Not find title")
+		
 
 		#author
-		authorContainer = titleContainer.parent.parent
-		author = authorContainer.find('a').text
-		print(author)
+		if(titleContainer is not None):
+			authorContainer = titleContainer.parent.parent
+			if(authorContainer is not None):
+				author = authorContainer.find('a').text
+				if(author is not None):
+					print(author)
+				else:
+					print("Error: Could Not find Author")
+			else:
+				print("Error: Could Not find Author")
+		else:
+			print("Error: Could Not find Author")
 
 		#Isbn
 		isbnContainer = soup.find(id="ASIN")
-		isbn = isbnContainer['value']
-		print(isbn)
+		if(isbnContainer is not None):
+			isbn = isbnContainer['value']
+			print(isbn)
+		else:
+			print("Error: Could Not find ISBN")
 
 		#Weight
 		weightSibling = soup.find('b', string='Shipping Weight:')
-		weightContainer = weightSibling.parent
-		weight = weightContainer.contents[1]
-		#weight always has form " x.x pounds (" we need to clean it up
-		weight = weight[1:-2]									
-		print (weight)
+		if(weightSibling is not None):
+			weightContainer = weightSibling.parent
+			if(weightContainer is not None):
+				weight = weightContainer.contents[1]
+				#weight always has form " x.x pounds (" we need to clean it up
+				weight = weight[1:-2]									
+				print (weight)
+			else:
+				print("Error: Could Not find weight")
+		else:
+			print("Error: Could Not find weight")
 
 		#price
-		#priceContainer = soup.find(id="actualPriceContent")
-		#price = priceContainer.contents[0].text
-		#print(price)
+		PriceContainer1 = soup.findAll(id="actualPriceExtraMessaging")
+		if(PriceContainer1 is not None):
+			for priceContainer2 in PriceContainer1:
+				Element = priceContainer2.previous_element.previous_element
+				if(Element is not None):
+					print(Element)
+				else:
+					print("Error: Could Not find price")
+		else:
+			print("Error: Could Not find price")
 
 	def parseTitle(self, bookName):
 		soup = BeautifulSoup(open(bookName), "html.parser")
 		titleContainer = soup.find(id="btAsinTitle")
-		title = titleContainer.contents[0]
-		print(title);
+		if(titleContainer is not None):
+			title = titleContainer.contents[0]
+			print(title);
+		else:
+			print("Error: Could Not find title")
 
 	def parseAuthor(self, bookName):
 		soup = BeautifulSoup(open(bookName), "html.parser")
 		titleContainer = soup.find(id="btAsinTitle")
-		authorContainer = titleContainer.parent.parent
-		author = authorContainer.find('a').text
-		print(author)
+		if(titleContainer is not None):
+			authorContainer = titleContainer.parent.parent
+			if(authorContainer is not None):
+				author = authorContainer.find('a').text
+				if(author is not None):
+					print(author)
+				else:
+					print("Error: Could Not find Author")
+			else:
+				print("Error: Could Not find Author")
+		else:
+			print("Error: Could Not find Author")
 
 	def parseIsbn(self, bookName):
 		soup = BeautifulSoup(open(bookName), "html.parser")
 		isbnContainer = soup.find(id="ASIN")
-		isbn = isbnContainer['value']
-		print(isbn)
+		if(isbnContainer is not None):
+			isbn = isbnContainer['value']
+			print(isbn)
+		else:
+			print("Error: Could Not find ISBN")
 
 
 	def parseShippingWeight(self, bookName):
 		soup = BeautifulSoup(open(bookName), "html.parser")
 		weightSibling = soup.find('b', string='Shipping Weight:')
-		weightContainer = weightSibling.parent
-		weight = weightContainer.contents[1]
-
-		#weight always has form " x.x pounds (" we need to clean it up
-		weight = weight[1:-2]									
-		print (weight)
+		if(weightSibling is not None):
+			weightContainer = weightSibling.parent
+			if(weightContainer is not None):
+				weight = weightContainer.contents[1]
+				#weight always has form " x.x pounds (" we need to clean it up
+				weight = weight[1:-2]									
+				print (weight)
+			else:
+				print("Error: Could Not find weight")
+		else:
+			print("Error: Could Not find weight")
 
 	def parsePrice(self, bookName):
 		soup = BeautifulSoup(open(bookName), "html.parser")
-		priceContainer = soup.find(id="actualPriceContent")
-		price = priceContainer.contents[0].text
-		print(price)
+		PriceContainer1 = soup.findAll(id="actualPriceExtraMessaging")
+		if(PriceContainer1 is not None):
+			for priceContainer2 in PriceContainer1:
+				Element = priceContainer2.previous_element.previous_element
+				if(Element is not None):
+					print(Element)
+				else:
+					print("Error: Could Not find price")
+		else:
+			print("Error: Could Not find price")
+
+
+
+
+
+
+
 
