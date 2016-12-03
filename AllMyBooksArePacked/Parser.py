@@ -1,5 +1,5 @@
 #Robbie Zuazua
-#Last Modified: 11/29/16
+#Last Modified: 11/30/16
 
 #**********************************************************
 # We will use 
@@ -8,50 +8,78 @@
 
 from bs4 import BeautifulSoup
 
+def sayHi():
+		print("hi");
 
-#*********************************************************************
-# Testing: open single document 
-#*********************************************************************
-soup = BeautifulSoup(open("data/book1.html"), "html.parser")
+class Parser(object):
 
-#*********************************************************************
-# Title location
-#*********************************************************************
-titleContainer = soup.find(id="btAsinTitle")
-title = titleContainer.contents[0]
-print(title);
+	def parseAll(self, bookName):
+		#title
+		soup = BeautifulSoup(open(bookName), "html.parser")
+		titleContainer = soup.find(id="btAsinTitle")
+		title = titleContainer.contents[0]
+		print(title);
 
-#*********************************************************************
-# Author location
-#*********************************************************************
-authorContainer = titleContainer.parent.parent
-author = authorContainer.find('a').text
-print(author)
+		#author
+		authorContainer = titleContainer.parent.parent
+		author = authorContainer.find('a').text
+		print(author)
 
-#*********************************************************************
-# ISBN location 
-#*********************************************************************
-isbnContainer = soup.find(id="ASIN")
-isbn = isbnContainer['value']
-print(isbn)
+		#Isbn
+		isbnContainer = soup.find(id="ASIN")
+		isbn = isbnContainer['value']
+		print(isbn)
 
-#**********************************************************************
-# Shipping weight location 
-#**********************************************************************
-weightSibling = soup.find('b', string='Shipping Weight:')
-weightContainer = weightSibling.parent
-weight = weightContainer.contents[1]
+		#Weight
+		weightSibling = soup.find('b', string='Shipping Weight:')
+		weightContainer = weightSibling.parent
+		weight = weightContainer.contents[1]
+		#weight always has form " x.x pounds (" we need to clean it up
+		weight = weight[1:-2]									
+		print (weight)
 
-#weight always has form " x.x pounds (" we need to clean it up
-weight = weight[1:-2]									
-print (weight)
+		#price
+		priceContainer = soup.find(id="actualPriceContent")
+		price = priceContainer.contents[0].text
+		print(price)
 
-#*********************************************************************
-# Price location 
-#*********************************************************************
-priceContainer = soup.find(id="actualPriceContent")
-price = priceContainer.contents[0].text
-print(price)
+	def parseTitle(self, bookName):
+		soup = BeautifulSoup(open(bookName), "html.parser")
+		titleContainer = soup.find(id="btAsinTitle")
+		title = titleContainer.contents[0]
+		print(title);
+
+	def parseAuthor(self, bookName):
+		soup = BeautifulSoup(open(bookName), "html.parser")
+		titleContainer = soup.find(id="btAsinTitle")
+		authorContainer = titleContainer.parent.parent
+		author = authorContainer.find('a').text
+		print(author)
+
+	def parseIsbn(self, bookName):
+		soup = BeautifulSoup(open(bookName), "html.parser")
+		isbnContainer = soup.find(id="ASIN")
+		isbn = isbnContainer['value']
+		print(isbn)
+
+
+	def parseShippingWeight(self, bookName):
+		soup = BeautifulSoup(open(bookName), "html.parser")
+		weightSibling = soup.find('b', string='Shipping Weight:')
+		weightContainer = weightSibling.parent
+		weight = weightContainer.contents[1]
+
+		#weight always has form " x.x pounds (" we need to clean it up
+		weight = weight[1:-2]									
+		print (weight)
+
+	def parsePrice(self, bookName):
+		soup = BeautifulSoup(open(bookName), "html.parser")
+		priceContainer = soup.find(id="actualPriceContent")
+		price = priceContainer.contents[0].text
+		print(price)
+
+
 
 
 
