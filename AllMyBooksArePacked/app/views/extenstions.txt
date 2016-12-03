@@ -1,0 +1,12 @@
+1. Domains beyond Amazon.com
+	Domains beyond Amazon.com can be parsed in the same manner that Amazon.com was parsed in this excercise. This excercise saved the Amazon.com files locally and then parsed the information. To parse infromation beyond Amazon.com, a developer would right-click and save a local file, then perform parsing.
+
+	If the developer wants to parse a live site, the open-uri module would be required. The developer would then have the ability to parse any live HTML site.
+
+2. Products beyond just simply books.
+	Parsing by using the Nokogiri module does not constrain the developer to particular items such as books.  Nokogiri allows a developer to parse local files, as in this excercise, or even live sites. Thus, Nokogiri allows for parsing of any HTML file, no matter the content.
+
+3. Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+	This application would parse and ship as an execution time algorithm that will grow linearly depending on input size.  O(n) is the current complexity.  The complexity could be altered, if the requirement was to optimize the the number of books per box.  If this were the case, the programs complexity would change to O(log n) becuase the program would have to implement a binary search to determine the best combination of books per box.  To optimize productivity and resources, O(log n) would be the more efficient complexity to parse and ship 2,000,000 books.
+
+  

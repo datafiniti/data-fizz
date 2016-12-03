@@ -1,0 +1,15 @@
+== README
+
+This README documents the steps necessary to get the
+application up and running.
+
+* Ruby version
+  ruby 2.1.8p440 (2015-12-16 revision 53160) [i386-mingw32]
+* How to run the test suite
+  cd into ./app/views
+  execute - ruby scraper.rb
+* Files
+  exentions.txt is located in views folder
+  order.rb contains the json output
+  scraper.rb contains HTML parsing
+
