@@ -1,28 +1,15 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
+This README documents the steps necessary to get the
 application up and running.
 
-Things you may want to cover:
-
 * Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
+  ruby 2.1.8p440 (2015-12-16 revision 53160) [i386-mingw32]
 * How to run the test suite
+  cd into ./app/views
+  execute - ruby scraper.rb
+* Files
+  exentions.txt is located in views folder
+  order.rb contains the json output
+  scraper.rb contains HTML parsing
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
