@@ -7,16 +7,21 @@
 #**********************************************************
 
 from bs4 import BeautifulSoup
+import Book
 
 class Parser(object):
 
 	def parseAll(self, bookName):
+		#Create book object to store parsed data
+		bookObject = Book.myBook()
+
 		#title
 		soup = BeautifulSoup(open(bookName), "html.parser")
 		titleContainer = soup.find(id="btAsinTitle")
 		if(titleContainer is not None):
 			title = titleContainer.contents[0]
-			print(title);
+			#print(title);
+			bookObject.setTitle(title)
 		else:
 			print("Error: Could Not find title")
 		
@@ -27,7 +32,9 @@ class Parser(object):
 			if(authorContainer is not None):
 				author = authorContainer.find('a').text
 				if(author is not None):
-					print(author)
+					#print(author)
+					bookObject.setAuthor(author)
+
 				else:
 					print("Error: Could Not find Author")
 			else:
@@ -39,7 +46,9 @@ class Parser(object):
 		isbnContainer = soup.find(id="ASIN")
 		if(isbnContainer is not None):
 			isbn = isbnContainer['value']
-			print(isbn)
+			#print(isbn)
+			bookObject.setIsbn(isbn)
+
 		else:
 			print("Error: Could Not find ISBN")
 
@@ -51,7 +60,9 @@ class Parser(object):
 				weight = weightContainer.contents[1]
 				#weight always has form " x.x pounds (" we need to clean it up
 				weight = weight[1:-2]									
-				print (weight)
+				#print (weight)
+				bookObject.setWeight(weight)
+
 			else:
 				print("Error: Could Not find weight")
 		else:
@@ -63,12 +74,16 @@ class Parser(object):
 			for priceContainer2 in PriceContainer1:
 				Element = priceContainer2.previous_element.previous_element
 				if(Element is not None):
-					print(Element)
+					bookObject.setPrice(Element)
+
 				else:
 					print("Error: Could Not find price")
 		else:
 			print("Error: Could Not find price")
 
+		return bookObject;
+	#Used for debugging purposes 
+	#Can test Title parsing methodology here
 	def parseTitle(self, bookName):
 		soup = BeautifulSoup(open(bookName), "html.parser")
 		titleContainer = soup.find(id="btAsinTitle")
@@ -78,6 +93,8 @@ class Parser(object):
 		else:
 			print("Error: Could Not find title")
 
+	#Used for debugging purposes 
+	#Can test Author parsing methodology here
 	def parseAuthor(self, bookName):
 		soup = BeautifulSoup(open(bookName), "html.parser")
 		titleContainer = soup.find(id="btAsinTitle")
@@ -94,6 +111,8 @@ class Parser(object):
 		else:
 			print("Error: Could Not find Author")
 
+	#Used for debugging purposes 
+	#Can test ISBN parsing methodology here
 	def parseIsbn(self, bookName):
 		soup = BeautifulSoup(open(bookName), "html.parser")
 		isbnContainer = soup.find(id="ASIN")
@@ -103,7 +122,8 @@ class Parser(object):
 		else:
 			print("Error: Could Not find ISBN")
 
-
+	#Used for debugging purposes 
+	#Can test Weight parsing methodology here
 	def parseShippingWeight(self, bookName):
 		soup = BeautifulSoup(open(bookName), "html.parser")
 		weightSibling = soup.find('b', string='Shipping Weight:')
@@ -119,6 +139,8 @@ class Parser(object):
 		else:
 			print("Error: Could Not find weight")
 
+	#Used for debugging purposes 
+	#Can test Price parsing methodology here
 	def parsePrice(self, bookName):
 		soup = BeautifulSoup(open(bookName), "html.parser")
 		PriceContainer1 = soup.findAll(id="actualPriceExtraMessaging")
