@@ -1,12 +1,13 @@
-import re
 
-class myBook(object):
-	_title = "Error"
-	_author = "Error"
-	_isbn = "Error"
-	_weight = "Error"
-	_weight_val = 0
-	_price = ["Error"]
+class ShippingBox(object):
+	#edit shipping box capacity here
+	_id = 0
+	_totalWeight = 0
+	_title = ""
+	_author = ""
+	_isbn = ""
+	_weight = ""
+	_price = [""]
 
 	def getTitle(self):
 		return self._title
@@ -16,8 +17,6 @@ class myBook(object):
 		return self._isbn
 	def getWeight(self):
 		return self._weight
-	def getWeightVal(self):
-		return self._weight_val
 	def getPrice(self):
 		return self._price
 
@@ -27,15 +26,11 @@ class myBook(object):
 		self._author =author
 	def setIsbn(self, isbn):
 		self._isbn =isbn
-
-	# Need to do calculations with weight value
-	# weight input has form "x.y Pounds"
-	# used regex to store floating point "x.y" in _weight_val 
-
 	def setWeight(self, weight):
 		self._weight = weight
-		self._weight_val = float(re.search('[^ ]*',weight, flags = 0).group())
-
 	def setPrice(self, price):
 		self._price = price
-	
+
+
+
+
