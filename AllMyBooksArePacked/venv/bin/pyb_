@@ -1,0 +1,10 @@
+#!/home/sanket/workspace/DataFizz/AllMyBooksArePacked/venv/bin/python
+# EASY-INSTALL-ENTRY-SCRIPT: 'pybuilder==0.10.59','console_scripts','pyb_'
+__requires__ = 'pybuilder==0.10.59'
+import sys
+from pkg_resources import load_entry_point
+
+if __name__ == '__main__':
+    sys.exit(
+        load_entry_point('pybuilder==0.10.59', 'console_scripts', 'pyb_')()
+    )
