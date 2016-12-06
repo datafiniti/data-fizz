@@ -37,16 +37,14 @@ class Main(object):
         #a = json.dumps(f,indent=True)
         #print (a)
 
-        print("new box")
         box.setTotalWeight()
         f = box.getContents()
         l = []
         for book in f:
             j = dict(book)
-            a = json.dumps(j, indent = True)
-            l.append(a)
-        print(l)
-
+            l.append(j)
+        a = json.dumps({"box": {"id":box.getId(),"totalWeight": box.getTotalWeight(),"contents" : l}}, indent = True)
+        print(a)
 
 
 
