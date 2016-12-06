@@ -26,32 +26,20 @@ class Main(object):
     # Pass data to Packing function
     # Packing function will return the shipping boxes filled with our book objects
     myBoxes = Packer.myPacker().pack(bookCollection)
+
     for box in myBoxes:
-        #a = ""
-        #for book in box:
-        #    f = dict(book)
-        #    a = json.dumps(f, indent = True)
-        #print (a)
-
-        #f = dict(box)
-        #a = json.dumps(f,indent=True)
-        #print (a)
-
-        box.setTotalWeight()
-        f = box.getContents()
-        l = []
-        for book in f:
-            j = dict(book)
-            l.append(j)
-        a = json.dumps({"box": {"id":box.getId(),"totalWeight": box.getTotalWeight(),"contents" : l}}, indent = True)
-        print(a)
-
-
-
-        #print("$$")
-        #for book in box:
-        #    print(book.getWeight())
-        
+        if (box is not None):
+            box.setTotalWeight()
+            books = box.getContents()
+            list_of_contents = []
+            #iterate over all the books in the box to get the contents of the box
+            for book in books:
+               my_book = dict(book)
+               list_of_contents.append(my_book)
+            weight = box.getTotalWeight();
+            my_id = box.getId();
+            json_object = json.dumps({"box": {"id":my_id,"totalWeight": weight,"contents" : list_of_contents}}, indent = True)
+            print(json_object)
 
 
 

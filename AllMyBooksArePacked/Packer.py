@@ -48,6 +48,11 @@ class myPacker (object):
             else:
                 foundSpaceForBook = False
 
+        #clear all shipping boxes that have no contents
+        for count in range(size):
+            if(count>=numBoxes):
+                self._PackagedBoxes[count] = None
+                
         return self._PackagedBoxes
 
         
