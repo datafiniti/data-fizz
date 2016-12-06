@@ -1,35 +1,46 @@
 
 class ShippingBox(object):
-	#edit shipping box capacity here
 	_id = 0
 	_totalWeight = 0
-	_title = ""
-	_author = ""
-	_isbn = ""
-	_weight = ""
-	_price = [""]
+	_contents =[]
+	_counter = 0
 
-	def getTitle(self):
-		return self._title
-	def getAuthor(self):
-		return self._author
-	def getIsbn(self):
-		return self._isbn
-	def getWeight(self):
-		return self._weight
-	def getPrice(self):
-		return self._price
 
-	def setTitle(self, title):
-		self._title = title
-	def setAuthor(self, author):
-		self._author =author
-	def setIsbn(self, isbn):
-		self._isbn =isbn
-	def setWeight(self, weight):
-		self._weight = weight
-	def setPrice(self, price):
-		self._price = price
+	def __init__(self):
+		self._contents = []
+
+	def __iter__(self):
+		self._counter=0;
+		return self
+
+	def next(self):
+		if(self._counter==3):
+			raise StopIteration
+		elif(self._counter==0):
+			self._counter += 1
+			return ("id" ,self._id)
+		elif(self._counter==1):
+			self._counter += 1
+			return ("total weight" ,self._totalWeight)
+		elif(self._counter==2):
+			self._counter += 1
+			return ("contents" ,self._contents)
+		
+	def getId(self):
+		return self._id
+	def getTotalWeight(self):
+		return self._totalWeight
+	def getContents(self):
+		return self._contents
+
+	def setId(self, the_id):
+		self._id = the_id
+	def setTotalWeight(self):
+		for book in self._contents:
+			self._totalWeight += book.getWeightVal()
+	def setContents(self, content):
+		self._contents.append(content)
+		
 
 
 

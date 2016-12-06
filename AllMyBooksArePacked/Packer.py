@@ -23,7 +23,7 @@ class myPacker (object):
         size = len(bookCollection)
         numBoxes = 0;
         remainingBoxSpace = [self._capacity] * size
-        self._PackagedBoxes=[[] for i in range(size)]
+        self._PackagedBoxes=[ShippingBox.ShippingBox() for i in range(size)]
         foundSpaceForBook = False
 
         #place (i = 0 to size of Book Collection) items in boxes
@@ -35,14 +35,15 @@ class myPacker (object):
                 # 2nd part of if Statement: there is exactly enough space in box (ex: 5.0+5.0 ~= 10)
                 if((remainingBoxSpace[j] -bookCollection[i].getWeightVal() > 0.00001) or (-.000001< (bookCollection[i].getWeightVal()-remainingBoxSpace[j]) < .00001)):
                     remainingBoxSpace[j] = remainingBoxSpace[j] - bookCollection[i].getWeightVal()
-                    self._PackagedBoxes[j].append(bookCollection[i])
+                    self._PackagedBoxes[j].setContents(bookCollection[i])
                     foundSpaceForBook = True
                     break;
 
             # if there was no sppacce for the book, we create a new Box
             if (not foundSpaceForBook):
                 remainingBoxSpace[numBoxes] = self._capacity-bookCollection[i].getWeightVal()
-                self._PackagedBoxes[numBoxes].append(bookCollection[i])
+                self._PackagedBoxes[numBoxes].setContents(bookCollection[i])
+                self._PackagedBoxes[numBoxes].setId(numBoxes)
                 numBoxes+=1
             else:
                 foundSpaceForBook = False

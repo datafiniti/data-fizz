@@ -2,7 +2,7 @@ import bookParser
 import fileFinder
 import Book
 import Packer
-
+import json
 
 
 class Main(object):
@@ -26,11 +26,33 @@ class Main(object):
     # Pass data to Packing function
     # Packing function will return the shipping boxes filled with our book objects
     myBoxes = Packer.myPacker().pack(bookCollection)
-
     for box in myBoxes:
-        print("$$")
-        for book in box:
-            print(book.getWeight())
+        #a = ""
+        #for book in box:
+        #    f = dict(book)
+        #    a = json.dumps(f, indent = True)
+        #print (a)
+
+        #f = dict(box)
+        #a = json.dumps(f,indent=True)
+        #print (a)
+
+        print("new box")
+        box.setTotalWeight()
+        f = box.getContents()
+        l = []
+        for book in f:
+            j = dict(book)
+            a = json.dumps(j, indent = True)
+            l.append(a)
+        print(l)
+
+
+
+
+        #print("$$")
+        #for book in box:
+        #    print(book.getWeight())
         
 
 

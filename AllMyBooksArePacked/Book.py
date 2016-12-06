@@ -1,12 +1,40 @@
 import re
 
 class myBook(object):
+	# If you make any changes in these variables
+	# Make sure you update next() function
 	_title = "Error"
 	_author = "Error"
 	_isbn = "Error"
 	_weight = "Error"
 	_weight_val = 0
-	_price = ["Error"]
+	_price = "Error"
+	_counter = 0
+
+
+	def __iter__(self):
+		self._counter=0;
+		return self
+
+	def next(self):
+		if(self._counter==5):
+			raise StopIteration
+		elif(self._counter==0):
+			self._counter += 1
+			return ("title" ,self._title)
+		elif(self._counter==1):
+			self._counter += 1
+			return ("author" ,self._author)
+		elif(self._counter==2):
+			self._counter += 1
+			return ("isbn" ,self._isbn)
+		elif(self._counter==3):
+			self._counter += 1
+			return ("weight" ,self._weight)
+		elif(self._counter==4):
+			self._counter += 1
+			return ("price" ,self._price)
+
 
 	def getTitle(self):
 		return self._title
