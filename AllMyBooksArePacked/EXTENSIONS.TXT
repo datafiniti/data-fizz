@@ -1,0 +1,5 @@
+1)The bookParser class takes advantage of Amazons html structure to parse the relevant data. For Domains beyond Amazon.com, I would create another class similar to bookParser and optimize it for the specific domain.
+
+2)Similar to question 1, I would create a new Parsing class and optimize it for the specific application. The bookParser class would be able to parse some information from products on amazon, but will need to be modified to collect additional relevant product information.
+
+3)In order to parse and ship 2,000,000 books quicker, I would re-write my packing algorithm using a balanced binary search tree (O(nlogn)). Currently I am using a list and two for loops giving me a packing runtime of O(n^2)
