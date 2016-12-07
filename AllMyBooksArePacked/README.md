@@ -1,73 +1,44 @@
-# Book Packer
+# Datafiniti Programming Challenge
 
-## Purpose
+## Description
+This application uses webscraping to get data from books on amazon's webpage. Currently, it parses through the html files in the data directory. It also arranges books based on weights into the least number of boxes with 10lb max capacity. The application returns the array of boxes in json format.
 
-This exercise is designed to test your ability to use object-oriented design principles, data structures and standard algorithms to craft a small application.  We will not only be looking at the correctness of your solution but at the style of your code, its modularity, its extensibility, and ease at which the whole package can be built and tested.  As a small team we believe these principles are a key element of our continued success. 
+## How it works
+	
+### There are three main steps
 
-The problem itself is not arbritary but meant to simulate the type of work you would be doing here at Datafiniti. The transformation of unstructured data into structured data involves parsing, computationaly intensive algorithmic techniques and ultimately some method of presenting that data in a human and machine digestable format to our customers.
+#### Getting the html
+The application uses the **fs** module to get html from web pages. The **fs** module used to get html from files in a local folder can be augmented with the **request** module to get html from url's.
+#### Extracting the data 
+To extract data from html, we need to pull out information from between tags in the html. The **cheerio** module, an implementation of JQuery specifically designed for the server, is used for this purpose.
+#### Making the JSON
+Once we get the data, it needs to be converted to JSON. The application uses object constructors to build objects that store book data and then converts the objects to JSON.
 
-Have fun, be creative and ask questions! 
+#### Additional Step
+This application also places the books into the least number of boxes. It does so using a technique called next fit decreasing. The algorithm works by arranging the books by first arranging books nonincreasingly and then placing books into new boxes when the book can't fit into any of the existing boxes. Because the algorithm has to look back every time a book doesn't fit in a box the worst time is O(n^2). There is a method using binary trees that can bring down the worst time to O(nlogn).
 
-## Problem Description
-
-In this repository you have been provided with the HTML source for twenty randonly chosen Amazon book pages.  
-
-You will need to design and implement a fully functioning application that can take these pages and extract meaningful information from the raw source. 
-
-The extracted data must contain at least the following fields:
-
-* Title
-* Author
-* Price
-* Shipping Weight
-* ISBN-10
-
-After extracting this information you will need to divide these twenty books into N boxes for shipping with each box having no more than ten pounds of books.
-
-Your application should ouput its results in a valid and well structured JSON document like the example below:
+## Sample code
 
 ```json
-{
-    "box": {
-        "id": 1,
-        "totalWeight": "1.1 pounds",
-        "contents": [
-            {
-                "title": "The Great Big Beautiful Tomorrow",
-                "author": "Cory Doctorow",
-                "price": "$9.82 USD",
-                "shipping_weight": "1.1 pounds",
-                "isbn-10": 1604864044
-            }
+[
+	{
+		"id":1,
+		"totalWeight":9.4,
+		"contents":[
+			{
+				"title":"Neil Gaiman",
+				"author":"The Ocean at the End of the Lane: A Novel",
+				"price":"$15.22",
+				"weight":"9.4 pounds","isbn_10":"0062255657"
+			}
+		]
+	},
 
-            . . .
-        ]
-    }
+	[...]
+]
+```
 
-    . . .
-}
-``` 
-Once your solution is completed please add an EXTENSIONS.txt file to your solution that notes how your application could be extended to handle the following:
-
-1. Domains beyond Amazon.com
-2. Products beyond just simply books.
-3. Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
-
-To begin fork this repository to your personal Github account. We ask that you submit your solution within 2 weeks of forking the repo.
-
-## Submission Requirements
-
-* Any language is fine.
-* You may use any third party libraries you wish. Any dependencies must be fully managed by a standard build tool for the language used.
-* You must follow standard Object Oriented Design principles and techniques (e.g., submissions with only a single class are not worthy).
-* Submit a pull request to this repository when you are ready to share your solution.
-
-## What We'll Be Looking For
-
-* Code readability and reusability (how "productized" your code is)
-* Practical and sensible use of third-party code
-* The computational efficiency of your sorting algorithm
-
-## Obtaining Help
-
-If you have any questions regarding this exercise please feel free to open a Github issue within this repository and someone from our team will be sure to answer any questions or concerns you have.
+## Libraries 
+* Cheerio: https://github.com/cheeriojs/cheerio
+* Request: https://github.com/request/request
+* Express: http://expressjs.com/
