@@ -1,0 +1,7 @@
+-Domains beyond Amazon.com
+-Products beyond just simply books.
+-Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+
+* My Code already use url to request the site html and be able to parce. Its already able to use any domain.
+* We only need to now the structure of the html, and the way we want to parse, as I use cheerios to implement jquery form the server side.
+* Right now it already open to any amount of url, you need to pass a array with all the urls we need to parse.

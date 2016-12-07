@@ -1,0 +1,42 @@
+{
+  "name": "all-my-books-are-packed",
+  "version": "1.0.0",
+  "description": "challenge",
+  "main": "gulpfile.js",
+  "private": true,
+  "scripts": {
+    "start": "concurrently \"gulp watch\" \"node ./server/bin/www\" ",
+    "postinstall": "gulp"
+  },
+  "author": "Camilo Rivera",
+  "license": "MIT",
+  "dependencies": {
+    "angular2": "2.0.0-beta.9",
+    "async": "^2.0.0-rc.3",
+    "body-parser": "~1.13.2",
+    "cheerio": "^0.20.0",
+    "cookie-parser": "~1.3.5",
+    "del": "^2.2.0",
+    "es6-promise": "^3.0.2",
+    "es6-shim": "^0.33.3",
+    "express": "^4.13.4",
+    "gulp": "^3.9.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-tslint": "^3.6.0",
+    "gulp-typescript": "^2.11.0",
+    "hashmap": "^2.0.5",
+    "jsonwebtoken": "^5.5.4",
+    "knapsack-js": "^1.0.1",
+    "morgan": "~1.6.1",
+    "promise": "^7.1.1",
+    "reflect-metadata": "0.1.2",
+    "request": "^2.72.0",
+    "rxjs": "5.0.0-beta.2",
+    "serve-favicon": "~2.3.0",
+    "systemjs": "0.19.24",
+    "zone.js": "0.5.15"
+  },
+  "devDependencies": {
+    "concurrently": "^2.0.0"
+  }
+}
