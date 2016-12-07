@@ -1,0 +1,19 @@
+##For Domains beyond Amazon.com
+
+Retrieving the necessary data from the Amazon pages was done using custom Regular Expressions made for Amazon pages. For a different domain, a different set of Regular Expressions can be used.
+
+For products beyond simply books:
+
+A new set of regular expressions would be needed, and the class for the type of product would be very similar to the Book class. With multiple types of product, there would probably be a parent "Product" class that these products would inherit from.
+
+##To parse and ship 2,000,000 books:
+
+The sorting-by-weight algorithm in index.js adds very little time complexity to the native array sorting algorithm, so this should not be an issue. Once the array of products is sorted by weight, putting a product in a box will either involve
+1. Putting the heaviest (first) product in a box (constant) OR
+2. Finding the heaviest item that will fit in the current box (logarithmic)
+
+The total time complexity will be approximately the same as the Google v8 sorting algorithm, which is the implementation used by Node.
+
+##Additional extensions
+
+The current iteration of this application is as a command line tool. Functionality could be added to allow for input from sources other than the hardcoded './data' directory.
