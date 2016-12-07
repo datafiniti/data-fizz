@@ -1,0 +1,13 @@
+Once your solution is completed please add an EXTENSIONS.txt file to your solution that notes how your application could be extended to handle the following:
+
+1. Domains beyond Amazon.com
+
+  If you are trying to create shipments of books from a non-amazon site, you would have to rewrite all your traversal functions, but the rest would essentially be the same.
+
+2. Products beyond just simply books.
+
+  You would have to edit the data you are extracting, but you would also need to do a few other things.  You would probably want the data of your item to incude the type of product it is. You would also run different products through different extraction functions to get data specific to that product.
+
+3. Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+
+  Since extracting the data from an html file takes quite a while, we can assume that it will take a long time.  You would likely want to start creating shipments while you are still extracting data. I would make it to where once you have parsed about 100 files send that to a function to start splitting boxes.  Since the parsing files happens asyncronously, it can continue while the other shipments are being created.
