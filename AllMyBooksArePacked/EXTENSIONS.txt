@@ -1,0 +1,5 @@
+1. Domains beyond Amazon.com can be parsed by creating a new class for that specific domain. Consistency can be ensured by extending the abstract Parser class.
+
+2. Products beyond books can be parsed by adding new methods to AmazonParser.java and adding user input to declare the product type (using enumeration).
+
+3. Multithreading could assist in parsing/shipping 2,000,000 books in a more expedient manner.
