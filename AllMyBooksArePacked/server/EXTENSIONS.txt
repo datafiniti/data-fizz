@@ -1,0 +1,6 @@
+
+
+
+This app can be improved, using dependency injection, so there can be one implementation per data source (or client). 
+
+Another option is to have the selectors in the db and configurable by client. 
