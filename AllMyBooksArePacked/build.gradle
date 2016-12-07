@@ -1,0 +1,55 @@
+apply plugin: 'java'
+apply plugin: 'jacoco'
+
+sourceCompatibility = 1.8
+
+dependencies {
+    compile group: 'org.jsoup', name: 'jsoup', version: '1.7.2'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.7.4'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.7.4'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.7.4'
+    testCompile group: 'junit', name: 'junit', version: "4.+"
+    testCompile "org.mockito:mockito-core:1.+"
+}
+sourceSets {
+    main {
+        java {
+            srcDir 'src/java'
+        }
+        resources {
+            srcDir 'src/resources'
+        }
+    }
+}
+
+allprojects {
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << '-Xlint:deprecation' << '-Xlint:unchecked'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+task(runapp, dependsOn: 'classes', type: JavaExec) {
+
+    main = 'DataFizz.Driver.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+jacocoTestReport {
+    doFirst{
+        classDirectories = fileTree(
+					dir: './build/classes/main/DataFizz',
+					excludes: ['**/Driver/*.class']
+				)
+    }
+
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination "build/reports/coverageHtml"
+    }
+}
+defaultTasks 'clean', 'test', 'jacocoTestReport' , 'runapp'
