@@ -1,0 +1,16 @@
+1) Domains beyond Amazon:
+	My program can be extended to work on non-Amazon pages by changing or adding a different loadData function within the Book class. If one were to add a new loadData function they'd need to scrape data from the appropriate children within the HTML heirarchy. 
+
+2) Products beyond Books:
+	My code has an existing Product superclass that can be extended for specific product subclasses. The Product class also has a defaul loadData function which scrapes data from the Product Details Table, however this can be overridden by subclasses if data is needed outside of the table, or only specific data in the table is desired.
+
+	In order to determine which class to use, one could base new class names off of existing Amazon product categories. They could then scrape the product category from the defined page and determine with a table, if/elif block, or other logic which class to use.
+
+3) Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+	The preffered method for extending the program to support millions of books would be add support for a database, and connect the program to a database containing urls for the desired bookpages. Storing millions of book pages locally would be faster, but potentially problematic for storage especially if scaling to higher orders of magnitude. 
+
+	With this database the program could iterate through the table and scrape relevant data which could then be stored into another db table. 
+
+	The algorithm currently has a complexity of O(n^3 log n), with n being the number of books. However optimizations could be made for tree accesses with the HTML hierarchy depending on the product.
+
+NOTE: There was a duplicate book in the data provided (book5 and book19), I treated these as being 2 copies of the same book in a "cart". However if duplicates were to be removed a simple ISBN check against a set or dictionary could be done before adding a book to the allBooks list in the main function.
