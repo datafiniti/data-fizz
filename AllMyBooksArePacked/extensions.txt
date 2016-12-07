@@ -1,0 +1,11 @@
+1. Domains beyond Amazon.com
+	Ans: The application can get html from new domains using the request module. Also it can get the html from local files in a folder using the fs module. This basic functionality can be improved by modifying the html module that contains the code that gets html.
+
+2. Products beyond just simply books.
+	Ans: The application has an amazonBook module which is specifically designed to parse book data from amazon pages. The amazonBook module uses a book constructor from the book module. This constructor specifies the information we want and has fields like title,author,etc. 
+	
+ 	Now if we decided to parse through cars on amazon, we would have to add an additional module that does the parsing (called amazonCars). We would also need a basic constructor for cars with fields like vin,model,make,color,etc.
+
+3. Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+ 	Ans: The first fit decreasing algorithm used in the programming exercise would parse and ship 2 million books in polynomial time(O(n^2)). The logic for the algorithm is contained within the nextfit module. Basically, if a book doesnt fit in the current box, the algorithm checks back over all the previous boxes before adding a new one. The algorithm can be further improved to run in O(nlogn) time. The improved algorithm would really help speed up parsing on such large inputs. We could also use the next fit algorithm that is very similar to first fit except it doesn't check any previous boxes for space before new one. Though this method is less efficient in boxing it has a time complexity of O(n).
+  
