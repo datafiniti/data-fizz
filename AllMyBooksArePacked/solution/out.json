@@ -1,0 +1,320 @@
+[
+    {
+        "boxId": 1,
+        "maxWeight": 10,
+        "currentWeight": 9.4,
+        "totalProducts": 1,
+        "contents": [
+            {
+                "author": "Neil Gaiman",
+                "isbn10": "0062255657",
+                "isbn13": "978-0062255655",
+                "publisher": "William Morrow; First Edition edition",
+                "date": "June 18, 2013",
+                "language": "English",
+                "pages": "192",
+                "name": "The Ocean at the End of the Lane: A Novel [Deckle Edge] [Hardcover]",
+                "shipping_weight": "9.4",
+                "price": "15.22"
+            }
+        ]
+    },
+    {
+        "boxId": 2,
+        "maxWeight": 10,
+        "currentWeight": 10,
+        "totalProducts": 2,
+        "contents": [
+            {
+                "author": "Reza Aslan",
+                "isbn10": "140006922X",
+                "isbn13": "978-1400069224",
+                "publisher": "Random House",
+                "date": "July 16, 2013",
+                "language": "English",
+                "pages": "336",
+                "name": "Zealot: The Life and Times of Jesus of Nazareth [Hardcover]",
+                "shipping_weight": "1.2",
+                "price": "16.89"
+            },
+            {
+                "author": "Alan LeMay",
+                "isbn10": "147780630X",
+                "isbn13": "978-1477806302",
+                "publisher": "AmazonEncore; Reprint edition",
+                "date": "March 12, 2013",
+                "language": "English",
+                "pages": "288",
+                "name": "The Unforgiven [Paperback]",
+                "shipping_weight": "8.8",
+                "price": "8.97"
+            }
+        ]
+    },
+    {
+        "boxId": 3,
+        "maxWeight": 10,
+        "currentWeight": 9.2,
+        "totalProducts": 2,
+        "contents": [
+            {
+                "author": "Ree Drummond",
+                "isbn10": "0062225227",
+                "isbn13": "978-0062225221",
+                "publisher": "William Morrow Cookbooks",
+                "date": "October 29, 2013",
+                "language": "English",
+                "pages": "400",
+                "name": "The Pioneer Woman Cooks: A Year of Holidays: 135 Step-by-Step Recipes for Simple, Scrumptious Celebrations [Hardcover]",
+                "shipping_weight": "1.4",
+                "price": "20.29"
+            },
+            {
+                "author": "Europa Publications",
+                "isbn10": "1857435885",
+                "isbn13": "978-1857435887",
+                "publisher": "Routledge",
+                "date": "March 7, 2011",
+                "language": "English",
+                "name": "The Europa Regional Surveys of the World Set 2011: 9-Volume Set [Hardcover]",
+                "shipping_weight": "7.8",
+                "price": "7,450.00"
+            }
+        ]
+    },
+    {
+        "boxId": 4,
+        "maxWeight": 10,
+        "currentWeight": 9,
+        "totalProducts": 2,
+        "contents": [
+            {
+                "author": "Mark Leibovich",
+                "isbn10": "0399161309",
+                "isbn13": "978-0399161308",
+                "publisher": "Blue Rider Press",
+                "date": "July 16, 2013",
+                "language": "English",
+                "pages": "400",
+                "name": "This Town: Two Parties and a Funeral-Plus, Plenty of Valet Parking!-in America's Gilded Capital [Hardcover]",
+                "shipping_weight": "1.4",
+                "price": "15.37"
+            },
+            {
+                "author": "Titan Books",
+                "isbn10": "1781168857",
+                "isbn13": "978-1781168851",
+                "publisher": "Titan Books",
+                "date": "June 18, 2013",
+                "language": "English",
+                "pages": "160",
+                "name": "World War Z: The Art of the Film [Paperback]",
+                "shipping_weight": "7.6",
+                "price": "15.83"
+            }
+        ]
+    },
+    {
+        "boxId": 5,
+        "maxWeight": 10,
+        "currentWeight": 7.800000000000001,
+        "totalProducts": 2,
+        "contents": [
+            {
+                "author": "Robert Galbraith",
+                "isbn10": "0316206849",
+                "isbn13": "978-0316206846",
+                "publisher": "Mulholland Books",
+                "date": "April 30, 2013",
+                "language": "English",
+                "pages": "464",
+                "name": "The Cuckoo's Calling [Hardcover]",
+                "shipping_weight": "1.4",
+                "price": "17.47"
+            },
+            {
+                "author": "Jenni Rivera",
+                "isbn10": "1476745420",
+                "isbn13": "978-1476745428",
+                "publisher": "Atria Books",
+                "date": "July 2, 2013",
+                "language": "Spanish",
+                "pages": "256",
+                "name": "Inquebrantable: Mi Historia, A Mi Manera (Atria Espanol) (Spanish Edition) [Paperback]",
+                "shipping_weight": "6.4",
+                "price": "10.18"
+            }
+        ]
+    },
+    {
+        "boxId": 6,
+        "maxWeight": 10,
+        "currentWeight": 7.8,
+        "totalProducts": 2,
+        "contents": [
+            {
+                "author": "Chuck Klosterman",
+                "isbn10": "1439184496",
+                "isbn13": "978-1439184493",
+                "publisher": "Scribner",
+                "date": "July 9, 2013",
+                "language": "English",
+                "pages": "224",
+                "name": "I Wear the Black Hat: Grappling with Villains (Real and Imagined) [Hardcover]",
+                "shipping_weight": "2.2",
+                "price": "15.49"
+            },
+            {
+                "author": "Stephen Wolfram",
+                "isbn10": "1579550088",
+                "isbn13": "978-1579550080",
+                "publisher": "Wolfram Media; 1 edition",
+                "date": "May 14, 2002",
+                "language": "English",
+                "pages": "1192",
+                "name": "A New Kind of Science [Hardcover]",
+                "shipping_weight": "5.6",
+                "price": "35.25"
+            }
+        ]
+    },
+    {
+        "boxId": 7,
+        "maxWeight": 10,
+        "currentWeight": 9.700000000000001,
+        "totalProducts": 3,
+        "contents": [
+            {
+                "author": "Sylvia Day",
+                "isbn10": "0425266060",
+                "isbn13": "978-0425266069",
+                "publisher": "Berkley Trade",
+                "date": "July 2, 2013",
+                "language": "English",
+                "name": "Sylvia Day Crossfire Series Boxed Set: Bared to You/Reflected in You/Entwined with You [Paperback]",
+                "shipping_weight": "2.2",
+                "price": "26.32"
+            },
+            {
+                "author": "Lee Child",
+                "isbn10": "0385344341",
+                "isbn13": "978-0385344340",
+                "publisher": "Delacorte Press",
+                "date": "September 3, 2013",
+                "language": "English",
+                "pages": "416",
+                "name": "Never Go Back: A Jack Reacher Novel [Hardcover]",
+                "shipping_weight": "4.9",
+                "price": "17.52"
+            },
+            {
+                "author": "Reza Aslan",
+                "isbn10": "0385739761",
+                "isbn13": "978-0385739764",
+                "publisher": "Ember",
+                "date": "August 14, 2012",
+                "language": "English",
+                "pages": "176",
+                "name": "No god but God: The Origins and Evolution of Islam [Paperback]",
+                "shipping_weight": "2.6",
+                "price": "8.99"
+            }
+        ]
+    },
+    {
+        "boxId": 8,
+        "maxWeight": 10,
+        "currentWeight": 7.2,
+        "totalProducts": 2,
+        "contents": [
+            {
+                "author": "Rick Riordan",
+                "isbn10": "1423146727",
+                "isbn13": "978-1423146728",
+                "publisher": "Disney-Hyperion",
+                "date": "October 8, 2013",
+                "language": "English",
+                "pages": "608",
+                "name": "The House of Hades (Heroes of Olympus, Book 4) [Hardcover]",
+                "shipping_weight": "4.4",
+                "price": "10.19"
+            },
+            {
+                "author": "Daniel Wallace",
+                "isbn10": "1608871819",
+                "isbn13": "978-1608871810",
+                "publisher": "Insight Editions",
+                "date": "June 18, 2013",
+                "language": "English",
+                "pages": "184",
+                "name": "Man of Steel: Inside the Legendary World of Superman [Hardcover]",
+                "shipping_weight": "2.8",
+                "price": "31.07"
+            }
+        ]
+    },
+    {
+        "boxId": 9,
+        "maxWeight": 10,
+        "currentWeight": 7.3,
+        "totalProducts": 2,
+        "contents": [
+            {
+                "author": "Neil Gaiman",
+                "isbn10": "0062255657",
+                "isbn13": "978-0062255655",
+                "publisher": "William Morrow; First Edition edition",
+                "date": "June 18, 2013",
+                "language": "English",
+                "pages": "192",
+                "name": "The Ocean at the End of the Lane: A Novel [Deckle Edge] [Hardcover]",
+                "shipping_weight": "4.1",
+                "price": "15.22"
+            },
+            {
+                "author": "David S Cohen",
+                "isbn10": "1608871827",
+                "isbn13": "978-1608871827",
+                "publisher": "Insight Editions; Har/Pstr edition",
+                "date": "June 18, 2013",
+                "language": "English",
+                "pages": "156",
+                "name": "Pacific Rim: Man, Machines, and Monsters [Hardcover]",
+                "shipping_weight": "3.2",
+                "price": "27.83"
+            }
+        ]
+    },
+    {
+        "boxId": 10,
+        "maxWeight": 10,
+        "currentWeight": 7.2,
+        "totalProducts": 2,
+        "contents": [
+            {
+                "author": "Daniel Silva",
+                "isbn10": "0062073168",
+                "isbn13": "978-0062073167",
+                "publisher": "Harper; First Edition edition",
+                "date": "July 16, 2013",
+                "language": "English",
+                "pages": "496",
+                "name": "The English Girl: A Novel (Gabriel Allon) [Hardcover]",
+                "shipping_weight": "3.6",
+                "price": "16.46"
+            },
+            {
+                "author": "Daniel Silva",
+                "isbn10": "0062073168",
+                "isbn13": "978-0062073167",
+                "publisher": "Harper; First Edition edition",
+                "date": "July 16, 2013",
+                "language": "English",
+                "pages": "496",
+                "name": "The English Girl: A Novel (Gabriel Allon) [Hardcover]",
+                "shipping_weight": "3.6",
+                "price": "16.46"
+            }
+        ]
+    }
+]
