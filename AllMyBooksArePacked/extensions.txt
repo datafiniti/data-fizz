@@ -1,0 +1,21 @@
+USAGE:
+  - Requires Node 4.4.5 & npm 2.15.5
+  - Navigate to project directory and run 'npm install' from terminal
+  - Run 'node app.js' to run the application
+
+DESIGN DECISION NOTES: 
+  - I decided to use a library (cheerio) to model the HTML content into a DOM so that I could easily traverse it to extra the data. This has the benefit of being speedy, though some of the DOM traversal is very specific to the HTML content making it not as easily extensible.
+
+  - For the sorting algorithm, I could think of two ways to do this quickly, one would take more time but efficiently use all of the box space, the other would be quicker but would not efficiently use all of the box space. Since it was not specified in the README, I decided to go with the latter.
+
+  The alternative would have been to sort the books from smallest weight to largest and then put them into boxes, that way you are sure you're using as much space as possible. This requires additional time to sort, so I didn't go that route.
+
+EXTENSION QUESTIONS:
+1. Domains beyond Amazon.com
+  - Since I decided to extra data from the DOM, this would need to be modified for the specific HTML content it's scraping. Methods could be modularized to an extent to do this, however, pulling some of the elements required some DOM traversal that would change depending on the HTML content.
+
+2. Products beyond just simply books.
+  - Again, since this is reading data from a modelled DOM, the functions that extra the data would need to be extended to accept other fields the other products may have.
+
+3. Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+  - Traversing the DOM is pretty quick, more efficient than searching the text however it does take time for the DOM to be modeled, if I were to extend this, I would consider splitting this up into microservices / threads to break up the work. 
