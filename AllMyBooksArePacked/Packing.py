@@ -65,6 +65,7 @@ class Box:
         self.contents = []
 
     def addContent(self,book):
+        # select certain keys from book.
         item = {k: book.__dict__[k] for k in ['title','author','price','shipping_weight','isbn-10']}
         self.contents.append(item)
 
@@ -82,77 +83,68 @@ class Packer:
             self.books.append(book)
 
     def sortBooks(self):
+        # sort the books decending by shipping weight
         books = sorted(self.books,
                        key = lambda book: book.shipping_weight,
                        reverse = True)
 
         id, i, j = 1, 0, len(books)-1
-        i_weight = books[i].getWeight()
-        j_weight = books[j].getWeight()
+        i_weight = books[i].getWeight() # heaviest book
+        j_weight = books[j].getWeight() # lightest book
         totalWeight = 0
-        box = Box(id)
+        box = Box(id) # make a box
         
-        while i < j:
-            print i,j
-
+        while i <= j:
             if (i_weight + j_weight) > 10:
-                print 'case 1'
-                box.addContent(books[i])
-                box.totalWeight = i_weight
-                #print box.__dict__
-                self.boxes.append(box.__dict__)
-                #print self.boxes
+                # case 1 - we can't add any more weight to the box
+                box.addContent(books[i]) # add i to box
+                box.totalWeight = '%s pounds' % i_weight # set weight for box
+                self.boxes.append(box.__dict__) # add box to collection
                 
-                i += 1
-                i_weight = books[i].getWeight()
+                i += 1 # step i
+                i_weight = books[i].getWeight() 
                 
-                id += 1
+                id += 1 # step id for new box
                 box = Box(id)
-                #print box.contents
 
             elif (i_weight + j_weight) == 10:
-                print 'case 2'
-                box.addContent(books[i])
-                box.addContent(books[j])
-                box.totalWeight = i_weight + j_weight
-                #print box.__dict__
-                self.boxes.append(box.__dict__)
-                #print self.boxes
+                # case 2 - we make exactly a 10 lb box
+                box.addContent(books[i]) # add i to box
+                box.addContent(books[j]) # add j to box
+                box.totalWeight = '%s pounds' % (i_weight + j_weight)  # set weight for box
+                self.boxes.append(box.__dict__) # add box to collection
                 
-                i += 1
+                i += 1 # step i
                 i_weight = books[i].getWeight()
 
-                j -= 1
+                j -= 1 # step j
                 j_weight = books[j].getWeight()
 
-                id += 1
+                id += 1 # step id
                 box = Box(id)
-                #print box.contents
-
                 
             else:
-                print 'case 3'
-                box.addContent(books[j])
-                #print box.__dict__
-                #print self.boxes
+                # case 3 - box is still too light
+                box.addContent(books[j]) # add j to box
 
-                i_weight += j_weight
+                i_weight += j_weight # i_weight becomes 'running weight'
+                box.totalWeight = '%s pounds' % i_weight 
 
-                j -= 1
+                j -= 1 # step j
                 j_weight = books[j].getWeight()
 
-                if i == j:
-                    print 'case 3.a'
-                    box.addContent(books[i])
-                    box.totalWeight = i_weight
-                    self.boxes.append(box.__dict__)
-                    
-            
-        
-FILES = glob.glob('data/*')
+    def packingList(self):
+        # need unique keys
+        return {'box_%s' % box['id'] : box for box in self.boxes}
 
-test = Packer()
-test.getBooks(FILES)
-test.sortBooks()
+def main():
+    FILES = glob.glob('data/*')
 
-# print json.dumps(test.boxes, indent = 4)
+    test = Packer()
+    test.getBooks(FILES)
+    test.sortBooks()
+    with open('boxes.json','w') as o:
+        json.dump(test.packingList(), o, indent = 4)
+
+if __name__ == '__main__':
+    main()

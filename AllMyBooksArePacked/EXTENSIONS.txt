@@ -1,0 +1,19 @@
+1. Domains beyond Amazon.com
+
+   - Parser would just need to be updated to handle additional line cases.
+   - Could give another switch that would go to more domain specific parsers. <- not general enough
+
+2. Products beyond just simply books.
+
+   - I wrote my parser with the intention of it not being solely usable for books. There would have to be more information obtained during the parsing process, however, such as product type and any other more product specific criteria, which is why I left my parser to have a general case line (match3).
+
+3. Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+
+   - The main slow down will occur in sorting. To alleviate the stress of this, I created a head and tail pointer so that there was not a long pair of for loops looking over the same values repeatedly.
+   - Further work to more recursively split the sorting operations should help reduce the runtime as well.
+   - Parsing operations can also be a slow point.
+     -- To avoid possible problems of buffer memory, I parsed the file line-by-line as opposed to reading in the entirety.
+     -- Use of a language with a better case-switch option would also help the parsing to run faster.
+     -- Use of languages or methods that are already more familiar with the data format would also have been a smart option.
+   - Recursive procedures.
+
