@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# Author: Jonathan A. Walker
+# Version: 121216
+
 import re
 import glob
 import json
