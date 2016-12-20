@@ -1,0 +1,6 @@
+package Parser;
+
+abstract class JSONBase {
+
+	abstract String getJSONString();
+}

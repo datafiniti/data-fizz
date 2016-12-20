@@ -1,0 +1,48 @@
+package Parser;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
+public class Parser {
+
+	private File input;
+	private String url;
+	private Document doc;
+	
+	public Parser(URL path) {
+		
+		//Local filepath
+		try {
+			this.input = new File(path.toURI());
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//URL of html file to resolve links against, TODO: Change this to update book dynamically
+		this.url = "https://github.com/datafiniti/DataFizz/tree/master/AllMyBooksArePacked/data/book1.html";
+	}
+	
+	void Parse() {
+		
+		try {
+			this.doc = Jsoup.parse(this.input, "UTF-8", this.url);
+			
+			Elements links = this.doc.select("div.buying > span > a"); // a with href
+			String author  = links.text();
+			Elements spans = this.doc.select("span#btAsinTitle");
+			String title = spans.text();
+			
+			System.out.println(title);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

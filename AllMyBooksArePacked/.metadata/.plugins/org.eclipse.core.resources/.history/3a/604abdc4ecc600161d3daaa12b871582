@@ -1,0 +1,17 @@
+package Parser;
+
+public class BoxInfo {
+
+	private int id;
+	private transient double weightDouble;
+	private String totalWeight;
+	private Book[] contents;
+	
+	public BoxInfo(int id, double totalWeight, Book[] contents) {
+		
+		this.id = id;
+		this.weightDouble = weightDouble;
+		this.totalWeight = Double.toString(weightDouble) + " pounds";
+		this.contents = contents;
+	}
+}

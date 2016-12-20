@@ -1,0 +1,37 @@
+package Parser;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+
+public class Box extends JSONBase{
+
+	private int ID;
+	private String[] contents;
+	private String contentString;
+	private double totalWeight;
+	
+	public Box(int ID, Book[] contents, double totalWeight) {
+		
+		this.ID = ID;
+		this.contents = new String[contents.length];
+		for(int i = 0; i < contents.length; i ++) {
+			
+			this.contents[i] = contents[i].getJSONString(); 
+		}
+		this.totalWeight = totalWeight;
+	}
+
+	@Override
+	String getJSONString() {
+		
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		JsonObject obj = new JsonObject();
+		
+		obj.addProperty("id", ID);
+		obj.addProperty("totalWeight", totalWeight);
+		obj.addProperty("contents", contents);
+		
+		return "";
+	}
+}

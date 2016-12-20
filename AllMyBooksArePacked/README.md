@@ -1,3 +1,15 @@
+# Solution
+
+## Running:
+
+1) Navigate to the AllMyBooksArePacked folder in the command line
+2) Run the command: java -jar BookPacker.jar\;\*.jar\;\*.zip 
+3) Output is located in the file output.json
+
+## Notes:
+
+The program looks for the folder named "data" in the same directory as the jar file, otherwise the program will not find the html files in the data folder and will not be able to run. 
+
 # Book Packer
 
 ## Purpose

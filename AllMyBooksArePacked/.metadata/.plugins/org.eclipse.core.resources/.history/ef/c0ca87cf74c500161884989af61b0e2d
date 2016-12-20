@@ -1,0 +1,42 @@
+package Parser;
+
+import com.google.gson.annotations.SerializedName;
+
+public class Book {
+
+	private String title;
+	private String author;
+	private double price;
+	private double shipping_weight;
+	@SerializedName("isbn-10")
+	private String isbn10;
+	
+	public Book(String title, String author, String price, String shippingWeight, String isbn10) {
+		
+		this.title = title;
+		this.author = author;
+		this.price = Double.parseDouble(price);
+		this.shipping_weight = Double.parseDouble(shippingWeight);
+		this.isbn10 = isbn10;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public double getShippingWeight() {
+		return shipping_weight;
+	}
+
+	public String getIsbn10() {
+		return isbn10;
+	}
+}
