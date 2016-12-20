@@ -1,0 +1,80 @@
+package Parser;
+
+import java.util.ArrayList;
+
+public class Packer {
+
+	private ArrayList<Book> books;
+	
+	public static final int MAX_WEIGHT = 100;
+	
+	public Packer(Book[] books) {
+		
+		this.books = new ArrayList<Book>();
+		for(Book current : books) {
+			this.books.add(current);
+		}
+	}
+	
+	public ArrayList<Box> packBooks() {
+		
+		ArrayList<Box> boxes = new ArrayList<>();
+		
+		//Test weight from this function or create function in box to test weight??
+		
+		/*
+		// Input:
+		  // Values (stored in array v)
+		  // Weights (stored in array w) book.getweight
+		  // Number of distinct items (n) books.length
+		  // Knapsack capacity (W) MAX_WEIGHT
+		  */
+		
+		int box_id = 0;
+		while(books.size() > 0) {
+			
+		
+			int[][] V = new int[books.size()+1][MAX_WEIGHT+1];
+			boolean[][] keep = new boolean[books.size()+1][MAX_WEIGHT+1];
+			
+			for(int w = 0; w <= MAX_WEIGHT; w++) {
+				
+				V[0][w] = 0;
+			}
+			
+			for(int i = 1; i <= books.size(); i ++) {
+				
+				for(int w = 0; w <= MAX_WEIGHT; w ++) {
+					
+					if(books.get(i-1).getWeight() <= w && (1+V[i-1][w-books.get(i-1).getWeight()] > V[i-1][w])) {
+						V[i][w] = 1 + V[i-1][w-books.get(i-1).getWeight()];
+						keep[i][w] = true;
+					} else {
+						
+						V[i][w] = V[i-1][w];
+						keep[i][w] = false;
+					}
+				}
+			}
+			
+			
+			int K = MAX_WEIGHT;
+			for(int i = books.size(); i >= 0; i --) {
+				
+				if(keep[i][K]) {
+					
+					System.out.println(books.get(i-1).getTitle());
+					K = K - books.get(i-1).getWeight();
+				}
+					
+			}
+			
+			
+			int max = V[books.size()][MAX_WEIGHT];
+			
+			//Box newBox = new Box(box_id, 0.0, )
+		}	
+		
+		return boxes;
+	}
+}

@@ -1,0 +1,15 @@
+package Parser;
+
+public class Box implements JSONBase{
+
+	private int ID;
+	private Book[] contents;
+	private double totalWeight;
+	
+	public Box(int ID, Book[] contents, double totalWeight) {
+		
+		this.ID = ID;
+		this.contents = contents;
+		this.totalWeight = totalWeight;
+	}
+}

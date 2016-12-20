@@ -1,0 +1,14 @@
+package Parser;
+
+public class JSONBase {
+
+	public JSONBase() {
+		
+		
+	}
+	
+	public virtual String getJSONString() {
+		
+		
+	}
+}

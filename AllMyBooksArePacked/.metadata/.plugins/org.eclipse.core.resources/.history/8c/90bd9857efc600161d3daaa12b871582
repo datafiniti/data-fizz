@@ -1,0 +1,59 @@
+package Parser;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
+public class App {
+	
+	public static void main(String[] args) throws MalformedURLException {
+	
+		URL directory = App.class.getResource("data/");
+		File dir = new File(directory.getFile());
+		File[] directoryListing = dir.listFiles();
+		
+		Book[] books;
+		
+		if (directoryListing != null) {
+			
+			books = new Book[directoryListing.length];
+			for(int i = 0; i < directoryListing.length; i ++) {
+				
+				Parser htmlParser = new Parser(directoryListing[i].toURI().toURL());
+				books[i] = htmlParser.Parse();
+			}
+			
+		} else {
+		    // Handle the case where dir is not really a directory.
+		    // Checking dir.isDirectory() above would not be sufficient
+		    // to avoid race conditions with another process that deletes
+		    // directories.
+			books = new Book[0];
+		}
+		
+		Packer packer = new Packer(books);
+		ArrayList<Box> boxes = packer.packBooks();
+		
+		String boxList="";
+		for(Box box : boxes) {
+			
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+			String json = gson.toJson(box);
+			boxList+=json;
+			try(  PrintWriter out = new PrintWriter( "filename.txt" )  ){
+			    out.println( json );
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+}

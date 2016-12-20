@@ -1,0 +1,15 @@
+package Parser;
+
+public class Box{
+
+	private int id;
+	private double totalWeight;
+	private Book[] contents;
+	
+	public Box(int ID, double totalWeight, Book[] contents) {
+		
+		this.ID = ID;
+		this.contents = contents;
+		this.totalWeight = totalWeight;
+	}
+}

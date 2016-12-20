@@ -1,0 +1,13 @@
+package Parser;
+
+public class Box {
+
+	private int ID;
+	private Book[] contents;
+	private double totalWeight;
+	
+	public Box() {
+		
+		
+	}
+}

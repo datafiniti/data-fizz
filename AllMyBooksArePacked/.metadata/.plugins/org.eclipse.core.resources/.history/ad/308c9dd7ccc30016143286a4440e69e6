@@ -1,0 +1,13 @@
+package Parser;
+
+public class JSONBase {
+
+	public JSONBase() {
+		
+		
+	}
+	
+	public String getJSONString() {
+		return null;
+	}
+}

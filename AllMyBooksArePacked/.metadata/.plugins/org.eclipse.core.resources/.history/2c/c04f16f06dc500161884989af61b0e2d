@@ -1,0 +1,50 @@
+package Parser;
+
+import com.google.gson.Gson;
+
+public class Book extends JSONBase{
+
+	private String title;
+	private String author;
+	private double price;
+	private double shippingWeight;
+	private String isbn10;
+	
+	public Book(String title, String author, String price, String shippingWeight, String isbn10) {
+		
+		this.title = title;
+		this.author = author;
+		this.price = Double.parseDouble(price);
+		this.shippingWeight = Double.parseDouble(shippingWeight);
+		this.isbn10 = isbn10;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public double getShippingWeight() {
+		return shippingWeight;
+	}
+
+	public String getIsbn10() {
+		return isbn10;
+	}
+
+	@Override
+	String getJSONString() {
+		
+		
+		return "";
+	}
+	
+	
+}
