@@ -14,7 +14,3 @@ exports.scrapeHtmlToJson = function(inputDir, outputDir) {
         })
     })
 }
-
-
-
-

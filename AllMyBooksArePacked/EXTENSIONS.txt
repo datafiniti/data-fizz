@@ -1,0 +1,31 @@
+1.  I believe that my approach in scraping data from Amazon in scrapeToJson.js is not dependent on
+the data being from Amazon.com.  I think that any domain provided will work, except the html fields being
+scraped will need to be changed (I will explain in 2).
+
+2.  I chose to use cheerio to scrape the html for data stored in specific fields.
+If my approach was used to scrape beyond Amazon.com or for a different product, then ScrapeToJson.js and
+the initial json schema would need to would need to be changed first.
+The scraping with cheerio in ScrapeToJson.js would need to be modified for the data location in the new domain or product.
+
+a) Restructure the initial json format.
+b) Locate the data in the new html and update scrapeToJson.js with the new location.
+
+3.  If my solution was used to parse and ship 2M books, then I would try to further optimize it.
+While designing my solution I was targeting it to handle a very large amount of parsing and shipping.  This was
+my first time designing a solution like this, but I believe my solution would complete 2M books in a reasonable time frame.
+
+a) The html is being scraped asynchronously so that the json files are ready asap.
+b) I then load an array filled with these json files.
+c) I use js's sort() function to sort the array in descending order. (I believe that js's sort is a quicksort O(log(n)) )
+d) Finally, the box packing starts.  I first check to make sure the heaviest remaining item + the lightest item are under the max
+weight to prevent unnecessary searching.
+e) If there is a possible combination, then I implemented a binary search to find the remaining items that can be packed.
+
+Analysis:
+If I could have saved the files according to their weight, then I may have not had to do step c.
+This sounds like a hack that might not work though.  As long as js does use quicksort, then I would continue using it.
+I believe my binary sorting algorithm in the box packing step would be able to handle 2M items in a timely manner.
+I think that I could optimize it more keeping a running counter of the maximum weight remaining after adding a book and
+only keep items under that weight for the next binary search round (this applies to when 2+ items can go in a box).
+
+This problem was fun and very relevant, I enjoyed thinking of a solution and learning how to implement it.  Thanks!

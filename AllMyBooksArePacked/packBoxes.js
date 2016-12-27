@@ -50,9 +50,6 @@ function packBox(arr, maxWeight, query) {
         newBox.box.contents = currentBoxContents;
         id++;
         allBoxes.push(newBox);
-        //allBoxes.forEach( box =>
-        //console.log(box)); //uncomment this line to see overview of all boxes
-        //console.log(box['box'])); //uncomment this line to see contents of each box
     }
     fs.writeFile('./PackingOrder.json', JSON.stringify(allBoxes, null, 4), function(err) {});
 }
