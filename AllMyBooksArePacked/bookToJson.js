@@ -18,6 +18,7 @@ exports.htmlToJson = function(html) {
 		var title = el.text();
 		json.title = title;
 	})
+
 	$('#handleBuy div.buying span a').each(function(i, element) {
 		if (i == 0) {
 			var el = $(this);
@@ -25,17 +26,19 @@ exports.htmlToJson = function(html) {
 			json.author = author;
 		}
 	})
+
 	$('span#actualPriceValue').each(function(i, element) {
 		var el = $(this);
 		var price = el.text();
 		json.price = price;
-		//console.log(price);
 	})
+
 	$('div .rentPrice').each(function(i, element) {
 		var el = $(this);
 		var price = el.text();
 		json.price = price;
 	})
+	
 	$('table#productDetailsTable ul li').each(function(i, element) {
 		var el = $(this);
 		var text = el.text();

@@ -1,55 +1,59 @@
 var fs = require('fs');
 var dataFolder = './jsonData/';
+var testMod = require('./findNextFit.js');
+var jsonMods = require('./jsonArray.js');
 
+var query = 'shippingWeight';
+var boxMaxWeight = 10;
+var descending = true;
 
-jsonArr = jsonFilesToSortedArray(dataFolder);
+var jsonArr = jsonMods.jsonFilesToArray(dataFolder);
+jsonArr = jsonMods.sortJsonArrayPrice(jsonArr, query, descending);
+jsonArr.length > 0 ? packBox(jsonArr, boxMaxWeight) : console.log("Packbox function requires input array size greater than 0.");
 
+function packBox(arr, maxWeight) {
+	var booksArr = arr.slice();
+	var allBoxes = [];
+	var id = 1;
 
-//console.log(jsonArr[0]['shippingWeight']);
-packing(jsonArr, 10);
+	while( booksArr.length > 0){	
+		var newBox = { 
+			box : {	
+				id: id,
+				totalWeight: "",
+				contents: ""
+			}
+		};
 
+		var totalWeight = parseFloat(booksArr[0][query]);
+		totalWeight.toFixed(1);
+		var massType = booksArr[0][query].replace(/[0-9]\W/g, '');
 
+		var currentBoxContents = [];
+		currentBoxContents.push(booksArr.shift());
+		while ( booksArr.length > 0 ){
+			var nextBook = testMod.findNextFit(booksArr, maxWeight, totalWeight);
+			if (nextBook === undefined || totalWeight >= maxWeight) {
+				break;
+			}
+			else {
+				// add book and weight to current box
+				currentBoxContents.push(nextBook);
+				totalWeight += parseFloat(nextBook[query]);
+				totalWeight.toFixed(1);
 
-
-function jsonFilesToSortedArray(dir) {
-    var results = [];
-    fs.readdirSync(dir).forEach(function(file) {
-    	var json = JSON.parse(require('fs').readFileSync(dataFolder + file, 'utf8'));
-    	results.push(json);
-    });
-    results.sort(function(a, b) {
-    	return parseFloat(a.shippingWeight) - parseFloat(b.shippingWeight);
-	}).reverse();
-
-    return results;
-};
-
-function packing(arr, max) {
-	if(arr.length > 0) {
-		var box = {
-			id: "",
-			totalWeight: "",
-			contents: ""
+				// remove book from booksArr
+				var index = booksArr.indexOf(nextBook);
+				booksArr.splice(index, 1);
+			}
 		}
-
-		var largest = arr.shift();
-		var totalWeight = parseFloat(largest['shippingWeight']);
-		totalWeight += parseFloat(arr[arr.length / 2]['shippingWeight']);
-		if ( totalWeight + parseFloat(arr[arr.length / 2]['shippingWeight']) > max )
-		var contents = largest;
-
-		console.log(totalWeight);
-		//packing(arr, max)
+		newBox.box.totalWeight = totalWeight.toFixed(1).toString() + ' ' + massType;
+		newBox.box.contents = currentBoxContents;
+		id++;
+		allBoxes.push(newBox);
 	}
-}
-
-function test(arr, max, weight) {
-	testArr = [];
-	if( weight == max || arr.length == 0 ) {
-		return testArr
-	}
-	else{
-		testWeight = parseFloat(arr[arr.length/2]['shippingWeight']);
-		if ( (weight + testWeight) > max
-	}
+	fs.writeFile('./PackingOrder.json', JSON.stringify(allBoxes, null, 4), function(err) {});
+	//allBoxes.forEach( box =>
+		//console.log(box));
+		//console.log(box['box']));
 }
