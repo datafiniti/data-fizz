@@ -1,7 +1,7 @@
 var cheerio = require('cheerio');
 var fs = require('fs');
 
-exports.htmlToJson = function(html) {
+exports.scrapeToJson = function(html) {
 	var json = {
 		title: "",
 		author: "",
@@ -53,5 +53,5 @@ exports.htmlToJson = function(html) {
 		}		
 
 	})
-	return json;
+    return json;
 }
