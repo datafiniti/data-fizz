@@ -1,6 +1,7 @@
-var scrapeHtmlDir = require('./scrapeHtmlDir.js');
-var packBoxes = require('./packBoxes.js');
+var scrapeHtmlDir = require('./app/scrapeHtmlDir.js');
+var packBoxes = require('./app/packBoxes.js');
 
+// inputs for challenge
 var dataDir = './data/';
 var jsonDir = './jsonData/';
 var query = 'shippingWeight';
