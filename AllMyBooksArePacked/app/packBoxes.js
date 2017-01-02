@@ -49,5 +49,5 @@ function packBox(arr, maxWeight, query) {
         id++;
         allBoxes.push(newBox);
     }
-    fs.writeFile('./PackingOrder.json', JSON.stringify(allBoxes, null, 4), function(err) {});
+    fs.writeFile('./boxResults.json', JSON.stringify(allBoxes, null, 4), function(err) {});
 }
