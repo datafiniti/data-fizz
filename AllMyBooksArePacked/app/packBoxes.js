@@ -5,7 +5,7 @@ var jsonMods = require('./jsonArray.js');
 exports.packBoxes = function (inputDir, query, maxWeight){
     var jsonArr = jsonMods.jsonFilesToArray(inputDir);
     jsonArr = jsonMods.sortJsonArrayPrice(jsonArr, query);
-    jsonArr.length > 0 ? packBox(jsonArr, maxWeight, query) : console.log("Packbox function requires input array size greater than 0.");
+    jsonArr.length > 0 ? packBox(jsonArr, maxWeight, query) : console.log("Packbox requires input array size greater than 0.");
 }
 
 function packBox(arr, maxWeight, query) {

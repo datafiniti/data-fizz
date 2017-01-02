@@ -6,13 +6,13 @@ exports.scrapeHtmlToJson = function(inputDir, outputDir) {
         fs.mkdirSync(outputDir);
     }
 
-    fs.readdir(inputDir, (err, files) => {
-        files.forEach(file => {
+    fs.readdirSync(inputDir).map(
+        file => {
             var json = scrapeToJson(inputDir + file);
             var filename = file.split('.html').shift() + '.json';
-            fs.writeFile(outputDir + filename, JSON.stringify(json, null, 4), function(err) {});
-        })
-    })
+            fs.writeFileSync(outputDir + filename, JSON.stringify(json, null, 4));
+        }
+    )
 }
 
 function scrapeToJson(html) {
