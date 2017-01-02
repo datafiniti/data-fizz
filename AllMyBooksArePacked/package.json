@@ -1,0 +1,13 @@
+{
+  "name": "AllMyBooksArePacked",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./app.js"
+  },
+  "dependencies": {
+    "cheerio": "^0.22.0"
+  },
+  "repository": "https://github.com/brandonflint/DataFizz.git",
+  "license": "UNLICENSED"
+}
