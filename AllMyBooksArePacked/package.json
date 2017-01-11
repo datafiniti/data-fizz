@@ -9,8 +9,11 @@
   "author": "Ben Melito",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.15.3",
+    "body-parser": "^1.15.2",
     "cheerio": "^0.22.0",
     "express": "^4.14.0",
+    "jquery": "^3.1.1",
     "node": "0.0.0"
   }
 }
