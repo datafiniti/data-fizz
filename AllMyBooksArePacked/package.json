@@ -8,6 +8,21 @@
     "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Shannon Green",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShannonGreen27/ScrapingtonPost/issues"
+  },
+  "homepage": "https://github.com/ShannonGreen27/ScrapingtonPost#readme",
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "body-parser": "^1.15.2",
+    "cheerio": "^0.22.0",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "method-override": "^2.3.7",
+    "mongoose": "^4.7.2",
+    "path": "^0.12.7",
+    "request": "^2.79.0"
+  }
 }
