@@ -17,3 +17,5 @@ gem 'shotgun'
 gem 'pry'
 
 gem 'json'
+
+gem 'nokogiri'
