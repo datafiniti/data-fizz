@@ -10,5 +10,3 @@ class Book < ActiveRecord::Base
   end
 
 end
-
-open_file
