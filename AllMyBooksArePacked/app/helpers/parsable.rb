@@ -37,4 +37,8 @@ module Parser
     parsed_file.css('#productDetailsTable ul li')[3].text.slice(/(?<=: ).+/)
   end
 
+  def self.grab_title(parsed_file)
+    parsed_file.css('#btAsinTitle').text.split(' [')[0]
+  end
+
 end
