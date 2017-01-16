@@ -1,16 +1,15 @@
 module Parser
 
-# testing
-  def self.scan_dir(directory)
-    Dir.foreach("data") do |x|
+  def self.parse_dir(directory)
+    Dir.foreach(directory) do |x|
       if x  =~ /\.html?$/
-        puts "Got #{x}"
+        process_file("#{directory}/#{x}")
       end
     end
   end
 
   def self.open_file(file)
-    File.read("#{file}")
+    opened = File.read("#{file}")
   end
 
   def self.clean_file(file)
