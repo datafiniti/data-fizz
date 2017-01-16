@@ -9,12 +9,18 @@ module Parser
   end
 
   def self.process_file(file)
+    # parse individual html file
     opened = open_file(file)
     cleaned = clean_file(opened)
     parsed = noko_parse(cleaned)
-    parsed
-    # Need to find attrs of book in docs
-    # save in database as separate entries
+    # save to database
+    book = Book.new
+    book.title = grab_title(parsed)
+    book.author = grab_author(parsed)
+    book.price_dollars = grab_price(parsed)
+    book.weight_lbs = grab_weight(parsed)
+    book.isbn = grab_isbn(parsed)
+    book.save
   end
 
   def self.open_file(file)

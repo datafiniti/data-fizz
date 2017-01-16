@@ -1,5 +1,5 @@
 class Book < ActiveRecord::Base
 
-  validates :title, :author_last_name, :author_first_name, :price_dollars, :weight_lbs, :isbn, presence: true
-
+  validates :title, :author, :price_dollars, :weight_lbs, :isbn, presence: true
+, uniqueness: true
 end
