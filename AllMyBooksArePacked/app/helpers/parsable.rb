@@ -12,7 +12,9 @@ module Parser
     opened = open_file(file)
     cleaned = clean_file(opened)
     parsed = noko_parse(cleaned)
-    puts parsed
+    parsed
+    # Need to find attrs of book in docs
+    # save in database as separate entries
   end
 
   def self.open_file(file)
@@ -25,6 +27,10 @@ module Parser
 
   def self.noko_parse(file)
     Nokogiri.parse(file)
+  end
+
+  def self.grab_weight(file)
+    file.css('#productDetailsTable ul li')[6].text.slice(/\d.\d?/)
   end
 
 end
