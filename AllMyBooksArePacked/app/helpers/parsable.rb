@@ -29,8 +29,12 @@ module Parser
     Nokogiri.parse(file)
   end
 
-  def self.grab_weight(file)
-    file.css('#productDetailsTable ul li')[6].text.slice(/\d.\d?/)
+  def self.grab_weight(parsed_file)
+    parsed_file.css('#productDetailsTable ul li')[6].text.slice(/\d.\d?/)
+  end
+
+  def self.grab_isbn(parsed_file)
+    parsed_file.css('#productDetailsTable ul li')[3].text.slice(/(?<=: ).+/)
   end
 
 end
