@@ -1,29 +1,7 @@
-const express = require('express');
-const router  = express.Router();
-// Our scraping tools
+const bookMaker = require('../bookMaker/bookMaker');
 const cheerio = require("cheerio");
-const Book = require("../models/Book");
-// const fileReader = require('../fileReader/fileReader')
 
-// A GET request to scrape the html file passed to it
-// router.get("/scrape", function(req, res) {
-const fileReader = ()=>{
-  const path = '../data/';
-  const fs = require('fs');
-  let html = '';
-  // reads the files in a directory and returns the name of the files as an array
-  fs.readdir(path, 'utf-8', (err, dirData) =>{
-    if (err) throw err;
-    // for each element of the array fead its contents
-    dirData.forEach((fileName)=>{
-      // reads the contents of the file and returns the result to the variable contents
-      html = fs.readFileSync(path + fileName, 'utf8');
-      scrape(html);
-    });
-  });
-}	
-
-let scrape = (html)=>{
+const dataScraper = (html)=> {
 	// Then, we load that into cheerio and save it to $ for a shorthand selector
 	let $ = cheerio.load(html);
 
@@ -82,29 +60,9 @@ let scrape = (html)=>{
 				.replace('ISBN-10: ','');
 		}
 	});
-		console.log(result);
-
-	// Using our Book model, create a new entry
-	// This effectively passes the result object to the entry
-	var entry = new Book(result);
-
-	// Now, save that entry to the db
-	entry.save(function(err, doc) {
-	// Log any errors
-		if (err) {
-		  console.log(err);
-		}
-		// Or log the doc
-		else {
-		  console.log(doc);
-		}
-	});
-
 	// Tells us the scrape was succesful
 	console.log("Scrape Complete");
+	bookMaker(result);
 }
-// });
-fileReader();
 
-module.exports = router;
-
+module.exports = dataScraper;

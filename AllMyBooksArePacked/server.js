@@ -1,21 +1,26 @@
 // Dependencies
-var express = require("express");
-var bodyParser = require("body-parser");
-var mongoose = require("mongoose");
-var methodOverride = require('method-override');
-var path = require('path');
-
-//model controllers
-var scrape_controller = require('./controllers/scrape_controller');
-
-// what to send based on route
-app.use('/scrape', scrape_controller);
+const express = require("express");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const methodOverride = require('method-override');
+const path = require('path');
 
 // instantiatize express
-var app = express();
+const app = express();
 
 // Express settings
-// ================
+const router  = express.Router();
+
+//model controllers
+const dataController = require('./controllers/dataController');
+
+// Mongoose mpromise deprecated - use bluebird for promises
+const Promise = require("bluebird");
+
+mongoose.Promise = Promise;
+
+// what to send based on route
+app.use('/', dataController);
 
 // override POST to have DELETE and PUT
 app.use(methodOverride('_method'));
@@ -30,8 +35,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Database configuration with mongoose
-mongoose.connect("mongodb://localhost/bagPacker");
-var db = mongoose.connection;
+mongoose.connect("mongodb://localhost/boxPacker");
+const db = mongoose.connection;
 
 // Show any mongoose errors
 db.on("error", function(error) {
@@ -43,7 +48,7 @@ db.once("open", function() {
   console.log("Mongoose connection successful.");
 });
 
-var port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
 // listen on port 3000 when local
 app.listen(port, function(){

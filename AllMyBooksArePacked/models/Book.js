@@ -27,9 +27,7 @@ var BookSchema = new Schema({
   // isbn number of the book and is a required string
     "isbn10": {
     type: String,
-    required: true,
-    unique: true,
-    dropDubs: true
+    required: true
   }
 });
 
