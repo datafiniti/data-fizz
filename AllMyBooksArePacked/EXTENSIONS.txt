@@ -9,4 +9,3 @@ t.string :title
 t.string :author_last_name
 t.string :author_first_name
 t.string :price_dollars
-t.string :isbn

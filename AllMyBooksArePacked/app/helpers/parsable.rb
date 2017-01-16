@@ -41,4 +41,8 @@ module Parser
     parsed_file.css('#btAsinTitle').text.split(' [')[0]
   end
 
+  def self.grab_author(parsed_file)
+    parsed_file.css
+  end
+
 end
