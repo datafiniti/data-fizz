@@ -25,7 +25,7 @@ var BookSchema = new Schema({
     required: true
   },
   // isbn number of the book and is a required string
-    "isbn-10": {
+    "isbn10": {
     type: String,
     required: true,
     unique: true,

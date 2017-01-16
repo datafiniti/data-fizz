@@ -5,12 +5,6 @@ var mongoose = require("mongoose");
 var methodOverride = require('method-override');
 var path = require('path');
 
-// Mongoose mpromise deprecated - use bluebird for promises
-var Promise = require("bluebird");
-
-mongoose.Promise = Promise;
-
-
 //model controllers
 var scrape_controller = require('./controllers/scrape_controller');
 
