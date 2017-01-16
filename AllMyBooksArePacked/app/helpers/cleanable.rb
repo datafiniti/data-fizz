@@ -11,6 +11,6 @@ module HTMLWhitespaceCleaner
   end
 
   def self.condense_whitespace(html_string)
-    html_string.gsub(/\s+/, ' ')
+    html_string.scrub.gsub(/\s+/, ' ')
   end
 end

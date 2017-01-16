@@ -4,5 +4,5 @@
 # save each bit of information to db
 
 get '/' do
-  Parser.scan_dir('data')
+  Parser.parse_dir('data')
 end
