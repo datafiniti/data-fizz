@@ -42,7 +42,7 @@ module Parser
   end
 
   def self.grab_author(parsed_file)
-    parsed_file.css
+    parsed_file.css('.buying > span > a').text
   end
 
 end
