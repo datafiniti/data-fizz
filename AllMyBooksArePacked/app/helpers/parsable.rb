@@ -45,4 +45,8 @@ module Parser
     parsed_file.css('.buying > span > a').text
   end
 
+  def self.grab_price(parsed_file)
+    parsed_file.css('#actualPriceValue').text.delete('$')
+  end
+
 end
