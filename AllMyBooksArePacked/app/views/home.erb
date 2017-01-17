@@ -1,1 +1,10 @@
-What's up you are here!
+<h1> Books! </h1>
+<% @books.each do |book| %>
+  <ul>
+    <b>Title: </b> <li><%= book.title %> </li>
+    <b>Author </b> <li><%= book.author %> </li>
+    <b>ISBN: </b> <li><%= book.isbn %> </li>
+    <b>Price: </b> <li><%= book.price_dollars %> </li>
+    <b>Weight: </b> <li><%= book.weight_lbs %> </li>
+  </ul>
+<% end %>
