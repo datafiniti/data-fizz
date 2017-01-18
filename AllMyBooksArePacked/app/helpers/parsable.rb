@@ -36,7 +36,8 @@ module Parser
   end
 
   def self.grab_weight(parsed_file)
-    parsed_file.css('#productDetailsTable ul li')[6].text.slice(/\d.\d?/)
+    weight = parsed_file.css('#productDetailsTable ul li')[6].text.slice(/\d.\d?/)
+    weight.to_f
   end
 
   def self.grab_isbn(parsed_file)

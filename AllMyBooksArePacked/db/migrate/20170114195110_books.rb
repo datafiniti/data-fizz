@@ -4,7 +4,7 @@ class Books < ActiveRecord::Migration
       t.string :title
       t.string :author
       t.string :price_dollars
-      t.string :weight_lbs
+      t.float :weight_lbs
       t.string :isbn
 
       t.timestamps(null: false)
