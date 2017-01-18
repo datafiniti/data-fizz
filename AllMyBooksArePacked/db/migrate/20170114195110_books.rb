@@ -6,6 +6,7 @@ class Books < ActiveRecord::Migration
       t.string :price_dollars
       t.float :weight_lbs
       t.string :isbn
+      t.integer :box_id
 
       t.timestamps(null: false)
     end
