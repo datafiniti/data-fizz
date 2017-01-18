@@ -1,10 +1,14 @@
-const express = require('express');
-const app = express();
-const path = require('path')
-const bodyParser = require('body-parser');
+var http = require('http');
 
-app.use(express.static(path.join(__dirname, 'data')));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+var finalhandler = require('finalhandler');
+var serveStatic = require('serve-static');
 
-app.listen(3000);
+var serve = serveStatic("./");
+
+var server = http.createServer(function(req, res) {
+  var done = finalhandler(req, res);
+  serve(req, res, done);
+});
+
+console.log('Listening on port 8000')
+server.listen(8000);
