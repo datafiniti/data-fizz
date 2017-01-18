@@ -52,7 +52,7 @@ const port = process.env.PORT || 3000;
 
 // listen on port 3000 when local
 app.listen(port, function(){
-	console.log("Listening on port %s", port);
+	console.log(`Listening on port: ${port}`);
 })
 
 // our module get's exported as app.

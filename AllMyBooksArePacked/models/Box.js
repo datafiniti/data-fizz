@@ -6,8 +6,7 @@ var Schema = mongoose.Schema;
 var BoxSchema = new Schema({
   // total weight represents the total of the individual weight of its contents and is a required number
   totalWeight: {
-    type: Number,
-    required: true
+    type: Number
   },
   // This only saves one ObjectId, ref refers to the Book model. use [{}] for multiple.
   // This key takes in an ObjectId from Book and a populate method is called during the query to retrieve the necessary data.
