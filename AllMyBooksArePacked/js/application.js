@@ -7,26 +7,33 @@ $(document).ready(function(){
   './data/book15.html','./data/book16.html','./data/book17.html','./data/book18.html','./data/book19.html',
   './data/book20.html'];
 
-  
-  $('button').click(function(event){
-    bookURLs.forEach(function(url){
-      $.get(url, function(response){
-        var parsedResponse = $($.parseHTML(response));
-        var bookObj = {}
+  //Split this into 2 functions to make more functional
+  function getBook(url){
+    $.get(url, function(response){
+      var parsedResponse = $($.parseHTML(response));
+      var bookObj = {}
 
-        bookObj.ISBN = parsedResponse.find('td.bucket .content ul li').eq(3).text().split(':')[1].trim()
-        
-        //Sometimes the product details are missing a field or have an extra field, so we have to account for those edge cases
-        bookObj.shippingWeight = Number(parsedResponse.find('td.bucket .content ul li').eq(6).text().split(' ')[2].trim()) || Number(parsedResponse.find('td.bucket .content ul li').eq(7).text().split(' ')[2].trim()) || Number(parsedResponse.find('td.bucket .content ul li').eq(5).text().split(' ')[2].trim()) 
-        bookObj.title = parsedResponse.find('span#btAsinTitle').text().split('[')[0].trim()
-        bookObj.author = parsedResponse.find('.buying span a').eq(0).text()
-        bookObj.price = parsedResponse.find('.priceLarge').text()
-        
-        bookData.push(bookObj)
-      });
+      bookObj.ISBN = parsedResponse.find('td.bucket .content ul li').eq(3).text().split(':')[1].trim()
+      
+      //Sometimes the product details are missing a field or have an extra field, so we have to account for those edge cases
+      bookObj.shippingWeight = Number(parsedResponse.find('td.bucket .content ul li').eq(6).text().split(' ')[2].trim()) || Number(parsedResponse.find('td.bucket .content ul li').eq(7).text().split(' ')[2].trim()) || Number(parsedResponse.find('td.bucket .content ul li').eq(5).text().split(' ')[2].trim()) 
+      bookObj.title = parsedResponse.find('span#btAsinTitle').text().split('[')[0].trim()
+      bookObj.author = parsedResponse.find('.buying span a').eq(0).text()
+      bookObj.price = parsedResponse.find('.priceLarge').text()
+      
+      bookData.push(bookObj)
     });
-    bookData.forEach(function(book){
-      console.log(book.title)
+  };
+
+  var requests = bookURLs.map((url) => {
+    return new Promise((resolve, reject) => {
+      resolve(getBook(url))
     })
-  });
+  })
+
+  $('button').click(function(event){
+    Promise.all(requests).then(function(){
+
+    })
+  })
 })
