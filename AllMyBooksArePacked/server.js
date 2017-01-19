@@ -46,7 +46,9 @@ db.on("error", function(error) {
 // Once logged in to the db through mongoose, log a success message
 db.once("open", function() {
   console.log("Mongoose connection successful.");
+  // db.dropDatabase();
 });
+
 
 const port = process.env.PORT || 3000;
 

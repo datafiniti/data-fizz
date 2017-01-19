@@ -1,14 +1,16 @@
 const dataScraper = (htmlArray)=> {
-// const sortByWeightDecending = require('../dataSorter/sortByWeightDecending');
+const sortByWeightDecending = require('../queries/sortByWeightDecending');
 const bookMaker = require('../bookMaker/bookMaker');
 const cheerio = require("cheerio");
 
-	// Save an empty result object
-	let result = {};
 	// gather all results into an array
 	let resultArray = [];
 	
 	htmlArray.forEach((html)=>{
+		
+		// Save an empty result object
+		let result = {};
+
 		// Then, we load that into cheerio and save it to $ for a shorthand selector
 		let $ = cheerio.load(html);
 
@@ -24,7 +26,10 @@ const cheerio = require("cheerio");
 		// Grabs the author of the book:
 		$("div.buying h1.parseasinTitle").next().each(function(i, element) {
 
-			result.author = $(this).children().text().replace('(Author)',', ').replace('(Author)','  ');
+			result.author = $(this).children().text()
+				.replace('(Author)',', ')
+				.replace('(Author)','  ')
+				.replace('(Forewor','');
 			result.author = result.author.slice(0,-2);
 		});
 
@@ -64,14 +69,11 @@ const cheerio = require("cheerio");
 					.replace('ISBN-10: ','');
 			}
 		});
-		// Tells us the scrape was succesful
-		console.log("Scrape Complete");
 		resultArray.push(result);
+		// Tells us the scrape was succesful
+		console.log("Scrape Complete");		
 	});
-		console.log(resultArray);
-	// bookMaker(resultArray, ()=>{
-	// 	sortByWeightDecending();
-	// });
+	bookMaker(resultArray);
 }
 
 module.exports = dataScraper;

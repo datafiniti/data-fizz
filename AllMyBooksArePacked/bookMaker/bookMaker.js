@@ -1,7 +1,7 @@
 const bookMaker = (resultArray)=> {
 const Book = require("../models/Book");
-const sortByWeightDecending = require("../Queries/sortByWeightDecending")
-let count = 0;
+const sortByWeightDecending = require("../queries/sortByWeightDecending")
+let count = 1;
 
 	resultArray.forEach((result)=>{
 		// Using our Book model, create a new entry
@@ -16,16 +16,18 @@ let count = 0;
 			}
 			// Or log the doc
 			else {
-			  console.log(doc);
-			  count++
-			}
-			console.log("Model Created");
-		});
-		if (count < resultArray.length) {
+			  	console.log(doc);
+			  	console.log("Model Created");
+			  	console.log('rA: '+ resultArray.length);
+			  	console.log('c: '+ count);
 
-		} else {
+			}
+		});
+
+		if (count === resultArray.length) {
 			sortByWeightDecending();
 		}
+		count++
 	});
 }
 

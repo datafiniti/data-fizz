@@ -1,4 +1,3 @@
-
 const dataReader = ()=> {
   const dataScraper = require('../dataScraper/dataScraper');
   const path = require('path');
@@ -14,7 +13,7 @@ const dataReader = ()=> {
     dirData.forEach((fileName)=>{
       // reads the contents of the file and returns the result to the variable contents
       html = fs.readFileSync(fileDirectory + fileName, 'utf8');
-      htmlArray.push(html)
+      htmlArray.push(html);
     });
     // tells us the files were read successfully
     console.log('Files Read');
