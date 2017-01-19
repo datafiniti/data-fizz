@@ -1,18 +1,28 @@
+# Book Packer Instructions
+
+- Locally clone the repository and get into directory from command line
+- Type 'bundle install' to install gems and press enter
+- If database does not yet exist run 'bundle exec rake db:create db:migrate'
+- Type 'bundle exec shotgun' or 'be shotgun' and press enter
+- Visit the site on localhost (defaults to port '9393' if not in use)
+- First time you visit the site after migrating, the code will run and the page will be blank. If blank, refresh to see JSON output.
+- Errors will be listed in the first part of the JSON document
+
 # Book Packer
 
 ## Purpose
 
-This exercise is designed to test your ability to use object-oriented design principles, data structures and standard algorithms to craft a small application.  We will not only be looking at the correctness of your solution but at the style of your code, its modularity, its extensibility, and ease at which the whole package can be built and tested.  As a small team we believe these principles are a key element of our continued success. 
+This exercise is designed to test your ability to use object-oriented design principles, data structures and standard algorithms to craft a small application.  We will not only be looking at the correctness of your solution but at the style of your code, its modularity, its extensibility, and ease at which the whole package can be built and tested.  As a small team we believe these principles are a key element of our continued success.
 
 The problem itself is not arbritary but meant to simulate the type of work you would be doing here at Datafiniti. The transformation of unstructured data into structured data involves parsing, computationaly intensive algorithmic techniques and ultimately some method of presenting that data in a human and machine digestable format to our customers.
 
-Have fun, be creative and ask questions! 
+Have fun, be creative and ask questions!
 
 ## Problem Description
 
 In this repository you have been provided with the HTML source for twenty randonly chosen Amazon book pages.  
 
-You will need to design and implement a fully functioning application that can take these pages and extract meaningful information from the raw source. 
+You will need to design and implement a fully functioning application that can take these pages and extract meaningful information from the raw source.
 
 The extracted data must contain at least the following fields:
 
@@ -46,7 +56,7 @@ Your application should ouput its results in a valid and well structured JSON do
 
     . . .
 }
-``` 
+```
 Once your solution is completed please add an EXTENSIONS.txt file to your solution that notes how your application could be extended to handle the following:
 
 1. Domains beyond Amazon.com
