@@ -1,3 +1,6 @@
+//We need to create a server to host our html files, otherwise Chrome won't
+//allow us to access them due to security reasons
+
 var http = require('http');
 
 var finalhandler = require('finalhandler');
