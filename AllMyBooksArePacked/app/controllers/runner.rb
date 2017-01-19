@@ -1,9 +1,5 @@
 get '/' do
-  if Book.count > 0
-    @books = Book.all
-    Packer.package(@books)
-    erb :'home'
-  else
-    Parser.parse_dir('data')
-  end
+  content_type :json
+  @boxes = Box.all
+  @boxes.to_json(:include => [:books])
 end
