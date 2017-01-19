@@ -56,7 +56,7 @@ const cheerio = require("cheerio");
 				resultAsString = $(this).text()
 					.replace('Shipping Weight: ','')
 					.replace(' pounds (View shipping rates and policies)','');
-				resultAsFloat = parseFloat(resultAsString);
+				resultAsFloat = parseFloat(resultAsString).toFixed(1);
 				result.shipping_weight = resultAsFloat;
 			}
 		});

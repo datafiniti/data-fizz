@@ -1,36 +1,42 @@
-function Box (maxWeight) {
-this.maxWeight = maxWeight;
+function Box (spaceRemaining) {
+this.spaceRemaining = spaceRemaining;
 this.totalWeight = 0;
 this.contents = [];
 } 
 
 const firstFitSorter = (queryResult)=>{
-    const maxWeight = 10;
+    const spaceRemaining = 10;
+    let boxCount = 0;
 
-    let box = new Box(maxWeight);
-    let arrayOfBoxes = [box]; 
+    let box = new Box(spaceRemaining);
+    let arrayOfBoxes = []; 
 
-    for (let j=0; j < queryResult.length; j++) {
-        for (let i = 0; i < arrayOfBoxes.length; i++) {
-
-            let spaceLeftInBox = arrayOfBoxes[i].maxWeight - arrayOfBoxes[i].totalWeight;
-            // if (spaceLeftInBox >= queryResult[j].shipping_weight) {
-            if (spaceLeftInBox >= queryResult[j].shipping_weight && j < queryResult.length) {
-                arrayOfBoxes[i].totalWeight += queryResult[j].shipping_weight;
-                arrayOfBoxes[i].contents.push(queryResult[j]._id);
+    for (let i=0; i < queryResult.length; i++) {
+        let j;
+        for (j = 0; j < boxCount; j++) {
+            if (arrayOfBoxes[j].spaceRemaining >= queryResult[i].shipping_weight) {
+                arrayOfBoxes[j].spaceRemaining -= queryResult[i].shipping_weight
+                arrayOfBoxes[j].totalWeight += queryResult[i].shipping_weight;
+                arrayOfBoxes[j].contents.push(queryResult[i]._id);
     console.log("2__________________2")
     console.log(arrayOfBoxes);
+                break;
 
-            } else {
-                box = new Box(maxWeight);
-                arrayOfBoxes.push(box);
-                arrayOfBoxes[i].totalWeight += queryResult[j].shipping_weight;
-                arrayOfBoxes[i].contents.push(queryResult[j]._id);
-            }
+            } 
         }
-    // console.log("2__________________2")
-    // console.log(arrayOfBoxes);
+        // If no box could accommodate the book at queryResult[i]
+        if (j==boxCount) {
+            box = new Box(spaceRemaining);
+            arrayOfBoxes.push(box);
+            arrayOfBoxes[boxCount].spaceRemaining -= queryResult[i].shipping_weight; 
+            arrayOfBoxes[j].totalWeight += queryResult[i].shipping_weight;
+            arrayOfBoxes[j].contents.push(queryResult[i]._id); 
+            boxCount++;
+        }
+
     }
 }
+
+
 
 module.exports = firstFitSorter;
