@@ -1,11 +1,31 @@
 $(document).ready(function(){
   
   const bookData = [];
+  const boxContainer = [];
   const bookURLs = ['./data/book1.html','./data/book2.html','./data/book3.html','./data/book4.html',
   './data/book5.html','./data/book6.html','./data/book7.html','./data/book8.html','./data/book9.html',
   './data/book10.html','./data/book11.html','./data/book12.html','./data/book13.html','./data/book14.html',
   './data/book15.html','./data/book16.html','./data/book17.html','./data/book18.html','./data/book19.html',
   './data/book20.html'];
+  var boxCounter = 0;
+
+  var Box = function(id, maxWeight) {
+    var box = {}
+    box.id = id;
+    box.maxWeight = maxWeight;
+    box.contents = [];
+    box.totalWeight = 0;
+
+    box.addBook = function(book){
+      box.contents.push(book);
+      box.totalWeight += book.shippingWeight
+    }
+
+    return box
+  }
+
+  boxContainer.push(Box(0,10))
+  var currentBox = boxContainer[boxCounter]
 
   //Split this into 2 functions to make more functional
   function getBook(url){
@@ -33,7 +53,20 @@ $(document).ready(function(){
 
   $('button').click(function(event){
     Promise.all(requests).then(function(){
-
+      bookData.sort(function(a,b){
+        return b.shippingWeight - a.shippingWeight
+      })
+      bookData.forEach(function(book){
+        if (book.shippingWeight <= currentBox.maxWeight - currentBox.totalWeight) {
+          currentBox.addBook(book)
+        } else {
+        boxCounter ++;
+        boxContainer.push(new Box(boxCounter, 10))
+        console.log(currentBox)
+        currentBox.addBook(book)
+        }
+      })
+      console.log(boxContainer)
     })
   })
 })
