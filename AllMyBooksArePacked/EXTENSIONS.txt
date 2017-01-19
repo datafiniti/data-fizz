@@ -1,0 +1,16 @@
+To start the program:
+
+1. Run NPM install from the root.
+2. Run node server/server.js from the root.
+3. Navigate to http://localhost:8000/ in your browser
+4. Click the 'Pack my books!' button, and check the console for your output
+
+ANSWERS TO QUESTIONS:
+
+1. To access a domain beyond Amazon.com, first of all we would most likely have to make our 'GET'
+request from the server rather than the front-end to avoid CORS issues. Secondly, we would need a 
+way to retrieve the appropriate URLs and import them into our program, rather than having them hard-coded like they are in this project.
+
+2. To have our program work for products beyond books, we would likely have to have a more generalized way of scraping the data from the HTML page. Additionally, we would need to make the functions more flexible to be used for more than one type of product.
+
+3. In terms of parsing and shipping 2,000,000 books rather than 20, I actually think my solution would be suitable. In my solution, I decided to aim for improved time complexity (linear) at the cost of packing efficiency. If I had wanted to shoot for better packing efficieny, I would have looped through every box to see if there was a fit for the current book being iterated on, rather than simply checking the most recently-created box. This would have created a situation where we have polynomial time complexity, but would have allowed for less boxes (and memory) to be used.
