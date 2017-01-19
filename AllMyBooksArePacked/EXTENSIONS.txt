@@ -1,0 +1,13 @@
+Note how your application could be extended to handle the following:
+
+1) Domains beyond Amazon.com
+
+Instead of opening a local directory using Ruby's built in Dir module, I would use the 'open-uri' gem in Ruby and a third-party package like Nokogiri or Crack to parse HTML directly from the URL. Both of these packages should also be able to handle XML.
+
+2) Products beyond just simply books.
+
+I would add new classes and parent classes that appropriately categorized the different products and refactor my methods so that they were more ubiquitous and easy to access by other classes. I already tried to do that by making modules and helper methods.
+
+3) Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+
+I encountered two issues that were difficult to rectify. My parsing methods and patterning missed the price of one of the books, and I bet with 2,000,000 that would cause a headache.  Also, there were edge cases, like one set of books listed on Amazon that weight over 100 lbs. Obviously, that set of books could not be divided or put into a 10 lbs. box. I would want better errors and catching of those edge cases--Maybe in my database validations, in the class itself, or in the process of packing.
