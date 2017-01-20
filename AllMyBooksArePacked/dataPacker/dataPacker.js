@@ -1,24 +1,18 @@
-const dataPacker = (package)=>{}
-    // Using our Book model, create a new entry
-    // This effectively passes the result object to the entry
-    let entry = new Box();
+const dataPacker = (arrayOfPackedBoxes)=>{
+const Box = require("../models/Box");
+// throw new Error('');
+    arrayOfPackedBoxes.forEach((packedBox)=>{
+        // Using our Box model, create a new packedBox
+        // This effectively passes the result object to the entry
+        let entry = new Box(packedBox);
 
-    // Now, save that entry to the db
-    entry.save(function(err, doc) {
-    // Log any errors
-        if (err) {
-          console.log(err);
-        }
-        // Or log the doc
-        else {
-          console.log(doc);
-          count++
-        }
-        console.log("Model Created");
+        // Now, save the entry to the db
+        entry.save(function(err, doc) {
+        // throw any errors
+            if (err) throw err;
+        });
     });
-    if (count < resultArray.length) {
+    console.log("Packed boxes stored");
+}
 
-    } else {
-        sortByWeightDecending();
-    }
-});
+module.exports = dataPacker;

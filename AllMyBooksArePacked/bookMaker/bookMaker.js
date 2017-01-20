@@ -1,33 +1,23 @@
 const bookMaker = (resultArray)=> {
 const Book = require("../models/Book");
-const sortByWeightDecending = require("../queries/sortByWeightDecending")
-let count = 1;
+const Promise = require("bluebird");
+	
+	return Promise.try(()=>{
+		resultArray.forEach((result)=>{
+			// Using our Book model, create a new entry
+			// This effectively passes the result object to the entry
+			let entry = new Book(result);
+			// Now, save that entry to the db
+			entry.save(function(err, doc) {
+				// Log any errors
+				if (err) throw err;
+				// Or log the doc
+				// console.log(doc);
+			});
 
-	resultArray.forEach((result)=>{
-		// Using our Book model, create a new entry
-		// This effectively passes the result object to the entry
-		let entry = new Book(result);
-
-		// Now, save that entry to the db
-		entry.save(function(err, doc) {
-		// Log any errors
-			if (err) {
-			  console.log(err);
-			}
-			// Or log the doc
-			else {
-			  	console.log(doc);
-			  	console.log("Model Created");
-			  	console.log('rA: '+ resultArray.length);
-			  	console.log('c: '+ count);
-
-			}
 		});
+		console.log("Books added to database");
 
-		if (count === resultArray.length) {
-			sortByWeightDecending();
-		}
-		count++
 	});
 }
 

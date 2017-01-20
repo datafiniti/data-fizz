@@ -2,7 +2,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const methodOverride = require('method-override');
 const path = require('path');
 
 // instantiatize express
@@ -21,9 +20,6 @@ mongoose.Promise = Promise;
 
 // what to send based on route
 app.use('/', dataController);
-
-// override POST to have DELETE and PUT
-app.use(methodOverride('_method'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -46,7 +42,7 @@ db.on("error", function(error) {
 // Once logged in to the db through mongoose, log a success message
 db.once("open", function() {
   console.log("Mongoose connection successful.");
-  // db.dropDatabase();
+  db.dropDatabase();
 });
 
 

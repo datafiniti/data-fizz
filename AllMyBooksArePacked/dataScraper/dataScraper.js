@@ -37,7 +37,7 @@ const cheerio = require("cheerio");
 		if ($("span#actualPriceValue")) {
 			$("span#actualPriceValue").each(function(i, element) {
 
-				result.price = $(this).text().replace('$','');		
+				result.price = $(this).text() + ' USD';		
 			});
 		}	
 
@@ -45,7 +45,7 @@ const cheerio = require("cheerio");
 		if ($("td.rightBorder.buyNewOffers")) {
 			$("td.rightBorder.buyNewOffers").each(function(i, element) {
 
-				result.price = $(this).children('span.rentPrice').text().replace('$','');	
+				result.price = $(this).children('span.rentPrice').text() + ' USD';	
 			});
 		}	
 
@@ -56,8 +56,8 @@ const cheerio = require("cheerio");
 				resultAsString = $(this).text()
 					.replace('Shipping Weight: ','')
 					.replace(' pounds (View shipping rates and policies)','');
-				resultAsFloat = parseFloat(resultAsString).toFixed(1);
-				result.shipping_weight = resultAsFloat;
+				resultAsFloat = parseFloat(resultAsString);
+				result.shipping_weight = resultAsFloat.toFixed(1);
 			}
 		});
 
@@ -70,10 +70,12 @@ const cheerio = require("cheerio");
 			}
 		});
 		resultArray.push(result);
-		// Tells us the scrape was succesful
-		console.log("Scrape Complete");		
 	});
-	bookMaker(resultArray);
+	// Tells us the scrape was succesful	
+	console.log("Scrape Complete");		
+	bookMaker(resultArray).then(()=>{
+		sortByWeightDecending()
+	});
 }
 
 module.exports = dataScraper;
