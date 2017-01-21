@@ -6,8 +6,6 @@ const dataReader = (cb)=> {
   let htmlArray = [];
   // reads the files in a directory and returns the name of the files as an array
   fs.readdir(fileDirectory, 'utf-8', (err, dirData) =>{
-
-    if (err) throw err;
     // for each element of the array read its contents
     dirData.forEach((fileName)=>{
       // reads the contents of the file and returns the result to the variable contents
@@ -17,7 +15,7 @@ const dataReader = (cb)=> {
     // tells us the files were read successfully
     console.log('Files Read');
     // callback function with the extracted html array
-    cb(htmlArray);
+    cb(err, htmlArray);
   });
 }
 

@@ -1,11 +1,10 @@
-const dataScraper = (htmlArray, cb)=> {
 const cheerio = require("cheerio");
 
+const dataScraper = (htmlArray, cb)=> {
 	// gather all results into an array
 	let resultArray = [];
 	
-	htmlArray.forEach((html)=>{
-		
+	htmlArray.forEach((html)=>{	
 		// Save an empty result object
 		let result = {};
 
@@ -69,9 +68,9 @@ const cheerio = require("cheerio");
 		});
 		resultArray.push(result);
 	});
-	cb(resultArray);
-	// Tells us the scrape was succesful	
-	console.log("Scrape Complete");
+	// Tells us the scrape was successful	
+	console.log("Scrape Complete");	
+	cb(null, resultArray);
 }
 
 module.exports = dataScraper;
