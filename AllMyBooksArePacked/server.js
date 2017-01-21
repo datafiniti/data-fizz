@@ -11,7 +11,8 @@ const app = express();
 const router  = express.Router();
 
 //model controllers
-const dataController = require('./controllers/dataController');
+const bookController = require('./controllers/bookController');
+const boxController = require('./controllers/boxController');
 
 // Mongoose mpromise deprecated - use bluebird for promises
 const Promise = require("bluebird");
@@ -19,7 +20,9 @@ const Promise = require("bluebird");
 mongoose.Promise = Promise;
 
 // what to send based on route
-app.use('/', dataController);
+app.use('/', bookController);
+app.use('/boxes', boxController);
+app.use('/data', boxController);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -1,6 +1,4 @@
-const dataScraper = (htmlArray)=> {
-const sortByWeightDecending = require('../queries/sortByWeightDecending');
-const bookMaker = require('../bookMaker/bookMaker');
+const dataScraper = (htmlArray, cb)=> {
 const cheerio = require("cheerio");
 
 	// gather all results into an array
@@ -71,11 +69,9 @@ const cheerio = require("cheerio");
 		});
 		resultArray.push(result);
 	});
+	cb(resultArray);
 	// Tells us the scrape was succesful	
-	console.log("Scrape Complete");		
-	bookMaker(resultArray).then(()=>{
-		sortByWeightDecending()
-	});
+	console.log("Scrape Complete");
 }
 
 module.exports = dataScraper;
