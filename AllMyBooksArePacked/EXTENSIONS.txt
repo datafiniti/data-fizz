@@ -1,0 +1,27 @@
+1. To scrape multiple pages and websited we have to utilize a web crawler, automated web scraper. When crawling the web (making requests and parsing HTML) becomes a very minor part of your program. Instead, you spend a lot of time figuring out how to keep the entire crawl running smoothly and efficiently.
+
+In a simple web scraping program, you make requests in a loop – one after the other. If a site takes 2-3 seconds to respond, then you’re looking at making 20-30 requests a minute. At this rate, your crawler would have to run for a month, non-stop before you made your millionth request.
+
+Any site that has a vested interest in protecting its data will usually have some basic anti-scraping measures in place. You have to have a few strategies up your sleeve to make sure that individual HTTP requests – as well as the larger pattern of requests in general – don’t appear to be coming from one centralized bot.
+
+To minimize the appearance of being a bot we could:
+- Spoofing headers to make requests seem to be coming from a browser, not a script
+- Rotating through IPs
+- Strip "tracking" query params from the URLs to remove identifiers linking requests together
+- Determining the ping rate of a site so as to minimize the number of requests made and seem more human-like
+
+
+2. The bin packing problem is a complex one as packing items can be done in many ways. For this exercise we sorted based on weight but we could have sorted by height, weight, volume or shape. This extends to every product, not just books. Complexities would be introduced if after sorting a product by weight the container then has to be packed into a truck or ship to maximize shipment. 
+
+There could also be boxes of multiple characteristic/features and of differing dimensions that would require an even more versatile algorithm. For example, if products to be sorted were grocery items of which some had to be kept frozen but had varying dimensions the algorithm would have account for all cases and make the best choice.
+
+
+3. For this application I utilized a first fit decreasing bin packing algorithm which has a time complexity O(n^2). To parse 20 books is fine for this algorithm but for 2,000,000 books a self-balancing binary search tree must be incorporated to bring the time down to O(n log n). I would consider O(n log n) optimal as there is a good balance between speed and keeping the box count low.
+
+Any time complexity other than O(n log n) would swing too heavily in one direction and still may not provide the best results. For example, for 20 books the optimal number of boxes required was 9, total weight of all the books divided by the capacity of the box, and using another sorting algorithm of O(n^2) would take just as long but is not guaranteed to yield 9 boxes by the end.
+
+Conversely, using an algorithm of O(n) would be extremely fast but would not attempt to fill the boxes to maximum capacity as it would only pass over the books once.
+
+Utilizing other algorithms could run into issues due to the use of pagination to handle large data sets. It is important to have the data processed in clusters or groups to increase processing and reduce the possiblity of the server crashing under the load, which can be witnessed for a linear search algorithm with one billion numeric values. This is important to note because we are working with objects which are far less primitive than numbers and so an array or group to be sorted of even two million books without taking the type of data being handled will result in critical errors.
+
+If pagination was not being utilized an algorithm that sorts the items by weight, for example, then takes the smallest and largest value of the set and packs them together would ensure that all boxes have around the same average weight. Due to the use of pagination you have little control over how each cluster sent back to you looks. and thus sorting first becomes and issue

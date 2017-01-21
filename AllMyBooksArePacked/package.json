@@ -1,0 +1,27 @@
+{
+  "name": "AllMyBooksArePacked",
+  "version": "1.0.0",
+  "description": "## Purpose",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Shannon Green",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShannonGreen27/ScrapingtonPost/issues"
+  },
+  "homepage": "https://github.com/ShannonGreen27/ScrapingtonPost#readme",
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "body-parser": "^1.15.2",
+    "cheerio": "^0.22.0",
+    "express": "^4.14.0",
+    "method-override": "^2.3.7",
+    "mongoose": "^4.7.2",
+    "morgan": "^1.7.0",
+    "path": "^0.12.7"
+  }
+}
