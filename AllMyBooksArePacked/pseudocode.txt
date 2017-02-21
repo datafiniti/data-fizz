@@ -1,0 +1,61 @@
+***SETUP***
+[Y]-Generate rails api
+
+[Y]-Make models, schemas, and controllers for Database.
+  [Y]-Two main objects:
+    [Y]-Book
+      [Y]-#EDIT# change ISBN to string in case it includes letter
+    [Y]-Box
+
+[Y]-Additional Gems I could use?
+  [Y]-Nokogiri
+  [Y]-open-uri ~ Standard in ruby
+  [Y]-rspec for rails
+[Y]-Setup indexes for both objects (json API)
+  [Y]-book
+  [Y]-boxes
+  [Y]-Return them in json
+    [Y]-books
+    [Y]-box
+
+[Y]-Set up routes
+  [Y]-index for books
+  [Y]-index for boxes ~ Root
+
+
+***Testing***
+[Y]-Create rspec tests for:
+  [Y]-Box Model
+  [Y]-Book Model
+  [Y]-Box index (make sure they print to the screen in json)
+  [Y]-Book index (make sure they print to the screen in json)
+  [Y]-Class Helpers
+
+
+***OO Scraping***
+[Y]-Classes?
+  [Y]-Web scraper
+  [Y]-Parse the html (SINGLE RESPONSIBLITY)
+    [Y]-You need:
+      [Y]-title
+      [Y]-author
+      [Y]-price
+      [Y]-shipping weight
+      [Y]-ISBN-10
+  []Y-Push the book to the database?
+  [Y]-make a box?
+    [Y]-made a Packer class that creates boxes and stuffs them with books
+  [Y]-optimize box space note: (at least I think so)
+
+***Database***
+  [Y]-create
+  [Y]-migrate
+  [Y]-seed
+    [Y]-loop through book class and create 'em
+    [Y]-books
+    [Y]-put books in boxes?
+  [Y]-Associations
+    [Y]-A box has many books
+    [Y]-A book belongs to a box
+
+
