@@ -1,0 +1,35 @@
+1. Domains beyond Amazon.com & 2. Products beyond just simply books.
+
+3. Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+
+
+1 & 2 The main architecture for this application could be extended for other domains by requiring some changes. 
+
+Questions I'd ask before getting started are:
+
+How does the html look like for the other domain look like? Is it uniformly written or not?
+How can I extract information (just by brainstorming) from this domain? 
+
+Which data do I want to structure so that I can make a class for this data similarly of what I did for the book (a book class, or a shoes class)? 
+What type of information do I want to extract? 
+What do I need to know in order of shipping boxes? 
+
+If the given product is shoes instead than books, I could reuse (after carefully inspecting the html and perhaps making small changes) the box.rb file for shipping boxes.
+In this file, instead than the method "add_book", I would have a method called "add_shoes". In fact, I could change right away the method's name to "add_item" instead than "add_book".
+
+
+3. The time complexity of the parsing is based on finding ids. Since ids are unique, the time complexity should be low.  Regarding the shipping, the algorithm that I used for 20 books is simple and it has a polynomial time complexity.
+
+I looked at the weight distribution of the books. The given 20 books were evenly distributed. So, I did not have to worry about arranging them into groups. (Just for the sake of illustration I have added a select method to filter through possible higher weights. In fact, I added a possibility to change the weight of the shipping box, in case the shipping weight needs to change. By default, I set it to be 10 lbs.)
+
+Instead if I have 2,000,000 books, I'd use an algorithm that would arrange the books into groups by weights. Then, I'd use a similar algorithm by matching together heavy and light books.
+
+
+Extra note
+In deployment, I would consider other factors as well, such as the size of the books unless I knew that the books have a comparable size. In such case, the very first thing I'd do is to group the books by their dimensions and then by their weights. 
+
+
+
+
+
+
