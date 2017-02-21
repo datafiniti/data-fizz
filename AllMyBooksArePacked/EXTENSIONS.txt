@@ -1,0 +1,45 @@
+1. In such a scenario, I would probably refactor the Extractor class as a module with 
+single master extract method. Each website would be scraped by a class which extended 
+the Extractor module. The specific extractor class would have specific methods to 
+extract each desired piece of information. These methods would require the appropriate 
+Xpath and other code needed to extract the information from the page.
+The master extractor method would simply call those methods for each file in the 
+directory. Unlike my PHP implementation, I used an HTML parser because I think that would
+make extensions to other domains easier than using regexs.
+2. Only a new child class of PackableItem, with the appropriate attributes and methods, 
+would be needed. The Box and Packer classes could accomodate the new child just fine.
+Because JSONable is a robust independent module, the new class would just need to extend 
+the JSONable module in order to be JSON encodable. A different extractor would be needed,
+but that is unavoidable.
+3. Pretty-formatting the JSON for output is a wasteful operation that could be
+eliminated to save time. The use of nokogiri as an HTML parser worries me. In a situation
+with millions of books, the use of nokogiri could become expensive; however, regexes
+would also be expensive. I think the best options to reduce runtime in such a large 
+situation would be to either:
+  a. Alternate Hard and Soft Layers
+    Determine bottlenecks and re-write them as a C program that reads from standard in
+    and writes to standard out so that the communication cost between Ruby and C
+    would be low. Depending on where the bottlenecks are, this would be nice because it 
+    would preserve the modular OOP-Ruby code base but provide faster performance
+    where it is needed. This approach is not bulletproof though...cost of creating
+    a new process for the C program and the related communication must be considered.
+    Also, if the team that would maintain the code is not very
+    familiar with C this might be a bad choice from a maintainability standpoint. Also,
+    while C might be the obvious choice for this approach, any faster language could be
+    usable.
+  b. Multithreaded Ruby Implementation
+    Using a library, such as celluloid, one could rewrite the Ruby implementation to
+    run concurrently. Files to read in could be put in an array which could be processed
+    concurrently. With enough nodes, this could cut down execution time.
+  c. Rewrite using C and MPI
+    This provides the ultimate cutomization for parallelizing or distributing the
+    execution, and, could yield good speed-ups. But, unless the team is well-versed in
+    C and MPI, would probably not be worth the cost in programmer-time.
+  d. Avoid file slurping
+    I did some research into this, but did not write test-code to examine it directly, but
+    I believe nokogiri reads the entire file's contents into memory. This is called
+    "slurping" the file. This takes CPU time and memory. When dealing with 2,000,000 
+    files, parallel or sequential, both CPU and memory is valuable. At this time, I', not 
+    sure exactly how this could be accomplished, but if file slurping can be avoided, 
+    performance would be increased. Additionally, this could be combined with any of the 
+    aforementioned approaches.

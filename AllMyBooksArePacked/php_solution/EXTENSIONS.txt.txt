@@ -1,0 +1,51 @@
+1. The regular expressions found in Extractor.php would have to be modified
+	
+in order to fit the website in question. The extractX functions in 
+	
+Extractor.php would have to be modified to fit the text captured
+	
+at the website in question. The PackableItem, Book, Box, and Packer classes
+	
+would not need to be changed.
+
+
+2. A child of the PackableItem class could be created to contain the additional
+	
+information related to different products. A new Extractor class would have
+	
+to be made in order to extract the appropriate information. In such
+ a scenario, 
+it would make sense to refactor the Extractor class.
+ Possibility making it an 
+interface, abstract class, or parent class and then
+ having specific extractors 
+such as BookExtractor, MovieExtractor, etc if 
+the OOP-model is to be maintained. 
+Looking beyond the OOP model, Extractor
+	could be rewritten in a functional manner 
+(as in functional programming,
+ not imperative functions) to be more flexible.
+
+
+3. This is definately the hard part. Currently, the algorithm used by Packer to
+	
+assign items to boxes has the potential to be a concerning bottleneck. When
+ I wrote 
+the algorithm, my greatest concern was avoided wasted space in
+	the boxes. With 
+2,000,000 books, faster packing of the books might
+ be more important than minimal 
+wasted space. That
+ algorithm could be redone, perhaps in a more mathemetical-fashion, 
+to
+ improve performance. Another possibility, would involve creating a Master
+ process 
+which would execute processAmazonBooks.php and Packer.php and then
+ distributing or 
+parallelizing the Extractor's work so that multiple book's
+ information could be
+extracted at once. This could be accomplished by 
+implementing the system in Erlang, 
+in C using MPI, using one of 
+several PHP frameworks to maintain the PHP implementation,
+or through a variety of other approaches.
