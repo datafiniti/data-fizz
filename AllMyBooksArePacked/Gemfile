@@ -1,0 +1,10 @@
+# A sample Gemfile
+source "https://rubygems.org"
+
+gem 'json'
+gem 'awesome_print'
+gem 'nokogiri'
+gem 'pry-debugger'
+gem 'facets', require: 'facets/enumerable/map_send' 
+gem 'facets', require: 'facets/hash/deep_merge' 
+# gem "rails"
