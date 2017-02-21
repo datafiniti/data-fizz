@@ -1,0 +1,15 @@
+Notes:
+
+- The ISBN-10 number is stored as a string, rather than Integer, because some of the numbers included characters. 
+- The outputted JSON has keys with unique box names (i.e. "Box43") for 2 reasons: 1) It makes it easier to identify the unique boxes for a client and 2) The JavaScript Object Notation (JSON) Data Interchange Format mentions that the name value pairs in a JSON object should be unique.
+
+
+1. Domains beyond Amazon.com
+	- To handle domains other than Amazon.com, you could create a domain specific class (ex: GoogleCrawler) that inherits from WebCrawler and implements it's own unique parsing methods. If similarities between certain websites was ever found, you could add certain parsing methods to the WebCrawler class that certain children could use.  
+	- You can use the AddBookToDatabase use case for other domains without making any changes (unless you decide to change the information you are adding to the database) as long as you named the book parsing methods (i.e. parse_book_title) the same for each specific domain crawler class. Because of inheritence, the class's individual parsing method would be used, grabbing the appropriate data and putting it in the database.
+2. Products beyond just simply books.
+	- To handle other products, you could simply add parsing methods to the appropriate domain crawler. For example, if you wanted to parse movie information from Amazon, you could add a parse_movie_title method to the AmazonCrawler class. This way, for any product details that are laid out in the DOM in the same way (ex; product prices), you could use the same parsing methods, regardless of the product. In this case, you would need to create a unique use case to add that product to the database.
+	- Depending on how many products you were parsing for a domain, you may want to organize each product's parsing methods in its own file and reopen the class in that file to add specific product parsing methods.
+3. Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+	- Currently, the boxes are being packed by finding the first box that has the needed available room. This ensures that boxes are filled as much as possible - something a client may care about. However, in order to speed up the packing process, you could pack one box at a time, creating a new box when the book to be packed has a weight that is too much for the current box. This is faster, but results in more boxes that are typically less full.
+	- 
