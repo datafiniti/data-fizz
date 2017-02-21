@@ -1,0 +1,35 @@
+Note: there is extensive comments in app.py which better address some the design decisions.
+
+1. Domains beyond Amazon.com
+
+Given the limited number of sample data, more advanced machine learning algorithms aren't practical.
+I chose simply to create a datastructure (FEATURE_XPATH_PROFILES) that stores "feature profiles" of the 
+data one would wish to extract from the HTML. To extract data from a different domain, one would simply
+need to create a new profile and change the settings to use that new profile. Ideally, a smarter
+implimentation of the storage of the HTML data would allow retrieval of the source of data along with 
+the raw HTML. This way we could automatically choose which profile to use with each HTML page.
+
+
+2. Products beyond just simply books.
+
+To run this application for products other than books, one would simply need to create a new feature profile
+(describe in 1.), and a new "namedtuple" to represent the data structure of this product. Then, just change
+the settings to use the new feature profile and product data struture.
+
+
+3. Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+
+To handle such an increase in data, there are a lot of modifications one would need to make in order
+for this application to be real-world ready. The following is not an exhaustive list:
+
+- A smarter implimentation is necessary for managing the raw data. We probably woudn't want to keep all the 
+  raw data forever. However, if we did need to hold onto a lot of it at any given time, we would probably want
+  to impliment the usual MVC model with a database.
+
+- To avoid duplication of work, we would want to keep a record of where and when the data was scraped from.
+
+- It would probably be necessary to persist the feature data structures, the product data structures, and the 
+  box data structures in the suggested database, so we don't have to store those millions of records in memory
+  or in a flat file.
+
+
