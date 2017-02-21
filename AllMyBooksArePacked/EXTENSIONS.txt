@@ -1,0 +1,29 @@
+EXTENSIONS
+
+- Including domains beyond Amazon.com:
+Any number of domains can be easily added in the lib/ directory
+Each of thse domains (eg. amazon) should inherit directly from the Domain class
+
+lib
+├── domain.rb
+├── domains
+│   └── amazon.rb
+├── . . .
+
+
+- Adding products beyond just simply books:
+Any number of products can be easily added in the lib/ directory
+Each of thse products (eg. book) should inherit directly from the Product class
+
+lib
+├── product.rb
+├── products
+│   └── book.rb
+
+Once a new product has been added, parse methods should be added to the domains which support those particular products. For example domains/amazon.rb contains a 'parse_book' method because we support the parsing and shipping of Amazon books
+
+- Parse and ship 2,000,000 books:
+
+Parsing: A Multi-Threaded extension for parsing each book, and joining when all threads are complete would be the most efficient way to parse a large set of books. The threading would be done in 'run.rb'
+
+Shipping: The current Greedy Algorithm for shipping M books in N boxes is O(n^2) time. This is not sufficient for 2,000,000 books. A recommended extension would be to divide these M books into K sets of 1000 books, with a proportional weight distribution for all K sets. Such a weight distribution for all 100 books in each set in K, would allow for efficient packaging of multiple books for N boxes. Also, each of the K sets could be multi-threaded as well for optimal time.

@@ -1,5 +1,22 @@
 # Book Packer
 
+## Usage
+
+Install all dependencies
+```ruby
+bundle install
+```
+
+Output to console
+```ruby
+ruby 'run.rb'
+```
+
+Output to any logfile
+```ruby
+ruby 'run.rb > results.json'
+```
+
 ## Purpose
 
 This exercise is designed to test your ability to use object-oriented design principles, data structures and standard algorithms to craft a small application.  We will not only be looking at the correctness of your solution but at the style of your code, its modularity, its extensibility, and ease at which the whole package can be built and tested.  As a small team we believe these principles are a key element of our continued success. 

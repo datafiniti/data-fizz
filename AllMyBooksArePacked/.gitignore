@@ -1,0 +1,4 @@
+*.swo
+*.swp
+vendor/bundle
+.bundle/
