@@ -1,0 +1,26 @@
+Answers to the three questions after the challange:
+
+Q1: How to extend code to domains beyond Amazon.com?
+A1: To extend to domains beyond Amazon, I would need to figure out what are the unique
+	identifiers/HTML tree locations corresponding to the data that we want to mine out
+	of the webpage. We need 5 pieces of information for each book. Once that's figured
+	out the ONLY thing that needs to be changed in my program is the "get_shipment" method
+	in the warehouse class. Due to the modular nature of my program, nothing else needs to
+	be changed!
+
+Q2: How to extend the code for products beyond just simply books?
+A2: One thing that comes to mind is having a superclass called
+	"Product". Each product should have a price, shipping weight, dimensions, name, country it was made etc. We can roll
+	up these common methods to the superclass and create specific subclasses such as Book to
+	contain the Book-specific attributes such as author or isbn-10. The warehouse and crate classes can
+	be largely left intact. One thing that may need to be changed is the getting_shipment methods because
+	right now it is book-specific. We can change method add_book --> add_product and the unsorted book list
+	to unsorted product list. These are all relatively minor changes though. The main sorting alogorithm can
+	stay the same though since it just needs to deal with objects that have a shipping weigh, i.e. all products
+
+Q3: How to extend the code to parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20?
+A3: The expensive operation at the moment is creating the HTML tree using BeautifulSoup. For 2,000,000 books, this may be prohibitive.
+	If that becomes the case, we would need to dig in and understand the algorithmic complexity of that function. We may be able to beat it
+	by writing a parser ourselves, but that becomes expensive man-power. The world is full of tradeoffs, and this is no exception. Programmer productivity vs. Runtime Speed. If the business case allows to run this overnight, great, and move on with our life. If this is nano-second life-threatening, such as day-trading (cough), we may want to understand the details and program this in machine code :)
+
+	In all seriousness, as far as the sort algorithm that I came up with, let n = # books. The list sort algorithm is nlogn and the two nested for loops are worst case sub n^2. Actually, IN THE WORST CASE meaning every book needs its own box, it basically goes as SUM i=1 --> n of i = n(n+1)/2. Since this is polynomial, according to the question, it seems reasonable.
