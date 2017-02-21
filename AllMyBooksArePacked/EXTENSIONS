@@ -1,0 +1,44 @@
+EXTENSIONS - AllMyBooksArePacked - Greg McDonald
+
+* Execute my solution by running the main method of the BookPacker class *
+** Commentary on design decisions is included in each class's documentation **
+
+1. How could my application be extended to handle domains beyond Amazon books?
+    My application is straightforward to extend to other domains. The only class
+    that would need to be modified is BookPacker; all other classes are not dependent
+    on the layout/structuring of the web page. 
+    To accomplish this extension, the htmlSource field (within BookPacker) would have to
+    be changed to specify the appropriate source web page type, and a single method 
+    would have to be written to handle the specifics of loading books from the new web page. 
+    This handling method would also be straightforward to write as it involves merely 
+    extracting text data using existing the HTMLReader class.
+    The last step needed for extension would be a minor update of the logic in the 
+    loadBook method of the BookPacker class. The updated logic would need to include 
+    the new domain and a new method; a commented example of such an update is provided 
+    within loadBook method. 
+    
+2. How could my application be extended to handle products beyond books?
+    My application would need an object typing change to handle products beyond books.
+    As it stands, my solution utilizes a Box and BookPacker that are both dependent on
+    the project defined structure of a Book. A simple solution to this issue would be
+    the creation of a more general class for BookPacker and Box to use. Book could then
+    be a subclass of this new general class. This superclass would only have to contain 
+    weight information to function properly with the Box class and the box packing operations
+    of BookPacker. However, web page loading would have to be modified to handle loading new 
+    products. The changes necessary to load different products would be implemented similarly
+    to the changes used to load books from different domains.
+    
+3. How could my application be extended to parse and ship 2,000,000 books (in a reasonably 
+   time frame; e.g., polynomial time) instead of merely 20? 
+    My application would need little extension to handle large quantities of books.
+    My application's box packing method runs in O(n) time (at the cost of packing density)
+    to  account for a potentially huge input of books; in-depth discussion of run time
+    design decisions is included in the documentation of the packBooks method in the
+    BookPacker class. My solution is also well-suited for the efficient parsing of HTML. 
+    My application will parse each web page in constant time (constant value dependent on page size), 
+    and parse n pages in O(n) time. However, a helpful extension to handle large inputs
+    would be a method of mass input, as opposed to hand-written loading calls. This mass input
+    could be implemented by passing a list of file names as a parameter to the application.
+    A further addition made necessary by increasing input size is a better storage system.
+    Currently, storing 2,000,000 books in memory would result in a massive file. It would
+    be better suited to store the data from large inputs in a database.
