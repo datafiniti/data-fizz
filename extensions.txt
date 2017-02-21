@@ -1,0 +1,41 @@
+How could your application be extended to handle the following:
+
+1. Domains beyond Amazon.com
+
+  Since we've already created an object for what a book entails, you could simply
+  create another object that extends the built-in HTMLParser object, as the
+  current AmazonParser does. The Box, Shipment, and Book objects, and
+  their associated methods, remain the same, but the scraping procedure changes.
+
+2. Products beyond just simply books.
+
+  In a similar light, the box object could be modified to be more analogous to a
+  real-world box, which can hold any number of things. You could change the
+  init() function to take the obligatory self parameter, as well as a **kwargs
+  parameter, which would give the object more flexibility. Alternatively, you can
+  simply strip it down further and create subsequent objects like BookBox or
+  MovieBox, what have you, that extend the original Box object and its methods.
+
+3. Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+
+  Currently the box packing algorithm is a greedy algorithm. It sorts the parcels
+  in reverse order, and packs boxes with books as they fit in by weight. To parse
+  and ship two million books quickly, you could split those two million books into
+  smaller chunks, and run multiple parsers at once on every chunk. Additionally,
+  you could use concurrency to split the parsing and shipping processes.
+
+NOTES:
+
+1. The files provided were formatted to ISO-8859-1, or ISO Latin 1. As Python 3
+   works entirely in utf-8, line 9 includes an encoding parameter to allow the
+   script to read the files.
+
+2. Originally I built the script using BeautifulSoup4, a popular web scraping
+   module for Python. I found it to be difficult to install properly, clumsy
+   to actually use, and sluggish in practice. It has been replaced with the
+   built-in module HTMLParser, which I found is much more performant, and
+   obviously comes with Python3.
+
+3. There is a module called JSONPickle that is popular for JSONifying objects in
+   Python. I focused on instead using the built-in JSON module to minimize
+   3rd-party module use, and therefore maintain ease-of-installation and use.
