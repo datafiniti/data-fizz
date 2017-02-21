@@ -1,0 +1,31 @@
+1) Domains beyond Amazon.com
+
+  The web parsing has to be tailored for each domain and sometimes varies between different pages on the same domain or over time, i.e.,
+    > an Amazon page for a book differs from an Amazon page for music;
+    > the Amazon pages given in the challenge differ from the current setup on the web.
+  Because the parsing has to be precise, I would think the parsing template for each domain/type has to be specifically built and maintained for those sites.
+
+  But it might still be possible to abstract/generalize at a higher level. I'm imagining the parsing template being kept in a config library of templates; in this case, a user might call a method to get info and pass in the particular domain as a parameter. E.g., 
+    > Processor.get_book_info(:amazon, ...)
+  would hit the Amazon config, and use that to parse the site.
+
+  And/or if there was overlap between certain domains--say, Barnes & Noble and Amazon using the same HTML id tag for prices--then it might be possible to share some of the parsing methods between them by having a common parser and have the particular parsers inherit from that.
+
+  (Or would it eventually be possible to build the parser to automatically detect the type/origin of the site?)
+
+2) Products beyond just simply books.
+
+  Similar to my answer above, I think there are certain attribute-getting methods that could be abstracted and shared between different types of objects. (We would have to make sure that those attributes are pertinent--only books have an author, but everything at Amazon has a price.)
+
+  Again, perhaps it's just because I've been studying functional programming recently, but my instinct is to pass along the options as a parameter, so that the user could specify what type of object, subtype, etc. Ultimately, I think it'd be neat to pass a command like
+    > Processor.get_info(:amazon, :book, :hardcover, ...)
+
+  (This is also partly why I decided to forgo making a Book class right now and just have a Processor class that returns the information for the book rather than creates an instance of a book or a processor. Though I'm not entirely sure about that decision and would be happy to talk about it.)
+
+  Assuming that there are no other parameters/priorities for packing--like fragile or rushed shipments--I think the packing algorithm wouldn't need to be changed unless I'm missing something.
+
+3) Parse and ship 2,000,000 books (in a reasonable time frame; e.g., polynomial time) instead of merely 20.
+
+  I'm not entirely sure. Parsing when hitting an actual website seems to take a fair amount of time, so perhaps it might be worth the loss of packing efficiency to start packing boxes while the parsing is still going on. (Though that idea does make me a little nervous.)
+
+  That said, changing the scale from 20 to 2m books would be more stress on the packing algorithm (which sorts) than anything else. It might be worthwhile to arbitrarily slice the 2m books up into segments of fewer books and work on each segment individually. It would lead to potentially less efficient packing, but sorting fewer books is potentially faster. (A multi-thread language or system could also go to work on multiple segments simultaneously, which doesn't cut processor time but might cut human time.)

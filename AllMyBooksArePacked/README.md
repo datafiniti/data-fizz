@@ -51,7 +51,7 @@ Once your solution is completed please add an EXTENSIONS.txt file to your soluti
 
 1. Domains beyond Amazon.com
 2. Products beyond just simply books.
-3. Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+3. Parse and ship 2,000,000 books (in a reasonable time frame; e.g., polynomial time) instead of merely 20.
 
 To begin fork this repository to your personal Github account. We ask that you submit your solution within 2 weeks of forking the repo.
 
