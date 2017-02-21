@@ -1,0 +1,21 @@
+How can this application be extended to handle...
+
+1. Domains beyond Amazon.com?
+
+One way is by enabling the product application to handle a more generalized web scraping behavior by looking at more common nodes and contextual hints. For example, instead of looking at the view/webpage itself, look for breadcrumbs or semantic annotations that indicate the data is dynamically rendered from another source such as a database. ISBN-10 and ISBN-13 can be used as double-verification to ensure the right version of the book is properly assigned. Using other competitive and reference websites to cross-check unique identifiers is also important for accuracy purposes.
+
+Another way is if one could determine the schema, scraping can be done in much more efficient manner. My application can be better improved by focusing on more broad characteristics that all products and services entail: name, price, physical product or service, reviews/feedback, metadata, etc.
+
+2. Products beyond just simply books?
+
+Referencing the aforementioned, looking at more broad data scraping rules and how companies/websites serve that information will allow one to parse any product data aside from books. One could also look at machine learning or computer vision techniques that train the application or parser to find the relevant data after viewing a certain portion of a webpage or using optical character recognition to denote a "bookmark" part of a webpage or website. When one looks at a new webpage, the first immediate reaction is to consider if the data is structured from a past format or template that one has encountered before and if not, how to tweak/modify to fit such a pattern.
+
+If hindrances are encountered such as blockage of web service API or IP address blocking, one can use proxies to get around such issues. Also, web crawlers and scrappers need to be aware of honeypot schemes to avoid detection.
+
+3. Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20?
+
+One will need to study optimization and manipulating algorithmic methods to reduce speed on calculation without sacrificing accuracy. For example, this coding challenge involved the bin packing problem that is considered NP-hard and can be simplistically solved with basic heuristic methods including the method I used (First-Fit Decreasing). However, this algorithm requires sorting, which means at best O(n) limit, to access the elements of the data structure and sort greatest to least. Perhaps in production, that type of sorting is very slow due to the size of the array or unnecessary if the customer, for example, wants to see just the first three boxes of shipment. Then using an alternative online algorithms such as best-fit or first-fit algorithms are better suited.
+
+Basically, one can run an experiment to compare various algorithms that help give sense to the scale of implementation and design needed to suit the customer's taste in speed or ease of application: does it filter shipments by bins within 10 lb limit? quickly? can I see paginated list of the 50th page and look at those results only? can I use filters to quickly paginate only if results exceed X amount? if I want to see all results, will it implement a different algorithm to ensure accuracy? is the wastage (MAX_WEIGHT - box_weight) minimized?
+
+The key is to ensure the OOP design and parsing allows such prescient scaling. Careful implementation and adherence to SOLID principles will ensure this capability.
