@@ -1,3 +1,11 @@
+```
+git clone https://github.com/sachinahj/DataFizz.git
+cd DataFizz/AllMyBooksArePacked
+bundle install
+bundle exec ruby pack_books.rb
+```
+answer prints to shipment.json file
+
 # Book Packer
 
 ## Purpose
