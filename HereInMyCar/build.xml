@@ -1,0 +1,53 @@
+<project name="HereInMyCar" default="install">
+  <target name="prepare-directories">
+	  <echo>Creating local directories</echo>
+		<mkdir dir="downloads" />
+	</target>
+
+	<target name="init-git-submodules">
+	  <echo>Initializing in git submodules</echo>
+		<exec command="git submodule init" dir="../" passthru="true"/>
+	  <exec command="git submodule update" dir="../" passthru="true"/>
+	</target>
+
+	<target name="install-composer" depends="init-git-submodules">
+	  <echo>Installing Composer and completing Guzzle3 setup</echo>
+	  <exec command="curl -sS https://getcomposer.org/installer | php" dir="lib/guzzle3/" passthru="true"/>
+		<exec command="php composer.phar require guzzle/guzzle:~3.8" dir="lib/guzzle3/" passthru="true"/>
+	</target>
+
+	<target name="load-mysql-dbs">
+	  <echo>Loading database schemata for production and development</echo>
+	  <adhoc-task name="load-dev-db">
+	    <![CDATA[
+			  require_once('ConfigVars.php');
+				class DevDBTask extends Task {
+					function main() {
+						$retVal = 0;
+						$cmd = "cat schemata/products.sql schemata/vehicles.sql | mysql --user=" . DB_USER . " --password=" . DB_PASSWORD . " --host=" . DB_HOST . " " . DB_DB . "_dev"; 
+				    exec($cmd, $retVal);
+						return $retVal;
+					}
+				}
+			]]>
+		</adhoc-task>
+		<adhoc-task name="load-production-db">
+		  <![CDATA[
+			  require_once('ConfigVars.php');
+				class ProdDBTask extends Task {
+					function main() {
+						$retVal = 0;
+						$cmd = "cat schemata/products.sql schemata/vehicles.sql | mysql --user=" . DB_USER . " --password=" . DB_PASSWORD . " --host=" . DB_HOST . " " . DB_DB;
+				    exec($cmd, $retVal);
+						return $retVal;
+					}
+				}
+	    ]]>
+		</adhoc-task>
+		<load-dev-db />
+		<load-production-db />
+	</target>
+	<target name="install" depends="prepare-directories,load-mysql-dbs,install-composer">
+	  <echo>Completing installation</echo>
+	</target>
+</project>
