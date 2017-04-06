@@ -1,8 +1,11 @@
 import http from 'http'
 import appConfig from './server/config/config'
 import expressConfig from './server/express'
+import db from './server/models/db'
 
-const app = expressConfig();
+import Users from './server/models/users'
+
+const app = expressConfig(db);
 const server = http.createServer(app);
 
 server.listen(appConfig.server.port, () => {

@@ -5,7 +5,7 @@ import compression from 'compression'
 
 import userRoutes from './routes/users.server.routes'
 
-module.exports = () => {
+module.exports = (db) => {
 	const app = express();
 
 	const PATHS = {

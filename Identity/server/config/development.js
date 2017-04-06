@@ -12,6 +12,11 @@ export default {
 		}
 	},
 
-	db: 'http://localhost:27017/identity',
+	db: {
+		host: 'localhost:',
+		port: '27017',
+		name: 'identity'
+	},
+	
 	secret: 'sdjahdfkjhaskdfjhaskjfhasdf'
 }
