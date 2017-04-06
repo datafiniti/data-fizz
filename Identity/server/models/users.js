@@ -70,7 +70,25 @@ UserSchema.pre('save', (next) => {
 });
 
 UserSchema.methods = {
+	hasRole: (role) => {
+		this.roles.includes('admin') || this.roles.includes(role);
+	}
 
+	comparePassword: (candidatePassword, cb) => {
+		bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
+			if (err) {
+				return cb(err);
+			}
+
+			cb(null, isMatch);
+		});
+	},
+
+	toJSON: () => {
+		let obj = this.toObject();
+		obj.password = '';
+		return obj;
+	}
 };
 
 mongoose.model('User', UserSchema);
