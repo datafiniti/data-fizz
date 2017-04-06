@@ -3,6 +3,8 @@ import path from 'path'
 import bodyParser from 'body-parser'
 import compression from 'compression'
 
+import userRoutes from './routes/users.server.routes'
+
 module.exports = () => {
 	const app = express();
 
@@ -25,6 +27,8 @@ module.exports = () => {
 	app.use(express.static(PATHS.app));
 	app.use(express.static(PATHS.dist));
 	app.use(express.static(PATHS.modules));
+
+	app.use('/users', userRoutes);
 
 	return app;
 };
