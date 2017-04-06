@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import json from '../helpers/json'
+import { generateToken } from '../helpers/auth'
 
 module.exports = () => {
 	const User = mongoose.model("User");
@@ -16,7 +17,20 @@ module.exports = () => {
 
 			let user = new User(req.body);
 			user.roles = roles;
-			user.token = 'generateToken';
-		})
-	}
+			user.token = generateToken(user);
+
+			user.save((err) => {
+				if (err) {
+					return json.bad(err, res);
+				}
+
+				json.good({
+					record: user,
+					token: token
+				}, res);
+			});
+		});
+	};
+
+	return obj;
 }
