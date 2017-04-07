@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const PATHS = {
 	app: path.join(__dirname, 'app'),
@@ -38,12 +39,22 @@ module.exports = {
 				test: /\.json$/,
 				use: 'json-loader'
 
+			},
+
+			{
+				test: /\.sass$/,
+				use: ['style-loader', 'css-loader', 'sass-loader']
+			},
+
+			{
+				test: /\.css$/,
+				use: 'style-loader!css-loader'
 			}
 		]	
 	},
 
 	resolve: {
-		extensions: ['.js', '.jsx', '.json']
+		extensions: ['.js', '.jsx', '.json', '.sass', '.css']
 	},
 
 	devServer: {

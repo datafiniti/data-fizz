@@ -1,4 +1,5 @@
 import React from 'react';
+import '../static/styles/main.sass';
 
 import Nav from './shared/Nav';
 import Sidebar from './shared/Sidebar';
