@@ -66,5 +66,35 @@ module.exports = () => {
 		});
 	};
 
+	obj.changePassword = (req, res) => {
+		User.findOne({name: req.params.userName}, (err, user) => {
+			if (err) {
+				return json.bad(err, res);
+			}
+
+			user.comparePassword(req.body.password, (err, isMatch) => {
+				if (err) {
+					return json.bad(err, res);
+				}
+
+				if (isMatch) {
+					user.password = req.body.newPassword;
+					user.token = '';
+					user.token = generateToken(user);
+
+					user.save((err) => {
+						if (err) {
+							return json.bad(err, res);
+						}
+
+						json.good({
+							record: user
+						}, res);
+					});
+				}
+			});
+		});
+	};
+
 	return obj;
 }
