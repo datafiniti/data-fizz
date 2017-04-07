@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Nav from './shared/Nav';
+import Sidebar from './shared/Sidebar';
 import Auth from './auth/auth';
 import Home from './home/home';
 
@@ -15,12 +17,20 @@ class App extends React.Component {
 	render() {
 		if (!this.state.authenticated) {
 			return (
-				<Auth />
+				<div className='application-container'>
+					<Nav authenticated={this.state.authenticated} />
+					<Sidebar authenticated={this.state.authenticated} />
+					<Auth />
+				</div>
 			);
 		}
 
 		return (
-			<Home />
+			<div className='application-container'>
+				<Nav authenticated={this.state.authenticated} />
+				<Sidebar authenticated={this.state.authenticated} />
+				<Home />
+			</div>
 		);
 	}
 }
