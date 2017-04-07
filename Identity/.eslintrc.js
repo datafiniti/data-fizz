@@ -21,6 +21,8 @@ module.exports = {
 		"no-trailing-spaces": 0,
 		"no-class-assign": 0,
 		"react/no-unused-prop-types": 0,
+		"react/jsx-indent-props": 0,
+		"react/jsx-closing-bracket-location": 0,
 		"react/jsx-filename-extensions": [1, {"extensions": [".js", ".jsx"]}],
 		"react/jsx-no-bind": [2, {
 			"ignoreRefs": false,
