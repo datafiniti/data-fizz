@@ -4,6 +4,7 @@
   "description": "**Challenge**: Roll your own authentication",
   "main": "server.js",
   "scripts": {
+    "start": "webpack-dev-server",
     "s-test": "./node_modules/.bin/mocha tests/server --compilers js:babel-register"
   },
   "author": "",
@@ -12,6 +13,7 @@
     "babel-core": "^6.24.0",
     "babel-eslint": "^7.2.1",
     "babel-loader": "^6.4.1",
+    "babel-plugin-webpack-loaders": "^0.9.0",
     "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "^6.23.0",
@@ -40,6 +42,8 @@
     "http": "^0.0.0",
     "jsonwebtoken": "^7.3.0",
     "mongoose": "^4.9.3",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
   }
 }

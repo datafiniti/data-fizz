@@ -19,19 +19,18 @@ module.exports = {
 		path: path.join(PATHS.dist)
 	},
 
-	modules: {
+	module: {
 		rules: [
 			{
-				test: /\.(jsx|js)?$/,
+				test: /\.jsx?$/,
 				exclude: /node_modules/,
-				include: path.join(__dirname, 'test'),
-				use: 'babel-loader'
+				loaders: ['babel-loader']
 			},
 
 			{
 				test: /\.(jsx|js)?$/,
 				use: 'eslint-loader',
-				enfore: 'pre',
+				enforce: 'pre',
 				include: PATHS.app
 			},
 
