@@ -10,11 +10,11 @@ const PATHS = {
 module.exports = {
 	devtool: 'cheap-module-eval-source-map',
 	entry: {
-		app: PATHS.app
+		app: path.join(PATHS.app, 'index.jsx')
 	},
 
 	output: {
-		filename: '[name].chunk.js',
+		filename: '[name].js',
 		publicPath: '/',
 		path: path.join(PATHS.dist)
 	},
