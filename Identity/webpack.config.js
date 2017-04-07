@@ -29,6 +29,13 @@ module.exports = {
 			},
 
 			{
+				test: /\.(jsx|js)?$/,
+				use: 'eslint-loader',
+				enfore: 'pre',
+				include: PATHS.app
+			},
+
+			{
 				test: /\.json$/,
 				use: 'json-loader'
 
