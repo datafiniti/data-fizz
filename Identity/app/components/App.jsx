@@ -3,6 +3,7 @@ import '../static/styles/main.sass';
 
 import Nav from './shared/Nav';
 import Sidebar from './shared/Sidebar';
+import Home from './home/home';
 
 
 class App extends React.Component {
@@ -19,7 +20,7 @@ class App extends React.Component {
 			<div className='application-container'>
 				<Nav authenticated={this.state.authenticated} />
 				<Sidebar authenticated={this.state.authenticated} />
-				{this.props.children}
+				<Home />
 			</div>
 
 		);

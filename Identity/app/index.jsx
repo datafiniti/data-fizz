@@ -1,15 +1,20 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+//import { Router, browserHistory } from 'react-router';
+import { Provider } from 'react-redux';
+
+import configureStore from './store/configureStore';
+import routes from './routes';
 
 import App from './components/App';
-import Home from './components/home/home';
+
+const store = configureStore();
+
+console.log(store);
 
 render(
-	<Router history={browserHistory}>
-		<Route path='/' component={App}>
-			<IndexRoute component={Home} />
-		</Route>
-	</Router>,
+	<Provider store={store}>
+		<App />
+	</Provider>,
 	document.getElementById('app'),	
 );
