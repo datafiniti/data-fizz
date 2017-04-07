@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import '../../../static/styles/shared/components/tabs.sass';
 
 class Tabs extends React.Component {
 	constructor(props) {
@@ -24,8 +25,8 @@ class Tabs extends React.Component {
 			const activeClass = (this.state.selected === index ? 'is-active' : '');
 
 			return (
-				<li role='tab' key={index} aria-controls={`panel${index}`}>
-					<button className={activeClass} onClick={this.onClick.bind(this, index)}>
+				<li role='tab' key={index} aria-controls={`panel-${index}`} className={activeClass} onClick={this.onClick.bind(this, index)}>
+					<button>
 						{child.props.label}
 					</button>
 				</li>
@@ -33,7 +34,7 @@ class Tabs extends React.Component {
 		}
 
 		return (
-			<ul className="tabs-label" role="tablist">
+			<ul className="tab-label" role="tablist">
 				{this.props.children.map(labels.bind(this))}
 			</ul>
 		);

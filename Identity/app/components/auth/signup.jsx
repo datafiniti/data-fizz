@@ -15,6 +15,7 @@ class Signup extends React.Component {
 		};
 
 		this.handleInputChange = this.handleInputChange.bind(this);		
+		this.handleBlur = this.handleBlur.bind(this);
 	}
 
 	handleInputChange(event) {
@@ -27,13 +28,29 @@ class Signup extends React.Component {
 		});
 	}
 
-	render() {
+	handleBlur(event) {
+		const target = event.target;
+
+		if (!target.value) {
+			target.classList.add('invalid');
+		}
+	}
+
+
+	render() { 
 		return (
 			<div className='auth-form-container'>
+				<h2>Sign Up</h2>
 				<form name='signup-form'>
 					<div className='form-wrapper'>
+						<input 
+							name='name'
+							type='text' 
+							id='signup-name' 
+							onChange={this.handleInputChange} 
+							onBlur={this.handleBlur}
+						/>
 						<label htmlFor='signup-name'>Name</label>
-						<input name='name'type='text' id='signup-name' onChange={this.handleInputChange} />
 					</div>
 
 					<div className='form-wrapper'>

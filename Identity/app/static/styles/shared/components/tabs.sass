@@ -1,0 +1,23 @@
+.tab-label
+	display: flex
+	align-items: center
+
+	li
+		display: flex
+		flex: 1
+		align-items: center
+		justify-content: center
+		list-style-type: none
+		padding: 20px 0
+		border-bottom: 2px solid transparent
+		transition: all .4s ease
+
+		&.is-active
+			border-bottom: 2px solid #555
+
+		button
+			border: none
+			background: none
+			outline: none
+			height: 100%
+			width: 100%

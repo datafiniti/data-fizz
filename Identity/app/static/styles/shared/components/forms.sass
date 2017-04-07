@@ -5,11 +5,22 @@
 
 	label
 		position: absolute
-		top: 10px
+		top: 13px
 		left: 12px
+		opacity: 1
+		transition: all .4s ease-out
 
 
 	input
 		height: 40px
 		width: 100%
-		
+
+		&:focus
+			& + label
+				transform: translateX(-30px)
+				opacity: 0
+
+		&.invalid
+			& + label
+				color: red
+

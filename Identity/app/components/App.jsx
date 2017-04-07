@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import '../static/styles/main.sass';
 
 import Nav from './shared/Nav';
 import Sidebar from './shared/Sidebar';
-import Auth from './auth/auth';
-import Home from './home/home';
+
 
 class App extends React.Component {
 	constructor(props) {
@@ -16,24 +15,19 @@ class App extends React.Component {
 	}
 
 	render() {
-		if (!this.state.authenticated) {
-			return (
-				<div className='application-container'>
-					<Nav authenticated={this.state.authenticated} />
-					<Sidebar authenticated={this.state.authenticated} />
-					<Auth />
-				</div>
-			);
-		}
-
 		return (
 			<div className='application-container'>
 				<Nav authenticated={this.state.authenticated} />
 				<Sidebar authenticated={this.state.authenticated} />
-				<Home />
+				{this.props.children}
 			</div>
+
 		);
 	}
 }
+
+App.propTypes = {
+	children: PropTypes.object.isRequired,
+};
 
 export default App;

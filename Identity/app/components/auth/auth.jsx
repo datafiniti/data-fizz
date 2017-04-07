@@ -19,15 +19,17 @@ class Auth extends React.Component {
 	render() {
 		return (
 			<div className='auth-page-container'>
-				<Tabs>
-					<Pane label="Signup">
-						<Signup />
-					</Pane>
+				<div className='auth-tabs-container'>
+					<Tabs>
+						<Pane label="Signup">
+							<Signup />
+						</Pane>
 
-					<Pane label="Login">
-						<div><p>Login Stuff</p></div>
-					</Pane>
-				</Tabs>
+						<Pane label="Login">
+							<div><p>Login Stuff</p></div>
+						</Pane>
+					</Tabs>
+				</div>
 			</div>
 			
 		);
