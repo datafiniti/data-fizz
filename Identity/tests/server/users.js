@@ -7,30 +7,31 @@ const model = require('../../server/models/users');
 const should = chai.should();
 const User = model.User;
 
+const base = {
+	name: 'base',
+	username: 'base',
+	email: 'base@gmail.com',
+	password: 'base',
+	newPassword: 'esab'
+};
+
 chai.use(chaiHttp);
 
 describe('Users', () => {
 	beforeEach((done) => {
-		let data = {
-			name: 'base',
-			username: 'base',
-			email: 'base@gmail.com',
-			password: 'base'
-		};
-
-		let testUser = new User(data);
+		let testUser = new User(base);
 		testUser.save((err) => {
 			done();
 		});
 	});
 
 	afterEach((done) => {
-		User.remove({}, (err) => {
+		User.remove(base, (err) => {
 			done();
 		});
 	}); 
 
-	describe('/Create user', () => {
+	describe('/Create user', (done) => {
 		it('should not create a user without a name, username, email, and password', (done) => {
 			let user = {
 				name: '',
@@ -73,6 +74,7 @@ describe('Users', () => {
 				.end((err, res) => {
 					res.should.have.status(200);
 					res.body.should.be.a('object');
+					console.log(res.body.res);
 					res.body.res.record.should.have.property('name');
 					res.body.res.record.should.have.property('username');
 					res.body.res.record.should.have.property('email');
@@ -85,14 +87,10 @@ describe('Users', () => {
 
 	describe('/Authenticate a User', (done) => {
 		it('log a user in', (done) => {
-			let user = {
-				email: 'base@gmail.com',
-				password: 'base'
-			};
-
+			
 			chai.request('localhost:8000')
 				.post('/users/authenticate')
-				.send(user)
+				.send(base)
 				.end((err, res) => {
 					res.should.have.status(200);
 					res.body.should.be.a('object');
@@ -103,20 +101,16 @@ describe('Users', () => {
 		});
 
 		it('should not send password back', (done) => {
-			let user = {
-				email: 'base@gmail.com',
-				password: 'base'
-			};
 
 			chai.request('localhost:8000')
 				.post('/users/authenticate')
-				.send(user)
+				.send(base)
 				.end((err, res) => {
 					res.should.have.status(200);
 					res.body.should.be.a('object');
-					res.body.res.record.should.have.property('password').eql('')
+					res.body.res.record.should.have.property('password').eql('');
 				done();
 			});
 		});
-	});	
+	});
 });

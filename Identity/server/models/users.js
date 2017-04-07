@@ -14,7 +14,6 @@ const UserSchema = new mongoose.Schema({
 
 	username: {
 		type: String,
-		unique: true,
 		required: true,
 		match: [/\w+$/, 'Please enter only alphanumeric characters']
 	},

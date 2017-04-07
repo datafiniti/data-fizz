@@ -68,6 +68,8 @@ module.exports = () => {
 
 	obj.changePassword = (req, res) => {
 		User.findOne({name: req.params.userName}, (err, user) => {
+			console.log(req.body);
+			
 			if (err) {
 				return json.bad(err, res);
 			}
