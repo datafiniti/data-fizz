@@ -77,7 +77,7 @@ UserSchema.methods = {
 		this.roles.includes('admin') || this.roles.includes(role);
 	},
 
-	comparePassword: (candidatePassword, cb) => {
+	comparePassword: function(candidatePassword, cb) {
 		bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
 			if (err) {
 				return cb(err);

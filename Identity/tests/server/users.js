@@ -11,6 +11,20 @@ chai.use(chaiHttp);
 
 describe('Users', () => {
 	beforeEach((done) => {
+		let data = {
+			name: 'base',
+			username: 'base',
+			email: 'base@gmail.com',
+			password: 'base'
+		};
+
+		let testUser = new User(data);
+		testUser.save((err) => {
+			done();
+		});
+	});
+
+	afterEach((done) => {
 		User.remove({}, (err) => {
 			done();
 		});
@@ -57,7 +71,6 @@ describe('Users', () => {
 				.post('/users')
 				.send(user)
 				.end((err, res) => {
-					console.log(res);
 					res.should.have.status(200);
 					res.body.should.be.a('object');
 					res.body.res.record.should.have.property('name');
@@ -69,4 +82,41 @@ describe('Users', () => {
 			});
 		});
 	});
+
+	describe('/Authenticate a User', (done) => {
+		it('log a user in', (done) => {
+			let user = {
+				email: 'base@gmail.com',
+				password: 'base'
+			};
+
+			chai.request('localhost:8000')
+				.post('/users/authenticate')
+				.send(user)
+				.end((err, res) => {
+					res.should.have.status(200);
+					res.body.should.be.a('object');
+					res.body.res.record.should.have.property('name');
+					res.body.res.token.should.be.a('string');
+				done();
+			});
+		});
+
+		it('should not send password back', (done) => {
+			let user = {
+				email: 'base@gmail.com',
+				password: 'base'
+			};
+
+			chai.request('localhost:8000')
+				.post('/users/authenticate')
+				.send(user)
+				.end((err, res) => {
+					res.should.have.status(200);
+					res.body.should.be.a('object');
+					res.body.res.record.should.have.property('password').eql('')
+				done();
+			});
+		});
+	});	
 });

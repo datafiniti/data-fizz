@@ -5,10 +5,12 @@ function good(obj, res) {
 	});
 }
 
-function bad(err, res) {
+function bad(err, res, type=null) {
+
 	let obj = {
 		success: 0,
-		res: err
+		res: err,
+		type: type
 	}
 
 	if (obj.res.errors) {
