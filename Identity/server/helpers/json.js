@@ -18,7 +18,7 @@ function bad(err, res) {
 			obj.res.messages.push(obj.res.errors[i].message);
 		}
 
-		obj.res.message = obj.res.messages[0]''
+		obj.res.message = obj.res.messages[0];
 	}
 
 	res.send(obj);

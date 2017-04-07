@@ -4,7 +4,7 @@
   "description": "**Challenge**: Roll your own authentication",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "s-test": "./node_modules/.bin/mocha tests/server --compilers js:babel-register"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +17,9 @@
     "babel-preset-stage-0": "^6.22.0",
     "babel-register": "^6.24.0",
     "babel-runtime": "^6.23.0",
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.2.0",
     "webpack": "^2.3.3",
     "webpack-dev-server": "^2.4.2"
   },

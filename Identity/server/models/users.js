@@ -1,4 +1,4 @@
-import mongoose 'mongoose'
+import mongoose from 'mongoose'
 import bcrypt from 'bcryptjs'
 
 const UserSchema = new mongoose.Schema({
@@ -15,6 +15,7 @@ const UserSchema = new mongoose.Schema({
 	username: {
 		type: String,
 		unique: true,
+		required: true,
 		match: [/\w+$/, 'Please enter only alphanumeric characters']
 	},
 
@@ -48,8 +49,10 @@ const UserSchema = new mongoose.Schema({
 	resetPasswordExpires: Date
 });
 
-UserSchema.pre('save', (next) => {
-	if (!this.isModified('password')) {
+UserSchema.pre('save', function(next) {
+	let user = this;
+
+	if (!user.isModified('password')) {
 		return next();
 	}
 
@@ -58,7 +61,7 @@ UserSchema.pre('save', (next) => {
 			return next(err);
 		}
 
-		bcrypt.hash(this.password, salt, (err, hash) => {
+		bcrypt.hash(user.password, salt, (err, hash) => {
 			if (err) {
 				return next(err);
 			}
@@ -72,7 +75,7 @@ UserSchema.pre('save', (next) => {
 UserSchema.methods = {
 	hasRole: (role) => {
 		this.roles.includes('admin') || this.roles.includes(role);
-	}
+	},
 
 	comparePassword: (candidatePassword, cb) => {
 		bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
@@ -84,11 +87,16 @@ UserSchema.methods = {
 		});
 	},
 
-	toJSON: () => {
+	toJSON: function() {
 		let obj = this.toObject();
 		obj.password = '';
 		return obj;
 	}
 };
 
-mongoose.model('User', UserSchema);
+const User = mongoose.model('User', UserSchema);
+
+module.exports = {
+	User: User
+};
+

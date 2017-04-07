@@ -1,9 +1,11 @@
 import mongoose from 'mongoose'
 import json from '../helpers/json'
 import { generateToken } from '../helpers/auth'
+import model from '../models/users'
+
 
 module.exports = () => {
-	const User = mongoose.model("User");
+	const User = model.User;
 
 	const obj = {};
 
@@ -26,7 +28,7 @@ module.exports = () => {
 
 				json.good({
 					record: user,
-					token: token
+					token: user.token
 				}, res);
 			});
 		});
@@ -56,7 +58,7 @@ module.exports = () => {
 
 						json.good({
 							record: user,
-							token: token
+							token: user.token
 						}, res)
 					});
 				}
