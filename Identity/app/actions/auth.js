@@ -7,6 +7,8 @@ export const SIGNUP_USER_FAILURE = 'USER_SIGN_UP_ERROR';
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGIN_USER_COMPLETE = 'LOGIN_USER_COMPLETE';
 export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE';
+
+export const IS_AUTHED = 'IS_AUTHED';
  
 
 export function signUpStart(obj) {
@@ -52,5 +54,11 @@ export function loginFailure(error) {
 	return {
 		type: LOGIN_USER_FAILURE,
 		payload: error,
+	};
+}
+
+export function isAuthed() {
+	return {
+		type: IS_AUTHED,
 	};
 }

@@ -55,6 +55,12 @@ export default function authReducer(state = INITIAL_STATE, action) {
 				error: error,
 			};
 
+		case types.IS_AUTHED:
+			return {
+				...state,
+				isAuthenticated: true,
+			};
+
 		default:
 			return state;
 	}
