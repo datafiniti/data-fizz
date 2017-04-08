@@ -15,8 +15,6 @@ import Home from './home/home';
 class App extends React.Component {
 	constructor(props) {
 		super(props);
-
-		console.log(props);
 	}
 
 	render() {
