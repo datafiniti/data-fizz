@@ -11,7 +11,7 @@ class Signup extends React.Component {
 			name: '',
 			username: '',
 			email: '',
-			password: ''
+			password: '',
 		};
 
 		this.handleInputChange = this.handleInputChange.bind(this);
@@ -24,7 +24,7 @@ class Signup extends React.Component {
 		const name = target.name;
 
 		this.setState({
-			[name]: value
+			[name]: value,
 		});
 	}
 
@@ -38,7 +38,18 @@ class Signup extends React.Component {
 
 	signup(e) {
 		e.preventDefault();
-		this.props.actions.signUpStart(this.state);
+		this.props.actions.signUpStart(this.state)
+		.then((result) => {
+			if (result.payload.data.res.errors) {
+				this.props.actions.signUpFailure(result.payload.data.res.errors);
+			}
+
+			if (result.payload.data.res.token !== 'undefined') {
+				window.localStorage.setItem('token', result.payload.data.res.token);
+
+				this.props.actions.signUpComplete(result.payload.data.res.record);
+			}
+		});
 	}
 
 
