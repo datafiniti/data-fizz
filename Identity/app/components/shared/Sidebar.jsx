@@ -1,11 +1,7 @@
 import React, { PropTypes } from 'react';
 
-class Sidebar extends React.Component {
-	render() {
-		if (!this.props.authenticated) {
-			return null;
-		}
-
+const Sidebar = ({ authenticated }) => {
+	if (authenticated) {
 		return (
 			<div className='side-bar'>
 				<div className='side-bar-header'>
@@ -18,7 +14,9 @@ class Sidebar extends React.Component {
 			</div>
 		);
 	}
-}
+
+	return null;
+};
 
 Sidebar.propTypes = {
 	authenticated: PropTypes.bool.isRequired,

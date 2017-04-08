@@ -1,23 +1,8 @@
 import React, { PropTypes } from 'react';
 
-class Nav extends React.Component {
-	constructor(props) {
-		super(props);
-	}
 
-	render() {
-		if (!this.props.authenticated) {
-			return (
-				<nav className='nav unauthed-nav'>
-					<div className='nav-left'>
-						<div className='nav-item'>
-							<p>Please Login to Continue</p>
-						</div>
-					</div>
-				</nav>
-			);
-		}
-
+const Nav = ({ authenticated }) => {
+	const renderAuthed = () => {
 		return (
 			<nav className='nav'>
 				<div className='nav-right'>
@@ -34,8 +19,24 @@ class Nav extends React.Component {
 				</div>
 			</nav>
 		);
-	}
-}
+	};
+
+	const renderunAthed = () => {
+		return (
+			<nav className='nav unauthed-nav'>
+				<div className='nav-left'>
+					<p>Please Login to Continue</p>
+				</div>
+			</nav>
+		);
+	};
+
+	if (authenticated) {
+		return renderAuthed();
+	} 
+
+	return renderunAthed();
+};
 
 Nav.propTypes = {
 	authenticated: PropTypes.bool.isRequired,
