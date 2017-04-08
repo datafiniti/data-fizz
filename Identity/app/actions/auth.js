@@ -7,7 +7,8 @@ export const SIGNUP_USER_FAILURE = 'USER_SIGN_UP_ERROR';
 
 export function signUpStart(obj) {
 	const request = axios.post('/users', obj);
-
+	console.log(obj);
+	
 	return {
 		type: SIGNUP_USER,
 		payload: request,

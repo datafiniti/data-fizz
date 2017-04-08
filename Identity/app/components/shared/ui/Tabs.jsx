@@ -5,6 +5,9 @@ class Tabs extends React.Component {
 	constructor(props) {
 		super(props);
 
+		// can't mutate props, maybe find better
+		// way to do this 
+		
 		this.state = {
 			selected: this.props.selected,
 		};

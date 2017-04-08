@@ -27,6 +27,8 @@ module.exports = {
 		"react/jsx-indent-props": 0,
 		"react/forbid-prop-types": 0,
 		"arrow-parens": 0,
+		"react/require-default-props": 0,
+		"react/prop-types": 0,
 		"react/jsx-filename-extension": [1, {"extensions": [".js", ".jsx"]}],
 		"jsx-a11y/no-static-element-interactions": 0,
 		"react/jsx-closing-bracket-location": 0,
