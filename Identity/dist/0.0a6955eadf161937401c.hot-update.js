@@ -1,0 +1,14 @@
+webpackHotUpdate(0,{
+
+/***/ 127:
+false,
+
+/***/ 140:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nvar _react = __webpack_require__(3);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(129);\n\nvar _reactRouter = __webpack_require__(78);\n\nvar _reactRedux = __webpack_require__(130);\n\nvar _configureStore = __webpack_require__(128);\n\nvar _configureStore2 = _interopRequireDefault(_configureStore);\n\nvar _App = __webpack_require__(132);\n\nvar _App2 = _interopRequireDefault(_App);\n\nvar _home = __webpack_require__(135);\n\nvar _home2 = _interopRequireDefault(_home);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar store = (0, _configureStore2.default)();\n\nconsole.log(store);\n\n(0, _reactDom.render)(_react2.default.createElement(\n\t_reactRedux.Provider,\n\t{ store: store },\n\t_react2.default.createElement(\n\t\t_reactRouter.Router,\n\t\t{ history: _reactRouter.browserHistory },\n\t\t_react2.default.createElement(\n\t\t\t_reactRouter.Route,\n\t\t\t{ path: '/', component: _App2.default },\n\t\t\t_react2.default.createElement(_reactRouter.IndexRoute, { component: _home2.default })\n\t\t)\n\t)\n), document.getElementById('app'));//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMTQwLmpzIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vL2FwcC9pbmRleC5qc3g/Y2MwOSJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnO1xuaW1wb3J0IHsgcmVuZGVyIH0gZnJvbSAncmVhY3QtZG9tJztcbmltcG9ydCB7IFJvdXRlciwgUm91dGUsIEluZGV4Um91dGUsIGJyb3dzZXJIaXN0b3J5IH0gZnJvbSAncmVhY3Qtcm91dGVyJztcbmltcG9ydCB7IFByb3ZpZGVyIH0gZnJvbSAncmVhY3QtcmVkdXgnO1xuXG5pbXBvcnQgY29uZmlndXJlU3RvcmUgZnJvbSAnLi9zdG9yZS9jb25maWd1cmVTdG9yZSc7XG5cblxuaW1wb3J0IEFwcCBmcm9tICcuL2NvbXBvbmVudHMvQXBwJztcbmltcG9ydCBIb21lIGZyb20gJy4vY29tcG9uZW50cy9ob21lL2hvbWUnO1xuXG5jb25zdCBzdG9yZSA9IGNvbmZpZ3VyZVN0b3JlKCk7XG5cbmNvbnNvbGUubG9nKHN0b3JlKTtcblxucmVuZGVyKFxuXHQ8UHJvdmlkZXIgc3RvcmU9e3N0b3JlfT5cblx0XHQ8Um91dGVyIGhpc3Rvcnk9e2Jyb3dzZXJIaXN0b3J5fT5cblx0XHRcdDxSb3V0ZSBwYXRoPScvJyBjb21wb25lbnQ9e0FwcH0+XG5cdFx0XHRcdDxJbmRleFJvdXRlIGNvbXBvbmVudD17SG9tZX0gLz5cblx0XHRcdDwvUm91dGU+XG5cdFx0PC9Sb3V0ZXI+XG5cdDwvUHJvdmlkZXI+LFxuXHRkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnYXBwJyksXHRcbik7XG5cblxuLy8gV0VCUEFDSyBGT09URVIgLy9cbi8vIGFwcC9pbmRleC5qc3giXSwibWFwcGluZ3MiOiI7O0FBQUE7QUFDQTs7O0FBQUE7QUFDQTtBQUFBO0FBQ0E7QUFBQTtBQUNBO0FBQ0E7QUFDQTs7O0FBRUE7QUFDQTs7O0FBQUE7QUFDQTs7Ozs7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFBQTtBQUNBO0FBQUE7QUFBQTtBQUNBO0FBQUE7QUFBQTtBQUNBO0FBREE7QUFEQTtBQURBIiwic291cmNlUm9vdCI6IiJ9");
+
+/***/ })
+
+})

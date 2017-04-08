@@ -1,4 +1,7 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as actionCreators from '../../actions/auth';
 
 class Signup extends React.Component {
 	constructor(props) {
@@ -82,5 +85,14 @@ class Signup extends React.Component {
 	}
 }
 
+const mapStateToProps = (state) => ({
+	loading: state.auth.loading,
+	error: state.auth.error,
+});
 
-export default Signup;
+const mapDispatchToProps = (dispatch) => ({
+	actions: bindActionCreators(actionCreators, dispatch),
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
