@@ -1,7 +1,16 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { reduxForm, Field } from 'redux-form';
+import renderField from './renderField';
+
+import validate from './validate';
 import * as actionCreators from '../../actions/auth';
+
+const form = reduxForm({
+	form: 'LoginForm',
+	validate,
+});
 
 class Login extends React.Component {
 	constructor(props) {
@@ -46,25 +55,23 @@ class Login extends React.Component {
 		return (
 			<div className='auth-form-container'>
 				<form name='login-form'>
-					<div className='form-wrapper'>
-						<input
-							name='email'
-							type='email'
-							id='login-email'
-							onChange={this.handleInputChange}
-						/>
-						<label htmlFor='login-email'>Email</label>
-					</div>
+					<Field
+						name='email'
+						type='email'
+						label='email'
+						id='login-email'
+						component={renderField}
+						onChange={this.handleInputChange}
+					/>
 
-					<div className='form-wrapper'>
-						<input
-							name='password'
-							type='password'
-							id='login-password'
-							onChange={this.handleInputChange}
-						/>
-						<label htmlFor='login-password'>Password</label>
-					</div>
+					<Field
+						name='password'
+						type='password'
+						label='password'
+						id='login-password'
+						component={renderField}
+						onChange={this.handleInputChange}
+					/>
 
 					<div className='login-options'>
 						<div>
@@ -94,4 +101,4 @@ const mapDistpatchToProps = (dispatch) => ({
 	actions: bindActionCreators(actionCreators, dispatch),
 });
 
-export default connect(mapStateToProps, mapDistpatchToProps)(Login);
+export default connect(mapStateToProps, mapDistpatchToProps)(form(Login));

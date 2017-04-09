@@ -66,7 +66,6 @@ class Signup extends React.Component {
 	render() { 
 		return (
 			<div className='auth-form-container'>
-				<h2>Sign Up</h2>
 				<form name='signup-form'>
 					<div className='form-wrapper'>
 						<Field 

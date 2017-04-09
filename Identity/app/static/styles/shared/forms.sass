@@ -1,0 +1,42 @@
+.form-wrapper
+	position: relative
+
+	label
+		position: absolute
+		top: 12px
+		left: 12px
+		opacity: 1
+		transition: all .4s ease-out
+
+	input
+		padding-left: 12px
+		border: 1px solid rgba(0,0,0,0.12)
+		transition: all .4s ease-out
+		outline: none
+
+
+	&.has-error
+		input
+			border-color: red
+
+	&.is-valid
+		input
+			border-color: green
+
+.form-error-container
+	padding-top: 15px
+
+	span
+		color: red
+
+.form-submit
+	display: flex
+	align-items: center
+	justify-content: center
+
+	button
+		background: none
+		outline: none
+		height: 40px
+		width: 160px
+		border: 1px solid rgba(0,0,0,0.12)
