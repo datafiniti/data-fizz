@@ -1,7 +1,16 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { reduxForm, Field } from 'redux-form';
+import renderField from './renderField';
+
+import validate from './validate';
 import * as actionCreators from '../../actions/auth';
+
+const form = reduxForm({
+	form: 'SignupForm',
+	validate,
+});
 
 class Signup extends React.Component {
 	constructor(props) {
@@ -13,6 +22,7 @@ class Signup extends React.Component {
 			email: '',
 			password: '',
 		};
+
 
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleBlur = this.handleBlur.bind(this);
@@ -59,52 +69,56 @@ class Signup extends React.Component {
 				<h2>Sign Up</h2>
 				<form name='signup-form'>
 					<div className='form-wrapper'>
-						<input 
+						<Field 
 							name='name'
-							type='text' 
+							type='text'
+							label='name'
 							id='signup-name'
+							component={renderField}
 							onChange={this.handleInputChange} 
-							onBlur={this.handleBlur}
 						/>
-						<label htmlFor='signup-name'>Name</label>
 					</div>
 
 					<div className='form-wrapper'>
-						<label htmlFor='signup-username'>Username</label>
-						<input 
+						<Field 
 							name='username' 
-							type='text' 
-							id='signup-username' 
+							type='text'
+							label='username' 
+							id='signup-username'
+							component={renderField} 
 							onChange={this.handleInputChange} 
 						/>
 					</div>
 
 					<div className='form-wrapper'>
-						<label htmlFor='signup-email'>Email</label>
-						<input 
+						<Field 
 							name='email' 
 							type='email' 
-							id='signup-email' 
+							id='signup-email'
+							label='email'
+							component={renderField} 
 							onChange={this.handleInputChange} 
 						/>
 					</div>
 
 					<div className='form-wrapper'>
-						<label htmlFor='signup-password'>Password</label>
-						<input 
+						<Field 
 							name='password' 
-							type='password' 
-							id='signup-password' 
+							type='password'
+							label='password' 
+							id='signup-password'
+							component={renderField}
 							onChange={this.handleInputChange} 
 						/>
 					</div>
 
 					<div className='form-wrapper'>
-						<label htmlFor='signup-confirm'>Confirm</label>
-						<input 
-							name='confirm' 
-							type='password' 
-							id='signup-confirm' 
+						<Field 
+							name='confirmPassword' 
+							type='password'
+							label='Confirm Password' 
+							id='signup-confirm'
+							component={renderField} 
 							onChange={this.handleInputChange} 
 						/>
 					</div>
@@ -127,5 +141,4 @@ const mapDispatchToProps = (dispatch) => ({
 	actions: bindActionCreators(actionCreators, dispatch),
 });
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(form(Signup));

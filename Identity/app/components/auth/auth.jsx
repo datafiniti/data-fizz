@@ -5,17 +5,9 @@ import Tabs from '../shared/ui/Tabs';
 import Pane from '../shared/ui/Pane';
 
 import Signup from './signup';
+import Login from './login';
 
 class Auth extends React.Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			signup: true,
-			login: false,
-		};
-	}
-
 	render() {
 		return (
 			<div className='auth-page-container'>
@@ -26,7 +18,7 @@ class Auth extends React.Component {
 						</Pane>
 
 						<Pane label="Login">
-							<div><p>Login Stuff</p></div>
+							<Login />
 						</Pane>
 					</Tabs>
 				</div>
