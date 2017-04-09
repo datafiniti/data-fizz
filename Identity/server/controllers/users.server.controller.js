@@ -67,16 +67,12 @@ module.exports = () => {
 					if (!user.loginAttempts && !user.lockUntil
 						 && !user.secureLock) {
 						user.token = generateToken(user);
-						user.save((err) => {
-							if (err) {
-								return json.bad(err, res);
-							}
+						
+						return json.good({
+							record: user,
+							token: user.token,
+						}, res);	
 
-							json.good({
-								record: user,
-								token: user.token
-							}, res)
-						});
 					}
 
 					let updates = {

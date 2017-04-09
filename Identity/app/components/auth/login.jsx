@@ -40,6 +40,8 @@ class Login extends React.Component {
 
 		this.props.actions.loginUser(this.state)
 		.then((result) => {
+			console.log(result);
+			
 			if (result.payload.data.res.errors) {
 				this.props.actions.loginFailure(result.payload.data.res.errors);
 			}

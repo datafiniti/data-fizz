@@ -22,6 +22,11 @@ export default function validate(values) {
 		hasErrors = true;
 	}
 
+	if (!values.confirmPassword || values.confirmPassword.trim() === '') {
+		errors.confirmPassword = 'Please confirm your password';
+		hasErrors = true;
+	}
+
 	if (values.confirmPassword && values.confirmPassword.trim() !== '' && values.password && values.password.trim() !== '' && values.password !== values.confirmPassword) {
 		errors.confirmPassword = 'Your passwords do not match';
 		hasErrors = true;
