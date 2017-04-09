@@ -1,15 +1,15 @@
 import React from 'react';
 
-class Home extends React.Component {
+class Dashboard extends React.Component {
 	constructor(props) {
 		super(props);
 	}
-
+	
 	render() {
 		return (
-			<div>{this.props.children}</div>
+			<div><p>Dash</p></div>
 		);
 	}
 }
 
-export default Home;
+export default Dashboard;

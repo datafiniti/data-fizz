@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
@@ -13,6 +13,10 @@ const form = reduxForm({
 });
 
 class Login extends React.Component {
+	static contextTypes = {
+		router: PropTypes.object,
+	};
+
 	constructor(props) {
 		super(props);
 
@@ -39,9 +43,7 @@ class Login extends React.Component {
 		e.preventDefault();
 
 		this.props.actions.loginUser(this.state)
-		.then((result) => {
-			console.log(result);
-			
+		.then((result) => {			
 			if (result.payload.data.res.errors) {
 				this.props.actions.loginFailure(result.payload.data.res.errors);
 			}
@@ -49,6 +51,7 @@ class Login extends React.Component {
 			if (result.payload.data.res.token !== 'undefined') {
 				window.localStorage.setItem('token', result.payload.data.res.token);
 				this.props.actions.loginComplete(result.payload.data.res.record);
+				this.context.router.push('dashboard');
 			}
 		});
 	}

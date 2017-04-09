@@ -1,13 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import { isAuthed } from './actions/auth';
 import configureStore from './store/configureStore';
 
 
 import App from './components/App';
-import Home from './components/home/home';
+import Dashboard from './components/product/dashboard';
+import Inventory from './components/product/inventory';
 
 const store = configureStore();
 
@@ -20,7 +21,8 @@ render(
 	<Provider store={store}>
 		<Router history={browserHistory}>
 			<Route path='/' component={App}>
-				<IndexRoute component={Home} />
+				<Route path='dashboard' component={Dashboard} />
+				<Route path='inventory' component={Inventory} />
 			</Route>
 		</Router>
 	</Provider>,

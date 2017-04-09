@@ -4,7 +4,7 @@ import '../static/styles/main.sass';
 
 import Nav from './shared/Nav';
 import Sidebar from './shared/Sidebar';
-import Home from './home/home';
+import Auth from './auth/auth';
 
 @connect((state) => {
 	return {
@@ -18,19 +18,28 @@ class App extends React.Component {
 	}
 
 	render() {
+		if (!this.props.authenticated) {
+			return (
+				<div className='application-container'>
+					<Nav authenticated={this.props.authenticated} />
+					<Sidebar authenticated={this.props.authenticated} />
+					<Auth />
+				</div>
+			);
+		} 
+
 		return (
-			<div className='application-container'>
+			<div className='authed-application-container'>
 				<Nav authenticated={this.props.authenticated} />
 				<Sidebar authenticated={this.props.authenticated} />
-				<Home />
+				{this.props.children}
 			</div>
-
 		);
 	}
 }
 
 App.propTypes = {
-	children: PropTypes.object.isRequired,
+	children: PropTypes.object,
 };
 
 export default App;
