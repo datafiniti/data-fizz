@@ -2,20 +2,15 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
-import { isAuthed } from './actions/auth';
 import configureStore from './store/configureStore';
 
 
-import App from './components/App';
+import App from './pages/App';
 import Dashboard from './components/product/dashboard';
-import Inventory from './components/product/inventory';
+import Inventory from './pages/Inventory';
 
 const store = configureStore();
 
-const token = window.localStorage.getItem('token');
-if (token !== null) {
-	store.dispatch(isAuthed());
-}
 
 render(
 	<Provider store={store}>

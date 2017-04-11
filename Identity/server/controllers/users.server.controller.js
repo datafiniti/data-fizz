@@ -1,7 +1,8 @@
 import mongoose from 'mongoose'
 import json from '../helpers/json'
-import { generateToken } from '../helpers/auth'
+import { generateToken, decodeToken } from '../helpers/auth'
 import model from '../models/users'
+import jwt from 'jsonwebtoken'
 
 
 module.exports = () => {
@@ -68,11 +69,12 @@ module.exports = () => {
 						 && !user.secureLock) {
 						user.token = generateToken(user);
 						
-						return json.good({
-							record: user,
-							token: user.token,
-						}, res);	
-
+						return user.save((err) => {
+							json.good({
+								record: user,
+								token: user.token,
+							}, res);
+						});	
 					}
 
 					let updates = {
@@ -85,16 +87,18 @@ module.exports = () => {
 					};
 
 					return user.update(updates, (err, item) => {
-						let token = generateToken(user);
+						user.token = generateToken(user);
 
 						if (err) {
 							return json.bad(err, res);
 						}
 
-						json.good({
-							record: user,
-							token: token,
-						}, res)
+						user.save((err) => {
+							return json.good({
+								record: user,
+								token: user.token,
+							}, res);
+						});
 					});
 				}
 
@@ -146,6 +150,39 @@ module.exports = () => {
 					});
 				}
 			});
+		});
+	};
+
+	obj.meFromToken = (req, res) => {
+		let token = req.params.token || req.body.token;
+
+		if (!token) {
+			return json.bad({
+				message: 'Must send a token',
+			}, res);
+		}
+
+
+
+		const decoded = jwt.verify(token, global.config.secret);
+
+		User.findOne({
+			_id: decoded.user._id,
+		}, (err, user) => {
+			if (err) {
+				return json.bad(err, res);
+			}
+
+			user.save((err) => {
+				if (err) {
+					return json.bad(err, res);
+				}
+
+				json.good({
+					record: user,
+					token: user.token,
+				}, res);
+			}); 
 		});
 	};
 

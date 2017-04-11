@@ -3,11 +3,19 @@ import promise from 'redux-promise';
 import reducer from '../reducers/root';
 
 export default function configureStore(initialState) {
-	const finalCreateStore = compose(
+	const makeCreateStore = compose(
 		applyMiddleware(promise),
+		window.devToolsExtension ? window.devToolsExtension() : f => f,
 	)(createStore);
 
-	const store = finalCreateStore(reducer, initialState);
+	const store = makeCreateStore(reducer, initialState);
 
-	return store;
+	if (module.hot) {
+		module.hot.accept('../reducers/root', () => {
+			const nextReducer = require('../reducers/root');
+			store.replaceReducer(nextReducer);
+		});
+	}
+
+	return store;	
 }

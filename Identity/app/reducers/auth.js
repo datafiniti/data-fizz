@@ -4,7 +4,7 @@ const INITIAL_STATE = {
 	user: null,
 	loading: false,
 	error: null,
-	isAuthenticated: false,
+	status: null,
 };
 
 export default function authReducer(state = INITIAL_STATE, action) {
@@ -21,7 +21,7 @@ export default function authReducer(state = INITIAL_STATE, action) {
 			return {
 				...state,
 				user: action.payload.user,
-				isAuthenticated: true,
+				status: 'authenticated',
 				loading: false,
 			};
 
@@ -43,7 +43,7 @@ export default function authReducer(state = INITIAL_STATE, action) {
 			return {
 				...state,
 				user: action.payload.user,
-				isAuthenticated: true,
+				status: 'authenticated',
 				loading: false,
 			};
 
@@ -58,7 +58,8 @@ export default function authReducer(state = INITIAL_STATE, action) {
 		case types.IS_AUTHED:
 			return {
 				...state,
-				isAuthenticated: true,
+				status: 'authenticated',
+				user: action.payload.user,
 			};
 
 		default:

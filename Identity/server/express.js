@@ -26,15 +26,17 @@ module.exports = (db) => {
 		next();
 	});
 
-	app.get('*', (req, res) => {
-		res.sendFile(path.resolve(`${PATHS.app}/index.html`));
-	});
+	app.disable('etag');
 	
 	app.use(express.static(PATHS.app));
 	app.use(express.static(PATHS.dist));
 	app.use(express.static(PATHS.modules));
 
 	app.use('/users', userRoutes);
+
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(`${PATHS.app}/index.html`));
+	});
 
 	return app;
 };

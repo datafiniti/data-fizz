@@ -10,3 +10,10 @@ export function generateToken(obj) {
 		exp: parseInt(exp.getTime() / 1000)
 	}, global.config.secret);
 }
+
+export function decodeToken(token) {
+	const decoded = jwt.verify(token, global.config.secret);
+	const requestedUser = decoded.user._id;
+
+	return requestedUser;
+}

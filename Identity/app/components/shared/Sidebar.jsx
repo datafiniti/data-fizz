@@ -1,8 +1,8 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Link } from 'react-router';
 
-const Sidebar = ({ authenticated }) => {
-	if (authenticated) {
+const Sidebar = (props) => {
+	if (props.authenticated) {
 		return (
 			<div className='side-bar'>
 				<div className='side-bar-header'>
@@ -20,13 +20,10 @@ const Sidebar = ({ authenticated }) => {
 				</div>
 			</div>
 		);
-	}
-
-	return null;
+	} 
+	
+	return null;	
 };
 
-Sidebar.propTypes = {
-	authenticated: PropTypes.bool.isRequired,
-};
 
 export default Sidebar;

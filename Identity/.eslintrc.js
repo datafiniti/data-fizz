@@ -30,6 +30,7 @@ module.exports = {
 		"react/require-default-props": 0,
 		"react/prop-types": 0,
 		"no-confusing-arrow": 0,
+		"global-require": 1,
 		"react/jsx-filename-extension": [1, {"extensions": [".js", ".jsx"]}],
 		"jsx-a11y/no-static-element-interactions": 0,
 		"react/jsx-closing-bracket-location": 0,

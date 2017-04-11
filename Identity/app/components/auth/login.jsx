@@ -23,11 +23,11 @@ class Login extends React.Component {
 		this.state = {
 			email: '',
 			password: '',
-			isRemembered: false,
 		};
 
 		this.handleInputChange = this.handleInputChange.bind(this);
 	}
+
 
 	handleInputChange(event) {
 		const target = event.target;
@@ -39,18 +39,22 @@ class Login extends React.Component {
 		});
 	}
 
+
 	login(e) {
 		e.preventDefault();
 
 		this.props.actions.loginUser(this.state)
-		.then((result) => {			
+		.then((result) => {
+			console.log(result);
+
 			if (result.payload.data.res.errors) {
 				this.props.actions.loginFailure(result.payload.data.res.errors);
 			}
 
 			if (result.payload.data.res.token !== 'undefined') {
 				window.localStorage.setItem('token', result.payload.data.res.token);
-				this.props.actions.loginComplete(result.payload.data.res.record);
+				window.localStorage.setItem('user', JSON.stringify(result.payload.data.res.record));
+				this.props.actions.loginComplete(JSON.stringify(result.payload.data.res.record));
 				this.context.router.push('dashboard');
 			}
 		});
@@ -65,6 +69,7 @@ class Login extends React.Component {
 						type='email'
 						label='email'
 						id='login-email'
+						value={window.localStorage.getItem('remembered-email')}
 						component={renderField}
 						onChange={this.handleInputChange}
 					/>
@@ -81,10 +86,6 @@ class Login extends React.Component {
 					<div className='login-options'>
 						<div>
 							<button>Forgot Password</button>
-						</div>
-
-						<div>
-							<button>Remember Me</button>
 						</div>
 					</div>
 

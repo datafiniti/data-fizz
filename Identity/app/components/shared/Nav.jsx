@@ -1,45 +1,45 @@
 import React, { PropTypes } from 'react';
 
 
-const Nav = ({ authenticated }) => {
-	const renderAuthed = () => {
-		return (
-			<nav className='nav'>
-				<div className='nav-right'>
-					<div className='nav-item nav-user'>
-						<div />
-						<p>User Name</p>
-					</div>
-
-					<div className='nav-item nav-icon'>
-						<button>
-							Icon
-						</button>
-					</div>
-				</div>
-			</nav>
-		);
+class Nav extends React.Component {
+	static contextTypes = {
+		router: PropTypes.object,
 	};
 
-	const renderunAthed = () => {
+	componentWillReceiveProps(nextProps) {
+		if (this.props.user && !nextProps.user.user) {
+			this.context.router.push('/');
+		}
+	}
+
+	render() {
+		if (this.props.authenticated) {
+			return (
+				<nav className='nav'>
+					<div className='nav-right'>
+						<div className='nav-item nav-user'>
+							<div />
+							<p>{this.props.user.name}</p>
+						</div>
+
+						<div className='nav-item nav-icon'>
+							<button>
+								Icon
+							</button>
+						</div>
+					</div>
+				</nav>
+			);
+		} 
+
 		return (
-			<nav className='nav unauthed-nav'>
+			<div className='nav-unauthed-nav'>
 				<div className='nav-left'>
 					<p>Please Login to Continue</p>
 				</div>
-			</nav>
+			</div>
 		);
-	};
-
-	if (authenticated) {
-		return renderAuthed();
-	} 
-
-	return renderunAthed();
-};
-
-Nav.propTypes = {
-	authenticated: PropTypes.bool.isRequired,
-};
+	}
+ }
 
 export default Nav;

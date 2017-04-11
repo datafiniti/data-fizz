@@ -57,8 +57,9 @@ export function loginFailure(error) {
 	};
 }
 
-export function isAuthed() {
+export function isAuthed(user) {
 	return {
 		type: IS_AUTHED,
+		payload: user,
 	};
 }

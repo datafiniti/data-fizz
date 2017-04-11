@@ -7,5 +7,6 @@ let router = express.Router();
 router.post("/", users.create);
 router.post('/authenticate', users.authenticate);
 router.post('/changePassword/:userName', users.changePassword);
+router.post('/meFromToken/:token', users.meFromToken);
 
 export default router

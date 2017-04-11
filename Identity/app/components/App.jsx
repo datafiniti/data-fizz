@@ -1,28 +1,22 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import '../static/styles/main.sass';
-
-import Nav from './shared/Nav';
-import Sidebar from './shared/Sidebar';
+import Nav from '../containers/NavContainer';
+import Sidebar from '../containers/SidebarContainer';
 import Auth from './auth/auth';
 
-@connect((state) => {
-	return {
-		authenticated: state.auth.isAuthenticated,
-	};
-})
 
 class App extends React.Component {
-	constructor(props) {
-		super(props);
+	componentWillMount() {
+		this.props.loadUserFromToken();
 	}
+
 
 	render() {
 		if (!this.props.authenticated) {
 			return (
 				<div className='application-container'>
-					<Nav authenticated={this.props.authenticated} />
-					<Sidebar authenticated={this.props.authenticated} />
+					<Nav />
+					<Sidebar />
 					<Auth />
 				</div>
 			);
@@ -30,16 +24,22 @@ class App extends React.Component {
 
 		return (
 			<div className='authed-application-container'>
-				<Nav authenticated={this.props.authenticated} />
-				<Sidebar authenticated={this.props.authenticated} />
+				<Nav />
+				<Sidebar />
 				{this.props.children}
 			</div>
 		);
 	}
 }
 
+const mapStateToProps = (state) => {
+	return {
+		authenticated: state.users.status === 'authenticated' ? state.users.user.name : null,
+	};
+};
+
 App.propTypes = {
 	children: PropTypes.object,
 };
 
-export default App;
+export default connect(mapStateToProps)(App);
