@@ -2,9 +2,9 @@ import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
-import renderField from './renderField';
-
+import renderField from '../../libs/RenderField';
 import validate from './validate';
+
 import * as actionCreators from '../../actions/auth';
 
 const form = reduxForm({
@@ -45,7 +45,6 @@ class Login extends React.Component {
 
 		this.props.actions.loginUser(this.state)
 		.then((result) => {
-			console.log(result);
 
 			if (result.payload.data.res.errors) {
 				this.props.actions.loginFailure(result.payload.data.res.errors);

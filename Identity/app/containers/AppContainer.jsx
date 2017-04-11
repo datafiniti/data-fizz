@@ -9,7 +9,7 @@ const mapDispatchToProps = (dispatch) => {
 		loadUserFromToken: () => {
 			const token = window.localStorage.getItem('token');
 
-			if (!token || token === '') {
+			if (!token || token === '' || typeof token === 'undefined') {
 				return;
 			}
 

@@ -10,7 +10,6 @@ class App extends React.Component {
 		this.props.loadUserFromToken();
 	}
 
-
 	render() {
 		if (!this.props.authenticated) {
 			return (
@@ -34,7 +33,7 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
 	return {
-		authenticated: state.users.status === 'authenticated' ? state.users.user.name : null,
+		authenticated: state.users.status === 'authenticated' || state.auth.status === 'authenticated',
 	};
 };
 

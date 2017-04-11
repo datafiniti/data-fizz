@@ -8,6 +8,7 @@ import configureStore from './store/configureStore';
 import App from './pages/App';
 import Dashboard from './components/product/dashboard';
 import Inventory from './pages/Inventory';
+import Users from './pages/Users';
 
 const store = configureStore();
 
@@ -18,6 +19,7 @@ render(
 			<Route path='/' component={App}>
 				<Route path='dashboard' component={Dashboard} />
 				<Route path='inventory' component={Inventory} />
+				<Route path='user-management' component={Users} />
 			</Route>
 		</Router>
 	</Provider>,

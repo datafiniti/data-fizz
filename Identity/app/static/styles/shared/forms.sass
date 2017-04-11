@@ -20,14 +20,36 @@
 			font-weight: normal
 			font-size: 14px
 
+		&:focus
+			& + label
+				opacity: 0
+				left: -35px
+
+	label
+		position: absolute
+		top: 12px
+		left: 12px
+		opacity: 1
+		font-family: 'Open Sans'
+		font-weight: 300
+		font-size: 15px
+		transition: all .4s ease-out
 
 	&.has-error
 		input
 			border-color: red
 
+		label
+			opacity: 0
+			left: -35px
+
 	&.is-valid
 		input
 			border-color: green
+
+		label
+			opacity: 0
+			left: -35px
 
 .form-error-container
 	padding-top: 12px

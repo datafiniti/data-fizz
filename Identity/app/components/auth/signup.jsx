@@ -2,10 +2,11 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
-import renderField from './renderField';
-
+import renderField from '../../libs/RenderField';
 import validate from './validate';
+
 import * as actionCreators from '../../actions/auth';
+
 
 const form = reduxForm({
 	form: 'SignupForm',

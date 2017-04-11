@@ -39,7 +39,7 @@ export function resetToken() {
 
 export function resetUser() {
 	return {
-		types: RESET_USER,
+		type: RESET_USER,
 	};
 }
 

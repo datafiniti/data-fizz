@@ -122,14 +122,13 @@ module.exports = () => {
 	};
 
 	obj.changePassword = (req, res) => {
-		User.findOne({name: req.params.userName}, (err, user) => {
-			console.log(req.body);
+		User.findOne({email: req.params.email}, (err, user) => {
 			
 			if (err) {
 				return json.bad(err, res);
 			}
 
-			user.comparePassword(req.body.password, (err, isMatch) => {
+			user.comparePassword(req.body.oldPassword, (err, isMatch) => {
 				if (err) {
 					return json.bad(err, res);
 				}
@@ -145,7 +144,8 @@ module.exports = () => {
 						}
 
 						json.good({
-							record: user
+							record: user,
+							token: user.token,
 						}, res);
 					});
 				}
