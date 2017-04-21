@@ -325,6 +325,57 @@ module.exports = () => {
 		});
 	};
 
+	obj.notifications = (req, res) => {
+		User.findOne({_id: req.params.userId, 'notifications.unread': true})
+		.lean()
+		.populate('notifications')
+		.exec((err, user) => {
+			if (err) {
+				return json.bad(err, res);
+			}
+
+			user.notifications = user.notifications.filter((item) => {
+				return item.unread;
+			});
+
+			return json.good({
+				record: user,
+				notifications: user.notifications.slice(0, 10),
+			}, res);
+		});
+	};
+
+	obj.markRead = (req, res) => {
+		let notificationIds = [];
+		User.findOne({_id: req.params.userId, 'notifications.unread': true})
+		.populate('notifications')
+		.exec((err, user) => {
+			if (err) {
+				return json.bad(err, res);
+			}
+
+			for (let i in req.body) {
+				notificationIds.push(req.body[i]._id);
+			}
+
+			user.notifications.forEach((item) => {
+				if (notificationIds.includes(item._id.toString())) {
+					item.unread = false;
+				}
+			});
+
+			user.save(() => {
+				user.notifications.filter((item) => {
+					return item.unread;
+				});
+
+				return json.good({
+					notifications: user.notifications.slice(0, 10),
+				}, res);
+			});
+		});
+	};
+
 
 	return obj;
 }
