@@ -21,6 +21,8 @@ module.exports = () => {
 			let user = new User(req.body);
 			user.roles = roles;
 			user.token = generateToken(user);
+			user.lastLogin = Date.now();
+			user.loggedIn = true;
 
 			user.save((err) => {
 				if (err) {
@@ -41,6 +43,11 @@ module.exports = () => {
 				return json.bad(err, res);
 			}
 
+			if (!user) {
+				return json.bad({message: 'Sorry, there was no user with that email/password combination'}, res);
+			}
+
+
 			if (user.isLocked) {
 				return user.incorrectLoginAttempts((err) => {
 					if (err) {
@@ -55,10 +62,6 @@ module.exports = () => {
 				return json.bad({message: 'Sorry, you account has been permenantly locked due to excessive attempts at logging into your account. Please contact the staff to sort this out'}, res);
 			}
 
-			if (!user) {
-				return json.bad({message: 'Sorry, there was no user with that email/password combination'}, res);
-			}
-
 			user.comparePassword(req.body.password, (err, isMatch) => {
 				if (err) {
 					return json.bad(err, res);
@@ -67,8 +70,11 @@ module.exports = () => {
 				if (isMatch) {
 					if (!user.loginAttempts && !user.lockUntil
 						 && !user.secureLock) {
+
 						user.token = generateToken(user);
-						
+						user.lastLogin = Date.now();
+						user.loggedIn = true;
+
 						return user.save((err) => {
 							json.good({
 								record: user,
@@ -88,7 +94,9 @@ module.exports = () => {
 
 					return user.update(updates, (err, item) => {
 						user.token = generateToken(user);
-
+						user.lastLogin = Date.now();
+						user.loggedIn = true;
+						
 						if (err) {
 							return json.bad(err, res);
 						}
@@ -153,6 +161,25 @@ module.exports = () => {
 		});
 	};
 
+	obj.changeEmail = (req, res) => {
+		User.findOne({email: req.params.email}, (err, user) => {
+			if (err) {
+				return json.bad(err, res);
+			}
+
+			user.email = req.body.email || user.email;
+			user.save((err, res) => {
+				if (err) {
+					return json.bad(err, res);
+				}
+
+				json.good({
+					record: user,
+				}, res);
+			});
+		});
+	};
+
 	obj.meFromToken = (req, res) => {
 		let token = req.params.token || req.body.token;
 
@@ -161,10 +188,6 @@ module.exports = () => {
 				message: 'Must send a token',
 			}, res);
 		}
-
-
-
-		const decoded = jwt.verify(token, global.config.secret);
 
 		User.findOne({
 			_id: decoded.user._id,
@@ -183,6 +206,27 @@ module.exports = () => {
 					token: user.token,
 				}, res);
 			}); 
+		});
+	};
+
+	obj.logout = (req, res) => {
+		User.findOne({_id: req.params.userId}, (err, user) => {
+			if (err) {
+				return json.bad(err, res);
+			}
+
+			user.loggedIn = false;
+			user.token = null;
+
+			user.save((err) => {
+				if (err) {
+					return json.bad(err, res);
+				}
+
+				json.good({
+					record: user,
+				}, res);
+			});
 		});
 	};
 

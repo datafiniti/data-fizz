@@ -1,0 +1,59 @@
+.side-bar
+	position: fixed
+	left: 0
+	top: 0
+	height: 100vh
+	width: 200px
+	z-index: 30
+
+.side-bar-header
+	display: flex
+	align-items: center
+	justify-content: center
+	height: 69px
+	width: 200px
+	background: #165671
+
+	p
+		font-family: 'Raleway'
+		font-weight: 500
+		letter-spacing: 1px
+		font-size: 17px
+		text-transform: uppercase
+		color: #3c90ab
+
+.side-bar-body
+	width: 200px
+	height: calc(100vh - 69px)
+	padding-top: 45px
+	background: #237ca5
+
+	ul
+		li
+			font-family: 'Raleway'
+			font-weight: 500
+			letter-spacing: 1px
+			font-size: 15px
+			cursor: pointer
+			transition: all .4s ease-out
+
+			&:hover
+				background: #165671
+
+			a
+				padding: 20px 0 20px 15px
+				display: inline-block
+				text-decoration: none
+				color: #fff
+				width: calc(100% - 21px)
+
+			a.active-link
+				border-left: 6px solid #165671
+
+			button
+				padding: 20px 0 20px 15px
+				font-family: 'Raleway'
+				font-weight: 500
+				color: #fff
+				background: none
+				border: none
