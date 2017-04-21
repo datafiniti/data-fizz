@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import { loadAuth } from './components/auth/redux/actions';
+import { requireAuthentication } from './components/shared/utils/authenticatedComponent';
 import configureStore from './redux/configureStore';
 
 import './static/styles/shared/shared.sass';
@@ -26,7 +27,7 @@ render(
 			<Route path='/' component={App}>
 				<Route path='signup' component={Signup} />
 				<Route path='login' component={Login} />
-				<Route path='user-management' component={Users} />
+				<Route path='user-management' component={requireAuthentication(Users)} />
 			</Route>
 		</Router>
 	</Provider>,

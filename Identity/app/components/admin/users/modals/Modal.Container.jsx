@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		attempChangePassword: (data) => {
+		attemptChangePassword: (data) => {
 			dispatch(changePassword(data));
 		},
 

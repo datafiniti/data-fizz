@@ -1,6 +1,10 @@
 import React from 'react';
+import moment from 'moment';
 
 const Details = ({ user }) => {
+	const created = moment(user.created).format('MMMM Do YYYY, h:mm');
+	const lastLogin = moment(user.lastLogin).format('MMMM Do YYYY, h:mm');
+
 	return (
 		<div className='user-details-container'>
 			<div>
@@ -21,12 +25,12 @@ const Details = ({ user }) => {
 
 				<div className='user-detail'>
 					<h3>Created</h3>
-					<p>{user.created}</p>
+					<p>{created}</p>
 				</div>
 
 				<div className='user-detail'>
 					<h3>Last Log In</h3>
-					<p>{user.lastLogin}</p>
+					<p>{lastLogin}</p>
 				</div>
 			</div>
 		</div>

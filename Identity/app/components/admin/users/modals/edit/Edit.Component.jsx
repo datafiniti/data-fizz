@@ -30,7 +30,24 @@ class Edit extends React.Component {
 	}
 
 	render() {
-		const { user } = this.props;
+		const { user, loading, status } = this.props;
+
+		if (loading) {
+			return (
+				<div>
+					<p>Loading</p>
+				</div>
+			);
+		}
+
+		if (status === 'edit-user-success') {
+			return (
+				<div>
+					<p>You have edited your info!</p>
+				</div>
+			);
+		}
+
 		return (
 			<div className='edit-user-container'>
 				<header className='edit-user-header modal-form-header'>
@@ -44,12 +61,12 @@ class Edit extends React.Component {
 					</div>
 
 					<div className='form-wrapper'>
-						<input type='text' name='username' id='user-username' className='form-input' defaultValue={user.username} />
+						<input type='text' name='username' id='user-username' className='form-input' defaultValue={user.username} onChange={this.handleInputChange} />
 						<label htmlFor='user-username'>Username</label>
 					</div>
 
 					<div className='form-wrapper'>
-						<input type='email' name='email' id='user-email' className='form-input' defaultValue={user.email} />
+						<input type='email' name='email' id='user-email' className='form-input' defaultValue={user.email} onChange={this.handleInputChange} />
 						<label htmlFor='user-email'>Email</label>
 					</div>
 

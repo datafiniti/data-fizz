@@ -15,6 +15,8 @@ export const EDIT_USER = 'EDIT_USER';
 export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
 export const EDIT_USER_FAILURE = 'EDIT_USER_FAILURE';
 
+const currentUser = JSON.parse(window.localStorage.getItem('user'));
+
 
 export function openChangePassword() {
 	return {
@@ -85,13 +87,12 @@ export function editUserFailure(error) {
 export function changePasswordFinish(user) {
 	return function (dispatch) {
 		dispatch(loginUserSuccess(user));
-		return function () {
-			dispatch(changePasswordSuccess());
-		};
+		dispatch(changePasswordSuccess());
 	};
 }
 
 export function changePassword(data) {
+	console.log(data);
 	return function (dispatch) {
 		dispatch(changePasswordStart);
 		return axios.post(`/users/changePassword/${data.email}`, data)
@@ -100,7 +101,7 @@ export function changePassword(data) {
 				const user = JSON.stringify(response.data.res.record);
 				window.localStorage.setItem('user', user);
 				window.localStorage.setItem('token', response.data.res.token);
-				dispatch(changePasswordFinish(user));
+				dispatch(changePasswordFinish(response.data.res.record));
 			} catch (e) {
 				dispatch(changePasswordFailure(e));
 			}
@@ -115,16 +116,13 @@ export function changePassword(data) {
 export function editUserFinish(user) {
 	return function (dispatch) {
 		dispatch(loginUserSuccess(user));
-		return function () {
-			dispatch(editUserSuccess());
-		};
+		dispatch(editUserSuccess());
 	};
 }
 
 export function editUser(data) {
-	const currentUser = JSON.parse(window.localStorage.getItem('user'));
 	return function (dispatch) {
-		dispatch(editUserStart);
+		dispatch(editUserStart());
 		return axios.post(`/users/editUser/${currentUser.email}`, data)
 		.then((response) => {
 			try {

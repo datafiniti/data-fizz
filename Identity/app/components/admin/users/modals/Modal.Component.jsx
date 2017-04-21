@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal } from 'semantic-ui-react';
 import Edit from './edit/Edit.Component';
+import Change from './change/Change.Component';
 
 const ModalComponent = (props) => {
 	if (props.changePasswordOpen) {
@@ -13,7 +14,11 @@ const ModalComponent = (props) => {
 				size='small'
 			>
 				<Modal.Content>
-					<p>Change Password</p>
+					<Change 
+						attemptChangePassword={props.attemptChangePassword}
+						loading={props.loading}
+						status={props.status}
+					/>
 				</Modal.Content>
 			</Modal>
 		);
@@ -29,7 +34,11 @@ const ModalComponent = (props) => {
 				size='small'
 			>
 				<Modal.Content>
-					<Edit user={props.user} attemptEditUser={props.attemptEditUser} />
+					<Edit 
+						user={props.user} 
+						attemptEditUser={props.attemptEditUser} 
+						loading={props.loading} 
+						status={props.status} />
 				</Modal.Content>
 			</Modal>
 		);

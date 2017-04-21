@@ -3,6 +3,9 @@ import json from '../helpers/json'
 import { generateToken, decodeToken } from '../helpers/auth'
 import model from '../models/users'
 import jwt from 'jsonwebtoken'
+import nodemailer from 'nodemailer'
+import crypto from 'crypto'
+import async from 'async'
 
 
 module.exports = () => {
@@ -232,6 +235,96 @@ module.exports = () => {
 			});
 		});
 	};
+
+	obj.forgot = (req, res) => {
+		async.waterfaller([
+			function(done) {
+				crypto.randomBytes(20, (err, buf) => {
+					const token = buf.toString('hex');
+					done(err, token);
+				});
+			},
+
+			function (token, done) {
+				User.findOne({email: req.body.email}, (err, user) => {
+					if (err) {
+						return json.bad(err, res);
+					}
+
+					user.resetPasswordToken = token;
+					user.resetPasswordExpires = Date.now() + 3600000;
+					user.save((err) => {
+						done(err, token, user);
+					});
+				});
+			},
+
+			function (token, user, done) {
+				/* let emailTemplate = fs.readFileSync('./server/templates/emailtemplate.html', {encoding: 'utf-8'});
+				   let template = handlebars.compile(emailTemplate);
+				   let replacements = {
+						token: user.resetPasswordToken,
+				   };
+				   let templateToSend = template(replacements);
+				*/
+
+				let mailTransport = nodemailer.createTransport({
+					service: global.config.mailer.service,
+					auth: {
+						user: global.config.mailer.auth.user,
+						pass: global.config.mailer.auth.pass,
+					},
+				});
+
+				let mailOptions = {
+					to: user.email,
+					from: 'Identity',
+					subject: 'Your password Reset',
+					text: 'yay'
+				};
+
+				mailTransport.sendMail(mailOptions, (error, info) => {
+					if (error) {
+						json.bad(error, res);
+					} else {
+						json.good(info.response, res);
+					}
+				});
+			}
+		], (err) => {
+			let success = true;
+
+			if (err) {
+				return json.bad(err, res);
+			}
+
+			json.good({
+				record: success,
+			}, res);
+		});
+	};
+
+	obj.reset = (req, res) => {
+		User.findOne({resetPasswordToken: req.body.token}, (err, user) => {
+			if (err) {
+				return json.bad(err, res);
+			}
+
+			user.password = req.body.password;
+			user.resetPasswordToken = undefined;
+			user.resetPasswordExpires = undefined;
+			user.save((err) => {
+				if (err) {
+					return json.bad(err, res);
+				}
+
+				json.good({
+					record: user,
+				}, res);
+			});
+		});
+	};
+
 
 	return obj;
 }
