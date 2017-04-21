@@ -33,6 +33,22 @@ const UserSchema = new mongoose.Schema({
 		type: String
 	},
 
+	notifications: [{
+		created: {
+			type: Date,
+			default: Date.now()
+		},
+
+		notificationType: String,
+
+		unread: {
+			type: Boolean,
+			default: true,
+		},
+
+		body: String,
+	}],
+
 	roles: {
 		type: Array,
 		default: ['authenticated']
@@ -165,6 +181,42 @@ UserSchema.methods = {
 		}
 
 		return this.update(updates, cb);
+	},
+
+	notify: function(data = {}) {
+		let thisUser = this;
+		let User = mongoose.model('User');
+
+		if (!thisUser.notifications || typeof thisUser.notifications !== 'object') {
+			thisUser.notifications = [];
+		}
+
+		let doNotify = function(data) {
+			let unread = thisUser.notifications.filer((item) => {
+				return item.unread;
+			}).length;
+			data.unread = unread;
+		};
+
+		thisUser.notifications.push({
+			notificationType: data.notificationType,
+			body: data.body,
+		});
+
+		thisUser.notifications.sort((a, b) => {
+			let dt1 = new Date(a.created);
+			let dt2 = new Date(b.created);
+
+			if (dt1 > dt2) {
+				return -1;
+			} else {
+				return 1;
+			}
+		});
+
+		return thisUser.save((err, user) => {
+			return user;
+		});
 	},
 
 	toJSON: function() {
