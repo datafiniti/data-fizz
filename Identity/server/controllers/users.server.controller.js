@@ -161,14 +161,17 @@ module.exports = () => {
 		});
 	};
 
-	obj.changeEmail = (req, res) => {
+	obj.editUser = (req, res) => {
+		console.log(req);
 		User.findOne({email: req.params.email}, (err, user) => {
 			if (err) {
 				return json.bad(err, res);
 			}
 
+			user.name = req.body.name || user.name;
+			user.username = req.body.username || user.username;
 			user.email = req.body.email || user.email;
-			user.save((err, res) => {
+			user.save((err) => {
 				if (err) {
 					return json.bad(err, res);
 				}

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { browserHistory } from 'react-router';
 
 export const SIGNUP_USER = 'SIGNUP_USER';
 export const SIGNUP_USER_SUCCESS = 'SIGNUP_USER_SUCCESS';
@@ -78,6 +79,7 @@ export function signupUser(data) {
 				window.localStorage.setItem('user', JSON.stringify(response.data.res.record));
 				window.localStorage.setItem('token', response.data.res.token);
 				dispatch(signupUserSuccess(response.data.res.record));
+				browserHistory.push('/user-management');
 			} catch (e) {
 				dispatch(signupUserFailure(e));
 			}
@@ -97,6 +99,7 @@ export function loginUser(data) {
 				window.localStorage.setItem('user', JSON.stringify(response.data.res.record));
 				window.localStorage.setItem('token', response.data.res.token);
 				dispatch(loginUserSuccess(response.data.res.record));
+				browserHistory.push('/user-management');
 			} catch (e) {
 				dispatch(loginUserFailure(e));
 			}
@@ -122,6 +125,7 @@ export function logoutUser(data) {
 			window.localStorage.removeItem('user');
 			window.localStorage.removeItem('token');
 			dispatch(logoutSuccess());
+			browserHistory.push('/');
 		});
 	};
 }

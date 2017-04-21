@@ -70,6 +70,14 @@ export default function authReducer(state = INTIIAL_STATE, action) {
 				status: null,
 			};
 
+		case types.LOAD_AUTH_SUCCESS:
+			return {
+				...state,
+				isAuthenticated: true,
+				user: action.payload,
+				status: 'authenticated',
+			};
+
 		default:
 			return state;
 	}
