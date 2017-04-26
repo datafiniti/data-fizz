@@ -142,17 +142,13 @@ export function signupUser(data) {
 		dispatch(signupUserStart);
 		return axios.post('/users', data)
 		.then((response) => {
-			try {
-				window.localStorage.setItem('user', JSON.stringify(response.data.res.record));
-				window.localStorage.setItem('token', response.data.res.token);
+			if (response.data.success) {
+				handleStorage(response.data.res);
 				dispatch(signupUserSuccess(response.data.res.record));
 				browserHistory.push('/user-management');
-			} catch (e) {
-				dispatch(signupUserFailure(e));
+			} else {
+				dispatch(signupUserFailure(response.data.res.message));
 			}
-		})
-		.catch(error => {
-			dispatch(signupUserFailure(error));
 		});
 	};
 }
@@ -162,17 +158,14 @@ export function loginUser(data) {
 		dispatch(loginUserStart);
 		return axios.post('/users/authenticate', data)
 		.then((response) => {
-			try {
+			if (response.data.success) {
 				window.localStorage.setItem('user', JSON.stringify(response.data.res.record));
 				window.localStorage.setItem('token', response.data.res.token);
 				dispatch(loginUserSuccess(response.data.res.record));
-				browserHistory.push('/user-management');
-			} catch (e) {
-				dispatch(loginUserFailure(e));
+				browserHistory.push('/user-management');				
+			} else {
+				dispatch(loginUserFailure(response.data.res.message));
 			}
-		})
-		.catch(error => {
-			dispatch(loginUserFailure(error));
 		});
 	};
 }

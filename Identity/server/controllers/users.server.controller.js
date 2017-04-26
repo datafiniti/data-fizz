@@ -73,6 +73,19 @@ module.exports = () => {
 				}
 
 				if (isMatch) {
+					if (user.loggedIn) {
+						user.notifications.push({
+							notificationType: 'login',
+							body: 'Someone has just tried to login to your account',
+						});
+
+						return user.save((err) => {
+							json.bad({
+								message: 'That account is already logged in',
+							}, res);
+						});
+					}
+
 					if (!user.loginAttempts && !user.lockUntil
 						 && !user.secureLock) {
 
