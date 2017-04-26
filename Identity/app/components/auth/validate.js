@@ -17,6 +17,16 @@ export default function validate(values) {
 		hasErrors = true;
 	}
 
+	if (values.email) {
+		const atpos = values.email.indexOf('@');
+		const dotpos = values.email.lastIndexOf('.');
+
+		if (atpos < 1 || (dotpos - atpos) < 2) {
+			errors.email = 'Please enter a valid email address';
+			hasErrors = true;
+		}
+	}
+
 	if (!values.password || values.password.trim() === '') {
 		errors.password = 'Please enter a password';
 		hasErrors = true;

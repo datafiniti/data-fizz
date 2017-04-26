@@ -98,7 +98,7 @@ class Signup extends React.Component {
 					/>
 
 					<div className='form-submit'>
-						<button type='button' onClick={this.signup.bind(this)}>Sign Up</button>
+						<button type='button' onClick={this.signup.bind(this)}>{this.props.loading ? 'loading' : 'Sign up'}</button>
 					</div>
 				</form>
 			</div> 

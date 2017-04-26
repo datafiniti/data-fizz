@@ -135,11 +135,18 @@ export function resetPasswordFailure(error) {
 	};
 }
 
+// helpers
+
+function handleStorage(data) {
+	window.localStorage.setItem('user', JSON.stringify(data.record));
+	window.localStorage.setItem('token', data.token);
+}
+
 // Thunk actions
 
 export function signupUser(data) {
-	return function (dispatch) {
-		dispatch(signupUserStart);
+	return dispatch => {
+		dispatch(signupUserStart());
 		return axios.post('/users', data)
 		.then((response) => {
 			if (response.data.success) {
@@ -154,13 +161,12 @@ export function signupUser(data) {
 }
 
 export function loginUser(data) {
-	return function (dispatch) {
-		dispatch(loginUserStart);
+	return dispatch => {
+		dispatch(loginUserStart());
 		return axios.post('/users/authenticate', data)
 		.then((response) => {
 			if (response.data.success) {
-				window.localStorage.setItem('user', JSON.stringify(response.data.res.record));
-				window.localStorage.setItem('token', response.data.res.token);
+				handleStorage(response.data.res);
 				dispatch(loginUserSuccess(response.data.res.record));
 				browserHistory.push('/user-management');				
 			} else {
@@ -171,7 +177,7 @@ export function loginUser(data) {
 }
 
 export function logoutUser(data) {
-	return function (dispatch) {
+	return dispatch => {
 		axios.post(`/users/logout/${data}`)
 		.then(() => {
 			window.localStorage.removeItem('user');
@@ -183,7 +189,7 @@ export function logoutUser(data) {
 }
 
 export function startPasswordReset(data) {
-	return function (dispatch) {
+	return dispatch => {
 		dispatch(requestPasswordChange());
 		return axios.post(`/users/forgotPassword/${data}`, data)
 		.then((response) => {

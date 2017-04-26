@@ -53,7 +53,7 @@ module.exports = () => {
 			}
 
 
-			if (user.isLocked) {
+			if (user.lockUntil) {
 				return user.incorrectLoginAttempts((err) => {
 					if (err) {
 						return json.bad(err, res);
