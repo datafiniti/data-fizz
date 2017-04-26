@@ -8,7 +8,7 @@ import configureStore from './redux/configureStore';
 
 import './static/styles/shared/shared.sass';
 
-import App from './components/App.Container';
+import App from './components/App.Component';
 import Signup from './components/auth/signup/Signup.Container';
 import Login from './components/auth/login/Login.Container';
 
