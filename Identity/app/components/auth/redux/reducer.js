@@ -5,8 +5,10 @@ const INTIIAL_STATE = {
 	forgotPasswordOpen: false,
 	loading: false,
 	user: null,
-	error: null,
+	err: null,
 	status: null,
+	showNotification: false,
+	notificationType: null,
 };
 
 export default function authReducer(state = INTIIAL_STATE, action) {
@@ -25,6 +27,15 @@ export default function authReducer(state = INTIIAL_STATE, action) {
 				loading: false,
 				user: action.payload,
 				status: 'authenticated',
+				showNotification: true,
+				notificationType: 'success',
+			};
+
+		case types.SIGNUP_USER_AFTER_SUCCESS:
+			return {
+				...state,
+				showNotification: false,
+				notificationType: null,
 			};
 
 
@@ -33,7 +44,16 @@ export default function authReducer(state = INTIIAL_STATE, action) {
 				...state,
 				isAuthenticated: false,
 				loading: false,
-				error: action.payload,
+				err: action.payload,
+				showNotification: true,
+				notificationType: 'failure',
+			};
+
+		case types.SIGNUP_USER_AFTER_FAILURE:
+			return {
+				...state,
+				showNotification: false,
+				notificationType: null,
 			};
 
 		case types.LOGIN_USER: 
@@ -51,6 +71,15 @@ export default function authReducer(state = INTIIAL_STATE, action) {
 				loading: false,
 				user: action.payload,
 				status: 'authenticated',
+				showNotification: true,
+				notificationType: 'success',
+			};
+
+		case types.LOGIN_USER_AFTER_SUCCESS:
+			return {
+				...state,
+				showNotification: false,
+				notificationType: null,
 			};
 		
 		case types.LOGIN_USER_FAILURE:
@@ -58,8 +87,17 @@ export default function authReducer(state = INTIIAL_STATE, action) {
 				...state,
 				isAuthenticated: false,
 				loading: false,
-				error: action.payload,
+				err: action.payload,
 				status: null,
+				showNotification: true,
+				notificationType: 'failure',
+			};
+
+		case types.LOGIN_USER_AFTER_FAILURE:
+			return {
+				...state,
+				showNotification: false,
+				notificationType: null,
 			};
 
 		case types.LOGOUT_USER:
@@ -68,7 +106,7 @@ export default function authReducer(state = INTIIAL_STATE, action) {
 				isAuthenticated: false,
 				user: null,
 				loading: false,
-				error: null,
+				err: null,
 				status: null,
 			};
 
@@ -92,7 +130,7 @@ export default function authReducer(state = INTIIAL_STATE, action) {
 				forgotPasswordOpen: false,
 				loading: false,
 				status: null,
-				error: null,
+				err: null,
 			};
 
 		case types.REQUEST_PASSWORD_CHANGE:
@@ -113,7 +151,7 @@ export default function authReducer(state = INTIIAL_STATE, action) {
 				...state,
 				status: 'request-failed',
 				loading: false,
-				error: action.payload,
+				err: action.payload,
 			};
 
 		case types.RESET_PASSWORD:
@@ -121,14 +159,14 @@ export default function authReducer(state = INTIIAL_STATE, action) {
 				...state,
 				status: null,
 				loading: true,
-				error: null,
+				err: null,
 			};
 
 		case types.RESET_PASSWORD_SUCCESS:
 			return {
 				...state,
 				loading: false,
-				error: null,
+				err: null,
 				status: 'password-reset-success',
 			};
 
@@ -136,7 +174,7 @@ export default function authReducer(state = INTIIAL_STATE, action) {
 			return {
 				...state,
 				loading: false,
-				error: action.payload,
+				err: action.payload,
 				status: 'password-reset-failed',
 			};
 

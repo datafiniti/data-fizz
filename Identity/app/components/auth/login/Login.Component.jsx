@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import renderField from '../../shared/utils/renderField';
 import Modal from '../modals/Modal.Container';
+import Notifications from './Notification.Container';
 
 import '../../../static/styles/components/auth/auth.sass';
 
@@ -15,6 +16,8 @@ class Login extends React.Component {
 
 	constructor(props) {
 		super(props);
+
+		console.log(this.props);
 
 		this.state = {
 			email: '',
@@ -75,6 +78,12 @@ class Login extends React.Component {
 					</div>
 				</form>
 				<Modal />
+				<Notifications 
+					showNotification={this.props.showNotification}
+					notificationType={this.props.notificationType}
+					error={this.props.err}
+					user={this.props.user}
+				/>
 			</div>
 		);
 	}

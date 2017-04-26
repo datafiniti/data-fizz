@@ -3,11 +3,15 @@ import { browserHistory } from 'react-router';
 
 export const SIGNUP_USER = 'SIGNUP_USER';
 export const SIGNUP_USER_SUCCESS = 'SIGNUP_USER_SUCCESS';
+export const SIGNUP_USER_AFTER_SUCCESS = 'SIGNUP_USER_AFTER_SUCCESS';
 export const SIGNUP_USER_FAILURE = 'SIGNUP_USER_FAILURE';
+export const SIGNUP_USER_AFTER_FAILURE = 'SIGNUP_USER_AFTER_FAILURE';
 
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
+export const LOGIN_USER_AFTER_SUCCESS = 'LOGIN_USER_AFTER_SUCCESS';
 export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE';
+export const LOGIN_USER_AFTER_FAILURE = 'LOGIN_USER_AFTER_FAILURE';
 
 export const LOAD_AUTH_SUCCESS = 'LOAD_AUTH_SUCCESS';
 export const LOGOUT_USER = 'LOGOUT_USER';
@@ -36,10 +40,22 @@ export function signupUserSuccess(user) {
 	};
 }
 
+export function signupUserAfterSuccess() {
+	return {
+		type: SIGNUP_USER_AFTER_SUCCESS,
+	};
+}
+
 export function signupUserFailure(err) {
 	return {
 		type: SIGNUP_USER_FAILURE,
 		payload: err,
+	};
+}
+
+export function signupUserAfterFailure() {
+	return {
+		type: SIGNUP_USER_AFTER_FAILURE,
 	};
 }
 
@@ -57,10 +73,22 @@ export function loginUserSuccess(user) {
 	};
 }
 
+export function loginUserAfterSuccess() {
+	return {
+		type: LOGIN_USER_AFTER_SUCCESS,
+	};
+}
+
 export function loginUserFailure(err) {
 	return {
 		type: LOGIN_USER_FAILURE,
 		payload: err,
+	};
+}
+
+export function loginUserAfterFailure() {
+	return {
+		type: LOGIN_USER_AFTER_FAILURE,
 	};
 }
 
@@ -153,8 +181,14 @@ export function signupUser(data) {
 				handleStorage(response.data.res);
 				dispatch(signupUserSuccess(response.data.res.record));
 				browserHistory.push('/user-management');
+				setTimeout(() => {
+					dispatch(signupUserAfterSuccess());
+				}, 2500);
 			} else {
 				dispatch(signupUserFailure(response.data.res.message));
+				setTimeout(() => {
+					dispatch(signupUserAfterFailure());
+				}, 2500);
 			}
 		});
 	};
@@ -168,9 +202,15 @@ export function loginUser(data) {
 			if (response.data.success) {
 				handleStorage(response.data.res);
 				dispatch(loginUserSuccess(response.data.res.record));
-				browserHistory.push('/user-management');				
+				browserHistory.push('/user-management');
+				setTimeout(() => {
+					dispatch(loginUserAfterSuccess());
+				}, 2500);				
 			} else {
 				dispatch(loginUserFailure(response.data.res.message));
+				setTimeout(() => {
+					dispatch(loginUserAfterFailure());
+				}, 2500);
 			}
 		});
 	};

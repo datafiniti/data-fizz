@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import renderField from '../../shared/utils/renderField';
+import Notifications from './Notification.Container';
 
 class Signup extends React.Component {
 	static propTypes = {
@@ -101,6 +102,12 @@ class Signup extends React.Component {
 						<button type='button' onClick={this.signup.bind(this)}>{this.props.loading ? 'loading' : 'Sign up'}</button>
 					</div>
 				</form>
+				<Notifications
+					showNotification={this.props.showNotification}
+					notificationType={this.props.notificationType}
+					user={this.props.user}
+					error={this.props.err}
+				/>
 			</div> 
 		);
 	}

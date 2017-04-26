@@ -11,8 +11,12 @@ const form = reduxForm({
 
 const mapStateToProps = (state) => {
 	return {
-		error: state.auth.error,
+		err: state.auth.err,
 		loading: state.auth.loading,
+		showNotification: state.auth.showNotification,
+		notificationType: state.auth.notificationType,
+		user: state.auth.user,
+
 	};
 };
 

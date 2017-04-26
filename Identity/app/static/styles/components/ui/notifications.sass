@@ -1,0 +1,51 @@
+.notification-container
+    position: fixed
+    bottom: 20px
+    right: 20px
+    max-width: 98%
+    z-index: 999
+
+    &.shown
+        .notification
+            opacity: 1
+            translateX(0)
+
+.notification
+    position: relative
+    width: 100%
+    min-height: 62px
+    padding: 20px 10px
+    background: #fff
+    border-radius: 2px
+    box-shadow: 0 1px 10px 0 rgba(0,0,0,0.1), 0 2px 15px 0 rgba(0,0,0,0.05)
+    transition: transform .5s cubic-bezier(0.5, -0.5, 0.3, 1.4), opacity .6s ease-out
+
+    &.success
+        border-left: 4px solid #13d39c
+
+    &.failure
+        border-left: 4px solid #bf3757
+
+.notification-content
+    display: flex
+    align-items: center
+
+.notification-right
+    display: flex
+    flex-direction: column
+    flex: 1
+
+.notification-title
+    font-family: 'Raleway', sans-serif
+    font-weight: 400
+    letter-spacing: 1px
+    font-size: 18px
+    padding: 10px
+    margin-bottom: 8px
+
+.notification-text
+    font-family: 'Open Sans'
+    font-weight: 400
+    font-size: 14px
+    letter-spacing: 1px
+    padding: 5px 12px
