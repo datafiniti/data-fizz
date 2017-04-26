@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
-import { loginUser } from '../redux/actions';
+import { loginUser, openForgotPassword } from '../redux/actions';
 import Login from './Login.Component';
 import validate from '../validate';
 
@@ -20,6 +20,10 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		attemptLogin: (data) => {
 			dispatch(loginUser(data));
+		},
+
+		openPasswordModal: () => {
+			dispatch(openForgotPassword());
 		},
 	};
 };

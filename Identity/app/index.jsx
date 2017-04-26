@@ -13,6 +13,7 @@ import Signup from './components/auth/signup/Signup.Container';
 import Login from './components/auth/login/Login.Container';
 
 import Users from './components/admin/users/Users.Container';
+import Inventory from './components/admin/inventory/Inventory.Component';
 
 const store = configureStore();
 const token = window.localStorage.getItem('token');
@@ -28,6 +29,7 @@ render(
 				<Route path='signup' component={Signup} />
 				<Route path='login' component={Login} />
 				<Route path='user-management' component={requireAuthentication(Users)} />
+				<Route path='inventory' component={requireAuthentication(Inventory)} />
 			</Route>
 		</Router>
 	</Provider>,

@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import renderField from '../../shared/utils/renderField';
+import Modal from '../modals/Modal.Container';
+
+import '../../../static/styles/components/auth/auth.sass';
 
 
 class Login extends React.Component {
@@ -40,6 +43,7 @@ class Login extends React.Component {
 		return (
 			<div className='auth-form-container form-container'>
 				<form name='login-form'>
+					<img src='../../../static/images/login.png' alt='Login Form Icon' />
 					<Field
 						name='email'
 						type='email'
@@ -63,15 +67,14 @@ class Login extends React.Component {
 					/>
 
 					<div className='login-options'>
-						<div>
-							<button>Forgot Password</button>
-						</div>
+						<button type='button' onClick={this.props.openPasswordModal} >Forgot Password</button>
 					</div>
 
 					<div className='form-submit'>
-						<button type='button' onClick={this.login.bind(this)}>Login</button>
+						<button type='button' onClick={this.login.bind(this)}>Log in</button>
 					</div>
 				</form>
+				<Modal />
 			</div>
 		);
 	}

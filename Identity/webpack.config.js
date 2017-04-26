@@ -54,7 +54,14 @@ module.exports = {
 	},
 
 	resolve: {
-		extensions: ['.js', '.jsx', '.json', '.sass', '.css']
+		extensions: ['.js', '.jsx', '.json', '.sass', '.css'],
+		alias: {
+			styles: path.resolve('./app/static/styles'),
+			images: path.resolve('./app/static/images'),
+			auth: path.resolve('./app/components/auth'),
+			shared: path.resolve('./app/components/shared'),
+			admin: path.resolve('./app/components/admin'),
+		}
 	},
 
 	devServer: {

@@ -4,7 +4,9 @@ import { generateToken, decodeToken } from '../helpers/auth'
 import model from '../models/users'
 import jwt from 'jsonwebtoken'
 import nodemailer from 'nodemailer'
+import handlebars from 'handlebars'
 import crypto from 'crypto'
+import fs from 'fs'
 import async from 'async'
 
 
@@ -134,7 +136,6 @@ module.exports = () => {
 
 	obj.changePassword = (req, res) => {
 		User.findOne({email: req.params.email}, (err, user) => {
-			
 			if (err) {
 				return json.bad(err, res);
 			}
@@ -222,7 +223,7 @@ module.exports = () => {
 			}
 
 			user.loggedIn = false;
-			user.token = null;
+			user.token = undefined;
 
 			user.save((err) => {
 				if (err) {
@@ -237,7 +238,7 @@ module.exports = () => {
 	};
 
 	obj.forgot = (req, res) => {
-		async.waterfaller([
+		async.waterfall([
 			function(done) {
 				crypto.randomBytes(20, (err, buf) => {
 					const token = buf.toString('hex');
@@ -246,9 +247,15 @@ module.exports = () => {
 			},
 
 			function (token, done) {
-				User.findOne({email: req.body.email}, (err, user) => {
+				User.findOne({email: req.params.email}, (err, user) => {
 					if (err) {
 						return json.bad(err, res);
+					}
+
+					if (!user || typeof user === 'null') {
+						return json.bad({
+							message: `Sorry, there isn't a user with that email`,
+						}, res);
 					}
 
 					user.resetPasswordToken = token;
@@ -260,13 +267,14 @@ module.exports = () => {
 			},
 
 			function (token, user, done) {
-				/* let emailTemplate = fs.readFileSync('./server/templates/emailtemplate.html', {encoding: 'utf-8'});
-				   let template = handlebars.compile(emailTemplate);
-				   let replacements = {
-						token: user.resetPasswordToken,
-				   };
-				   let templateToSend = template(replacements);
-				*/
+				let emailTemplate = fs.readFileSync('./server/templates/forgotPassword.html', {encoding: 'utf-8'});
+				let template = handlebars.compile(emailTemplate);
+				let replacements = {
+					token: user.resetPasswordToken,
+					user: user.name,
+				};
+				let templateToSend = template(replacements);
+				
 
 				let mailTransport = nodemailer.createTransport({
 					service: global.config.mailer.service,
@@ -280,7 +288,7 @@ module.exports = () => {
 					to: user.email,
 					from: 'Identity',
 					subject: 'Your password Reset',
-					text: 'yay'
+					html: templateToSend,
 				};
 
 				mailTransport.sendMail(mailOptions, (error, info) => {
@@ -308,6 +316,12 @@ module.exports = () => {
 		User.findOne({resetPasswordToken: req.body.token}, (err, user) => {
 			if (err) {
 				return json.bad(err, res);
+			}
+
+			if (!user || typeof user === 'null') {
+				return json.bad({
+					message: 'Sorry, that reset token is incorrect'
+				}, res);
 			}
 
 			user.password = req.body.password;
