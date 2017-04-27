@@ -1,13 +1,15 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
-import auth from '../components/auth/redux/reducer';
-import users from '../components/admin/users/redux/reducer';
-import products from '../components/admin/inventory/redux/products/reducer';
+import auth from 'auth/redux/reducer';
+import users from 'users/redux/reducers/users';
+import notifications from 'users/redux/reducers/notifications';
+import settings from 'users/redux/reducers/settings';
 
 const rootReducer = combineReducers({
 	auth: auth,
 	users: users,
-    products: products,
+    notifications: notifications,
+    settings: settings,
 	form: formReducer,
 });
 

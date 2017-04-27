@@ -2,18 +2,17 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
-import { loadAuth } from './components/auth/redux/actions';
-import { requireAuthentication } from './components/shared/utils/authenticatedComponent';
+import Signup from 'auth/signup/Signup.Container';
+import Login from 'auth/login/Login.Container';
+import Details from 'users/details/Details.Container';
+import Notifications from 'users/notifications/Notifications.Container';
+import Settings from 'users/settings/Settings.Container';
+import { loadAuth } from 'auth/redux/actions';
+import { requireAuthentication } from 'shared/utils/authenticatedComponent';
+
 import configureStore from './redux/configureStore';
-
 import './static/styles/shared/shared.sass';
-
 import App from './components/App.Component';
-import Signup from './components/auth/signup/Signup.Container';
-import Login from './components/auth/login/Login.Container';
-
-import Users from './components/admin/users/Users.Container';
-import Inventory from './components/admin/inventory/Inventory.Component';
 
 const store = configureStore();
 const token = window.localStorage.getItem('token');
@@ -28,8 +27,9 @@ render(
 			<Route path='/' component={App}>
 				<Route path='signup' component={Signup} />
 				<Route path='login' component={Login} />
-				<Route path='user-management' component={requireAuthentication(Users)} />
-				<Route path='inventory' component={requireAuthentication(Inventory)} />
+				<Route path='details' component={requireAuthentication(Details)} />
+				<Route path='notifications' component={requireAuthentication(Notifications)} />
+				<Route path='settings' component={requireAuthentication(Settings)} />
 			</Route>
 		</Router>
 	</Provider>,

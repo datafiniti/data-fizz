@@ -16,11 +16,10 @@ const Sidebar = ({ isAuthenticated, user, attemptLogout }) => {
 
 				<div className='sidebar-body'>
 					<ul className='sidebar-list'>
-						<li><span className='icon-pie_chart' /><Link to='dashboard'>Dashboard</Link></li>
-						<li><span className='icon-content_paste' /><Link to='inventory'>Inventory</Link></li>
-						<li><span className='icon-trending_up' /><Link to='reports'>Reports</Link></li>
-						<li><span className='icon-event_note' /><Link to='orders'>Orders</Link></li>
-						<li><span className='icon-person_outline' /><Link to='user-management'>User Details</Link></li>
+						<li><span className='icon-pie_chart' /><Link to='details'>Details</Link></li>
+						<li><span className='icon-content_paste' /><Link to='notifications'>Notifications</Link></li>
+						<li><span className='icon-trending_up' /><Link to='messages'>Messages</Link></li>
+						<li><span className='icon-event_note' /><Link to='settings'>Settings</Link></li>
 						<li><button onClick={logout} type='button'>Logout</button></li>
 					</ul>
 				</div>

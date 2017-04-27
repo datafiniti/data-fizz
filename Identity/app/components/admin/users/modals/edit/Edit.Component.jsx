@@ -55,22 +55,22 @@ class Edit extends React.Component {
 				</header>
 
 				<div className='edit-user-body form-container modal-form-container'>
-					<div className='form-wrapper'>
-						<input type='text' name='name' id='user-name' className='form-input' defaultValue={user.name} onChange={this.handleInputChange} />
+					<div className='modal-form-wrapper edit-form-wrapper'>
 						<label htmlFor='user-name'>Name</label>			
+						<input type='text' name='name' id='user-name' className='form-input' defaultValue={user.name} onChange={this.handleInputChange} />					
 					</div>
 
-					<div className='form-wrapper'>
-						<input type='text' name='username' id='user-username' className='form-input' defaultValue={user.username} onChange={this.handleInputChange} />
+					<div className='modal-form-wrapper edit-form-wrapper'>
 						<label htmlFor='user-username'>Username</label>
+						<input type='text' name='username' id='user-username' className='form-input' defaultValue={user.username} onChange={this.handleInputChange} />
 					</div>
 
-					<div className='form-wrapper'>
-						<input type='email' name='email' id='user-email' className='form-input' defaultValue={user.email} onChange={this.handleInputChange} />
+					<div className='modal-form-wrapper edit-form-wrapper'>
 						<label htmlFor='user-email'>Email</label>
+						<input type='email' name='email' id='user-email' className='form-input' defaultValue={user.email} onChange={this.handleInputChange} />
 					</div>
 
-					<div className='form-submit'>
+					<div className='modal-form-submit'>
 						<button type='button' onClick={this.edit}>
 							Edit
 						</button>

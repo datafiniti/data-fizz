@@ -5,6 +5,7 @@ import compression from 'compression'
 import morgan from 'morgan'
 
 import userRoutes from './routes/user.server.routes'
+import settingRoutes from './routes/settings.server.routes';
 
 module.exports = (db) => {
 	const app = express();
@@ -33,6 +34,7 @@ module.exports = (db) => {
 	app.use(express.static(PATHS.modules));
 
 	app.use('/users', userRoutes);
+	app.use('/settings', settingRoutes);
 
 	app.get('*', (req, res) => {
 		res.sendFile(path.resolve(`${PATHS.app}/index.html`));

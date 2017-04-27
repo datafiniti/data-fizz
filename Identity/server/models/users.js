@@ -54,6 +54,12 @@ const UserSchema = new mongoose.Schema({
 		default: ['authenticated']
 	},
 
+	settings: [{
+		type: mongoose.Schema.ObjectId,
+		ref: 'Settings',
+		required: true
+	}],
+
 	loggedIn: {
 		type: Boolean,
 		default: false

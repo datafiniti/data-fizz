@@ -15,6 +15,10 @@ export const EDIT_USER = 'EDIT_USER';
 export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
 export const EDIT_USER_FAILURE = 'EDIT_USER_FAILURE';
 
+export const LOAD_NOTIFICATIONS = 'LOAD_NOTIFICATIONS';
+export const LOAD_NOTIFICATIONS_SUCCESS = 'LOAD_NOTIFICATIONS_SUCCESS';
+export const LOAD_NOTIFICATIONS_FAILURE = 'LOAD_NOTIFICATIONS_FAILURE';
+
 const currentUser = JSON.parse(window.localStorage.getItem('user'));
 
 
@@ -80,6 +84,26 @@ export function editUserFailure(error) {
 	};
 }
 
+export function loadNotificationsStart() {
+	return {
+		type: LOAD_NOTIFICATIONS,
+	};
+}
+
+export function loadNotificationsSuccess(notifications) {
+	return {
+		type: LOAD_NOTIFICATIONS_SUCCESS,
+		payload: notifications,
+	};
+}
+
+export function loadNotificationsFailure(error) {
+	return {
+		type: LOAD_NOTIFICATIONS_FAILURE,
+		payload: error,
+	};
+}
+
 
 // Thunk actions
 
@@ -140,3 +164,19 @@ export function editUser(data) {
 	};
 }
 
+export function getUserNotifications() {
+	return dispatch => {
+		dispatch(loadNotificationsStart());
+		console.log(currentUser);
+		return axios.post(`/users/notifications/${currentUser._id}`)
+		.then((response) => {
+			console.log(currentUser);
+			console.log(response);
+			if (response.data.res.success) {
+				dispatch(loadNotificationsSuccess(response.data.res.notifications));
+			} else {
+				dispatch(loadNotificationsFailure(response.data.res.message));
+			}
+		});
+	};
+}

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import Users from './Users.Component';
+import { getUserNotifications } from './redux/actions';
 
 const mapStateToProps = (state) => {
 	return {
@@ -7,4 +8,12 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps)(Users);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getNotifications: () => {
+            dispatch(getUserNotifications());
+        },
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Users);

@@ -60,7 +60,7 @@ module.exports = {
 			images: path.resolve('./app/static/images'),
 			auth: path.resolve('./app/components/auth'),
 			shared: path.resolve('./app/components/shared'),
-			admin: path.resolve('./app/components/admin'),
+			users: path.resolve('./app/components/users'),
 		}
 	},
 

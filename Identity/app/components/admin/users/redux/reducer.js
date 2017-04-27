@@ -6,6 +6,7 @@ const INITIAL_STATE = {
 	loading: false,
 	error: null,
 	status: null,
+	notifications: [],
 };
 
 export default function userReducer(state = INITIAL_STATE, action) {
@@ -74,6 +75,31 @@ export default function userReducer(state = INITIAL_STATE, action) {
 				...state,
 				loading: false,
 				status: 'edit-user-success',
+			};
+
+		case types.LOAD_NOTIFICATIONS:
+			return {
+				...state,
+				loading: true,
+				error: null,
+				status: null,
+			};
+
+		case types.LOAD_NOTIFICATIONS_SUCCESS:
+			return {
+				...state,
+				loading: false,
+				error: null,
+				status: null,
+				// notifications: notifications.concat(action.payload),
+			};
+
+		case types.LOAD_NOTIFICATIONS_FAILURE:
+			return {
+				...state,
+				loading: false,
+				error: action.payload,
+				notifications: [],
 			};
 
 		default:

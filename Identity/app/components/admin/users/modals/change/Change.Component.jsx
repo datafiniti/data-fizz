@@ -55,8 +55,8 @@ class Change extends React.Component {
 					<h2>Change your password</h2>
 				</header>
 
-				<div className='change-password-body form-container modal-form-container'>
-					<div className='form-wrapper'>
+				<div className='change-password-body form-container	modal-form-container'>
+					<div className='modal-form-wrapper'>
 						<input 
 							type='email' 
 							name='email' 
@@ -67,7 +67,7 @@ class Change extends React.Component {
 						<label htmlFor='user-email'>Email</label>
 					</div>
 
-					<div className='form-wrapper'>
+					<div className='modal-form-wrapper'>
 						<input
 							type='password'
 							name='oldPassword'
@@ -78,7 +78,7 @@ class Change extends React.Component {
 						<label htmlFor='user-password'>Old Password</label>
 					</div>
 
-					<div className='form-wrapper'>
+					<div className='modal-form-wrapper'>
 						<input
 							type='password'
 							name='newPassword'
@@ -89,7 +89,7 @@ class Change extends React.Component {
 						<label htmlFor='user-new-password'>New Password</label>
 					</div>
 
-					<div className='form-wrapper'>
+					<div className='modal-form-wrapper'>
 						<input
 							type='password'
 							name='confirmNewPassword'
@@ -100,7 +100,7 @@ class Change extends React.Component {
 						<label htmlFor='user-confirm-password'>Confirm New Password</label>
 					</div>
 
-					<div className='form-submit'>
+					<div className='modal-form-submit'>
 						<button type='button' onClick={this.change}>Submit</button>
 					</div>
 				</div>

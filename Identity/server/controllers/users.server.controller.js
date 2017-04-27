@@ -179,7 +179,6 @@ module.exports = () => {
 	};
 
 	obj.editUser = (req, res) => {
-		console.log(req);
 		User.findOne({email: req.params.email}, (err, user) => {
 			if (err) {
 				return json.bad(err, res);
@@ -353,12 +352,19 @@ module.exports = () => {
 	};
 
 	obj.notifications = (req, res) => {
-		User.findOne({_id: req.params.userId, 'notifications.unread': true})
+		User.findOne({_id: req.params.userId})
 		.lean()
 		.populate('notifications')
 		.exec((err, user) => {
+			console.log(user);
 			if (err) {
 				return json.bad(err, res);
+			}
+
+			if (!user.notifications.length) {
+				return json.good({
+					message: 'You have no unread notifications',
+				}, res);
 			}
 
 			user.notifications = user.notifications.filter((item) => {
@@ -374,7 +380,7 @@ module.exports = () => {
 
 	obj.markRead = (req, res) => {
 		let notificationIds = [];
-		User.findOne({_id: req.params.userId, 'notifications.unread': true})
+		User.findOne({_id: req.params.userId})
 		.populate('notifications')
 		.exec((err, user) => {
 			if (err) {

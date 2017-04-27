@@ -180,11 +180,15 @@ export function signupUser(data) {
 			if (response.data.success) {
 				handleStorage(response.data.res);
 				dispatch(signupUserSuccess(response.data.res.record));
-				browserHistory.push('/user-management');
+				browserHistory.push('/details');
 				setTimeout(() => {
 					dispatch(signupUserAfterSuccess());
 				}, 2500);
 			} else {
+				if (response.data.res.type) {
+					return;
+				}
+
 				dispatch(signupUserFailure(response.data.res.message));
 				setTimeout(() => {
 					dispatch(signupUserAfterFailure());
@@ -202,7 +206,7 @@ export function loginUser(data) {
 			if (response.data.success) {
 				handleStorage(response.data.res);
 				dispatch(loginUserSuccess(response.data.res.record));
-				browserHistory.push('/user-management');
+				browserHistory.push('/details');
 				setTimeout(() => {
 					dispatch(loginUserAfterSuccess());
 				}, 2500);				
@@ -223,7 +227,7 @@ export function logoutUser(data) {
 			window.localStorage.removeItem('user');
 			window.localStorage.removeItem('token');
 			dispatch(logoutSuccess());
-			browserHistory.push('/');
+			browserHistory.push('/login');
 		});
 	};
 }

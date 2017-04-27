@@ -21,7 +21,7 @@ export function decodeToken(token) {
 }
 
 export function ensureAuthorized (req, res, next) {
-	const User = modal.User;
+	const User = model.User;
 	const bearerHeader = req.headers['authorization'];
 
 	let bearerToken;

@@ -8,7 +8,9 @@ import Details from './sections/details/Details.Component';
 
 import '../../../static/styles/components/users/users.sass';
 
-const Users = ({ user }) => {
+const Users = ({ user, getNotifications }) => {
+	getNotifications();
+
 	return (
 		<div className='user-management-container authed-container'>
 			<Header />
