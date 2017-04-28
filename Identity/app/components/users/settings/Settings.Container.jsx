@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { loadSettings } from '../redux/actions/settings';
+import { loadSettings, updateSettings } from '../redux/actions/settings';
 import Settings from './Settings.Component';
 
 const mapStateToProps = state => {
@@ -14,6 +14,10 @@ const mapDispatchToProps = dispatch => {
     return {
         getSettings: () => {
             dispatch(loadSettings());
+        },
+
+        changeSettings: (data) => {
+            dispatch(updateSettings(data));
         },
     };
 };

@@ -91,6 +91,8 @@ const UserSchema = new mongoose.Schema({
 	},
 
 	token: String,
+	twoFactorToken: String,
+	twoFactorExpires: Date,
 	resetPasswordToken: String,
 	resetPasswordExpires: Date
 });

@@ -26,13 +26,13 @@ module.exports = () => {
     };
 
     obj.update = (req, res) => {
-        Setting.findOne({creator: req.user._id}, (err, setting) => {
+        Settings.findOne({creator: req.user._id}, (err, setting) => {
             if (err) {
                 return json.bad(err, res);
             }
 
-            setting.twoFactorAuth = req.body.twoFactorAuth || setting.twoFactorAuth;
-            setting.textAuthentication = req.body.textAuthentication || setting.textAuthentication;
+            setting.twoFactorAuth = req.body.twoFactorChecked || setting.twoFactorAuth;
+            setting.textAuthentication = req.body.textAuthChecked || setting.textAuthentication;
 
             setting.save((err, item) => {
                 if (err) {

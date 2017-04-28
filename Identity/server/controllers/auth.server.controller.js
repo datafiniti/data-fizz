@@ -9,6 +9,7 @@ import userModel from '../models/users';
 import settingsModel from '../models/settings';
 import json from '../helpers/json';
 import { generateToken, decodeToken } from '../helpers/auth';
+import { handleTwoFactor } from '../helpers/twoFactor';
 
 module.exports = () => {
     const User = userModel.User;
@@ -103,10 +104,16 @@ module.exports = () => {
                         });
                     }
 
+                    console.log(user.settings);
                     if (!user.loginAttempts && !user.lockUntil && !user.secureLock) {
-                        /* if (user.settings.twoFactorAuth === true) {
-                            handleTwoFactor(user);
-                        } */
+                        if (user.settings) {
+                            return handleTwoFactor(user)
+                            .then((result) => {
+                                if (result) {
+                                   console.log(result);
+                                }
+                            });
+                        } 
 
                         user.token = generateToken(user);
                         user.lastLogin = Date.now();
@@ -130,6 +137,14 @@ module.exports = () => {
                     };
 
                     return user.update(updates, (err, item) => {
+                        if (user.settings) {
+                            return handleTwoFactor(user)
+                            .then((result) => {
+                                if (result) {
+                                    console.log('woot');
+                                }
+                            });
+                        }
                         user.token = generateToken(user);
                         user.lastLogin = Date.now();
                         user.loggedIn = true;
