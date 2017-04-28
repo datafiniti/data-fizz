@@ -3,11 +3,6 @@ import json from '../helpers/json'
 import { generateToken, decodeToken } from '../helpers/auth'
 import model from '../models/users'
 import jwt from 'jsonwebtoken'
-import nodemailer from 'nodemailer'
-import handlebars from 'handlebars'
-import crypto from 'crypto'
-import fs from 'fs'
-import async from 'async'
 
 
 module.exports = () => {
@@ -101,7 +96,6 @@ module.exports = () => {
 		.lean()
 		.populate('notifications')
 		.exec((err, user) => {
-			console.log(user);
 			if (err) {
 				return json.bad(err, res);
 			}

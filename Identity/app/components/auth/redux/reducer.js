@@ -108,6 +108,8 @@ export default function authReducer(state = INTIIAL_STATE, action) {
 				loading: false,
 				err: null,
 				status: null,
+				notificationType: null,
+				showNotification: false,
 			};
 
 		case types.LOAD_AUTH_SUCCESS:

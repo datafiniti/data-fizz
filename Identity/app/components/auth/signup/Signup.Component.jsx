@@ -20,12 +20,11 @@ class Signup extends React.Component {
 			password: '',
 			confirm: '',
 		};
-
-		this.handleInputChange = this.handleInputChange.bind(this);
 	}
+		
 
-	handleInputChange(e) {
-		const target = e.target;
+	handleInputChange = (event) => {
+		const target = event.target;
 		const value = target.value;
 		const name = target.name;
 
@@ -51,7 +50,7 @@ class Signup extends React.Component {
 						wrapperClass='form-wrapper'
 						inputClass='form-input'
 						component={renderField}
-						onChange={this.handleInputChange} 
+						onChange={this.handleInputChange.bind(this)} 
 					/>
 
 					<Field 
@@ -62,7 +61,7 @@ class Signup extends React.Component {
 						component={renderField}
 						wrapperClass='form-wrapper'
 						inputClass='form-input' 
-						onChange={this.handleInputChange} 
+						onChange={this.handleInputChange.bind(this)} 
 					/>
 
 					<Field 

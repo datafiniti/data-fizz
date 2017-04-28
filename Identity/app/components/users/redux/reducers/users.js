@@ -14,24 +14,36 @@ export default function userReducer(state = INTIIAL_STATE, action) {
             return {
                 ...state,
                 changePasswordOpen: true,
+                loading: false,
+                error: null,
+                status: null,
             };
 
         case types.CLOSE_CHANGE_PASSWORD:
             return {
                 ...state,
                 changePasswordOpen: false,
+                loading: false,
+                error: null,
+                status: null,
             };
 
         case types.OPEN_EDIT_USER:
             return {
                 ...state,
                 editUserOpen: true,
+                loading: false,
+                error: null,
+                status: null,
             };
 
         case types.CLOSE_EDIT_USER:
             return {
                 ...state,
                 editUserOpen: false,
+                loading: false,
+                error: null,
+                status: null,
             };
 
         case types.CHANGE_PASSWORD:

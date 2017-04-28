@@ -23,12 +23,6 @@ const Nav = ({ isAuthenticated, user }) => {
 					<div />
 					<p>{user.name}</p>
 				</div>
-
-				<div className='nav-item'>
-					<button>
-						Icon
-					</button>
-				</div>
 			</div>
 		);
 	};

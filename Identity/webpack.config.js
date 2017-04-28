@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const PATHS = {
 	app: path.join(__dirname, 'app'),
@@ -23,8 +24,10 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.jsx?$/,
-				exclude: /node_modules/,
+				test: /\.(jsx|js)?$/,
+				exclude: [
+					path.resolve(__dirname, 'node_modules/')
+				],
 				loaders: ['babel-loader']
 			},
 
@@ -81,6 +84,7 @@ module.exports = {
 			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
 		}),
 
+		new BundleAnalyzerPlugin(),
 		new webpack.HotModuleReplacementPlugin()
 	]
 };

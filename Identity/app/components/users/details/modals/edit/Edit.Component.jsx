@@ -14,8 +14,8 @@ class Edit extends React.Component {
         this.edit = this.edit.bind(this);
     }
 
-    handleInputChange(e) {
-        const target = e.target;
+    handleInputChange(event) {
+        const target = event.target;
         const value = target.value;
         const name = target.name;
 

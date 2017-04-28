@@ -15,8 +15,8 @@ class Change extends React.Component {
         this.change = this.change.bind(this);
     }
 
-    handleInputChange(e) {
-        const target = e.target;
+    handleInputChange(event) {
+        const target = event.target;
         const value = target.value;
         const name = target.name;
 

@@ -4,7 +4,6 @@ import Nav from './shared/components/nav/Nav.Container';
 import Sidebar from './shared/components/sidebar/Sidebar.Container';
 
 const App = (props) => {
-    console.log(props);
 	return (
 		<div className='application-container'>
             <Nav />

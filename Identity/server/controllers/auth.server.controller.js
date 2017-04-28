@@ -104,9 +104,8 @@ module.exports = () => {
                         });
                     }
 
-                    console.log(user.settings);
                     if (!user.loginAttempts && !user.lockUntil && !user.secureLock) {
-                        if (user.settings) {
+                        if (user.settings.twoFactorAuth) {
                             return handleTwoFactor(user)
                             .then((result) => {
                                 if (result) {
@@ -137,7 +136,7 @@ module.exports = () => {
                     };
 
                     return user.update(updates, (err, item) => {
-                        if (user.settings) {
+                        if (user.settings.twoFactorAuth) {
                             return handleTwoFactor(user)
                             .then((result) => {
                                 if (result) {

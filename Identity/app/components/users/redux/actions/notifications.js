@@ -32,7 +32,9 @@ export const getNotifications = () => dispatch => {
     return axios.post(`/users/notifications/${currentUser._id}`)
     .then((response) => {
         if (response.data.success) {
-            dispatch(loadNotificationsSuccess(response.data.res.notifications));
+            if (typeof response.data.res.notifications !== 'undefined') {
+                dispatch(loadNotificationsSuccess(response.data.res.notifications));
+            }
         } else {
             dispatch(loadNotificationsFailure(response.data.res.message));
         }

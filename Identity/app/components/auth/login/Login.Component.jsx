@@ -17,18 +17,14 @@ class Login extends React.Component {
 	constructor(props) {
 		super(props);
 
-		console.log(this.props);
-
 		this.state = {
 			email: '',
 			password: '',
 		};
-
-		this.handleInputChange = this.handleInputChange.bind(this);
 	}
 
-	handleInputChange(e) {
-		const target = e.target;
+	handleInputChange = (event) => {
+		const target = event.target;
 		const value = target.value;
 		const name = target.name;
 
