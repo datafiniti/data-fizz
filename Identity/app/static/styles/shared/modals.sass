@@ -1,0 +1,60 @@
+.modal-form-header
+    padding: 30px 0
+    text-align: center
+
+.modal-form-wrapper
+    position: relative
+    width: 100%
+    margin-bottom: 42px
+
+    input
+        height: 35px
+        padding-left: 10px
+        font-family: 'Open Sans'
+        font-weight: 400
+        font-size: 14px
+        letter-spacing: 1px
+        color: rgb(17, 17, 17)
+        border: 1px solid rgba(0,0,0,0.12)
+        transition: border-color .4s ease-out
+
+        &:focus
+            border-color: rgb(17, 17, 17)
+
+            & + label
+                transform: translateX(-70px)
+                opacity: 0
+
+    label
+        position: absolute
+        top: 8px
+        left: 12px
+        opacity: 1
+        font-family: 'Open Sans'
+        font-weight: 400
+        font-size: 14px
+        letter-spacing: 1px
+        color: rgba(0,0,0,0.6)
+        transition: all .4s ease-out
+
+    &.edit-form-wrapper
+        display: flex
+        align-items: center
+        width: 60%
+        margin: 0 auto 42px auto
+
+        label
+            position: relative
+            top: auto
+            left: auto
+            width: 90px
+            margin-right: 8px
+
+        input
+            width: calc(100% - 90px)
+
+.modal-form-submit
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    padding: 30px 30px 5px 0

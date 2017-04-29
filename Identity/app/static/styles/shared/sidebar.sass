@@ -1,0 +1,79 @@
+.sidebar-container
+	position: fixed
+	top: 0
+	left: 0
+	height: 100vh
+	width: 200px
+	background: #31475a
+	z-index: 30
+
+.sidebar-header
+	display: flex
+	flex-direction: column
+	align-items: center
+	justify-content: center
+	height: 130px
+
+	> div
+		height: 65px
+		width: 65px
+		margin-bottom: 10px
+		border-radius: 50%
+		background: #607a99
+
+	> p
+		font-family: 'Open Sans'
+		font-weight: 300
+		font-size: 16px
+		letter-spacing: 1px
+		color: #fff
+
+
+.sidebar-body
+	height: calc(100% - 130px)
+
+.sidebar-list
+	padding-top: 25px
+
+	li
+		display: flex
+		align-items: center
+		height: 60px
+		padding-left: 10px
+		transition: all .4s ease-out
+
+		span
+			font-size: 22px
+			color: #a5b6c3
+			transition: all .4s ease-out
+
+		a
+			padding-left: 13px
+			text-decoration: none
+			font-family: 'Raleway'
+			font-weight: 500
+			letter-spacing: 1px
+			font-size: 17px
+			color: #a5b6c3
+			transition: color .4s ease-out
+
+		&:hover
+			background: #343c48
+
+			span
+				color: #fff
+
+			a
+				color: #fff
+
+			button
+				color: #fff
+
+		button
+			padding-left: 13px
+			font-family: 'Raleway'
+			font-weight: 500
+			letter-spacing: 1px
+			font-size: 17px
+			color: #a5b6c3
+			transition: color .4s ease-out
