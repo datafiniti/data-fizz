@@ -1,0 +1,11 @@
+1. Domains beyond Amazon.com
+
+Currently, the ProductParser class is specific to Amazon. To expand this, I would create a ProductParser for each domain. An interface would still have all the same methods (get title, author, etc.) but the domain specific class would each have parsing logic specific to that domain. Ultimately, it would still be composed of the same Product class.
+
+2. Products beyond just simply books.
+
+A single Product and ProductParser class would no longer suffice. Assuming multiple domains and multiple types of products, it could be structured like this: A parent class for each domain and child classes for each product (ex. AmazonParser, AmazonBookParser, AmazonTabletParser, WalMartParser, WalMartBookParser, WalMartTabletParser). This is because some methods, such as price extraction, might be the same for every product for that domain but then each child class could implement additional product specific method such as extract book isbn or extract tablet screen size. 
+
+3. Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+
+You could use a parallel sorting algorithm to sort 2M books and then arrange into boxes.
