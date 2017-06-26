@@ -1,0 +1,37 @@
+1. Domains Beyond Amazon.com
+
+The parser is implemented with regular expressions, and a function ‘amazon_book(html)’ which takes a single book page in HTML format, and applies those regex to return a Dictionary object with the required fields. To add additional online stores, one would write additional regex, and a new function (e.g. ‘barnesandnoble_book(html)’) return a Dictionary of the same format. Thus, the parse.py structure would end up like this:
+
+parse.py
+|-amazon_book
+|-barnesandnoble_book
+|-alibris_book
+|-thriftbooks_book
+
+
+2. Products Beyond Books
+
+Similar to extending beyond Amazon.com, one would write new regex to parse the required information. If the type of product on an HTML page was not already known, I would use regex to identify the product type, and then choose parsing functions appropriately. The new functions should return a Dictionary with a “shipping_weight” key, which will allow them to be sorted and packed by the same functions currently used on books. It would probably make sense to replace the word ‘book’ with ‘product’ in a few places, but the code should work as written regardless. For the sake of improved organization, I would either split product types into different python files (e.g. ‘book_parse.py’, ‘bluray_parse.py’), or use a Dictionary to organize them in ‘parse.py’:
+
+{
+   “books”: {
+        “amazon”: amazon_book,
+        “barnesandnoble”: barnesandnoble_book
+    },
+    “bluray”: {
+        “amazon”: amazon_bluray,
+	“deepdiscount”: deepdiscount_bluray
+    }
+}
+
+This could be used as such:
+
+parsed_info = parse.parsers[product_type][merchant](html_page)
+
+I think the difference between these two solutions is largely stylistic, though splitting into separate python files would be easier to maintain than keeping everything in one file.
+
+3. Parse and Ship 2mil Books
+
+The most computationally intensive part of my application is definitely sorting, but I’m using a binary tree to keep items sorted as they’re parsed, which has a runtime of O(n log n). It’s possible that parsing everything into a NumPy array, and using mergesort in NumPy would be faster. The asymptotic runtime would be the same, but the real runtime would possibly be shorter because of the inherent speed differences between python and c. To find out which is faster, I would use the built-in ’timeit’ function included with python. 
+
+It may also make sense to have the packer yield each box as soon as it’s packed, instead of waiting for all 2mil products to be boxed. This way the physical package could begin preparation while the rest of the data is being packed (lazy evaluation) 
