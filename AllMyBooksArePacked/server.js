@@ -1,7 +1,7 @@
 'use strict';
 
-var StaticServer = require('static-server');
-
+const StaticServer = require('static-server');
+const BookScrapper = require('./src/BookScrapper').BookScrapper;
 
 const server = new StaticServer({
   rootPath: './data/',
@@ -12,3 +12,6 @@ const server = new StaticServer({
 server.start( () => {
   console.log('Server running in: ', server.port);
 });
+
+const bs = new BookScrapper();
+bs.scrapBooks();
