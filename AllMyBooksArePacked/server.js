@@ -14,4 +14,4 @@ server.start( () => {
 });
 
 const bs = new BookScrapper();
-bs.scrapBooks();
+bs.scrapBooks().then(console.log, console.error);
