@@ -25,6 +25,9 @@ class BookBoxPacker {
           box.addBook(book);
           booksToRemove.push(i);
         }
+        if (box.getCurrentWeight() == this.boxWeight) {
+          break;
+        }
       }
       boxes.push(box);
 

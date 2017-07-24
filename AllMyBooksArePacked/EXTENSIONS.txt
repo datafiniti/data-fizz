@@ -1,0 +1,27 @@
+
+
+#1. Domains beyond Amazon.com
+
+Current implementation uses "request" a library that helps me load the html from any given website with a url.
+In this particular case a list of amazon book urls is used but can be easily changed or mixed to whatever domain.
+Changes to the scrapper might be needed to handle websites with different structure than the ones provided in `/data`.
+Note: a static server is created to serve files in `/data`
+
+#2. Products beyond just simply books.
+
+My approach uses cheerio a lib that allows you to perform jquery like selectors for html documents.
+For products beyond books, I'll need to know the structure and write selectors to get the data.
+Additionally I'd create an object/class (like src/Book.js) to store the data.
+
+#3. Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+
+This implementation sorts the books by its weight (heaviest to lightest) and iterates through the books
+inserting them in a box if there is enough weight available.
+
+Intensive algorithms:
+	sorting: my implementation uses the sort included in nodejs. V8 implementation uses insertion sort or quicksort depending on input size.
+			For 2M it'll use quicksort which has a worst case perf of O(n^2)
+	book packing: Current implementation iterates through all the books until a box is full and they it proceeds to create/fill another.
+
+I believe the current implementation will
+perform decently on parsing and shipping 2M but there is room for improvement.
