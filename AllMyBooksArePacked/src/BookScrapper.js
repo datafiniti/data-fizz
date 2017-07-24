@@ -39,11 +39,11 @@ class BookScrapper {
 					if (error) {reject(error);}
 
 					const $ = cheerio.load(body);
-					const price = this.getValue($, '.priceLarge', '.rentPrice');
+					const price = parseFloat(this.getValue($, '.priceLarge', '.rentPrice').substr(1));
 					const title = $('#btAsinTitle').text();
 					const author = $('.buying>span>a').text();
 					const isbn10 = $(".bucket .content>ul li:contains('ISBN-10')").text().split(' ')[1];
-					const weight = $(".bucket .content>ul li:contains('Shipping Weight')").text().split(' ')[2];
+					const weight = parseFloat($(".bucket .content>ul li:contains('Shipping Weight')").text().split(' ')[2]);
 
 					const book = new Book(title, author, price, weight, isbn10);
 					bookResults.push(book);
