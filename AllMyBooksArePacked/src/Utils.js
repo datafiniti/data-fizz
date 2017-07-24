@@ -1,7 +1,7 @@
 'use strict';
 
 const bookSortDesc = (bookA, bookB) => {
-	if (bookA.weight < bookB.weight)
+  if (bookA.weight < bookB.weight)
     return 1;
   if (bookA.weight > bookB.weight)
     return -1;
