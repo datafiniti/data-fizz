@@ -1,0 +1,16 @@
+{
+  "name": "all-my-books-are-packed",
+  "version": "1.0.0",
+  "description": "## Purpose",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm install && node server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "request": "^2.81.0",
+    "static-server": "^2.0.5"
+  }
+}
