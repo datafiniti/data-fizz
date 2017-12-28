@@ -1,0 +1,22 @@
+{
+  "name": "DataFizz2018",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cheerio": "^1.0.0-rc.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "hashmap": "^2.3.0",
+    "knapsack-js": "^1.0.2",
+    "path": "^0.12.7",
+    "request": "^2.83.0"
+  }
+}

@@ -1,0 +1,76 @@
+<div class="container">
+
+  <div class="row row-offcanvas row-offcanvas-right">
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas sidebar" id="sidebar">
+      <div class="list-group">
+        <a class="list-group-item active">List of Books</a>
+        <a ng-repeat="file in files" href="#" ng-click="scrapeBook(file)" class="list-group-item">{{file}}</a>
+        </div>
+    </div><!--/.col-xs-12.col-sm-9 .sidebar-offcanvas-->
+
+    <div class="col-xs-12 col-sm-9 main">
+      <p class="pull-right visible-xs">
+        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+      </p>
+      <div ng-show="jumbotron" class="jumbotron">
+        <div class="spinner" ng-show="loading">
+          <img src="images/spinner.gif">
+        </div>
+        <h1>Hello!</h1>
+        <p>This is an example of using Web Scraping with Javascript in order to extract miningful information from web sites.</p>
+        <p>You can click here <button ng-click="packAll()" class="btn btn-lg btn-primary">Select All</button> in order to select all the 20 books for shipping with each box having no more than ten pounds of books.</p>
+        <h3>or</h3>
+        <p>You can click and select one, two, three or more books on the left menu, after that you can divide your list of selected books into N boxes</p>
+      </div>
+      
+
+      
+      <!-- Show Books -->
+      <div class="row">
+        <div class="push-left">
+          <button class="btn btn-warning" ng-click="clear()">Clear All</button>
+        </div>
+        <div class="col-lg-12" ng-show="items">
+          <h1>All items:
+            <span class="label label-info">{{ items.length }}
+            </span>&nbsp;books
+            <div ng-show="items.length > 0" class="pull-right">
+              <button class="btn btn-lg btn-primary" ng-click="shipping()">Pack Selected books</button>
+            </div>
+          </h1>
+            <div class="spinner" ng-show="loading">
+              <img src="images/spinner.gif">
+            </div>
+            <div class="panel panel-default col-md-4 col-lg-4 col-sm-6" style="max-height: 400;" ng-repeat="item in items">
+              <div class="listing-image">
+                <img ng-src="{{ item.image }}" class="img-thumbnail img-responsive" alt="">
+              </div>
+              <div class="panel-body">
+                <p><strong>Title:</strong> {{item.title }} </p>
+                <p><strong>Author:</strong> {{item.author}}</p>
+                <p><strong>Price:</strong> {{item.price}}</p>
+                <p><strong>ISBN-10:</strong> {{item.isbn10}}</p>
+                <p><strong>Shipping_Weight (pounds):</strong> {{item.shipping_weight}}</p>
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <!-- Show Boxes -->
+      <div class="row" ng-show="showBoxes">
+        <h1>List of Boxes: 
+          <span class="label label-info">{{ boxes.box.length }}
+          </span>
+        </h1>
+        <div class="panel panel-default">
+          <div class="panel-body">
+              <pre>{{boxes | json}}</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div><!--/.col-xs-12.col-sm-9-->
+  </div><!--/row-->
+
+</div><!--/.container-->
