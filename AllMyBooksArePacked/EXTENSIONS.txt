@@ -1,0 +1,14 @@
+how your application could be extended to handle the following:
+
+1) Domains beyond Amazon.com
+R/= Since all the pages are different, we will need to add a new folder and a new parser file for the new domain.Another alternative
+could be setting up a server and instead of taking the html from a file we can ask for a list of links, in this case we will need to
+update the parser function to accept different domains.
+
+2) Products beyond just simply books.
+R/= Since we are going to get different products we need to take in consideration that some of the properties are just for books like the author,
+if we are planning to change the structure of the resulted json we need to make some changes in the in the current parser function.
+
+3) Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+R/= The current algorithm finish in (n log n) * n,  since we are sorting and then iterating the array, to improve the time we will need
+to implement a better algorithm.

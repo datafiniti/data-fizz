@@ -1,0 +1,188 @@
+[
+    {
+        "id": 1,
+        "totalWeight": "9.4 pounds",
+        "contents": [
+            {
+                "title": "The Ocean at the End of the Lane: A Novel",
+                "price": "$15.22",
+                "author": "Neil Gaiman",
+                "shipping_weight": "9.4 pounds",
+                "isbn-10": "0062255657"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "totalWeight": "8.8 pounds",
+        "contents": [
+            {
+                "title": "The Unforgiven",
+                "price": "$8.97",
+                "author": "Alan LeMay",
+                "shipping_weight": "8.8 pounds",
+                "isbn-10": "147780630X"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "totalWeight": "7.8 pounds",
+        "contents": [
+            {
+                "title": "The Europa Regional Surveys of the World Set 2011: 9-Volume Set",
+                "price": "$7,450.00",
+                "author": "",
+                "shipping_weight": "7.8 pounds",
+                "isbn-10": "1857435885"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "totalWeight": "7.6 pounds",
+        "contents": [
+            {
+                "title": "World War Z: The Art of the Film",
+                "price": "$15.83",
+                "author": "Titan Books",
+                "shipping_weight": "7.6 pounds",
+                "isbn-10": "1781168857"
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "totalWeight": "6.4 pounds",
+        "contents": [
+            {
+                "title": "Inquebrantable: Mi Historia, A Mi Manera (Atria Espanol) (Spanish Edition)",
+                "price": "$10.18",
+                "author": "Jenni Rivera",
+                "shipping_weight": "6.4 pounds",
+                "isbn-10": "1476745420"
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "totalWeight": "5.6 pounds",
+        "contents": [
+            {
+                "title": "A New Kind of Science",
+                "price": "$35.25",
+                "author": "Stephen Wolfram",
+                "shipping_weight": "5.6 pounds",
+                "isbn-10": "1579550088"
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "totalWeight": "9.3 pounds",
+        "contents": [
+            {
+                "title": "Never Go Back: A Jack Reacher Novel",
+                "price": "$17.52",
+                "author": "Lee Child",
+                "shipping_weight": "4.9 pounds",
+                "isbn-10": "0385344341"
+            },
+            {
+                "title": "The House of Hades (Heroes of Olympus, Book 4)",
+                "price": "$10.19",
+                "author": "Rick Riordan",
+                "shipping_weight": "4.4 pounds",
+                "isbn-10": "1423146727"
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "totalWeight": "7.699999999999999 pounds",
+        "contents": [
+            {
+                "title": "The Ocean at the End of the Lane: A Novel",
+                "price": "$15.22",
+                "author": "Neil Gaiman",
+                "shipping_weight": "4.1 pounds",
+                "isbn-10": "0062255657"
+            },
+            {
+                "title": "The English Girl: A Novel (Gabriel Allon)",
+                "price": "$16.46",
+                "author": "Daniel Silva",
+                "shipping_weight": "3.6 pounds",
+                "isbn-10": "0062073168"
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "totalWeight": "9.600000000000001 pounds",
+        "contents": [
+            {
+                "title": "The English Girl: A Novel (Gabriel Allon)",
+                "price": "$16.46",
+                "author": "Daniel Silva",
+                "shipping_weight": "3.6 pounds",
+                "isbn-10": "0062073168"
+            },
+            {
+                "title": "Pacific Rim: Man, Machines, and Monsters",
+                "price": "$27.83",
+                "author": "David S Cohen, Guillermo del Toro",
+                "shipping_weight": "3.2 pounds",
+                "isbn-10": "1608871827"
+            },
+            {
+                "title": "Man of Steel: Inside the Legendary World of Superman",
+                "price": "$31.07",
+                "author": "Daniel Wallace, Zack Snyder",
+                "shipping_weight": "2.8 pounds",
+                "isbn-10": "1608871819"
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "totalWeight": "9.8 pounds",
+        "contents": [
+            {
+                "title": "No god but God: The Origins and Evolution of Islam",
+                "price": "$8.99",
+                "author": "Reza Aslan",
+                "shipping_weight": "2.6 pounds",
+                "isbn-10": "0385739761"
+            },
+            {
+                "title": "I Wear the Black Hat: Grappling with Villains (Real and Imagined)",
+                "price": "$15.49",
+                "author": "Chuck Klosterman",
+                "shipping_weight": "2.2 pounds",
+                "isbn-10": "1439184496"
+            },
+            {
+                "title": "Sylvia Day Crossfire Series Boxed Set: Bared to You/Reflected in You/Entwined with You",
+                "price": "$26.32",
+                "author": "Sylvia Day",
+                "shipping_weight": "2.2 pounds",
+                "isbn-10": "0425266060"
+            },
+            {
+                "title": "The Cuckoo's Calling",
+                "price": "$17.47",
+                "author": "Robert Galbraith, J.K. Rowling",
+                "shipping_weight": "1.4 pounds",
+                "isbn-10": "0316206849"
+            },
+            {
+                "title": "This Town: Two Parties and a Funeral-Plus, Plenty of Valet Parking!-in America's Gilded Capital",
+                "price": "$15.37",
+                "author": "Mark Leibovich",
+                "shipping_weight": "1.4 pounds",
+                "isbn-10": "0399161309"
+            }
+        ]
+    }
+]
