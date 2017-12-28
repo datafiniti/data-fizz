@@ -1,0 +1,14 @@
+{
+  "name": "allmybooksarepacked",
+  "version": "1.0.0",
+  "description": "## Purpose",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Edward Siwady",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2"
+  }
+}
