@@ -2,8 +2,8 @@
 const fs = require('fs');
 const jsonfile = require('jsonfile')
 
-const Parser = require('./src/parser');
-const Packer = require('./src/packer');
+const Parser = require('./src/amazon/parser');
+const Packer = require('./src/amazon/packer');
 
 const readHtmls = () => {
     const books = [];

@@ -1,0 +1,14 @@
+how your application could be extended to handle the following:
+
+1) Domains beyond Amazon.com
+R/= Since all the pages are different, we will need to add a new folder and a new parser file for the new domain.
+
+2) Products beyond just simply books.
+R/= Since we are going to get different products we need to take in consideration that some of the properties are just for books like the author,
+if we are planning to change the structure of the resulted json we need to make some changes in the in the current parser function, if thats not
+the case we will need to add a new function in the parser and check the category of the thing we need to parse.
+
+3) Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+R/= Right now the current algorithm finish in a polynomial time since it is not packing the books to get the minimum possible boxes, it is
+just making one iteration so if with the next book the box exceeds limit it creates a new box without looking at the next books to see if there is a book
+that can be in the same box

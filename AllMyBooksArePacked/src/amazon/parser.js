@@ -3,7 +3,9 @@ const cheerio = require('cheerio');
 
 const parseHtml = (html) => {
 	const $ = cheerio.load(html);
-	const title = $('span#btAsinTitle').text();
+    let title = $('span#btAsinTitle').children().remove().end().text();
+    title = title.substring(0, title.length - 1);
+
     let price = $('b.priceLarge').text();
     price = price !== '' ? price : $('td.buyNewOffers span.rentPrice').text();
 
