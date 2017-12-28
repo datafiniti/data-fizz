@@ -8,7 +8,7 @@ var router = express.Router();
 
 /* GET html pages. */
 router.get('/data', (req, res) => {
-  var startPath = './data'; 
+  var startPath = './public/data'; 
   var filter = '.html';
   var filesArray = [];
   if (!fs.existsSync(startPath)){
@@ -31,7 +31,7 @@ router.get('/data', (req, res) => {
 });
 
 router.post('/scrape', (req, res) => {
-    var url = 'http://localhost:8080/' + req.body.book;
+    var url = 'http://localhost:8080' + req.body.book.slice(6);
     return new Promise((resolve, reject) => {
       request(url, (err, resp, body) => {
           if (err) return reject(err)
