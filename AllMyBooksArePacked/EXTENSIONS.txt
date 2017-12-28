@@ -1,0 +1,17 @@
+How my app could handle the following:
+
+1. Domains beyond Amazon.com: 
+For this situation I can save the HTML files inside the public folder and later start scraping the HTML
+extracting the information we need from the site. 
+
+Another approach is add a Form inside the app, in order to search to an online HTML page by ust copy/pasting
+the URL of the page (before that we had reviewed and scraped the web page).
+
+2. Products beyond just simply books:
+Web scrape almost cover any type of product, some sites are banned and protected from being scraped, but
+in general we can scrape any product/information we need, using the rights tools and the algorithm.
+
+3. Parse and ship 2,000,000 books:
+Well for this sceneario the Knapsack algorithm probably could help, definetely for that we need to use data
+algorithm and test the time it takes to produce the result we are looking for. Also use concepts like
+Dynamic Programming.
