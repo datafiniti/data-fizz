@@ -24,7 +24,6 @@
     });
 
     $scope.scrapeBook = function(book){
-      console.log(book);
       $scope.loading = true;
       $http.post('/api/scrape', {
         book: book

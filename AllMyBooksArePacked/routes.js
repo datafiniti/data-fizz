@@ -32,7 +32,6 @@ router.get('/data', (req, res) => {
 
 router.post('/scrape', (req, res) => {
     var url = 'http://localhost:8080/' + req.body.book;
-    console.log(url);
     return new Promise((resolve, reject) => {
       request(url, (err, resp, body) => {
           if (err) return reject(err)
