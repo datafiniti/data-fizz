@@ -1,10 +1,13 @@
 package Parsing;
 
+import Sorting.Factory;
 import Sorting.Product;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,5 +44,21 @@ public class Parser {
             System.out.println("caught IOException");
         }
         return false;
+    }
+
+    public static void writeToJSON(Factory fact, String pathToOutFile) {
+        try {
+            File output = new File(pathToOutFile);
+            if (output.isDirectory()) {
+                throw new IOException("specified path is a directory, not a file");
+            }
+            FileWriter fw = new FileWriter(output);
+            fw.write(fact.toJSONString());
+            fw.close();
+        } catch (FileNotFoundException e) {
+            System.out.println(e);
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     }
 }

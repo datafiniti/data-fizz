@@ -7,11 +7,10 @@ import java.util.List;
 public class Sorter {
 
     public static Factory sort(List<Product> products, int maxWeight) {
-        Factory factory = new Factory();
+        Factory factory = new BSTFactory();
         sortProductsInDescendingOrder(products);
         for (Product p : products) {
             factory.placeInFirstFit(p, maxWeight);
-            //factory.placeInFirstFitBST(p, maxWeight);
         }
         return factory;
     }

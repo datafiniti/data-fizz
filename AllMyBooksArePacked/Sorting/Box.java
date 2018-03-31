@@ -49,7 +49,8 @@ public class Box implements JSONString{
 
     @Override
     public String toJSONString() {
-        jo.put("total weight", "" + totalWeight + " pounds");
+        String tw = String.format("%.1f", totalWeight);
+        jo.put("total weight", "" + tw + " pounds");
         JSONArray ja = new JSONArray(contents);
         jo.put("contents", ja);
         return jo.toString();
