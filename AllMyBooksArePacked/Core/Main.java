@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Main {
     static String inputDirectory = "./data";
-    static String outputFile = "./Sorting/Output.json";
+    static String outputFile = "./Core/Output.json";
 
     public static void main(String[] args) {
         List<Product> products = Parser.parseDirectory(inputDirectory);
