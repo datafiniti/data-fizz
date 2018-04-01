@@ -1,57 +1,77 @@
 package Sorting;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.TreeMap;
 
 public class BSTFactory extends Factory {
-    private TreeMap<Double, Box> sortedBoxes;
+    //Intent was to map boxes to weight remaining. Maps to list to allow multiple boxes with same weight remaining
+    private TreeMap<Double, List<Box>> sortedBoxes;
+    private int size;
 
     public BSTFactory() {
         sortedBoxes = new TreeMap<>();
-    }
-
-    public BSTFactory(List<Box> boxes) {
-        sortedBoxes = new TreeMap<>();
-        for (Box b : boxes) {
-            sortedBoxes.put(b.getRemainingSpace(), b);
-        }
+        size = 0;
     }
 
     @Override
     public void placeInFirstFit(Product p, int capacity) {
         Double firstFit = sortedBoxes.ceilingKey(p.getWeight());
         if (firstFit == null) {
-            Box b = addBox(capacity);
-            fillBox(b, p);
+            addBox(capacity);
+            fillBox(capacity, p);
         } else {
-            Box fitted = sortedBoxes.get(firstFit);
-            fillBox(fitted, p);
+            fillBox(firstFit, p);
         }
     }
 
-    public void fillBox(Box b, Product p) {
-        sortedBoxes.remove(b.getRemainingSpace());
+    public void fillBox(double key, Product p) {
+        List<Box> bin = sortedBoxes.get(key);
+        Box b = bin.remove(0);
+        if (bin.size() == 0) {
+            sortedBoxes.remove(key);
+        }
         b.add(p);
-        sortedBoxes.put(b.getRemainingSpace(), b);
+        putBox(b.getRemainingSpace(), b);
     }
 
     @Override
     public List<Box> getBoxes() {
-        List<Box> lst = new ArrayList<>(sortedBoxes.values());
+        List<List<Box>> lsts = new ArrayList<>(sortedBoxes.values());
+        List<Box> lst = new ArrayList<>();
+        for (List<Box> l : lsts) {
+            for (Box b : l) {
+                lst.add(b);
+            }
+        }
         return lst;
     }
 
     @Override
     public Box addBox(int capacity) {
         Box toAdd = new Box(numBoxes()+1, capacity);
-        sortedBoxes.put((double)capacity, toAdd);
+        putBox((double)capacity, toAdd);
+        size++;
         return toAdd;
     }
 
     @Override
     public int numBoxes() {
-        return sortedBoxes.size();
+        return size;
+    }
+
+    /**
+     * Maps Box b to Double key; if no other boxes have same key, creates new List and adds b to it. If existing box
+     * is already mapped to given key, b is added to list with that box.
+     */
+    private void putBox(Double key, Box b) {
+        List<Box> boxes = sortedBoxes.get(key);
+        if (boxes == null) {
+            boxes = new ArrayList<>();
+            boxes.add(b);
+            sortedBoxes.put(key, boxes);
+        } else {
+            boxes.add(b);
+        }
     }
 }

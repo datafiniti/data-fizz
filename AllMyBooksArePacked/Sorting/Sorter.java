@@ -9,7 +9,7 @@ public class Sorter {
     /**
      * Sorts given products into boxes using the FirstFit bin sorting algorithm. Depending on
      * the type of Factory, the bins will either be sorted by ID or by available weight. BSTFactory
-     * uses binary tree to sort bins by available weight, making runtime O(NlogN). ArrayFactory runs
+     * uses TreeMap to sort bins by available weight, making runtime O(NlogN). ArrayFactory runs
      * in O(N^2)
      */
     public static Factory sort(List<Product> products, int maxWeight) {

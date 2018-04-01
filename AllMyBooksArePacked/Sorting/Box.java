@@ -31,6 +31,9 @@ public class Box implements JSONString{
         }
     }
 
+    /**
+     * Adds Product p to Box
+     */
     public void add(Product p) {
         if (p.getWeight() + totalWeight > MAX_WEIGHT) {
             throw new IllegalArgumentException("product will not fit in box");
@@ -39,14 +42,24 @@ public class Box implements JSONString{
         totalWeight += p.getWeight();
     }
 
+    /**
+     * Returns whether the product p will fit in this box
+     */
     public boolean canAdd(Product p) {
         return p.getWeight() <= getRemainingSpace();
     }
 
+    /**
+     * Returns remaining space in the box
+     */
     public double getRemainingSpace() {
         return this.MAX_WEIGHT - totalWeight;
     }
 
+    /**
+     * converts this to JSON object with attributes "total weight", and "contents", an array of every
+     * product contained in the box
+     */
     @Override
     public String toJSONString() {
         String tw = String.format("%.1f", totalWeight);
