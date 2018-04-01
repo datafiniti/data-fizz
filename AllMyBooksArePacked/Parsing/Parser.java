@@ -13,6 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Parser {
+
+    /**
+     * Parses every HTML file in the specified directory by converting it a a Product. Returns
+     * list of these Products. Specified Directory must exist and may not contain subdirectories.
+     * Passes over HTML file if it is not an amazon page.
+     */
     public static List<Product> parseDirectory(String inputDirectory) {
         File directory = new File(inputDirectory);
         if (!directory.isDirectory()) {
@@ -36,6 +42,9 @@ public class Parser {
         return products;
     }
 
+    /*
+    Returns whether the @param file is a valid Amazon HTML file
+     */
     private static boolean isAmazonHTML(File file) {
         try {
             Document doc = Jsoup.parse(file, "utf-8");
@@ -46,6 +55,11 @@ public class Parser {
         return false;
     }
 
+
+    /*
+    Writes the Facory object to a file at location specified by @param pathToOutFile. This path must be valid
+    and cannot be a directory. Calls toJSONString method in Factory and writes the String returned to new .json file
+     */
     public static void writeToJSON(Factory fact, String pathToOutFile) {
         try {
             File output = new File(pathToOutFile);
