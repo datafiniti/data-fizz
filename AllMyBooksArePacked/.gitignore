@@ -1,0 +1,5 @@
+# Ignore compilation output
+/target
+
+# Ignore vim backups
+/src/**/*.swp
