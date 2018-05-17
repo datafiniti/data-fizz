@@ -11,17 +11,29 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
+		<dependency> <!-- JUnit -->
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency> <!-- jsoup -->
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.11.3</version>
+		</dependency>
+
+		<dependency> <!-- Java JSON API -->
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.4</version>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
-			<plugin>
+			<plugin> <!-- Give .jar a main executable class -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
 				<version>3.1.1</version>
@@ -34,7 +46,7 @@
 						<configuration>
 							<transformers>
 								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>bookpacker.BookPacker</mainClass>
+									<mainClass>bookpacker.Main</mainClass>
 								</transformer>
 							</transformers>
 						</configuration>

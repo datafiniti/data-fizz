@@ -3,3 +3,6 @@
 
 # Ignore vim backups
 /src/**/*.swp
+
+# Ignore reduced pom
+dependency-reduced-pom.xml

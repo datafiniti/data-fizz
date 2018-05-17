@@ -1,13 +1,14 @@
 package bookpacker;
 
-public class BookPacker {
+import java.io.File;
+import java.io.IOException;
 
-	public static void main(String[] args) {
-		System.out.println(String.format("Hello, %s", args[0]));
-	}
+public abstract class BookPacker {
 
-	public int someMethod() {
-		return 3;
+	public abstract Book getBookFromPage(File webpage) throws IOException;
+
+	public Book getBookFromPage(String fileName) throws IOException {
+		return this.getBookFromPage(new File(fileName));
 	}
 
 }
