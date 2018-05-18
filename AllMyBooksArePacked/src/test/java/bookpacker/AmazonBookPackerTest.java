@@ -20,5 +20,12 @@ public class AmazonBookPackerTest {
 		assertEquals(1.2, bk.shippingWeight, 0.0d);
 	}
 
-
+	@Test
+	public void testVariousFiles() throws IOException {
+		AmazonBookPacker bkPkr = new AmazonBookPacker();
+		for (int i = 1; i <= 20; i++) {
+			URL url = this.getClass().getResource(String.format("small_data/book%d.html", i));
+			Book bk = bkPkr.getBookFromPage(url.getFile());
+		}
+	}
 }

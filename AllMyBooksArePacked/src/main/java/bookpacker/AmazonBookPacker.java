@@ -28,8 +28,8 @@ public class AmazonBookPacker extends BookPacker {
 		bk.title = titleElt.text();
 		bk.author = titleElt.parent().nextElementSibling().child(0).text();
 
-		// Getting the price is also simple. Remember to strip off the leading dollar sign.
-		bk.price = Double.valueOf(doc.getElementById("actualPriceValue").text().substring(1));
+		// Remember to strip off the leading currency symbol and remove all commas.
+		bk.price = Double.valueOf(getPriceString(doc).substring(1).replace(",", ""));
 
 		/* The other pieces of information are in a product detail table
 		located further down the page. The table actually contains only a 
@@ -60,5 +60,13 @@ public class AmazonBookPacker extends BookPacker {
 		return bk;
 	}
 
+	public String getPriceString(Document doc) {
+		Element priceElt = doc.getElementById("actualPriceValue");
+		if (priceElt != null) {
+			return priceElt.text();
+		} // otherwise, the price string is somewhere else
+		Element priceGrid = doc.getElementById("rentalPriceBlockGrid");
+		return priceGrid.selectFirst(".rentPrice").text();
+	}
 
 }

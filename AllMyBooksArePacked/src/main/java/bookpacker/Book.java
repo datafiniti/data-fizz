@@ -7,8 +7,9 @@ public class Book {
 	String title, author, isbn10;
 	double price, shippingWeight;
 
+	static Gson gson = new Gson();
+
 	public String toJson() {
-		Gson gson = new Gson();
-		return "asdf";
+		return gson.toJson(this);
 	}
 }
