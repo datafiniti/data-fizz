@@ -14,7 +14,6 @@ public class Main {
 		ArrayList<Book> books = new ArrayList<Book>();
 		try {
 			for (String fileName : args) {
-				//System.out.println(String.format("Trying %s", fileName));
 				books.add(bkPkr.getBookFromPage(fileName));
 			}
 		} catch (IOException e) {
@@ -22,23 +21,9 @@ public class Main {
 			System.exit(0);
 		}
 
-		/*
-		Collections.sort(books, bkPkr.bookComparator.reversed());
-
-		for (Book book : books) {
-			System.out.println(book.toJson());
-			System.out.println();
-		}
-		*/
-
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-		/*for (BookPacker.BookBin bin : bkPkr.packBooks(books)) {
-			System.out.println(gson.toJson(bin));
-		}*/
-
-
-		System.out.println(gson.toJson(bkPkr.packBooks(books)));
+		System.out.print(gson.toJson(bkPkr.packBooks(books)));
 	}
 
 }

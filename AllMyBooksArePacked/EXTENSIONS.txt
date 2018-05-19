@@ -1,0 +1,14 @@
+EXTENSIONS
+----------
+
+1.) Domains beyond Amazon.com
+
+As you can see from the source code, I have created an abstract BookPacker class, from which the AmazonBookPacker class is derived. This is because the same data that comprises a Book would need to be extracted in different ways, hence why the getBookFromPage method is abstract.
+
+2.) Products beyond books
+
+The way my code is currently designed, a decent amount of restructuring would be necessary to handle other products. Primarily, the BookPacker class would need to be abstracted, perhaps to a parent Packer<T> interface, such that the BookPacker class would be a child of Packer<Book>, etc. Alternatively, we could give Book an analogous parent class, Product. Then, we could make Packer an abstract class and put the packing algorithm there, rather than making every Packer subclass implement its own algorithm. To do this, the Product would have some getWeight() method, for which the Book class would return its shippingWeight member. By this, I mean to imply that not all products would have a shipping weight, or that not all packers would want to pack their products according to a shipping weight.
+
+3.) Big data
+
+The First Fit Decreasing Algorithm for Bin packer has time complexity O(n^2). That is, the packing portion of the algorithm has complexity O(n^2), which dominates any sensible choice of sorting algorithm. There do exist some amortizations for selecting the right bin if we keep track of the bins and their total weights in a more sophisticated way (source: bastian.rieck.ru/uni/bin_packing/bin_packing.pdf).

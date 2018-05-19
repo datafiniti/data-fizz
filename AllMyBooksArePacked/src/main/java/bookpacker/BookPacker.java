@@ -3,19 +3,10 @@ package bookpacker;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.io.File;
 import java.io.IOException;
 
 public abstract class BookPacker {
-
-	// Comparator to sort Books by shippingWeight
-	public static Comparator<Book> bookComparator = new Comparator<Book>()
-	{
-		public int compare(Book bk1, Book bk2) {
-			return ((Double) bk1.shippingWeight).compareTo((Double) bk2.shippingWeight);
-		}
-	};
 
 	// Abstract method to extract information from a webpage and create a Book
 	public abstract Book getBookFromPage(File webpage) throws IOException;
@@ -29,8 +20,8 @@ public abstract class BookPacker {
 	// A nested class to facilitate the bin packing algorithm/
 	class BookBin {
 
-		List<Book> books;
 		double capacity, totalWeight;
+		List<Book> books;
 
 		public BookBin(double capacity) {
 			this.books = new ArrayList<Book>();
@@ -51,7 +42,7 @@ public abstract class BookPacker {
 	public ArrayList<BookBin> packBooks(ArrayList<Book> books, double binCapacity) {
 		ArrayList<BookBin> bins = new ArrayList<BookBin>();
 		
-		Collections.sort(books, bookComparator.reversed());
+		Collections.sort(books, Book.comparator.reversed());
 
 		for (Book bk : books) {
 			// Assume that we will need a new bin
