@@ -36,7 +36,7 @@ Your application should output its results in a valid and well structured JSON d
         "imageURLs": [
             "https://images-na.ssl-images-amazon.com/images/I/611AZDSUHvL._SY496_BO1,204,203,200_.jpg",
             "https://images-na.ssl-images-amazon.com/images/I/81ECOQVXVGL.jpg"
-        ]
+        ],
         "weight": "13.9 oz",
         "sourceURL": "https://www.amazon.com/gp/product/1623155975/ref=s9_acsd_simh_bw_c_x_1_w?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-3&pf_rd_r=5S54Z6125KJDKW8DEBTV&pf_rd_r=5S54Z6125KJDKW8DEBTV&pf_rd_t=101&pf_rd_p=fe185ec9-c8f5-44c0-897e-4c0bde93268c&pf_rd_p=fe185ec9-c8f5-44c0-897e-4c0bde93268c&pf_rd_i=283155"
     }
