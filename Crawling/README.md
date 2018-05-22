@@ -29,10 +29,10 @@ Your application should output its results in a valid and well structured JSON d
 {
     "product": {
         "id": 1,
-        "name": “Sushi at Home: a Mat-To-Table Sushi Cookbook",
+        "name": "Sushi at Home: a Mat-To-Table Sushi Cookbook",
         "listPrice": 17.99,
         "description": “Eating Sushi is Easy. Making Sushi is Even Easier.Let your love of sushi inspire you to prepare and enjoy it in your home. This beautiful guide and cookbook opens a window to everything that's so fascinating--and intimidating--about sushi, while laying out easy-to-follow tips and techniques to help sushi lovers become confident sushi chefs.",
-        "product_dimension": “8 X 0.6 X 8 inches",
+        "product_dimension": "8 X 0.6 X 8 inches",
         "imageURLs": [
             "https://images-na.ssl-images-amazon.com/images/I/611AZDSUHvL._SY496_BO1,204,203,200_.jpg",
             "https://images-na.ssl-images-amazon.com/images/I/81ECOQVXVGL.jpg"
