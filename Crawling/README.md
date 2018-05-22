@@ -53,13 +53,12 @@ To begin fork this repository to your personal Github account. We ask that you s
 
 ## Submission Requirements
 
-* Any language is fine.
+* Use Javascript.
 * You may use any third party libraries you wish. Any dependencies must be fully managed by a standard build tool for the language used.
 * You must follow standard Object Oriented Design principles and techniques (e.g., submissions with only a single class are not worthy).
 * Submit a pull request to this repository when you are ready to share your solution.
 
 ## What We'll Be Looking For
 
-* Code readability and reusability (how "productized" your code is)
-* Practical and sensible use of third-party code
-* The computational efficiency of your sorting algorithm
+* Code readability and reusability.
+* Testing is not required, but we'd love to see it.
