@@ -3,10 +3,6 @@
 ## Purpose
 
 This exercise is designed to test your ability to use object-oriented design principles, data structures and standard algorithms to create a web crawler. We will not only be looking at the data points you have collected from the web, but at the style of your code, its modularity, its extensibility, and ease at which the app can be built and tested. As a small team we believe these principles are a key element of our continued success.
-
-The transformation of unstructured data into structured data involves parsing, computationally intensive algorithmic techniques and ultimately some method of presenting that data in a human and machine digestible format to our customers.
-
-Have fun, be creative and ask questions!
  
 
 ## Problem Description
