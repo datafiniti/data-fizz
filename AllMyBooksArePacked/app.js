@@ -28,18 +28,22 @@ for (let i = 0; i < files.length; i++) {
       .text()
       .trim();
     const price = $("#actualPriceValue .priceLarge").text() + " USD";
-    const shipRegex = /Shipping Weight/g;
-    // const shipping_weight = $(
-    //   "#productDetailsTable .content ul li:nth-child(7)"
-    // )
-    //   .text()
-    //   .trim();
-    const shipping_weight = $("#productDetailsTable .content ul")
+    // const shipRegex = /Shipping Weight/g;
+    const shipping_weight = $(
+      "#productDetailsTable .content ul li:nth-child(7)"
+    )
+      .text()
+      .trim();
+    // const shipping_weight = $("#productDetailsTable .content ul");
     const isbn10 = $("#productDetailsTable .content ul li:nth-child(4)")
       .text()
       .trim();
     const content = { title, author, price, shipping_weight, isbn10 };
-    console.log(content);
+    // console.log(content);
+
+
+    // Make a condition to sort the books by weight
+    console.log(parseFloat(content.shipping_weight.split(" ")[2]));
     outputJSON.Box1.contents.push(content);
 
     // Output file that will be the raw json of the boxes
