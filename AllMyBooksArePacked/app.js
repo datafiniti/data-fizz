@@ -28,11 +28,13 @@ for (let i = 0; i < files.length; i++) {
       .text()
       .trim();
     const price = $("#actualPriceValue .priceLarge").text() + " USD";
-    const shipping_weight = $(
-      "#productDetailsTable .content ul li:nth-child(7)"
-    )
-      .text()
-      .trim();
+    const shipRegex = /Shipping Weight/g;
+    // const shipping_weight = $(
+    //   "#productDetailsTable .content ul li:nth-child(7)"
+    // )
+    //   .text()
+    //   .trim();
+    const shipping_weight = $("#productDetailsTable .content ul")
     const isbn10 = $("#productDetailsTable .content ul li:nth-child(4)")
       .text()
       .trim();
@@ -44,6 +46,3 @@ for (let i = 0; i < files.length; i++) {
     fs.writeFileSync("outputJSON.json", JSON.stringify(outputJSON, null, 2));
   });
 }
-
-// Output file that will be the raw json of the boxes
-// fs.writeFileSync("outputJSON.json", JSON.stringify(outputJSON, null, 2));
