@@ -2,7 +2,6 @@
 const fs = require("fs");
 const cheerio = require("cheerio");
 const Box = require("./constructors/Box.js");
-const Contents = require("./constructors/Contents.js");
 
 // json variable that will be used as the output
 const outputJSON = {};
@@ -12,11 +11,11 @@ const dir = "./data";
 const files = fs.readdirSync(dir);
 
 // set up Initial box for storing books
-const boxCount = 1;
+let boxCount = 1;
 outputJSON["Box" + boxCount] = new Box(boxCount);
 
 // Filesystem code that will be doing the scraping
-// ${files[i]}
+// to look through all files: ${files[i]}
 for (let i = 0; i < files.length; i++) {
   fs.readFile(`./data/${files[i]}`, "utf8", function(err, result) {
     const $ = cheerio.load(result);
@@ -39,13 +38,24 @@ for (let i = 0; i < files.length; i++) {
       .text()
       .trim();
     const content = { title, author, price, shipping_weight, isbn10 };
-    // console.log(content);
 
+    // Set up individual variables to see if a new box is needed or not
+    const individualBookWeight = parseFloat(
+      content.shipping_weight.split(" ")[2]
+    );
+    let totalWeight = outputJSON["Box" + boxCount].totalWeight;
 
-    // Make a condition to sort the books by weight
-    console.log(parseFloat(content.shipping_weight.split(" ")[2]));
-    outputJSON.Box1.contents.push(content);
-
+    // Condition statement for deciding which box this current book will go into.
+    totalWeight += individualBookWeight;
+    if (totalWeight <= 10) {
+      outputJSON["Box" + boxCount].totalWeight += individualBookWeight;
+      outputJSON["Box" + boxCount].contents.push(content);
+    } else {
+      boxCount++;
+      outputJSON["Box" + boxCount] = new Box(boxCount);
+      outputJSON["Box" + boxCount].totalWeight += individualBookWeight;
+      outputJSON["Box" + boxCount].contents.push(content);
+    }
     // Output file that will be the raw json of the boxes
     fs.writeFileSync("outputJSON.json", JSON.stringify(outputJSON, null, 2));
   });
