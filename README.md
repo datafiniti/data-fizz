@@ -1,5 +1,6 @@
-# Progress
+# Web scraper for Amazon
 
+# Notes
 1. Followed the netinstructions, and got reddit scraper to work. The others (hacker news and buzzfeed) are getting 200 status error messages, indicating endpoint error.
 1. Amazon book page can be scraped: 
 
@@ -8,6 +9,7 @@
 * Product dimension & Weight (shipping weight) can be found, but has to be manually extracted.
 * Image URLs (pending)
 
+1. Use the ASIN/ISBN: if 10 digit numeric code and not alphanumeric, it can safely be assumed the associated product is a book. 
 
 # References
 * Simple web scraping with Node.js / JavaScript ([netinstructions](http://www.netinstructions.com/simple-web-scraping-with-node-js-and-javascript/))
