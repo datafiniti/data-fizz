@@ -10,9 +10,11 @@ axios.get(uri)
         let $ = cheerio.load(response.data); 
         let name = $('#productTitle').text();
         let desc = $('#iframeContent').text();
-        let price;
+        let price = $('#buybox').find("span.a-text-strike").text();
         let dimensions;
-        let imageURLs;
+        let imageURLs = [];
+        imageURLs.push(Object.keys(JSON.parse($("#imgBlkFront").attr("data-a-dynamic-image"))));
+        // let imageURLs = $("#imgBlkFront").getAttribute("src");
         let weight;
 
         console.log(`Name: ${name}`);
