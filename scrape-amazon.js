@@ -1,10 +1,11 @@
-var request = require('request');
-var cheerio = require('cheerio');
-var fs = require('fs');
+const request = require('request');
+const cheerio = require('cheerio');
+const rp = require('request-promise');
+const fs = require('fs');
 
-var url = "https://www.amazon.com/dp/1501180983"
+const uri = "https://www.amazon.com/dp/1501180983"
 
-request(url, function(error, response, body) {
+request(uri, function(error, response, body) {
   if(error) {
     console.log("Error: " + error);
   }
