@@ -33,7 +33,9 @@ for (let i = 0; i < files.length; i++) {
       "#productDetailsTable .content ul li:nth-child(7)"
     )
       .text()
-      .trim();
+      .trim()
+      .split(" ", 4);
+    console.log(shipping_weight);
     const isbn10 = $("#productDetailsTable .content ul li:nth-child(4)")
       .text()
       .trim()
