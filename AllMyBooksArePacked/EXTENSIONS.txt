@@ -1,0 +1,5 @@
+Putting the 20 books into N boxes with each box weighing no more than 10 pounds is otherwise similar to the 0/1 knapsack problem. The difference is we don’t have to take into account values here so all the values can be 1. My coding boot camp barely touched on algorithms so I watched a YouTube video on the problem. While I understand the answer, I didn’t want to pose as if I’m very comfortable with algorithms. 
+
+My application can be extended to handle domains beyond Amazon.com by adding another scraping function to handle said domain. I could initiate the contents array outside of the current scrape function so that other functions could push to the same array and avoid scope issues. 
+Adding additional arrays for other products can be accomplished to handle more products. For example, a music array to handle music data.
+Use of dynamic programing would be useful in shipping 2,000,000 books. This is to avoid computing boxes of books that were already computed. Multiple servers running at the same time would reduce the time to parse the books.
