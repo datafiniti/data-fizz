@@ -2,11 +2,12 @@ let axios = require('axios');
 let cheerio = require('cheerio');
 let fs = require('fs'); 
 
-// const uri = "https://www.amazon.com/dp/1501180983"
-const uri = "https://www.amazon.com/dp/1628600160"
+const uri = "https://www.amazon.com/dp/1501180983"
+// const uri = "https://www.amazon.com/dp/1628600160"
 
 class Book {
-  constructor(name, price, description, dimensions, imageURLs, weight) {
+  constructor(id, name, price, description, dimensions, imageURLs, weight) {
+    this.id = id;
     this.name = name;
     this.price = price;
     this.description = description;
@@ -32,19 +33,16 @@ axios.get(uri)
         
         let dimensions = productDetails[5].children[1].data.split('\n')[1].replace(/^[ \t]+/g,'');
         let weight = productDetails[6].children[1].data.replace(/^[ \t(]+|[()]/g,'');
-        // console.log(dimensions[5].children[0].data)
-        // console.log(dimensions[6].children[0].data)
+        let imageURLs = Object.keys(JSON.parse($("#imgBlkFront").attr("data-a-dynamic-image")));
 
-        let imageURLs = [];
-        imageURLs.push(Object.keys(JSON.parse($("#imgBlkFront").attr("data-a-dynamic-image"))));
-
-        console.log(`Name: ${name}`);
-        console.log(`List Price: ${price}`)
-        // console.log(`Description: ${desc}`);
-        console.log(`ASIN: ${id}`)
-        
-        // console.log(`Product Dimensions: ${dimensions}`)
-        // console.log(`Image URLs: ${imageURLs}`)
-        // console.log(`Weight: ${weight}`)
+        let book = new Book(id, name, price, desc, dimensions, imageURLs, weight);
+        // fs.appendFileSync('amazon.txt', book);
+        fs.writeFile("amazon.json", JSON.stringify({"product":book}), {encoding:"utf8"}, function(err) {
+          if(err) {
+              console.log(err);
+          } else {
+              console.log("The file was saved!");
+          }
+      });
       }
     }, (error) => console.log(err) );
