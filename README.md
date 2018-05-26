@@ -5,7 +5,8 @@
 1. Amazon book page can be scraped: 
 
 * Name (product title):  `document.getElementById("productTitle").innerHTML`
-* Description: `document.getElementById("iframeContent").innerHTML`
+* Description: `document.getElementById("iframeContent").innerHTML` 
+* (Updated) `$('iframe#bookDesc_iframe').contentDocument.body.childNodes[1].innerHTML`
 * Product dimension & Weight (shipping weight) can be found, but has to be manually extracted.
 * Image URLs (pending)
 
