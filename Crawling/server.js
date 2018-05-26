@@ -4,47 +4,74 @@ const Nightmare = require('nightmare');
 const nightmare = Nightmare({ show: true });
 var fs = require('fs');
 const app = express();
-;
-const url = 'https://www.amazon.com/'
 
+const url = 'https://www.amazon.com/';
+let urls = [];
 //using nightmare to go to desired book page listing
 nightmare
-    .goto(url)
-    .click('#nav-link-shopall')
-    .click('#a-page > div.a-container.fsdContainer.fsdFullWidthImage > div > div:nth-child(3) > div:nth-child(3) > div > a:nth-child(1)')
-    .type('#twotabsearchtextbox', 'javascript for dummies')
-    .click('#nav-search > form > div.nav-right > div > input')
+  .goto(url)
+  .click('#nav-link-shopall')
+  .click('#a-page > div.a-container.fsdContainer.fsdFullWidthImage > div > div:nth-child(3) > div:nth-child(3) > div > a:nth-child(1)')
+  .insert('#twotabsearchtextbox', 'batman')
+  .click('#nav-search > form > div.nav-right > div > input')
+  .wait(2000)
+  .click('#leftNavContainer > ul:nth-child(27) > div > li:nth-child(1) > span > a')
+  .wait(2000)
 
-    .evaluate(() => document.querySelector('body').outerHTML)
+  .evaluate(() => document.querySelector('body').outerHTML)
     .then(function (html) {
-        const $ = cheerio.load(html);;
-        // do something
-        //select ul containing products, then have function click on each product based on 'id result' and gather info from each page
-        //have to figure out how to open each page. perhaps start function at search page.
-        //also try replacing type() with insert() for faster results
+      const $ = cheerio.load(html);
 
-        let name, price, description, dimensions, imageURL, weight;
-        let json = { name : "", price : "", description : "", dimensions : "", imageURL : "", weight : ""};
+      $('#atfResults > ul > li > div > div > div> div > div > div > a.s-access-detail-page').each(function(){
+          var link=$(this).attr('href')
+          urls.push(link);
+        })
+        urls.length=9;
+        urls.reduce(function(accumulator, url) {
+          return accumulator.then(function(results) {
+            return nightmare.goto(url)
+              .wait(2500)
+              .title()
+              .then(function(result){
+                results.push(result);
+                return results;
+                      });
+                nightmare.catch(error => { return someFunction(nightmare); })
+                  });
+            }, Promise.resolve([])).then(function(results){
+                console.dir(results);
+            });
 
-        $('#result_0 > div > div > div > div.a-fixed-left-grid-col.a-col-right > div.a-row.a-spacing-small > div:nth-child(1) > a > h2').filter(function(){
-        let data = $(this);
-        name = data.text();
+            })
 
-        json.name = name;
 
-        fs.writeFile('output.json', JSON.stringify(json, null, 4), function(err){
 
-        console.log('File successfully written! - Check your project directory for the output.json file');
 
-      })
-      })
-    })
+    //
+    //
+    //   $('#s-results-list-atf li')
 
-    // .catch(function (error) {
-    // console.error('Error:', error);
-    // });
+    //   fs.writeFile('output.json', JSON.stringify(json, null, 4), function(err){
+    //
+    //   console.log('File successfully written! - Check your project directory for the output.json file');
+    //
+
+
+
+  // .catch(function (error) {
+  // console.error('Error:', error);
+  // });
+  // }
+
 
 app.listen(3000, (err) => {
   if (err) throw err;
   console.log('Magic happens on port 3000');
 });
+
+//select ul containing products
+//maybe use .map() or .each() to select 1st ten selectors then
+//write function under selector that uses nightmare to click on each product based on 'id result'
+//in the function once navigated to page, collect data using selectors then assign to json variable
+
+//also try replacing type() with insert() for faster results
