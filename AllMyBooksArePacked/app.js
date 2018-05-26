@@ -52,11 +52,27 @@ for (let i = 0; i < files.length; i++) {
       outputJSON["Box" + boxCount].contents.push(content);
     } else {
       boxCount++;
+      outputJSON[""]
       outputJSON["Box" + boxCount] = new Box(boxCount);
       outputJSON["Box" + boxCount].totalWeight += individualBookWeight;
       outputJSON["Box" + boxCount].contents.push(content);
     }
+
     // Output file that will be the raw json of the boxes
-    fs.writeFileSync("outputJSON.json", JSON.stringify(outputJSON, null, 2));
+    if (i === (files.length)) {
+      fs.writeFileSync("outputJSON.json", JSON.stringify(outputJSON, null, 2));
+      return;
+    }
   });
 }
+
+// syncro attempt
+// const scrape = files => {
+//   for (let i = 0; i < files.length; i++) {
+//     const bookHTML = fs.readFileSync(`./data/book1.html`, "utf8");
+//     const $ = cheerio.load(bookHTML);
+//     const title = $("#btAsinTitle").text().trim();
+//     console.log(title);
+//   }
+// };
+// scrape(files);
