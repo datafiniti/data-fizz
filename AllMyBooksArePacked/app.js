@@ -18,6 +18,9 @@ outputJSON["Box" + boxCount] = new Box(boxCount);
 // to look through all files: ${files[i]}
 for (let i = 0; i < files.length; i++) {
   fs.readFile(`./data/${files[i]}`, "utf8", function(err, result) {
+    if (err) {
+      console.log(err);
+    }
     const $ = cheerio.load(result);
     const title = $("#btAsinTitle")
       .text()
@@ -27,30 +30,37 @@ for (let i = 0; i < files.length; i++) {
       .text()
       .trim();
     const price = $("#actualPriceValue .priceLarge").text() + " USD";
-    // const shipRegex = /(<li><b>Shipping Weight:<\/b>).+/g;
-    // const shipping_weight = $("#productDetailsTable .content ul").text().match(shipRegex);
-    const shipping_weight = $(
-      "#productDetailsTable .content ul li:nth-child(7)"
-    )
-      .text()
-      .trim();
-    // console.log(shipping_weight);
+    const shipRegex = /(<li><b>Shipping Weight:<\/b>).+/g;
+    const shipping_weight = $("#productDetailsTable .content ul")
+      .html()
+      .trim()
+      .match(shipRegex)[0]
+      .split(" ")
+      .slice(2, 4)
+      .join(" ");
     const isbn10 = $("#productDetailsTable .content ul li:nth-child(4)")
       .text()
       .trim()
       .split(" ")[1];
-    const content = { title, author, price, shipping_weight, "isbn-10": isbn10 };
+    const content = {
+      title,
+      author,
+      price,
+      shipping_weight,
+      "isbn-10": isbn10
+    };
 
     // Set up individual variables to see if a new box is needed or not
     const individualBookWeight = parseFloat(
-      content.shipping_weight.split(" ")[2]
+      content.shipping_weight.split(" ")[0]
     );
-    console.log(content.shipping_weight.split(' ')[2]);
-    let totalWeight = outputJSON["Box" + boxCount].totalWeight;
+    // console.log(individualBookWeight);
+    // console.log(content.shipping_weight.split(' ')[2]);
+    let currentTotalWeight = outputJSON["Box" + boxCount].totalWeight;
 
     // Condition statement for deciding which box this current book will go into.
-    totalWeight += individualBookWeight;
-    if (totalWeight <= 10) {
+    currentTotalWeight += individualBookWeight;
+    if (currentTotalWeight <= 10) {
       outputJSON["Box" + boxCount].totalWeight += individualBookWeight;
       outputJSON["Box" + boxCount].contents.push(content);
     } else {
