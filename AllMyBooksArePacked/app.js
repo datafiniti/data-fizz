@@ -17,7 +17,7 @@ outputJSON["Box" + boxCount] = new Box(boxCount);
 // Filesystem code that will be doing the scraping
 // to look through all files: ${files[i]}
 for (let i = 0; i < files.length; i++) {
-  fs.readFile(`./data/book1.html`, "utf8", function(err, result) {
+  fs.readFile(`./data/${files[i]}`, "utf8", function(err, result) {
     const $ = cheerio.load(result);
     const title = $("#btAsinTitle")
       .text()
@@ -29,7 +29,6 @@ for (let i = 0; i < files.length; i++) {
     const price = $("#actualPriceValue .priceLarge").text() + " USD";
     // const shipRegex = /(<li><b>Shipping Weight:<\/b>).+/g;
     // const shipping_weight = $("#productDetailsTable .content ul").text().match(shipRegex);
-    // console.log(shipping_weight);
     const shipping_weight = $(
       "#productDetailsTable .content ul li:nth-child(7)"
     )
@@ -37,7 +36,8 @@ for (let i = 0; i < files.length; i++) {
       .trim();
     const isbn10 = $("#productDetailsTable .content ul li:nth-child(4)")
       .text()
-      .trim();
+      .trim()
+      .split(" ")[1];
     const content = { title, author, price, shipping_weight, isbn10 };
 
     // Set up individual variables to see if a new box is needed or not
@@ -60,7 +60,8 @@ for (let i = 0; i < files.length; i++) {
     }
 
     // Output file that will be the raw json of the boxes
-    if (i === files.length) {
+    console.log(i);
+    if (i === files.length - 1) {
       fs.writeFileSync("outputJSON.json", JSON.stringify(outputJSON, null, 2));
     }
   });
