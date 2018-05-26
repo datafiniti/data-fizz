@@ -61,7 +61,6 @@ for (let i = 0; i < files.length; i++) {
     // Output file that will be the raw json of the boxes
     if (i === (files.length)) {
       fs.writeFileSync("outputJSON.json", JSON.stringify(outputJSON, null, 2));
-      return;
     }
   });
 }

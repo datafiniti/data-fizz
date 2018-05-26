@@ -1,15 +1,16 @@
 // install testing dependencies
-const expect = require('chai').expect;
-const chai = require('chai');
-chai.use(require('chai-json'));
-const fs = require('fs');
-const json = fs.readFileSync('./outputJSON.json', 'utf8');
-const jsonObj = JSON.parse(json);
+const expect = require("chai").expect;
+const fs = require("fs");
+const output = JSON.parse(fs.readFileSync("./outputJSON.json", "utf8"));
 
-describe("Output JSON", () => {
-    it('Should contain exactly 20 books or however many are in the file system', () => {
-        expect(jsonObj).to.be.an('object');
-    });
+describe("Output JSON File", () => {
+  it("Should be an object", () => {
+    expect(output).to.be.an("object");
+  });
+  it("Weight to be returned as a string", () => {
+    expect(output.Box1.totalWeight).to.be.a('string');
+  });
+  it("Box id to be returned as a string", () => {
+    expect(output.Box1.totalWeight).to.be.a('string');
+  });
 });
-
-
