@@ -33,19 +33,19 @@ for (let i = 0; i < files.length; i++) {
       "#productDetailsTable .content ul li:nth-child(7)"
     )
       .text()
-      .trim()
-      .split(" ", 4);
-    console.log(shipping_weight);
+      .trim();
+    // console.log(shipping_weight);
     const isbn10 = $("#productDetailsTable .content ul li:nth-child(4)")
       .text()
       .trim()
       .split(" ")[1];
-    const content = { title, author, price, shipping_weight, isbn10 };
+    const content = { title, author, price, shipping_weight, "isbn-10": isbn10 };
 
     // Set up individual variables to see if a new box is needed or not
     const individualBookWeight = parseFloat(
       content.shipping_weight.split(" ")[2]
     );
+    console.log(content.shipping_weight.split(' ')[2]);
     let totalWeight = outputJSON["Box" + boxCount].totalWeight;
 
     // Condition statement for deciding which box this current book will go into.
@@ -62,7 +62,6 @@ for (let i = 0; i < files.length; i++) {
     }
 
     // Output file that will be the raw json of the boxes
-    console.log(i);
     if (i === files.length - 1) {
       fs.writeFileSync("outputJSON.json", JSON.stringify(outputJSON, null, 2));
     }
