@@ -4,12 +4,17 @@
   "description": "This exercise is designed to test your ability to use object-oriented design principles, data structures and standard algorithms to craft a small application.  We will not only be looking at the correctness of your solution but at the style of your code, its modularity, its extensibility, and ease at which the whole package can be built and tested.  As a small team we believe these principles are a key element of our continued success.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "node app.js"
   },
   "author": "Mark Alaniz",
   "license": "ISC",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-json": "^1.0.0",
+    "mocha": "^5.2.0"
   }
 }
