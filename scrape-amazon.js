@@ -26,7 +26,14 @@ axios.get(uri)
         desc = $('#bookDesc_iframe_wrapper')
         // let desc = $('#iframeContent');
         // console.log(Object.getOwnPropertyNames(desc.contents));
-        console.log($('iframe').length);
+        // console.log($('#bookDescription_feature_div')[0].childNodes[5].childNodes[1]);
+        // console.log($('#bookDescription_feature_div')[0].childNodes[5].childNodes[1].childNodes[1]);
+        // console.log($('#postBodyPS')[0].childNodes[1]);
+        // console.log($('#bookDesc_iframe_wrapper')[0] == $('#postBodyPS')[0].childNodes[1]);
+        console.log($('#bookDesc_iframe_wrapper')[0].children);
+
+        
+       
         // console.log($('iframe#bookDesc_iframe').contentDocument.body.childNodes[1].innerHTML);
         // console.log($("#bookDesc_iframe_wrapper").length)
         // console.log(Object.getOwnPropertyNames($("#bookDesc_iframe_wrapper")));
