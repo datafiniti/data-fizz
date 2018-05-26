@@ -17,7 +17,7 @@ outputJSON["Box" + boxCount] = new Box(boxCount);
 // Filesystem code that will be doing the scraping
 // to look through all files: ${files[i]}
 for (let i = 0; i < files.length; i++) {
-  fs.readFile(`./data/${files[i]}`, "utf8", function(err, result) {
+  fs.readFile(`./data/book1.html`, "utf8", function(err, result) {
     const $ = cheerio.load(result);
     const title = $("#btAsinTitle")
       .text()
@@ -27,13 +27,14 @@ for (let i = 0; i < files.length; i++) {
       .text()
       .trim();
     const price = $("#actualPriceValue .priceLarge").text() + " USD";
-    // const shipRegex = /Shipping Weight/g;
+    // const shipRegex = /(<li><b>Shipping Weight:<\/b>).+/g;
+    // const shipping_weight = $("#productDetailsTable .content ul").text().match(shipRegex);
+    // console.log(shipping_weight);
     const shipping_weight = $(
       "#productDetailsTable .content ul li:nth-child(7)"
     )
       .text()
       .trim();
-    // const shipping_weight = $("#productDetailsTable .content ul");
     const isbn10 = $("#productDetailsTable .content ul li:nth-child(4)")
       .text()
       .trim();
@@ -52,26 +53,15 @@ for (let i = 0; i < files.length; i++) {
       outputJSON["Box" + boxCount].contents.push(content);
     } else {
       boxCount++;
-      outputJSON[""]
+      outputJSON[""];
       outputJSON["Box" + boxCount] = new Box(boxCount);
       outputJSON["Box" + boxCount].totalWeight += individualBookWeight;
       outputJSON["Box" + boxCount].contents.push(content);
     }
 
     // Output file that will be the raw json of the boxes
-    if (i === (files.length)) {
+    if (i === files.length) {
       fs.writeFileSync("outputJSON.json", JSON.stringify(outputJSON, null, 2));
     }
   });
 }
-
-// syncro attempt
-// const scrape = files => {
-//   for (let i = 0; i < files.length; i++) {
-//     const bookHTML = fs.readFileSync(`./data/book1.html`, "utf8");
-//     const $ = cheerio.load(bookHTML);
-//     const title = $("#btAsinTitle").text().trim();
-//     console.log(title);
-//   }
-// };
-// scrape(files);
