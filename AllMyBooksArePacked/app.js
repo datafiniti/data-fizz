@@ -1,8 +1,8 @@
 // Require Dependencies
 const fs = require("fs");
-const scraper = require('./scripts/scraper');
-const createBox = require('./scripts/createBox');
-const addBook = require('./scripts/addBook');
+const scraper = require("./scripts/scraper");
+const createBox = require("./scripts/createBox");
+const addBook = require("./scripts/addBook");
 
 // json variable that will be used to write the output data
 const outputJSON = {};

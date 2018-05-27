@@ -1,20 +1,27 @@
 {
   "Box1": {
     "id": 1,
-    "totalWeight": 2.6,
+    "totalWeight": 5.3,
     "contents": [
       {
-        "title": "No god but God: The Origins and Evolution of Islam [Paperback]",
+        "title": "Zealot: The Life and Times of Jesus of Nazareth [Hardcover]",
         "author": "Reza Aslan",
-        "price": "$8.99 USD",
-        "shipping_weight": "2.6 pounds",
-        "isbn-10": "0385739761"
+        "price": "$16.89 USD",
+        "shipping_weight": "1.2 pounds",
+        "isbn-10": "140006922X"
+      },
+      {
+        "title": "The Ocean at the End of the Lane: A Novel [Deckle Edge] [Hardcover]",
+        "author": "Neil Gaiman",
+        "price": "$15.22 USD",
+        "shipping_weight": "4.1 pounds",
+        "isbn-10": "0062255657"
       }
     ]
   },
   "Box2": {
     "id": 2,
-    "totalWeight": 9,
+    "totalWeight": 7.8,
     "contents": [
       {
         "title": "The Europa Regional Surveys of the World Set 2011: 9-Volume Set [Hardcover]",
@@ -22,38 +29,11 @@
         "price": "$7,450.00 USD",
         "shipping_weight": "7.8 pounds",
         "isbn-10": "1857435885"
-      },
-      {
-        "title": "Zealot: The Life and Times of Jesus of Nazareth [Hardcover]",
-        "author": "Reza Aslan",
-        "price": "$16.89 USD",
-        "shipping_weight": "1.2 pounds",
-        "isbn-10": "140006922X"
       }
     ]
   },
   "Box3": {
     "id": 3,
-    "totalWeight": 5,
-    "contents": [
-      {
-        "title": "Man of Steel: Inside the Legendary World of Superman [Hardcover]",
-        "author": "Daniel Wallace",
-        "price": "$31.07 USD",
-        "shipping_weight": "2.8 pounds",
-        "isbn-10": "1608871819"
-      },
-      {
-        "title": "I Wear the Black Hat: Grappling with Villains (Real and Imagined) [Hardcover]",
-        "author": "Chuck Klosterman",
-        "price": "$15.49 USD",
-        "shipping_weight": "2.2 pounds",
-        "isbn-10": "1439184496"
-      }
-    ]
-  },
-  "Box4": {
-    "id": 4,
     "totalWeight": 7.6,
     "contents": [
       {
@@ -65,21 +45,28 @@
       }
     ]
   },
-  "Box5": {
-    "id": 5,
-    "totalWeight": 4.1,
+  "Box4": {
+    "id": 4,
+    "totalWeight": 5.4,
     "contents": [
       {
-        "title": "The Ocean at the End of the Lane: A Novel [Deckle Edge] [Hardcover]",
-        "author": "Neil Gaiman",
-        "price": "$15.22 USD",
-        "shipping_weight": "4.1 pounds",
-        "isbn-10": "0062255657"
+        "title": "No god but God: The Origins and Evolution of Islam [Paperback]",
+        "author": "Reza Aslan",
+        "price": "$8.99 USD",
+        "shipping_weight": "2.6 pounds",
+        "isbn-10": "0385739761"
+      },
+      {
+        "title": "Man of Steel: Inside the Legendary World of Superman [Hardcover]",
+        "author": "Daniel Wallace",
+        "price": "$31.07 USD",
+        "shipping_weight": "2.8 pounds",
+        "isbn-10": "1608871819"
       }
     ]
   },
-  "Box6": {
-    "id": 6,
+  "Box5": {
+    "id": 5,
     "totalWeight": 9.4,
     "contents": [
       {
@@ -91,10 +78,17 @@
       }
     ]
   },
-  "Box7": {
-    "id": 7,
-    "totalWeight": 8.2,
+  "Box6": {
+    "id": 6,
+    "totalWeight": 7.2,
     "contents": [
+      {
+        "title": "I Wear the Black Hat: Grappling with Villains (Real and Imagined) [Hardcover]",
+        "author": "Chuck Klosterman",
+        "price": "$15.49 USD",
+        "shipping_weight": "2.2 pounds",
+        "isbn-10": "1439184496"
+      },
       {
         "title": "The Cuckoo's Calling [Hardcover]",
         "author": "Robert Galbraith",
@@ -108,18 +102,11 @@
         "price": "$16.46 USD",
         "shipping_weight": "3.6 pounds",
         "isbn-10": "0062073168"
-      },
-      {
-        "title": "Pacific Rim: Man, Machines, and Monsters [Hardcover]",
-        "author": "David S Cohen",
-        "price": "$27.83 USD",
-        "shipping_weight": "3.2 pounds",
-        "isbn-10": "1608871827"
       }
     ]
   },
-  "Box8": {
-    "id": 8,
+  "Box7": {
+    "id": 7,
     "totalWeight": 8.8,
     "contents": [
       {
@@ -131,30 +118,17 @@
       }
     ]
   },
-  "Box9": {
-    "id": 9,
-    "totalWeight": 7.1000000000000005,
+  "Box8": {
+    "id": 8,
+    "totalWeight": 9.600000000000001,
     "contents": [
       {
-        "title": "Never Go Back: A Jack Reacher Novel [Hardcover]",
-        "author": "Lee Child",
-        "price": "$17.52 USD",
-        "shipping_weight": "4.9 pounds",
-        "isbn-10": "0385344341"
+        "title": "Pacific Rim: Man, Machines, and Monsters [Hardcover]",
+        "author": "David S Cohen",
+        "price": "$27.83 USD",
+        "shipping_weight": "3.2 pounds",
+        "isbn-10": "1608871827"
       },
-      {
-        "title": "Sylvia Day Crossfire Series Boxed Set: Bared to You/Reflected in You/Entwined with You [Paperback]",
-        "author": "Sylvia Day",
-        "price": "$26.32 USD",
-        "shipping_weight": "2.2 pounds",
-        "isbn-10": "0425266060"
-      }
-    ]
-  },
-  "Box10": {
-    "id": 10,
-    "totalWeight": 6.4,
-    "contents": [
       {
         "title": "Inquebrantable: Mi Historia, A Mi Manera (Atria Espanol) (Spanish Edition) [Paperback]",
         "author": "Jenni Rivera",
@@ -164,28 +138,55 @@
       }
     ]
   },
-  "Box11": {
-    "id": 11,
-    "totalWeight": 5.800000000000001,
+  "Box9": {
+    "id": 9,
+    "totalWeight": 7.1000000000000005,
     "contents": [
+      {
+        "title": "Sylvia Day Crossfire Series Boxed Set: Bared to You/Reflected in You/Entwined with You [Paperback]",
+        "author": "Sylvia Day",
+        "price": "$26.32 USD",
+        "shipping_weight": "2.2 pounds",
+        "isbn-10": "0425266060"
+      },
+      {
+        "title": "Never Go Back: A Jack Reacher Novel [Hardcover]",
+        "author": "Lee Child",
+        "price": "$17.52 USD",
+        "shipping_weight": "4.9 pounds",
+        "isbn-10": "0385344341"
+      }
+    ]
+  },
+  "Box10": {
+    "id": 10,
+    "totalWeight": 9.4,
+    "contents": [
+      {
+        "title": "The English Girl: A Novel (Gabriel Allon) [Hardcover]",
+        "author": "Daniel Silva",
+        "price": "$16.46 USD",
+        "shipping_weight": "3.6 pounds",
+        "isbn-10": "0062073168"
+      },
+      {
+        "title": "This Town: Two Parties and a Funeral-Plus, Plenty of Valet Parking!-in America's Gilded Capital [Hardcover]",
+        "author": "Mark Leibovich",
+        "price": "$15.37 USD",
+        "shipping_weight": "1.4 pounds",
+        "isbn-10": "0399161309"
+      },
       {
         "title": "The House of Hades (Heroes of Olympus, Book 4) [Hardcover]",
         "author": "Rick Riordan",
         "price": "$10.19 USD",
         "shipping_weight": "4.4 pounds",
         "isbn-10": "1423146727"
-      },
-      {
-        "title": "The Pioneer Woman Cooks: A Year of Holidays: 135 Step-by-Step Recipes for Simple, Scrumptious Celebrations [Hardcover]",
-        "author": "Ree Drummond",
-        "price": "$20.29 USD",
-        "shipping_weight": "1.4 pounds",
-        "isbn-10": "0062225227"
       }
     ]
   },
-  "Box12": {
-    "id": 12,
+  "Box11": {
+    "id": 11,
     "totalWeight": 5.6,
     "contents": [
       {
