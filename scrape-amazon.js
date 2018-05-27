@@ -2,8 +2,8 @@ let axios = require('axios');
 let cheerio = require('cheerio');
 let fs = require('fs'); 
 
-// const uri = "https://www.amazon.com/dp/1501180983"
-const uri = "https://www.amazon.com/dp/1628600160"
+const uri = "https://www.amazon.com/dp/1501180983"
+// const uri = "https://www.amazon.com/dp/1628600160"
 
 class Book {
   constructor(id, name, price, description, dimensions, imageURLs, weight) {
@@ -22,18 +22,19 @@ axios.get(uri)
     if(response.status === 200) {
         let $ = cheerio.load(response.data); 
         let name = $('#productTitle').text();
-        let desc = $('iframe#bookDesc_iframe');
-        desc = $('#bookDesc_iframe_wrapper')
+        // let desc = $('iframe#bookDesc_iframe');
+        // let desc = $('#bookDesc_iframe_wrapper')[0]
         // let desc = $('#iframeContent');
-        // console.log(Object.getOwnPropertyNames(desc.contents));
+        // console.log(Object.getOwnPropertyNames(desc));
         // console.log($('#bookDescription_feature_div')[0].childNodes[5].childNodes[1]);
         // console.log($('#bookDescription_feature_div')[0].childNodes[5].childNodes[1].childNodes[1]);
         // console.log($('#postBodyPS')[0].childNodes[1]);
         // console.log($('#bookDesc_iframe_wrapper')[0] == $('#postBodyPS')[0].childNodes[1]);
-        console.log($('#bookDesc_iframe_wrapper')[0].children);
+        // console.log($('#bookDesc_iframe').contentDocument.childNodes[0].childNodes[1].childNodes[1])
+        // console.log($('#bookDesc_iframe')[0].contentDocument)
+        let desc = $("meta[name='description']")[0].attribs.content;
+        console.log(desc);
 
-        
-       
         // console.log($('iframe#bookDesc_iframe').contentDocument.body.childNodes[1].innerHTML);
         // console.log($("#bookDesc_iframe_wrapper").length)
         // console.log(Object.getOwnPropertyNames($("#bookDesc_iframe_wrapper")));
