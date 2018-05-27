@@ -1,6 +1,6 @@
 const cheerio = require('cheerio');
 
-const scrape = result => {
+const scraper = result => {
   const $ = cheerio.load(result);
   const title = $("#btAsinTitle")
     .text()
@@ -36,4 +36,4 @@ const scrape = result => {
   return content;
 };
 
-module.exports = scrape;
+module.exports = scraper;
