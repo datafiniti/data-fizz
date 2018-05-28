@@ -6,11 +6,20 @@
 
 * Name (product title):  `document.getElementById("productTitle").innerHTML`
 * Description: `document.getElementById("iframeContent").innerHTML` 
+
 * (Updated) `$('iframe#bookDesc_iframe').contentDocument.body.childNodes[1].innerHTML`
+* (Updated) `$('iframe#bookDesc_iframe').contentDocument.body.childNodes[1].textContent`
+* (Another) `$('#bookDesc_iframe').contentDocument.childNodes[0].childNodes[1].childNodes[1].innerHTML`
+
 * Product dimension & Weight (shipping weight) can be found, but has to be manually extracted.
 * Image URLs (pending)
 
 1. Use the ASIN/ISBN: if 10 digit numeric code and not alphanumeric, it can safely be assumed the associated product is a book. 
+
+# Useful tips
+* `Object.getOwnPropertyNames(object)`
+* `Ctrl+U` in the browser will show open `view-source` of the rendered page, which reflects closely what jQuery/cheerio is working with.
+* Firefox dev console is slightly better in displaying the output in cascading format.
 
 # References
 * Simple web scraping with Node.js / JavaScript ([netinstructions](http://www.netinstructions.com/simple-web-scraping-with-node-js-and-javascript/))
