@@ -3,7 +3,8 @@ let cheerio = require('cheerio');
 let fs = require('fs'); 
 
 // const uri = "https://www.amazon.com/dp/1501180983"
-const uri = "https://www.amazon.com/dp/1628600160"
+// const uri = "https://www.amazon.com/dp/1628600160"
+const uri = "https://www.amazon.com/dp/1587676109"
 
 class Book {
   constructor(id, name, price, description, dimensions, imageURLs, weight) {
@@ -43,7 +44,7 @@ axios.get(uri)
         // console.log(desc);
 
         let desc = $($('noscript:nth-child(2)')[0].childNodes[0].data).text().replace(/[\n\t]/g,'');
-        let price = parseFloat($('#buyBoxInner').find("span.a-text-strike").text().replace(/\$/g,''));
+        let price = parseFloat($('#buyBoxInner').find("span.a-text-strike").text().replace(/\$/g,'')).toFixed(2);
         let productDetails =  $('#productDetailsTable').find('li');       
         let id = productDetails[3].children[1].data.replace(/^[ \t(]+/g,'');
         let dimensions = productDetails[5].children[1].data.split('\n')[1].replace(/^[ \t]+/g,'');
