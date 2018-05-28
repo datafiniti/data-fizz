@@ -1,0 +1,14 @@
+1.) Domains beyond Amazon.com
+-For this particular method of scraping, where I have to access my own directory rather than a url, I feel the method will be exactly the same. The biggest difference would be 
+in my /scripts/scraper.js file where I would have custom query selectors for that particular html code.
+
+2.) Products beyond just simply books.
+- For products beyond books, I would have to add new constructors for each product with a specific format in mind. Depending on how uniform the layout of the site is, 
+I may only have to tweak the actual scraper function slightly to use the appropriate query selectors.
+
+3.)Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+-One of the things that comes to mind is reducing the about of memory that is being used to store each scraped item, and reducing the amount of data that has to be written
+to the output file. 
+
+Taking advantage of the asynchronous nature of node, as well as apending data to your output as you get it without keeping it stuffed in a variable for too long might help a lot
+when trying to handle a massive amount of books. 

@@ -1,9 +1,10 @@
 // Require Dependencies
 const fs = require("fs");
-const cheerio = require("cheerio");
-const Box = require("./constructors/Box.js");
+const scraper = require("./scripts/scraper");
+const createBox = require("./scripts/createBox");
+const addBook = require("./scripts/addBook");
 
-// json variable that will be used as the output
+// json variable that will be used to write the output data
 const outputJSON = {};
 
 // Count number of files in directory so we can loop over any amount in the future
@@ -12,68 +13,42 @@ const files = fs.readdirSync(dir);
 
 // set up Initial box for storing books
 let boxCount = 1;
-outputJSON["Box" + boxCount] = new Box(boxCount);
+let currentBox = createBox(outputJSON, boxCount);
 
-// Filesystem code that will be doing the scraping
-// to look through all files: ${files[i]}
+// Access the file system loop through each html doc. Scrape from each one of those.
 for (let i = 0; i < files.length; i++) {
   fs.readFile(`./data/${files[i]}`, "utf8", function(err, result) {
     if (err) {
       console.log(err);
     }
-    const $ = cheerio.load(result);
-    const title = $("#btAsinTitle")
-      .text()
-      .trim();
-    const author = $("#handleBuy .buying span a")
-      .first()
-      .text()
-      .trim();
-    const price = $("#actualPriceValue .priceLarge").text() + " USD";
-    const shipRegex = /(<li><b>Shipping Weight:<\/b>).+/g;
-    const shipping_weight = $("#productDetailsTable .content ul")
-      .html()
-      .trim()
-      .match(shipRegex)[0]
-      .split(" ")
-      .slice(2, 4)
-      .join(" ");
-    const isbn10 = $("#productDetailsTable .content ul li:nth-child(4)")
-      .text()
-      .trim()
-      .split(" ")[1];
-    const content = {
-      title,
-      author,
-      price,
-      shipping_weight,
-      "isbn-10": isbn10
-    };
+    // scraper function parses and organizes content from each file
+    const content = scraper(result);
+    console.log(content);
 
     // Set up individual variables to see if a new box is needed or not
     const individualBookWeight = parseFloat(
       content.shipping_weight.split(" ")[0]
     );
-    // console.log(individualBookWeight);
-    // console.log(content.shipping_weight.split(' ')[2]);
-    let currentTotalWeight = outputJSON["Box" + boxCount].totalWeight;
+    let currentTotalWeight = currentBox.totalWeight;
 
     // Condition statement for deciding which box this current book will go into.
     currentTotalWeight += individualBookWeight;
     if (currentTotalWeight <= 10) {
-      outputJSON["Box" + boxCount].totalWeight += individualBookWeight;
-      outputJSON["Box" + boxCount].contents.push(content);
+      addBook(content, individualBookWeight, currentBox);
     } else {
       boxCount++;
-      outputJSON[""];
-      outputJSON["Box" + boxCount] = new Box(boxCount);
-      outputJSON["Box" + boxCount].totalWeight += individualBookWeight;
-      outputJSON["Box" + boxCount].contents.push(content);
+      currentBox = createBox(outputJSON, boxCount);
+      addBook(content, individualBookWeight, currentBox);
+      const weightIntegar = outputJSON["Box" + (boxCount - 1)].totalWeight;
+      outputJSON[
+        "Box" + (boxCount - 1)
+      ].totalWeight = `${weightIntegar} pounds`;
     }
 
     // Output file that will be the raw json of the boxes
     if (i === files.length - 1) {
       fs.writeFileSync("outputJSON.json", JSON.stringify(outputJSON, null, 2));
     }
+    return result;
   });
 }
