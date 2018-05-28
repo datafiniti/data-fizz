@@ -7,7 +7,7 @@ let fs = require('fs');
 const uri = "https://www.amazon.com/dp/1587676109"
 
 class Book {
-  constructor(id, name, price, description, dimensions, imageURLs, weight) {
+  constructor(id, name, price, description, dimensions, imageURLs, weight, sourceURL) {
     this.id = id;
     this.name = name;
     this.price = price;
@@ -15,8 +15,12 @@ class Book {
     this.dimensions = dimensions;
     this.imageURLs = imageURLs;
     this.weight = weight;
+    this.sourceURL = sourceURL;
   }
+  
 }
+
+
 
 axios.get(uri)
   .then((response) => {
@@ -51,7 +55,7 @@ axios.get(uri)
         let weight = productDetails[6].children[1].data.replace(/^[ \t(]+|[()]/g,'');
         let imageURLs = Object.keys(JSON.parse($("#imgBlkFront").attr("data-a-dynamic-image")));
 
-        let book = new Book(id, name, price, desc, dimensions, imageURLs, weight);
+        let book = new Book(id, name, price, desc, dimensions, imageURLs, weight, uri);
         // fs.appendFileSync('amazon.txt', book);
         fs.writeFile("amazon.txt", JSON.stringify({"product":book}), {encoding:"utf8"}, function(err) {
           if(err) {
