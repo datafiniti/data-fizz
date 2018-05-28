@@ -39,6 +39,10 @@ for (let i = 0; i < files.length; i++) {
       boxCount++;
       currentBox = createBox(outputJSON, boxCount);
       addBook(content, individualBookWeight, currentBox);
+      const weightIntegar = outputJSON["Box" + (boxCount - 1)].totalWeight;
+      outputJSON[
+        "Box" + (boxCount - 1)
+      ].totalWeight = `${weightIntegar} pounds`;
     }
 
     // Output file that will be the raw json of the boxes
