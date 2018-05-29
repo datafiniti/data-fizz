@@ -37,7 +37,7 @@ nightmare
           return accumulator.then((results) => {
 
             return nightmare.goto(url)
-              .wait('body')
+              .wait(2500)
               .evaluate(() => {
 
 //grabbing elements with querySelector and saving to variables
