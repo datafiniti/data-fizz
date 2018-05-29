@@ -2,7 +2,7 @@ let axios = require('axios');
 let cheerio = require('cheerio');
 let fs = require('fs'); 
 
-const startingURL = "https://www.amazon.com/"
+const startingURL = "https://www.amazon.com/" // Start from Amazon homepage.
 let bookList = [];
 
 axios.get(startingURL)
@@ -17,9 +17,10 @@ axios.get(startingURL)
           bookList.push("https://www.amazon.com/dp/" + asin);
         }
       }
-      console.log(`Found ${books} books.`)
-      console.log(`Starting the retrieve information on individual books`)
+      console.log(`Found ${bookList.length} books.`)
+      // retrieveInfo('https://www.amazon.com/dp/0679805273') // This book fails to retrieve.
       for (let i = 0; i < bookList.length; i++) {
+        console.log(`Initiating: ${bookList[i]}`)
         retrieveInfo(bookList[i])
       }
     }
@@ -39,8 +40,7 @@ class Book {
     this.imageURLs = imageURLs;
     this.weight = weight;
     this.sourceURL = sourceURL;
-  }
-  
+  }  
 }
 
 const retrieveInfo = (uri) => {
@@ -48,7 +48,12 @@ const retrieveInfo = (uri) => {
     if(response.status === 200) {
         let $ = cheerio.load(response.data);  // Store the response data.
         let name = $('#productTitle').text(); // Retrieve the book title.
-        let desc = $($('noscript:nth-child(2)')[0].childNodes[0].data).text().replace(/[\n\t]/g,'');  // Description of the book comes from the 2nd noscript element. Once found, text is extracted, and regex replace to remove carriage returns and leading/trailing empty spaces.
+        // let desc = $($('noscript:nth-child(2)')[0].childNodes[0].data).text().replace(/[\n\t]/g,'');  // Description of the book comes from the 2nd noscript element. Once found, text is extracted, and regex replace to remove carriage returns and leading/trailing empty spaces.
+        
+        let descHTML = $.createElement('div');
+        descHTML.innerHTML = $('noscript:nth-child(2)')[0].childNodes[0].data
+        let desc = descHTML.textContent.replace(/[\n\t]/g,'');  // Description of the book comes from the 2nd noscript element. Once found, text is extracted, and regex replace to remove carriage returns and leading/trailing empty spaces.
+        
         let price = parseFloat($('#buyBoxInner').find("span.a-text-strike").text().replace(/\$/g,'')).toFixed(2); // List price of the product is found inside buybox, where the strikethrough is applied. Retain 2 decimal places for proper format.
         let productDetails =  $('#productDetailsTable').find('li'); // For ASIN ID, dimensions and weight, first locate the product details section.
         let id = productDetails[3].children[1].data.replace(/^[ \t(]+/g,'');  // From product details, 4th item is the ISBN-10 which matches the ASIN ID of the book.
