@@ -1,5 +1,3 @@
-const express = require('express');
-const app = express();
 const cheerio = require('cheerio');
 const Nightmare = require('nightmare');
 const nightmare = Nightmare({ show: true });
@@ -79,16 +77,8 @@ nightmare
               //write into json file
             fs.writeFile('output.json', JSON.stringify(results, null, 4),(err) =>{
               console.log('File successfully written! - Check your project directory for the output.json file');
-
-
             })
             //end nightmarejs
             nightmare.then(() => nightmare.end())
             })
       })
-
-//server connection
-app.listen(3000, (err) => {
-  if (err) throw err;
-  console.log('Magic happens on port 3000');
-});
