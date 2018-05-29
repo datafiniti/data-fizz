@@ -1,0 +1,18 @@
+{
+  "name": "crawling",
+  "version": "1.0.0",
+  "description": "## Purpose",
+  "main": "server.js",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "fs": "^0.0.1-security",
+    "nightmare": "^3.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
