@@ -11,20 +11,16 @@ axios.get(startingURL)
       console.log("Hello Amazon!");
       let $ = cheerio.load(response.data);
       let products = $('[data-sgproduct]')
-      let books = 0;
       for (let i = 0; i < products.length; i++) {
         let asin = JSON.parse(products[i].attribs['data-sgproduct']).asin;
         if (/\d{10}/.test(asin)) {  // Check if the ASIN is 10-digit numeric-only string.
-          books++;
-          // console.log(asin);
           bookList.push("https://www.amazon.com/dp/" + asin);
         }
       }
       console.log(`Found ${books} books.`)
       console.log(`Starting the retrieve information on individual books`)
-      retrieveInfo(bookList[2])
-      for (let i = 0; i < books; i++) {
-        // retrieveInfo(bookList[i])
+      for (let i = 0; i < bookList.length; i++) {
+        retrieveInfo(bookList[i])
       }
     }
   }, (err) => console.log(err) )
@@ -60,6 +56,8 @@ const retrieveInfo = (uri) => {
         let weight = productDetails[6].children[1].data.replace(/^[ \t(]+|[()]/g,''); // From product details, 7th item is the shipping weight. Once found, clean up the text.
         let imageURLs = Object.keys(JSON.parse($("#imgBlkFront").attr("data-a-dynamic-image")));  // Image URLs can be located from img with id="imgBlkFront".
 
+        console.log(`Retrieving information on book id: ${id}`)
+        
         // Below attempts to traverse into iframe turned out futile.
         // let desc = $('iframe#bookDesc_iframe');
         // let desc = $('#bookDesc_iframe_wrapper')[0]
@@ -82,8 +80,6 @@ const retrieveInfo = (uri) => {
         // console.log(desc);
 
         let book = new Book(id, name, price, desc, dimensions, imageURLs, weight, uri);
-
-        // fs.appendFileSync('amazon.txt', book);
         fs.writeFile(`books/book_${id}.txt`, JSON.stringify({"product":book}), {encoding:"utf8"}, function(err) {
           if(err) {
               console.log(err);
