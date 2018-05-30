@@ -21,6 +21,7 @@ axios.get(startingURL)
         }
       }
       console.log(bookList);   
+      retrieveInfo();
     }
   }, (err) => console.log(err) )
 
@@ -42,11 +43,20 @@ class Book {
   
 }
 
-axios.get(uri)
-  .then((response) => {
+const retrieveInfo = () => {
+  axios.get(uri).then((response) => {
     if(response.status === 200) {
-        let $ = cheerio.load(response.data); 
-        let name = $('#productTitle').text();
+        let $ = cheerio.load(response.data);  // Store the response data.
+        let name = $('#productTitle').text(); // Retrieve the book title.
+        let desc = $($('noscript:nth-child(2)')[0].childNodes[0].data).text().replace(/[\n\t]/g,'');  // Description of the book comes from the 2nd noscript element. Once found, text is extracted, and regex replace to remove carriage returns and leading/trailing empty spaces.
+        let price = parseFloat($('#buyBoxInner').find("span.a-text-strike").text().replace(/\$/g,'')).toFixed(2); // List price of the product is found inside buybox, where the strikethrough is applied. Retain 2 decimal places for proper format.
+        let productDetails =  $('#productDetailsTable').find('li'); // For ASIN ID, dimensions and weight, first locate the product details section.
+        let id = productDetails[3].children[1].data.replace(/^[ \t(]+/g,'');  // From product details, 4th item is the ISBN-10 which matches the ASIN ID of the book.
+        let dimensions = productDetails[5].children[1].data.split('\n')[1].replace(/^[ \t]+/g,'');  // From product details, 6th item is the dimensions. Once found, clean up the text.
+        let weight = productDetails[6].children[1].data.replace(/^[ \t(]+|[()]/g,''); // From product details, 7th item is the shipping weight. Once found, clean up the text.
+        let imageURLs = Object.keys(JSON.parse($("#imgBlkFront").attr("data-a-dynamic-image")));  // Image URLs can be located from img with id="imgBlkFront".
+
+        // Below attempts to traverse into iframe turned out futile.
         // let desc = $('iframe#bookDesc_iframe');
         // let desc = $('#bookDesc_iframe_wrapper')[0]
         // let desc = $('#iframeContent');
@@ -67,14 +77,6 @@ axios.get(uri)
         // let desc = $("meta[name='description']")[0].attribs.content;
         // console.log(desc);
 
-        let desc = $($('noscript:nth-child(2)')[0].childNodes[0].data).text().replace(/[\n\t]/g,'');
-        let price = parseFloat($('#buyBoxInner').find("span.a-text-strike").text().replace(/\$/g,'')).toFixed(2);
-        let productDetails =  $('#productDetailsTable').find('li');       
-        let id = productDetails[3].children[1].data.replace(/^[ \t(]+/g,'');
-        let dimensions = productDetails[5].children[1].data.split('\n')[1].replace(/^[ \t]+/g,'');
-        let weight = productDetails[6].children[1].data.replace(/^[ \t(]+|[()]/g,'');
-        let imageURLs = Object.keys(JSON.parse($("#imgBlkFront").attr("data-a-dynamic-image")));
-
         let book = new Book(id, name, price, desc, dimensions, imageURLs, weight, uri);
         // fs.appendFileSync('amazon.txt', book);
         fs.writeFile("amazon.txt", JSON.stringify({"product":book}), {encoding:"utf8"}, function(err) {
@@ -86,3 +88,4 @@ axios.get(uri)
         });
       }
     }, (err) => console.log(err) );
+}
