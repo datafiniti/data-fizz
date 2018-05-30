@@ -20,14 +20,17 @@ axios.get(startingURL)
           bookList.push("https://www.amazon.com/dp/" + asin);
         }
       }
-      console.log(bookList);   
-      retrieveInfo();
+      console.log(`Found ${books} books.`)
+      console.log(`Starting the retrieve information on individual books`)
+      for (let i = 0; i < books; i++) {
+        retrieveInfo(bookList[i])
+      }
     }
   }, (err) => console.log(err) )
 
 // const uri = "https://www.amazon.com/dp/1501180983"
 // const uri = "https://www.amazon.com/dp/1628600160"
-const uri = "https://www.amazon.com/dp/1587676109"
+const url = "https://www.amazon.com/dp/1587676109"
 
 class Book {
   constructor(id, name, price, description, dimensions, imageURLs, weight, sourceURL) {
@@ -43,7 +46,7 @@ class Book {
   
 }
 
-const retrieveInfo = () => {
+const retrieveInfo = (uri) => {
   axios.get(uri).then((response) => {
     if(response.status === 200) {
         let $ = cheerio.load(response.data);  // Store the response data.
@@ -78,14 +81,17 @@ const retrieveInfo = () => {
         // console.log(desc);
 
         let book = new Book(id, name, price, desc, dimensions, imageURLs, weight, uri);
+
         // fs.appendFileSync('amazon.txt', book);
-        fs.writeFile("amazon.txt", JSON.stringify({"product":book}), {encoding:"utf8"}, function(err) {
+        fs.writeFile(`book_${id}.txt`, JSON.stringify({"product":book}), {encoding:"utf8"}, function(err) {
           if(err) {
               console.log(err);
           } else {
               console.log("The file was saved!");
           }
-        });
+        }); 
+
+       
       }
     }, (err) => console.log(err) );
 }
