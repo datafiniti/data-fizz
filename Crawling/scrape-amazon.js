@@ -2,6 +2,28 @@ let axios = require('axios');
 let cheerio = require('cheerio');
 let fs = require('fs'); 
 
+const startingURL = "https://www.amazon.com/"
+let bookList = [];
+
+axios.get(startingURL)
+  .then((response) => {
+    if(response.status === 200) {
+      console.log("Hello Amazon!");
+      let $ = cheerio.load(response.data);
+      let products = $('[data-sgproduct]')
+      let books = 0;
+      for (let i = 0; i < products.length; i++) {
+        let asin = JSON.parse(products[i].attribs['data-sgproduct']).asin;
+        if (/\d{10}/.test(asin)) {  // Check if the ASIN is 10-digit numeric-only string.
+          books++;
+          // console.log(asin);
+          bookList.push("https://www.amazon.com/dp/" + asin);
+        }
+      }
+      console.log(bookList);   
+    }
+  }, (err) => console.log(err) )
+
 // const uri = "https://www.amazon.com/dp/1501180983"
 // const uri = "https://www.amazon.com/dp/1628600160"
 const uri = "https://www.amazon.com/dp/1587676109"
@@ -19,8 +41,6 @@ class Book {
   }
   
 }
-
-
 
 axios.get(uri)
   .then((response) => {
@@ -65,4 +85,4 @@ axios.get(uri)
           }
         });
       }
-    }, (error) => console.log(err) );
+    }, (err) => console.log(err) );
