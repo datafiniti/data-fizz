@@ -22,8 +22,9 @@ axios.get(startingURL)
       }
       console.log(`Found ${books} books.`)
       console.log(`Starting the retrieve information on individual books`)
+      retrieveInfo(bookList[2])
       for (let i = 0; i < books; i++) {
-        retrieveInfo(bookList[i])
+        // retrieveInfo(bookList[i])
       }
     }
   }, (err) => console.log(err) )
@@ -83,7 +84,7 @@ const retrieveInfo = (uri) => {
         let book = new Book(id, name, price, desc, dimensions, imageURLs, weight, uri);
 
         // fs.appendFileSync('amazon.txt', book);
-        fs.writeFile(`book_${id}.txt`, JSON.stringify({"product":book}), {encoding:"utf8"}, function(err) {
+        fs.writeFile(`books/book_${id}.txt`, JSON.stringify({"product":book}), {encoding:"utf8"}, function(err) {
           if(err) {
               console.log(err);
           } else {
