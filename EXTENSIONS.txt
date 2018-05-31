@@ -1,0 +1,3 @@
+As someone who has never built a crawler before, I believe that I am missing certain dependencies that
+would make this functional with other sites aside from Amazon. This project was a lot of fun for me, and
+I intend to continue learning how to make versatile crawlers now that this project has peaked my curiosity!
