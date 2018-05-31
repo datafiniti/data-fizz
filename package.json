@@ -1,0 +1,26 @@
+{
+  "name": "datafizz",
+  "version": "1.0.0",
+  "description": "### Requirements   - use JavaScript and any third party libraries you want, follow OOP principles and techniques   - crawler must navigate from a “starting url” to a “listing page” on the website   - from the starting url, the home page, navigate to the books category   - collect at least ten books and grab the following information",
+  "main": "index.js",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "he": "^1.1.1",
+    "random-fake-useragent": "^0.1.0",
+    "request": "^2.87.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LallieDragon/DataFizz.git"
+  },
+  "author": "LallieDragon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LallieDragon/DataFizz/issues"
+  },
+  "homepage": "https://github.com/LallieDragon/DataFizz#readme"
+}
