@@ -58,3 +58,52 @@ To begin fork this repository to your personal Github account. We ask that you s
 
 * Code readability and reusability.
 * Testing is not required, but we'd love to see it.
+
+---
+
+# Solution
+
+## Design notes
+
+1. Start from `https://books.amazon.com/` as the "starting URL".
+1. Use the ASIN/ISBN: 10-digit numeric (NOT alphanumeric) code is found, it can safely be assumed that the associated product is a book. 
+1. Once "listing page" is reached, the product details can be scraped.
+
+```
+JSON.parse(document.querySelectorAll("li[data-sgproduct]")[0].dataset.sgproduct).asin
+JSON.parse($('li[data-sgproduct]').dataset.sgproduct).asin
+```
+
+```
+let products = document.querySelectorAll('li[data-sgproduct]')
+for (let i = 0; i < products.length; i++){
+  let asin = JSON.parse(products[i].dataset.sgproduct).asin;
+  if (/\d{10}/.test(asin) ) {
+    console.log(asin);
+  }
+}
+```
+
+1. Followed the netinstructions, and got reddit scraper to work. The others (hacker news and buzzfeed) are getting 200 status error messages, indicating endpoint error.
+1. Amazon book page can be scraped: 
+
+* Name (product title):  `document.getElementById("productTitle").innerHTML`
+* Description: `document.getElementById("iframeContent").innerHTML` 
+
+* (Updated) `$('iframe#bookDesc_iframe').contentDocument.body.childNodes[1].innerHTML`
+* (Updated) `$('iframe#bookDesc_iframe').contentDocument.body.childNodes[1].textContent`
+* (Another) `$('#bookDesc_iframe').contentDocument.childNodes[0].childNodes[1].childNodes[1].innerHTML`
+
+* Product dimension & Weight (shipping weight) can be found, but has to be manually extracted.
+* Image URLs (pending)
+
+
+## Useful tips
+* `Object.getOwnPropertyNames(object)`
+* `Ctrl+U` in the browser will show open `view-source` of the rendered page, which reflects closely what jQuery/cheerio is working with.
+* Firefox dev console is slightly better in displaying the output in cascading format.
+
+## References
+* Simple web scraping with Node.js / JavaScript ([netinstructions](http://www.netinstructions.com/simple-web-scraping-with-node-js-and-javascript/))
+* Scraping the Web With Node.js ([scotch.io](https://scotch.io/tutorials/scraping-the-web-with-node-js))
+* Introduction to Webcrawling (with Javascript and Node.js) ([Medium](https://medium.com/of-all-things-tech-progress/introduction-to-webcrawling-with-javascript-and-node-js-f5a3798ee8ac))

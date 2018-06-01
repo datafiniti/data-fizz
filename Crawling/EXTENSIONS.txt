@@ -1,0 +1,10 @@
+How your application could be extended to handle the following:
+1. Domains beyond Amazon.com
+
+The scraper relies on Amazon Standard Identification Number (ASIN). If it is to be applied outside Amazon, it must first be determined how the target website uniquely identifies its products. Once determined, the product IDs can be re-assigned to work with this system.
+
+2. Products beyond just simply books.
+
+From the onset, the secondary assumption was made that any 10-digit numeric-only identifiers were equivalent of ISBN, which is used in identifying books. This made the process somewhat easier, since even the same book in different formats (paperback, hard cover, and e-book) have different IDs. Take an e-book for an example. Even for a same book, this will not have the 10-digit numeric-only ID. Further, this product will not even have dimensions or shipping weight specified. The scraper code will have to be modified to handle this differently. 
+
+Additionally, consider products that are not books, such as devices or appliances. They will have their own unique product details that differ from printed books. Specifically, the word used for dimensions may not always be "Product Dimensions", but could also be "Packaging Dimensions", etc., while "Shipping Weight" appears to be universal. Essentially the scraper logic must be continuously adapted to the desired products after careful consideration.
