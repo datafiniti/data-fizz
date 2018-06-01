@@ -59,6 +59,7 @@ class Scraper {
 }
 
 let bookList = [];  // Start with an empty book list array.
+let bookList2 = [];
 let sampleBookList = [  // This list was retrieved by the homepage scraper initially.
   "https://www.amazon.com/dp/1501180983",
   "https://www.amazon.com/dp/0345816021",
@@ -94,6 +95,13 @@ const retrieveInfo = (uri) => {
       fs.writeFile(`books/book_${id}.txt`, JSON.stringify({"product":book}), {encoding:"utf8"}, function(err) {
         console.log(err ? err : `${id}: The file was saved!`)
       }); 
+
+      // Retrieve books in secondary findings. 
+      // The following is a proof of concept, with minimal testing that demonstrates the scraper's functionality, but otherwise leads to uncontrolled process, which must be manually stopped from the terminal.
+      bookList2 = bookList.concat(bookIDs);
+      for (let i = 0; i < bookList2.length; i++) {
+        retrieveInfo("https://www.amazon.com/dp/" + bookList2[i])
+      }
     }
   }, (err) => console.log(err) );
 }
