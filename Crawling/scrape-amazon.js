@@ -59,6 +59,17 @@ axios.get(startingURL)
   }, (err) => console.log(err) 
 )
 
+// Locate the product dimensions and shipping weight.
+// First define the function that locates list element and bold element that contains the string. 
+const findDetails = ($, string) => {
+  if ($(`li:contains(${string})`)) {
+    // Once the list element is found, the target substring is found by removing the title encapsulated in bold tags, and subsequent trimming.
+    return $(`li:contains(${string})`).text().replace($(`b:contains(${string})`).text(), "").trim();
+  } else {
+    return "Not found";
+  }
+}
+
 const retrieveInfo = (uri) => {
   axios.get(uri).then((response) => {
     if(response.status === 200) {
@@ -94,16 +105,7 @@ const retrieveInfo = (uri) => {
         console.log(`${id}: Price not found`);
       }
       
-      // Locate the product dimensions and shipping weight.
-      // First define the function that locates list element and bold element that contains the string. 
-      const findDetails = ($, string) => {
-        if ($(`li:contains(${string})`)) {
-          // Once the list element is found, the target substring is found by removing the title encapsulated in bold tags, and subsequent trimming.
-          return $(`li:contains(${string})`).text().replace($(`b:contains(${string})`).text(), "").trim();
-        } else {
-          return "Not found";
-        }
-      }
+      
       let dimensions = findDetails($, 'Product Dimensions');  // Find the product dimensions.
       let weight = findDetails($, 'Shipping Weight').replace(" (View shipping rates and policies)", "");  // Find shipping weight. This string contains additional trailing substring that needs to be removed.
 
