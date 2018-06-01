@@ -22,6 +22,36 @@ class Product {
   }    
 }
 
+// Define class for all scraper logic, including product name, description, price, dimensions, weight, image URLs. 
+class Scraper {
+  static findName($) {  // Product name is found inside the element with id = productTitle.
+    let name = $('#productTitle')[0].children[0].data;
+    return (name ? name : "Price not found");
+  }
+
+  static findDescription($) { // Product description is found inside the 2nd noscript element. 
+    let desc = $($('noscript:nth-child(2)')[0].childNodes[0].data).text().trim();
+    return (desc ? desc : "Price not found");
+  }
+      
+  static findPrice($) { // List price of the product is found inside element with id = buybox, where the strikethrough is applied. 
+    let price = parseFloat($('#buyBoxInner').find("span.a-text-strike").text().replace(/\$/g,'')).toFixed(2);  // Remove $ prefix and retain 2 decimal places for proper format.
+    return (price ? price : "Price not found");
+  }
+
+  // Locate the product dimensions and shipping weight. Define the method that locates list element and bold element that contains a specified string. 
+  static findDetails($, string) {
+    let elemLi = $(`li:contains(${string})`); // Find the li element with the string.
+    let elemB = $(`b:contains(${string})`); // Find the b element with the string.
+    return (elemLi && elemB ? elemLi.text().replace(elemB.text(), "").trim() : "Not found")
+  }
+
+  static findImageURLs($) { // Find image URLs from img tag with id="imgBlkFront".
+    let imageURLs = Object.keys(JSON.parse($("#imgBlkFront").attr("data-a-dynamic-image")))
+    return (imageURLs ? imageURLs : "Not found");
+  }
+}
+
 let bookList = [];  // Start with an empty book list array.
 let sampleBookList = [  // This list was retrieved by the homepage scraper initially.
   "https://www.amazon.com/dp/1501180983",
@@ -32,57 +62,31 @@ let sampleBookList = [  // This list was retrieved by the homepage scraper initi
   "https://www.amazon.com/dp/0679805273"
 ];
 
-class Scraper {
-  static findName($) {  // Product name is found inside the element with id = productTitle.
-    let name = $('#productTitle')[0].children[0].data;
-    return (name ? name : "Price not found");
-    // if (name) {
-    //   return name; 
-    // } else {
-    //   return "Name not found";
-    // }
-  }
+const retrieveInfo = (uri) => {
+  axios.get(uri).then((response) => {
+    if(response.status === 200) {
+      let $ = cheerio.load(response.data);  // Store the response data.
+      let timestamp =   Math.round((new Date()).getTime()/1000) // Record the retrieval timestamp.
+      let id = uri.slice(-10);  // Store the book ID by extracting the last 10 digits from the uri. This matches ASIN and ISBN-10.
+      console.log(`${id}: Retrieving book information...`)
 
-  static findDescription($) { // Product description is found inside the 2nd noscript element. 
-    let desc = $($('noscript:nth-child(2)')[0].childNodes[0].data).text().trim();
-    return (desc ? desc : "Price not found");
-    // if (desc) {
-    //   return desc;
-    // } else {
-    //   return "Description not found";
-    // }
-  }
+      let name =        Scraper.findName($); // Find the product name.
+      let desc =        Scraper.findDescription($);  // Find product description.
+      let price =       Scraper.findPrice($); // Find product list price.
+      let dimensions =  Scraper.findDetails($, 'Product Dimensions');  // Find the product dimensions.
+      let weight =      Scraper.findDetails($, 'Shipping Weight').replace(" (View shipping rates and policies)", "");  // Find shipping weight. This string contains additional trailing substring that needs to be removed.
+      let imageURLs =   Scraper.findImageURLs($); // Find image URLs.
       
-  static findPrice($) { // List price of the product is found inside element with id = buybox, where the strikethrough is applied. 
-    let price = parseFloat($('#buyBoxInner').find("span.a-text-strike").text().replace(/\$/g,'')).toFixed(2);  // Remove $ prefix and retain 2 decimal places for proper format.
-    return (price ? price : "Price not found");
-    // if (price) {
-    //   return price;
-    // } else {
-    //   return "Price not found";
-    // }
-  }
-
-  // Locate the product dimensions and shipping weight. Define the method that locates list element and bold element that contains a specified string. 
-  static findDetails($, string) {
-    let elemLi = $(`li:contains(${string})`);
-    let elemB = $(`b:contains(${string})`);
-    return (elemLi && elemB ? elemLi.text().replace(elemB.text(), "").trim() : "Not found")
-    // if ($(`li:contains(${string})`) && $(`b:contains(${string})`) ) {
-    //   // Once the list element is found, the target substring is found by removing the title encapsulated in bold tags, and subsequent trimming.
-    //   return $(`li:contains(${string})`).text().replace($(`b:contains(${string})`).text(), "").trim();
-    // } else {
-    //   return "Not found";
-    // }
-  }
-
-  static findImageURLs($) { // Find image URLs from img tag with id="imgBlkFront".
-    let imageURLs = Object.keys(JSON.parse($("#imgBlkFront").attr("data-a-dynamic-image")))
-    return (imageURLs ? imageURLs : "Not found");
-  }
+      // Store all the information located into a book object, then output it to a file.
+      let book = new Product(id, name, price, desc, dimensions, imageURLs, weight, uri, timestamp);
+      fs.writeFile(`books/book_${id}.txt`, JSON.stringify({"product":book}), {encoding:"utf8"}, function(err) {
+        console.log(err ? err : `${id}: The file was saved!`)
+      }); 
+    }
+  }, (err) => console.log(err) );
 }
 
-
+// Start from the starting URL. Find all ISBNs from the starting page, then run retrieval loop to scrape product informations from all books found.
 axios.get(startingURL)
   .then((response) => {
     if(response.status === 200) {
@@ -109,70 +113,3 @@ axios.get(startingURL)
     }
   }, (err) => console.log(err) 
 )
-
-// const findDetails = ($, string) => {
-//   if ($(`li:contains(${string})`)) {
-//     // Once the list element is found, the target substring is found by removing the title encapsulated in bold tags, and subsequent trimming.
-//     return $(`li:contains(${string})`).text().replace($(`b:contains(${string})`).text(), "").trim();
-//   } else {
-//     return "Not found";
-//   }
-// }
-
-const retrieveInfo = (uri) => {
-  axios.get(uri).then((response) => {
-    if(response.status === 200) {
-      let $ = cheerio.load(response.data);  // Store the response data.
-      let id = uri.slice(-10);  // Store the book ID by extracting the last 10 digits from the uri. This matches ASIN and ISBN-10.
-      console.log(`${id}: Retrieving book information...`)
-
-      let name =        Scraper.findName($); // Find the product name.
-      let desc =        Scraper.findDescription($);  // Find product description.
-      let price =       Scraper.findPrice($); // Find product list price.
-      let dimensions =  Scraper.findDetails($, 'Product Dimensions');  // Find the product dimensions.
-      let weight =      Scraper.findDetails($, 'Shipping Weight').replace(" (View shipping rates and policies)", "");  // Find shipping weight. This string contains additional trailing substring that needs to be removed.
-      let imageURLs =   Scraper.findImageURLs($); // Find image URLs.
-      let timestamp =   Math.round((new Date()).getTime()/1000) // Record the timestamp of when the retrieval was done.
-      
-      // Store all the information located into a book object, and output it to a file.
-      let book = new Product(id, name, price, desc, dimensions, imageURLs, weight, uri, timestamp);
-      fs.writeFile(`books/book_${id}.txt`, JSON.stringify({"product":book}), {encoding:"utf8"}, function(err) {
-        if(err) {
-            console.log(err);
-        } else {
-            console.log(`${id}: The file was saved!`);
-        }
-      }); 
-    }
-  }, (err) => console.log(err) );
-}
-
-
-
-
-
-  
-
-// const uri = "https://www.amazon.com/dp/1501180983"
-// const uri = "https://www.amazon.com/dp/1628600160"
-// const url = "https://www.amazon.com/dp/1587676109"     
-        // Below attempts to traverse into iframe turned out futile.
-        // let desc = $('iframe#bookDesc_iframe');
-        // let desc = $('#bookDesc_iframe_wrapper')[0]
-        // let desc = $('#iframeContent');
-        // console.log(Object.getOwnPropertyNames(desc));
-        // console.log($('#bookDescription_feature_div')[0].childNodes[5].childNodes[1]);
-        // console.log($('#bookDescription_feature_div')[0].childNodes[5].childNodes[1].childNodes[1]);
-        // console.log($('#postBodyPS')[0].childNodes[1]);
-        // console.log($('#bookDesc_iframe_wrapper')[0] == $('#postBodyPS')[0].childNodes[1]);
-        // console.log($('#bookDesc_iframe').contentDocument.childNodes[0].childNodes[1].childNodes[1])
-        // console.log($('#bookDesc_iframe')[0].contentDocument)
-        // console.log($('iframe#bookDesc_iframe').contentDocument.body.childNodes[1].innerHTML);
-        // console.log($("#bookDesc_iframe_wrapper").length)
-        // console.log(Object.getOwnPropertyNames($("#bookDesc_iframe_wrapper")));
-        // console.log(Object.getOwnPropertyNames($("#bookDesc_iframe_wrapper")[0]));
-        // console.log($("#bookDesc_iframe_wrapper")[0].parent);
-
-        // // Using meta tag description
-        // let desc = $("meta[name='description']")[0].attribs.content;
-        // console.log(desc);
