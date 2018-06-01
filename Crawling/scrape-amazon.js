@@ -7,7 +7,7 @@ const fs = require('fs');
 const startingURL = "https://www.amazon.com/" 
 // const startingURL = "https://www.amazon.ca/" // Test it on Amazon Canada homepage.
 
-// Define a class product with all the informations desired.
+// Define class product with all the informations desired.
 class Product {
   constructor(id, name, price, description, dimensions, imageURLs, weight, sourceURL, retrieved) {
     this.id = id;
@@ -26,12 +26,12 @@ class Product {
 class Scraper {
   static findName($) {  // Product name is found inside the element with id = productTitle.
     let name = $('#productTitle')[0].children[0].data;
-    return (name ? name : "Price not found");
+    return (name ? name : "Name not found");
   }
 
   static findDescription($) { // Product description is found inside the 2nd noscript element. 
     let desc = $($('noscript:nth-child(2)')[0].childNodes[0].data).text().trim();
-    return (desc ? desc : "Price not found");
+    return (desc ? desc : "Description not found");
   }
       
   static findPrice($) { // List price of the product is found inside element with id = buybox, where the strikethrough is applied. 
@@ -39,16 +39,23 @@ class Scraper {
     return (price ? price : "Price not found");
   }
 
-  // Locate the product dimensions and shipping weight. Define the method that locates list element and bold element that contains a specified string. 
-  static findDetails($, string) {
-    let elemLi = $(`li:contains(${string})`); // Find the li element with the string.
-    let elemB = $(`b:contains(${string})`); // Find the b element with the string.
-    return (elemLi && elemB ? elemLi.text().replace(elemB.text(), "").trim() : "Not found")
+  static findDetails($, string) { // Locate the product dimensions and shipping weight. Define the method that locates list element and bold element that contains a specified string. 
+    let elemLi = $(`li:contains(${string})`); // Find the li element containing the string.
+    let elemB = $(`b:contains(${string})`); // Find the b element containing the string.
+    return (elemLi && elemB ? elemLi.text().replace(elemB.text(), "").trim() : `${string} not found`)
   }
 
   static findImageURLs($) { // Find image URLs from img tag with id="imgBlkFront".
     let imageURLs = Object.keys(JSON.parse($("#imgBlkFront").attr("data-a-dynamic-image")))
-    return (imageURLs ? imageURLs : "Not found");
+    return (imageURLs ? imageURLs : "Image URLs not found");
+  }
+
+  static findOtherIDs($) {  // Find all other ASINs in the page.
+    // let idList = JSON.parse($("[data-a-carousel-options]").attributes[0].value).ajax.id_list;
+    let idList = JSON.parse($("[data-a-carousel-options]")[0].attribs['data-a-carousel-options']).ajax;
+    console.log(idList ? idList : "Error");
+    // return (idList ? idList : "No other product IDs found");
+    return;
   }
 }
 
@@ -77,6 +84,9 @@ const retrieveInfo = (uri) => {
       let weight =      Scraper.findDetails($, 'Shipping Weight').replace(" (View shipping rates and policies)", "");  // Find shipping weight. This string contains additional trailing substring that needs to be removed.
       let imageURLs =   Scraper.findImageURLs($); // Find image URLs.
       
+      // let otherIDs =    Scraper.findOtherIDs($);
+      Scraper.findOtherIDs($);
+
       // Store all the information located into a book object, then output it to a file.
       let book = new Product(id, name, price, desc, dimensions, imageURLs, weight, uri, timestamp);
       fs.writeFile(`books/book_${id}.txt`, JSON.stringify({"product":book}), {encoding:"utf8"}, function(err) {
