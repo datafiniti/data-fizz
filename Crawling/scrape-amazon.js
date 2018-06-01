@@ -18,21 +18,6 @@ class Product {
 const startingURL = "https://www.amazon.com/" // Start from Amazon homepage.
 let bookList = [];
 
-const retrieve = (uri) => {
-  axios.get(uri).then(
-    (response) => {
-      if (response.status === 200) {
-        console.log(`URI retrieved: ${uri}`)
-        return cheerio.load(response.data);
-        resolve();
-      } 
-    }, 
-    (err) => {
-      console.log(err);
-    }
-  )
-}
-
 axios.get(startingURL)
   .then((response) => {
     if(response.status === 200) {
