@@ -89,6 +89,9 @@ const retrieveInfo = (uri) => {
         console.log(`${id}: Weight not found`);
       }
 
+      let temp = $("li:contains('Product Dimensions')")
+      console.log(`${id}: ${temp.length} product dimensions li found`);
+
       // let id = productDetails[3].children[1].data.replace(/^[ \t(]+/g,'');  // From product details, 4th item is the ISBN-10 which matches the ASIN ID of the book.
       // let dimensions = productDetails[5].children[1].data.split('\n')[1].replace(/^[ \t]+/g,'');  // From product details, 6th item is the dimensions. Once found, clean up the text.
       // let weight = productDetails[6].children[1].data.replace(/^[ \t(]+|[()]/g,''); // From product details, 7th item is the shipping weight. Once found, clean up the text.
