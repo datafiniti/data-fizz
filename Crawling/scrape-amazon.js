@@ -33,7 +33,6 @@ axios.get(startingURL)
       console.log(`Found ${bookList.length} books.`)
       // retrieveInfo('https://www.amazon.com/dp/0679805273') // This book fails to retrieve.
       for (let i = 0; i < bookList.length; i++) {
-        console.log(`Initiating: ${bookList[i]}`)
         retrieveInfo(bookList[i])
       }
     }
@@ -44,6 +43,8 @@ const retrieveInfo = (uri) => {
   axios.get(uri).then((response) => {
     if(response.status === 200) {
       let $ = cheerio.load(response.data);  // Store the response data.
+      let id = uri.slice(-10);  // Store the book ID, which is ASIN and ISBN-10.
+      console.log(`${id}: Retrieving book information...`)
       
       // let name = $('#productTitle').text(); // Retrieve the book title.
       let infoName = $('#productTitle'); // Retrieve the book title.
@@ -51,7 +52,7 @@ const retrieveInfo = (uri) => {
       if (infoName) {
         name = infoName.text();
       } else {
-        console.log(`Name not found for ${uri}`);
+        console.log(`${id}: Name not found`);
       }
 
       // let desc = $($('noscript:nth-child(2)')[0].childNodes[0].data).text().replace(/[\n\t]/g,'');  // Description of the book comes from the 2nd noscript element. Once found, text is extracted, and regex replace to remove carriage returns and leading/trailing empty spaces.
@@ -60,7 +61,7 @@ const retrieveInfo = (uri) => {
       if (infoDesc.text()) {
         desc = infoDesc.text().replace(/[\n\t]/g,'')
       } else {
-        console.log(`Description not found for ${uri}`);
+        console.log(`${id}: Description not found`);
       }
       // let descHTML = $.createElement('div');
       // descHTML.innerHTML = $('noscript:nth-child(2)')[0].childNodes[0].data
@@ -72,25 +73,20 @@ const retrieveInfo = (uri) => {
       if (infoPrice.text()) {
         price = parseFloat(infoPrice.text().replace(/\$/g,'')).toFixed(2);
       } else {
-        console.log(`Price not found for ${uri}`);
+        console.log(`${id}: Price not found`);
       }
       
       let productDetails =  $('#productDetailsTable').find('li'); // For ASIN ID, dimensions and weight, first locate the product details section.
-      let id = 0; let dimensions = "Not found"; let weight = "Not found";
-      if (productDetails[3].children[1].data) {
-        id = productDetails[3].children[1].data.replace(/^[ \t(]+/g,'');  // From product details, 4th item is the ISBN-10 which matches the ASIN ID of the book.
-      } else {
-        console.log(`ID not found for ${uri}`);
-      }
+      let dimensions = "Not found"; let weight = "Not found";
       if (productDetails[5].children[1].data.split('\n')[1]) {
         dimensions = productDetails[5].children[1].data.split('\n')[1].replace(/^[ \t]+/g,'');  // From product details, 6th item is the dimensions. Once found, clean up the text.
       } else {
-        console.log(`Dimensions not found for ${uri}`);
+        console.log(`${id}: Dimensions not found`);
       }
       if (productDetails[6].children[1].data) {
         weight = productDetails[6].children[1].data.replace(/^[ \t(]+|[()]/g,''); // From product details, 7th item is the shipping weight. Once found, clean up the text.
       } else {
-        console.log(`Weight not found for ${uri}`);
+        console.log(`${id}: Weight not found`);
       }
 
       // let id = productDetails[3].children[1].data.replace(/^[ \t(]+/g,'');  // From product details, 4th item is the ISBN-10 which matches the ASIN ID of the book.
@@ -98,14 +94,13 @@ const retrieveInfo = (uri) => {
       // let weight = productDetails[6].children[1].data.replace(/^[ \t(]+|[()]/g,''); // From product details, 7th item is the shipping weight. Once found, clean up the text.
       let imageURLs = Object.keys(JSON.parse($("#imgBlkFront").attr("data-a-dynamic-image")));  // Image URLs can be located from img with id="imgBlkFront".
 
-      console.log(`Retrieving information on book id: ${id}`)
 
       let book = new Product(id, name, price, desc, dimensions, imageURLs, weight, uri);
       fs.writeFile(`books/book_${id}.txt`, JSON.stringify({"product":book}), {encoding:"utf8"}, function(err) {
         if(err) {
             console.log(err);
         } else {
-            console.log("The file was saved!");
+            console.log(`${id}: The file was saved!`);
         }
       }); 
 
