@@ -32,6 +32,57 @@ let sampleBookList = [  // This list was retrieved by the homepage scraper initi
   "https://www.amazon.com/dp/0679805273"
 ];
 
+class Scraper {
+  static findName($) {  // Product name is found inside the element with id = productTitle.
+    let name = $('#productTitle')[0].children[0].data;
+    return (name ? name : "Price not found");
+    // if (name) {
+    //   return name; 
+    // } else {
+    //   return "Name not found";
+    // }
+  }
+
+  static findDescription($) { // Product description is found inside the 2nd noscript element. 
+    let desc = $($('noscript:nth-child(2)')[0].childNodes[0].data).text().trim();
+    return (desc ? desc : "Price not found");
+    // if (desc) {
+    //   return desc;
+    // } else {
+    //   return "Description not found";
+    // }
+  }
+      
+  static findPrice($) { // List price of the product is found inside element with id = buybox, where the strikethrough is applied. 
+    let price = parseFloat($('#buyBoxInner').find("span.a-text-strike").text().replace(/\$/g,'')).toFixed(2);  // Remove $ prefix and retain 2 decimal places for proper format.
+    return (price ? price : "Price not found");
+    // if (price) {
+    //   return price;
+    // } else {
+    //   return "Price not found";
+    // }
+  }
+
+  // Locate the product dimensions and shipping weight. Define the method that locates list element and bold element that contains a specified string. 
+  static findDetails($, string) {
+    let elemLi = $(`li:contains(${string})`);
+    let elemB = $(`b:contains(${string})`);
+    return (elemLi && elemB ? elemLi.text().replace(elemB.text(), "").trim() : "Not found")
+    // if ($(`li:contains(${string})`) && $(`b:contains(${string})`) ) {
+    //   // Once the list element is found, the target substring is found by removing the title encapsulated in bold tags, and subsequent trimming.
+    //   return $(`li:contains(${string})`).text().replace($(`b:contains(${string})`).text(), "").trim();
+    // } else {
+    //   return "Not found";
+    // }
+  }
+
+  static findImageURLs($) { // Find image URLs from img tag with id="imgBlkFront".
+    let imageURLs = Object.keys(JSON.parse($("#imgBlkFront").attr("data-a-dynamic-image")))
+    return (imageURLs ? imageURLs : "Not found");
+  }
+}
+
+
 axios.get(startingURL)
   .then((response) => {
     if(response.status === 200) {
@@ -59,16 +110,14 @@ axios.get(startingURL)
   }, (err) => console.log(err) 
 )
 
-// Locate the product dimensions and shipping weight.
-// First define the function that locates list element and bold element that contains the string. 
-const findDetails = ($, string) => {
-  if ($(`li:contains(${string})`)) {
-    // Once the list element is found, the target substring is found by removing the title encapsulated in bold tags, and subsequent trimming.
-    return $(`li:contains(${string})`).text().replace($(`b:contains(${string})`).text(), "").trim();
-  } else {
-    return "Not found";
-  }
-}
+// const findDetails = ($, string) => {
+//   if ($(`li:contains(${string})`)) {
+//     // Once the list element is found, the target substring is found by removing the title encapsulated in bold tags, and subsequent trimming.
+//     return $(`li:contains(${string})`).text().replace($(`b:contains(${string})`).text(), "").trim();
+//   } else {
+//     return "Not found";
+//   }
+// }
 
 const retrieveInfo = (uri) => {
   axios.get(uri).then((response) => {
@@ -77,42 +126,14 @@ const retrieveInfo = (uri) => {
       let id = uri.slice(-10);  // Store the book ID by extracting the last 10 digits from the uri. This matches ASIN and ISBN-10.
       console.log(`${id}: Retrieving book information...`)
 
-      // Find the product name.
-      let infoName = $('#productTitle'); // Retrieve the book title.
-      let name = "";
-      if (infoName) {
-        name = infoName.text();
-      } else {
-        console.log(`${id}: Name not found`);
-      }
-
-      // Find product description.
-      let infoDesc = $($('noscript:nth-child(2)')[0].childNodes[0].data);  // Description of the book comes from the 2nd noscript element. Once found, text is extracted, and regex replace to remove carriage returns and leading/trailing empty spaces.
-      let desc = "Not found";
-      if (infoDesc.text()) {
-        desc = infoDesc.text().replace(/[\n\t]/g,'')
-      } else {
-        console.log(`${id}: Description not found`);
-      }
-
-      // List price of the product is found inside buybox, where the strikethrough is applied. 
-      // let price = parseFloat($('#buyBoxInner').find("span.a-text-strike").text().replace(/\$/g,'')).toFixed(2); // 
-      let infoPrice = $('#buyBoxInner').find("span.a-text-strike");
-      let price = 0;
-      if (infoPrice.text()) {
-        price = parseFloat(infoPrice.text().replace(/\$/g,'')).toFixed(2);  // Remove $ prefix and retain 2 decimal places for proper format.
-      } else {
-        console.log(`${id}: Price not found`);
-      }
+      let name =        Scraper.findName($); // Find the product name.
+      let desc =        Scraper.findDescription($);  // Find product description.
+      let price =       Scraper.findPrice($); // Find product list price.
+      let dimensions =  Scraper.findDetails($, 'Product Dimensions');  // Find the product dimensions.
+      let weight =      Scraper.findDetails($, 'Shipping Weight').replace(" (View shipping rates and policies)", "");  // Find shipping weight. This string contains additional trailing substring that needs to be removed.
+      let imageURLs =   Scraper.findImageURLs($); // Find image URLs.
+      let timestamp =   Math.round((new Date()).getTime()/1000) // Record the timestamp of when the retrieval was done.
       
-      
-      let dimensions = findDetails($, 'Product Dimensions');  // Find the product dimensions.
-      let weight = findDetails($, 'Shipping Weight').replace(" (View shipping rates and policies)", "");  // Find shipping weight. This string contains additional trailing substring that needs to be removed.
-
-      // Find image URLs from img tag with id="imgBlkFront".
-      let imageURLs = Object.keys(JSON.parse($("#imgBlkFront").attr("data-a-dynamic-image")));  
-
-      let timestamp = Math.round((new Date()).getTime()/1000)
       // Store all the information located into a book object, and output it to a file.
       let book = new Product(id, name, price, desc, dimensions, imageURLs, weight, uri, timestamp);
       fs.writeFile(`books/book_${id}.txt`, JSON.stringify({"product":book}), {encoding:"utf8"}, function(err) {
