@@ -9,7 +9,7 @@ const startingURL = "https://www.amazon.com/"
 
 // Define class product with all the informations desired.
 class Product {
-  constructor(id, name, price, description, dimensions, imageURLs, weight, sourceURL, retrieved) {
+  constructor(id, name, price, description, dimensions, imageURLs, weight, sourceURL, otherIDs, retrieved) {
     this.id = id;
     this.name = name;
     this.price = price;
@@ -18,6 +18,7 @@ class Product {
     this.imageURLs = imageURLs;
     this.weight = weight;
     this.sourceURL = sourceURL;
+    this.otherIDs = otherIDs;
     this.retrieved = retrieved;
   }    
 }
@@ -52,10 +53,8 @@ class Scraper {
 
   static findOtherIDs($) {  // Find all other ASINs in the page.
     // let idList = JSON.parse($("[data-a-carousel-options]").attributes[0].value).ajax.id_list;
-    let idList = JSON.parse($("[data-a-carousel-options]")[0].attribs['data-a-carousel-options']).ajax;
-    console.log(idList ? idList : "Error");
-    // return (idList ? idList : "No other product IDs found");
-    return;
+    let idList = JSON.parse($("[data-a-carousel-options]")[0].attribs['data-a-carousel-options']).ajax.id_list.map(x => x.replace(/\:/,""));  // Remove the trailing colon from the product IDs
+    return (idList ? idList : "No other product IDs found");
   }
 }
 
@@ -84,11 +83,14 @@ const retrieveInfo = (uri) => {
       let weight =      Scraper.findDetails($, 'Shipping Weight').replace(" (View shipping rates and policies)", "");  // Find shipping weight. This string contains additional trailing substring that needs to be removed.
       let imageURLs =   Scraper.findImageURLs($); // Find image URLs.
       
-      // let otherIDs =    Scraper.findOtherIDs($);
-      Scraper.findOtherIDs($);
+      let otherIDs =    Scraper.findOtherIDs($); // Find other product IDs from the page.
+      otherIDs.splice(otherIDs.indexOf(id), 1)  // Remove the ID of this book.
+
+      // If only interested in books, further filtering is done.
+      let bookIDs = otherIDs.filter(x => x.match(/\d{10}/)) // Find only 10-digit numeric IDs.
 
       // Store all the information located into a book object, then output it to a file.
-      let book = new Product(id, name, price, desc, dimensions, imageURLs, weight, uri, timestamp);
+      let book = new Product(id, name, price, desc, dimensions, imageURLs, weight, uri, bookIDs, timestamp);
       fs.writeFile(`books/book_${id}.txt`, JSON.stringify({"product":book}), {encoding:"utf8"}, function(err) {
         console.log(err ? err : `${id}: The file was saved!`)
       }); 
