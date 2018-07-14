@@ -1,0 +1,11 @@
+{
+  "name": "datafinityamazoncrawl",
+  "version": "1.0.0",
+  "description": "Collects data on 10 books from Amazon Books and stores them in a JSON document ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sam Smith",
+  "license": "MIT"
+}
