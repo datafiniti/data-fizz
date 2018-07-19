@@ -1,1 +1,12 @@
 node_modules
+
+    .evaluate(() => document.querySelector('body').outerHTML)
+    .then(function (html) {
+      fs.writeFile('testing.html', html, function(err){
+        if (err) return console.log(err)
+      })
+    })
+
+    /b/ref=bhp_brws_100bks?ie=UTF8&node=8192263011&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-leftnav&pf_rd_r=K9RH2X36P2N7JA8QY40T&pf_rd_r=K9RH2X36P2N7JA8QY40T&pf_rd_t=101&pf_rd_p=742c6a94-145d-4c8a-aeb5-5dd9096fb8b6&pf_rd_p=742c6a94-145d-4c8a-aeb5-5dd9096fb8b6&pf_rd_i=283155
+
+    /b/ref=bhp_brws_100bks?ie=UTF8&node=8192263011&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-leftnav&pf_rd_r=8FRMYKA5HYVX2ZDJ3YBC&pf_rd_r=8FRMYKA5HYVX2ZDJ3YBC&pf_rd_t=101&pf_rd_p=742c6a94-145d-4c8a-aeb5-5dd9096fb8b6&pf_rd_p=742c6a94-145d-4c8a-aeb5-5dd9096fb8b6&pf_rd_i=283155
