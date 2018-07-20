@@ -2,10 +2,12 @@
   "name": "datafinityamazoncrawl",
   "version": "1.0.0",
   "description": "Collects data on 10 books from Amazon Books and stores them in a JSON document ",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node index",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index",
+    "lint": "eslint src/**",
+    "test": "jest src",
+    "coverage": "jest --collectCoverageFrom=src/**.js --coverage src"
   },
   "author": "Sam Smith",
   "license": "MIT",
@@ -13,5 +15,11 @@
     "cheerio": "^1.0.0-rc.2",
     "nightmare": "^3.0.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^5.1.0",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jest": "^21.18.0",
+    "jest": "^23.4.1"
+  }
 }
