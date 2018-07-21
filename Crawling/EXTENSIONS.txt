@@ -1,0 +1,17 @@
+...how your application could be extended to handle the following:
+
+1.) Domains beyond Amazon.com
+
+    Any starting URL can be set in the config file. Dynamic interaction with the page is handled
+    by nightmare, and can be configured in the Crawl file. Every website is structured differently,
+    and has it's own unique selectors. Once you find the selectors you want, it's as simple as
+    configuring them in the Scrape function. In this solution I tried to target the highest order
+    element within reason to parse through with Cheerio. However, as the scale of the application
+    grows, downloading large amounts of HTML could take a toll on performance.
+
+
+2.) Products beyond just simply books.
+    If I wanted to incorporate new products it would require researching the way Amazon
+    structures it's other product pages in order to get at the selectors. Due to the increased
+   volume of records the program would be collecting, multithreading would probably need to be added.
+    As it is, this solution plods about one request at a time.
