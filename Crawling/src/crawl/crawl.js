@@ -2,9 +2,10 @@ const Nightmare = require('nightmare')
 const config = require('../config')
 const getBookURL = require('../scrape/getBookURL')
 
-const nightmare = new Nightmare({ show: false }) // Set true to see electron window
+const nightmare = new Nightmare({ show: true }) // Set true to see electron window
 
-// Creates a nightmare instance and navigates through the website to the desired location
+// Creates a nightmare instance, opens desired url, navigates to desired destination, grabs html
+// and passes it to getBookURL
 const crawl = () => {
   nightmare
     .goto(config.url)
@@ -15,6 +16,7 @@ const crawl = () => {
     .click('ul.a-unordered-list:nth-child(7) > div:nth-child(1) > li:nth-child(1) > span:nth-child(1) > a:nth-child(1) > span:nth-child(1)')
     // returns html for use with cheerio
     .evaluate(() => document.getElementById('atfResults').innerHTML)
+    .end()
     .then((html) => {
       // pass html to getBookURL function
       getBookURL(html)

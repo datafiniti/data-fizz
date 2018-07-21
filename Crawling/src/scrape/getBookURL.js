@@ -3,7 +3,7 @@ const dataConfig = require('../data/dataConfig');
 const paginate = require('../crawl/paginate');
 const config = require('../config');
 
-// receives html data from crawlAmazon and scrapes urls for 10 books and places them into an array
+// receives html data from crawl(), scrapes 10 URLS, and passes URLS to paginate()
 const getBookURL = (data) => {
   const $ = cheerio.load(data);
 
