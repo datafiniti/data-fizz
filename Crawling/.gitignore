@@ -1,0 +1,7 @@
+node_modules
+src/output/amazonBookData.json
+.idea
+coverage
+.eslintrc.js
+
+
