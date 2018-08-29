@@ -1,0 +1,78 @@
+C:\Program Files\nodejs\node.exe --inspect-brk=36309 Data_Fizz\Data_Fizz_Crawler_Matthew_Bruns.js https://www.amazon.com books 
+Debugger listening on ws://127.0.0.1:36309/864794d1-ece9-4ca7-931c-72e59fdcc58b
+
+TEST
+Formatting products...
+[
+  {
+    "id": 0,
+    "name": "The Pout-Pout Fish: Deborah Diesen, Dan Hanna",
+    "listPrice": "$5.79",
+    "description": "A  NEW YORK TIMES  BEST SELLER   Deep in the water,     Mr. Fish swims about     With his fish face stuck     In a permanent pout.    Can his pals cheer him up?     Will his pout ever end?     Is there something he can learn     From an unexpected friend?   Swim along with the pout-pout fish as he discovers that being glum and spreading \"dreary wearies\" isn't really his destiny. Bright ocean colors and playful rhyme come together in Deborah Diesen's fun fish story that's sure to turn even the poutiest of frowns upside down. ",
+    "product_dimension": "6.6 x 0.7 x 6.5 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/816hDDySK0L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/41vXNT-YAPL.jpg"
+    ],
+    "weight": "11.2 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/0374360979/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 1,
+    "name": "Baby Touch and Feel: Animals",
+    "listPrice": "$5.13",
+    "description": "A small touch and feel book full of cuddly bunnies and other soft animals, this is a gift your little one is sure to adore.  This  USA Today  bestselling board book encourages tiny fingers to explore and develop fine motor skills while building an early language foundation. Babies will meet adorable puppies, kittens, penguins, and other animals throughout the pages of the book.  Filled with real-life animal photographs featuring touch-and-feel textures that help children develop their knowledge while increasing their use of senses,  Baby Touch and Feel: Animals  is the perfect size for small hands. Its padded cover can withstand biting and throwing while its thick sturdy board pages won't tear. Your baby can practice animal recognition and perfect animal noises while touching the novelty textures on the pages.  With more than one million copies sold,  Baby Touch and Feel: Animals  is the perfect book for your child's bookshelf.   Series description:  Baby Touch and Feel books are the perfect series for the very youngest readers. These small, padded books excite babies and toddlers with their foil and touch-and-feel covers. Each book in this affordable series contains twelve vibrant interior pages with bold, engaging images. Containing large word labels, each page has foil or glitter to behold or a texture to touch. These safe novelty textures intrigue babies and are perfect for little fingers to feel. The Baby Touch and Feel series encourages sensory development, language skills, and early reading skills while teaching colors, shapes, patterns, opposites, and more. ",
+    "product_dimension": "5.4 x 1 x 5.4 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/511VxqDOU0L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/81SvXHUdSvL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/41R6%2B7Px10L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/41oh6ZDmU3L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/31t4UXVgkQL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/71X2FJsv1iL.jpg"
+    ],
+    "weight": "9.1 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/0756634687/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 2,
+    "name": "Baby University Four-Book Set",
+    "listPrice": "$30.53",
+    "description": " The perfect gift for your future genius!   Written by an expert, the Baby University series features colorful, simple introductions to scientific principles and are beloved by babies―and grownups!   Included in this Four-Book Set:   Quantum Physics for Babies  Rocket Science for Babies  General Relativity for Babies  Newtonian Physics for Babies   This series is the perfect way to introduce basic scientific concepts to even the youngest scientist.  ",
+    "product_dimension": "8 x 7.8 x 2.2 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/91VBEGiVjzL.jpg"
+    ],
+    "weight": "3.2 pounds",
+    "sourceURL": "https://www.amazon.com/gp/product/149267043X/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 3,
+    "name": "Harry Potter Paperback Box Set (Books 1-7)",
+    "listPrice": "$52.16",
+    "description": "Harry Potter Paperback Box Set (Books 1-7) [J. K. Rowling, Mary GrandPre&#x301;] on Amazon.com. *FREE* shipping on qualifying offers. &lt;DIV&gt;&lt;DIV&gt;Now for the first time ever, J.K. Rowling&rsquo;s seven bestselling Harry Potter books are available in a stunning paperback boxed set! The Harry Potter series has been hailed as &ldquo;one for the ages&rdquo; by Stephen King and &ldquo;a spellbinding saga&rsquo; by USA Today. And most recently",
+    "product_dimension": "10.6 x 8.5 x 5.5 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/51BBTJaU6QL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/41UWdaQOcnL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/51qMJn9tcHL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/51usgdtCWcL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/61H1Vt5PpyL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/71Ui-NwYUmL.jpg"
+    ],
+    "weight": "8 pounds",
+    "sourceURL": "https://www.amazon.com/gp/product/0545162076/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 4,
+    "name": "Quantum Physics for Babies (Baby University)",
+    "listPrice": "$5.00",
+    "description": " Simple explanations of complex ideas for your future genius!   Written by an expert,  Quantum Physics for Babies  is a colorfully simple introduction to the principle that gives quantum physics its name. Babies (and grownups!) will discover that the wild world of atoms never comes to a standstill. With a tongue-in-cheek approach that adults will love, this installment of the Baby University board book series is the perfect way to introduce basic concepts to even the youngest scientists. After all, it’s never too early to become a quantum physicist!  ",
+    "product_dimension": "8 x 0.8 x 8 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/51KKNLxTiAL.jpg"
+    ],
+    "weight": "12 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/1492656224/ref=tmm_pap_swatch"
+  }
+]

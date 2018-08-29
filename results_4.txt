@@ -1,0 +1,180 @@
+C:\Program Files\nodejs\node.exe --inspect-brk=13955 Data_Fizz\Data_Fizz_Crawler_Matthew_Bruns.js https://www.amazon.com/gp/browse.html?node=2238192011&ref=nav_cs_gift_cards books 
+Debugger listening on ws://127.0.0.1:13955/e2924e64-cc9d-44db-9afb-bfd01aefcff5
+
+Arguments https://www.amazon.com/gp/browse.html?node=2238192011&ref=nav_cs_gift_cards and books accepted.
+Searching https://www.amazon.com/gp/browse.html?node=2238192011&ref=nav_cs_gift_cards for /<a class="a-link-normal" title="[^"]+" href="[^"]+"/g,/<a class="a-link-normal" title="[^"]+" href="([^"]+)"/,/"[^"]+","url":"[^"]+"/g,/"Books","url":"([^"]+)"/
+Continuing from https://www.amazon.com/books-used-books-textbooks/b/ref=nav_shopall_bo_t3?ie=UTF8&node=283155
+Site scraped. Converting to JSON.
+Formatting websites...
+112
+
+null: Product {id: 111, name: "Quantum Physics for Babies (Baby University)", listPrice: "$5.00", description: " Simple explanations of complex ideas for your fut…", product_dimension: "8 x 0.8 x 8 inches", …}
+111
+
+null: Product {id: 110, name: "Quantum Physics for Babies (Baby University)", listPrice: "$5.00", description: " Simple explanations of complex ideas for your fut…", product_dimension: "8 x 0.8 x 8 inches", …}
+110
+
+null: Product {id: 109, name: undefined, listPrice: "$14.99", description: " From the #1  New York Times  bestselling author o…", product_dimension: undefined, …}
+109
+
+null: Product {id: 108, name: undefined, listPrice: "$14.99", description: " From the #1  New York Times  bestselling author o…", product_dimension: undefined, …}
+108
+
+null: Product {id: 107, name: "Amazon.com: The Outsider", listPrice: "$14.99", description: "Amazon.com: The Outsider: A Novel eBook: Stephen K…", product_dimension: undefined, …}
+107
+
+null: Product {id: 106, name: "Amazon.com: The Outsider", listPrice: "$14.99", description: "Amazon.com: The Outsider: A Novel eBook: Stephen K…", product_dimension: undefined, …}
+106
+
+null: Product {id: 105, name: "12 Rules for Life: An Antidote to Chaos - Kindle e…", listPrice: "$13.99", description: "12 Rules for Life: An Antidote to Chaos - Kindle e…", product_dimension: undefined, …}
+105
+
+null: Product {id: 104, name: "12 Rules for Life: An Antidote to Chaos - Kindle e…", listPrice: "$13.99", description: "12 Rules for Life: An Antidote to Chaos - Kindle e…", product_dimension: undefined, …}
+104
+
+null: Product {id: 103, name: "Before We Were Yours: A Novel - Kindle edition by …", listPrice: "$12.99", description: "Before We Were Yours: A Novel - Kindle edition by …", product_dimension: undefined, …}
+103
+
+null: Product {id: 102, name: "Before We Were Yours: A Novel - Kindle edition by …", listPrice: "$12.99", description: "Before We Were Yours: A Novel - Kindle edition by …", product_dimension: undefined, …}
+102
+
+null: Product {id: 101, name: "The Pout-Pout Fish", listPrice: "$5.79", description: "A  NEW YORK TIMES  BEST SELLER   Deep in the water…", product_dimension: "6.6 x 0.7 x 6.5 inches", …}
+101
+
+null: Product {id: 100, name: "The Pout-Pout Fish", listPrice: "$5.79", description: "A  NEW YORK TIMES  BEST SELLER   Deep in the water…", product_dimension: "6.6 x 0.7 x 6.5 inches", …}
+100
+
+null: Product {id: 99, name: "Chicka Chicka Boom Boom (Board Book)", listPrice: "$7.99", description: "Amazon.com: Chicka Chicka Boom Boom (Board Book) (…", product_dimension: "5.5 x 1 x 7.2 inches", …}
+99
+
+null: Product {id: 98, name: "Chicka Chicka Boom Boom (Board Book)", listPrice: "$7.99", description: "Amazon.com: Chicka Chicka Boom Boom (Board Book) (…", product_dimension: "5.5 x 1 x 7.2 inches", …}
+98
+
+null: Product {id: 97, name: undefined, listPrice: "$14.99", description: "Texas Ranger - Kindle edition by James Patterson. …", product_dimension: undefined, …}
+97
+
+null: Product {id: 96, name: undefined, listPrice: "$14.99", description: "Texas Ranger - Kindle edition by James Patterson. …", product_dimension: undefined, …}
+96
+
+null: Product {id: 95, name: "The President Is Missing: A Novel - Kindle edition…", listPrice: "$14.99", description: "The President Is Missing: A Novel - Kindle edition…", product_dimension: undefined, …}
+95
+
+null: Product {id: 94, name: "The President Is Missing: A Novel - Kindle edition…", listPrice: "$14.99", description: "The President Is Missing: A Novel - Kindle edition…", product_dimension: undefined, …}
+94
+
+null: Product {id: 93, name: "The Storyteller&#39;s Secret: A Novel - Kindle edi…", listPrice: "$4.99", description: " From the bestselling author of  Trail of Broken W…", product_dimension: undefined, …}
+93
+
+null: Product {id: 92, name: "The Storyteller&#39;s Secret: A Novel - Kindle edi…", listPrice: "$4.99", description: " From the bestselling author of  Trail of Broken W…", product_dimension: undefined, …}
+92
+
+null: Product {id: 91, name: "Harry Potter Paperback Box Set (Books 1-7)", listPrice: "$52.16", description: "Harry Potter Paperback Box Set (Books 1-7) [J. K. …", product_dimension: "10.6 x 8.5 x 5.5 inches", …}
+91
+
+null: Product {id: 90, name: "Harry Potter Paperback Box Set (Books 1-7)", listPrice: "$52.16", description: "Harry Potter Paperback Box Set (Books 1-7) [J. K. …", product_dimension: "10.6 x 8.5 x 5.5 inches", …}
+90
+
+null: Product {id: 89, name: undefined, listPrice: "$8.99", description: "To All the Boys I&#39;ve Loved Before - Kindle edi…", product_dimension: undefined, …}
+89
+
+null: Product {id: 88, name: undefined, listPrice: "$8.99", description: "To All the Boys I&#39;ve Loved Before - Kindle edi…", product_dimension: undefined, …}
+88
+
+null: Product {id: 87, name: "Sharp Objects: A Novel - Kindle edition by Gillian…", listPrice: "$9.99", description: "  AN HBO &#174; &#160;LIMITED SERIES STARRING AMY …", product_dimension: undefined, …}
+87
+
+null: Product {id: 86, name: "Sharp Objects: A Novel - Kindle edition by Gillian…", listPrice: "$9.99", description: "  AN HBO &#174; &#160;LIMITED SERIES STARRING AMY …", product_dimension: undefined, …}
+86
+
+null: Product {id: 85, name: "Amazon.com: Educated", listPrice: "$12.99", description: "Amazon.com: Educated: A Memoir eBook: Tara Westove…", product_dimension: undefined, …}
+85
+
+null: Product {id: 84, name: "Amazon.com: Educated", listPrice: "$12.99", description: "Amazon.com: Educated: A Memoir eBook: Tara Westove…", product_dimension: undefined, …}
+84
+
+null: Product {id: 83, name: "Baby University Four-Book Set", listPrice: "$30.53", description: " The perfect gift for your future genius!   Writte…", product_dimension: "8 x 7.8 x 2.2 inches", …}
+83
+
+null: Product {id: 82, name: "Baby University Four-Book Set", listPrice: "$30.53", description: " The perfect gift for your future genius!   Writte…", product_dimension: "8 x 7.8 x 2.2 inches", …}
+82
+
+null: Product {id: 81, name: "Baby Touch and Feel: Animals", listPrice: "$5.13", description: "A small touch and feel book full of cuddly bunnies…", product_dimension: "5.4 x 1 x 5.4 inches", …}
+81
+
+null: Product {id: 80, name: "Baby Touch and Feel: Animals", listPrice: "$5.13", description: "A small touch and feel book full of cuddly bunnies…", product_dimension: "5.4 x 1 x 5.4 inches", …}
+80
+
+null: Product {id: 79, name: "First 100 Words: Roger Priddy", listPrice: "$3.91", description: "Your little one will soon learn some essential fir…", product_dimension: "4.8 x 1 x 6.2 inches", …}
+79
+
+null: Product {id: 78, name: "First 100 Words", listPrice: "$3.91", description: "Your little one will soon learn some essential fir…", product_dimension: "4.8 x 1 x 6.2 inches", …}
+78
+
+null: Product {id: 77, name: undefined, listPrice: "$9.99", description: "Crazy Rich Asians (Crazy Rich Asians Trilogy) - Ki…", product_dimension: undefined, …}
+77
+
+null: Product {id: 76, name: undefined, listPrice: "$9.99", description: "Crazy Rich Asians (Crazy Rich Asians Trilogy) - Ki…", product_dimension: undefined, …}
+76
+
+null: Product {id: 75, name: "Girl, Wash Your Face: Stop Believing the Lies Abou…", listPrice: "$12.99", description: " #1&nbsp; NEW YORK TIMES &nbsp;BESTSELLER    Do yo…", product_dimension: undefined, …}
+75
+
+null: Product {id: 74, name: "Girl, Wash Your Face: Stop Believing the Lies Abou…", listPrice: "$12.99", description: " #1&nbsp; NEW YORK TIMES &nbsp;BESTSELLER    Do yo…", product_dimension: undefined, …}
+74
+
+null: Product {id: 73, name: "The Very Hungry Caterpillar", listPrice: "$6.56", description: "Amazon.com: The Very Hungry Caterpillar (978039922…", product_dimension: "5 x 0.6 x 7.2 inches", …}
+73
+
+null: Product {id: 72, name: "Amazon.com: The Very Hungry Caterpillar (978039922…", listPrice: "$6.56", description: "Amazon.com: The Very Hungry Caterpillar (978039922…", product_dimension: "5 x 0.6 x 7.2 inches", …}
+72
+
+null: Product {id: 71, name: undefined, listPrice: "$4.99", description: " Can the best of enemies become the hottest of lov…", product_dimension: undefined, …}
+71
+
+null: Product {id: 70, name: undefined, listPrice: "$4.99", description: " Can the best of enemies become the hottest of lov…", product_dimension: undefined, …}
+70
+
+null: Product {id: 69, name: undefined, listPrice: "$3.99", description: " Hot fling or real thing? There are no Big Easy an…", product_dimension: undefined, …}
+69
+
+null: Product {id: 68, name: undefined, listPrice: "$3.99", description: " Hot fling or real thing? There are no Big Easy an…", product_dimension: undefined, …}
+68
+
+null: Product {id: 67, name: "Accidentally Hitched: An Accidental Marriage Roman…", listPrice: "$2.99", description: "Accidentally Hitched: An Accidental Marriage Roman…", product_dimension: undefined, …}
+67
+
+null: Product {id: 66, name: "Accidentally Hitched: An Accidental Marriage Roman…", listPrice: "$2.99", description: "Accidentally Hitched: An Accidental Marriage Roman…", product_dimension: undefined, …}
+66
+
+null: Product {id: 65, name: "Forget You, Ethan: An Enemies to Lovers Romance - …", listPrice: "$2.99", description: "Forget You, Ethan: An Enemies to Lovers Romance - …", product_dimension: undefined, …}
+65
+
+null: Product {id: 64, name: "Forget You, Ethan: An Enemies to Lovers Romance - …", listPrice: "$2.99", description: "Forget You, Ethan: An Enemies to Lovers Romance - …", product_dimension: undefined, …}
+64
+
+null: Product {id: 63, name: "Whisper Me This: A Novel - Kindle edition by Kerry…", listPrice: "$5.99", description: " In this Amazon Charts and  Washington Post  bests…", product_dimension: undefined, …}
+63
+
+null: Product {id: 62, name: "Whisper Me This: A Novel - Kindle edition by Kerry…", listPrice: "$5.99", description: " In this Amazon Charts and  Washington Post  bests…", product_dimension: undefined, …}
+62
+
+null: Product {id: 61, name: undefined, listPrice: "$0.99", description: "In the Dog House (A Dog Club Mystery) - Kindle edi…", product_dimension: undefined, …}
+61
+
+null: Product {id: 60, name: undefined, listPrice: "$0.99", description: "In the Dog House (A Dog Club Mystery) - Kindle edi…", product_dimension: undefined, …}
+60
+
+null: Product {id: 59, name: "Amazon.com: Stray", listPrice: "$4.99", description: " Brutal and beautiful,  Stray  is the true story o…", product_dimension: undefined, …}
+59
+
+null: Product {id: 58, name: "Amazon.com: Stray", listPrice: "$4.99", description: " Brutal and beautiful,  Stray  is the true story o…", product_dimension: undefined, …}
+58
+
+null: Product {id: 57, name: undefined, listPrice: "$4.99", description: " From  USA Today  bestselling author Julianne MacL…", product_dimension: undefined, …}
+57
+
+null: Product {id: 56, name: undefined, listPrice: "$4.99", description: " From  USA Today  bestselling author Julianne MacL…", product_dimension: undefined, …}
+56
+
+null: Product {id: 55, name: undefined, listPrice: "$2.99", description: "Protecting Abigail - Kindle edition by R.R. Banks.…", product_dimension: undefined, …}
+55
