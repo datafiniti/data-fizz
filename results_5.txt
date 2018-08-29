@@ -1,0 +1,1001 @@
+C:\Program Files\nodejs\node.exe --inspect-brk=48716 Data_Fizz\Data_Fizz_Crawler_Matthew_Bruns.js https://www.amazon.com/Feared-Rosato-DiNunzio-Book-6/dp/B07BWTNPDC/ref=tmm_aud_swatch_0?_encoding=UTF8&qid=&sr= books 
+Debugger listening on ws://127.0.0.1:48716/f5ebb556-c07f-481e-bccd-42afa3e0e9ac
+
+Arguments https://www.amazon.com/Feared-Rosato-DiNunzio-Book-6/dp/B07BWTNPDC/ref=tmm_aud_swatch_0?_encoding=UTF8&qid=&sr= and books accepted.
+Searching https://www.amazon.com/Feared-Rosato-DiNunzio-Book-6/dp/B07BWTNPDC/ref=tmm_aud_swatch_0?_encoding=UTF8&qid=&sr= for /<a class="a-link-normal" title="[^"]+" href="[^"]+"/g,/<a class="a-link-normal" title="[^"]+" href="([^"]+)"/,/"[^"]+","url":"[^"]+"/g,/"Books","url":"([^"]+)"/
+Continuing from https://www.amazon.com/books-used-books-textbooks/b/ref=nav_shopall_bo_t3?ie=UTF8&node=283155
+Site scraped. Converting to JSON.
+Formatting websites...
+70
+69
+68
+67
+66
+65
+64
+63
+62
+61
+60
+59
+58
+57
+56
+55
+54
+53
+52
+51
+50
+49
+48
+47
+46
+45
+44
+43
+42
+41
+40
+39
+38
+37
+36
+35
+34
+33
+32
+31
+30
+29
+28
+27
+26
+25
+24
+23
+22
+21
+20
+19
+18
+17
+16
+15
+14
+13
+12
+11
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+Formatting products...
+Before: [
+  {
+    "id": 0,
+    "name": "Girl, Wash Your Face: Stop Believing the Lies About Who You Are So You Can Become Who You Were Meant to Be",
+    "listPrice": "$0.00",
+    "description": "Amazon.com: Girl, Wash Your Face: Stop Believing the Lies About Who You Are So You Can Become Who You Were Meant to Be &#40;Audible Audio Edition&#41;: Rachel Hollis, Thomas Nelson: Books",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/A1sipCdR7tL._AC_UL160_SR160,160_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B077GZBL1Y/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 0,
+    "name": "Girl, Wash Your Face: Stop Believing the Lies About Who You Are So You Can Become Who You Were Meant to Be",
+    "listPrice": "$0.00",
+    "description": "Amazon.com: Girl, Wash Your Face: Stop Believing the Lies About Who You Are So You Can Become Who You Were Meant to Be &#40;Audible Audio Edition&#41;: Rachel Hollis, Thomas Nelson: Books",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/A1sipCdR7tL._AC_UL160_SR160,160_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B077GZBL1Y/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 2,
+    "name": "A Case of Need: A Novel - Kindle edition by Michael Crichton. Literature &amp; Fiction Kindle eBooks @ Amazon.com.",
+    "listPrice": "$7.99",
+    "description": "A Case of Need: A Novel - Kindle edition by Michael Crichton. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading A Case of Need: A Novel.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51MCT9rFURL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B00DEU9H3Y/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 1,
+    "name": "A Case of Need: A Novel - Kindle edition by Michael Crichton. Literature &amp; Fiction Kindle eBooks @ Amazon.com.",
+    "listPrice": "$7.99",
+    "description": "A Case of Need: A Novel - Kindle edition by Michael Crichton. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading A Case of Need: A Novel.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51MCT9rFURL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B00DEU9H3Y/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 4,
+    "name": "Pax",
+    "listPrice": "$0.00",
+    "description": "Amazon.com: Pax &#40;Audible Audio Edition&#41;: Sara Pennypacker, Michael Curran-Dorsano, HarperAudio: Books",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/81GiSEthAWL._AC_UL480_SR480,480_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B0195HIIRK/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 2,
+    "name": "Pax",
+    "listPrice": "$0.00",
+    "description": "Amazon.com: Pax &#40;Audible Audio Edition&#41;: Sara Pennypacker, Michael Curran-Dorsano, HarperAudio: Books",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/81GiSEthAWL._AC_UL480_SR480,480_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B0195HIIRK/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 6,
+    "name": "Amazon.com: The 7 Habits of Highly Effective People",
+    "listPrice": "$5.44",
+    "description": "The 7 Habits of Highly Effective People: Powerful Lessons in Personal Change - Kindle edition by Stephen R. Covey. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading The 7 Habits of Highly Effective People: Powerful Lessons in Personal Change.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51fEYMhtHoL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B01069X4H0/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 3,
+    "name": "Amazon.com: The 7 Habits of Highly Effective People",
+    "listPrice": "$5.44",
+    "description": "The 7 Habits of Highly Effective People: Powerful Lessons in Personal Change - Kindle edition by Stephen R. Covey. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading The 7 Habits of Highly Effective People: Powerful Lessons in Personal Change.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51fEYMhtHoL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B01069X4H0/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 8,
+    "listPrice": "$2.99",
+    "description": "Two Weeks Notice - Kindle edition by Whitney G.. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading Two Weeks Notice.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51rlfmnj1fL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07FQMZJZR/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 4,
+    "listPrice": "$2.99",
+    "description": "Two Weeks Notice - Kindle edition by Whitney G.. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading Two Weeks Notice.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51rlfmnj1fL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07FQMZJZR/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 10,
+    "name": "Amazon.com: Harry Potter and the Sorcerer&#39;s Stone eBook",
+    "listPrice": "$8.99",
+    "description": " &#x22;Turning the envelope over, his hand trembling, Harry saw a purple wax seal bearing a coat of arms; a lion, an eagle, a badger and a snake surrounding a large letter 'H'.&#x22;   Harry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive. Addressed in green ink on yellowish parchment with a purple seal, they are swiftly confiscated by his grisly aunt and uncle. Then, on Harry's eleventh birthday, a great beetle-eyed giant of a man called Rubeus Hagrid bursts in with some astonishing news: Harry Potter is a wizard, and he has a place at Hogwarts School of Witchcraft and Wizardry. An incredible adventure is about to begin!   Harry Potter and the Sorcerer&#x2019;s Stone is also available as an Illustrated Kindle-in-Motion edition.  ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51U6bQbA8oL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B0192CTMYG/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 5,
+    "name": "Amazon.com: Harry Potter and the Sorcerer&#39;s Stone eBook",
+    "listPrice": "$8.99",
+    "description": " &#x22;Turning the envelope over, his hand trembling, Harry saw a purple wax seal bearing a coat of arms; a lion, an eagle, a badger and a snake surrounding a large letter 'H'.&#x22;   Harry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive. Addressed in green ink on yellowish parchment with a purple seal, they are swiftly confiscated by his grisly aunt and uncle. Then, on Harry's eleventh birthday, a great beetle-eyed giant of a man called Rubeus Hagrid bursts in with some astonishing news: Harry Potter is a wizard, and he has a place at Hogwarts School of Witchcraft and Wizardry. An incredible adventure is about to begin!   Harry Potter and the Sorcerer&#x2019;s Stone is also available as an Illustrated Kindle-in-Motion edition.  ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51U6bQbA8oL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B0192CTMYG/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 12,
+    "name": "The Whole-Brain Child: 12 Revolutionary Strategies to Nurture Your Child&#39;s Developing Mind - Kindle edition by Daniel J. Siegel, Tina Payne Bryson. Health, Fitness &amp; Dieting Kindle eBooks @ Amazon.com.",
+    "listPrice": "$1.99",
+    "description": "  NEW YORK TIMES  BESTSELLER   In this pioneering, practical book, Daniel J. Siegel, neuropsychiatrist and author of the bestselling  Mindsight , and parenting expert Tina Payne Bryson offer a revolutionary approach to child rearing with twelve key strategies that foster healthy brain development, leading to calmer, happier children. The authors explain&mdash;and make accessible&mdash;the new science of how a child&rsquo;s brain is wired and how it matures. The &ldquo;upstairs brain,&rdquo; which makes decisions and balances emotions, is under construction until the mid-twenties. And especially in young children, the right brain and its emotions tend to rule over the logic of the left brain. No wonder kids throw tantrums, fight, or sulk in silence. By applying these discoveries to everyday parenting, you can turn any outburst, argument, or fear into a chance to integrate your child&rsquo;s brain and foster vital growth.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &#160;   &#160;  Complete with age-appropriate strategies for dealing with day-to-day struggles and illustrations that will help you explain these concepts to your child,  The Whole-Brain Child  shows you how to cultivate healthy emotional and intellectual development so that your children can lead balanced, meaningful, and connected lives.   &#160;   From the Trade Paperback edition. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/413zcJRwNpL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B004J4X32U/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 6,
+    "name": "The Whole-Brain Child: 12 Revolutionary Strategies to Nurture Your Child&#39;s Developing Mind - Kindle edition by Daniel J. Siegel, Tina Payne Bryson. Health, Fitness &amp; Dieting Kindle eBooks @ Amazon.com.",
+    "listPrice": "$1.99",
+    "description": "  NEW YORK TIMES  BESTSELLER   In this pioneering, practical book, Daniel J. Siegel, neuropsychiatrist and author of the bestselling  Mindsight , and parenting expert Tina Payne Bryson offer a revolutionary approach to child rearing with twelve key strategies that foster healthy brain development, leading to calmer, happier children. The authors explain&mdash;and make accessible&mdash;the new science of how a child&rsquo;s brain is wired and how it matures. The &ldquo;upstairs brain,&rdquo; which makes decisions and balances emotions, is under construction until the mid-twenties. And especially in young children, the right brain and its emotions tend to rule over the logic of the left brain. No wonder kids throw tantrums, fight, or sulk in silence. By applying these discoveries to everyday parenting, you can turn any outburst, argument, or fear into a chance to integrate your child&rsquo;s brain and foster vital growth.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &#160;   &#160;  Complete with age-appropriate strategies for dealing with day-to-day struggles and illustrations that will help you explain these concepts to your child,  The Whole-Brain Child  shows you how to cultivate healthy emotional and intellectual development so that your children can lead balanced, meaningful, and connected lives.   &#160;   From the Trade Paperback edition. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/413zcJRwNpL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B004J4X32U/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 14,
+    "name": "English History Made Brief, Irreverent, and Pleasurable",
+    "listPrice": "$0.00",
+    "description": "Amazon.com: English History Made Brief, Irreverent, and Pleasurable &#40;Audible Audio Edition&#41;: Lacey Baldwin Smith, Peter Noble, Audible Studios: Books",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/A1RVNBJTPmL._AC_UL480_SR480,480_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B01MR3ETPI/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 7,
+    "name": "English History Made Brief, Irreverent, and Pleasurable",
+    "listPrice": "$0.00",
+    "description": "Amazon.com: English History Made Brief, Irreverent, and Pleasurable &#40;Audible Audio Edition&#41;: Lacey Baldwin Smith, Peter Noble, Audible Studios: Books",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/A1RVNBJTPmL._AC_UL480_SR480,480_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B01MR3ETPI/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 16,
+    "name": "The Extraordinary Life of Sam Hell: A Novel - Kindle edition by Robert Dugoni. Literature &amp; Fiction Kindle eBooks @ Amazon.com.",
+    "listPrice": "$2.99",
+    "description": "  Wall Street Journal  and  New York Times  bestselling author Robert Dugoni&#x2019;s coming-of-age story is, according to  Booklist , &#x201c;a novel that, if it doesn&#x2019;t cross entirely over into John Irving territory, certainly nestles in close to the border.&#x201d;   Sam Hill always saw the world through different eyes. Born with red pupils, he was called &#x201c;Devil Boy&#x201d; or Sam &#x201c;Hell&#x201d; by his classmates; &#x201c;God&#x2019;s will&#x201d; is what his mother called his ocular albinism. Her words were of little comfort, but Sam persevered, buoyed by his mother&#x2019;s devout faith, his father&#x2019;s practical wisdom, and his two other misfit friends.  Sam believed it was God who sent Ernie Cantwell, the only African American kid in his class, to be the friend he so desperately needed. And that it was God&#x2019;s idea for Mickie Kennedy to storm into Our Lady of Mercy like a tornado, uprooting every rule Sam had been taught about boys and girls.  Forty years later, Sam, a small-town eye doctor, is no longer certain anything was by design&#x2014;especially not the tragedy that caused him to turn his back on his friends, his hometown, and the life he&#x2019;d always known. Running from the pain, eyes closed, served little purpose. Now, as he looks back on his life, Sam embarks on a journey that will take him halfway around the world. This time, his eyes are wide open&#x2014;bringing into clear view what changed him, defined him, and made him so afraid, until he can finally see what truly matters. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51TjK1b8uaL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B074H8NFDF/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 8,
+    "name": "The Extraordinary Life of Sam Hell: A Novel - Kindle edition by Robert Dugoni. Literature &amp; Fiction Kindle eBooks @ Amazon.com.",
+    "listPrice": "$2.99",
+    "description": "  Wall Street Journal  and  New York Times  bestselling author Robert Dugoni&#x2019;s coming-of-age story is, according to  Booklist , &#x201c;a novel that, if it doesn&#x2019;t cross entirely over into John Irving territory, certainly nestles in close to the border.&#x201d;   Sam Hill always saw the world through different eyes. Born with red pupils, he was called &#x201c;Devil Boy&#x201d; or Sam &#x201c;Hell&#x201d; by his classmates; &#x201c;God&#x2019;s will&#x201d; is what his mother called his ocular albinism. Her words were of little comfort, but Sam persevered, buoyed by his mother&#x2019;s devout faith, his father&#x2019;s practical wisdom, and his two other misfit friends.  Sam believed it was God who sent Ernie Cantwell, the only African American kid in his class, to be the friend he so desperately needed. And that it was God&#x2019;s idea for Mickie Kennedy to storm into Our Lady of Mercy like a tornado, uprooting every rule Sam had been taught about boys and girls.  Forty years later, Sam, a small-town eye doctor, is no longer certain anything was by design&#x2014;especially not the tragedy that caused him to turn his back on his friends, his hometown, and the life he&#x2019;d always known. Running from the pain, eyes closed, served little purpose. Now, as he looks back on his life, Sam embarks on a journey that will take him halfway around the world. This time, his eyes are wide open&#x2014;bringing into clear view what changed him, defined him, and made him so afraid, until he can finally see what truly matters. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51TjK1b8uaL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B074H8NFDF/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 18,
+    "name": "China Rich Girlfriend: A Novel (Crazy Rich Asians Trilogy) - Kindle edition by Kevin Kwan. Literature &amp; Fiction Kindle eBooks @ Amazon.com.",
+    "listPrice": "$11.99",
+    "description": "China Rich Girlfriend: A Novel (Crazy Rich Asians Trilogy) - Kindle edition by Kevin Kwan. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading China Rich Girlfriend: A Novel (Crazy Rich Asians Trilogy).",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/41xsiJ8NmdL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B00NRQORA8/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 9,
+    "name": "China Rich Girlfriend: A Novel (Crazy Rich Asians Trilogy) - Kindle edition by Kevin Kwan. Literature &amp; Fiction Kindle eBooks @ Amazon.com.",
+    "listPrice": "$11.99",
+    "description": "China Rich Girlfriend: A Novel (Crazy Rich Asians Trilogy) - Kindle edition by Kevin Kwan. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading China Rich Girlfriend: A Novel (Crazy Rich Asians Trilogy).",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/41xsiJ8NmdL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B00NRQORA8/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 20,
+    "name": "Capital Gaines: The Smart Things I've Learned by Doing Stupid Stuff",
+    "listPrice": "$0.00",
+    "description": "Amazon.com: Capital Gaines: The Smart Things I&#39;ve Learned by Doing Stupid Stuff &#40;Audible Audio Edition&#41;: Chip Gaines, Joanna Gaines, Melinda Paul, Rachel Agee, Gabe Wicks, Thomas Nelson: Books",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/811fUsuM6OL._AC_UL320_SR320,320_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B0725WYC2L/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 10,
+    "name": "Capital Gaines: The Smart Things I've Learned by Doing Stupid Stuff",
+    "listPrice": "$0.00",
+    "description": "Amazon.com: Capital Gaines: The Smart Things I&#39;ve Learned by Doing Stupid Stuff &#40;Audible Audio Edition&#41;: Chip Gaines, Joanna Gaines, Melinda Paul, Rachel Agee, Gabe Wicks, Thomas Nelson: Books",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/811fUsuM6OL._AC_UL320_SR320,320_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B0725WYC2L/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 22,
+    "listPrice": "$4.99",
+    "description": " For one couple, getting what they want comes at a devastating price in this gripping debut thriller.   Banking heiress Trish and her husband, James, seem to have it all, from a lavish lifestyle to a historic mansion in the nation&#x2019;s capital. The only thing that&#x2019;s missing to make their family complete is a baby, so when Trish holds Anne Elise in her arms for the first time, it&#x2019;s no surprise that she falls deeply in love. There&#x2019;s just one problem: Trish isn&#x2019;t the mother.  The baby belongs to Laurel, James&#x2019;s young mistress. And more than that, James and Laurel want to start a new life together&#x2014;despite an ironclad prenup standing in their way. When Trish becomes dangerously obsessed with making Laurel&#x2019;s baby her own, the lovers&#x2019; plan to break James&#x2019;s marriage quickly goes awry. How far is each of them willing to go for happiness? ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51UoA9pl6JL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B079P4H229/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 11,
+    "listPrice": "$4.99",
+    "description": " For one couple, getting what they want comes at a devastating price in this gripping debut thriller.   Banking heiress Trish and her husband, James, seem to have it all, from a lavish lifestyle to a historic mansion in the nation&#x2019;s capital. The only thing that&#x2019;s missing to make their family complete is a baby, so when Trish holds Anne Elise in her arms for the first time, it&#x2019;s no surprise that she falls deeply in love. There&#x2019;s just one problem: Trish isn&#x2019;t the mother.  The baby belongs to Laurel, James&#x2019;s young mistress. And more than that, James and Laurel want to start a new life together&#x2014;despite an ironclad prenup standing in their way. When Trish becomes dangerously obsessed with making Laurel&#x2019;s baby her own, the lovers&#x2019; plan to break James&#x2019;s marriage quickly goes awry. How far is each of them willing to go for happiness? ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51UoA9pl6JL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B079P4H229/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 24,
+    "name": "Amazon.com: Crew (Crew Series Book 1) eBook",
+    "listPrice": "$3.99",
+    "description": "Crew (Crew Series Book 1) - Kindle edition by Tijan. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading Crew (Crew Series Book 1).",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/41Mz%2B22WzsL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07GV6W37T/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 12,
+    "name": "Amazon.com: Crew (Crew Series Book 1) eBook",
+    "listPrice": "$3.99",
+    "description": "Crew (Crew Series Book 1) - Kindle edition by Tijan. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading Crew (Crew Series Book 1).",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/41Mz%2B22WzsL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07GV6W37T/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 26,
+    "listPrice": "$2.99",
+    "description": "Not So Nice Guy - Kindle edition by R.S. Grey. Contemporary Romance Kindle eBooks @ Amazon.com.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/41iEr2152yL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07G6RZYG8/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 13,
+    "listPrice": "$2.99",
+    "description": "Not So Nice Guy - Kindle edition by R.S. Grey. Contemporary Romance Kindle eBooks @ Amazon.com.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/41iEr2152yL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07G6RZYG8/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 28,
+    "name": "Happy Doomsday: A Novel - Kindle edition by David Sosnowski. Literature &amp; Fiction Kindle eBooks @ Amazon.com.",
+    "listPrice": "$4.99",
+    "description": " The end of the world is the weirdest time to come of age.   Welcome to the end of the world. One minute, people are going about their lives, and the next&#x2014; not . In the wake of the inexplicable purge, only a handful of young misfits remains.  When it all went down, &#x201c;Wizard of Odd&#x201d; Dev Brinkman was seeking shelter from the taunts of his classmates. Goth girl Lucy Abernathy had lost her best friend and had no clue where to turn. And Twinkie-loving quarterback &#x201c;Marcus&#x201d; Haddad was learning why you never discuss politics and religion in polite company&#x2014;or online.  As if life when you&#x2019;re sixteen isn&#x2019;t confusing enough, throw in the challenges of postapocalyptic subsistence, a case of survivor&#x2019;s guilt turned up to seven billion, and the small task of rebuilding humankind&#x2026;  No one said doomsday would be a breeze. But for Dev, Lucy, and Marcus, the greatest hope&#x2014;and greatest threat&#x2014;will come when they find each other. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/518YKZ-dmYL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B0786B4F9F/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 14,
+    "name": "Happy Doomsday: A Novel - Kindle edition by David Sosnowski. Literature &amp; Fiction Kindle eBooks @ Amazon.com.",
+    "listPrice": "$4.99",
+    "description": " The end of the world is the weirdest time to come of age.   Welcome to the end of the world. One minute, people are going about their lives, and the next&#x2014; not . In the wake of the inexplicable purge, only a handful of young misfits remains.  When it all went down, &#x201c;Wizard of Odd&#x201d; Dev Brinkman was seeking shelter from the taunts of his classmates. Goth girl Lucy Abernathy had lost her best friend and had no clue where to turn. And Twinkie-loving quarterback &#x201c;Marcus&#x201d; Haddad was learning why you never discuss politics and religion in polite company&#x2014;or online.  As if life when you&#x2019;re sixteen isn&#x2019;t confusing enough, throw in the challenges of postapocalyptic subsistence, a case of survivor&#x2019;s guilt turned up to seven billion, and the small task of rebuilding humankind&#x2026;  No one said doomsday would be a breeze. But for Dev, Lucy, and Marcus, the greatest hope&#x2014;and greatest threat&#x2014;will come when they find each other. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/518YKZ-dmYL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B0786B4F9F/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 30,
+    "name": "Amazon.com: Mirror Gate (Harbinger Book 2) eBook",
+    "listPrice": "$5.99",
+    "description": "  Wall Street Journal  bestselling author Jeff Wheeler continues his wondrous Harbinger series in which two young women unite as two worlds approach the brink of war&#x2026;   Though relations between Princess Seraphin Fitzempress and her father have been strained, Sera&#x2019;s royal position has remained unchallenged. Filled with self-doubt, she struggles to grasp the Mysteries&#x2014;her greatest trial yet.  An education in the enigmatic magic is a necessary one, should Sera plan to rise in her station and invoke her powers during war. But the emperor&#x2019;s death now leaves both Sera and her ambitious father eligible for the throne&#x2014;a contest the prince regent intends to win. Even if it means an alliance with a rival empire.  Sera&#x2019;s hope lies in Cettie, a waif raised in the world below, whose life has intertwined with Sera&#x2019;s in the most unexpected ways. The Mysteries come easily to Cettie, and her studies have begun to yield new insight into her growing powers. But those same powers put Cettie in the path of those who would destroy her.  Now as the threat of war ignites and an insidious sickness spreads throughout the kingdom, Sera and Cettie will need to gather their courage and fight for each other&#x2019;s lives&#x2026;and for the future of their endangered world. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51XT1IC0ldL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07B4YBLCZ/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 15,
+    "name": "Amazon.com: Mirror Gate (Harbinger Book 2) eBook",
+    "listPrice": "$5.99",
+    "description": "  Wall Street Journal  bestselling author Jeff Wheeler continues his wondrous Harbinger series in which two young women unite as two worlds approach the brink of war&#x2026;   Though relations between Princess Seraphin Fitzempress and her father have been strained, Sera&#x2019;s royal position has remained unchallenged. Filled with self-doubt, she struggles to grasp the Mysteries&#x2014;her greatest trial yet.  An education in the enigmatic magic is a necessary one, should Sera plan to rise in her station and invoke her powers during war. But the emperor&#x2019;s death now leaves both Sera and her ambitious father eligible for the throne&#x2014;a contest the prince regent intends to win. Even if it means an alliance with a rival empire.  Sera&#x2019;s hope lies in Cettie, a waif raised in the world below, whose life has intertwined with Sera&#x2019;s in the most unexpected ways. The Mysteries come easily to Cettie, and her studies have begun to yield new insight into her growing powers. But those same powers put Cettie in the path of those who would destroy her.  Now as the threat of war ignites and an insidious sickness spreads throughout the kingdom, Sera and Cettie will need to gather their courage and fight for each other&#x2019;s lives&#x2026;and for the future of their endangered world. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51XT1IC0ldL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07B4YBLCZ/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 32,
+    "listPrice": "$4.99",
+    "description": " From the bestselling author of  When I&#x2019;m Gone  and  Working Fire  comes a gripping novel about a mother, her missing daughter, and the dark secrets that engulf them.   Ever since her husband&#x2019;s death collided with the birth of her daughter, postpartum depression has taken hold of Veronica Shelton. She can&#x2019;t sleep, can&#x2019;t work, and can&#x2019;t bear to touch her beautiful baby girl. Her emotional state is whispering lies in Veronica&#x2019;s ear:  You&#x2019;re a bad mother. Your baby would be better off without you.  But not everything can be reasoned away by Veronica&#x2019;s despair. Can it?  After all, the break-in at her house happened. The disturbing sketches she found in her studio are real. So is the fear for her daughter&#x2019;s safety&#x2014;especially when Veronica comes home to a cold, silent nursery and a missing baby.  As she turns from victim into primary suspect, Veronica realizes that only she can find her daughter. Authorities aren&#x2019;t helping. They&#x2019;re only watching. Veronica&#x2019;s concerned mother has suddenly vanished from her life. And a new friend seems to be keeping secrets from her too. Now, reality is waiting for Veronica in a dark place&#x2014;because someone&#x2019;s mind games have only just begun. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/41qa7HWUkQL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07929GMLZ/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 16,
+    "listPrice": "$4.99",
+    "description": " From the bestselling author of  When I&#x2019;m Gone  and  Working Fire  comes a gripping novel about a mother, her missing daughter, and the dark secrets that engulf them.   Ever since her husband&#x2019;s death collided with the birth of her daughter, postpartum depression has taken hold of Veronica Shelton. She can&#x2019;t sleep, can&#x2019;t work, and can&#x2019;t bear to touch her beautiful baby girl. Her emotional state is whispering lies in Veronica&#x2019;s ear:  You&#x2019;re a bad mother. Your baby would be better off without you.  But not everything can be reasoned away by Veronica&#x2019;s despair. Can it?  After all, the break-in at her house happened. The disturbing sketches she found in her studio are real. So is the fear for her daughter&#x2019;s safety&#x2014;especially when Veronica comes home to a cold, silent nursery and a missing baby.  As she turns from victim into primary suspect, Veronica realizes that only she can find her daughter. Authorities aren&#x2019;t helping. They&#x2019;re only watching. Veronica&#x2019;s concerned mother has suddenly vanished from her life. And a new friend seems to be keeping secrets from her too. Now, reality is waiting for Veronica in a dark place&#x2014;because someone&#x2019;s mind games have only just begun. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/41qa7HWUkQL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07929GMLZ/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 34,
+    "listPrice": "$3.99",
+    "description": "Spark of Intent (Phoenix Rising Book 3) - Kindle edition by Harper Wylde, Quinn Arthurs. Paranormal Romance Kindle eBooks @ Amazon.com.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51H5i3ICkKL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07GCQ4JK7/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 17,
+    "listPrice": "$3.99",
+    "description": "Spark of Intent (Phoenix Rising Book 3) - Kindle edition by Harper Wylde, Quinn Arthurs. Paranormal Romance Kindle eBooks @ Amazon.com.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51H5i3ICkKL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07GCQ4JK7/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 36,
+    "listPrice": "$4.99",
+    "description": " From  USA Today  bestselling author Julianne MacLean comes a suspenseful, emotionally charged novel that explores the secrets and hidden truths within a seemingly perfect marriage.   Abbie MacIntyre is living the dream in the picturesque Nova Scotia town she calls home. She is a successful surgeon, is married to a handsome cardiologist, and has a model teenage son who is only months away from going off to college.   But then one fateful night, everything changes. When a drunk driver hits her car, Abbie is rushed to the hospital. She survives, but the accident forces unimaginable secrets out into the open and plagues Abbie with nightmares so vivid that she starts to question her grip on reality. Her perfect life begins to crack, and those cracks threaten to shatter her world completely.   The search for answers will test her strength in every way&#x2014;as a wife, a career woman, and a mother&#x2014;but it may also open the door for Abbie to move forward, beyond anger and heartbreak, to find out what she is truly made of. In learning to heal and trust again, she may just find new hope in the spaces left behind.   Book club discussion questions are included in the book.  ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51agGKOM5mL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B079R8DY6F/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 18,
+    "listPrice": "$4.99",
+    "description": " From  USA Today  bestselling author Julianne MacLean comes a suspenseful, emotionally charged novel that explores the secrets and hidden truths within a seemingly perfect marriage.   Abbie MacIntyre is living the dream in the picturesque Nova Scotia town she calls home. She is a successful surgeon, is married to a handsome cardiologist, and has a model teenage son who is only months away from going off to college.   But then one fateful night, everything changes. When a drunk driver hits her car, Abbie is rushed to the hospital. She survives, but the accident forces unimaginable secrets out into the open and plagues Abbie with nightmares so vivid that she starts to question her grip on reality. Her perfect life begins to crack, and those cracks threaten to shatter her world completely.   The search for answers will test her strength in every way&#x2014;as a wife, a career woman, and a mother&#x2014;but it may also open the door for Abbie to move forward, beyond anger and heartbreak, to find out what she is truly made of. In learning to heal and trust again, she may just find new hope in the spaces left behind.   Book club discussion questions are included in the book.  ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51agGKOM5mL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B079R8DY6F/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 38,
+    "name": "Amazon.com: Stray",
+    "listPrice": "$4.99",
+    "description": " Brutal and beautiful,  Stray  is the true story of a girl who runs away and finds herself.   After growing up in a dysfunctional and emotionally abusive home, Tanya Marquardt runs away on her sixteenth birthday. Her departure is an act of rebellion and survival&#x2014;whatever she is heading toward has to be better than what she is leaving behind.  Struggling with her inner demons, Tanya must learn to take care of herself during two chaotic years in the working-class mill town of Port Alberni, followed by the early-nineties underground goth scene in Vancouver, British Columbia. She finds a chosen family in her fellow misfits, and the bond they form is fierce and unflinching.  Told with raw honesty and strength,  Stray  reveals Tanya&#x2019;s fight to embrace the vulnerable, beguiling parts of herself and heal the wounds of her past as she forges her own path to a new life. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/513a%2B8vOqeL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B076VK2G77/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 19,
+    "name": "Amazon.com: Stray",
+    "listPrice": "$4.99",
+    "description": " Brutal and beautiful,  Stray  is the true story of a girl who runs away and finds herself.   After growing up in a dysfunctional and emotionally abusive home, Tanya Marquardt runs away on her sixteenth birthday. Her departure is an act of rebellion and survival&#x2014;whatever she is heading toward has to be better than what she is leaving behind.  Struggling with her inner demons, Tanya must learn to take care of herself during two chaotic years in the working-class mill town of Port Alberni, followed by the early-nineties underground goth scene in Vancouver, British Columbia. She finds a chosen family in her fellow misfits, and the bond they form is fierce and unflinching.  Told with raw honesty and strength,  Stray  reveals Tanya&#x2019;s fight to embrace the vulnerable, beguiling parts of herself and heal the wounds of her past as she forges her own path to a new life. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/513a%2B8vOqeL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B076VK2G77/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 40,
+    "listPrice": "$3.99",
+    "description": "Love Online - Kindle edition by Penelope Ward, Jessica Royer Ocken. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading Love Online.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51HnAAGmuNL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07GTYLQKN/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 20,
+    "listPrice": "$3.99",
+    "description": "Love Online - Kindle edition by Penelope Ward, Jessica Royer Ocken. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading Love Online.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51HnAAGmuNL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07GTYLQKN/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 42,
+    "name": "Whisper Me This: A Novel - Kindle edition by Kerry Anne King. Literature &amp; Fiction Kindle eBooks @ Amazon.com.",
+    "listPrice": "$5.99",
+    "description": " In this Amazon Charts and  Washington Post  bestseller, a devastating secret is revealed, and a family must finally come to terms with the past.   Single mother Maisey Addington has always fallen short of her own mother&#x2019;s expectations&#x2014;never married, a bit adrift, wasting her high IQ on dead-end jobs. The only thing Maisey&#x2019;s sure she&#x2019;s gotten right is her relationship with her twelve-year-old daughter, Elle&#x2026;until a phone call blows apart the precarious balance of their lives. Maisey&#x2019;s mother is in a coma, and her aging father faces charges of abuse and neglect.  Back at her childhood home, Maisey must make a heartrending life-or-death decision. Her confused father has destroyed family records, including her mother&#x2019;s final wishes. Searching for answers, Maisey uncovers one unspeakable secret after another when she stumbles upon a shattering truth: a twin sister named Marley.  Maisey&#x2019;s obsession with solving the mystery of her sister forces her to examine her darkest memories and triggers a custody battle with Elle&#x2019;s father. Will Maisey&#x2019;s love for her daughter be strong enough to break a cycle of abuse and create a new beginning for them all? ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51-wgTgqV7L.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B077GS75HG/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 21,
+    "name": "Whisper Me This: A Novel - Kindle edition by Kerry Anne King. Literature &amp; Fiction Kindle eBooks @ Amazon.com.",
+    "listPrice": "$5.99",
+    "description": " In this Amazon Charts and  Washington Post  bestseller, a devastating secret is revealed, and a family must finally come to terms with the past.   Single mother Maisey Addington has always fallen short of her own mother&#x2019;s expectations&#x2014;never married, a bit adrift, wasting her high IQ on dead-end jobs. The only thing Maisey&#x2019;s sure she&#x2019;s gotten right is her relationship with her twelve-year-old daughter, Elle&#x2026;until a phone call blows apart the precarious balance of their lives. Maisey&#x2019;s mother is in a coma, and her aging father faces charges of abuse and neglect.  Back at her childhood home, Maisey must make a heartrending life-or-death decision. Her confused father has destroyed family records, including her mother&#x2019;s final wishes. Searching for answers, Maisey uncovers one unspeakable secret after another when she stumbles upon a shattering truth: a twin sister named Marley.  Maisey&#x2019;s obsession with solving the mystery of her sister forces her to examine her darkest memories and triggers a custody battle with Elle&#x2019;s father. Will Maisey&#x2019;s love for her daughter be strong enough to break a cycle of abuse and create a new beginning for them all? ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51-wgTgqV7L.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B077GS75HG/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 44,
+    "name": "Forget You, Ethan: An Enemies to Lovers Romance - Kindle edition by Whitney G.. Literature &amp; Fiction Kindle eBooks @ Amazon.com.",
+    "listPrice": "$2.99",
+    "description": "Forget You, Ethan: An Enemies to Lovers Romance - Kindle edition by Whitney G.. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading Forget You, Ethan: An Enemies to Lovers Romance.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51UIGkAWwSL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07G5PKQ9Z/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 22,
+    "name": "Forget You, Ethan: An Enemies to Lovers Romance - Kindle edition by Whitney G.. Literature &amp; Fiction Kindle eBooks @ Amazon.com.",
+    "listPrice": "$2.99",
+    "description": "Forget You, Ethan: An Enemies to Lovers Romance - Kindle edition by Whitney G.. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading Forget You, Ethan: An Enemies to Lovers Romance.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51UIGkAWwSL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07G5PKQ9Z/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 46,
+    "name": "Amazon.com: The Very Hungry Caterpillar (9780399226908)",
+    "listPrice": "$6.56",
+    "description": "Amazon.com: The Very Hungry Caterpillar (9780399226908): Eric Carle: Books",
+    "product_dimension": "5 x 0.6 x 7.2 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/81Ba7t79H9L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/51IYXiM7ioL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/91viLtk47pL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/813lPqOEYoL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/81EDMJza%2BxL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/81bpEpI1teL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/31asPOhB73L.jpg"
+    ],
+    "weight": "6.4 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/0399226907/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 23,
+    "name": "Amazon.com: The Very Hungry Caterpillar (9780399226908)",
+    "listPrice": "$6.56",
+    "description": "Amazon.com: The Very Hungry Caterpillar (9780399226908): Eric Carle: Books",
+    "product_dimension": "5 x 0.6 x 7.2 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/81Ba7t79H9L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/51IYXiM7ioL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/91viLtk47pL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/813lPqOEYoL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/81EDMJza%2BxL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/81bpEpI1teL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/31asPOhB73L.jpg"
+    ],
+    "weight": "6.4 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/0399226907/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 48,
+    "name": "Girl, Wash Your Face: Stop Believing the Lies About Who You Are so You Can Become Who You Were Meant to Be - Kindle edition by Rachel Hollis. Religion &amp; Spirituality Kindle eBooks @ Amazon.com.",
+    "listPrice": "$12.99",
+    "description": " #1&nbsp; NEW YORK TIMES &nbsp;BESTSELLER    Do you ever suspect that everyone else has life figured out and you don&rsquo;t have a clue? If so, Rachel Hollis has something to tell you:&nbsp; that&rsquo;s a lie .   As the founder of the lifestyle website&nbsp;TheChicSite.com&nbsp;and CEO of her own media company, Rachel Hollis developed an immense online community by sharing tips for better living while fearlessly revealing the messiness of her own life. Now, in this challenging and inspiring new book, Rachel exposes the twenty lies and misconceptions that too often hold us back from living joyfully and productively, lies we&rsquo;ve told ourselves so often we don&rsquo;t even hear them anymore.  With painful honesty and fearless humor, Rachel unpacks and examines the falsehoods that once left her feeling overwhelmed and unworthy, and reveals the specific practical strategies that helped her move past them. In the process, she encourages, entertains, and even kicks a little butt, all to convince you to do whatever it takes to get real and become the joyous, confident woman you were meant to be.  With unflinching faith and rock-hard tenacity,&nbsp; Girl, Wash Your Face &nbsp;shows you how to live with passion and hustle--and how to give yourself grace without giving up. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51y-84G7o4L._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B072TMB75T/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 24,
+    "name": "Girl, Wash Your Face: Stop Believing the Lies About Who You Are so You Can Become Who You Were Meant to Be - Kindle edition by Rachel Hollis. Religion &amp; Spirituality Kindle eBooks @ Amazon.com.",
+    "listPrice": "$12.99",
+    "description": " #1&nbsp; NEW YORK TIMES &nbsp;BESTSELLER    Do you ever suspect that everyone else has life figured out and you don&rsquo;t have a clue? If so, Rachel Hollis has something to tell you:&nbsp; that&rsquo;s a lie .   As the founder of the lifestyle website&nbsp;TheChicSite.com&nbsp;and CEO of her own media company, Rachel Hollis developed an immense online community by sharing tips for better living while fearlessly revealing the messiness of her own life. Now, in this challenging and inspiring new book, Rachel exposes the twenty lies and misconceptions that too often hold us back from living joyfully and productively, lies we&rsquo;ve told ourselves so often we don&rsquo;t even hear them anymore.  With painful honesty and fearless humor, Rachel unpacks and examines the falsehoods that once left her feeling overwhelmed and unworthy, and reveals the specific practical strategies that helped her move past them. In the process, she encourages, entertains, and even kicks a little butt, all to convince you to do whatever it takes to get real and become the joyous, confident woman you were meant to be.  With unflinching faith and rock-hard tenacity,&nbsp; Girl, Wash Your Face &nbsp;shows you how to live with passion and hustle--and how to give yourself grace without giving up. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51y-84G7o4L._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B072TMB75T/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 50,
+    "listPrice": "$9.99",
+    "description": "Crazy Rich Asians (Crazy Rich Asians Trilogy) - Kindle edition by Kevin Kwan. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading Crazy Rich Asians (Crazy Rich Asians Trilogy).",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/410tUCg8-dL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B00AP2VQEM/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 25,
+    "listPrice": "$9.99",
+    "description": "Crazy Rich Asians (Crazy Rich Asians Trilogy) - Kindle edition by Kevin Kwan. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading Crazy Rich Asians (Crazy Rich Asians Trilogy).",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/410tUCg8-dL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B00AP2VQEM/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 52,
+    "name": "First 100 Words: Roger Priddy",
+    "listPrice": "$3.91",
+    "description": "Your little one will soon learn some essential first words and pictures with this bright board book. There are 100 color photographs to look at and talk about, and 100 simple first words to read and learn, too. The pages are made from tough board for hours of fun reading, and the cover is softly padded for little hands to hold. ",
+    "product_dimension": "4.8 x 1 x 6.2 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/71gU40iqu5L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/81laF6TgsCL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/41nOoMA15xL.jpg"
+    ],
+    "weight": "8 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/0312510780/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 26,
+    "name": "First 100 Words: Roger Priddy",
+    "listPrice": "$3.91",
+    "description": "Your little one will soon learn some essential first words and pictures with this bright board book. There are 100 color photographs to look at and talk about, and 100 simple first words to read and learn, too. The pages are made from tough board for hours of fun reading, and the cover is softly padded for little hands to hold. ",
+    "product_dimension": "4.8 x 1 x 6.2 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/71gU40iqu5L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/81laF6TgsCL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/41nOoMA15xL.jpg"
+    ],
+    "weight": "8 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/0312510780/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 54,
+    "name": "Baby Touch and Feel: Animals",
+    "listPrice": "$5.13",
+    "description": "A small touch and feel book full of cuddly bunnies and other soft animals, this is a gift your little one is sure to adore.  This  USA Today  bestselling board book encourages tiny fingers to explore and develop fine motor skills while building an early language foundation. Babies will meet adorable puppies, kittens, penguins, and other animals throughout the pages of the book.  Filled with real-life animal photographs featuring touch-and-feel textures that help children develop their knowledge while increasing their use of senses,  Baby Touch and Feel: Animals  is the perfect size for small hands. Its padded cover can withstand biting and throwing while its thick sturdy board pages won't tear. Your baby can practice animal recognition and perfect animal noises while touching the novelty textures on the pages.  With more than one million copies sold,  Baby Touch and Feel: Animals  is the perfect book for your child's bookshelf.   Series description:  Baby Touch and Feel books are the perfect series for the very youngest readers. These small, padded books excite babies and toddlers with their foil and touch-and-feel covers. Each book in this affordable series contains twelve vibrant interior pages with bold, engaging images. Containing large word labels, each page has foil or glitter to behold or a texture to touch. These safe novelty textures intrigue babies and are perfect for little fingers to feel. The Baby Touch and Feel series encourages sensory development, language skills, and early reading skills while teaching colors, shapes, patterns, opposites, and more. ",
+    "product_dimension": "5.4 x 1 x 5.4 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/511VxqDOU0L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/81SvXHUdSvL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/41R6%2B7Px10L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/41oh6ZDmU3L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/31t4UXVgkQL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/71X2FJsv1iL.jpg"
+    ],
+    "weight": "9.1 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/0756634687/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 27,
+    "name": "Baby Touch and Feel: Animals",
+    "listPrice": "$5.13",
+    "description": "A small touch and feel book full of cuddly bunnies and other soft animals, this is a gift your little one is sure to adore.  This  USA Today  bestselling board book encourages tiny fingers to explore and develop fine motor skills while building an early language foundation. Babies will meet adorable puppies, kittens, penguins, and other animals throughout the pages of the book.  Filled with real-life animal photographs featuring touch-and-feel textures that help children develop their knowledge while increasing their use of senses,  Baby Touch and Feel: Animals  is the perfect size for small hands. Its padded cover can withstand biting and throwing while its thick sturdy board pages won't tear. Your baby can practice animal recognition and perfect animal noises while touching the novelty textures on the pages.  With more than one million copies sold,  Baby Touch and Feel: Animals  is the perfect book for your child's bookshelf.   Series description:  Baby Touch and Feel books are the perfect series for the very youngest readers. These small, padded books excite babies and toddlers with their foil and touch-and-feel covers. Each book in this affordable series contains twelve vibrant interior pages with bold, engaging images. Containing large word labels, each page has foil or glitter to behold or a texture to touch. These safe novelty textures intrigue babies and are perfect for little fingers to feel. The Baby Touch and Feel series encourages sensory development, language skills, and early reading skills while teaching colors, shapes, patterns, opposites, and more. ",
+    "product_dimension": "5.4 x 1 x 5.4 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/511VxqDOU0L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/81SvXHUdSvL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/41R6%2B7Px10L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/41oh6ZDmU3L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/31t4UXVgkQL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/71X2FJsv1iL.jpg"
+    ],
+    "weight": "9.1 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/0756634687/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 56,
+    "name": "Sharp Objects: A Novel - Kindle edition by Gillian Flynn. Mystery, Thriller &amp; Suspense Kindle eBooks @ Amazon.com.",
+    "listPrice": "$9.99",
+    "description": "  AN HBO &#174; &#160;LIMITED SERIES STARRING AMY ADAMS   FROM THE #1&#160; NEW YORK TIMES &#160;BESTSELLING AUTHOR OF&#160; GONE GIRL    Fresh from a brief stay at a psych hospital, reporter Camille Preaker faces a troubling assignment: she must return to her tiny hometown to cover the murders of two preteen girls. For years, Camille has hardly spoken to her neurotic, hypochondriac mother or to the half-sister she barely knows: a beautiful thirteen-year-old with an eerie grip on the town. Now, installed in her old bedroom in her family's Victorian mansion, Camille finds herself identifying with the young victims&mdash;a bit too strongly. Dogged by her own demons, she must unravel the psychological puzzle of her own past if she wants to get the story&mdash;and survive this homecoming. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51vrmMF6K7L.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B000JMKTLO/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 28,
+    "name": "Sharp Objects: A Novel - Kindle edition by Gillian Flynn. Mystery, Thriller &amp; Suspense Kindle eBooks @ Amazon.com.",
+    "listPrice": "$9.99",
+    "description": "  AN HBO &#174; &#160;LIMITED SERIES STARRING AMY ADAMS   FROM THE #1&#160; NEW YORK TIMES &#160;BESTSELLING AUTHOR OF&#160; GONE GIRL    Fresh from a brief stay at a psych hospital, reporter Camille Preaker faces a troubling assignment: she must return to her tiny hometown to cover the murders of two preteen girls. For years, Camille has hardly spoken to her neurotic, hypochondriac mother or to the half-sister she barely knows: a beautiful thirteen-year-old with an eerie grip on the town. Now, installed in her old bedroom in her family's Victorian mansion, Camille finds herself identifying with the young victims&mdash;a bit too strongly. Dogged by her own demons, she must unravel the psychological puzzle of her own past if she wants to get the story&mdash;and survive this homecoming. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51vrmMF6K7L.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B000JMKTLO/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 58,
+    "name": "The Storyteller&#39;s Secret: A Novel - Kindle edition by Sejal Badani. Literature &amp; Fiction Kindle eBooks @ Amazon.com.",
+    "listPrice": "$4.99",
+    "description": " From the bestselling author of  Trail of Broken Wings  comes an epic story of the unrelenting force of love, the power of healing, and the invincible desire to dream.   Nothing prepares Jaya, a New York journalist, for the heartbreak of her third miscarriage and the slow unraveling of her marriage in its wake. Desperate to assuage her deep anguish, she decides to go to India to uncover answers to her family&#x2019;s past.  Intoxicated by the sights, smells, and sounds she experiences, Jaya becomes an eager student of the culture. But it is Ravi&#x2014;her grandmother&#x2019;s former servant and trusted confidant&#x2014;who reveals the resilience, struggles, secret love, and tragic fall of Jaya&#x2019;s pioneering grandmother during the British occupation. Through her courageous grandmother&#x2019;s arrestingly romantic and heart-wrenching story, Jaya discovers the legacy bequeathed to her and a strength that, until now, she never knew was possible. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51GC3g1SSXL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07415PPP1/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 29,
+    "name": "The Storyteller&#39;s Secret: A Novel - Kindle edition by Sejal Badani. Literature &amp; Fiction Kindle eBooks @ Amazon.com.",
+    "listPrice": "$4.99",
+    "description": " From the bestselling author of  Trail of Broken Wings  comes an epic story of the unrelenting force of love, the power of healing, and the invincible desire to dream.   Nothing prepares Jaya, a New York journalist, for the heartbreak of her third miscarriage and the slow unraveling of her marriage in its wake. Desperate to assuage her deep anguish, she decides to go to India to uncover answers to her family&#x2019;s past.  Intoxicated by the sights, smells, and sounds she experiences, Jaya becomes an eager student of the culture. But it is Ravi&#x2014;her grandmother&#x2019;s former servant and trusted confidant&#x2014;who reveals the resilience, struggles, secret love, and tragic fall of Jaya&#x2019;s pioneering grandmother during the British occupation. Through her courageous grandmother&#x2019;s arrestingly romantic and heart-wrenching story, Jaya discovers the legacy bequeathed to her and a strength that, until now, she never knew was possible. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51GC3g1SSXL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07415PPP1/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 60,
+    "name": "The President Is Missing: A Novel - Kindle edition by James Patterson, Bill Clinton. Literature &amp; Fiction Kindle eBooks @ Amazon.com.",
+    "listPrice": "$14.99",
+    "description": "The President Is Missing: A Novel - Kindle edition by James Patterson, Bill Clinton. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading The President Is Missing: A Novel.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51psisaBnjL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B072F3MYRH/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 30,
+    "name": "The President Is Missing: A Novel - Kindle edition by James Patterson, Bill Clinton. Literature &amp; Fiction Kindle eBooks @ Amazon.com.",
+    "listPrice": "$14.99",
+    "description": "The President Is Missing: A Novel - Kindle edition by James Patterson, Bill Clinton. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading The President Is Missing: A Novel.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51psisaBnjL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B072F3MYRH/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 62,
+    "listPrice": "$14.99",
+    "description": "Texas Ranger - Kindle edition by James Patterson. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading Texas Ranger.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51oTpO5mPcL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B078LXGP4B/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 31,
+    "listPrice": "$14.99",
+    "description": "Texas Ranger - Kindle edition by James Patterson. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading Texas Ranger.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51oTpO5mPcL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B078LXGP4B/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 64,
+    "name": "Amazon.com: Chicka Chicka Boom Boom (Board Book) (9781442450707)",
+    "listPrice": "$7.99",
+    "description": "Amazon.com: Chicka Chicka Boom Boom (Board Book) (9781442450707): Bill Martin Jr., John Archambault, Lois Ehlert: Books",
+    "product_dimension": "5.5 x 1 x 7.2 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/91UvdebBM-L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/9141kvC1PcL.jpg"
+    ],
+    "weight": "9.6 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/1442450703/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 32,
+    "name": "Amazon.com: Chicka Chicka Boom Boom (Board Book) (9781442450707)",
+    "listPrice": "$7.99",
+    "description": "Amazon.com: Chicka Chicka Boom Boom (Board Book) (9781442450707): Bill Martin Jr., John Archambault, Lois Ehlert: Books",
+    "product_dimension": "5.5 x 1 x 7.2 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/91UvdebBM-L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/9141kvC1PcL.jpg"
+    ],
+    "weight": "9.6 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/1442450703/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 66,
+    "name": "The Pout-Pout Fish: Deborah Diesen, Dan Hanna",
+    "listPrice": "$5.79",
+    "description": "A  NEW YORK TIMES  BEST SELLER   Deep in the water,     Mr. Fish swims about     With his fish face stuck     In a permanent pout.    Can his pals cheer him up?     Will his pout ever end?     Is there something he can learn     From an unexpected friend?   Swim along with the pout-pout fish as he discovers that being glum and spreading \"dreary wearies\" isn't really his destiny. Bright ocean colors and playful rhyme come together in Deborah Diesen's fun fish story that's sure to turn even the poutiest of frowns upside down. ",
+    "product_dimension": "6.6 x 0.7 x 6.5 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/816hDDySK0L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/41vXNT-YAPL.jpg"
+    ],
+    "weight": "11.2 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/0374360979/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 33,
+    "name": "The Pout-Pout Fish",
+    "listPrice": "$5.79",
+    "description": "A  NEW YORK TIMES  BEST SELLER   Deep in the water,     Mr. Fish swims about     With his fish face stuck     In a permanent pout.    Can his pals cheer him up?     Will his pout ever end?     Is there something he can learn     From an unexpected friend?   Swim along with the pout-pout fish as he discovers that being glum and spreading \"dreary wearies\" isn't really his destiny. Bright ocean colors and playful rhyme come together in Deborah Diesen's fun fish story that's sure to turn even the poutiest of frowns upside down. ",
+    "product_dimension": "6.6 x 0.7 x 6.5 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/816hDDySK0L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/41vXNT-YAPL.jpg"
+    ],
+    "weight": "11.2 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/0374360979/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 68,
+    "name": "12 Rules for Life: An Antidote to Chaos - Kindle edition by Jordan B. Peterson. Politics &amp; Social Sciences Kindle eBooks @ Amazon.com.",
+    "listPrice": "$13.99",
+    "description": "12 Rules for Life: An Antidote to Chaos - Kindle edition by Jordan B. Peterson. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading 12 Rules for Life: An Antidote to Chaos.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/412z30W2N-L._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B01FPGY5T0/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 34,
+    "name": "12 Rules for Life: An Antidote to Chaos - Kindle edition by Jordan B. Peterson. Politics &amp; Social Sciences Kindle eBooks @ Amazon.com.",
+    "listPrice": "$13.99",
+    "description": "12 Rules for Life: An Antidote to Chaos - Kindle edition by Jordan B. Peterson. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading 12 Rules for Life: An Antidote to Chaos.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/412z30W2N-L._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B01FPGY5T0/ref=tmm_pap_swatch"
+  }
+]
+[
+  {
+    "id": 0,
+    "name": "Girl, Wash Your Face: Stop Believing the Lies About Who You Are So You Can Become Who You Were Meant to Be",
+    "listPrice": "$0.00",
+    "description": "Amazon.com: Girl, Wash Your Face: Stop Believing the Lies About Who You Are So You Can Become Who You Were Meant to Be &#40;Audible Audio Edition&#41;: Rachel Hollis, Thomas Nelson: Books",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/A1sipCdR7tL._AC_UL160_SR160,160_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B077GZBL1Y/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 1,
+    "name": "A Case of Need: A Novel - Kindle edition by Michael Crichton. Literature &amp; Fiction Kindle eBooks @ Amazon.com.",
+    "listPrice": "$7.99",
+    "description": "A Case of Need: A Novel - Kindle edition by Michael Crichton. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading A Case of Need: A Novel.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51MCT9rFURL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B00DEU9H3Y/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 2,
+    "name": "Pax",
+    "listPrice": "$0.00",
+    "description": "Amazon.com: Pax &#40;Audible Audio Edition&#41;: Sara Pennypacker, Michael Curran-Dorsano, HarperAudio: Books",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/81GiSEthAWL._AC_UL480_SR480,480_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B0195HIIRK/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 3,
+    "name": "Amazon.com: The 7 Habits of Highly Effective People",
+    "listPrice": "$5.44",
+    "description": "The 7 Habits of Highly Effective People: Powerful Lessons in Personal Change - Kindle edition by Stephen R. Covey. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading The 7 Habits of Highly Effective People: Powerful Lessons in Personal Change.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51fEYMhtHoL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B01069X4H0/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 4,
+    "listPrice": "$2.99",
+    "description": "Two Weeks Notice - Kindle edition by Whitney G.. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading Two Weeks Notice.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51rlfmnj1fL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07FQMZJZR/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 5,
+    "name": "Amazon.com: Harry Potter and the Sorcerer&#39;s Stone eBook",
+    "listPrice": "$8.99",
+    "description": " &#x22;Turning the envelope over, his hand trembling, Harry saw a purple wax seal bearing a coat of arms; a lion, an eagle, a badger and a snake surrounding a large letter 'H'.&#x22;   Harry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive. Addressed in green ink on yellowish parchment with a purple seal, they are swiftly confiscated by his grisly aunt and uncle. Then, on Harry's eleventh birthday, a great beetle-eyed giant of a man called Rubeus Hagrid bursts in with some astonishing news: Harry Potter is a wizard, and he has a place at Hogwarts School of Witchcraft and Wizardry. An incredible adventure is about to begin!   Harry Potter and the Sorcerer&#x2019;s Stone is also available as an Illustrated Kindle-in-Motion edition.  ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51U6bQbA8oL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B0192CTMYG/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 6,
+    "name": "The Whole-Brain Child: 12 Revolutionary Strategies to Nurture Your Child&#39;s Developing Mind - Kindle edition by Daniel J. Siegel, Tina Payne Bryson. Health, Fitness &amp; Dieting Kindle eBooks @ Amazon.com.",
+    "listPrice": "$1.99",
+    "description": "  NEW YORK TIMES  BESTSELLER   In this pioneering, practical book, Daniel J. Siegel, neuropsychiatrist and author of the bestselling  Mindsight , and parenting expert Tina Payne Bryson offer a revolutionary approach to child rearing with twelve key strategies that foster healthy brain development, leading to calmer, happier children. The authors explain&mdash;and make accessible&mdash;the new science of how a child&rsquo;s brain is wired and how it matures. The &ldquo;upstairs brain,&rdquo; which makes decisions and balances emotions, is under construction until the mid-twenties. And especially in young children, the right brain and its emotions tend to rule over the logic of the left brain. No wonder kids throw tantrums, fight, or sulk in silence. By applying these discoveries to everyday parenting, you can turn any outburst, argument, or fear into a chance to integrate your child&rsquo;s brain and foster vital growth.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &#160;   &#160;  Complete with age-appropriate strategies for dealing with day-to-day struggles and illustrations that will help you explain these concepts to your child,  The Whole-Brain Child  shows you how to cultivate healthy emotional and intellectual development so that your children can lead balanced, meaningful, and connected lives.   &#160;   From the Trade Paperback edition. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/413zcJRwNpL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B004J4X32U/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 7,
+    "name": "English History Made Brief, Irreverent, and Pleasurable",
+    "listPrice": "$0.00",
+    "description": "Amazon.com: English History Made Brief, Irreverent, and Pleasurable &#40;Audible Audio Edition&#41;: Lacey Baldwin Smith, Peter Noble, Audible Studios: Books",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/A1RVNBJTPmL._AC_UL480_SR480,480_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B01MR3ETPI/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 8,
+    "name": "The Extraordinary Life of Sam Hell: A Novel - Kindle edition by Robert Dugoni. Literature &amp; Fiction Kindle eBooks @ Amazon.com.",
+    "listPrice": "$2.99",
+    "description": "  Wall Street Journal  and  New York Times  bestselling author Robert Dugoni&#x2019;s coming-of-age story is, according to  Booklist , &#x201c;a novel that, if it doesn&#x2019;t cross entirely over into John Irving territory, certainly nestles in close to the border.&#x201d;   Sam Hill always saw the world through different eyes. Born with red pupils, he was called &#x201c;Devil Boy&#x201d; or Sam &#x201c;Hell&#x201d; by his classmates; &#x201c;God&#x2019;s will&#x201d; is what his mother called his ocular albinism. Her words were of little comfort, but Sam persevered, buoyed by his mother&#x2019;s devout faith, his father&#x2019;s practical wisdom, and his two other misfit friends.  Sam believed it was God who sent Ernie Cantwell, the only African American kid in his class, to be the friend he so desperately needed. And that it was God&#x2019;s idea for Mickie Kennedy to storm into Our Lady of Mercy like a tornado, uprooting every rule Sam had been taught about boys and girls.  Forty years later, Sam, a small-town eye doctor, is no longer certain anything was by design&#x2014;especially not the tragedy that caused him to turn his back on his friends, his hometown, and the life he&#x2019;d always known. Running from the pain, eyes closed, served little purpose. Now, as he looks back on his life, Sam embarks on a journey that will take him halfway around the world. This time, his eyes are wide open&#x2014;bringing into clear view what changed him, defined him, and made him so afraid, until he can finally see what truly matters. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51TjK1b8uaL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B074H8NFDF/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 9,
+    "name": "China Rich Girlfriend: A Novel (Crazy Rich Asians Trilogy) - Kindle edition by Kevin Kwan. Literature &amp; Fiction Kindle eBooks @ Amazon.com.",
+    "listPrice": "$11.99",
+    "description": "China Rich Girlfriend: A Novel (Crazy Rich Asians Trilogy) - Kindle edition by Kevin Kwan. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading China Rich Girlfriend: A Novel (Crazy Rich Asians Trilogy).",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/41xsiJ8NmdL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B00NRQORA8/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 10,
+    "name": "Capital Gaines: The Smart Things I've Learned by Doing Stupid Stuff",
+    "listPrice": "$0.00",
+    "description": "Amazon.com: Capital Gaines: The Smart Things I&#39;ve Learned by Doing Stupid Stuff &#40;Audible Audio Edition&#41;: Chip Gaines, Joanna Gaines, Melinda Paul, Rachel Agee, Gabe Wicks, Thomas Nelson: Books",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/811fUsuM6OL._AC_UL320_SR320,320_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B0725WYC2L/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 11,
+    "listPrice": "$4.99",
+    "description": " For one couple, getting what they want comes at a devastating price in this gripping debut thriller.   Banking heiress Trish and her husband, James, seem to have it all, from a lavish lifestyle to a historic mansion in the nation&#x2019;s capital. The only thing that&#x2019;s missing to make their family complete is a baby, so when Trish holds Anne Elise in her arms for the first time, it&#x2019;s no surprise that she falls deeply in love. There&#x2019;s just one problem: Trish isn&#x2019;t the mother.  The baby belongs to Laurel, James&#x2019;s young mistress. And more than that, James and Laurel want to start a new life together&#x2014;despite an ironclad prenup standing in their way. When Trish becomes dangerously obsessed with making Laurel&#x2019;s baby her own, the lovers&#x2019; plan to break James&#x2019;s marriage quickly goes awry. How far is each of them willing to go for happiness? ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51UoA9pl6JL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B079P4H229/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 12,
+    "name": "Amazon.com: Crew (Crew Series Book 1) eBook",
+    "listPrice": "$3.99",
+    "description": "Crew (Crew Series Book 1) - Kindle edition by Tijan. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading Crew (Crew Series Book 1).",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/41Mz%2B22WzsL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07GV6W37T/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 13,
+    "listPrice": "$2.99",
+    "description": "Not So Nice Guy - Kindle edition by R.S. Grey. Contemporary Romance Kindle eBooks @ Amazon.com.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/41iEr2152yL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07G6RZYG8/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 14,
+    "name": "Happy Doomsday: A Novel - Kindle edition by David Sosnowski. Literature &amp; Fiction Kindle eBooks @ Amazon.com.",
+    "listPrice": "$4.99",
+    "description": " The end of the world is the weirdest time to come of age.   Welcome to the end of the world. One minute, people are going about their lives, and the next&#x2014; not . In the wake of the inexplicable purge, only a handful of young misfits remains.  When it all went down, &#x201c;Wizard of Odd&#x201d; Dev Brinkman was seeking shelter from the taunts of his classmates. Goth girl Lucy Abernathy had lost her best friend and had no clue where to turn. And Twinkie-loving quarterback &#x201c;Marcus&#x201d; Haddad was learning why you never discuss politics and religion in polite company&#x2014;or online.  As if life when you&#x2019;re sixteen isn&#x2019;t confusing enough, throw in the challenges of postapocalyptic subsistence, a case of survivor&#x2019;s guilt turned up to seven billion, and the small task of rebuilding humankind&#x2026;  No one said doomsday would be a breeze. But for Dev, Lucy, and Marcus, the greatest hope&#x2014;and greatest threat&#x2014;will come when they find each other. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/518YKZ-dmYL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B0786B4F9F/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 15,
+    "name": "Amazon.com: Mirror Gate (Harbinger Book 2) eBook",
+    "listPrice": "$5.99",
+    "description": "  Wall Street Journal  bestselling author Jeff Wheeler continues his wondrous Harbinger series in which two young women unite as two worlds approach the brink of war&#x2026;   Though relations between Princess Seraphin Fitzempress and her father have been strained, Sera&#x2019;s royal position has remained unchallenged. Filled with self-doubt, she struggles to grasp the Mysteries&#x2014;her greatest trial yet.  An education in the enigmatic magic is a necessary one, should Sera plan to rise in her station and invoke her powers during war. But the emperor&#x2019;s death now leaves both Sera and her ambitious father eligible for the throne&#x2014;a contest the prince regent intends to win. Even if it means an alliance with a rival empire.  Sera&#x2019;s hope lies in Cettie, a waif raised in the world below, whose life has intertwined with Sera&#x2019;s in the most unexpected ways. The Mysteries come easily to Cettie, and her studies have begun to yield new insight into her growing powers. But those same powers put Cettie in the path of those who would destroy her.  Now as the threat of war ignites and an insidious sickness spreads throughout the kingdom, Sera and Cettie will need to gather their courage and fight for each other&#x2019;s lives&#x2026;and for the future of their endangered world. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51XT1IC0ldL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07B4YBLCZ/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 16,
+    "listPrice": "$4.99",
+    "description": " From the bestselling author of  When I&#x2019;m Gone  and  Working Fire  comes a gripping novel about a mother, her missing daughter, and the dark secrets that engulf them.   Ever since her husband&#x2019;s death collided with the birth of her daughter, postpartum depression has taken hold of Veronica Shelton. She can&#x2019;t sleep, can&#x2019;t work, and can&#x2019;t bear to touch her beautiful baby girl. Her emotional state is whispering lies in Veronica&#x2019;s ear:  You&#x2019;re a bad mother. Your baby would be better off without you.  But not everything can be reasoned away by Veronica&#x2019;s despair. Can it?  After all, the break-in at her house happened. The disturbing sketches she found in her studio are real. So is the fear for her daughter&#x2019;s safety&#x2014;especially when Veronica comes home to a cold, silent nursery and a missing baby.  As she turns from victim into primary suspect, Veronica realizes that only she can find her daughter. Authorities aren&#x2019;t helping. They&#x2019;re only watching. Veronica&#x2019;s concerned mother has suddenly vanished from her life. And a new friend seems to be keeping secrets from her too. Now, reality is waiting for Veronica in a dark place&#x2014;because someone&#x2019;s mind games have only just begun. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/41qa7HWUkQL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07929GMLZ/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 17,
+    "listPrice": "$3.99",
+    "description": "Spark of Intent (Phoenix Rising Book 3) - Kindle edition by Harper Wylde, Quinn Arthurs. Paranormal Romance Kindle eBooks @ Amazon.com.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51H5i3ICkKL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07GCQ4JK7/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 18,
+    "listPrice": "$4.99",
+    "description": " From  USA Today  bestselling author Julianne MacLean comes a suspenseful, emotionally charged novel that explores the secrets and hidden truths within a seemingly perfect marriage.   Abbie MacIntyre is living the dream in the picturesque Nova Scotia town she calls home. She is a successful surgeon, is married to a handsome cardiologist, and has a model teenage son who is only months away from going off to college.   But then one fateful night, everything changes. When a drunk driver hits her car, Abbie is rushed to the hospital. She survives, but the accident forces unimaginable secrets out into the open and plagues Abbie with nightmares so vivid that she starts to question her grip on reality. Her perfect life begins to crack, and those cracks threaten to shatter her world completely.   The search for answers will test her strength in every way&#x2014;as a wife, a career woman, and a mother&#x2014;but it may also open the door for Abbie to move forward, beyond anger and heartbreak, to find out what she is truly made of. In learning to heal and trust again, she may just find new hope in the spaces left behind.   Book club discussion questions are included in the book.  ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51agGKOM5mL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B079R8DY6F/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 19,
+    "name": "Amazon.com: Stray",
+    "listPrice": "$4.99",
+    "description": " Brutal and beautiful,  Stray  is the true story of a girl who runs away and finds herself.   After growing up in a dysfunctional and emotionally abusive home, Tanya Marquardt runs away on her sixteenth birthday. Her departure is an act of rebellion and survival&#x2014;whatever she is heading toward has to be better than what she is leaving behind.  Struggling with her inner demons, Tanya must learn to take care of herself during two chaotic years in the working-class mill town of Port Alberni, followed by the early-nineties underground goth scene in Vancouver, British Columbia. She finds a chosen family in her fellow misfits, and the bond they form is fierce and unflinching.  Told with raw honesty and strength,  Stray  reveals Tanya&#x2019;s fight to embrace the vulnerable, beguiling parts of herself and heal the wounds of her past as she forges her own path to a new life. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/513a%2B8vOqeL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B076VK2G77/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 20,
+    "listPrice": "$3.99",
+    "description": "Love Online - Kindle edition by Penelope Ward, Jessica Royer Ocken. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading Love Online.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51HnAAGmuNL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07GTYLQKN/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 21,
+    "name": "Whisper Me This: A Novel - Kindle edition by Kerry Anne King. Literature &amp; Fiction Kindle eBooks @ Amazon.com.",
+    "listPrice": "$5.99",
+    "description": " In this Amazon Charts and  Washington Post  bestseller, a devastating secret is revealed, and a family must finally come to terms with the past.   Single mother Maisey Addington has always fallen short of her own mother&#x2019;s expectations&#x2014;never married, a bit adrift, wasting her high IQ on dead-end jobs. The only thing Maisey&#x2019;s sure she&#x2019;s gotten right is her relationship with her twelve-year-old daughter, Elle&#x2026;until a phone call blows apart the precarious balance of their lives. Maisey&#x2019;s mother is in a coma, and her aging father faces charges of abuse and neglect.  Back at her childhood home, Maisey must make a heartrending life-or-death decision. Her confused father has destroyed family records, including her mother&#x2019;s final wishes. Searching for answers, Maisey uncovers one unspeakable secret after another when she stumbles upon a shattering truth: a twin sister named Marley.  Maisey&#x2019;s obsession with solving the mystery of her sister forces her to examine her darkest memories and triggers a custody battle with Elle&#x2019;s father. Will Maisey&#x2019;s love for her daughter be strong enough to break a cycle of abuse and create a new beginning for them all? ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51-wgTgqV7L.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B077GS75HG/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 22,
+    "name": "Forget You, Ethan: An Enemies to Lovers Romance - Kindle edition by Whitney G.. Literature &amp; Fiction Kindle eBooks @ Amazon.com.",
+    "listPrice": "$2.99",
+    "description": "Forget You, Ethan: An Enemies to Lovers Romance - Kindle edition by Whitney G.. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading Forget You, Ethan: An Enemies to Lovers Romance.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51UIGkAWwSL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07G5PKQ9Z/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 23,
+    "name": "Amazon.com: The Very Hungry Caterpillar (9780399226908)",
+    "listPrice": "$6.56",
+    "description": "Amazon.com: The Very Hungry Caterpillar (9780399226908): Eric Carle: Books",
+    "product_dimension": "5 x 0.6 x 7.2 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/81Ba7t79H9L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/51IYXiM7ioL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/91viLtk47pL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/813lPqOEYoL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/81EDMJza%2BxL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/81bpEpI1teL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/31asPOhB73L.jpg"
+    ],
+    "weight": "6.4 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/0399226907/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 24,
+    "name": "Girl, Wash Your Face: Stop Believing the Lies About Who You Are so You Can Become Who You Were Meant to Be - Kindle edition by Rachel Hollis. Religion &amp; Spirituality Kindle eBooks @ Amazon.com.",
+    "listPrice": "$12.99",
+    "description": " #1&nbsp; NEW YORK TIMES &nbsp;BESTSELLER    Do you ever suspect that everyone else has life figured out and you don&rsquo;t have a clue? If so, Rachel Hollis has something to tell you:&nbsp; that&rsquo;s a lie .   As the founder of the lifestyle website&nbsp;TheChicSite.com&nbsp;and CEO of her own media company, Rachel Hollis developed an immense online community by sharing tips for better living while fearlessly revealing the messiness of her own life. Now, in this challenging and inspiring new book, Rachel exposes the twenty lies and misconceptions that too often hold us back from living joyfully and productively, lies we&rsquo;ve told ourselves so often we don&rsquo;t even hear them anymore.  With painful honesty and fearless humor, Rachel unpacks and examines the falsehoods that once left her feeling overwhelmed and unworthy, and reveals the specific practical strategies that helped her move past them. In the process, she encourages, entertains, and even kicks a little butt, all to convince you to do whatever it takes to get real and become the joyous, confident woman you were meant to be.  With unflinching faith and rock-hard tenacity,&nbsp; Girl, Wash Your Face &nbsp;shows you how to live with passion and hustle--and how to give yourself grace without giving up. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51y-84G7o4L._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B072TMB75T/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 25,
+    "listPrice": "$9.99",
+    "description": "Crazy Rich Asians (Crazy Rich Asians Trilogy) - Kindle edition by Kevin Kwan. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading Crazy Rich Asians (Crazy Rich Asians Trilogy).",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/410tUCg8-dL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B00AP2VQEM/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 26,
+    "name": "First 100 Words: Roger Priddy",
+    "listPrice": "$3.91",
+    "description": "Your little one will soon learn some essential first words and pictures with this bright board book. There are 100 color photographs to look at and talk about, and 100 simple first words to read and learn, too. The pages are made from tough board for hours of fun reading, and the cover is softly padded for little hands to hold. ",
+    "product_dimension": "4.8 x 1 x 6.2 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/71gU40iqu5L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/81laF6TgsCL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/41nOoMA15xL.jpg"
+    ],
+    "weight": "8 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/0312510780/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 27,
+    "name": "Baby Touch and Feel: Animals",
+    "listPrice": "$5.13",
+    "description": "A small touch and feel book full of cuddly bunnies and other soft animals, this is a gift your little one is sure to adore.  This  USA Today  bestselling board book encourages tiny fingers to explore and develop fine motor skills while building an early language foundation. Babies will meet adorable puppies, kittens, penguins, and other animals throughout the pages of the book.  Filled with real-life animal photographs featuring touch-and-feel textures that help children develop their knowledge while increasing their use of senses,  Baby Touch and Feel: Animals  is the perfect size for small hands. Its padded cover can withstand biting and throwing while its thick sturdy board pages won't tear. Your baby can practice animal recognition and perfect animal noises while touching the novelty textures on the pages.  With more than one million copies sold,  Baby Touch and Feel: Animals  is the perfect book for your child's bookshelf.   Series description:  Baby Touch and Feel books are the perfect series for the very youngest readers. These small, padded books excite babies and toddlers with their foil and touch-and-feel covers. Each book in this affordable series contains twelve vibrant interior pages with bold, engaging images. Containing large word labels, each page has foil or glitter to behold or a texture to touch. These safe novelty textures intrigue babies and are perfect for little fingers to feel. The Baby Touch and Feel series encourages sensory development, language skills, and early reading skills while teaching colors, shapes, patterns, opposites, and more. ",
+    "product_dimension": "5.4 x 1 x 5.4 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/511VxqDOU0L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/81SvXHUdSvL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/41R6%2B7Px10L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/41oh6ZDmU3L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/31t4UXVgkQL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/71X2FJsv1iL.jpg"
+    ],
+    "weight": "9.1 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/0756634687/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 28,
+    "name": "Sharp Objects: A Novel - Kindle edition by Gillian Flynn. Mystery, Thriller &amp; Suspense Kindle eBooks @ Amazon.com.",
+    "listPrice": "$9.99",
+    "description": "  AN HBO &#174; &#160;LIMITED SERIES STARRING AMY ADAMS   FROM THE #1&#160; NEW YORK TIMES &#160;BESTSELLING AUTHOR OF&#160; GONE GIRL    Fresh from a brief stay at a psych hospital, reporter Camille Preaker faces a troubling assignment: she must return to her tiny hometown to cover the murders of two preteen girls. For years, Camille has hardly spoken to her neurotic, hypochondriac mother or to the half-sister she barely knows: a beautiful thirteen-year-old with an eerie grip on the town. Now, installed in her old bedroom in her family's Victorian mansion, Camille finds herself identifying with the young victims&mdash;a bit too strongly. Dogged by her own demons, she must unravel the psychological puzzle of her own past if she wants to get the story&mdash;and survive this homecoming. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51vrmMF6K7L.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B000JMKTLO/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 29,
+    "name": "The Storyteller&#39;s Secret: A Novel - Kindle edition by Sejal Badani. Literature &amp; Fiction Kindle eBooks @ Amazon.com.",
+    "listPrice": "$4.99",
+    "description": " From the bestselling author of  Trail of Broken Wings  comes an epic story of the unrelenting force of love, the power of healing, and the invincible desire to dream.   Nothing prepares Jaya, a New York journalist, for the heartbreak of her third miscarriage and the slow unraveling of her marriage in its wake. Desperate to assuage her deep anguish, she decides to go to India to uncover answers to her family&#x2019;s past.  Intoxicated by the sights, smells, and sounds she experiences, Jaya becomes an eager student of the culture. But it is Ravi&#x2014;her grandmother&#x2019;s former servant and trusted confidant&#x2014;who reveals the resilience, struggles, secret love, and tragic fall of Jaya&#x2019;s pioneering grandmother during the British occupation. Through her courageous grandmother&#x2019;s arrestingly romantic and heart-wrenching story, Jaya discovers the legacy bequeathed to her and a strength that, until now, she never knew was possible. ",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51GC3g1SSXL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B07415PPP1/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 30,
+    "name": "The President Is Missing: A Novel - Kindle edition by James Patterson, Bill Clinton. Literature &amp; Fiction Kindle eBooks @ Amazon.com.",
+    "listPrice": "$14.99",
+    "description": "The President Is Missing: A Novel - Kindle edition by James Patterson, Bill Clinton. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading The President Is Missing: A Novel.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51psisaBnjL.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B072F3MYRH/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 31,
+    "listPrice": "$14.99",
+    "description": "Texas Ranger - Kindle edition by James Patterson. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading Texas Ranger.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/51oTpO5mPcL._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B078LXGP4B/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 32,
+    "name": "Amazon.com: Chicka Chicka Boom Boom (Board Book) (9781442450707)",
+    "listPrice": "$7.99",
+    "description": "Amazon.com: Chicka Chicka Boom Boom (Board Book) (9781442450707): Bill Martin Jr., John Archambault, Lois Ehlert: Books",
+    "product_dimension": "5.5 x 1 x 7.2 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/91UvdebBM-L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/9141kvC1PcL.jpg"
+    ],
+    "weight": "9.6 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/1442450703/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 33,
+    "name": "The Pout-Pout Fish",
+    "listPrice": "$5.79",
+    "description": "A  NEW YORK TIMES  BEST SELLER   Deep in the water,     Mr. Fish swims about     With his fish face stuck     In a permanent pout.    Can his pals cheer him up?     Will his pout ever end?     Is there something he can learn     From an unexpected friend?   Swim along with the pout-pout fish as he discovers that being glum and spreading \"dreary wearies\" isn't really his destiny. Bright ocean colors and playful rhyme come together in Deborah Diesen's fun fish story that's sure to turn even the poutiest of frowns upside down. ",
+    "product_dimension": "6.6 x 0.7 x 6.5 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/816hDDySK0L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/41vXNT-YAPL.jpg"
+    ],
+    "weight": "11.2 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/0374360979/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 34,
+    "name": "12 Rules for Life: An Antidote to Chaos - Kindle edition by Jordan B. Peterson. Politics &amp; Social Sciences Kindle eBooks @ Amazon.com.",
+    "listPrice": "$13.99",
+    "description": "12 Rules for Life: An Antidote to Chaos - Kindle edition by Jordan B. Peterson. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading 12 Rules for Life: An Antidote to Chaos.",
+    "imageURLs": "https://images-na.ssl-images-amazon.com/images/I/412z30W2N-L._SY346_.jpg",
+    "sourceURL": "https://www.amazon.com/gp/product/B01FPGY5T0/ref=tmm_pap_swatch"
+  }
+]

@@ -1,0 +1,320 @@
+C:\Program Files\nodejs\node.exe --inspect-brk=31493 Data_Fizz\Data_Fizz_Crawler_Matthew_Bruns.js https://www.amazon.com books 
+Debugger listening on ws://127.0.0.1:31493/b6a21056-d524-4f7a-b68e-841f7ceb7533
+
+TEST
+Formatting products...
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+undefined
+12
+13
+14
+15
+16
+undefined
+17
+18
+undefined
+19
+20
+21
+22
+undefined
+23
+24
+25
+26
+27
+28
+undefined
+29
+undefined
+30
+31
+[
+  {
+    "id": 0,
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/0374360979/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 1,
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/0374360979/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 2,
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/B01M14UN1J/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 3,
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/B01M14UN1J/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 4,
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/B01FPGY5T0/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 5,
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/B01FPGY5T0/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 6,
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/B078M5G7XH/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 7,
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/B078M5G7XH/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 8,
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/B07C75GRLY/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 9,
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/B07C75GRLY/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 10,
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/1492656224/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 0,
+    "name": "Quantum Physics for Babies (Baby University)",
+    "listPrice": "$5.00",
+    "product_dimension": "8 x 0.8 x 8 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/51KKNLxTiAL.jpg"
+    ],
+    "weight": "12 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/1492656224/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 12,
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/B00H25FCSQ/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 13,
+    "listPrice": "$9.99",
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/B00H25FCSQ/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 14,
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/B075RV48W3/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 15,
+    "name": "Amazon.com: Fear",
+    "listPrice": "$14.99",
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/B075RV48W3/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 1,
+    "name": "Amazon.com: The Very Hungry Caterpillar (9780399226908)",
+    "listPrice": "$6.56",
+    "product_dimension": "5 x 0.6 x 7.2 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/81Ba7t79H9L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/51IYXiM7ioL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/91viLtk47pL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/813lPqOEYoL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/81EDMJza%2BxL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/81bpEpI1teL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/31asPOhB73L.jpg"
+    ],
+    "weight": "6.4 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/0399226907/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 17,
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/0399226907/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 2,
+    "name": "First 100 Words",
+    "listPrice": "$3.91",
+    "product_dimension": "4.8 x 1 x 6.2 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/71gU40iqu5L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/81laF6TgsCL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/41nOoMA15xL.jpg"
+    ],
+    "weight": "8 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/0312510780/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 19,
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/0312510780/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 20,
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/0756634687/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 21,
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/0756634687/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 3,
+    "name": "Baby University Four-Book Set",
+    "listPrice": "$30.53",
+    "product_dimension": "8 x 7.8 x 2.2 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/91VBEGiVjzL.jpg"
+    ],
+    "weight": "3.2 pounds",
+    "sourceURL": "https://www.amazon.com/gp/product/149267043X/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 23,
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/149267043X/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 24,
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/0545162076/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 25,
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/0545162076/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 26,
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/1442450703/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 27,
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/1442450703/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 4,
+    "name": "The Pout-Pout Fish",
+    "listPrice": "$5.79",
+    "product_dimension": "6.6 x 0.7 x 6.5 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/816hDDySK0L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/41vXNT-YAPL.jpg"
+    ],
+    "weight": "11.2 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/0374360979/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 4,
+    "name": "The Pout-Pout Fish: Deborah Diesen, Dan Hanna",
+    "listPrice": "$5.79",
+    "product_dimension": "6.6 x 0.7 x 6.5 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/816hDDySK0L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/41vXNT-YAPL.jpg"
+    ],
+    "weight": "11.2 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/0374360979/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 30,
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/1492656224/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 31,
+    "imageURLs": null,
+    "sourceURL": "https://www.amazon.com/gp/product/1492656224/ref=tmm_pap_swatch"
+  }
+]
+[
+  {
+    "id": 0,
+    "name": "Quantum Physics for Babies (Baby University)",
+    "listPrice": "$5.00",
+    "product_dimension": "8 x 0.8 x 8 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/51KKNLxTiAL.jpg"
+    ],
+    "weight": "12 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/1492656224/ref=tmm_pap_swatch"
+  },
+  {
+    "id": 1,
+    "name": "Amazon.com: The Very Hungry Caterpillar (9780399226908)",
+    "listPrice": "$6.56",
+    "product_dimension": "5 x 0.6 x 7.2 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/81Ba7t79H9L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/51IYXiM7ioL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/91viLtk47pL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/813lPqOEYoL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/81EDMJza%2BxL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/81bpEpI1teL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/31asPOhB73L.jpg"
+    ],
+    "weight": "6.4 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/0399226907/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 2,
+    "name": "First 100 Words",
+    "listPrice": "$3.91",
+    "product_dimension": "4.8 x 1 x 6.2 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/71gU40iqu5L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/81laF6TgsCL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/41nOoMA15xL.jpg"
+    ],
+    "weight": "8 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/0312510780/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 3,
+    "name": "Baby University Four-Book Set",
+    "listPrice": "$30.53",
+    "product_dimension": "8 x 7.8 x 2.2 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/91VBEGiVjzL.jpg"
+    ],
+    "weight": "3.2 pounds",
+    "sourceURL": "https://www.amazon.com/gp/product/149267043X/ref=tmm_hrd_swatch"
+  },
+  {
+    "id": 4,
+    "name": "The Pout-Pout Fish: Deborah Diesen, Dan Hanna",
+    "listPrice": "$5.79",
+    "product_dimension": "6.6 x 0.7 x 6.5 inches",
+    "imageURLs": [
+      "https://images-na.ssl-images-amazon.com/images/I/816hDDySK0L.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/41vXNT-YAPL.jpg"
+    ],
+    "weight": "11.2 ounces",
+    "sourceURL": "https://www.amazon.com/gp/product/0374360979/ref=tmm_pap_swatch"
+  }
+]
