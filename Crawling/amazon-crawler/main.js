@@ -7,13 +7,11 @@ const numberify = string => Number(string.replace(/[^\d.]+/, "") || 0);
 Apify.main(async () => {
   const input = await Apify.getValue("INPUT");
 
-  // Object from `./apify_storage/key_value_stores/default/INPUT.json`
   if (!input || !input.keyword)
     throw new Error("INPUT must contain a keyword!");
 
   console.log("Lauching Puppeteer...");
   const browser = await Apify.launchPuppeteer({
-    // makes the browser "headless", meaning that no visible browser window will open
     headless: true
   });
 
@@ -33,33 +31,34 @@ Apify.main(async () => {
   await Apify.utils.enqueueLinks({
     // page from which to extract URLs
     page: searchResultsPage,
-
-    // selector under which to look for URLs
     selector: "div.a-carousel-row-inner a.a-link-normal",
-
-    // pseudo URL object describing what URL format to look for
     pseudoUrls,
-
-    //which queue to add the extracted URLs to
     requestQueue
   });
 
   const crawler = new Apify.PuppeteerCrawler({
-    // this will reuse the browser instance,
-    // a new instace would open up and we'd have 2 browsers running.
     launchPuppeteerFunction: () => browser,
 
-    // This function will be called on every successful product details page fetch:
-    // productDetailsPage is the following Puppeteer object:
-    // https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pageselector
     handlePageFunction: async ({ request, page: productDetailsPage }) => {
       const title = await productDetailsPage.title();
+
+      const price = await getInnerText(
+        productDetailsPage,
+        ".a-color-base.a-align-bottom.a-text-strike, .a-size-base.a-color-secondary"
+      );
+
+      const img = await productDetailsPage.evaluate(
+        () =>
+          document.querySelector("img#main-image, img#ebooksImgBlkFront").src
+      );
 
       // Save data in storage
       await Apify.pushData({
         products: {
           name: title,
-          url: request.url
+          url: request.url,
+          listPrice: numberify(price),
+          img
         }
       });
     },
