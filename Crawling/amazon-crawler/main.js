@@ -49,7 +49,9 @@ Apify.main(async () => {
 
       const img = await productDetailsPage.evaluate(
         () =>
-          document.querySelector("img#main-image, img#ebooksImgBlkFront").src
+          document.querySelector(
+            "img#main-image, img#ebooksImgBlkFront, img#imgBlkFront"
+          ).src
       );
 
       let iFrame;
@@ -62,8 +64,24 @@ Apify.main(async () => {
       }
 
       const discription = await iFrame.$$eval("p, div", element =>
-        element.map(el => el.textContent.)
+        element.map(el => el.textContent)
       );
+
+      const details = await productDetailsPage.evaluate(
+        () => document.querySelector("div.content").innerText
+      );
+
+      let detailsArr = details.split(" ");
+      let detailIdx = detailsArr.indexOf("Weight:");
+      let weight;
+      if (detailIdx !== -1) {
+        weight = detailsArr.filter((el, id) => id === detailIdx + 1);
+        weight.push(detailsArr[detailIdx + 2]);
+        weight.unshift(detailsArr[detailIdx]);
+        weight.join(" ");
+      } else {
+        weight = null;
+      }
 
       // Save data in storage
       await Apify.pushData({
@@ -71,8 +89,9 @@ Apify.main(async () => {
           name: title,
           url: request.url,
           listPrice: numberify(price),
-          discription,
-          img
+          discription: discription.join(),
+          img,
+          weight: weight
         }
       });
     },
