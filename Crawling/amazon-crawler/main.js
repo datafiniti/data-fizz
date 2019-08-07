@@ -47,7 +47,7 @@ Apify.main(async () => {
         ".a-color-base.a-align-bottom.a-text-strike, .a-size-base.a-color-secondary"
       );
 
-      const img = await productDetailsPage.evaluate(
+      const imageURLs = await productDetailsPage.evaluate(
         () =>
           document.querySelector(
             "img#main-image, img#ebooksImgBlkFront, img#imgBlkFront"
@@ -70,34 +70,47 @@ Apify.main(async () => {
       const details = await productDetailsPage.evaluate(
         () => document.querySelector("div.content").innerText
       );
+      // Logic to get weight from details list
+      const detailsArr = details.split(" ");
+      const weightIdx = detailsArr.indexOf("Weight:");
+      const dimensionsIdx = detailsArr.indexOf("Dimensions:");
+      let weight, dimesions;
 
-      let detailsArr = details.split(" ");
-      let detailIdx = detailsArr.indexOf("Weight:");
-      let weight;
-      if (detailIdx !== -1) {
-        weight = detailsArr.filter((el, id) => id === detailIdx + 1);
-        weight.push(detailsArr[detailIdx + 2]);
-        weight.unshift(detailsArr[detailIdx]);
-        weight.join(" ");
+      if (weightIdx !== -1) {
+        weight = detailsArr.filter((el, id) => id === weightIdx + 1);
+        weight.push(detailsArr[weightIdx + 2]);
+        weight = weight.join(" ");
       } else {
         weight = null;
+      }
+
+      if (dimensionsIdx !== -1) {
+        dimesions = detailsArr.filter((el, id) => id === dimensionsIdx + 1);
+        dimesions.push(
+          detailsArr[dimensionsIdx + 2],
+          detailsArr[dimensionsIdx + 3]
+        );
+        dimesions = dimesions.join(" ");
+      } else {
+        dimesions = null;
       }
 
       // Save data in storage
       await Apify.pushData({
         products: {
           name: title,
-          url: request.url,
           listPrice: numberify(price),
           discription: discription.join(),
-          img,
-          weight: weight
+          product_dimension: dimesions,
+          imageURLs,
+          weight,
+          sourceURL: request.url
         }
       });
     },
 
     requestQueue,
-    maxRequestsPerCrawl: 5,
+    maxRequestsPerCrawl: 10,
     maxConcurrency: 5
   });
 
