@@ -52,12 +52,26 @@ Apify.main(async () => {
           document.querySelector("img#main-image, img#ebooksImgBlkFront").src
       );
 
+      let iFrame;
+      // function to access the iframe
+      for (const frame of productDetailsPage.mainFrame().childFrames()) {
+        if (frame.name().includes("bookDesc_iframe")) {
+          console.log("found the iframe");
+          iFrame = frame;
+        }
+      }
+
+      const discription = await iFrame.$$eval("p, div", element =>
+        element.map(el => el.textContent.)
+      );
+
       // Save data in storage
       await Apify.pushData({
         products: {
           name: title,
           url: request.url,
           listPrice: numberify(price),
+          discription,
           img
         }
       });
