@@ -1,7 +1,7 @@
 const Apify = require("apify");
 
 const getInnerText = async (page, selector) =>
-  page.$eval(selector, el => el.textContent);
+  page.$eval(selector, el => el.innerText);
 const numberify = string => Number(string.replace(/[^\d.]+/, "") || 0);
 
 Apify.main(async () => {
@@ -44,7 +44,7 @@ Apify.main(async () => {
 
       const price = await getInnerText(
         productDetailsPage,
-        ".a-color-base.a-align-bottom.a-text-strike, .a-size-base.a-color-secondary"
+        "span.a-size-medium.a-color-price.offer-price.a-text-normal, span.a-color-price, td.a-color-base.a-align-bottom.a-text-strike, span.a-size-base.a-color-secondary"
       );
 
       const imageURLs = await productDetailsPage.evaluate(
@@ -67,10 +67,8 @@ Apify.main(async () => {
         element.map(el => el.textContent)
       );
 
-      const details = await productDetailsPage.evaluate(
-        () => document.querySelector("div.content").innerText
-      );
-      // Logic to get weight from details list
+      const details = await getInnerText(productDetailsPage, "div.content");
+      // Logic to get weight and dimensions from details list
       const detailsArr = details.split(" ");
       const weightIdx = detailsArr.indexOf("Weight:");
       const dimensionsIdx = detailsArr.indexOf("Dimensions:");

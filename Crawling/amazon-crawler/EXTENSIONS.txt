@@ -1,0 +1,7 @@
+This Web Scraper was built with Apify as the main platform and the Puppeteer library. 
+
+The application uses the ./apify_storage/key_value_stores/default/INPUT.json file to take an input object that the CLI tool automatically passes to our scraper script. The application starts by taking the keyword and injects it to the url we set Puppeteer to go to. Puppeteer then response with the results page based on the keyword. Then we set the request queue to be populated with new urls from each product. Puppeteer now returns the product details page from the given selector. Now we are able to scrape the product details page for each product fetch iteration. The resulst are then stored in JSON files in ./apify_storage/datasets/default directory 
+
+This application can be extended to handle other domains by being able to replace the goto url that we provide to Puppeteer, along with being able to replace the keyword in the INPUT.json.
+
+The application can also be extended to scrape any product in amazon since Puppeteer relies on the keyword we provided. The JSON object that is created is also scalable since the data properties that are being pushed are not dependant on the type of product. The only thing that might have to be changed would be the selectors that Amazon uses for the product that is being scraped. 
