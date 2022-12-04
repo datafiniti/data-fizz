@@ -69,6 +69,7 @@ To begin, fork this repository to your personal Github account. We ask that you 
 ## Useful Tools
 
 If you are uncertain about where to start with your submission, consider looking into the following JavaScript tools:
+
 * NodeJS: A JavaScript runtime environment that will enable you to utilize JavaScript outside of a browser.
 * Cheerio: An implementation of jQuery meant for exposing the DOM of a given html page.
 * Headless Crawling: Web crawling tools built for the purposes of browsing the internet without utilizing a user interface.
