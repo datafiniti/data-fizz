@@ -1,0 +1,991 @@
+(function () {
+  'use strict';
+
+  function ownKeys(object, enumerableOnly) {
+    var keys = Object.keys(object);
+    if (Object.getOwnPropertySymbols) {
+      var symbols = Object.getOwnPropertySymbols(object);
+      enumerableOnly && (symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      })), keys.push.apply(keys, symbols);
+    }
+    return keys;
+  }
+  function _objectSpread2(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = null != arguments[i] ? arguments[i] : {};
+      i % 2 ? ownKeys(Object(source), !0).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+    return target;
+  }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  function _defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+  function _createClass(Constructor, protoProps, staticProps) {
+    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties(Constructor, staticProps);
+    Object.defineProperty(Constructor, "prototype", {
+      writable: false
+    });
+    return Constructor;
+  }
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+    return obj;
+  }
+  function _extends() {
+    _extends = Object.assign ? Object.assign.bind() : function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+      return target;
+    };
+    return _extends.apply(this, arguments);
+  }
+  function _slicedToArray(arr, i) {
+    return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+  }
+  function _arrayWithHoles(arr) {
+    if (Array.isArray(arr)) return arr;
+  }
+  function _iterableToArrayLimit(arr, i) {
+    var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+    if (_i == null) return;
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _s, _e;
+    try {
+      for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
+        _arr.push(_s.value);
+        if (i && _arr.length === i) break;
+      }
+    } catch (err) {
+      _d = true;
+      _e = err;
+    } finally {
+      try {
+        if (!_n && _i["return"] != null) _i["return"]();
+      } finally {
+        if (_d) throw _e;
+      }
+    }
+    return _arr;
+  }
+  function _unsupportedIterableToArray(o, minLen) {
+    if (!o) return;
+    if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+    var n = Object.prototype.toString.call(o).slice(8, -1);
+    if (n === "Object" && o.constructor) n = o.constructor.name;
+    if (n === "Map" || n === "Set") return Array.from(o);
+    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+  }
+  function _arrayLikeToArray(arr, len) {
+    if (len == null || len > arr.length) len = arr.length;
+    for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+    return arr2;
+  }
+  function _nonIterableRest() {
+    throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }
+
+  var getFrameDepth = function getFrameDepth(win) {
+    win = win || window;
+    if (win === win.top) {
+      return 0;
+    }
+    return 1 + getFrameDepth(win.parent);
+  };
+  var getTopAncestorOrigin = function getTopAncestorOrigin(win) {
+    win = win || window;
+    var ancestorOrigins = win.location && win.location.ancestorOrigins;
+    if (win && ancestorOrigins && ancestorOrigins.length > 1) {
+      if (Array.isArray(ancestorOrigins)) {
+        return ancestorOrigins.pop();
+      }
+      return ancestorOrigins.item(ancestorOrigins.length - 1);
+    }
+    return null;
+  };
+  var getCanonicalUrl = function getCanonicalUrl(win) {
+    win = win || window;
+    var canonicalUrlLink = win.document.querySelector('link[rel=canonical]');
+    return canonicalUrlLink ? canonicalUrlLink.href : null;
+  };
+  var findBestUrl = function findBestUrl(frameDepth, win) {
+    win = win || window;
+    var doc = win.document;
+    if (typeof frameDepth !== 'number' || frameDepth < 0) {
+      frameDepth = getFrameDepth(win);
+    }
+    if (frameDepth === 0) {
+      return getCanonicalUrl(win) || doc.location.href;
+    } else if (frameDepth === 1) {
+      try {
+        var parentHref = win.parent.document.location.href;
+        if (parentHref) {
+          return parentHref;
+        }
+      } catch (ex) {
+        var referrer = doc.referrer;
+        if (referrer) {
+          return referrer;
+        }
+      }
+    } else if (frameDepth === 2) {
+      try {
+        var parentReferrer = win.parent.document.referrer;
+        if (parentReferrer) {
+          return parentReferrer;
+        }
+      } catch (ex) {}
+    }
+    return getTopAncestorOrigin(win) || '';
+  };
+
+  function discover() {
+    var win = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window;
+    var frameDepth = arguments.length > 1 ? arguments[1] : undefined;
+    var doc = win.document;
+    var isPresent = win.dtm_config;
+    var config1;
+    if (isPresent) {
+      config1 = _extends({}, win.dtm_config);
+      Object.keys(config1).forEach(function (k) {
+        return (config1[k] == null || config1[k] === '') && delete config1[k];
+      });
+    } else {
+      config1 = {};
+    }
+    config1.data_object_type_code = isPresent ? 1 : 0;
+    config1.location_search = doc.location.search || '';
+    config1.canonical_url = findBestUrl(frameDepth, win);
+    config1.dtmc_ref = doc.referrer || '';
+    config1.dtmc_loc = doc.location.href || '';
+    return config1;
+  }
+
+  var getValueFromQueryString = function getValueFromQueryString(key, search) {
+    if (!search) {
+      return '';
+    }
+    var querystring = search.substring(1);
+    var items = querystring.split('&');
+    var filtered = items.map(function (item) {
+      var itemList = item.split('=');
+      return {
+        key: itemList[0],
+        value: itemList[1]
+      };
+    }).filter(function (kvp) {
+      return kvp.key.toLowerCase() === key.toLowerCase();
+    });
+    if (filtered.length) {
+      return filtered[0].value;
+    }
+    return '';
+  };
+  var serializeDataToQuery = function serializeDataToQuery(dataObject) {
+    var parts = [],
+      key,
+      value;
+    for (key in dataObject) {
+      if (dataObject.hasOwnProperty(key)) {
+        value = dataObject[key] + '' || '';
+        parts.push(encodeURIComponent(key) + '=' + encodeURIComponent(value));
+      }
+    }
+    return parts.join('&');
+  };
+  var buildUrlForPlugin = function buildUrlForPlugin(pluginName, hostName, path, dtmConfig, integration) {
+    var plugin = integration.plugins[pluginName];
+    if (!plugin) {
+      console.error('Missing plugin name');
+      return null;
+    }
+    var queryStringObj = {};
+    var fieldMasks = integration.fieldMasks.concat(plugin.fieldMasks);
+    _extends(queryStringObj, dtmConfig);
+    fieldMasks.forEach(function (fieldMask) {
+      delete queryStringObj[fieldMask];
+    });
+    var env = integration.env;
+    var pluginUrl = "".concat(env.tagProto, "://").concat(hostName).concat(path);
+    queryStringObj.dtm_cookies_enabled = navigator.cookieEnabled;
+    if (dtmConfig.wl_override) {
+      queryStringObj.wl_override = '';
+    } else if (dtmConfig.dtm_wl_override) {
+      queryStringObj.dtm_wl_override = '';
+    }
+    var queryStrings = serializeDataToQuery(queryStringObj);
+    return "".concat(pluginUrl).concat(queryStrings.length ? '?' : '').concat(queryStrings);
+  };
+
+  var applyStaticParameters = function applyStaticParameters(dtmConfig, overrideParams) {
+    _extends(dtmConfig, overrideParams);
+  };
+  var resolve = function resolve(path, obj, separator) {
+    obj = obj || self;
+    separator = separator || '.';
+    var properties = Array.isArray(path) ? path : path.split(separator);
+    var value = properties.reduce(function (prev, curr) {
+      return prev && prev[curr];
+    }, obj);
+    if (value === null || value === undefined) {
+      return '';
+    }
+    return value;
+  };
+  var resolveForType = function resolveForType(mapping, dtmConfig) {
+    if (mapping.type.toUpperCase() === 'QUERYSTRING') {
+      var keys = mapping.source.split('.');
+      if (keys.length === 2) {
+        var sourceName = keys[0];
+        return resolve(sourceName, dtmConfig);
+      }
+      return '';
+    } else if (mapping.type.toUpperCase() === 'URLENCODE') {
+      return resolve(mapping.source, dtmConfig);
+    } else if (mapping.type.toUpperCase() === 'JSONURLENCODE') {
+      return resolve(mapping.source, dtmConfig);
+    }
+    return resolve(mapping.source, dtmConfig);
+  };
+  var transform = function transform(dtmConfig, mapping) {
+    var value = resolveForType(mapping, dtmConfig);
+    if (mapping.type.toUpperCase() === 'QUERYSTRING') {
+      var keys = mapping.source.split('.');
+      if (keys.length === 2) {
+        var queryStringName = keys[1];
+        var qsValue = getValueFromQueryString(queryStringName, value);
+        if (qsValue !== '') {
+          dtmConfig[mapping.destination] = qsValue;
+        }
+      }
+    } else if (mapping.type.toUpperCase() === 'URLENCODE') {
+      var encodedValue = encodeURIComponent(value);
+      if (encodedValue !== '') {
+        dtmConfig[mapping.destination] = encodedValue;
+      }
+    } else if (mapping.type.toUpperCase() === 'JSONURLENCODE') {
+      var json = JSON.stringify(value);
+      var encodedJson = encodeURIComponent(json);
+      if (encodedJson !== '') {
+        dtmConfig[mapping.destination] = encodedJson;
+      }
+    } else {
+      if (value !== '') {
+        dtmConfig[mapping.destination] = value;
+      }
+    }
+  };
+  var applyMappings = function applyMappings(dtmConfig, mappings) {
+    mappings.forEach(function (m) {
+      return transform(dtmConfig, m);
+    });
+  };
+
+  function assign (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        target[key] = source[key];
+      }
+    }
+    return target
+  }
+  var defaultConverter = {
+    read: function (value) {
+      if (value[0] === '"') {
+        value = value.slice(1, -1);
+      }
+      return value.replace(/(%[\dA-F]{2})+/gi, decodeURIComponent)
+    },
+    write: function (value) {
+      return encodeURIComponent(value).replace(
+        /%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[BCD])/g,
+        decodeURIComponent
+      )
+    }
+  };
+  function init (converter, defaultAttributes) {
+    function set (key, value, attributes) {
+      if (typeof document === 'undefined') {
+        return
+      }
+      attributes = assign({}, defaultAttributes, attributes);
+      if (typeof attributes.expires === 'number') {
+        attributes.expires = new Date(Date.now() + attributes.expires * 864e5);
+      }
+      if (attributes.expires) {
+        attributes.expires = attributes.expires.toUTCString();
+      }
+      key = encodeURIComponent(key)
+        .replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent)
+        .replace(/[()]/g, escape);
+      var stringifiedAttributes = '';
+      for (var attributeName in attributes) {
+        if (!attributes[attributeName]) {
+          continue
+        }
+        stringifiedAttributes += '; ' + attributeName;
+        if (attributes[attributeName] === true) {
+          continue
+        }
+        stringifiedAttributes += '=' + attributes[attributeName].split(';')[0];
+      }
+      return (document.cookie =
+        key + '=' + converter.write(value, key) + stringifiedAttributes)
+    }
+    function get (key) {
+      if (typeof document === 'undefined' || (arguments.length && !key)) {
+        return
+      }
+      var cookies = document.cookie ? document.cookie.split('; ') : [];
+      var jar = {};
+      for (var i = 0; i < cookies.length; i++) {
+        var parts = cookies[i].split('=');
+        var value = parts.slice(1).join('=');
+        try {
+          var foundKey = decodeURIComponent(parts[0]);
+          jar[foundKey] = converter.read(value, foundKey);
+          if (key === foundKey) {
+            break
+          }
+        } catch (e) {}
+      }
+      return key ? jar[key] : jar
+    }
+    return Object.create(
+      {
+        set: set,
+        get: get,
+        remove: function (key, attributes) {
+          set(
+            key,
+            '',
+            assign({}, attributes, {
+              expires: -1
+            })
+          );
+        },
+        withAttributes: function (attributes) {
+          return init(this.converter, assign({}, this.attributes, attributes))
+        },
+        withConverter: function (converter) {
+          return init(assign({}, this.converter, converter), this.attributes)
+        }
+      },
+      {
+        attributes: { value: Object.freeze(defaultAttributes) },
+        converter: { value: Object.freeze(converter) }
+      }
+    )
+  }
+  var api = init(defaultConverter, { path: '/' });
+
+  var getCookie = function getCookie(name) {
+    try {
+      return api.get(name) || null;
+    } catch (e) {
+      return null;
+    }
+  };
+  var setCookie = function setCookie(name, value, age, domain, sameSite) {
+    age = age || 5 * 395;
+    sameSite = sameSite || 'lax';
+    var cookieValue;
+    var cookieConfig = {
+      'expires': age,
+      'sameSite': sameSite,
+      secure: true,
+      'path': '/'
+    };
+    if (domain) {
+      cookieConfig.domain = domain;
+    } else {
+      return;
+    }
+    cookieValue = api.set(name, value, cookieConfig);
+    return cookieValue;
+  };
+
+  var EXP_SUFFIX = '_exp';
+  function removeStorageItem(key, type) {
+    type = type || 'localStorage';
+    try {
+      var storage = window[type];
+      storage.removeItem(key + EXP_SUFFIX);
+      storage.removeItem(key);
+      return true;
+    } catch (e) {
+      console.debug(e);
+      return false;
+    }
+  }
+  function getStorageItem(key, type) {
+    type = type || 'localStorage';
+    var val = null;
+    try {
+      var storage = window[type];
+      var expVal = storage.getItem(key + EXP_SUFFIX);
+      if (!expVal) {
+        val = storage.getItem(key);
+      } else {
+        var expDate = new Date(expVal);
+        var isValid = expDate.getTime() - Date.now() > 0;
+        if (isValid) {
+          val = storage.getItem(key);
+        } else {
+          removeStorageItem(key);
+        }
+      }
+    } catch (e) {
+      console.debug(e);
+    }
+    return val;
+  }
+  function setStorageItem(key, val, expires, type) {
+    type = type || 'localStorage';
+    try {
+      var storage = window[type];
+      if (expires !== undefined) {
+        var expStr = new Date(Date.now() + expires * 60 * 1000).toUTCString();
+        storage.setItem(key + EXP_SUFFIX, expStr);
+      }
+      storage.setItem(key, val);
+    } catch (e) {
+      console.debug(e);
+      return false;
+    }
+    return true;
+  }
+
+  var minutesPerDay = 24 * 60;
+
+  var preferPersitedValueForThese = ['dtm_token', 'dtm_token_sc'];
+  var isValidValue = function isValidValue(val) {
+    return val !== 'undefined' && val !== undefined && val !== null && val !== '';
+  };
+  function getValue(key, mode) {
+    var serverSetCookie = getCookie("".concat(key, "_sc")) || '';
+    var localStorage = getStorageItem(key, 'localStorage') || '';
+    var sessionStorage = getStorageItem(key, 'sessionStorage') || '';
+    var documentCookie = getCookie(key) || '';
+    var getBestValue = function getBestValue() {
+      if (isValidValue(serverSetCookie)) {
+        return serverSetCookie;
+      }
+      if (isValidValue(localStorage)) {
+        return localStorage;
+      }
+      if (isValidValue(sessionStorage)) {
+        return sessionStorage;
+      }
+      if (isValidValue(documentCookie)) {
+        return documentCookie;
+      }
+      return '';
+    };
+    if (mode === 'all') {
+      return {
+        serverSetCookie: serverSetCookie,
+        localStorage: localStorage,
+        sessionStorage: sessionStorage,
+        documentCookie: documentCookie
+      };
+    }
+    return getBestValue();
+  }
+  function getValues(target, integration) {
+    if (integration.persistence) {
+      integration.persistence.forEach(function (entry) {
+        var oldValue = getValue(entry.key, 'best');
+        if (isValidValue(oldValue) && preferPersitedValueForThese.includes(entry.key)) {
+          target[entry.key] = oldValue;
+        } else {
+          var newValue = target[entry.key];
+          if (!isValidValue(newValue)) {
+            if (isValidValue(oldValue)) {
+              target[entry.key] = oldValue;
+            } else if (isValidValue(entry.value)) {
+              target[entry.key] = entry.value;
+            }
+          }
+        }
+      });
+    }
+  }
+  function setValue(key, value, ageInDays, environment) {
+    setStorageItem(key, value, ageInDays * minutesPerDay, 'localStorage');
+    setStorageItem(key, value, ageInDays * minutesPerDay, 'sessionStorage');
+    setCookie(key, value, ageInDays, environment.cookieDomain);
+  }
+  function setValues(target, integration) {
+    var setPersistenceValue = function setPersistenceValue(integrationVal) {
+      if (target[integrationVal.key]) {
+        setValue(integrationVal.key, target[integrationVal.key], integrationVal.expires, integration.env);
+      }
+    };
+    if (integration.persistence) {
+      integration.persistence.forEach(setPersistenceValue);
+    }
+  }
+
+  var createScript = function createScript(url, nonceValue, onLoadHandler, onErrorHandler) {
+    var script = document.createElement('script');
+    script.src = url;
+    script.nonce = nonceValue;
+    script.onload = onLoadHandler;
+    script.onerror = onErrorHandler;
+    return script;
+  };
+  var firePixel = function firePixel(url, onLoadHandler, onErrorHandler, referrerPolicy) {
+    var img = new Image(1, 1);
+    img.className = 'cnvr-pixel';
+    img.style.cssText = 'display:none';
+    if (typeof onLoadHandler === 'function') {
+      img.onload = onLoadHandler;
+    }
+    if (typeof onErrorHandler === 'function') {
+      img.onerror = onErrorHandler;
+    }
+    if (referrerPolicy) {
+      img.setAttribute('referrerPolicy', referrerPolicy);
+      img.referrerPolicy = referrerPolicy;
+    }
+    img.src = url;
+    img.alt = '';
+    return img;
+  };
+  var firePixels = function firePixels(urls, referrerPolicy) {
+    var pixelArr = [];
+    urls.forEach(function (url) {
+      pixelArr.push(firePixel(url, null, null, referrerPolicy));
+    });
+    return pixelArr;
+  };
+
+  var createPluginScript = function createPluginScript(dtmConfig, integration) {
+    var env = integration.env;
+    var url = buildUrlForPlugin('cnvr', env.tagHost, env.tagPath, dtmConfig, integration);
+    return createScript(url, dtmConfig.nonce);
+  };
+  var generateAndFireFpcPixel = function generateAndFireFpcPixel(dtmConfig, integration) {
+    var env = integration.env;
+    if (!env.fpcTagWrite || !navigator.cookieEnabled) {
+      return '';
+    }
+    var wlDomainsKey = '';
+    if (dtmConfig.wl_domains_key) {
+      wlDomainsKey = dtmConfig.wl_domains_key;
+    }
+    var wlOverrideDomain = '';
+    if (dtmConfig.wl_override || dtmConfig.dtm_wl_override) {
+      if (dtmConfig.wl_override) {
+        wlOverrideDomain = dtmConfig.wl_override;
+      } else {
+        wlOverrideDomain = dtmConfig.dtm_wl_override;
+      }
+    }
+    var baseUrl = "".concat(env.cookieProto, "://").concat(env.cookieHost).concat(env.cookiePath, "?dtm_cid=").concat(dtmConfig.dtm_cid, "&dtm_cmagic=").concat(dtmConfig.dtm_cmagic, "&ver=2&dtm_form_uid=").concat(dtmConfig.dtm_form_uid, "&wl_domains_key=").concat(wlDomainsKey, "&wl_override=").concat(wlOverrideDomain);
+    var serverPersistValues = Array.isArray(integration.persistence) ? integration.persistence.filter(function (entry) {
+      return entry.context === 'server';
+    }) : [];
+    var queryParamList = [];
+    serverPersistValues.forEach(function (entry) {
+      var key = entry.key;
+      var value = dtmConfig[key];
+      if (typeof value !== 'undefined') {
+        queryParamList.push(encodeURIComponent(key) + '=' + encodeURIComponent(value));
+      }
+    });
+    var pixelUrl = queryParamList.length > 0 ? "".concat(baseUrl, "&").concat(queryParamList.join('&')) : '';
+    firePixel(pixelUrl);
+    return pixelUrl;
+  };
+  var disco = function disco(dtmConfig, integration) {
+    var pluginScript = createPluginScript(dtmConfig, integration);
+    document.head.appendChild(pluginScript);
+    generateAndFireFpcPixel(dtmConfig, integration);
+  };
+  var final = function final(dtmConfig, integration) {
+    var referrerLimitedPixels = integration.referrerLimitedPixels;
+    var nonReferrerLimitedPixels = integration.pixels;
+    if (Array.isArray(referrerLimitedPixels) && referrerLimitedPixels.length > 0) {
+      firePixels(integration.referrerLimitedPixels, 'same-origin');
+    }
+    if (Array.isArray(nonReferrerLimitedPixels) && nonReferrerLimitedPixels.length > 0) {
+      firePixels(integration.pixels);
+    }
+  };
+  var cnvrPlugin = {
+    disco: disco,
+    final: final
+  };
+
+  var Log = /*#__PURE__*/function () {
+    function Log() {
+      _classCallCheck(this, Log);
+      this.levels = {
+        'trace': 0,
+        'debug': 1,
+        'info': 2,
+        'warn': 3,
+        'error': 4
+      };
+      this.level = this.levels['info'];
+    }
+    _createClass(Log, [{
+      key: "level",
+      value: function level(levelString) {
+        this.level = this.levels[levelString];
+      }
+    }, {
+      key: "log",
+      value: function log(levelString) {
+        if (this.levels[levelString] <= this.level) {
+          var _console;
+          for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+            args[_key - 1] = arguments[_key];
+          }
+          (_console = console).log.apply(_console, ["[".concat(levelString, " - ").concat(new Date().toLocaleString(), "]")].concat(args));
+        }
+      }
+    }, {
+      key: "trace",
+      value: function trace() {
+        for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+          args[_key2] = arguments[_key2];
+        }
+        this.log('trace', args);
+      }
+    }, {
+      key: "debug",
+      value: function debug() {
+        for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+          args[_key3] = arguments[_key3];
+        }
+        this.log('debug', args);
+      }
+    }, {
+      key: "info",
+      value: function info() {
+        for (var _len4 = arguments.length, args = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+          args[_key4] = arguments[_key4];
+        }
+        this.log('info', args);
+      }
+    }, {
+      key: "warn",
+      value: function warn() {
+        for (var _len5 = arguments.length, args = new Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
+          args[_key5] = arguments[_key5];
+        }
+        this.log('warn', args);
+      }
+    }, {
+      key: "error",
+      value: function error() {
+        for (var _len6 = arguments.length, args = new Array(_len6), _key6 = 0; _key6 < _len6; _key6++) {
+          args[_key6] = arguments[_key6];
+        }
+        this.log('error', args);
+      }
+    }, {
+      key: "dir",
+      value: function dir() {
+        for (var _len7 = arguments.length, args = new Array(_len7), _key7 = 0; _key7 < _len7; _key7++) {
+          args[_key7] = arguments[_key7];
+        }
+        console.dir(args);
+      }
+    }]);
+    return Log;
+  }();
+  var log = new Log();
+
+  function cjApi() {
+    var statsData = 0;
+    var itemNameChangePrefixMap = {
+      'items.product_id': 'item',
+      'items.item_amount': 'amt',
+      'items.item_quantity': 'qty',
+      'items.item_discount': 'dcnt',
+      'bypass_channel.name': 'channel',
+      'bypass_channel.timestamp': 'channel_ts',
+      'items.': ''
+    };
+    var replaceFieldNames = function replaceFieldNames(dataIn, fieldMap) {
+      var dataOut = {};
+      _extends(dataOut, dataIn);
+      if (Object.keys(fieldMap).length === 0 || Object.keys(dataOut).length === 0) {
+        return dataOut;
+      }
+      for (var fieldMapKey in fieldMap) {
+        if (fieldMap.hasOwnProperty(fieldMapKey)) {
+          replaceFieldNameCaseInsensitively(fieldMapKey, fieldMap[fieldMapKey], dataOut);
+        }
+      }
+      return dataOut;
+    };
+    var replaceFieldNameCaseInsensitively = function replaceFieldNameCaseInsensitively(fieldMapKey, fieldMapValue, dataOut) {
+      var lowerFieldMapKey = fieldMapKey.toLowerCase();
+      for (var currentKey in dataOut) {
+        if (!dataOut.hasOwnProperty(currentKey)) {
+          continue;
+        }
+        var lowerCurrentKey = currentKey.toLowerCase();
+        if (lowerCurrentKey.startsWith(lowerFieldMapKey)) {
+          var newKey = lowerCurrentKey.replace(lowerFieldMapKey, fieldMapValue);
+          dataOut[newKey] = dataOut[currentKey];
+          delete dataOut[currentKey];
+        }
+      }
+    };
+    var extractCjData = function extractCjData(dtmConfig) {
+      var eventIdsMap = getEventIdsMap();
+      var genericFieldsMap = getGenericFieldsMap(dtmConfig);
+      var statsMap = getStatsMap();
+      return _objectSpread2(_objectSpread2(_objectSpread2({}, eventIdsMap), genericFieldsMap), statsMap);
+      function getStatsMap() {
+        var statsMap = {};
+        statsMap['custom.stats'] = statsData;
+        return statsMap;
+      }
+      function getEventIdsMap() {
+        var eventIdsMap = {};
+        var hasCjEventId = false;
+        var cjEventId = '';
+        var values = getValue('CJEventId', 'all');
+        function maybeAddValueToEventIdsMap(maybeValue, key, statsDataValue) {
+          if (maybeValue) {
+            eventIdsMap[key] = maybeValue;
+            statsData += statsDataValue;
+            if (!hasCjEventId) {
+              cjEventId = maybeValue;
+            }
+            hasCjEventId = true;
+          }
+        }
+        maybeAddValueToEventIdsMap(values.serverSetCookie, 'cjevent', 0x10000);
+        maybeAddValueToEventIdsMap(values.documentCookie, 'cjeventc', 0x20000);
+        maybeAddValueToEventIdsMap(values.localStorage, 'cjeventl', 0x40000);
+        maybeAddValueToEventIdsMap(values.sessionStorage, 'cjevents', 0x80000);
+        if (hasCjEventId) {
+          eventIdsMap['cjevent'] = cjEventId;
+        }
+        return eventIdsMap;
+      }
+      function getGenericFieldsMap(dataIn, outputMap, namespace) {
+        outputMap = outputMap || {};
+        namespace = namespace || '';
+        if (Object.keys(dataIn).length > 0) {
+          for (var key in dataIn) {
+            if (dataIn.hasOwnProperty(key)) {
+              var value = dataIn[key];
+              if (defined(value)) {
+                var newKey = key;
+                if (namespace !== '') newKey = namespace + '.' + key;
+                switch (value.constructor.name) {
+                  case 'Object':
+                    getGenericFieldsMap(value, outputMap, newKey);
+                    break;
+                  case 'Array':
+                    populateArrayFieldsMap(key, value, outputMap, newKey);
+                    break;
+                  default:
+                    outputMap[newKey] = value;
+                    break;
+                }
+              }
+            }
+          }
+        }
+        return outputMap;
+      }
+      function populateArrayFieldsMap(key, value, outputMap, namespace) {
+        if (key.toLowerCase() === 'coupons') {
+          outputMap['coupon'] = getCoupon(value);
+        } else {
+          populateItemMap(value, outputMap, namespace);
+        }
+      }
+      function populateItemMap(items, outputMap, namespace) {
+        if (defined(items)) {
+          var restrictedParametersToAvoidRaceConditions = Object.values(itemNameChangePrefixMap);
+          var isParameterNameRestrictedToAvoidRaceConditions = function isParameterNameRestrictedToAvoidRaceConditions(key) {
+            return restrictedParametersToAvoidRaceConditions.includes(key);
+          };
+          for (var i = 0; i < items.length; i++) {
+            var item = items[i];
+            if (defined(item)) {
+              if (Object.keys(item).length > 0) {
+                for (var key in item) {
+                  if (item.hasOwnProperty(key)) {
+                    if (!isParameterNameRestrictedToAvoidRaceConditions(key)) {
+                      outputMap[namespace + "." + key + (i + 1)] = item[key];
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      function getCoupon(coupons) {
+        var couponValue = '';
+        for (var i = 0; i < coupons.length; i++) {
+          if (defined(coupons[i].name)) couponValue += coupons[i].name + ',';
+        }
+        couponValue = couponValue.substring(0, couponValue.length - 1);
+        return couponValue;
+      }
+    };
+    var buildCjPixelUrl = function buildCjPixelUrl(serializedQueryString, pluginData) {
+      var cjHost = pluginData.integrationDomain;
+      return 'https://' + cjHost + '/u?' + serializedQueryString;
+    };
+    function mapCjTypeFromFormIdAndPromoId(dtmConfig, pluginData) {
+      if (defined(pluginData) && defined(pluginData.formMap) && defined(dtmConfig.dtm_fid)) {
+        var formsObj = pluginData.formMap[dtmConfig.dtm_fid];
+        if (defined(formsObj) && defined(formsObj.promoMap)) {
+          var promoList = formsObj.promoMap;
+          if (defined(dtmConfig.cli_promo_id) && dtmConfig.cli_promo_id.toString() != "-1") {
+            var promos = promoList.filter(function (p) {
+              return p.promoId === parseInt(dtmConfig.cli_promo_id);
+            });
+            if (defined(promos) && promos.length > 0) {
+              if (defined(promos[0].actionId)) {
+                return parseInt(promos[0].actionId);
+              }
+            }
+          } else {
+            var _promos = promoList.filter(function (p) {
+              return p.promoId === null;
+            });
+            if (defined(_promos) && _promos.length > 0) {
+              if (defined(_promos[0].actionId)) {
+                return parseInt(_promos[0].actionId);
+              }
+            }
+          }
+        }
+      }
+      return undefined;
+    }
+    var fireCjPixel = function fireCjPixel(cjPixelUrl) {
+      var cjPixel = new Image();
+      cjPixel.src = cjPixelUrl;
+      log.debug('firing CJ pixel ' + cjPixel.src);
+      return cjPixel.src;
+    };
+    var defined = function defined(x) {
+      return typeof x !== 'undefined';
+    };
+    function disco(dtmConfig, integration) {
+      var cjPlugin = integration.plugins['cj'];
+      var cjPluginData = defined(cjPlugin.data) ? cjPlugin.data : {};
+      dtmConfig.type = mapCjTypeFromFormIdAndPromoId(dtmConfig, cjPluginData);
+      if (typeof dtmConfig.type === 'undefined' || isNaN(dtmConfig.type)) {
+        log.debug('not firing CJ pixel because no type mapping found (dtmConfig.dtm_fid=' + dtmConfig.dtm_fid + ' and dtmConfig.cli_promo_id=' + dtmConfig.cli_promo_id + ')');
+        return;
+      }
+      var cjDataMap = extractCjData(dtmConfig);
+      var cjDataMapWithoutMaskedFields = filterPluginData(cjDataMap, integration, 'cj');
+      var cjDataMapWithReplacedFieldNames = replaceFieldNames(cjDataMapWithoutMaskedFields, itemNameChangePrefixMap);
+      var serializedQueryString = serializeDataToQuery(cjDataMapWithReplacedFieldNames);
+      var cjPixelUrl = buildCjPixelUrl(serializedQueryString, cjPluginData);
+      return fireCjPixel(cjPixelUrl);
+    }
+    function final(dtmConfig, integration) {}
+    return {
+      disco: disco,
+      final: final
+    };
+  }
+  function filterPluginData(dataIn, integration, pluginName) {
+    var plugin = integration.plugins[pluginName];
+    if (!plugin) {
+      return dataIn;
+    }
+    var filteredData = {};
+    var fieldMasks = integration.fieldMasks.concat(plugin.fieldMasks);
+    _extends(filteredData, dataIn);
+    fieldMasks.forEach(function (fieldMask) {
+      delete filteredData[fieldMask];
+    });
+    return filteredData;
+  }
+
+  var plugins = {
+    cj: cjApi(),
+    cnvr: cnvrPlugin
+  };
+  function execute(dtmConfig, integration) {
+    for (var _i = 0, _Object$entries = Object.entries(integration.plugins); _i < _Object$entries.length; _i++) {
+      var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+        key = _Object$entries$_i[0],
+        plugin = _Object$entries$_i[1];
+      var pluginState = {};
+      _extends(pluginState, dtmConfig);
+      applyMappings(pluginState, plugin.mappings);
+      if (integration.eventType === 'disco') {
+        plugins[key].disco(pluginState, integration);
+      }
+      if (integration.eventType === 'final') {
+        plugins[key].final(pluginState, integration);
+      }
+    }
+  }
+  function executePlugins(dtmConfig, integration) {
+    integration.event_type = integration.event_type || 'disco';
+    execute(dtmConfig, integration);
+  }
+
+  var integration = JSON.parse('{"eventType":"disco","env":{"tagProto":"https","tagHost":"login-ds.dotomi.com","tagPath":"/profile/visit/final/js","fpcWrite":true,"fpcRead":true,"fpcTagWrite":false,"cookieHost":"","cookieProto":"https","cookiePath":"","cookieDomain":".walgreens.com","cookieTagType":null},"parameters":{"dtm_user_agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36","dtm_country_code":"US","init_wl_code":"3","dtm_form_uid":"785806806579710768","dtm_token":"AQEL5r4hkgqsiAEm9pQzAQELPgA","dtm_dma_code":"635","dtm_cmagic":"8e68c3","cachebuster":"1669839173095","tcflag":"true","dtm_token_assignment_type":"0","dtm_cid":"2623","dtm_fid":"101","dtm_use_flash_cookies":"false","tp_user_assignment_type":"0","wl_domains_key":"www.walgreens.com","dtm_zip_code":"78727","dtm_promo_id":"2","dtm_cookies_enabled":"false","fp_assignment_type":"0","dtm_user_dc":"sjc","dtm_current_dc":"","dtm_id_assgn_type":"0","dtm_state":"TX","dtm_consent":"true"},"mappings":[{"conditionTree":null,"scope":"Client","source":"dtm_promo_id","destination":"cli_promo_id","type":"NAME","paused":false,"cnvrEnabled":false,"cjEnabled":false,"index":-1},{"conditionTree":null,"scope":"Client","source":"items","destination":"dtm_items","type":"NAME","paused":false,"cnvrEnabled":false,"cjEnabled":false,"index":-1},{"conditionTree":null,"scope":"Client","source":"dtmc_items","destination":"dtm_items","type":"NAME","paused":false,"cnvrEnabled":false,"cjEnabled":false,"index":-1},{"conditionTree":null,"scope":"Client","source":"dtm_items","destination":"dtm_items","type":"JSONURLENCODE","paused":false,"cnvrEnabled":false,"cjEnabled":false,"index":-1},{"conditionTree":null,"scope":"Client","source":"coupons","destination":"dtmc_coupons","type":"JSONURLENCODE","paused":false,"cnvrEnabled":false,"cjEnabled":false,"index":-1},{"conditionTree":null,"scope":"Client","source":"bypass_channel","destination":"dtmc_bypass_channel","type":"JSONURLENCODE","paused":false,"cnvrEnabled":false,"cjEnabled":false,"index":-1}],"persistence":[{"key":"dtm_status","expires":395,"context":null,"destination":null,"value":null},{"key":"dtm_token","expires":395,"context":"server","destination":null,"value":null},{"key":"dtm_tcdata","expires":1,"context":null,"destination":null,"value":null},{"key":"dtm_persisted_em","expires":395,"context":"client","destination":null,"value":null}],"fieldMasks":["location_search","coupons","items","bypassChannel"],"plugins":{"cnvr":{"name":"cnvr","parameters":{},"mappings":[{"conditionTree":null,"scope":"Client","source":"location_search.dtm_em","destination":"dtm_email_hash","type":"QUERYSTRING","paused":false,"cnvrEnabled":false,"cjEnabled":false,"index":-1},{"conditionTree":null,"scope":"Client","source":"email_hash","destination":"dtm_email_hash","type":"NAME","paused":false,"cnvrEnabled":false,"cjEnabled":false,"index":-1},{"conditionTree":null,"scope":"Client","source":"confirmation_number","destination":"dtmc_transaction_id","type":"NAME","paused":false,"cnvrEnabled":false,"cjEnabled":false,"index":-1},{"conditionTree":null,"scope":"Client","source":"dtm_promo_id","destination":"cli_promo_id","type":"NAME","paused":false,"cnvrEnabled":false,"cjEnabled":false,"index":-1}],"fieldMasks":["confirmation_number","email_hash"],"data":null}}}');
+  var discoveredDtmConfig = discover();
+  var dtmConfig = {};
+  if (integration.parameters) {
+    applyStaticParameters(dtmConfig, integration.parameters);
+  }
+  applyStaticParameters(dtmConfig, discoveredDtmConfig);
+  if (integration.env.fpcRead) {
+    getValues(dtmConfig, integration);
+  }
+  applyMappings(dtmConfig, integration.mappings);
+  executePlugins(dtmConfig, integration);
+  if (integration.env.fpcWrite) {
+    setValues(dtmConfig, integration);
+  }
+
+}());
