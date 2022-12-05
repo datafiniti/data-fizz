@@ -2,21 +2,25 @@
 
 ## Purpose
 
-This exercise is designed to test your ability to use object-oriented design principles, data structures and standard algorithms to create a web crawler. We will not only be looking at the data points you have collected from the web, but at the style of your code, its modularity, its extensibility, and ease at which the app can be built and tested. As a small team we believe these principles are a key element of our continued success.
+This exercise is designed to test your ability to use JavaScript, object-oriented design principles, data structures, and standard algorithms to create a web crawler. We will not only be looking at the data points you have collected from the web, but at the style of your code, its modularity, its extensibility, and ease at which the app can be built and tested. As a small team, we believe these principles are a key element of our continued success.
  
 
 ## Problem Description
 
-You will need to design and implement a basic web crawler that has two primary functions.  The crawler must navigate from a “starting url” to a “listing page” on the website.  It must also collect a small number of specified attributes on the page.  Usually we collect all products available on a site, but for this coding challenge we would like you to start on amazon’s home page and navigate to the book category.  Collect at least 10 books and grab the following information (if it is available on the page).
+You will need to design and implement a basic web crawler that has two primary functions:
 
-You will need to design and implement a fully functioning web crawler that can locate the following data points:
+ 1. The crawler must navigate from a “starting url” to a “listing page” on the website. 
+ 2. It must also collect a small number of specified attributes on the page. 
 
-* Name
-* List Price
-* Description
-* Product Dimensions
-* Image URLs
-* Weight
+Usually we collect all products available on a site, but for this coding challenge we would like you to start on the "Walgreens.com" home page and navigate to the “Household Essentials” category. Navigate to at least 10 different products in this category and grab the following information (if it is available on the page):
+
+ * Product Name
+ * List Price
+ * Description
+ * Product Dimensions
+ * Image URLs
+ * Product UPC Code
+
 
 Your application should output its results in a valid and well structured JSON document like the example below:
 
@@ -25,36 +29,49 @@ Your application should output its results in a valid and well structured JSON d
 {
     "product": {
         "id": 1,
-        "name": "Sushi at Home: a Mat-To-Table Sushi Cookbook",
-        "listPrice": 17.99,
-        "description": "Eating Sushi is Easy. Making Sushi is Even Easier.Let your love of sushi inspire you to prepare and enjoy it in your home. This beautiful guide and cookbook opens a window to everything that's so fascinating--and intimidating--about sushi, while laying out easy-to-follow tips and techniques to help sushi lovers become confident sushi chefs.",
-        "product_dimension": "8 X 0.6 X 8 inches",
+        "productName": "Free & Clear Laundry Detergent",
+        "listPrice": 7.69,
+        "description": "When you have sensitive skin, clothes can itch and irritate. You deserve a free & gentle liquid laundry detergent for sensitive skin that delivers value. ARM & HAMMER Sensitive Skin Free & Clear liquid laundry detergent is concentrated with 2X powerful stain fighters in every drop vs. leading bargain detergent.",
+        "productDimensions": "3.27 x 6.17 x 9.95 inches",
         "imageURLs": [
-            "https://images-na.ssl-images-amazon.com/images/I/611AZDSUHvL._SY496_BO1,204,203,200_.jpg",
-            "https://images-na.ssl-images-amazon.com/images/I/81ECOQVXVGL.jpg"
+            "https://pics.drugstore.com/prodimg/648742/900.jpg",
+            "https://pics.drugstore.com/prodimg/648742/2_900.jpg",
+            "https://pics.drugstore.com/prodimg/648742/3_900.jpg"
         ],
-        "weight": "13.9 oz",
-        "sourceURL": "https://www.amazon.com/gp/product/1623155975/ref=s9_acsd_simh_bw_c_x_1_w?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-3&pf_rd_r=5S54Z6125KJDKW8DEBTV&pf_rd_r=5S54Z6125KJDKW8DEBTV&pf_rd_t=101&pf_rd_p=fe185ec9-c8f5-44c0-897e-4c0bde93268c&pf_rd_p=fe185ec9-c8f5-44c0-897e-4c0bde93268c&pf_rd_i=283155"
+        "productUPC": 03320097562,
+        "sourceURL": "https://www.walgreens.com/store/c/arm-%26-hammer-free-%26-clear-laundry-detergent/ID=300427093-product"
     }
-    
 }
+
 ```
 
-Once your solution is completed please add an EXTENSIONS.txt file to your solution that notes how your application could be extended to handle the following:
+Once your solution is completed, please include a README.md file with build and execution instructions for your application. You will also need to add an EXTENSIONS.txt file to your solution that notes how your application could be extended to handle the following:
 
-1. Domains beyond Amazon.com
-2. Products beyond just simply books.
+1. Products outside of the Household Essentials category.
+2. Domains beyond Walgreens.com.
 
-To begin fork this repository to your personal Github account. We ask that you submit your solution within 1 week of forking the repo.
+To begin, fork this repository to your personal Github account. We ask that you submit your solution within 1 week of forking the repo.
 
 ## Submission Requirements
 
 * Use Javascript.
 * You may use any third party libraries you wish. Any dependencies must be fully managed by a standard build tool for the language used.
-* You must follow standard Object Oriented Design principles and techniques (e.g., submissions with only a single class are not worthy).
-* Email us when you have finished your submission.
+* You must follow standard Object Oriented Design principles and techniques (submissions using only a single class are not acceptable).
+* Email us with a link to your repository fork when you have finished your submission. 
 
 ## What We'll Be Looking For
 
 * Code readability and reusability.
+* Detail orientation.
+* Clean and consistent data formatting.
 * Testing is not required, but we'd love to see it.
+
+## Useful Tools
+
+If you are uncertain about where to start with your submission, consider looking into the following JavaScript tools:
+
+* NodeJS: A JavaScript runtime environment that will enable you to utilize JavaScript outside of a browser.
+* Cheerio: An implementation of jQuery meant for exposing the DOM of a given html page.
+* Headless Crawling: Web crawling tools built for the purposes of browsing the internet without utilizing a user interface.
+
+If you have any questions about this challenge, please let us know. 
