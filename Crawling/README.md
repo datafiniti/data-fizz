@@ -47,7 +47,7 @@ Your application should output its results in a valid and well structured JSON d
 
 Once your solution is completed, please include a README.md file with build and execution instructions for your application. You will also need to add an EXTENSIONS.txt file to your solution that notes how your application could be extended to handle the following:
 
-1. Products outside of the Household Essentials category.
+1. Products outside of the Household & Pet Essentials category.
 2. Domains beyond Walgreens.com.
 
 To begin, fork this repository to your personal Github account. We ask that you submit your solution within 1 week of forking the repo.
