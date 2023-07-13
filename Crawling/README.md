@@ -12,7 +12,7 @@ You will need to design and implement a basic web crawler that has two primary f
  1. The crawler must navigate from a “starting url” to a “listing page” on the website. 
  2. It must also collect a small number of specified attributes on the page. 
 
-Usually we collect all products available on a site, but for this coding challenge we would like you to start on the "Walgreens.com" home page and navigate to the “Household Essentials” category. Navigate to at least 10 different products in this category and grab the following information (if it is available on the page):
+Usually we collect all products available on a site, but for this coding challenge we would like you to start on the "Walgreens.com" home page and navigate to the “Household & Pet Essentials” category. Navigate to at least 10 different products in this category and grab the following information (if it is available on the page):
 
  * Product Name
  * List Price
